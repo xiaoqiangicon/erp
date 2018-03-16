@@ -91,6 +91,9 @@ module.exports = {
         handlebars: 'handlebars/dist/handlebars.js'
     },
     devServerPort: 10010,
-    packCssSeparately: !0
+    packCssSeparately: !0,
+    provide: {
+        jQuery: 'jquery'
+    }
 };
 
