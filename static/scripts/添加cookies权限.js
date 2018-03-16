@@ -1,6 +1,6 @@
 
 (function () {
-    $.getJSON('/static/resources/json/menu_items.json', {}, function (res) {
+    $.getJSON('/static/resources/json/menu_items_test.json', {}, function (res) {
         addAccess(res.items);
         addAccess(res.superItems);
     });
