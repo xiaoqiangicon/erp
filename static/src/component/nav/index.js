@@ -2,6 +2,7 @@
 // ie-tip css
 require('bootstrap/dist/css/bootstrap.css');
 require('@zzh/ie-tip/dist/ie-tip.css');
+require('../../less/base.less');
 require('./index.css');
 
 // ie-tip js
