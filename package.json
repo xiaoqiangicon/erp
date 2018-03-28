@@ -10,6 +10,7 @@
     "@zzh/promotion": "git+http://git.zizaihome.cn/senntyou/promotion.git#0.0.2",
     "@zzh/util": "git+http://git.zizaihome.cn/senntyou/util.git#0.0.1",
     "@zzh/ueditor": "git+http://git.zizaihome.cn/senntyou/ueditor.git#0.0.1",
+    "@zzh/upload": "git+http://git.zizaihome.cn/senntyou/upload.git#0.0.1",
     "bootstrap": "^3.3.7",
     "bootstrap-datepicker": "^1.7.1",
     "handlebars": "^4.0.11",

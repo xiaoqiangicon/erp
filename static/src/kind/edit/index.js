@@ -6,3 +6,4 @@ require('less/bootstrap.less');
 require('./index.less');
 
 require('./js/init');
+require('./js/view');
