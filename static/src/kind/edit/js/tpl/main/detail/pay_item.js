@@ -13,7 +13,10 @@ let tpl = `
         <input class="form-control" placeholder="填写说明可介绍此善行特点，吸引用户选择" value="{{desc}}">
     </div>
     <div class="item-0-1 item-0-1-4">
-        <img class="{{#unless icon}}hide{{/unless}}" src="{{icon}}">
+        <div class="container-0-3 {{#unless icon}}hide{{/unless}}" data-pay-item-icon="{{id}}">
+            <img src="{{icon}}">
+            <button class="clean common-delete">X</button>
+        </div>
         <button class="clean btn-0-2 {{#if icon}}hide{{/if}}" data-pay-item-add="{{id}}"></button>
     </div>
     <div class="item-0-1 item-0-1-5">

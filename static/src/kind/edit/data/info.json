@@ -34,7 +34,7 @@
     ],
     "shareTitle": "分享标题",
     "shareDesc": "分享描述",
-    "shareIcon": "分享图标",
+    "shareIcon": "/static/images/chan-zai-128x128.png",
     "showPeopleCountWhenShare": 1
   }
 }
