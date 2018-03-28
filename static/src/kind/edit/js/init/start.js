@@ -25,13 +25,13 @@ module.exports = _ => {
     }, 1000);
 
     // 有封面
-    if (data.info.cover && data.info.cover.length) {
+    if (data.info.covers && data.info.covers.length) {
         let $coverContainer = $('#cover-container');
         let $coverAdd = $('#cover-add');
-        data.info.cover.forEach(image => {
+        data.info.covers.forEach(image => {
             $coverContainer.append(coverItemTpl({image}));
         });
-        data.info.cover.length >= 3 && $coverAdd.addClass('hide');
+        data.info.covers.length >= 3 && $coverAdd.addClass('hide');
     }
 
     // 有支付选择项
