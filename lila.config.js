@@ -80,8 +80,8 @@ module.exports = {
         }
     ],
     directoriesToSync: {
-        images: 'static/images',
-        res: 'static/res'
+        // res: 'static/res',
+        images: 'static/images'
     },
     basePaths: {
         buildRoot: './static',
