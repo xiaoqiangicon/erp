@@ -18,7 +18,7 @@ module.exports = `
             <span>详情内容：</span>
             <span class="mark-1">*</span>
         </div>
-        <div class="container-2"></div>
+        <div class="container-2" id="editor"></div>
     </div>
     <hr>
     <div class="text-1">支付信息设置</div>
