@@ -59,6 +59,6 @@ seeView({
     afterSave: function () {
         $('#ok').attr({'data-handling': 0}).text(data.info.isEdit ? '更新' : '保存');
 
-        // location.href = '/';
+        location.href = '/zzhadmin/charityIndex/';
     }
 });

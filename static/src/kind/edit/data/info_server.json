@@ -1,0 +1,46 @@
+{
+  "result": 0,
+  "data": {
+    "id": 11,
+    "name": "日行一善 善行十生",
+    "img": [
+      {
+        "url": "/static/images/chan-zai-128x128.png"
+      },
+      {
+        "url": "/static/images/chan-zai-128x128.png"
+      },
+      {
+        "url": "/static/images/chan-zai-128x128.png"
+      }
+    ],
+    "details": "<p>hahahahahahah</p>",
+    "spec": [
+      {
+        "id": 1,
+        "name": "日行1善",
+        "price": 1.11,
+        "benison": "hahahahahhahaha",
+        "indexImg": "/static/images/chan-zai-128x128.png"
+      },
+      {
+        "id": 2,
+        "name": "日行2善",
+        "price": 2.22,
+        "benison": "hahahahahhahaha",
+        "indexImg": "/static/images/chan-zai-128x128.png"
+      },
+      {
+        "id": 3,
+        "name": "日行3善",
+        "price": 3.33,
+        "benison": "hahahahahhahaha",
+        "indexImg": "/static/images/chan-zai-128x128.png"
+      }
+    ],
+    "shareName": "分享标题",
+    "shareDetails": "分享描述",
+    "shareHeadImg": "/static/images/chan-zai-128x128.png",
+    "isShowJoinNum": 1
+  }
+}
