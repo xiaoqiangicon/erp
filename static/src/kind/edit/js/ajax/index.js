@@ -8,3 +8,5 @@ seeAjax.setEnv(2);
 
 require('./common');
 require('./info');
+require('./add');
+require('./edit');

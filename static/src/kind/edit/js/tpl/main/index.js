@@ -8,7 +8,7 @@ let tpl = `
         <i class="icon-1"></i>
         <a href="/">日行一善</a>
         <i class="icon-1"></i>
-        <span>编辑</span>
+        <span>{{#if isEdit}}编辑{{else}}创建{{/if}}</span>
     </div>
     ${require('./detail')}
 </div>

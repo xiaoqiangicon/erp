@@ -10,6 +10,7 @@ let data = require('../data');
 if (zzhUtil.urlParams.edit) {
     seeAjax('info', {id: zzhUtil.urlParams.id}, res => {
         data.info = res.data;
+        data.info.isEdit = !!zzhUtil.urlParams.edit;
         start();
     });
 }

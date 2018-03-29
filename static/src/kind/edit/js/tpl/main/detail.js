@@ -8,7 +8,7 @@ module.exports = `
             <span class="mark-1">*</span>
         </div>
         <div class="container-2">
-            <input class="form-control input-1" value="{{title}}" maxlength="20" data-text-count="1" id="input-name">
+            <input class="form-control input-1" value="{{title}}" maxlength="20" data-text-count="1" id="input-title">
             <div class="text-3"><span data-text-count-show="1">{{title.length}}</span>/20</div>
         </div>
     </div>
@@ -27,7 +27,7 @@ module.exports = `
     <div class="text-1">分享信息设置</div>
     ${require('./detail/share')}
     <div class="container-1">
-        <button class="btn btn-green btn-1" id="ok">保存</button>
+        <button class="btn btn-green btn-1" id="ok">{{#if isEdit}}更新{{else}}保存{{/if}}</button>
     </div>
 </div>
 `;
