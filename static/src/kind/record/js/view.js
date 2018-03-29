@@ -4,6 +4,7 @@
 
 const $ = require('jquery');
 const seeView = require('see-view');
+const zzhUtil = require('@zzh/util');
 
 const checkStartEndDate = require('util/check_start_end_date');
 const dialog = require('util/dialog');
@@ -43,7 +44,7 @@ seeView({
             return;
         }
 
-        location.href = `/?startDate=${startDate}&endDate=${endDate}`;
+        location.href = `/zzhadmin/charityOrderList/?charityId=${zzhUtil.urlParams.id}&startTime=${startDate}&endTime=${endDate}`;
     }
 });
 
