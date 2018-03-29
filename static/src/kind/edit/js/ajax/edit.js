@@ -10,7 +10,7 @@ let preHandleAdd = require('./pre_handle_add');
 let requestKeys = {
     title: 'name',
     intro: 'details',
-    payItems: 'spec',
+    payItems: 'specs',
     shareTitle: 'shareName',
     shareDesc: 'shareDetails',
     shareIcon: 'shareHeadImg',
@@ -25,6 +25,9 @@ let preHandle = req => {
 seeAjax.config('edit', {
     method: [
         'post'
+    ],
+    stringify: [
+        !0
     ],
     url: [
         '/zzhadmin/charityEdit/',

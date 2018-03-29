@@ -44,7 +44,7 @@ seeView({
             return;
         }
 
-        location.href = `/zzhadmin/charityOrderList/?charityId=${zzhUtil.urlParams.id}&startTime=${startDate}&endTime=${endDate}`;
+        location.href = `/zzhadmin/charityGetExcel/?charityId=${zzhUtil.urlParams.id}&startTime=${startDate}&endTime=${endDate}`;
     }
 });
 

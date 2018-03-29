@@ -4,7 +4,7 @@
 
 const seeAjax = require('see-ajax');
 
-seeAjax.setEnv(1);
+seeAjax.setEnv(0);
 
 require('./common');
 require('./info');

@@ -9,7 +9,7 @@ let preHandle = require('./pre_handle_add');
 let requestKeys = {
     title: 'name',
     intro: 'details',
-    payItems: 'spec',
+    payItems: 'specs',
     shareTitle: 'shareName',
     shareDesc: 'shareDetails',
     shareIcon: 'shareHeadImg',
@@ -19,6 +19,9 @@ let requestKeys = {
 seeAjax.config('add', {
     method: [
         'post'
+    ],
+    stringify: [
+        !0
     ],
     url: [
         '/zzhadmin/charityCreate/',

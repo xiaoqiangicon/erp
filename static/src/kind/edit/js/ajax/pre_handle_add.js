@@ -8,11 +8,9 @@ module.exports = req => {
     });
 
     delete req.covers;
-    req.img = JSON.stringify(req.img);
 
-    jsonRefactor(req.spec, [{
+    jsonRefactor(req.specs, [{
         benison: 'desc',
         indexImg: 'icon'
     }]);
-    req.spec = JSON.stringify(req.spec);
 };

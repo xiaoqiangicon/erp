@@ -28,7 +28,7 @@ seeView({
         let $this = $(e.target);
         let id = parseInt($this.attr('data-row-edit'));
 
-        location.href = `/zzhadmin/charityEdit/?edit=1&id=${id}`;
+        location.href = `/zzhadmin/charityEditHtml/?edit=1&id=${id}`;
     },
     // 点击跳到详情页
     onClickRowRecord: e => {
