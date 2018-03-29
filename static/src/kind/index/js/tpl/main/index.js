@@ -2,7 +2,7 @@
 module.exports = `
 <div class="content-container" id="content-container">
     <div class="main-top">
-        <a href="/" class="btn btn-green btn-1">新建</a>
+        <a href="/zzhadmin/charityEdit/" class="btn btn-green btn-1">新建</a>
     </div>
     <div class="main-detail">
         <div class="container-1">

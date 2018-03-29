@@ -9,6 +9,8 @@ require('@zzh/promotion/dist/promotion.css');
 const promotion = require('@zzh/promotion');
 
 let dialog = require('util/dialog');
+let confirm = require('util/confirm');
+let env = require('util/env');
 
 seeView({
     events: {
@@ -26,14 +28,14 @@ seeView({
         let $this = $(e.target);
         let id = parseInt($this.attr('data-row-edit'));
 
-        location.href = `/?edit=1&id=${id}`;
+        location.href = `/zzhadmin/charityEdit/?edit=1&id=${id}`;
     },
     // 点击跳到详情页
     onClickRowRecord: e => {
         let $this = $(e.target);
         let id = parseInt($this.attr('data-row-record'));
 
-        location.href = `/?id=${id}`;
+        location.href = `/zzhadmin/charityRecord/?id=${id}`;
     },
     // 点击推广
     onClickRowPromo: e => {
@@ -42,7 +44,7 @@ seeView({
 
         promotion.show({
             typeText: '日行一善',
-            link: `http://www.zizaihome.com/?id=${id}`
+            link: `${env.wxProtocol}://${env.wxSubDomain}.zizaihome.com/charity/getIndexHtml?charityId=${id}${env.wxParamSuffix ? '&' + env.wxParamSuffix : ''}`
         });
     },
     // 点击推广
@@ -53,17 +55,18 @@ seeView({
 
         if (deleting) return;
 
-        $this.attr({'data-deleting': 1});
+        confirm('您确定要删除这条数据么？', _ => {
+            $this.attr({'data-deleting': 1});
+            seeAjax('delete', {id}, res => {
+                $this.attr({'data-deleting': 0});
 
-        seeAjax('delete', {id}, res => {
-            $this.attr({'data-deleting': 0});
+                if (!res.success) {
+                    dialog(res.message);
+                    return;
+                }
 
-            if (!res.success) {
-                dialog(res.message);
-                return;
-            }
-
-            $(`[data-row="${id}"]`).remove();
+                $(`[data-row="${id}"]`).remove();
+            });
         });
     }
 });
