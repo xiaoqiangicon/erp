@@ -10,7 +10,6 @@ let mainTpl = require('../tpl/main');
 let coverItemTpl = require('../tpl/main/detail/cover_item');
 let payItemTpl = require('../tpl/main/detail/pay_item');
 let shareItemTpl = require('../tpl/main/detail/share_item');
-let initUpload = require('./upload');
 
 let $body = $('body');
 
@@ -48,7 +47,4 @@ module.exports = _ => {
         $shareIconContainer.append(shareItemTpl({image: data.info.shareIcon}));
         $('#share-icon-add').addClass('hide');
     }
-
-    // 初始化上传
-    initUpload();
 };

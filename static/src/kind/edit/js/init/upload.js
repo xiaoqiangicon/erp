@@ -4,7 +4,10 @@ const $ = require('jquery');
 require('component/upload_config');
 
 require('@zzh/upload/dist/upload.css');
-const upload = require('@zzh/upload');
+require('@zzh/pagination/dist/pagination.css');
+require('less/pagination.less');
+require('@zzh/choose-image/dist/choose-image.css');
+const ChooseImage = require('@zzh/choose-image');
 
 let payUpload = require('./pay_upload');
 let coverItemTpl = require('../tpl/main/detail/cover_item');
