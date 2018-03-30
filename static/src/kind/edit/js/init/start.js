@@ -22,10 +22,9 @@ module.exports = _ => {
 
     data.editor = window.UE.getEditor('editor');
 
-    // 需要延迟，不然dom还没创建好
-    setTimeout(_ => {
+    data.editor.ready(() => {
         data.info.intro && data.editor.setContent(data.info.intro);
-    }, 1000);
+    });
 
     // 有封面
     if (data.info.covers && data.info.covers.length) {
