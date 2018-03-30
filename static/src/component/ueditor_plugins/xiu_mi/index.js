@@ -1,4 +1,6 @@
 
+require('./index.less');
+
 window.UE.registerUI('dialog', (editor, uiName) => {
     let btn = new UE.ui.Button({
         name   : 'xiumi-connect',
