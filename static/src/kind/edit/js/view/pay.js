@@ -3,7 +3,6 @@ const $ = require('jquery');
 const seeView = require('see-view');
 
 let payItemTpl = require('../tpl/main/detail/pay_item');
-let initPayUpload = require('../init/pay_upload');
 
 seeView({
     events: {
@@ -47,8 +46,6 @@ seeView({
             icon
         }));
         $payContainer.append($el);
-
-        initPayUpload($el.find('[data-pay-item-add]'));
     },
     // 点击添加支付选择项
     onClickPayAdd: e => {
@@ -61,7 +58,5 @@ seeView({
             icon: ''
         }));
         $payContainer.append($el);
-
-        initPayUpload($el.find('[data-pay-item-add]'));
     }
 });

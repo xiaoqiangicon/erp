@@ -35,15 +35,15 @@ seeView({
         if (!coverChooseImage) {
             coverChooseImage = new ChooseImage({
                 onSubmit: items => {
+                    let existLength = $('[data-cover-item]').length;
+                    let remainLength = 3 - existLength;
                     let $coverContainer = $('#cover-container');
                     let $coverAdd = $('#cover-add');
-                    items.forEach(item => {
-                        $coverContainer.append(coverItemTpl({image: item.src}));
-                        if ($('[data-cover-item]').length >= 3) {
-                            $coverAdd.addClass('hide');
-                            return !1;
-                        }
+                    items.forEach((item, index) => {
+                        index < remainLength && $coverContainer.append(coverItemTpl({image: item.src}));
                     });
+
+                    (items.length + existLength) >= 3 && $coverAdd.addClass('hide');
                 }
             });
         }
