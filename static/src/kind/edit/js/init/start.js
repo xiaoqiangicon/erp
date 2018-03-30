@@ -5,6 +5,10 @@ require('component/ueditor_config');
 require('@zzh/ueditor/src/ueditor.config');
 require('@zzh/ueditor');
 
+require('component/ueditor_plugins/xiu_mi');
+require('component/ueditor_plugins/choose_image');
+require('component/ueditor_plugins/choose_image_multi');
+
 let data = require('../data');
 let mainTpl = require('../tpl/main');
 let coverItemTpl = require('../tpl/main/detail/cover_item');
