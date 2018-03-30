@@ -3,6 +3,8 @@ const $ = require('jquery');
 const seeView = require('see-view');
 const seeAjax = require('see-ajax');
 const StoreImage = require('@zzh/store-image');
+require('@zzh/handling/dist/handling.css');
+const zzhHandling = require('@zzh/handling');
 
 const dialog = require('util/dialog');
 
@@ -26,7 +28,7 @@ seeView({
         if (!result.success) return;
 
         $this.attr({'data-handling': 1}).text(`正在${data.info.isEdit ? '更新' : '保存'}中...`);
-
+        zzhHandling.show();
         new StoreImage(result.data.intro, newContent => {
             result.data.intro = newContent;
 
@@ -58,6 +60,7 @@ seeView({
     // 保存成功之后的处理函数
     afterSave: function () {
         $('#ok').attr({'data-handling': 0}).text(data.info.isEdit ? '更新' : '保存');
+        zzhHandling.hide();
 
         location.href = '/zzhadmin/charityIndex/';
     }

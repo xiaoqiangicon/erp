@@ -8,6 +8,7 @@
     "@zzh/choose-image": "git+http://git.zizaihome.cn/senntyou/choose-image.git#0.0.1",
     "@zzh/common.css": "git+http://git.zizaihome.cn/senntyou/common.css.git#0.0.4",
     "@zzh/ie-tip": "git+http://git.zizaihome.cn/senntyou/ie-tip.git#0.0.1",
+    "@zzh/handling": "git+http://git.zizaihome.cn/senntyou/handling.git#0.0.1",
     "@zzh/pagination": "git+http://git.zizaihome.cn/senntyou/pagination.git#0.0.1",
     "@zzh/promotion": "git+http://git.zizaihome.cn/senntyou/promotion.git#0.0.2",
     "@zzh/store-image": "git+http://git.zizaihome.cn/senntyou/store-image.git#0.0.1",
