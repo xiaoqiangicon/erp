@@ -8,16 +8,19 @@ require('@zzh/upload/dist/upload.css');
 require('@zzh/pagination/dist/pagination.css');
 require('less/pagination.less');
 require('@zzh/choose-image/dist/choose-image.css');
+require('@zzh/choose-icon/dist/choose-icon.css');
 const ChooseImage = require('@zzh/choose-image');
+const ChooseIcon = require('@zzh/choose-icon');
 
 require('component/choose_image_config');
+require('component/choose_icon_config');
 
 let coverItemTpl = require('../tpl/main/detail/cover_item');
 let shareItemTpl = require('../tpl/main/detail/share_item');
 
-let coverChooseImage;
-let shareChooseImage;
-let payChooseImage;
+let coverChoose;
+let shareChoose;
+let payChoose;
 
 let $currentPayItemAdd;
 
@@ -32,8 +35,8 @@ seeView({
     },
     // 点击添加封面
     onClickCoverAdd: e => {
-        if (!coverChooseImage) {
-            coverChooseImage = new ChooseImage({
+        if (!coverChoose) {
+            coverChoose = new ChooseImage({
                 onSubmit: items => {
                     let existLength = $('[data-cover-item]').length;
                     let remainLength = 3 - existLength;
@@ -48,12 +51,12 @@ seeView({
             });
         }
 
-        coverChooseImage.show();
+        coverChoose.show();
     },
     // 点击添加分享图标
     onClickShareIconAdd: e => {
-        if (!shareChooseImage) {
-            shareChooseImage = new ChooseImage({
+        if (!shareChoose) {
+            shareChoose = new ChooseIcon({
                 multiSelect: !1,
                 onSubmit: items => {
                     let $shareIconContainer = $('#share-icon-container');
@@ -64,13 +67,13 @@ seeView({
             });
         }
 
-        shareChooseImage.show();
+        shareChoose.show();
     },
     // 点击添加支付选择项图标
     onClickPayItemAdd: e => {
         $currentPayItemAdd = $(e.target);
-        if (!payChooseImage) {
-            payChooseImage = new ChooseImage({
+        if (!payChoose) {
+            payChoose = new ChooseImage({
                 multiSelect: !1,
                 onSubmit: items => {
                     let $container = $currentPayItemAdd.parents('[data-pay-item-icon-container]');
@@ -82,6 +85,6 @@ seeView({
             });
         }
 
-        payChooseImage.show();
+        payChoose.show();
     }
 });
