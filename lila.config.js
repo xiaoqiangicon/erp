@@ -92,6 +92,7 @@ module.exports = {
     },
     devServerPort: 10010,
     packCssSeparately: !0,
+    treatAllMethodsAsGet: !0,
     provide: {
         jQuery: 'jquery'
     }
