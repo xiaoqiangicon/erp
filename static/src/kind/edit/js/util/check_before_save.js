@@ -42,6 +42,11 @@ module.exports = _ => {
     let $payDesc = $('[data-pay-item-desc]');
     let $payImage = $('[data-pay-item-image]');
 
+    if (!$payItem.length) {
+        dialog('支付类型不能为空');
+        return result;
+    }
+
     let payItemHasError = !1;
     let payItemErrorMsg = '';
     $payItem.map(function (index) {
@@ -76,26 +81,11 @@ module.exports = _ => {
 
     result.data.payItems = payItems;
 
-    let shareTitle = $('#input-share-title').val().trim();
-    if (!shareTitle) {
-        dialog('分享标题不能为空');
-        return result;
-    }
-    result.data.shareTitle = shareTitle;
+    result.data.shareTitle = $('#input-share-title').val().trim() || '';
 
-    let shareDesc = $('#input-share-desc').val().trim();
-    if (!shareDesc) {
-        dialog('分享描述不能为空');
-        return result;
-    }
-    result.data.shareDesc = shareDesc;
+    result.data.shareDesc = $('#input-share-desc').val().trim() || '';
 
-    let $shareIcon = $('[data-share-item-image]');
-    if (!$shareIcon.length) {
-        dialog('分享图标不能为空');
-        return result;
-    }
-    result.data.shareIcon = $shareIcon.attr('src');
+    result.data.shareIcon = $('[data-share-item-image]').attr('src') || '';
 
     result.data.showPeopleCountWhenShare = $('#show-people-count-when-share').hasClass('active') ? 1 : 0;
 

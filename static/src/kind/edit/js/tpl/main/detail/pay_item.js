@@ -4,7 +4,7 @@ const handlebars = require('handlebars');
 let tpl = `
 <div class="row-0-1" data-pay-item="{{id}}">
     <div class="item-0-1 item-0-1-1">
-        <input class="form-control" value="{{name}}" maxlength="10" data-pay-item-name="{{id}}">
+        <input class="form-control" value="{{name}}" maxlength="20" data-pay-item-name="{{id}}">
     </div>
     <div class="item-0-1 item-0-1-2">
         <input class="form-control" placeholder="为0或不填为无需支付" value="{{price}}" type="number" data-pay-item-price="{{id}}">
