@@ -7,9 +7,9 @@ let zzhUtil = require('@zzh/util');
 
 let responseRefactor = {
     todayTotalMoney: 'data.todayPrice',
-    todayTotalPeople: 'data.joinNum',
+    todayTotalPeople: 'data.todayJoinNum',
     totalMoney: 'data.totalPrice',
-    totalPeople: 'data.todayJoinNum'
+    totalPeople: 'data.joinNum'
 };
 
 let preHandle = req => {
