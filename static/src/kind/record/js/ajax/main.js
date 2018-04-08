@@ -7,7 +7,7 @@ let zzhUtil = require('@zzh/util');
 
 let responseRefactor = {
     todayTotalMoney: 'data.todayPrice',
-    todayTotalPeople: 'data.todayJoinNum',
+    todayTotalPeople: 'data.joinNum',
     totalMoney: 'data.totalPrice',
     totalPeople: 'data.todayJoinNum'
 };
