@@ -7,7 +7,7 @@ let tpl = `
         <input class="form-control" value="{{name}}" maxlength="20" data-pay-item-name="{{id}}">
     </div>
     <div class="item-0-1 item-0-1-2">
-        <input class="form-control" placeholder="为0或不填为无需支付" value="{{price}}" type="number" data-pay-item-price="{{id}}">
+        <input class="form-control" value="{{price}}" type="number" data-pay-item-price="{{id}}">
     </div>
     <div class="item-0-1 item-0-1-3">
         <input class="form-control" placeholder="填写说明可介绍此善行特点，吸引用户选择" value="{{desc}}" maxlength="20" data-pay-item-desc="{{id}}">
