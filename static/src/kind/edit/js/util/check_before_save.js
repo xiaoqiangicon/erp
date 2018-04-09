@@ -60,6 +60,11 @@ module.exports = _ => {
             payItemErrorMsg = `第${index + 1}个支付选择项名称不能为空`;
             return !1;
         }
+        if (price <= 0) {
+            payItemHasError = !0;
+            payItemErrorMsg = `第${index + 1}个支付选择项金额不能为空、0或负数`;
+            return !1;
+        }
         if (!icon) {
             payItemHasError = !0;
             payItemErrorMsg = `第${index + 1}个支付选择项图片不能为空`;
