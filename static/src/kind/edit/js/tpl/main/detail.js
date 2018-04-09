@@ -9,7 +9,7 @@ module.exports = `
         </div>
         <div class="container-2">
             <input class="form-control input-1" value="{{title}}" maxlength="20" data-text-count="1" id="input-title">
-            <div class="text-3"><span data-text-count-show="1">{{title.length}}</span>/20</div>
+            <div class="text-3"><span data-text-count-show="1">{{#if title}}{{title.length}}{{else}}0{{/if}}</span>/20</div>
         </div>
     </div>
     ${require('./detail/cover')}
@@ -21,7 +21,7 @@ module.exports = `
         <div class="container-2" id="editor"></div>
     </div>
     <hr>
-    <div class="text-1">支付信息设置</div>
+    <div class="text-1">支付类型设置</div>
     ${require('./detail/pay')}
     <hr>
     <div class="text-1">分享信息设置</div>
