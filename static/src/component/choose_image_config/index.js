@@ -1,6 +1,10 @@
 
 const seeAjax = require('see-ajax');
 
+const alert = require('util/alert');
+const dialog = require('util/dialog');
+const confirm = require('util/confirm');
+
 if (location.hostname === 'localhost') {
     seeAjax.config('zzhChooseImageSavedImages', {
         url: [
@@ -17,3 +21,9 @@ if (location.hostname === 'localhost') {
         ]
     });
 }
+
+window.zzhChooseImageExtractFail = dialog;
+window.zzhChooseImageCanNotDelete = dialog;
+window.zzhChooseImageSelectedEmpty = dialog;
+window.zzhChooseImageDeleteSuccessful = alert;
+window.zzhChooseImageDeleteConfirm = confirm;
