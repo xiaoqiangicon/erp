@@ -28,6 +28,6 @@
     "see-view": "^0.1.0"
   },
   "devDependencies": {
-    "lila": "^0.1.3"
+    "lila": "^0.2.0"
   }
 }
