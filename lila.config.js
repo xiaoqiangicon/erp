@@ -94,7 +94,19 @@ module.exports = {
     packCssSeparately: !0,
     treatAllMethodsAsGet: !0,
     provide: {
+        $: 'jquery',
         jQuery: 'jquery'
+    },
+    localOptions: {
+        senn: {
+            resolveModules: [
+                '../'
+            ],
+            outResolveAlias: {
+                '@zzh/choose-image/dist/choose-image.css': 'choose-image/dist/choose-image.css',
+                '@zzh/choose-image': 'choose-image/dist/choose-image.js'
+            }
+        }
     }
 };
 

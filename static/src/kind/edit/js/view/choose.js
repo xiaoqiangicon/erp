@@ -7,6 +7,7 @@ require('component/upload_config');
 require('@zzh/upload/dist/upload.css');
 require('@zzh/pagination/dist/pagination.css');
 require('less/pagination.less');
+require('@fancyapps/fancybox/dist/jquery.fancybox.css');
 require('@zzh/choose-image/dist/choose-image.css');
 require('@zzh/choose-icon/dist/choose-icon.css');
 const ChooseImage = require('@zzh/choose-image');
