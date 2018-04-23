@@ -6,7 +6,7 @@
   "dependencies": {
     "@fancyapps/fancybox": "^3.3.5",
     "@zzh/choose-icon": "git+http://git.zizaihome.cn/senntyou/choose-icon.git#0.0.2",
-    "@zzh/choose-image": "git+http://git.zizaihome.cn/senntyou/choose-image.git#0.0.4",
+    "@zzh/choose-image": "git+http://git.zizaihome.cn/senntyou/choose-image.git#0.0.5",
     "@zzh/common.css": "git+http://git.zizaihome.cn/senntyou/common.css.git#0.0.4",
     "@zzh/handling": "git+http://git.zizaihome.cn/senntyou/handling.git#0.0.1",
     "@zzh/ie-tip": "git+http://git.zizaihome.cn/senntyou/ie-tip.git#0.0.1",
