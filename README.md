@@ -10,4 +10,7 @@
 
 * 每个页面都建议加载 `component/report` 组件
 
+## 私有npm仓库
 
+* `web`: [http://npm.senntyou.com](http://npm.senntyou.com)
+* `registry`: [http://registry.npm.senntyou.com](http://registry.npm.senntyou.com)
