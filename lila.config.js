@@ -107,6 +107,9 @@ module.exports = {
                 '@zzh/choose-image': 'choose-image/dist/choose-image.js'
             }
         }
-    }
+    },
+    import: [
+        { libraryName: 'antd', style: 'css' }
+    ]
 };
 
