@@ -2,7 +2,7 @@
 
 * [编码规范](https://git.oschina.net/senntyou/web-specification)
 * [工程使用详解](https://github.com/senntyou/lila)
-* [项目规范](http://git.zizaihome.cn/senntyou/web-specification)
+* [前端须知](http://git.zizaihome.cn/senntyou/web-note)
 
 * 其他详细情况联系 @senntyou(江津)
 
@@ -14,3 +14,7 @@
 
 * `web`: [http://npm.senntyou.com](http://npm.senntyou.com)
 * `registry`: [http://registry.npm.senntyou.com](http://registry.npm.senntyou.com)
+
+## 组件集合
+
+[components](http://git.zizaihome.cn/senntyou/components)
