@@ -117,8 +117,6 @@ export default class Main extends Component {
     }
 
     onChangePage(page, pageSize) {
-        data.selectedItem = void 0;
-
         this.setState({
             currentPage: page,
             items: this.getItems(page)
