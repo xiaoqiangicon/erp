@@ -53,7 +53,6 @@ export default class Main extends Component {
     };
 
     data = {
-        selectedItem: void 0,
         list: [] // 每次搜索的所有列表数据，最大70条
     };
 
@@ -70,7 +69,7 @@ export default class Main extends Component {
             return;
         }
 
-        this.data.selectedItem = void 0;
+        data.selectedItem = void 0;
 
         this.setState({
             noSearch: !1,
@@ -118,7 +117,7 @@ export default class Main extends Component {
     }
 
     onChangePage(page, pageSize) {
-        this.data.selectedItem = void 0;
+        data.selectedItem = void 0;
 
         this.setState({
             currentPage: page,
@@ -128,10 +127,10 @@ export default class Main extends Component {
         });
     }
 
-    onSelectItem(record, selected, selectedRows, nativeEvent) {
+    onSelectItem = (record, selected, selectedRows, nativeEvent) => {
         // console.log(record);
-        this.data.selectedItem = record;
-    }
+        data.selectedItem = record;
+    };
 
     onClickPlay(e) {
         let $this = $(e.target);
