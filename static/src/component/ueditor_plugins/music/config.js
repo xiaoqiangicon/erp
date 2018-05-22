@@ -1,5 +1,7 @@
 
 module.exports = {
     enableCssModules: !0,
-    lib: ['jquery', 'react-dom']
+    splitJs: {
+        lib: ['jquery', 'react-dom']
+    }
 };
