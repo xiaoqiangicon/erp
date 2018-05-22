@@ -103,8 +103,8 @@ module.exports = {
                 '../'
             ],
             outResolveAlias: {
-                '@zzh/choose-image/dist/choose-image.css': 'choose-image/dist/choose-image.css',
-                '@zzh/choose-image': 'choose-image/dist/choose-image.js'
+                '@zzh/ueditor/src/ueditor.config': 'ueditor/src/ueditor.config.js',
+                '@zzh/ueditor': 'ueditor/src/ueditor.all.js'
             }
         }
     },
