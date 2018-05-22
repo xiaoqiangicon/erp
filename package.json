@@ -30,7 +30,8 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "see-ajax": "^0.2.0",
-    "see-view": "^0.1.0"
+    "see-view": "^0.1.0",
+    "spinkit": "^1.2.5"
   },
   "devDependencies": {
     "lila": "git+https://github.com/senntyou/lila.git#v0.2.2-alpha.2"

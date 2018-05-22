@@ -49,7 +49,7 @@ const columns = [{
     title: '试听',
     dataIndex: 'try',
     render(text, record, index) {
-        return <button className={`clean ${styles.play}`}/>
+        return <button className={`clean ${styles.play} ${index < 2 ? styles.trying : ''}`}/>
     }
 }];
 const rowSelection = {
