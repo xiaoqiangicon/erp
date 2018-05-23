@@ -70,6 +70,7 @@ export default class Main extends Component {
         }
 
         data.selectedItem = void 0;
+        audio.pause();
 
         this.setState({
             noSearch: !1,
@@ -117,6 +118,7 @@ export default class Main extends Component {
     }
 
     onChangePage(page, pageSize) {
+        audio.pause();
         this.setState({
             currentPage: page,
             items: this.getItems(page)
