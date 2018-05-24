@@ -15,7 +15,7 @@
     "@zzh/pagination": "^0.1.0",
     "@zzh/promotion": "^0.0.2",
     "@zzh/store-image": "^0.0.2",
-    "@zzh/ueditor": "^0.0.1",
+    "@zzh/ueditor": "^0.0.2",
     "@zzh/upload": "^0.0.2",
     "@zzh/util": "^0.1.0",
     "antd": "^3.5.3",
