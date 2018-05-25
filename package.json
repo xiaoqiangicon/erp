@@ -15,7 +15,7 @@
     "@zzh/pagination": "^0.1.0",
     "@zzh/promotion": "^0.0.2",
     "@zzh/store-image": "^0.0.2",
-    "@zzh/ueditor": "^0.0.2",
+    "@zzh/ueditor": "git+http://git.zizaihome.cn/senntyou/ueditor.git#0.0.3-alpha",
     "@zzh/upload": "^0.0.2",
     "@zzh/util": "^0.1.0",
     "antd": "^3.5.3",
