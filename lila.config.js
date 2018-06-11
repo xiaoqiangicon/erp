@@ -103,13 +103,25 @@ module.exports = {
                 '../'
             ],
             outResolveAlias: {
-                '@zzh/ueditor/src/ueditor.config': 'ueditor/src/ueditor.config.js',
-                '@zzh/ueditor': 'ueditor/src/ueditor.all.js'
+                '@zzh/promotion/dist/promotion.css': 'promotion/dist/promotion.css',
+                '@zzh/promotion': 'promotion/dist/promotion.js'
             }
         }
     },
     import: [
         { libraryName: 'antd', style: 'css' }
-    ]
+    ],
+    commandOptions: {
+        dev: {
+            define: {
+                __SEE_ENV__: JSON.stringify(1)
+            }
+        },
+        sync: {
+            define: {
+                __SEE_ENV__: JSON.stringify(0)
+            }
+        }
+    }
 };
 

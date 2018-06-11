@@ -5,6 +5,7 @@
   "description": "a lila project",
   "dependencies": {
     "@fancyapps/fancybox": "^3.3.5",
+    "@senntyou/canvas2image": "^0.0.1",
     "@senntyou/shortcut.css": "^0.0.1",
     "@zzh/choose-icon": "^0.0.2",
     "@zzh/choose-image": "^0.0.6",
@@ -35,6 +36,6 @@
     "spinkit": "^1.2.5"
   },
   "devDependencies": {
-    "lila": "git+https://github.com/senntyou/lila.git#v0.2.2-alpha.2"
+    "lila": "git+https://github.com/senntyou/lila.git#1affdc1"
   }
 }
