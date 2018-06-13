@@ -45,7 +45,7 @@ seeView({
             return;
         }
 
-        let insert = `<iframe frameborder="0" width="100%" height="300" src="${result[1]}" allowfullscreen></iframe>`;
+        let insert = `<iframe frameborder="0" width="100%" height="240" src="${result[1]}" allowfullscreen></iframe>`;
 
         let options = data.optionsCollection[id];
 
