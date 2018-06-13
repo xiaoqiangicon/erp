@@ -7,6 +7,7 @@ require('@zzh/ueditor');
 
 require('component/ueditor_plugins/xiu_mi');
 require('component/ueditor_plugins/import_wx_article');
+require('component/ueditor_plugins/video');
 require('component/ueditor_plugins/choose_image');
 require('component/ueditor_plugins/choose_image_multi');
 

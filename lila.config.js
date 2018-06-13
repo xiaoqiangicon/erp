@@ -103,8 +103,10 @@ module.exports = {
                 '../'
             ],
             outResolveAlias: {
-                '@zzh/promotion/dist/promotion.css': 'promotion/dist/promotion.css',
-                '@zzh/promotion': 'promotion/dist/promotion.js'
+                // '@zzh/promotion/dist/promotion.css': 'promotion/dist/promotion.css',
+                // '@zzh/promotion': 'promotion/dist/promotion.js'
+                '@zzh/ueditor/src/ueditor.config': 'ueditor/src/ueditor.config.js',
+                '@zzh/ueditor': 'ueditor/src/ueditor.all.js'
             }
         }
     },
