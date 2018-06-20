@@ -36,6 +36,6 @@
     "spinkit": "^1.2.5"
   },
   "devDependencies": {
-    "lila": "git+https://github.com/senntyou/lila.git#1affdc1"
+    "lila": "^0.3.0"
   }
 }
