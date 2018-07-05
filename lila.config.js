@@ -3,85 +3,85 @@
 
 var accounts = require('../accounts');
 
-module.exports = {
-    network: [
-        {
-            useSsh: !0,
-            servers: [
-                // web
-                {
-                    host: accounts[0].host,
-                    user: accounts[0].user,
-                    pass: accounts[0].pass,
-                    remotePath: '/data1/www/myerp/templates',
-                    serverType: 'web'
-                },
-                // static
-                {
-                    host: accounts[0].host,
-                    user: accounts[0].user,
-                    pass: accounts[0].pass,
-                    remotePath: '/data1/www/myerp'
-                }
-            ]
-        },
-        {
-            useSsh: !0,
-            servers: [
-                // web
-                {
-                    host: accounts[1].host,
-                    user: accounts[1].user,
-                    pass: accounts[1].pass,
-                    remotePath: '/data/www/myerp/templates',
-                    serverType: 'web'
-                },
-                // static
-                {
-                    host: accounts[1].host,
-                    user: accounts[1].user,
-                    pass: accounts[1].pass,
-                    remotePath: '/data/www/myerp'
-                }
-            ]
-        },
-        {
-            useSsh: !0,
-            servers: [
-                // web
-                {
-                    host: accounts[2].host,
-                    user: accounts[2].user,
-                    pass: accounts[2].pass,
-                    remotePath: '/data/www/myerp/templates',
-                    serverType: 'web'
-                },
-                // static
-                {
-                    host: accounts[2].host,
-                    user: accounts[2].user,
-                    pass: accounts[2].pass,
-                    remotePath: '/data/www/myerp'
-                }
-            ]
+const serversOptions = [
+    {
+        ignoreErrors: true,
+        sshConfig: {
+            host: accounts[0].host,
+            username: accounts[0].user,
+            password: accounts[0].pass
         }
-    ],
+    },
+    {
+        ignoreErrors: true,
+        sshConfig: {
+            host: accounts[1].host,
+            username: accounts[1].user,
+            password: accounts[1].pass
+        }
+    },
+    {
+        ignoreErrors: true,
+        sshConfig: {
+            host: accounts[2].host,
+            username: accounts[2].user,
+            password: accounts[2].pass
+        }
+    }
+];
+
+module.exports = {
     envOptions: [
-        {},
         {
-            minJs: !0,
-            minCss: !0,
-            minHtml: !0
+            servers: [
+                {
+                    type: 'web',
+                    remotePath: '/data1/www/myerp/templates',
+                    options: serversOptions[0]
+                },
+                {
+                    remotePath: '/data1/www/myerp',
+                    options: serversOptions[0]
+                }
+            ]
         },
         {
             minJs: !0,
             minCss: !0,
-            minHtml: !0
+            minHtml: !0,
+            servers: [
+                {
+                    type: 'web',
+                    remotePath: '/data/www/myerp/templates',
+                    options: serversOptions[1]
+                },
+                {
+                    remotePath: '/data/www/myerp',
+                    options: serversOptions[1]
+                }
+            ]
+        },
+        {
+            minJs: !0,
+            minCss: !0,
+            minHtml: !0,
+            servers: [
+                {
+                    type: 'web',
+                    remotePath: '/data/www/myerp/templates',
+                    options: serversOptions[2]
+                },
+                {
+                    remotePath: '/data/www/myerp',
+                    options: serversOptions[2]
+                }
+            ]
         }
     ],
     directoriesToSync: {
         // res: 'static/res',
-        images: 'static/images'
+        images: 'static/images',
+        resources: 'static/resources'
     },
     basePaths: {
         buildRoot: './static',
@@ -103,9 +103,43 @@ module.exports = {
                 '../'
             ],
             outResolveAlias: {
-                '@zzh/choose-image/dist/choose-image.css': 'choose-image/dist/choose-image.css',
-                '@zzh/choose-image': 'choose-image/dist/choose-image.js'
+                // '@zzh/promotion/dist/promotion.css': 'promotion/dist/promotion.css',
+                // '@zzh/promotion': 'promotion/dist/promotion.js'
+                '@zzh/ueditor/src/ueditor.config': 'ueditor/src/ueditor.config.js',
+                '@zzh/ueditor': 'ueditor/src/ueditor.all.js'
             }
+        }
+    },
+    import: [
+        { libraryName: 'antd', style: 'css' }
+    ],
+    commandOptions: {
+        dev: {
+            define: {
+                __SEE_ENV__: JSON.stringify(1)
+            }
+        },
+        sync: {
+            define: {
+                __SEE_ENV__: JSON.stringify(0)
+            }
+        }
+    },
+    moduleOptions: {
+        'kind/edit': {
+            splitJs: {
+                lib: ['jquery', 'handlebars'],
+                ueditor: ['component/ueditor_config', '@zzh/ueditor/src/ueditor.config', '@zzh/ueditor']
+            }
+        },
+        'component/ueditor_plugins/music': {
+            enableCssModules: !0,
+            splitJs: {
+                lib: ['jquery', 'react-dom']
+            }
+        },
+        'component/ueditor_plugins/music/draft': {
+            enableCssModules: !0
         }
     }
 };

@@ -1,6 +1,6 @@
 
 require('component/nav');
-require('@zzh/common.css');
+require('@senntyou/shortcut.css');
 require('less/common.less');
 require('./index.less');
 
