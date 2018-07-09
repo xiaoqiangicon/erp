@@ -36,6 +36,6 @@
     "spinkit": "^1.2.5"
   },
   "devDependencies": {
-    "lila": "^0.3.0"
+    "lila": "^0.3.1"
   }
 }
