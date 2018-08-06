@@ -1,6 +1,4 @@
-'use strict';
-
-var accounts = require('../accounts');
+const accounts = require('../accounts');
 
 const serversOptions = [
   {
@@ -8,25 +6,25 @@ const serversOptions = [
     sshConfig: {
       host: accounts[0].host,
       username: accounts[0].user,
-      password: accounts[0].pass
-    }
+      password: accounts[0].pass,
+    },
   },
   {
     ignoreErrors: true,
     sshConfig: {
       host: accounts[1].host,
       username: accounts[1].user,
-      password: accounts[1].pass
-    }
+      password: accounts[1].pass,
+    },
   },
   {
     ignoreErrors: true,
     sshConfig: {
       host: accounts[2].host,
       username: accounts[2].user,
-      password: accounts[2].pass
-    }
-  }
+      password: accounts[2].pass,
+    },
+  },
 ];
 
 module.exports = {
@@ -36,13 +34,13 @@ module.exports = {
         {
           type: 'web',
           remotePath: '/data1/www/myerp/templates',
-          options: serversOptions[0]
+          options: serversOptions[0],
         },
         {
           remotePath: '/data1/www/myerp',
-          options: serversOptions[0]
-        }
-      ]
+          options: serversOptions[0],
+        },
+      ],
     },
     {
       minJs: !0,
@@ -52,13 +50,13 @@ module.exports = {
         {
           type: 'web',
           remotePath: '/data/www/myerp/templates',
-          options: serversOptions[1]
+          options: serversOptions[1],
         },
         {
           remotePath: '/data/www/myerp',
-          options: serversOptions[1]
-        }
-      ]
+          options: serversOptions[1],
+        },
+      ],
     },
     {
       minJs: !0,
@@ -68,83 +66,73 @@ module.exports = {
         {
           type: 'web',
           remotePath: '/data/www/myerp/templates',
-          options: serversOptions[2]
+          options: serversOptions[2],
         },
         {
           remotePath: '/data/www/myerp',
-          options: serversOptions[2]
-        }
-      ]
-    }
+          options: serversOptions[2],
+        },
+      ],
+    },
   ],
   directoriesToSync: {
     // res: 'static/res',
     images: 'static/images',
-    resources: 'static/resources'
+    resources: 'static/resources',
   },
   basePaths: {
     buildRoot: './static',
-    webRoot: './'
+    webRoot: './',
   },
   resolveAlias: {
-    handlebars: 'handlebars/dist/handlebars.js'
+    handlebars: 'handlebars/dist/handlebars.js',
   },
   devServerPort: 10010,
   packCssSeparately: !0,
   treatAllMethodsAsGet: !0,
   provide: {
     $: 'jquery',
-    jQuery: 'jquery'
+    jQuery: 'jquery',
   },
   localOptions: {
     senn: {
-      resolveModules: [
-        '../'
-      ],
+      resolveModules: ['../'],
       outResolveAlias: {
         // '@zzh/promotion/dist/promotion.css': 'promotion/dist/promotion.css',
         // '@zzh/promotion': 'promotion/dist/promotion.js'
         '@zzh/ueditor/src/ueditor.config': 'ueditor/src/ueditor.config.js',
-        '@zzh/ueditor': 'ueditor/src/ueditor.all.js'
-      }
-    }
+        '@zzh/ueditor': 'ueditor/src/ueditor.all.js',
+      },
+    },
   },
-  import: [
-    {libraryName: 'antd', style: 'css'}
-  ],
+  import: [{ libraryName: 'antd', style: 'css' }],
   commandOptions: {
     dev: {
       define: {
-        __SEE_ENV__: JSON.stringify(1)
-      }
+        __SEE_ENV__: JSON.stringify(1),
+      },
     },
     sync: {
       define: {
-        __SEE_ENV__: JSON.stringify(0)
-      }
-    }
+        __SEE_ENV__: JSON.stringify(0),
+      },
+    },
   },
   moduleOptions: {
     'kind/edit': {
       splitJs: {
         lib: ['jquery', 'handlebars'],
-        ueditor: ['component/ueditor_config', '@zzh/ueditor/src/ueditor.config', '@zzh/ueditor']
-      }
+        ueditor: ['component/ueditor_config', '@zzh/ueditor/src/ueditor.config', '@zzh/ueditor'],
+      },
     },
     'component/ueditor_plugins/music': {
       cssModules: !0,
       splitJs: {
-        lib: ['jquery', 'react-dom']
-      }
+        lib: ['jquery', 'react-dom'],
+      },
     },
     'component/ueditor_plugins/music/draft': {
-      cssModules: !0
-    }
+      cssModules: !0,
+    },
   },
-  // esLint: !0,
-  esLintFix: !0,
-  // styleLint: !0,
-  styleLintFix: !0,
-  prettier: !0,
 };
-
