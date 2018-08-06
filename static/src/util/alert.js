@@ -13,15 +13,17 @@ require('jquery-confirm/dist/jquery-confirm.min.css');
  * @param callback 确定回调函数
  */
 module.exports = (content, callback) => {
-    $.alert({
-        title: !1,
-        content: content || '未知错误\uFF0C请重新尝试',
-        buttons: {
-            ok: {
-                text: '确定',
-                action: () => {callback && callback();}
-            }
+  $.alert({
+    title: !1,
+    content: content || '未知错误\uFF0C请重新尝试',
+    buttons: {
+      ok: {
+        text: '确定',
+        action: () => {
+          if (callback) callback();
         },
-        theme: 'white'
-    });
+      },
+    },
+    theme: 'white',
+  });
 };
