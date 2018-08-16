@@ -135,4 +135,9 @@ module.exports = {
       cssModules: !0,
     },
   },
+  webpackDev: {
+    watchOptions: {
+      ignored: /node_modules/,
+    },
+  },
 };
