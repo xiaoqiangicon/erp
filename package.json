@@ -52,7 +52,7 @@
   "dependencies": {
     "@fancyapps/fancybox": "^3.3.5",
     "@senntyou/canvas2image": "^0.0.1",
-    "@senntyou/shortcut.css": "^0.0.1",
+    "@senntyou/shortcut.css": "^0.0.3",
     "@zzh/choose-icon": "^0.0.2",
     "@zzh/choose-image": "^0.0.6",
     "@zzh/common.css": "^0.0.4",
