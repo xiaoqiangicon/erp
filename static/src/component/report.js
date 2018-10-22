@@ -1,52 +1,24 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
+// 去掉接口错误监听，因为如果 /log/web 本身就报错的话，会死循环
 
-
-let $ = require('jquery');
-let env = require('../util/env');
+const $ = require('jquery');
+const env = require('../util/env');
 
 // 只有正式机才上报错误
 if (env.serverEnv === 3) {
-    let title = $('title').html();
-    let send = function (data) {
-        // userAgent
-        data.userAgent = window.navigator.userAgent;
-        // location.href
-        data.locationHref = window.location.href;
-        // cookie
-        data.cookie = window.document.cookie;
-
-        $.post('/log/web', {title: title, content: JSON.stringify(data)}, function (res) {}, 'json');
+  window.onerror = (errorMessage, scriptURI, lineNumber, columnNumber, errorObj) => {
+    const data = {
+      type: 'scriptError',
+      errorMessage,
+      scriptURI,
+      lineNumber,
+      columnNumber,
+      detailMessage: (errorObj && errorObj.message) || '',
+      stack: (errorObj && errorObj.stack) || '',
+      userAgent: window.navigator.userAgent,
+      locationHref: window.location.href,
+      cookie: window.document.cookie,
     };
 
-    $.ajaxSetup({
-        complete: function (jqXHR, textStatus) {
-            if (jqXHR.status === 200) return;
-
-            var data = {
-                type: 'ajaxError',
-                status: jqXHR.status,
-                statusText: jqXHR.statusText,
-                readyState: jqXHR.readyState,
-                responseText: jqXHR.responseText
-            };
-
-            send(data);
-        }
-    });
-
-    window.onerror = function (errorMessage, scriptURI, lineNumber, columnNumber, errorObj) {
-        var data = {
-            type: 'scriptError',
-            errorMessage: errorMessage,
-            scriptURI: scriptURI,
-            lineNumber: lineNumber,
-            columnNumber: columnNumber,
-            detailMessage: errorObj && errorObj.message || '',
-            stack: errorObj && errorObj.stack || ''
-        };
-
-        send(data);
-    };
+    $.post('/log/web', { title: $('title').html(), content: JSON.stringify(data) }, console.log, 'json');
+  };
 }
