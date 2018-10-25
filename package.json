@@ -3,10 +3,56 @@
   "private": true,
   "version": "0.0.0",
   "description": "a lila project",
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1",
+    "husky": "^0.14.3",
+    "lila": "^0.4.1",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.0",
+    "stylelint": "^9.3.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "stylelint-config-prettier": "^3.3.0",
+    "stylelint-config-standard": "^18.2.0"
+  },
+  "scripts": {
+    "precommit": "npm run lint-staged",
+    "prettier": "prettier --write \"./**/*.{js,jsx,css,less,md,json}\"",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "stylelint": "stylelint \"./**/*.{css,less}\"",
+    "stylelint:fix": "stylelint \"./**/*.{css,less}\" --fix",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{css,less}": [
+      "stylelint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "dependencies": {
     "@fancyapps/fancybox": "^3.3.5",
     "@senntyou/canvas2image": "^0.0.1",
-    "@senntyou/shortcut.css": "^0.0.1",
+    "@senntyou/shortcut.css": "^0.0.3",
     "@zzh/choose-icon": "^0.0.2",
     "@zzh/choose-image": "^0.0.6",
     "@zzh/common.css": "^0.0.4",
@@ -15,7 +61,7 @@
     "@zzh/import-wx-article": "^0.0.1",
     "@zzh/pagination": "^0.1.0",
     "@zzh/promotion": "^0.0.4",
-    "@zzh/store-image": "^0.0.2",
+    "@zzh/store-image": "^0.0.3",
     "@zzh/ueditor": "git+http://git.zizaihome.cn/senntyou/ueditor.git#9c6e4971",
     "@zzh/upload": "^0.0.2",
     "@zzh/util": "^0.1.0",
@@ -31,11 +77,8 @@
     "normalize.css": "^8.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "see-ajax": "^0.2.0",
+    "see-ajax": "^0.3.0",
     "see-view": "^0.1.0",
     "spinkit": "^1.2.5"
-  },
-  "devDependencies": {
-    "lila": "^0.3.0"
   }
 }

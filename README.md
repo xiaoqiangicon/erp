@@ -12,8 +12,8 @@
 
 ## 私有npm仓库
 
-* `web`: [http://npm.senntyou.com](http://npm.senntyou.com)
-* `registry`: [http://registry.npm.senntyou.com](http://registry.npm.senntyou.com)
+* `web`: [http://npm.zizaihome.cn](http://npm.zizaihome.cn)
+* `registry`: [http://registry.npm.zizaihome.cn](http://registry.npm.zizaihome.cn)
 
 ## 组件集合
 

@@ -13,12 +13,13 @@ require('jquery-confirm/dist/jquery-confirm.min.css');
  * @param content 内容
  */
 module.exports = (title, content) => {
-    if (!content) {
-        content = title;
-        title = '提示';
-    }
-    $.dialog({
-        title: title,
-        content: content
-    });
+  /* eslint-disable no-param-reassign */
+  if (!content) {
+    content = title;
+    title = '提示';
+  }
+  $.dialog({
+    title,
+    content,
+  });
 };
