@@ -119,6 +119,13 @@ module.exports = {
     },
   },
   moduleOptions: {
+    'vrshow/award': {
+      cssModules: !0,
+      cssModulesExclude: [/node_modules/, /static\/src\/component/, /static\\src\\component/],
+      splitJs: {
+        lib: ['jquery', 'react-dom'],
+      },
+    },
     'kind/edit': {
       splitJs: {
         lib: ['jquery', 'handlebars'],
