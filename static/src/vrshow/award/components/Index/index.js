@@ -7,7 +7,6 @@ import styles from './index.less';
 
 import Top from '../Top';
 import Table from '../Table';
-import Pagination from '../Pagination';
 import DrawerDetail from '../DrawerDetail';
 
 import events from '../../events';
@@ -22,26 +21,17 @@ export default class extends Component {
 
       loading: true,
 
-      tableData: {
-        total: 0,
-        pageNum: -1,
-        data: [],
-      },
+      tableData: [],
 
       pagination: {
-        pageNum: 0,
+        current: 1,
         pageSize: 10,
-        total: 0,
       },
-
-      hasNextPage: false,
-      hasPrevPage: false,
     };
 
     this.onChangeStatus = this.onChangeStatus.bind(this);
     this.onChangeDay = this.onChangeDay.bind(this);
-    this.onClickPrevPage = this.onClickPrevPage.bind(this);
-    this.onClickNextPage = this.onClickNextPage.bind(this);
+    this.onTableChange = this.onTableChange.bind(this);
   }
 
   componentDidMount() {
@@ -64,63 +54,47 @@ export default class extends Component {
     });
   }
 
-  onClickPrevPage() {
+  onTableChange(pagination) {
     const { pagination: oldPagination } = this.state;
-    const pagination = { ...oldPagination };
-    pagination.pageNum -= 1;
-    this.setState({ pagination }, () => {
-      events.emit('refresh');
-    });
-  }
-
-  onClickNextPage() {
-    const { pagination: oldPagination } = this.state;
-    const pagination = { ...oldPagination };
-    pagination.pageNum += 1;
-    this.setState({ pagination }, () => {
-      events.emit('refresh');
+    const pager = { ...oldPagination };
+    pager.current = pagination.current;
+    this.setState({ pagination: pager }, () => {
+      this.fetchTableData();
     });
   }
 
   fetchTableData() {
-    this.setState({ loading: true });
+    this.setState({ loading: true }, () => {
+      const { type, status, pagination: oldPagination } = this.state;
+      const params = {
+        type: parseInt(type, 10),
+        status: parseInt(status, 10),
+        pageSize: oldPagination.pageSize,
+        pageNum: oldPagination.current - 1,
+      };
 
-    const { type, status, pagination: oldPagination } = this.state;
-    const { pageSize } = oldPagination;
-    const { pageNum } = oldPagination;
-
-    const params = { type: parseInt(type, 10), status: parseInt(status, 10), pageSize, pageNum };
-
-    seeAjax('getAwardList', params, res => {
-      const { total } = res;
-
-      const pagination = { ...oldPagination };
-      pagination.total = total;
-
-      const hasNextPage = total > (pageNum + 1) * pageSize;
-      const hasPrevPage = pageNum > 0;
-
-      this.setState({ loading: false, tableData: res.data, pagination, hasNextPage, hasPrevPage });
+      seeAjax('getAwardList', params, res => {
+        const { total } = res;
+        const pagination = { ...oldPagination };
+        pagination.total = total;
+        this.setState({ loading: false, tableData: res.data, pagination });
+      });
     });
   }
 
   refresh() {
-    this.fetchTableData();
+    this.setState({ pagination: { current: 1, pageSize: 10 } }, () => {
+      this.fetchTableData();
+    });
   }
 
   render() {
-    const { status, type, loading, tableData, hasPrevPage, hasNextPage } = this.state;
+    const { status, type, loading, tableData, pagination } = this.state;
 
     return (
       <div className={styles.container}>
         <Top status={status} type={type} onChangeStatus={this.onChangeStatus} onChangeDay={this.onChangeDay} />
-        <Table loading={loading} tableData={tableData} />
-        <Pagination
-          onClickPrevPage={this.onClickPrevPage}
-          onClickNextPage={this.onClickNextPage}
-          hasNextPage={hasNextPage}
-          hasPrevPage={hasPrevPage}
-        />
+        <Table loading={loading} pagination={pagination} tableData={tableData} onTableChange={this.onTableChange} />
         <DrawerDetail />
       </div>
     );

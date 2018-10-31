@@ -2,8 +2,7 @@
  *Create by kang on 2018/10/25.
  */
 import React, { Component } from 'react';
-import styles from './index.less';
-
+import { Table } from 'antd';
 import data from '../../data';
 import events from '../../events';
 
@@ -12,101 +11,100 @@ export default class extends Component {
     super(props);
 
     this.data = {
-      thead: ['礼佛天数', '获奖礼品', '联系人', '联系电话', '处理状态', '处理'],
-
+      statusMap: data.statusMap,
       typeMap: data.typeMap,
     };
 
     this.onClickHandle = this.onClickHandle.bind(this);
     this.onClickDetail = this.onClickDetail.bind(this);
+    this.onTableChange = this.onTableChange.bind(this);
   }
 
-  onClickHandle = (id, e) => {
+  onClickHandle = (record, e) => {
     e.preventDefault();
+    const { id } = record;
     events.emit('show-drawer-detail', { id, type: 'handle' });
   };
 
-  onClickDetail = (id, e) => {
+  onClickDetail = (record, e) => {
     e.preventDefault();
+    const { id } = record;
     events.emit('show-drawer-detail', { id, type: 'detail' });
   };
 
-  theadJsx = () => {
-    const { thead } = this.data;
+  onTableChange(pagination) {
+    const { onTableChange } = this.props;
+    onTableChange(pagination);
+  }
+
+  makeColumns() {
+    const { typeMap, statusMap } = this.data;
+    const self = this;
+    return [
+      {
+        title: '礼佛天数',
+        dataIndex: 'type',
+        key: 'type',
+        render(type) {
+          return <span>{typeMap[type]}</span>;
+        },
+      },
+      {
+        title: '获奖礼品',
+        dataIndex: 'content',
+        key: 'content',
+      },
+      {
+        title: '联系人',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: '联系电话',
+        dataIndex: 'mobile',
+        key: 'mobile',
+      },
+      {
+        title: '处理状态',
+        dataIndex: 'status',
+        key: 'status',
+        render(status) {
+          return <span>{statusMap[status]}</span>;
+        },
+      },
+      {
+        title: '处理',
+        render(record) {
+          return (
+            <div>
+              {record.status ? (
+                <a className="mg-r-20" onClick={self.onClickHandle.bind(this, record)}>
+                  处理
+                </a>
+              ) : (
+                <a className="mg-r-20" onClick={self.onClickDetail.bind(this, record)}>
+                  详情
+                </a>
+              )}
+            </div>
+          );
+        },
+      },
+    ];
+  }
+
+  contentJsx() {
+    const { loading, tableData, pagination } = this.props;
     return (
-      <thead>
-        <tr>
-          {thead.map(item => (
-            <th key={item}>{item}</th>
-          ))}
-        </tr>
-      </thead>
+      <Table
+        loading={loading}
+        dataSource={tableData}
+        columns={this.makeColumns()}
+        pagination={pagination}
+        onChange={this.onTableChange}
+      />
     );
-  };
-
-  loadingTbody = () => {
-    const { thead } = this.data;
-
-    return (
-      <tbody>
-        <tr>
-          <td colSpan={thead.length}>
-            <div className={styles.loading}>数据加载中 ...</div>
-          </td>
-        </tr>
-      </tbody>
-    );
-  };
-
-  emptyJsx = () => {
-    return (
-      <tr>
-        <td colSpan="6">暂无数据</td>
-      </tr>
-    );
-  };
-
-  tbodyJsx = () => {
-    const { typeMap } = this.data;
-    const { tableData } = this.props;
-    return (
-      <tbody>
-        {tableData.length
-          ? tableData.map(item => (
-              <tr key={item.id}>
-                <td>{typeMap[item.type]}</td>
-                <td>{item.content}</td>
-                <td>{item.name}</td>
-                <td>{item.mobile}</td>
-                <td>{item.status ? '未处理' : '已处理'}</td>
-                <td>
-                  {item.status ? (
-                    <a href="" onClick={this.onClickHandle.bind(this, item.id)}>
-                      处理
-                    </a>
-                  ) : (
-                    <a href="" onClick={this.onClickDetail.bind(this, item.id)}>
-                      详情
-                    </a>
-                  )}
-                </td>
-              </tr>
-            ))
-          : this.emptyJsx()}
-      </tbody>
-    );
-  };
-
-  contentJsx = () => {
-    const { loading } = this.props;
-
-    return (
-      <table className={`${styles.table}`}>
-        {this.theadJsx()}
-        {loading ? this.loadingTbody() : this.tbodyJsx()}
-      </table>
-    );
-  };
+  }
 
   render() {
     return this.contentJsx();

@@ -121,7 +121,13 @@ module.exports = {
   moduleOptions: {
     'vrshow/award': {
       cssModules: !0,
-      cssModulesExclude: [/node_modules/, /static\/src\/component/, /static\\src\\component/],
+      cssModulesExclude: [
+        /node_modules/,
+        /static\/src\/component/,
+        /static\\src\\component/,
+        /static\/src\/less/,
+        /static\\src\\less/,
+      ],
       splitJs: {
         lib: ['jquery', 'react-dom'],
       },
