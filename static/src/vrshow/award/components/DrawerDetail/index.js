@@ -6,6 +6,8 @@ import React, { Component } from 'react';
 import { Spin, Drawer, notification } from 'antd';
 import ChooseImage from '@zzh/choose-image';
 import seeAjax from 'see-ajax';
+import QRCode from '@zzh/qrcode';
+import env from 'util/env';
 
 import $ from 'jquery';
 import styles from './index.less';
@@ -34,6 +36,8 @@ export default class extends Component {
     this.data = {
       maxPicNum: 1,
     };
+
+    this.QRCodeRef = React.createRef();
 
     this.onClose = this.onClose.bind(this);
     this.onDrop = this.onDrop.bind(this);
@@ -117,7 +121,6 @@ export default class extends Component {
 
     this.setState({ loading: true });
     seeAjax('getAwardDetail', { id }, res => {
-      this.setState({ loading: false });
       const { data } = res;
       const awardInfo = {
         days: 49,
@@ -128,8 +131,30 @@ export default class extends Component {
         alivePeople: data.alivePeople,
       };
       const pics = data.disposedPic ? data.disposedPic.split(',') : [];
-      this.setState({ awardInfo, pics });
+      this.setState({ loading: false, awardInfo, pics }, () => {
+        this.initQRCode();
+      });
     });
+  };
+
+  initQRCode = () => {
+    const { type } = this.state;
+    if (type === 'handle') {
+      const { id } = this.state;
+      const { serverEnv } = env;
+      let src = '';
+      if (serverEnv === 1) {
+        src = `http://test.zizaihome.com/vr/devoteDealGiftHtml?id=${id}&isTest=1`;
+      } else if (serverEnv === 2) {
+        src = `http://test2.zizaihome.com/vr/devoteDealGiftHtml?id=${id}&isTest=2`;
+      } else if (serverEnv === 3) {
+        src = `https://wx.zizaihome.com/vr/devoteDealGiftHtml?id=${id}`;
+      } else {
+        src = `https://wx.zizaihome.com`;
+      }
+      const $QRCode = this.QRCodeRef.current;
+      this.QRCode = new QRCode($QRCode, src);
+    }
   };
 
   handleAward = () => {
@@ -271,7 +296,7 @@ export default class extends Component {
       <div>
         <div className={styles.head}>处理方式1：扫描二维码</div>
         <div className={styles.body}>
-          <div style={{ width: '100px', height: '100px', backgroundColor: 'red' }} />
+          <div ref={this.QRCodeRef} className={styles.QRCodeContainer} />
         </div>
       </div>
     );
@@ -307,37 +332,29 @@ export default class extends Component {
 
   contentJsx = () => {
     const { loading, visible } = this.state;
-    if (loading) {
-      return (
-        <Drawer
-          width="457"
-          placement="right"
-          closable={false}
-          onClose={this.onClose}
-          visible={visible}
-          style={{ padding: 0 }}
-        >
+
+    return (
+      <Drawer
+        width="457"
+        placement="right"
+        closable={false}
+        onClose={this.onClose}
+        visible={visible}
+        style={{ padding: 0 }}
+      >
+        {loading ? (
           <div className={styles.loading}>
             <Spin />
           </div>
-        </Drawer>
-      );
-    } else {
-      return (
-        <Drawer
-          width="457"
-          placement="right"
-          closable={false}
-          onClose={this.onClose}
-          visible={visible}
-          style={{ padding: 0 }}
-        >
-          {this.awardInfoJsx()}
-          {this.handleJsx()}
-          {this.btnJsx()}
-        </Drawer>
-      );
-    }
+        ) : (
+          <div>
+            {this.awardInfoJsx()}
+            {this.handleJsx()}
+            {this.btnJsx()}
+          </div>
+        )}
+      </Drawer>
+    );
   };
 
   render() {

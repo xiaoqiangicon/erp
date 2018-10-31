@@ -36,10 +36,10 @@ export default class extends Component {
     const { statusMap } = this.data;
     const { status } = this.props;
     const keys = Object.keys(statusMap);
-    const value = statusMap[status];
 
     return (
-      <Select value={value} onChange={this.onChangeStatus} className="mg-l-10" style={{ width: '100px' }}>
+      <Select value={status} onChange={this.onChangeStatus} className="mg-l-10" style={{ width: '100px' }}>
+        <Option value="-1">全部</Option>
         {keys.map(key => (
           <Option key={key}>{statusMap[key]}</Option>
         ))}
@@ -51,10 +51,10 @@ export default class extends Component {
     const { typeMap } = this.data;
     const { type } = this.props;
     const keys = Object.keys(typeMap);
-    const value = typeMap[type];
 
     return (
-      <Select value={value} onChange={this.onChangeDay} className="mg-l-10" style={{ width: '100px' }}>
+      <Select value={type} onChange={this.onChangeDay} className="mg-l-10" style={{ width: '100px' }}>
+        <Option value="-1">全部</Option>
         {keys.map(key => (
           <Option key={key}>{typeMap[key]}</Option>
         ))}
