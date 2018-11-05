@@ -27,8 +27,11 @@ export default class extends Component {
         award: '',
         name: '',
         tel: '',
-        deadPeople: '',
+        deadman: '',
         alivePeople: '',
+        fromType: 0,
+        writeName: '',
+        address: '',
       },
       pics: [],
     };
@@ -127,8 +130,11 @@ export default class extends Component {
         award: data.content,
         name: data.name,
         tel: data.mobile,
-        deadPeople: data.deadMan,
+        deadman: data.deadman,
         alivePeople: data.alivePeople,
+        fromType: data.fromType,
+        writeName: data.writeName,
+        address: data.address,
       };
       const pics = data.disposedPic ? data.disposedPic.split(',') : [];
       this.setState({ loading: false, awardInfo, pics }, () => {
@@ -184,34 +190,31 @@ export default class extends Component {
 
   awardInfoJsx = () => {
     const { awardInfo } = this.state;
+    const { fromType, writeName, address, days, tel, name, award, alivePeople, deadman } = awardInfo;
+    const mapCommon = [
+      { key: days, title: '礼佛天数' },
+      { key: award, title: '获得奖品' },
+      { key: name, title: '联系人' },
+      { key: tel, title: '联系电话' },
+    ];
+    const mapRest = [
+      [],
+      [{ key: address, title: '地址' }],
+      [{ key: writeName, title: '功德芳名' }],
+      [{ key: alivePeople, title: '阳上人' }, { key: deadman, title: '往生者' }],
+    ];
+    const map = [...mapCommon, ...mapRest[fromType]];
+
     return (
       <div>
         <div className={styles.head}>获奖信息</div>
         <div className={styles.body}>
-          <p>
-            <span>礼佛天数：</span>
-            <span>{awardInfo.days}天</span>
-          </p>
-          <p>
-            <span>获得奖品：</span>
-            <span>{awardInfo.award}</span>
-          </p>
-          <p>
-            <span>联系人：</span>
-            <span>{awardInfo.name}</span>
-          </p>
-          <p>
-            <span>联系电话：</span>
-            <span>{awardInfo.tel}</span>
-          </p>
-          <p>
-            <span>亡者：</span>
-            <span>{awardInfo.deadPeople}</span>
-          </p>
-          <p>
-            <span>阳上人：</span>
-            <span>{awardInfo.alivePeople}</span>
-          </p>
+          {map.map(item => (
+            <p key={item.title}>
+              <span>{item.title}：</span>
+              <span>{item.key}天</span>
+            </p>
+          ))}
         </div>
       </div>
     );
