@@ -12,6 +12,7 @@ import env from 'util/env';
 import $ from 'jquery';
 import styles from './index.less';
 import events from '../../events';
+import data from '../../data';
 
 export default class extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ export default class extends Component {
 
     this.data = {
       maxPicNum: 1,
+      typeMap: data.typeMap,
     };
 
     this.QRCodeRef = React.createRef();
@@ -92,9 +94,9 @@ export default class extends Component {
       data: formData,
       processData: false,
       contentType: false,
-      success: data => {
-        if (data.result >= 0) {
-          const { url: img } = data;
+      success: res => {
+        if (res.result >= 0) {
+          const { url: img } = res;
           const { pics: oldPics } = this.state;
           const pics = [].concat(oldPics);
           pics.push(img);
@@ -121,22 +123,23 @@ export default class extends Component {
 
   fetchDetail = () => {
     const { id } = this.state;
+    const { typeMap } = this.data;
 
     this.setState({ loading: true });
     seeAjax('getAwardDetail', { id }, res => {
-      const { data } = res;
+      const { data: awardData } = res;
       const awardInfo = {
-        days: 49,
-        award: data.content,
-        name: data.name,
-        tel: data.mobile,
-        deadman: data.deadman,
-        alivePeople: data.alivePeople,
-        fromType: data.fromType,
-        writeName: data.writeName,
-        address: data.address,
+        days: typeMap[awardData.type],
+        award: awardData.content,
+        name: awardData.name,
+        tel: awardData.mobile,
+        deadman: awardData.deadman,
+        alivePeople: awardData.alivePeople,
+        fromType: awardData.fromType,
+        writeName: awardData.writeName,
+        address: awardData.address,
       };
-      const pics = data.disposedPic ? data.disposedPic.split(',') : [];
+      const pics = awardData.disposedPic ? awardData.disposedPic.split(',') : [];
       this.setState({ loading: false, awardInfo, pics }, () => {
         this.initQRCode();
       });
@@ -198,10 +201,11 @@ export default class extends Component {
       { key: tel, title: '联系电话' },
     ];
     const mapRest = [
-      [],
+      [], // 无用
       [{ key: address, title: '地址' }],
       [{ key: writeName, title: '功德芳名' }],
       [{ key: alivePeople, title: '阳上人' }, { key: deadman, title: '往生者' }],
+      [], // 其它
     ];
     const map = [...mapCommon, ...mapRest[fromType]];
 
@@ -212,7 +216,7 @@ export default class extends Component {
           {map.map(item => (
             <p key={item.title}>
               <span>{item.title}：</span>
-              <span>{item.key}天</span>
+              <span>{item.key}</span>
             </p>
           ))}
         </div>
