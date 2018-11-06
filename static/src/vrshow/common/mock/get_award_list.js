@@ -9,6 +9,7 @@ module.exports = (req, res) => {
       msg: '成功',
       total: 11,
       pageNum: 1,
+      unDealNum: 10,
       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => ({
         id: item,
         type: 2,

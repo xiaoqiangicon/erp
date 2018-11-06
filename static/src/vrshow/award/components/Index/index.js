@@ -78,6 +78,9 @@ export default class extends Component {
         const pagination = { ...oldPagination };
         pagination.total = total;
         this.setState({ loading: false, tableData: res.data, pagination });
+        // 改变导航栏的未处理订单数 并存至localStorage
+        document.querySelector('[data-vrshow-order-count]').text = res.unDealNum;
+        localStorage.vrshow_orderNumber = res.unDealNum;
       });
     });
   }
