@@ -20,6 +20,7 @@ module.exports = (req, res) => {
         alivePeople: `阳上人${item}`,
         deadman: `往生者${item}`,
         disposedPic: '',
+        receiveTime: '',
       })),
     })
   );

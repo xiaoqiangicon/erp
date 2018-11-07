@@ -65,6 +65,11 @@ export default class extends Component {
         key: 'mobile',
       },
       {
+        title: '领取时间',
+        dataIndex: 'receiveTime',
+        key: 'receiveTime',
+      },
+      {
         title: '处理状态',
         dataIndex: 'status',
         key: 'status',

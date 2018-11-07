@@ -33,6 +33,7 @@ export default class extends Component {
         fromType: 0,
         writeName: '',
         address: '',
+        receiveTime: '',
       },
       pics: [],
     };
@@ -138,6 +139,7 @@ export default class extends Component {
         fromType: awardData.fromType,
         writeName: awardData.writeName,
         address: awardData.address,
+        receiveTime: awardData.receiveTime,
       };
       const pics = awardData.disposedPic ? awardData.disposedPic.split(',') : [];
       this.setState({ loading: false, awardInfo, pics }, () => {
@@ -193,10 +195,11 @@ export default class extends Component {
 
   awardInfoJsx = () => {
     const { awardInfo } = this.state;
-    const { fromType, writeName, address, days, tel, name, award, alivePeople, deadman } = awardInfo;
+    const { fromType, writeName, address, days, tel, name, award, alivePeople, deadman, receiveTime } = awardInfo;
     const mapCommon = [
       { key: days, title: '礼佛天数' },
       { key: award, title: '获得奖品' },
+      { key: receiveTime, title: '领取时间' },
       { key: name, title: '联系人' },
       { key: tel, title: '联系电话' },
     ];

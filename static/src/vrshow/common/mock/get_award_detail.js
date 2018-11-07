@@ -21,6 +21,7 @@ module.exports = (req, res) => {
         fromType: 0,
         writeName: '',
         address: '',
+        receiveTime: '',
       },
     })
   );
