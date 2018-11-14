@@ -119,7 +119,7 @@ module.exports = {
     },
   },
   moduleOptions: {
-    'vrshow/award': {
+    'buddhist/template,vrshow/award': {
       cssModules: !0,
       cssModulesExclude: [
         /node_modules/,
