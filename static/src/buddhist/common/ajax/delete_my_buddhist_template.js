@@ -5,7 +5,7 @@
 import seeAjax from 'see-ajax';
 
 seeAjax.config('deleteMyBuddhistTemplate', {
-  method: ['get', 'get'],
-  stringify: [false, false],
-  url: ['/zzhadmin/templateTypeList//', '/static/src/buddhist/common/mock/success'],
+  method: ['post', 'post'],
+  stringify: [true, true],
+  url: ['/zzhadmin/delCeremonyTemplate/', '/static/src/buddhist/common/mock/success'],
 });

@@ -43,6 +43,7 @@ export default class extends Component {
     });
   }
 
+  // 获取系统佛事模板分类列表
   getSystemTemplateTypeData(cb) {
     this.setState({ loadingSystemTemplateTypeData: true }, () => {
       const params = {};
@@ -65,6 +66,7 @@ export default class extends Component {
     });
   }
 
+  // 获取系统佛事模板列表
   getSystemTemplateData(cb) {
     const { systemTemplateType: templateTypeId } = this.state;
 
@@ -89,11 +91,12 @@ export default class extends Component {
     });
   }
 
+  // 获取我的佛事模板列表
   getMyTemplateData(cb) {
     this.setState({ loadingMyTemplateData: true }, () => {
       const params = {};
 
-      seeAjax('getSystemBuddhistTemplateList', params, res => {
+      seeAjax('getMyBuddhistTemplateList', params, res => {
         if (!res.success) {
           notification.error({
             message: '提示',
@@ -122,10 +125,10 @@ export default class extends Component {
   }
 
   refresh() {
-    this.refreshMyTemplate();
     this.getSystemTemplateTypeData(() => {
       this.refreshSystemTemplate();
     });
+    this.refreshMyTemplate();
   }
 
   refreshSystemTemplate() {
