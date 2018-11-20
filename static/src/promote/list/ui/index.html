@@ -10,5 +10,62 @@
   <title>推广列表</title>
 </head>
 <body>
+<div id="content-container">
+  <div class="root-1">
+    <div class="nav-1">
+      <a class="item-1 no-underline active" href="/">推广列表</a>
+      <a class="item-1 no-underline" href="/">推广员管理</a>
+      <a class="item-1 no-underline" href="/">招募设置</a>
+    </div>
+    <div class="intro-1">
+      <div class="text-1">
+        推广激励是自在家推出的一款可帮助寺院拓宽推广渠道的应用工具，寺院在信众、团体成功推广佛事后给予其奖励， 以此给寺院的法会佛事带来更多传播和弘扬佛法。
+      </div>
+      <button class="clean btn-1">添加佛事项目</button>
+    </div>
+    <div class="nav-2">
+      <div class="item-2 active">进行中</div>
+      <div class="item-2">已结束</div>
+    </div>
+    <div class="row-1 row-1-head">
+      <div class="cell-1">ID</div>
+      <div class="cell-1 cell-1-name">佛事名称</div>
+      <div class="cell-1">订单数量</div>
+      <div class="cell-1">募集金额（元）</div>
+      <div class="cell-1">分成奖励金（元）</div>
+      <div class="cell-1">状态<span class="icon-1"></span></div>
+      <div class="cell-1">操作</div>
+    </div>
+    <div class="list-1">
+      ${require('./row.html')}
+      ${require('./row.html')}
+      ${require('./row.html')}
+      ${require('./row.html')}
+    </div>
+    <div class="page-1" id="page"></div>
+  </div>
+</div>
+<div class="add-overlay"></div>
+<div class="add">
+  <div class="head-1">
+    <button class="clean close-1"></button>
+  </div>
+  <div class="body-1">
+    <div class="text-1">请选择需推广的佛事项目</div>
+    <div class="text-2">已审核通过或进行中的佛事项目可添加进分销列表中</div>
+    <div class="search-1">
+      <input class="clean input-1" placeholder="点击选择或搜索需推广的佛事项目">
+      <div class="hint-1">
+        <div class="row-3">2018年祈福大典法会</div>
+        <div class="row-3">2018年祈福大典法会</div>
+        <div class="row-3 disabled">2018年祈福大典法会</div>
+      </div>
+    </div>
+    <div class="text-3">当前佛事无需支付，不可添加到推广列表</div>
+    <div class="action-1">
+      <button class="clean btn-1">保存</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

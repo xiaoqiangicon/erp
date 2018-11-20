@@ -1,0 +1,134 @@
+.add-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.add {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 650px;
+  height: 420px;
+  margin-left: -325px;
+  margin-top: -210px;
+  border-radius: 3px;
+  background-color: #fff;
+
+  .head-1 {
+    position: relative;
+    height: 38px;
+    background-color: #71ba31;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .close-1 {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    width: 18px;
+    height: 18px;
+    background-image: url('https://pic.zizaihome.com/0661ef4e-ec79-11e8-a911-00163e0c001e.png');
+    background-size: 100% 100%;
+  }
+
+  .body-1 {
+    margin-top: 60px;
+  }
+
+  .text-1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .text-2 {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #989898;
+    text-align: center;
+  }
+
+  .search-1 {
+    position: relative;
+    width: 320px;
+    margin: 25px auto 0 auto;
+  }
+
+  .input-1 {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dde4ec;
+    font-size: 16px;
+    text-align: center;
+    padding: 0 15px;
+    height: 42px;
+    line-height: 42px;
+
+    &::-webkit-input-placeholder {
+      color: #989898;
+    }
+  }
+
+  .hint-1 {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  .row-3 {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dde4ec;
+    font-size: 16px;
+    padding: 0 15px;
+    height: 42px;
+    line-height: 42px;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background-color: #71ba31;
+    }
+
+    &.disabled {
+      cursor: default;
+      color: #fff;
+      background-color: #989898;
+    }
+  }
+
+  .text-3 {
+    margin-top: 10px;
+    color: #e94b39;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .action-1 {
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-1 {
+    width: 110px;
+    height: 36px;
+    border-radius: 5px;
+    background-color: #71ba31;
+    color: #fff;
+    font-size: 18px;
+
+    &.disabled {
+      background-color: #989898;
+    }
+  }
+}

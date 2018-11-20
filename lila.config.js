@@ -87,7 +87,7 @@ module.exports = {
   resolveAlias: {
     handlebars: 'handlebars/dist/handlebars.js',
   },
-  devServerPort: 10010,
+  devServerPort: 10011,
   packCssSeparately: !0,
   treatAllMethodsAsGet: !0,
   provide: {
