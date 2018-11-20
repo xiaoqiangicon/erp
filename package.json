@@ -79,6 +79,8 @@
     "react-dom": "^16.3.2",
     "see-ajax": "^1.0.1",
     "see-view": "^0.1.0",
-    "spinkit": "^1.2.5"
+    "spinkit": "^1.2.5",
+    "tippy.js": "^3.2.0",
+    "toastr": "^2.1.4"
   }
 }
