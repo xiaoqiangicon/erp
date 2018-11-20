@@ -83,6 +83,7 @@
   }
 
   .row-3 {
+    position: relative;
     width: 100%;
     border-radius: 8px;
     border: 1px solid #dde4ec;
@@ -91,6 +92,9 @@
     height: 42px;
     line-height: 42px;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:hover {
       color: #fff;
@@ -100,8 +104,23 @@
     &.disabled {
       cursor: default;
       color: #fff;
-      background-color: #989898;
+      background-color: #ccc;
+      padding-right: 80px;
     }
+  }
+
+  .badge-1 {
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 60px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 12px;
+    border: 1px solid #71ba31;
+    color: #71ba31;
+    text-align: center;
+    font-size: 14px;
   }
 
   .text-3 {
