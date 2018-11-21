@@ -17,7 +17,7 @@ seeView({
     '!change #select-all-items': 'changeSelectAllItems',
     'change [data-items-row-select]': 'changeItemsRowSelect',
     // 点击设置
-    'click [data-items-row-set]': 'clickItemsRowSet'
+    'click [data-items-row-set]': 'clickItemsRowSet',
   },
   // 切换 tab
   clickContentTab(e) {
@@ -56,5 +56,5 @@ seeView({
 
     handlingIds = [id];
     updateSet(item.hasProfit && item.profitType, item.hasProfit && item.profit);
-  }
+  },
 });
