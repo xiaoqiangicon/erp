@@ -60,16 +60,37 @@
             全部
           </div>
           <ul class="dropdown-menu">
-            <li><a>Action</a></li>
-            <li><a>Another action</a></li>
-            <li><a>Something else here</a></li>
+            <li><a>已结算</a></li>
+            <li><a>待结算</a></li>
+            <li><a>未处理</a></li>
           </ul>
         </div>
         <div class="search-1">
           <input class="clean input-1" placeholder="推广员名字/手机号码">
           <button class="clean btn-1">搜索</button>
         </div>
+        <div class="time-1">
+          <input class="clean input-1" placeholder="下单时间">
+          <span class="icon-1"></span>
+        </div>
       </div>
+      <div class="divider-2"></div>
+      <div class="row-2 row-2-head">
+        <div class="cell-2">下单时间</div>
+        <div class="cell-2">名称</div>
+        <div class="cell-2">支付金额（元）</div>
+        <div class="cell-2">所属推广员</div>
+        <div class="cell-2">分成奖励金（元）</div>
+        <div class="cell-2">服务费（元）<span class="icon-1"></span></div>
+        <div class="cell-2">状态<span class="icon-1"></span></div>
+      </div>
+      <div class="list-2">
+        ${require('./row-2.html')}
+        ${require('./row-2.html')}
+        ${require('./row-2.html')}
+        ${require('./row-2.html')}
+      </div>
+      <div class="page-1" id="page"></div>
     </div>
   </div>
 </div>
