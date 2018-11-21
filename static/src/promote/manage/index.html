@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit"/>
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" type="image/x-icon" href="../../../images/favicon.ico"/>
+
+  <title>推广列表 - 管理</title>
+</head>
+<body>
+<div id="content-container">
+  <div class="root-1">
+    <div class="nav-1">
+      <a class="item-1 no-underline" href="/">推广列表</a>
+      <div class="divider-1"></div>
+      <div class="item-1">管理</div>
+    </div>
+    <div class="summary-1" id="summary" style="display: none;">
+      <div class="inner-1">
+        <div class="text-1" id="display-title"></div>
+        <div class="text-2">
+          状态：
+          <span id="display-status"></span>
+          <span class="c-spaces"></span>
+          添加时间：
+          <span id="display-add-time"></span>
+        </div>
+      </div>
+      <div class="nav-2">
+        <div class="item-2 active" data-content-tab="1">奖励金管理</div>
+        <div class="item-2" data-content-tab="2">推广记录</div>
+      </div>
+    </div>
+    <div class="content-1" data-content="1" style="display: none;">
+      <div class="desc-1">
+        推广员佣金比例<span class="c-spaces"></span>
+        <span class="special-1">推广员进行分成自动结算（推广员的奖励金=佛事价格*分成奖励金）</span>
+      </div>
+      <div class="row-1 row-1-head">
+        <div class="cell-1"><input type="checkbox" class="check-1" id="select-all-items">全选</div>
+        <div class="cell-1 cell-1-name">选择项名称</div>
+        <div class="cell-1">价格（元）</div>
+        <div class="cell-1">服务费<span class="icon-1" data-tippy="若使用分享推广功能自在家系统将收取2%的服务费"></span></div>
+        <div class="cell-1">分成奖励金</div>
+        <div class="cell-1">操作</div>
+      </div>
+      <div class="display-1">
+        已选择 <span class="special-1" id="selected-count">0</span> 项
+        <button class="clean btn-1 dp-none" id="batch-set">批量设置奖励金</button>
+      </div>
+      <div class="divider-1"></div>
+      <div class="list-1" id="list-1"></div>
+    </div>
+    <div class="content-2" data-content="2" style="display: none;">
+      <div class="filter-1">
+        <div class="btn-group">
+          <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="fl-left">状态：</span>
+            全部
+          </div>
+          <ul class="dropdown-menu">
+            <li><a>已结算</a></li>
+            <li><a>待结算</a></li>
+            <li><a>未处理</a></li>
+          </ul>
+        </div>
+        <div class="search-1">
+          <input class="clean input-1" placeholder="推广员名字/手机号码">
+          <button class="clean btn-1">搜索</button>
+        </div>
+        <div class="time-1">
+          <input class="clean input-1" placeholder="下单时间">
+          <span class="icon-1"></span>
+        </div>
+      </div>
+      <div class="divider-2"></div>
+      <div class="row-2 row-2-head">
+        <div class="cell-2">下单时间</div>
+        <div class="cell-2">名称</div>
+        <div class="cell-2">支付金额（元）</div>
+        <div class="cell-2">所属推广员</div>
+        <div class="cell-2">分成奖励金（元）</div>
+        <div class="cell-2">服务费（元）<span class="icon-1"></span></div>
+        <div class="cell-2">状态<span class="icon-1"></span></div>
+      </div>
+      <div class="list-2"></div>
+      <div class="page-1" id="page"></div>
+    </div>
+  </div>
+</div>
+<div class="set-overlay" style="display: none;"></div>
+<div class="set" style="display: none;">
+  <div class="title-11" style="display: none;">分成比例</div>
+  <div class="nav-11">
+    <div class="item-11">分成比例</div>
+    <div class="item-11 active">分成金额</div>
+  </div>
+  <div class="body-11">
+    <div class="content-11">
+      <input class="clean input-11">
+      <span>%</span>
+      <button class="clean btn-11 disabled">确定</button>
+    </div>
+    <div class="hint-11">当前佛事正在平台合作，分成比例不可超过<span class="special-11">500元</span></div>
+  </div>
+</div>
+</body>
+</html>
