@@ -3,8 +3,11 @@ import seeView from 'see-view';
 // import seeAjax from 'see-ajax';
 // import toastr from 'toastr';
 // import { searchTpl } from './tpl';
-import { checkSelect } from './util';
+import { checkSelect, updateSet } from './util';
+import share from './share';
 // import dialog from '../../util/dialog';
+
+let handlingIds = [];
 
 seeView({
   events: {
@@ -13,6 +16,8 @@ seeView({
     // 选择所有的项目
     '!change #select-all-items': 'changeSelectAllItems',
     'change [data-items-row-select]': 'changeItemsRowSelect',
+    // 点击设置
+    'click [data-items-row-set]': 'clickItemsRowSet'
   },
   // 切换 tab
   clickContentTab(e) {
@@ -30,7 +35,7 @@ seeView({
   // 选择所有的项目
   changeSelectAllItems(e) {
     const $this = $(e.target);
-    const $items = $('[data-items-row-select]');
+    const $items = $('[data-items-row-select]:not(:disabled)');
 
     if ($this.prop('checked')) $items.prop('checked', !0);
     else $items.prop('checked', !1);
@@ -40,4 +45,16 @@ seeView({
   changeItemsRowSelect() {
     checkSelect();
   },
+  // 点击设置
+  clickItemsRowSet(e) {
+    const $this = $(e.target);
+    const id = parseInt($this.attr('data-items.row-set'), 10);
+
+    const item = share.items.find(item => item.id === id);
+
+    if (!item || item.noNeedPay) return;
+
+    handlingIds = [id];
+    updateSet(item.hasProfit && item.profitType, item.hasProfit && item.profit);
+  }
 });

@@ -11,13 +11,13 @@ module.exports = (req, res) => {
         priceType: Math.floor(Math.random() * 3) + 1,
         price: id * 10,
         hasCharge: Math.floor(Math.random() * 2),
-        // 1：金额，2：比例
+        // 1：比例，2：金额
         chargeType: Math.floor(Math.random() * 2) + 1,
-        charge: [200, 10][Math.floor(Math.random() * 2)],
+        charge: id * 10,
         hasProfit: Math.floor(Math.random() * 2),
-        // 1：金额，2：比例
+        // 1：比例，2：金额
         profitType: Math.floor(Math.random() * 2) + 1,
-        profit: [200, 10][Math.floor(Math.random() * 2)],
+        profit: id * 10,
       })),
     })
   );

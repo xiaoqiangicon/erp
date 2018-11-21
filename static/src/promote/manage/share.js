@@ -1,3 +1,3 @@
-export const items = {};
-
-export default {};
+export default {
+  items: [],
+};

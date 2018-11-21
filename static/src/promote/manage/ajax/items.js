@@ -17,10 +17,10 @@ seeAjax.config('items', {
 
         item.chargeText = item.charge;
         if (!item.hasCharge) item.chargeText = '-';
-        else if (item.chargeType === 2) item.chargeText = `支付价格*${item.charge}%`;
+        else if (item.chargeType === 1) item.chargeText = `支付价格*${item.charge}%`;
 
         item.profitText = item.profit;
-        if (item.profitType === 2) item.profitText = `支付价格*${item.profit}%`;
+        if (item.profitType === 1) item.profitText = `支付价格*${item.profit}%`;
       });
     },
   ],

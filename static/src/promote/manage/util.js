@@ -4,7 +4,7 @@ import seeAjax from 'see-ajax';
 import commonTpl from '../../common/tpl';
 import { itemsTpl } from './tpl';
 // import dialog from "../../util/dialog";
-import { items } from './share';
+import share from './share';
 
 export const scrollTop = () => {
   $(window).scrollTop(0);
@@ -20,9 +20,7 @@ export const requestItems = () => {
       return;
     }
 
-    res.data.forEach(item => {
-      items[item.id] = item;
-    });
+    share.items = res.data;
 
     $itemsList.html(itemsTpl(res));
   });
@@ -33,7 +31,7 @@ const $selectedCount = $('#selected-count');
 const $batchSet = $('#batch-set');
 
 export const checkSelect = () => {
-  const allItemsCount = $('[data-items-row-select]').length;
+  const allItemsCount = $('[data-items-row-select]:not(:disabled)').length;
   const selectedItemsCount = $('[data-items-row-select]:checked').length;
 
   $selectedCount.text(selectedItemsCount);
@@ -41,6 +39,20 @@ export const checkSelect = () => {
 
   if (selectedItemsCount) $batchSet.removeClass('dp-none');
   else $batchSet.addClass('dp-none');
+};
+
+export const updateSet = (profitType, profit) => {
+  $('#set-title').hide();
+  $('#set-nav').show();
+  $('[data-set-nav]').removeClass('active');
+  $(`[data-set-nav="${profitType}"]`).addClass('active');
+  $('#set-input').val(profit || '');
+  $('#set-mark').text(profitType === 2 ? '元' : '%');
+  $('#set-ok')[profit ? 'removeClass' : 'addClass']('disabled');
+  $('#set-hint').hide();
+
+  $('#set').show();
+  $('#set-overlay').show();
 };
 
 // const $list = $('#list');

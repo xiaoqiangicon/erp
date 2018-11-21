@@ -90,20 +90,20 @@
     </div>
   </div>
 </div>
-<div class="set-overlay" style="display: none;"></div>
-<div class="set" style="display: none;">
-  <div class="title-11" style="display: none;">分成比例</div>
-  <div class="nav-11">
-    <div class="item-11">分成比例</div>
-    <div class="item-11 active">分成金额</div>
+<div class="set-overlay" id="set-overlay" style="display: none;"></div>
+<div class="set" id="set" style="display: none;">
+  <div class="title-11" id="set-title" style="display: none;">分成比例</div>
+  <div class="nav-11" id="set-nav">
+    <div class="item-11 active" data-set-nav="1">分成比例</div>
+    <div class="item-11" data-set-nav="2">分成金额</div>
   </div>
   <div class="body-11">
     <div class="content-11">
-      <input class="clean input-11">
-      <span>%</span>
-      <button class="clean btn-11 disabled">确定</button>
+      <input class="clean input-11" id="set-input">
+      <span id="set-mark">%</span>
+      <button class="clean btn-11 disabled" id="set-ok">确定</button>
     </div>
-    <div class="hint-11">当前佛事正在平台合作，分成比例不可超过<span class="special-11">500元</span></div>
+    <div class="hint-11" id="set-hint" style="display: none;">当前佛事正在平台合作，分成比例不可超过<span class="special-11">500元</span></div>
   </div>
 </div>
 </body>
