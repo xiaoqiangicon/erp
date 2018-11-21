@@ -27,7 +27,7 @@
         <div class="item-2">推广记录</div>
       </div>
     </div>
-    <div class="content-1">
+    <div class="content-1" style="display: none;">
       <div class="desc-1">
         推广员佣金比例<span class="c-spaces"></span>
         <span class="special-1">推广员进行分成自动结算（推广员的奖励金=佛事价格*分成奖励金）</span>
@@ -52,6 +52,41 @@
         ${require('./row.html')}
       </div>
     </div>
+    <div class="content-2">
+      <div class="filter-1">
+        <div class="btn-group">
+          <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="fl-left">状态：</span>
+            全部
+          </div>
+          <ul class="dropdown-menu">
+            <li><a>Action</a></li>
+            <li><a>Another action</a></li>
+            <li><a>Something else here</a></li>
+          </ul>
+        </div>
+        <div class="search-1">
+          <input class="clean input-1" placeholder="推广员名字/手机号码">
+          <button class="clean btn-1">搜索</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="set-overlay" style="display: none;"></div>
+<div class="set" style="display: none;">
+  <div class="title-11" style="display: none;">分成比例</div>
+  <div class="nav-11">
+    <div class="item-11">分成比例</div>
+    <div class="item-11 active">分成金额</div>
+  </div>
+  <div class="body-11">
+    <div class="content-11">
+      <input class="clean input-11">
+      <span>%</span>
+      <button class="clean btn-11 disabled">确定</button>
+    </div>
+    <div class="hint-11">当前佛事正在平台合作，分成比例不可超过<span class="special-11">500元</span></div>
   </div>
 </div>
 </body>
