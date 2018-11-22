@@ -10,14 +10,21 @@ module.exports = (req, res) => {
         // 1：需支付，2：无需支付，3：随喜
         priceType: Math.floor(Math.random() * 3) + 1,
         price: id * 10,
+        // 服务费
         hasCharge: Math.floor(Math.random() * 2),
         // 1：比例，2：金额
         chargeType: Math.floor(Math.random() * 2) + 1,
         charge: id * 10,
+        // 分成
         hasProfit: Math.floor(Math.random() * 2),
         // 1：比例，2：金额
         profitType: Math.floor(Math.random() * 2) + 1,
         profit: id * 10,
+        // 推广费
+        hasPromote: Math.floor(Math.random() * 2),
+        // 1：比例，2：金额
+        promoteType: Math.floor(Math.random() * 2) + 1,
+        promote: id * 10,
       })),
     })
   );
