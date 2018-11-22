@@ -1,9 +1,8 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-// import Pagination from '@zzh/pagination';
+import Pagination from '@zzh/pagination';
 import commonTpl from '../../common/tpl';
-import { itemsTpl } from './tpl';
-// import dialog from "../../util/dialog";
+import { itemsTpl, recordsTpl } from './tpl';
 import share from './share';
 
 export const scrollTop = () => {
@@ -55,27 +54,27 @@ const $setHint = $('#set-hint');
 /**
  * 更新 set 弹框的 ui
  *
- * @param profitType 类型，默认 1
- * @param profit 金额或比例
- * @param fixedProfitType 固定为比例或金额
+ * @param rewardType 类型，默认 1
+ * @param reward 金额或比例
+ * @param fixedRewardType 固定为比例或金额
  */
-export const updateSet = (profitType, profit, fixedProfitType) => {
-  if (fixedProfitType) {
-    $set.attr({ 'data-fixed-profit-type': fixedProfitType });
-    $setTitle.text(fixedProfitType === 1 ? '分成比例' : '分成金额');
-    $setMark.text(fixedProfitType === 1 ? '%' : '元');
+export const updateSet = (rewardType, reward, fixedRewardType) => {
+  if (fixedRewardType) {
+    $set.attr({ 'data-fixed-reward-type': fixedRewardType });
+    $setTitle.text(fixedRewardType === 1 ? '分成比例' : '分成金额');
+    $setMark.text(fixedRewardType === 1 ? '%' : '元');
     $setTitle.show();
     $setNav.hide();
   } else {
-    $set.attr({ 'data-fixed-profit-type': 0 });
+    $set.attr({ 'data-fixed-reward-type': 0 });
     $setNavItems.removeClass('active');
-    $(`[data-set-nav="${profitType || 1}"]`).addClass('active');
-    $setMark.text(profitType === 2 ? '元' : '%');
+    $(`[data-set-nav="${rewardType || 1}"]`).addClass('active');
+    $setMark.text(rewardType === 2 ? '元' : '%');
     $setTitle.hide();
     $setNav.show();
   }
-  $setInput.val(profit || '');
-  $setOk[profit ? 'removeClass' : 'addClass']('disabled');
+  $setInput.val(reward || '');
+  $setOk[reward ? 'removeClass' : 'addClass']('disabled');
   $setHint.hide();
 
   $set.show();
@@ -99,9 +98,9 @@ export const checkSet = () => {
     return;
   }
 
-  const fixedProfitType = parseInt($set.attr('data-fixed-profit-type'), 10);
-  const profitType = parseInt($('[data-set-nav].active').attr('data-set-nav'), 10);
-  const usePercent = fixedProfitType ? fixedProfitType === 1 : profitType === 1;
+  const fixedRewardType = parseInt($set.attr('data-fixed-reward-type'), 10);
+  const rewardType = parseInt($('[data-set-nav].active').attr('data-set-nav'), 10);
+  const usePercent = fixedRewardType ? fixedRewardType === 1 : rewardType === 1;
   let errorText;
 
   // 比例
@@ -209,38 +208,40 @@ export const checkSet = () => {
   $setOk.removeClass('disabled');
 };
 
-// const $list = $('#list');
-// const $page = $('#page');
-//
-// let pagination;
-//
-// export const filter = {
-//   status: 1,
-// };
-//
-// export const requestList = (page = 1, init = !0) => {
-//   $list.html(commonTpl.loading);
-//   if (init) $page.html('');
-//
-//   seeAjax('list', { ...filter, page }, res => {
-//     if (!res.success || !res.data || !res.data.length) {
-//       $list.html(commonTpl.noData);
-//       return;
-//     }
-//
-//     $list.html(rowsTpl(res));
-//
-//     if (init) {
-//       pagination = new Pagination('#page', {
-//         totalPages: res.totalPages,
-//         onChange: p => {
-//           requestList(p, !1);
-//           pagination.render();
-//         },
-//       });
-//       pagination.render();
-//     }
-//
-//     scrollTop();
-//   });
-// };
+const $list = $('#list-2');
+const $page = $('#page-2');
+
+let pagination;
+
+export const filter = {
+  status: 0,
+  search: '',
+  time: '',
+};
+
+export const requestRecords = (page = 1, init = !0) => {
+  $list.html(commonTpl.loading);
+  if (init) $page.html('');
+
+  seeAjax('records', { ...filter, page }, res => {
+    if (!res.success || !res.data || !res.data.length) {
+      $list.html(commonTpl.noData);
+      return;
+    }
+
+    $list.html(recordsTpl(res));
+
+    if (init) {
+      pagination = new Pagination('#page-2', {
+        totalPages: res.totalPages,
+        onChange: p => {
+          requestRecords(p, !1);
+          pagination.render();
+        },
+      });
+      pagination.render();
+    }
+
+    scrollTop();
+  });
+};

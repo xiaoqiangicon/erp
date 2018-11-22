@@ -16,10 +16,10 @@ module.exports = (req, res) => {
         chargeType: Math.floor(Math.random() * 2) + 1,
         charge: id * 10,
         // 分成
-        hasProfit: Math.floor(Math.random() * 2),
+        hasReward: Math.floor(Math.random() * 2),
         // 1：比例，2：金额
-        profitType: Math.floor(Math.random() * 2) + 1,
-        profit: id * 10,
+        rewardType: Math.floor(Math.random() * 2) + 1,
+        reward: id * 10,
         // 推广费
         hasPromote: Math.floor(Math.random() * 2),
         // 1：比例，2：金额

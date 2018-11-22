@@ -13,13 +13,34 @@ export const itemsTpl = handlebars.compile(`
   <div class="cell-1">
     {{#if noNeedPay}}-
     {{else}}
-      {{#if hasProfit}}{{profitText}}
+      {{#if hasReward}}{{rewardText}}
       {{else}}<span class="c-badge">未设置</span>
       {{/if}}
     {{/if}}
   </div>
   <div class="cell-1 cell-1-handle">
-    <button class="clean {{#if noNeedPay}}special-1{{/if}}" data-items-row-set="{{id}}">{{#if hasProfit}}修改{{else}}设置奖励金{{/if}}</button>
+    <button class="clean {{#if noNeedPay}}special-1{{/if}}" data-items-row-set="{{id}}">{{#if hasReward}}修改{{else}}设置奖励金{{/if}}</button>
+  </div>
+</div>
+{{/each}}
+`);
+
+export const recordsTpl = handlebars.compile(`
+{{#each data}}
+<div class="row-2">
+  <div class="cell-2">{{time}}</div>
+  <div class="cell-2">{{title}}</div>
+  <div class="cell-2">{{price}}</div>
+  <div class="cell-2">
+    <span class="special-2">{{salesmanName}}</span><br/>
+    <span>{{salesmanPhone}}</span>
+  </div>
+  <div class="cell-2">{{reward}}</div>
+  <div class="cell-2">{{charge}}</div>
+  <div class="cell-2">
+    {{#if statusFinished}}<span class="c-badge">已结算</span>{{/if}}
+    {{#if statusUnfinished}}<span class="c-badge c-badge-blue">待结算</span>{{/if}}
+    {{#if statusUnhandled}}<span class="c-badge c-badge-orange">未处理</span>{{/if}}
   </div>
 </div>
 {{/each}}

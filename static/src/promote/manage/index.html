@@ -58,20 +58,21 @@
         <div class="btn-group">
           <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             <span class="fl-left">状态：</span>
-            全部
+            <span id="filter-status">全部</span>
           </div>
           <ul class="dropdown-menu">
-            <li><a>已结算</a></li>
-            <li><a>待结算</a></li>
-            <li><a>未处理</a></li>
+            <li><a data-filter-status="0">全部</a></li>
+            <li><a data-filter-status="1">已结算</a></li>
+            <li><a data-filter-status="2">待结算</a></li>
+            <li><a data-filter-status="3">未处理</a></li>
           </ul>
         </div>
         <div class="search-1">
-          <input class="clean input-1" placeholder="推广员名字/手机号码">
-          <button class="clean btn-1">搜索</button>
+          <input class="clean input-1" placeholder="推广员名字/手机号码" id="filter-search">
+          <button class="clean btn-1" id="filter-search-ok">搜索</button>
         </div>
         <div class="time-1">
-          <input class="clean input-1" placeholder="下单时间">
+          <input class="clean input-1" placeholder="下单时间" id="filter-time">
           <span class="icon-1"></span>
         </div>
       </div>
@@ -82,11 +83,11 @@
         <div class="cell-2">支付金额（元）</div>
         <div class="cell-2">所属推广员</div>
         <div class="cell-2">分成奖励金（元）</div>
-        <div class="cell-2">服务费（元）<span class="icon-1"></span></div>
-        <div class="cell-2">状态<span class="icon-1"></span></div>
+        <div class="cell-2">服务费（元）<span class="icon-1" data-tippy="若使用分享推广功能自在家系统将收取2%的服务费"></span></div>
+        <div class="cell-2">状态<span class="icon-1" data-tippy="已结算：当前订单佣金已经到账，推广员可随时提现。<br/>待结算：当前订单已处理需14天后佣金将自动结算到推广员可提现账户。<br/>未处理：当前订单未处理，不可结算。"></span></div>
       </div>
-      <div class="list-2"></div>
-      <div class="page-1" id="page"></div>
+      <div class="list-2" id="list-2"></div>
+      <div class="page-1" id="page-2"></div>
     </div>
   </div>
 </div>
