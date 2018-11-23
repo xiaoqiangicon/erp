@@ -1,15 +1,25 @@
 import 'component/nav';
 import '@senntyou/shortcut.css';
-import '@zzh/pagination/dist/pagination.css';
-import 'tippy.js/dist/tippy.css';
 import 'toastr/build/toastr.css';
 import 'less/common.less';
-import 'less/pagination.less';
+import 'less/bootstrap.less';
 import './index.less';
 
-import 'tippy.js';
-import { requestList } from './util';
+import 'component/ueditor_config';
+import '@zzh/ueditor/src/ueditor.config';
+import '@zzh/ueditor';
+
+import 'component/ueditor_plugins/xiu_mi';
+import 'component/ueditor_plugins/import_wx_article';
+import 'component/ueditor_plugins/video';
+import 'component/ueditor_plugins/choose_image';
+import 'component/ueditor_plugins/choose_image_multi';
 import './ajax';
 import './view';
+import share from './share';
 
-requestList();
+share.editor = window.UE.getEditor('editor');
+
+share.editor.ready(() => {
+  // todo
+});

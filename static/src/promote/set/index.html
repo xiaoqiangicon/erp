@@ -18,43 +18,43 @@
       <a class="item-1 no-underline active">招募设置</a>
     </div>
     <div class="intro-1">
-      <div class="text-1">
-        推广激励是自在家推出的一款可帮助寺院拓宽推广渠道的应用工具，寺院在信众、团体成功推广佛事后给予其奖励， 以此给寺院的法会佛事带来更多传播和弘扬佛法。
+      <div class="text-1">&nbsp;</div>
+      <button class="clean btn-1" id="to-add">招募推广员</button>
+    </div>
+    <div class="box-1">
+      <div class="title-1"><i class="mark-1"></i>招募与管理</div>
+      <div class="inner-1">
+        <div class="row-1">
+          <div class="title-2">推广员招募</div>
+          <span class="radio-1 active" data-radio="recruit" data-value="1"><i></i></span>开启
+          <span class="spaces-1"></span>
+          <span class="radio-1" data-radio="recruit" data-value="0"><i></i></span>关闭
+          <div class="text-1">用来控制本寺院推广员招募，关闭后信众、团体不能提交申请。</div>
+        </div>
+        <div class="row-1">
+          <div class="title-2">推广员审核</div>
+          <span class="radio-1 active" data-radio="verify" data-value="1"><i></i></span>开启
+          <span class="spaces-1"></span>
+          <span class="radio-1" data-radio="verify" data-value="0"><i></i></span>关闭
+          <div class="text-1">开启推广员审核功能后，信众、团体申请成为本寺推广员需要经过您审核，关闭则申请后直接通过审核。</div>
+        </div>
       </div>
-      <button class="clean btn-1" id="to-add">添加佛事项目</button>
     </div>
-    <div class="nav-2">
-      <div class="item-2 active" data-filter-status="1">进行中</div>
-      <div class="item-2" data-filter-status="2">已结束</div>
+    <div class="box-1">
+      <div class="title-1"><i class="mark-1"></i>招募与管理</div>
+      <div class="inner-1">
+        <div class="row-1">
+          <div class="title-2">招募页面</div>
+          <span class="text-2">某某寺院</span><input class="form-control input-1" id="title">
+        </div>
+        <div class="row-1">
+          <div class="title-2">详情描述</div>
+          <div id="editor"></div>
+        </div>
+      </div>
     </div>
-    <div class="row-1 row-1-head" id="row-head">
-      <div class="cell-1">ID</div>
-      <div class="cell-1 cell-1-name">佛事名称</div>
-      <div class="cell-1">订单数量</div>
-      <div class="cell-1">募集金额（元）</div>
-      <div class="cell-1">分成奖励金（元）</div>
-      <div class="cell-1">状态<button class="clean icon-1" data-tippy="默认状态为上架中，点击“下架”当前佛事将不出现在推广员的列表中，已推广出去的链接产生新的订单将不对推广员结算。"></button></div>
-      <div class="cell-1">操作</div>
-    </div>
-    <div class="list-1" id="list"></div>
-    <div class="page-1" id="page"></div>
-  </div>
-</div>
-<div class="add-overlay" id="add-overlay" style="display: none;"></div>
-<div class="add" id="add" style="display: none;">
-  <div class="head-1">
-    <button class="clean close-1" id="add-close"></button>
-  </div>
-  <div class="body-1">
-    <div class="text-1">请选择需推广的佛事项目</div>
-    <div class="text-2">已审核通过或进行中的佛事项目可添加进分销列表中</div>
-    <div class="search-1">
-      <input class="clean input-1" id="add-input" placeholder="点击选择或搜索需推广的佛事项目">
-      <div class="hint-1" id="add-hint"></div>
-    </div>
-    <div class="text-3" id="add-error" style="display: none">当前佛事无需支付，不可添加到推广列表</div>
     <div class="action-1">
-      <button class="clean btn-1 disabled" id="add-ok">保存</button>
+      <button class="clean btn-1" id="ok">保存</button>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import '@zzh/promotion/dist/promotion.css';
 import 'tippy.js/dist/tippy.css';
 import 'toastr/build/toastr.css';
 import 'less/common.less';
+import 'less/bootstrap.less';
 import 'less/pagination.less';
 import './index.less';
 
