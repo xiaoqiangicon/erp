@@ -6,12 +6,12 @@ module.exports = (req, res) => {
       totalPages: 20,
       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
         id,
-        cover: '/static/images/chan-zai-128x128.png',
+        time: '2018-11-01 10:24:43',
         title: `本焕寺第廿四期施放千台吉祥焰口及供灯法会（农历十月在线登记） ${id}`,
-        count: id * 10,
-        totalMoney: id * 2,
-        profit: id * 3,
-        online: Math.floor(Math.random() * 2),
+        amount: id * 10,
+        rewardRate: id * 2,
+        reward: id * 3,
+        status: Math.floor(Math.random() * 3) + 1,
       })),
     })
   );
