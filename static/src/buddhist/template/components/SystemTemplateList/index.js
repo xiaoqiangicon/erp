@@ -39,7 +39,7 @@ export default class extends Component {
           this.onClickItem(item.id);
         }}
       >
-        <img className={styles.cover} src={item.coverPic} alt="" />
+        <div className={styles.cover} style={{ backgroundImage: `url(${item.coverPic})` }} />
         <div className={styles.content}>
           <div className={styles.name}>{item.name}</div>
           {curTemplateTypeObj ? <div className={styles.btn}>{curTemplateTypeObj.name}</div> : ''}
