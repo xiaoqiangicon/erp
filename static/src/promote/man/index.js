@@ -7,9 +7,16 @@ import 'less/common.less';
 import 'less/pagination.less';
 import './index.less';
 
+import $ from 'jquery';
 import 'tippy.js';
-import { requestList } from './util';
+import { requestInfo, requestManList, requestVerifyList } from './util';
 import './ajax';
 import './view';
 
-requestList();
+requestInfo();
+requestVerifyList();
+requestManList();
+
+setTimeout(() => {
+  $('[data-content-tab="2"]').trigger('click');
+}, 500);

@@ -32,21 +32,21 @@
         <div class="btn-group btn-group-1">
           <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             <span class="fl-left">状态：</span>
-            <span id="filter-status">全部</span>
+            <span id="verify-status">全部</span>
           </div>
           <ul class="dropdown-menu">
-            <li><a data-filter-status="0">全部</a></li>
-            <li><a data-filter-status="1">待审核</a></li>
-            <li><a data-filter-status="2">已拒绝</a></li>
+            <li><a data-verify-status="0">全部</a></li>
+            <li><a data-verify-status="1">待审核</a></li>
+            <li><a data-verify-status="2">已拒绝</a></li>
           </ul>
         </div>
       </div>
-      <div class="row-1 row-1-head">
+      <div class="row-1 row-1-head" id="verify-row-head">
         <div class="cell-1 cell-1-name">用户昵称</div>
         <div class="cell-1">姓名</div>
         <div class="cell-1">手机号码</div>
-        <div class="cell-1">支付次数<span class="icon-2"></span></div>
-        <div class="cell-1">支付金额（元）<span class="icon-2"></span></div>
+        <div class="cell-1 cs-pointer" data-verify-sort="countSort">支付次数<span class="icon-2"></span></div>
+        <div class="cell-1 cs-pointer" data-verify-sort="amountSort">支付金额（元）<span class="icon-2"></span></div>
         <div class="cell-1">状态</div>
         <div class="cell-1">申请时间</div>
         <div class="cell-1">操作</div>
@@ -59,33 +59,70 @@
         <div class="btn-group btn-group-1">
           <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             <span class="fl-left">状态：</span>
-            全部
+            <span id="man-status">全部</span>
           </div>
           <ul class="dropdown-menu">
-            <li><a>已结算</a></li>
-            <li><a>待结算</a></li>
-            <li><a>未处理</a></li>
+            <li><a data-man-status="0">全部</a></li>
+            <li><a data-man-status="1">未禁用</a></li>
+            <li><a data-man-status="2">禁用</a></li>
           </ul>
         </div>
         <div class="search-1">
-          <input class="clean input-1" placeholder="推广员昵称/手机号码">
-          <button class="clean btn-1">搜索</button>
+          <input class="clean input-1" placeholder="推广员昵称/手机号码" id="man-search">
+          <button class="clean btn-1" id="man-search-ok">搜索</button>
         </div>
       </div>
-      <div class="row-1 row-2 row-1-head">
+      <div class="row-1 row-2 row-1-head" id="man-row-head">
         <div class="cell-1 cell-2">头像</div>
         <div class="cell-1 cell-2">昵称</div>
         <div class="cell-1 cell-2">姓名</div>
         <div class="cell-1 cell-2">手机号码</div>
-        <div class="cell-1 cell-2">推广笔数<span class="icon-2"></span></div>
-        <div class="cell-1 cell-2">推广金额（元）<span class="icon-2"></span></div>
-        <div class="cell-1 cell-2">累计奖励金（元）<span class="icon-2"></span></div>
+        <div class="cell-1 cell-2 cs-pointer" data-man-sort="countSort">推广笔数<span class="icon-2"></span></div>
+        <div class="cell-1 cell-2 cs-pointer" data-man-sort="amountSort">推广金额（元）<span class="icon-2"></span></div>
+        <div class="cell-1 cell-2 cs-pointer" data-man-sort="totalAmountSort">累计奖励金（元）<span class="icon-2"></span></div>
         <div class="cell-1 cell-2">加入时间</div>
-        <div class="cell-1 cell-2">操作<span class="icon-1"></span></div>
+        <div class="cell-1 cell-2">操作<span class="icon-1" data-tippy="禁用：支持对推广员进行禁用。禁用后，不影响之前未处理和待入账的佣金结算，也可对其取消禁用。"></span></div>
       </div>
       <div class="list-1" id="list-2"></div>
       <div class="page-1" id="page-2"></div>
     </div>
+  </div>
+</div>
+<div class="verify-overlay" id="verify-overlay" style="display: none;"></div>
+<div class="verify" id="pass" style="display: none;">
+  <div class="head-11">
+    推广员申请
+    <button class="clean close-11" data-verify-close="0"></button>
+  </div>
+  <div class="text-11">你确定同意推广员 <span class="special-11" id="pass-name"></span> 加入吗？</div>
+  <div class="action-11">
+    <button class="clean btn-11" id="pass-ok">确认通过</button>
+  </div>
+</div>
+<div class="verify" id="refuse" style="display: none;">
+  <div class="head-11">
+    推广员申请
+    <button class="clean close-11" data-verify-close="0"></button>
+  </div>
+  <div class="text-12">你确定拒绝推广员 <span class="special-11" id="refuse-name">赵瑞锋</span> 加入吗？</div>
+  <div class="box-11">
+    <textarea class="clean area-11" rows="10" maxlength="200" id="refuse-input"></textarea>
+    <div class="hint-11"><span id="refuse-input-count">0</span>/200</div>
+  </div>
+  <div class="action-11">
+    <button class="clean btn-11" id="refuse-ok">确认通过</button>
+  </div>
+</div>
+<div class="verify" id="forbid" style="display: none;">
+  <div class="head-11">
+    禁用
+    <button class="clean close-11" data-verify-close="0"></button>
+  </div>
+  <div class="text-13">你确定限制推广员 <span class="special-11" id="forbid-name">赵瑞锋</span> 吗？</div>
+  <div class="text-14">禁止后不影响之前推广的分成结算，也可取消禁用</div>
+  <div class="action-11">
+    <button class="clean btn-11" id="forbid-ok">清退</button>
+    <button class="clean btn-11 btn-11-2" data-verify-close="0">取消</button>
   </div>
 </div>
 </body>

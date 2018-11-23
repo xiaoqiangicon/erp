@@ -2,44 +2,105 @@ import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import Pagination from '@zzh/pagination';
 import commonTpl from '../../common/tpl';
-import { rowsTpl } from './tpl';
+import { verifyRowsTpl, manRowsTpl } from './tpl';
+import share from './share';
 
-export const scrollTop = () => {
-  $(window).scrollTop(0);
+const $win = $(window);
+
+// 待审核
+const $pendingCount = $('#pending-count');
+
+export const requestInfo = () => {
+  seeAjax('info', {}, res => {
+    if (!res.success) return;
+
+    if (res.data.pendingCount) $pendingCount.text(res.data.pendingCount).removeClass('dp-none');
+    else $pendingCount.text(0).addClass('dp-none');
+
+    share.promoteUrl = res.data.promoteUrl || '';
+  });
 };
 
-const $list = $('#list');
-const $page = $('#page');
+const $verifyList = $('#list-1');
+const $verifyPage = $('#page-1');
+const $verifyRowHead = $('#verify-row-head');
 
-let pagination;
+let verifyPagination;
 
-export const filter = {
-  status: 1,
+export const verifyFilter = {
+  status: 0,
+  countSort: 0,
+  amountSort: 0,
+  search: '',
 };
 
-export const requestList = (page = 1, init = !0) => {
-  $list.html(commonTpl.loading);
-  if (init) $page.html('');
+export const requestVerifyList = (page = 1, init = !0) => {
+  $verifyList.html(commonTpl.loading);
+  if (init) $verifyPage.html('');
 
-  seeAjax('list', { ...filter, page }, res => {
+  seeAjax('verify-list', { ...verifyFilter, page }, res => {
     if (!res.success || !res.data || !res.data.length) {
-      $list.html(commonTpl.noData);
+      $verifyList.html(commonTpl.noData);
       return;
     }
 
-    $list.html(rowsTpl(res));
+    share.verifyList = res.data;
+
+    $verifyList.html(verifyRowsTpl(res));
 
     if (init) {
-      pagination = new Pagination('#page', {
+      verifyPagination = new Pagination('#page-1', {
         totalPages: res.totalPages,
         onChange: p => {
-          requestList(p, !1);
-          pagination.render();
+          requestVerifyList(p, !1);
+          verifyPagination.render();
         },
       });
-      pagination.render();
+      verifyPagination.render();
+    } else {
+      $win.scrollTop($verifyRowHead.offset().top);
+    }
+  });
+};
+
+const $manList = $('#list-2');
+const $manPage = $('#page-2');
+const $manRowHead = $('#man-row-head');
+
+let manPagination;
+
+export const manFilter = {
+  status: 0,
+  countSort: 0,
+  amountSort: 0,
+  totalAmountSort: 0,
+};
+
+export const requestManList = (page = 1, init = !0) => {
+  $manList.html(commonTpl.loading);
+  if (init) $manPage.html('');
+
+  seeAjax('man-list', { ...manFilter, page }, res => {
+    if (!res.success || !res.data || !res.data.length) {
+      $manList.html(commonTpl.noData);
+      return;
     }
 
-    scrollTop();
+    share.manList = res.data;
+
+    $manList.html(manRowsTpl(res));
+
+    if (init) {
+      manPagination = new Pagination('#page-2', {
+        totalPages: res.totalPages,
+        onChange: p => {
+          requestManList(p, !1);
+          manPagination.render();
+        },
+      });
+      manPagination.render();
+    } else {
+      $win.scrollTop($manRowHead.offset().top);
+    }
   });
 };

@@ -5,9 +5,7 @@ import commonTpl from '../../common/tpl';
 import { itemsTpl, recordsTpl } from './tpl';
 import share from './share';
 
-export const scrollTop = () => {
-  $(window).scrollTop(0);
-};
+const $win = $(window);
 
 const $itemsList = $('#list-1');
 const $selectAllItems = $('#select-all-items');
@@ -210,6 +208,7 @@ export const checkSet = () => {
 
 const $list = $('#list-2');
 const $page = $('#page-2');
+const $rowHead = $('#row-head-2');
 
 let pagination;
 
@@ -240,8 +239,8 @@ export const requestRecords = (page = 1, init = !0) => {
         },
       });
       pagination.render();
+    } else {
+      $win.scrollTop($rowHead.offset().top);
     }
-
-    scrollTop();
   });
 };

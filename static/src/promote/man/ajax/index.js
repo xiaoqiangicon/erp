@@ -1,9 +1,12 @@
 import seeAjax from 'see-ajax';
 import './common';
-import './list';
-import './status';
-import './search';
-import './add';
+import './verify-list';
+import './man-list';
+import './info';
+import './pass';
+import './refuse';
+import './forbid';
+import './unforbid';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 seeAjax.setEnv(2);

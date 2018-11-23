@@ -4,12 +4,11 @@ import Pagination from '@zzh/pagination';
 import commonTpl from '../../common/tpl';
 import { rowsTpl } from './tpl';
 
-export const scrollTop = () => {
-  $(window).scrollTop(0);
-};
+const $win = $(window);
 
 const $list = $('#list');
 const $page = $('#page');
+const $rowHead = $('#row-head');
 
 let pagination;
 
@@ -38,8 +37,8 @@ export const requestList = (page = 1, init = !0) => {
         },
       });
       pagination.render();
+    } else {
+      $win.scrollTop($rowHead.offset().top);
     }
-
-    scrollTop();
   });
 };

@@ -1,33 +1,57 @@
 import handlebars from 'handlebars';
 
-export const rowsTpl = handlebars.compile(`
+export const verifyRowsTpl = handlebars.compile(`
 {{#each data}}
-<div class="row-1" data-row="{{id}}">
-  <div class="cell-1">{{id}}</div>
+<div class="row-1" data-verify-row="{{id}}">
   <div class="cell-1 cell-1-name">
-    <img class="image-1" src="{{cover}}">
-    <span>{{title}}</span>
+    <img class="image-1" src="{{avatar}}">
+    {{nickname}}
   </div>
+  <div class="cell-1">{{name}}</div>
+  <div class="cell-1">{{phone}}</div>
   <div class="cell-1">{{count}}</div>
-  <div class="cell-1">{{totalMoney}}</div>
-  <div class="cell-1">{{profit}}</div>
+  <div class="cell-1">{{amount}}</div>
   <div class="cell-1">
-    <div class="c-switch {{#if online}}active{{/if}}" data-row-status="{{id}}">
-      <i class="circle-1"></i>
-      <span class="text-left-1">上架中</span>
-      <span class="text-right-1">下架中</span>
-    </div>
+    {{#if statusPending}}<span class="c-badge c-badge-blue">待审核</span>{{/if}}
+    {{#if statusRefused}}<span class="c-badge c-badge-orange">已拒绝</span>{{/if}}
   </div>
-  <a class="cell-1 cell-1-handle no-underline" href="./manage.html?id={{id}}">操作</a>
+  <div class="cell-1">{{requestTime}}</div>
+  <div class="cell-1 cell-1-handle">
+    <button class="clean" data-verify-row-pass="{{id}}">通过</button>
+    {{#if statusPending}}
+      <span class="divider-1"></span>
+      <button class="clean" data-verify-row-refuse="{{id}}">拒绝</button>    
+    {{/if}}
+  </div>
 </div>
 {{/each}}
 `);
 
-export const searchTpl = handlebars.compile(`
+export const manRowsTpl = handlebars.compile(`
 {{#each data}}
-<div class="row-3 {{#if added}}disabled{{/if}}" data-search-row="{{id}}">
-  2018年祈福大典法会2018年祈福大典法会2018年祈福大典法会
-  {{#if added}}<span class="badge-1">已添加</span>{{/if}}
+<div class="row-1 row-2" data-man-row="{{id}}">
+  <div class="cell-1 cell-2">
+    <img class="avatar-2" src="{{avatar}}">
+  </div>
+  <div class="cell-1 cell-2">{{nickname}}
+    {{#if forbidden}}<br/><span class="c-badge c-badge-orange c-badge-small">禁止推广</span>{{/if}} 
+  </div>
+  <div class="cell-1 cell-2">{{name}}</div>
+  <div class="cell-1 cell-2">{{phone}}</div>
+  <div class="cell-1 cell-2">{{count}}</div>
+  <div class="cell-1 cell-2">{{amount}}</div>
+  <div class="cell-1 cell-2">{{totalAmount}}</div>
+  <div class="cell-1 cell-2">{{joinTime}}</div>
+  <div class="cell-1 cell-2 cell-1-handle">
+    <a class="no-underline cell-1-handle" href="/?id={{id}}">详情</a>
+    <span class="divider-1"></span>
+    {{#if forbidden}}
+    <button class="clean" data-man-row-unforbid="{{id}}">取消禁用</button>
+    {{else}}
+    <button class="clean" data-man-row-forbid="{{id}}">禁用</button>
+    {{/if}}
+  </div>
 </div>
+
 {{/each}}
 `);
