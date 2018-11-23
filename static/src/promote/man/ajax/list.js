@@ -2,7 +2,7 @@
 import seeAjax from 'see-ajax';
 
 seeAjax.config('list', {
-  url: ['', '', '/static/src/promote/one-man/mock/list'],
+  url: ['', '', '/static/src/promote/man/mock/list'],
   post: [
     undefined,
     undefined,

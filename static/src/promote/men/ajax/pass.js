@@ -1,5 +1,5 @@
 import seeAjax from 'see-ajax';
 
 seeAjax.config('pass', {
-  url: ['', '', '/static/src/promote/man/mock/pass.json'],
+  url: ['', '', '/static/src/promote/men/mock/pass.json'],
 });

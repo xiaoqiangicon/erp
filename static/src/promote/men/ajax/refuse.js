@@ -1,5 +1,5 @@
 import seeAjax from 'see-ajax';
 
 seeAjax.config('refuse', {
-  url: ['', '', '/static/src/promote/man/mock/refuse.json'],
+  url: ['', '', '/static/src/promote/men/mock/refuse.json'],
 });

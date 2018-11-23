@@ -2,7 +2,7 @@
 import seeAjax from 'see-ajax';
 
 seeAjax.config('verify-list', {
-  url: ['', '', '/static/src/promote/man/mock/verify-list'],
+  url: ['', '', '/static/src/promote/men/mock/verify-list'],
   post: [
     undefined,
     undefined,
