@@ -2,6 +2,7 @@ import $ from 'jquery';
 import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import toastr from 'toastr';
+import promotion from '@zzh/promotion';
 import { manFilter, requestInfo, requestManList, requestVerifyList, verifyFilter } from './util';
 import dialog from '../../util/dialog';
 import confirm from '../../util/confirm';
@@ -35,6 +36,8 @@ seeView({
     '!click #forbid-ok': 'clickForbidOk',
     // 点击取消禁用
     'click [data-man-row-unforbid]': 'clickManRowUnforbid',
+    // 点击招募推广人员
+    '!click #to-promote': 'clickToPromote',
   },
   // 切换 tab
   clickContentTab(e) {
@@ -226,5 +229,10 @@ seeView({
         requestManList();
       });
     });
+  },
+  // 点击招募推广人员
+  clickToPromote() {
+    if (share.promoteUrl) promotion.show({ link: share.promoteUrl });
+    else location.href = '/';
   },
 });
