@@ -6,4 +6,4 @@ import './search';
 import './add';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
-seeAjax.setEnv(2);
+// seeAjax.setEnv(2);
