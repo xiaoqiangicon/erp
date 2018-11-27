@@ -233,6 +233,6 @@ seeView({
   // 点击招募推广人员
   clickToPromote() {
     if (share.promoteUrl) promotion.show({ link: share.promoteUrl });
-    else location.href = '/';
+    else location.href = '/zzhadmin/promotionSetHtml/';
   },
 });

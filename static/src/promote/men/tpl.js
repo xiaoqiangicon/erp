@@ -43,7 +43,7 @@ export const manRowsTpl = handlebars.compile(`
   <div class="cell-1 cell-2">{{totalAmount}}</div>
   <div class="cell-1 cell-2">{{joinTime}}</div>
   <div class="cell-1 cell-2 cell-1-handle">
-    <a class="no-underline cell-1-handle" href="/?id={{id}}">详情</a>
+    <a class="no-underline cell-1-handle" href="/zzhadmin/promotionMenDetailsHtml/?id={{id}}">详情</a>
     <span class="divider-1"></span>
     {{#if forbidden}}
     <button class="clean" data-man-row-unforbid="{{id}}">取消禁用</button>

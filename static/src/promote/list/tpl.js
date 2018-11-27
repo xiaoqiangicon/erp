@@ -18,7 +18,7 @@ export const rowsTpl = handlebars.compile(`
       <span class="text-right-1">下架中</span>
     </div>
   </div>
-  <a class="cell-1 cell-1-handle no-underline" href="./manage.html?id={{id}}">管理</a>
+  <a class="cell-1 cell-1-handle no-underline" href="/zzhadmin/promotionManageHtml/?id={{id}}">管理</a>
 </div>
 {{/each}}
 `);
