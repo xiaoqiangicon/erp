@@ -110,6 +110,12 @@ body {
   .cell-1-handle {
     color: #71ba31;
   }
+
+  .divider-1 {
+    display: inline-block;
+    height: 10px;
+    border-left: 2px solid #dde4ec;
+  }
 }
 
 .row-1-head {
@@ -140,6 +146,13 @@ body {
 
   .row-1:nth-child(even) {
     background-color: #f8faf9;
+  }
+}
+
+// 不显示状态
+.no-status-cell {
+  .cell-1:nth-child(10n + 6) {
+    display: none;
   }
 }
 

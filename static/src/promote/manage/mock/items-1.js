@@ -7,8 +7,8 @@ module.exports = (req, res) => {
         total: 199,
         list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
           id,
-          title: `选择项名称 ${id}`,
-          cover: '/static/images/chan-zai-128x128.png',
+          name: `选择项名称 ${id}`,
+          pic: '/static/images/chan-zai-128x128.png',
           // 1：需支付，2：无需支付，3：随喜
           priceType: Math.floor(Math.random() * 3) + 1,
           price: id * 10,

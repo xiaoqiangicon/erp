@@ -5,6 +5,10 @@ import toastr from 'toastr';
 import { filter, requestList } from './util';
 import { searchTpl } from './tpl';
 import dialog from '../../util/dialog';
+import confirm from '../../util/confirm';
+import share from './share';
+
+const $body = $('body');
 
 // 选择的搜索结果
 let selectedSearchId = 0;
@@ -15,6 +19,8 @@ seeView({
     '!click [data-filter-status]': 'clickFilterStatus',
     // 点击切换上架
     'click [data-row-status]': 'clickRowStatus',
+    'click [data-row-manage]': 'clickRowManage',
+    'click [data-row-delete]': 'clickRowDelete',
     // 点击添加一个新项目
     '!click #to-add': 'clickToAdd',
     '!click #add-overlay': 'hideAdd',
@@ -36,6 +42,10 @@ seeView({
     $this.addClass('active');
 
     filter.status = parseInt($this.attr('data-filter-status'), 10);
+
+    if (filter.status === 1) $body.removeClass('no-status-cell');
+    else $body.addClass('no-status-cell');
+
     requestList();
   },
   // 点击切换上架
@@ -57,6 +67,34 @@ seeView({
         $this.addClass('active');
         toastr.success('上架成功');
       }
+    });
+  },
+  clickRowManage(e) {
+    const $this = $(e.currentTarget);
+    const id = parseInt($this.attr('data-row-manage'), 10);
+
+    const item = share.items.find(i => i.id === id);
+
+    window.sessionStorage['promote/list:item'] = JSON.stringify(item);
+
+    setTimeout(() => {
+      location.href = `/zzhadmin/promotionManageHtml/?id=${id}`;
+    }, 200);
+  },
+  clickRowDelete(e) {
+    const $this = $(e.currentTarget);
+    const id = parseInt($this.attr('data-row-delete'), 10);
+
+    confirm('确定删除吗', () => {
+      seeAjax('delete', { id }, res => {
+        if (!res.success) {
+          dialog(res.message);
+          return;
+        }
+
+        toastr.success('删除成功');
+        requestList();
+      });
     });
   },
   // 点击添加一个新项目

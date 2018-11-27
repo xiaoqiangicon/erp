@@ -18,7 +18,15 @@ export const rowsTpl = handlebars.compile(`
       <span class="text-right-1">下架中</span>
     </div>
   </div>
-  <a class="cell-1 cell-1-handle no-underline" href="/zzhadmin/promotionManageHtml/?id={{id}}">管理</a>
+  <div class="cell-1 cell-1-handle">
+    <button class="clean" data-row-manage="{{id}}">管理</button>
+    {{#unless online}}
+    {{#unless ended}}
+    <span class="divider-1"></span>
+    <button class="clean" data-row-delete="{{id}}">删除</button>
+    {{/unless}}
+    {{/unless}}
+  </div>
 </div>
 {{/each}}
 `);

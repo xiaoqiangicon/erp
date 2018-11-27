@@ -25,7 +25,7 @@ seeAjax('info', {}, res => {
     return;
   }
 
-  const { title, statusText, addTime, ended, hasSelection } = res.data;
+  const { title, statusText, addTime, ended } = res.data;
   $('#display-title').text(title);
   $('#display-status').text(statusText);
   $('#display-add-time').text(addTime);
@@ -33,7 +33,6 @@ seeAjax('info', {}, res => {
   const $content1 = $('[data-content="1"]');
 
   if (ended) $content1.addClass('no-select');
-  if (!hasSelection) $content1.addClass('no-selection');
 
   $('#summary').show();
   $content1.show();

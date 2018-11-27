@@ -7,8 +7,8 @@ const req = {
 const refactor = {
   data: [
     {
-      // todo: 缺少 added 字段
       title: 'name',
+      added: 'isPromotion',
     },
   ],
 };

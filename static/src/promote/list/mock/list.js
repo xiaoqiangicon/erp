@@ -12,6 +12,7 @@ module.exports = (req, res) => {
         totalMoney: id * 2,
         profit: id * 3,
         online: Math.floor(Math.random() * 2),
+        ended: Math.floor(Math.random() * 2),
       })),
     })
   );

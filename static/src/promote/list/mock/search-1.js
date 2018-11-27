@@ -6,7 +6,7 @@ module.exports = (req, res) => {
       data: [1, 2, 3, 4].map(id => ({
         id,
         name: `本焕寺第廿四期施放千台吉祥焰口及供灯法会（农历十月在线登记） ${id}`,
-        added: Math.floor(Math.random() * 2),
+        isPromotion: Math.floor(Math.random() * 2),
       })),
     })
   );

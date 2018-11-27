@@ -3,6 +3,7 @@ import seeAjax from 'see-ajax';
 import Pagination from '@zzh/pagination';
 import commonTpl from '../../common/tpl';
 import { rowsTpl } from './tpl';
+import share from './share';
 
 const $win = $(window);
 
@@ -25,6 +26,8 @@ export const requestList = (page = 1, init = !0) => {
       $list.html(commonTpl.noData);
       return;
     }
+
+    share.items = res.data;
 
     $list.html(rowsTpl(res));
 

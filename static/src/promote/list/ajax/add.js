@@ -1,6 +1,17 @@
 import seeAjax from 'see-ajax';
 
-// todo: 缺少这个接口
+const req = {
+  id: 'commodityId',
+};
+
+const pre = params => ({ ...params, isPromotion: 1 });
+
 seeAjax.config('add', {
-  url: ['', '', '/static/src/promote/list/mock/add.json'],
+  url: [
+    '/zzhadmin/setIsPromotion/',
+    '/static/src/promote/list/mock/add-1.json',
+    '/static/src/promote/list/mock/add.json',
+  ],
+  req: [req, req],
+  pre: [pre, pre],
 });

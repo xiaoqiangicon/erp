@@ -12,10 +12,11 @@ const refactor = {
   data: 'data.list',
   _data: [
     {
-      // todo: 缺 online, cover 字段
       title: 'name',
+      cover: 'pic',
       count: 'totalJoinNum',
       profit: 'totalPromotionMoney',
+      ended: 'isEnd',
     },
   ],
 };
@@ -23,6 +24,11 @@ const refactor = {
 const post = res => {
   /* eslint-disable no-param-reassign */
   res.totalPages = Math.ceil((res.totalCount || 1) / 20);
+
+  if (res.data && res.data.length)
+    res.data.forEach(item => {
+      item.online = item.isPromotion === 1;
+    });
 };
 
 seeAjax.config('list', {
