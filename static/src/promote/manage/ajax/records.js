@@ -1,14 +1,20 @@
 /* eslint-disable no-param-reassign */
 import seeAjax from 'see-ajax';
+import util from '@zzh/util';
 
 const req = {
-  // status: '', // todo: 这个参数接口给的有问题
+  status: 'type',
   search: 'number',
   time: 'date',
   page: 'pageNum',
 };
 
-const pre = params => ({ ...params, pageNum: params.pageNum - 1, pageSize: 20 });
+const pre = params => ({
+  ...params,
+  commodityId: parseInt(util.urlParams.id, 10),
+  pageNum: params.pageNum - 1,
+  pageSize: 20,
+});
 
 const refactor = {
   totalCount: 'data.total',

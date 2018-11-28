@@ -10,25 +10,52 @@ const refactor = {
     {
       title: 'name',
       cover: 'pic',
+      noNeedPay: 'isNeedPay', // 无需支付
+      randomPay: 'isRandow', // 随喜
+      charge: 'serviceMoney',
+      reward: 'promotionPrice',
+      promote: 'percent',
     },
   ],
 };
 
 const post = res => {
   res.data.forEach(item => {
-    item.priceText = item.price;
-    item.noNeedPay = !1;
-    if (item.priceType === 2) {
+    // 价格
+    if (item.noNeedPay) {
+      item.priceType = 2;
       item.priceText = '无需支付';
-      item.noNeedPay = !0;
-    } else if (item.priceType === 3) item.priceText = '随喜';
+    } else if (item.randomPay) {
+      item.priceType = 3;
+      item.priceText = '随喜';
+    } else {
+      item.priceType = 1;
+      item.priceText = item.price;
+    }
+
+    // 服务费
+    item.hasCharge = item.charge > 0;
+    item.chargeType = 1; // 后台只有比例
 
     item.chargeText = item.charge;
-    if (!item.hasCharge) item.chargeText = '-';
-    else if (item.chargeType === 1) item.chargeText = `支付价格*${item.charge}%`;
+    if (!item.hasCharge || item.priceType === 2) item.chargeText = '-';
+    else if (item.priceType === 3) item.chargeText = `支付价格*${item.charge}%`;
+    else if (item.priceType === 1) item.chargeText = parseFloat(((item.price * item.charge) / 100).toFixed(2));
 
+    // 分成
     item.rewardText = item.reward;
-    if (item.rewardType === 1) item.rewardText = `支付价格*${item.reward}%`;
+    item.hasReward = !1;
+    if (item.promotionType === 1) item.rewardType = 2;
+    else if (item.promotionType === 2) item.rewardType = 1;
+    else if (item.promotionType === 3) item.hasReward = !0;
+
+    if (!item.hasReward || item.priceType === 2) item.rewardText = '-';
+    else if (item.priceType === 3) item.rewardText = `支付价格*${item.reward}%`;
+    else if (item.priceType === 1) item.rewardText = parseFloat(((item.price * item.reward) / 100).toFixed(2));
+
+    // 推广费
+    item.hasPromote = item.promote > 0;
+    item.promoteType = 1; // 后台只有比例
   });
 };
 
@@ -50,7 +77,6 @@ const postLocal = res => {
   });
 };
 
-// todo: 接口难以看懂
 seeAjax.config('items', {
   url: [
     '/zzhadmin/promotionSubdivideList/',

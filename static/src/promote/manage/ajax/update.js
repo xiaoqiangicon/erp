@@ -2,8 +2,23 @@ import seeAjax from 'see-ajax';
 
 const req = {
   ids: 'subdivideIds',
-  reward: 'promotionPercentage',
-  // todo: 可能是金额
+};
+
+const pre = params => {
+  const result = { ...params };
+
+  if (result.rewardType === 1) {
+    result.promotionMoney = -1;
+    result.promotionPercentage = result.reward;
+  } else {
+    result.promotionMoney = result.reward;
+    result.promotionPercentage = 0;
+  }
+
+  delete result.reward;
+  delete result.rewardType;
+
+  return result;
 };
 
 seeAjax.config('update', {
@@ -13,4 +28,5 @@ seeAjax.config('update', {
     '/static/src/promote/manage/mock/update.json',
   ],
   req: [req, req],
+  pre: [pre, pre],
 });
