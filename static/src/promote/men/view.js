@@ -66,10 +66,11 @@ seeView({
 
     if ($this.hasClass('show-sort')) {
       $this.removeClass('show-sort');
-      verifyFilter[field] = 0;
+      verifyFilter.sortField = '';
     } else {
+      $('[data-verify-sort]').removeClass('show-sort');
       $this.addClass('show-sort');
-      verifyFilter[field] = 1;
+      verifyFilter.sortField = field;
     }
 
     requestVerifyList();
@@ -168,10 +169,11 @@ seeView({
 
     if ($this.hasClass('show-sort')) {
       $this.removeClass('show-sort');
-      manFilter[field] = 0;
+      manFilter.sortField = '';
     } else {
+      $('[data-man-sort]').removeClass('show-sort');
       $this.addClass('show-sort');
-      manFilter[field] = 1;
+      manFilter.sortField = field;
     }
 
     requestManList();

@@ -25,8 +25,7 @@ let verifyPagination;
 
 export const verifyFilter = {
   status: 0,
-  countSort: 0,
-  amountSort: 0,
+  sortField: '',
 };
 
 export const requestVerifyList = (page = 1, init = !0) => {
@@ -68,10 +67,7 @@ let manPagination;
 
 export const manFilter = {
   status: 0,
-  countSort: 0,
-  amountSort: 0,
-  totalAmountSort: 0,
-  timeSort: 0,
+  sortField: '',
   search: '',
 };
 

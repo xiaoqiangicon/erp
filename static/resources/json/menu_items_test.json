@@ -10,7 +10,6 @@
           "name": "我的寺院",
           "link": "/zzhadmin/templeIndex/",
           "controlMark": "pw_website"
-
         },
         {
           "id": "temple-donate-box",
@@ -216,6 +215,19 @@
           "name": "客流统计",
           "link": "/zzhadmin/traffic/",
           "controlMark": "pw_guest_traffic"
+        }
+      ]
+    },
+    {
+      "id": "promote",
+      "name": "推广工具",
+      "icon": "glyphicon-share",
+      "subItems": [
+        {
+          "id": "promote-list",
+          "name": "分享推广",
+          "link": "/zzhadmin/promotionListHtml/",
+          "controlMark": "pw_promotion"
         }
       ]
     }

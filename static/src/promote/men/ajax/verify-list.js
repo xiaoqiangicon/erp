@@ -12,7 +12,12 @@ const pre = params => {
   else if (result.status === 1) result.type = 1;
   else if (result.status === 2) result.type = 2;
 
+  if (result.sortField === 'count') result.sortType = 1;
+  else if (result.sortField === 'amount') result.sortType = 2;
+  else result.sortType = 4;
+
   delete result.status;
+  delete result.sortField;
 
   return result;
 };

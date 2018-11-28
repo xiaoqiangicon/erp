@@ -12,7 +12,13 @@ const pre = params => {
   else if (result.status === 1) result.type = 0;
   else if (result.status === 2) result.type = 3;
 
+  if (result.sortField === 'count') result.sortType = 6;
+  else if (result.sortField === 'amount') result.sortType = 5;
+  else if (result.sortField === 'totalAmount') result.sortType = 3;
+  else result.sortType = 4;
+
   delete result.status;
+  delete result.sortField;
 
   return result;
 };
@@ -25,8 +31,8 @@ const refactor = {
       avatar: 'headImg',
       nickname: 'nickName',
       phone: 'mobile',
-      count: 'totalCount',
-      amount: 'totalMoney',
+      count: 'payNum',
+      amount: 'payMoney',
       totalAmount: 'promotionMoney',
       joinTime: 'addTime',
     },

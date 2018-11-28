@@ -1,6 +1,19 @@
 import seeAjax from 'see-ajax';
 
-// todo: 没有此接口
+const refactor = {
+  data: {
+    receive: 'isRecruitPromotion',
+    verify: 'isPromotionReview',
+    title: 'recruitPromotionTitle',
+    intro: 'recruitPromotionContent',
+  },
+};
+
 seeAjax.config('info', {
-  url: ['', '/static/src/promote/set/mock/info-1.json', '/static/src/promote/set/mock/info.json'],
+  url: [
+    '/zzhadmin/getTemplePromotion/',
+    '/static/src/promote/set/mock/info-1.json',
+    '/static/src/promote/set/mock/info.json',
+  ],
+  refactor: [refactor, refactor],
 });
