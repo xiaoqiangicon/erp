@@ -13,11 +13,10 @@ import $ from 'jquery';
 import 'tippy.js';
 import 'bootstrap-datepicker';
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js';
-import { requestInfo, requestList, filter } from './util';
+import { requestList, filter } from './util';
 import './ajax';
 import './view';
 
-requestInfo();
 requestList();
 
 // 初始化日期选择器

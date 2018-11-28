@@ -6,20 +6,16 @@ import { rowsTpl } from './tpl';
 
 const $win = $(window);
 
-export const requestInfo = () => {
-  seeAjax('info', {}, res => {
-    if (!res.success) return;
-
-    $('#nickname').text(res.data.nickname);
-    $('#name').text(res.data.name);
-    $('#avatar').attr({ src: res.data.avatar });
-    $('#phone').text(res.data.phone);
-    $('#pending-income').text(res.data.pendingIncome);
-    $('#got-income').text(res.data.gotIncome);
-    $('#total-income').text(res.data.totalIncome);
-    $('#promote-count').text(res.data.promoteCount);
-    $('#intro').show();
-  });
+const renderInfo = res => {
+  $('#nickname').text(res.nickname);
+  $('#name').text(res.name);
+  $('#avatar').attr({ src: res.avatar });
+  $('#phone').text(res.phone);
+  $('#pending-income').text(res.pendingIncome);
+  $('#got-income').text(res.gotIncome);
+  $('#total-income').text(res.totalIncome);
+  $('#promote-count').text(res.promoteCount);
+  $('#intro').show();
 };
 
 const $list = $('#list');
@@ -42,6 +38,8 @@ export const requestList = (page = 1, init = !0) => {
       $list.html(commonTpl.noData);
       return;
     }
+
+    renderInfo(res);
 
     $list.html(rowsTpl(res));
 

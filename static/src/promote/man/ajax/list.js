@@ -11,6 +11,13 @@ const pre = params => ({ ...params, isFinish: params.isFinish - 1, pageNum: para
 
 const refactor = {
   totalCount: 'data.total',
+  nickname: 'data.nickName',
+  name: 'data.name',
+  avatar: 'data.headImg',
+  phone: 'data.mobile',
+  promoteCount: 'data.payNum',
+  totalIncome: 'data.promotionMoney',
+  gotIncome: 'data.pickUpMoney',
   data: 'data.list',
   _data: [
     {
@@ -27,6 +34,7 @@ const refactor = {
 const post = res => {
   /* eslint-disable no-param-reassign */
   res.totalPages = Math.ceil((res.totalCount || 1) / 20);
+  res.pendingIncome = res.totalIncome - res.gotIncome;
 
   if (res.data && res.data.length)
     res.data.forEach(item => {

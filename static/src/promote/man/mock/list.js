@@ -4,6 +4,14 @@ module.exports = (req, res) => {
     JSON.stringify({
       success: true,
       totalPages: 20,
+      nickname: '昵称昵称昵称',
+      name: '姓名姓名姓名',
+      avatar: '/static/images/chan-zai-128x128.png',
+      phone: '12312312312',
+      promoteCount: 321,
+      totalIncome: 789,
+      gotIncome: 456,
+      pendingIncome: 123,
       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
         id,
         time: '2018-11-01 10:24:43',

@@ -5,6 +5,13 @@ module.exports = (req, res) => {
       result: 1,
       data: {
         total: 199,
+        nickName: '昵称昵称昵称',
+        name: '姓名姓名姓名',
+        headImg: '/static/images/chan-zai-128x128.png',
+        mobile: '12312312312',
+        payNum: 321,
+        promotionMoney: 789,
+        pickUpMoney: 456,
         list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
           id,
           payTime: '2018-11-01 10:24:43',

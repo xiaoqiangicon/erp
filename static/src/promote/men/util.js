@@ -10,13 +10,11 @@ const $win = $(window);
 // 待审核
 const $pendingCount = $('#pending-count');
 
-const renderInfo = existedData => {
-  const { pendingCount, hasPromoteUrl } = existedData;
-
-  if (pendingCount) $pendingCount.text(pendingCount).removeClass('dp-none');
+const renderInfo = res => {
+  if (res.pendingCount) $pendingCount.text(res.pendingCount).removeClass('dp-none');
   else $pendingCount.text(0).addClass('dp-none');
 
-  share.hasPromoteUrl = hasPromoteUrl;
+  share.hasPromoteUrl = res.hasPromoteUrl;
 };
 
 const $verifyList = $('#list-1');
@@ -43,7 +41,7 @@ export const requestVerifyList = (page = 1, init = !0) => {
 
     share.verifyList = res.data;
 
-    renderInfo({ pendingCount: res.pendingCount, hasPromoteUrl: res.hasPromoteUrl });
+    renderInfo(res);
 
     $verifyList.html(verifyRowsTpl(res));
 
