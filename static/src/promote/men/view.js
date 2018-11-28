@@ -3,7 +3,7 @@ import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import toastr from 'toastr';
 import promotion from '@zzh/promotion';
-import { manFilter, requestInfo, requestManList, requestVerifyList, verifyFilter } from './util';
+import { manFilter, requestManList, requestVerifyList, verifyFilter } from './util';
 import dialog from '../../util/dialog';
 import confirm from '../../util/confirm';
 import share from './share';
@@ -112,7 +112,6 @@ seeView({
         .hide();
       $('#verify-overlay').hide();
       toastr.success('操作成功');
-      requestInfo();
       requestVerifyList();
     });
   },
@@ -152,7 +151,6 @@ seeView({
         .hide();
       $('#verify-overlay').hide();
       toastr.success('操作成功');
-      requestInfo();
       requestVerifyList();
     });
   },
@@ -232,7 +230,7 @@ seeView({
   },
   // 点击招募推广人员
   clickToPromote() {
-    if (share.promoteUrl) promotion.show({ link: share.promoteUrl });
+    if (share.hasPromoteUrl) promotion.show({ link: '/' });
     else location.href = '/zzhadmin/promotionSetHtml/';
   },
 });

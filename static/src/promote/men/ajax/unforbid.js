@@ -4,7 +4,7 @@ const req = {
   id: 'userId',
 };
 
-const pre = params => ({ ...params }); // todo: 缺少 type
+const pre = params => ({ ...params, type: 0 });
 
 seeAjax.config('unforbid', {
   url: [

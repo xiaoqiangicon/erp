@@ -2,22 +2,35 @@
 import seeAjax from 'see-ajax';
 
 const req = {
-  // todo: 参数不明
   page: 'pageNum',
 };
 
-const pre = params => ({ ...params, pageNum: params.pageNum - 1, pageSize: 20 });
+const pre = params => {
+  const result = { ...params, pageNum: params.pageNum - 1, pageSize: 20 };
+
+  if (result.status === 0) result.type = 4;
+  else if (result.status === 1) result.type = 1;
+  else if (result.status === 2) result.type = 2;
+
+  delete result.status;
+
+  return result;
+};
 
 const refactor = {
   totalCount: 'data.total',
+  pendingCount: 'data.waitNum',
+  hasPromoteUrl: 'data.openPromotion',
   data: 'data.list',
   _data: [
     {
-      // todo: 缺少 name, phone, requestTime, status 字段
       avatar: 'headImg',
       nickname: 'nickName',
+      phone: 'mobile',
       count: 'totalCount',
       amount: 'totalMoney',
+      requestTime: 'addTime',
+      status: 'type',
     },
   ],
 };

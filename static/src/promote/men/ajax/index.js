@@ -2,7 +2,6 @@ import seeAjax from 'see-ajax';
 import './common';
 import './verify-list';
 import './man-list';
-import './info';
 import './pass';
 import './refuse';
 import './forbid';

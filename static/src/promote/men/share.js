@@ -1,5 +1,5 @@
 export default {
-  promoteUrl: undefined,
+  hasPromoteUrl: !1,
   verifyList: [],
   manList: [],
 };

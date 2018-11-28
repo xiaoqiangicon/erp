@@ -11,11 +11,10 @@ import './index.less';
 
 // import $ from 'jquery';
 import 'tippy.js';
-import { requestInfo, requestManList, requestVerifyList } from './util';
+import { requestManList, requestVerifyList } from './util';
 import './ajax';
 import './view';
 
-requestInfo();
 requestVerifyList();
 requestManList();
 

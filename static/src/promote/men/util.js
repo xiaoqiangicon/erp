@@ -10,15 +10,13 @@ const $win = $(window);
 // 待审核
 const $pendingCount = $('#pending-count');
 
-export const requestInfo = () => {
-  seeAjax('info', {}, res => {
-    if (!res.success) return;
+const renderInfo = existedData => {
+  const { pendingCount, hasPromoteUrl } = existedData;
 
-    if (res.data.pendingCount) $pendingCount.text(res.data.pendingCount).removeClass('dp-none');
-    else $pendingCount.text(0).addClass('dp-none');
+  if (pendingCount) $pendingCount.text(pendingCount).removeClass('dp-none');
+  else $pendingCount.text(0).addClass('dp-none');
 
-    share.promoteUrl = res.data.promoteUrl || '';
-  });
+  share.hasPromoteUrl = hasPromoteUrl;
 };
 
 const $verifyList = $('#list-1');
@@ -31,7 +29,6 @@ export const verifyFilter = {
   status: 0,
   countSort: 0,
   amountSort: 0,
-  search: '',
 };
 
 export const requestVerifyList = (page = 1, init = !0) => {
@@ -45,6 +42,8 @@ export const requestVerifyList = (page = 1, init = !0) => {
     }
 
     share.verifyList = res.data;
+
+    renderInfo({ pendingCount: res.pendingCount, hasPromoteUrl: res.hasPromoteUrl });
 
     $verifyList.html(verifyRowsTpl(res));
 
@@ -74,6 +73,8 @@ export const manFilter = {
   countSort: 0,
   amountSort: 0,
   totalAmountSort: 0,
+  timeSort: 0,
+  search: '',
 };
 
 export const requestManList = (page = 1, init = !0) => {
