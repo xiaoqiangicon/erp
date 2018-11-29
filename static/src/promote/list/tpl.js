@@ -34,7 +34,7 @@ export const rowsTpl = handlebars.compile(`
 export const searchTpl = handlebars.compile(`
 {{#each data}}
 <div class="row-3 {{#if added}}disabled{{/if}}" data-search-row="{{id}}">
-  2018年祈福大典法会2018年祈福大典法会2018年祈福大典法会
+  {{title}}
   {{#if added}}<span class="badge-1">已添加</span>{{/if}}
 </div>
 {{/each}}

@@ -13,6 +13,10 @@ const refactor = {
   ],
 };
 
+const post = res => {
+  if (res.data && res.data.length && res.data.length > 4) res.data = res.data.slice(0, 4);
+};
+
 seeAjax.config('search', {
   url: [
     '/zzhadmin/promotionSearchCommodityList/',
@@ -21,4 +25,5 @@ seeAjax.config('search', {
   ],
   req: [req, req],
   refactor: [refactor, refactor],
+  post: [post, post],
 });
