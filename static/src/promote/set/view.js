@@ -47,9 +47,8 @@ seeView({
 
     handling.show();
 
+    // eslint-disable-next-line no-new
     new StoreImage(intro, newIntro => {
-      // eslint-disable-line no-new
-
       seeAjax('update', { receive, verify, title, intro: newIntro }, res => {
         handling.hide();
 
@@ -64,6 +63,11 @@ seeView({
   },
   // 点击去招募
   clickToPromote() {
-    promotion.show({ link: '/' });
+    if (!share.promoteUrl) {
+      dialog('暂无推广链接，请先注册信息');
+      return;
+    }
+
+    promotion.show({ link: share.promoteUrl });
   },
 });

@@ -6,6 +6,7 @@ import './pass';
 import './refuse';
 import './forbid';
 import './unforbid';
+import './info';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 // seeAjax.setEnv(2);

@@ -2,10 +2,6 @@ import seeAjax from 'see-ajax';
 
 const refactor = {
   data: {
-    receive: 'isRecruitPromotion',
-    verify: 'isPromotionReview',
-    title: 'recruitPromotionTitle',
-    intro: 'recruitPromotionContent',
     promoteUrl: 'applyUrl',
   },
 };

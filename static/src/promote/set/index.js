@@ -36,6 +36,8 @@ seeAjax('info', {}, res => {
   share.editor = window.UE.getEditor('editor');
   $('#title').val(res.data.title || '');
 
+  share.promoteUrl = res.data.promoteUrl;
+
   share.editor.ready(() => {
     share.editor.setContent(res.data.intro || '');
   });

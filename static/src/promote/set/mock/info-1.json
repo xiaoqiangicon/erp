@@ -4,6 +4,7 @@
     "isRecruitPromotion": 0,
     "isPromotionReview": 0,
     "recruitPromotionTitle": "推广员招募计划",
-    "recruitPromotionContent": "哈哈哈哈哈啊"
+    "recruitPromotionContent": "哈哈哈哈哈啊",
+    "applyUrl": "/promote"
   }
 }

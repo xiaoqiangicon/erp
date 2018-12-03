@@ -232,7 +232,7 @@ seeView({
   },
   // 点击招募推广人员
   clickToPromote() {
-    if (share.hasPromoteUrl) promotion.show({ link: '/' });
+    if (share.hasPromoteUrl) promotion.show({ link: share.promoteUrl });
     else location.href = '/zzhadmin/promotionSetHtml/';
   },
 });
