@@ -11,6 +11,7 @@ module.exports = (req, res) => {
           nickName: `昵称昵称昵称 ${id}`,
           name: `姓名姓名姓名 ${id}`,
           mobile: '12345678901',
+          userId: id * 10,
           payNum: id * 10,
           payMoney: id * 100,
           promotionMoney: id * 1000,

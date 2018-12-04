@@ -25,7 +25,7 @@ const $rowHead = $('#row-head');
 let pagination;
 
 export const filter = {
-  status: 0,
+  status: -1,
   time: '',
 };
 

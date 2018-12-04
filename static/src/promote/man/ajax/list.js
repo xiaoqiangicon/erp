@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import seeAjax from 'see-ajax';
+import util from '@zzh/util';
 
 const req = {
   status: 'type',
@@ -7,7 +8,12 @@ const req = {
   page: 'pageNum',
 };
 
-const pre = params => ({ ...params, isFinish: params.isFinish - 1, pageNum: params.pageNum - 1, pageSize: 20 });
+const pre = params => ({
+  ...params,
+  userId: parseInt(util.urlParams.userId, 10),
+  pageNum: params.pageNum - 1,
+  pageSize: 20,
+});
 
 const refactor = {
   totalCount: 'data.total',
