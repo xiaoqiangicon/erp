@@ -10,7 +10,7 @@ const refactor = {
     {
       title: 'name',
       cover: 'pic',
-      noNeedPay: 'isNeedPay', // 无需支付
+      needPay: 'isNeedPay', // 无需支付
       randomPay: 'isRandow', // 随喜
       charge: 'serviceMoney',
       reward: 'promotionPrice',
@@ -21,6 +21,7 @@ const refactor = {
 
 const post = res => {
   res.data.forEach(item => {
+    item.noNeedPay = !item.needPay;
     // 价格
     if (item.noNeedPay) {
       item.priceType = 2;
