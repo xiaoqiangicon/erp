@@ -1,7 +1,8 @@
 import seeAjax from 'see-ajax';
 
 const req = {
-  ids: 'subdivideIds',
+  xuanZeIds: 'subdivideIds',
+  foShiIds: 'commodityIds',
 };
 
 const pre = params => {

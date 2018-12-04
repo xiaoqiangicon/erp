@@ -9,6 +9,7 @@ module.exports = (req, res) => {
           id,
           name: `选择项名称 ${id}`,
           pic: '/static/images/chan-zai-128x128.png',
+          isSubdivide: Math.floor(Math.random() * 2),
           isNeedPay: Math.floor(Math.random() * 2),
           isRandow: Math.floor(Math.random() * 2),
           price: id * 10,

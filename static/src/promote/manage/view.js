@@ -105,10 +105,21 @@ seeView({
 
     $this.attr('data-handling', 1);
 
+    const foShiIds = [];
+    const xuanZeIds = [];
+
+    share.handlingIds.forEach(id => {
+      const item = share.items.find(i => i.id === id);
+
+      if (item.isXuanZe) xuanZeIds.push(id);
+      else foShiIds.push(id);
+    });
+
     seeAjax(
       'update',
       {
-        ids: share.handlingIds.join(','),
+        foShiIds: foShiIds.join(','),
+        xuanZeIds: xuanZeIds.join(','),
         reward: value,
         rewardType: fixedRewardType || rewardType,
       },

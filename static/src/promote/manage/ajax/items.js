@@ -15,6 +15,7 @@ const refactor = {
       charge: 'serviceMoney',
       reward: 'promotionPrice',
       promote: 'percent',
+      isXuanZe: 'isSubdivide',
     },
   ],
 };
@@ -45,10 +46,10 @@ const post = res => {
 
     // 分成
     item.rewardText = item.reward;
-    item.hasReward = !1;
+    item.hasReward = !0;
     if (item.promotionType === 1) item.rewardType = 2;
     else if (item.promotionType === 2) item.rewardType = 1;
-    else if (item.promotionType === 3) item.hasReward = !0;
+    else item.hasReward = !1;
 
     if (!item.hasReward || item.priceType === 2) item.rewardText = '-';
     else if (item.priceType === 3) item.rewardText = `支付价格*${item.reward}%`;
