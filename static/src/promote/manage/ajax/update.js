@@ -9,11 +9,11 @@ const pre = params => {
   const result = { ...params };
 
   if (result.rewardType === 1) {
-    result.promotionMoney = -1;
+    result.promotionMoney = 0;
     result.promotionPercentage = result.reward;
   } else {
     result.promotionMoney = result.reward;
-    result.promotionPercentage = 0;
+    result.promotionPercentage = -1;
   }
 
   delete result.reward;
