@@ -1,7 +1,6 @@
 import seeAjax from 'see-ajax';
 
 const req = {
-  id: 'userId',
   reason: 'content',
 };
 

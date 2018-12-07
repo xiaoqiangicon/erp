@@ -122,7 +122,7 @@ seeView({
     const id = parseInt($this.attr('data-verify-row-refuse'), 10);
     const item = share.verifyList.find(i => i.id === id);
 
-    handlingId = id;
+    handlingId = item.userId;
     $('#refuse-name').text(item.name);
     $('#refuse-input').val('');
     $('#refuse-input-count').text(0);
@@ -140,7 +140,7 @@ seeView({
       return;
     }
 
-    seeAjax('refuse', { id: handlingId, reason }, res => {
+    seeAjax('refuse', { userId: handlingId, reason }, res => {
       if (!res.success) {
         dialog(res.message);
         return;
