@@ -134,6 +134,8 @@ seeView({
         toastr.success('保存成功');
         $set.hide();
         $('#set-overlay').hide();
+        $('#selected-count').text(0);
+        $('#batch-set').addClass('dp-none');
         requestItems();
       }
     );

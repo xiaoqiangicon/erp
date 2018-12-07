@@ -22,6 +22,8 @@ import './ajax';
 import './view';
 import share from './share';
 
+$('[data-temple-name]').text(window.localStorage.templename);
+
 seeAjax('info', {}, res => {
   if (!res.data) res.data = {};
 

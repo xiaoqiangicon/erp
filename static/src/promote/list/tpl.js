@@ -15,17 +15,15 @@ export const rowsTpl = handlebars.compile(`
     <div class="c-switch {{#if online}}active{{/if}}" data-row-status="{{id}}">
       <i class="circle-1"></i>
       <span class="text-left-1">上架中</span>
-      <span class="text-right-1">下架中</span>
+      <span class="text-right-1">已下架</span>
     </div>
   </div>
   <div class="cell-1 cell-1-handle">
     <button class="clean" data-row-manage="{{id}}">管理</button>
-    {{#unless online}}
-    {{#unless ended}}
-    <span class="divider-1"></span>
-    <button class="clean" data-row-delete="{{id}}">删除</button>
-    {{/unless}}
-    {{/unless}}
+    <span class="{{#unless showDelete}}dp-none{{/unless}}" data-row-delete-section="{{id}}">
+      <span class="divider-1"></span>
+      <button class="clean" data-row-delete="{{id}}">删除</button>
+    </span>
   </div>
 </div>
 {{/each}}

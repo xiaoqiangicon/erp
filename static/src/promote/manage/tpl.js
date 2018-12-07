@@ -14,7 +14,7 @@ export const itemsTpl = handlebars.compile(`
     {{#if noNeedPay}}-
     {{else}}
       {{#if hasReward}}{{rewardText}}
-      {{else}}<span class="c-badge">未设置</span>
+      {{else}}<button class="clean c-badge" data-items-row-set="{{id}}">未设置</button>
       {{/if}}
     {{/if}}
   </div>

@@ -60,12 +60,16 @@ seeView({
         return;
       }
 
+      const $deleteSection = $(`[data-row-delete-section="${id}"]`);
+
       if (online) {
         $this.removeClass('active');
         toastr.success('下架成功');
+        $deleteSection.removeClass('dp-none');
       } else {
         $this.addClass('active');
         toastr.success('上架成功');
+        $deleteSection.addClass('dp-none');
       }
     });
   },
@@ -132,7 +136,7 @@ seeView({
     if ($this.hasClass('disabled')) return;
 
     const id = parseInt($this.attr('data-search-row'), 10);
-    const text = $this.text();
+    const text = $this.text().trim();
 
     $('#add-input').val(text);
     selectedSearchId = id;
