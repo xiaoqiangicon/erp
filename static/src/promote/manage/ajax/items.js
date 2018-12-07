@@ -41,8 +41,10 @@ const post = res => {
 
     item.chargeText = item.charge;
     if (!item.hasCharge || item.priceType === 2) item.chargeText = '-';
-    else if (item.priceType === 3) item.chargeText = `支付价格*${item.charge}%`;
-    else if (item.priceType === 1) item.chargeText = parseFloat(((item.price * item.charge) / 100).toFixed(2));
+    else if (item.chargeType === 1) {
+      if (item.priceType === 3) item.chargeText = `支付价格*${item.charge}%`;
+      else if (item.priceType === 1) item.chargeText = parseFloat(((item.price * item.charge) / 100).toFixed(2));
+    }
 
     // 分成
     item.rewardText = item.reward;
@@ -52,8 +54,10 @@ const post = res => {
     else item.hasReward = !1;
 
     if (!item.hasReward || item.priceType === 2) item.rewardText = '-';
-    else if (item.priceType === 3) item.rewardText = `支付价格*${item.reward}%`;
-    else if (item.priceType === 1) item.rewardText = parseFloat(((item.price * item.reward) / 100).toFixed(2));
+    else if (item.rewardType === 1) {
+      if (item.priceType === 3) item.rewardText = `支付价格*${item.reward}%`;
+      else if (item.priceType === 1) item.rewardText = parseFloat(((item.price * item.reward) / 100).toFixed(2));
+    }
 
     // 推广费
     item.hasPromote = item.promote > 0;

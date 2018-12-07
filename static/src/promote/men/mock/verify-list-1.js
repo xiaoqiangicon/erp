@@ -16,7 +16,7 @@ module.exports = (req, res) => {
           totalCount: id * 10,
           totalMoney: id * 100,
           addTime: '2018-09-22 12:30',
-          type: Math.floor(Math.random() * 2) + 1,
+          status: Math.floor(Math.random() * 2) + 1,
         })),
       },
     })

@@ -43,7 +43,7 @@ const post = res => {
   res.totalPages = Math.ceil((res.totalCount || 1) / 20);
   if (res.data && res.data.length)
     res.data.forEach(item => {
-      item.forbidden = item.type === 3;
+      item.forbidden = item.status === 3;
       item.statusPending = item.status === 1;
       item.statusRefused = item.status === 2;
     });

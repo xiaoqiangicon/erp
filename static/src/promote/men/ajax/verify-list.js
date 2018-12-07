@@ -35,7 +35,6 @@ const refactor = {
       count: 'totalCount',
       amount: 'totalMoney',
       requestTime: 'addTime',
-      status: 'type',
     },
   ],
 };

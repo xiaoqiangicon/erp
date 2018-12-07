@@ -192,13 +192,13 @@ seeView({
     const id = parseInt($this.attr('data-man-row-forbid'), 10);
     const item = share.manList.find(i => i.id === id);
 
-    handlingId = id;
+    handlingId = item.userId;
     $('#forbid-name').text(item.name);
     $('#verify-overlay').show();
     $('#forbid').show();
   },
   clickForbidOk(e) {
-    seeAjax('forbid', { id: handlingId }, res => {
+    seeAjax('forbid', { userId: handlingId }, res => {
       if (!res.success) {
         dialog(res.message);
         return;
@@ -217,9 +217,10 @@ seeView({
   clickManRowUnforbid(e) {
     const $this = $(e.target);
     const id = parseInt($this.attr('data-man-row-unforbid'), 10);
+    const item = share.manList.find(i => i.id === id);
 
     confirm('确定取消禁用吗', () => {
-      seeAjax('unforbid', { id }, res => {
+      seeAjax('unforbid', { userId: item.userId }, res => {
         if (!res.success) {
           dialog(res.message);
           return;
