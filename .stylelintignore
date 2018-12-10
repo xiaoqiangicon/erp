@@ -1,4 +1,5 @@
 .lila
-static/res
-static/scripts
-static/src/lib
+dev
+build
+/res
+/src/lib
