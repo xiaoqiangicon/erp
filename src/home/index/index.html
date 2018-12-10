@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+
+    <title>自在家</title>
+</head>
+<body>
+<div class="content-container" id="content-container">
+    <div class="content">
+        <div class="greeting">
+            <div class="text-1 text-1-1">欢迎您</div>
+            <div class="text-1 text-1-2"><span id="temple-name">寺院</span>的管理者</div>
+        </div>
+    </div>
+</div>
+<script>
+    window.localStorage['templeid'] = parseInt('{{temple_id}}');
+    window.localStorage['templename'] = '{{temple_name}}';
+</script>
+</body>
+</html>

@@ -47,13 +47,46 @@ const servers = [
   },
 ];
 
-const rename = {
-  'xiu/msg': 'gongxiu/moment',
-  'xiu/record': 'gongxiu/record',
-  'xiu/index': 'gongxiu/index',
-  'xiu/lesson': 'gongxiu/lesson',
-  'upload/index': 'util/upload',
-  'misc/code': 'util/code',
+const rename = {};
+
+const useCssModules = [
+  'buddhist/template',
+  'vrshow/award',
+  'component/ueditor_plugins/music',
+  'component/ueditor_plugins/music/draft',
+];
+
+const cssModulesExclude = {
+  'buddhist/template': [
+    /node_modules/,
+    /src\/component/,
+    /src\\component/,
+    /src\/less/,
+    /src\\less/,
+  ],
+  'vrshow/award': [
+    /node_modules/,
+    /src\/component/,
+    /src\\component/,
+    /src\/less/,
+    /src\\less/,
+  ]
+};
+
+const splitJs = {
+  'buddhist/template': {
+    lib: ['jquery', 'react-dom'],
+  },
+  'vrshow/award': {
+    lib: ['jquery', 'react-dom'],
+  },
+  'kind/edit': {
+    lib: ['jquery', 'handlebars'],
+    ueditor: ['component/ueditor_config', '@zzh/ueditor/src/ueditor.config', '@zzh/ueditor'],
+  },
+  'component/ueditor_plugins/music': {
+    lib: ['jquery', 'react-dom'],
+  }
 };
 
 export default lila => {
@@ -104,7 +137,7 @@ export default lila => {
         '@lila/move',
         {
           source: 'build/index.html',
-          target: `build/backend/${rename[entry] || entry}.html`,
+          target: `build/${rename[entry] || entry}.html`,
         },
       ],
       [
@@ -115,79 +148,53 @@ export default lila => {
 
     if (cmd === 'sync') {
       if (isTest) {
-        staticServer = 'http://test.zizaihome.com/h5/static/chanzai-back';
+        staticServer = 'http://test.zizaihome.com/h5/static/erp';
         tasks.push(
           [
             '@lila/sync-build',
             {
               server: servers[0],
-              remotePath: '/data/h5/static/chanzai-back',
+              remotePath: '/data/h5/static/erp',
             },
           ],
           [
             '@lila/sync-html',
             {
               server: servers[0],
-              remotePath: '/data/www/myapp/templates',
+              remotePath: '/data1/www/myerp/templates',
             },
           ],
           [
             '@lila/sync-dir',
             {
               server: servers[0],
-              remotePath: '/data/h5/static/chanzai-back',
+              remotePath: '/data1/www/myerp/static/resources',
               dirs: 'json',
             },
           ]
         );
-      } else if (isGray) {
-        staticServer = 'http://test2.zizaihome.com/h5/static/chanzai-back';
+      } else if (isGray || isProd) {
+        staticServer = 'https://wx.zizaihome.com/h5/static/erp';
         tasks.push(
           [
             '@lila/sync-build',
             {
-              server: servers[1],
-              remotePath: '/data/h5/static/chanzai-back',
+              server: servers[2],
+              remotePath: '/data/h5/static/erp',
             },
           ],
           [
             '@lila/sync-html',
             {
-              server: servers[1],
+              server: isProd ? servers[2] : servers[1],
               remotePath: '/data/www/chanzai/templates',
             },
           ],
           [
             '@lila/sync-dir',
             {
-              server: servers[1],
-              remotePath: '/data/h5/static/chanzai-back',
-              dirs: 'json',
-            },
-          ]
-        );
-      } else if (isProd) {
-        staticServer = 'https://wx.zizaihome.com/h5/static/chanzai-back';
-        tasks.push(
-          [
-            '@lila/sync-build',
-            {
-              server: servers[2],
-              remotePath: '/data/h5/static/chanzai-back',
-            },
-          ],
-          [
-            '@lila/sync-html',
-            {
-              server: servers[4],
-              remotePath: '/data/www/chanzai/templates',
-            },
-          ],
-          [
-            '@lila/sync-dir',
-            {
-              server: servers[2],
-              remotePath: '/data/h5/static/chanzai-back',
+              server: isProd ? servers[2] : servers[1],
+              remotePath: '/data/www/myerp/static/resources',
               dirs: 'json',
             },
           ]
@@ -217,7 +224,10 @@ export default lila => {
         handlebars: 'handlebars/dist/handlebars.js',
         'jquery.seeAjax': 'lib/jquery.seeAjax.js',
       },
+      cssModules: useCssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
+      cssModulesExclude: cssModulesExclude[entry] || undefined,
+      babelImport: [{ libraryName: 'antd', style: 'css' }],
     };
   };
 };
