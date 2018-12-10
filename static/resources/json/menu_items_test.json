@@ -196,6 +196,13 @@
           "name": "供奉记录",
           "link": "/zzhadmin/vr_record/",
           "controlMark": "pw_vr_devote"
+        },
+        {
+          "id": "vrshow-award",
+          "name": "获奖反馈&nbsp;&nbsp;<span class=\"badge\" data-vrshow-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
+          "isHtml": true,
+          "link": "/zzhadmin/vr_getSignGiftHtml/",
+          "controlMark": "pw_vr_devote"
         }
       ]
     },

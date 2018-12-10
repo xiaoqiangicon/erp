@@ -1,0 +1,91 @@
+@green: #70ba2c;
+
+.loadingContainer {
+  height: 100px;
+  text-align: center;
+  background-color: #fff;
+  margin-top: 10px;
+  padding-top: 40px;
+  border-radius: 8px;
+}
+
+.emptyContainer {
+  padding-top: 100px;
+  img {
+    display: block;
+    width: 166px;
+    height: 124px;
+    margin: 0 auto 35px;
+  }
+  .text {
+    text-align: center;
+    color: #989898;
+    font-size: 14px;
+  }
+}
+
+.container {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.item {
+  float: left;
+  background-color: #fff;
+  width: 30%;
+  margin-right: 5%;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #dfdfdf;
+  &:nth-child(3n + 3) {
+    margin-right: 0;
+  }
+  .delete {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    background: url('https://pic.zizaihome.com/44939bb2-e7d5-11e8-8fcf-00163e0c001e.png') no-repeat;
+    background-size: 100% 100%;
+  }
+  .body {
+    height: 105px;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 20px 20px 20px 78px;
+    background: url('https://pic.zizaihome.com/591b7060-9094-4149-ab71-ed0923bdfe65.png') no-repeat;
+    background-position: 10px 20px;
+    background-size: 50px 50px;
+    font-size: 16px;
+  }
+  .foot {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    background-color: #f8f8f8;
+    .btn {
+      width: 49%;
+      text-align: center;
+      cursor: pointer;
+      &.special {
+        color: @green;
+      }
+    }
+    .line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background-color: #d8d8d8;
+      margin-top: -10px;
+      margin-left: -1px;
+    }
+  }
+}
