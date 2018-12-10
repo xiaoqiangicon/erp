@@ -32,7 +32,7 @@ export const recordsTpl = handlebars.compile(`
   <div class="cell-2">{{title}}</div>
   <div class="cell-2">{{price}}</div>
   <div class="cell-2">
-    <span class="special-2">{{salesmanName}}</span><br/>
+    <a class="special-2" href="/zzhadmin/promotionMenDetailsHtml/?userId={{userId}}">{{salesmanName}}</a><br/>
     <span>{{salesmanPhone}}</span>
   </div>
   <div class="cell-2">{{reward}}</div>

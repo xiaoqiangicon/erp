@@ -1,5 +1,5 @@
 module.exports = (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.writeHead(200, {'Content-Type': 'application/json'});
   res.end(
     JSON.stringify({
       result: 1,
@@ -10,6 +10,7 @@ module.exports = (req, res) => {
           name: `选择项名称 ${id}`,
           payTime: '2018-11-01 10:24:43',
           price: 2000,
+          userId: id,
           userName: `推销员 ${id}`,
           mobile: '12345678901',
           promotionMoney: id * 10,

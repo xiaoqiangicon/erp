@@ -9,6 +9,7 @@ module.exports = (req, res) => {
         title: `选择项名称 ${id}`,
         time: '2018-11-01 10:24:43',
         price: 2000,
+        userId: id,
         salesmanName: `推销员 ${id}`,
         salesmanPhone: '12345678901',
         reward: id * 10,
