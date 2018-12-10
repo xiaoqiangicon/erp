@@ -12,7 +12,7 @@ seeAjax.config('info', {
           title: item.title,
           ended: item.ended,
           addTime: item.addPromotionTime,
-          statusText: item.ended === 0 ? '进行中' : '已结束',
+          statusText: ['未开始', '进行中', '已结束'][item.ended + 1],
         },
       });
     },

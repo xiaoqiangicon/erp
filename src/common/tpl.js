@@ -1,7 +1,7 @@
 require('../less/base.less');
 
 module.exports = {
-  loading: `<div class="common-placeholder"><img src="/images/loading.gif"></div>`,
+  loading: `<div class="common-placeholder"><img src="https://pic.zizaihome.com/cbd3e5ec-fc5b-11e8-9c94-00163e0c001e.gif"></div>`,
   noData: `
 <div class="common-no-data">
   <img class="image-0-1" src="https://pic.zizaihome.com/6b5150b2-f9ca-11e8-979a-00163e0c001e.png">

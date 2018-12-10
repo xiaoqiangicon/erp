@@ -1,6 +1,6 @@
 
 const $ = require('jquery');
-const seeView = require('see-view');
+const seeView = require('see-view').default;
 const $window = $(window);
 
 seeView({

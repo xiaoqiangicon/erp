@@ -2,7 +2,7 @@
  * @author senntyou <jiangjinbelief@163.com>
  */
 
-const seeAjax = require('see-ajax');
+const seeAjax = require('see-ajax').default;
 
 let postHandle = (res) => {
     res.success = res.result >= 0;

@@ -2,7 +2,7 @@
  * @author senntyou <jiangjinbelief@163.com>
  */
 
-let seeAjax = require('see-ajax');
+let seeAjax = require('see-ajax').default;
 
 let requestKeys = {
     page: 'pageNum'

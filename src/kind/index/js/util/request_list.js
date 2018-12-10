@@ -1,6 +1,6 @@
 
 const $ = require('jquery');
-const seeAjax = require('see-ajax');
+const seeAjax = require('see-ajax').default;
 require('@zzh/pagination/dist/pagination.css');
 require('less/pagination.less');
 const Pagination = require('@zzh/pagination');

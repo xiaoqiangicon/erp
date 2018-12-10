@@ -181,13 +181,21 @@ export default lila => {
             {
               server: servers[2],
               remotePath: '/data/h5/static/erp',
+              sourceMap: !1,
+            },
+          ],
+          [
+            '@lila/sync-source-map',
+            {
+              server: servers[2],
+              remotePath: '/data/h5/static/erp-source-map',
             },
           ],
           [
             '@lila/sync-html',
             {
               server: isProd ? servers[2] : servers[1],
-              remotePath: '/data/www/chanzai/templates',
+              remotePath: '/data/www/myerp/templates',
             },
           ],
           [
@@ -222,12 +230,12 @@ export default lila => {
       },
       alias: {
         handlebars: 'handlebars/dist/handlebars.js',
-        'jquery.seeAjax': 'lib/jquery.seeAjax.js',
       },
       cssModules: useCssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
       cssModulesExclude: cssModulesExclude[entry] || undefined,
       babelImport: [{ libraryName: 'antd', style: 'css' }],
+      splitJs: splitJs[entry] || undefined,
     };
   };
 };
