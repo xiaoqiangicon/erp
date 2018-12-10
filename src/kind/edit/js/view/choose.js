@@ -1,5 +1,5 @@
 const $ = require('jquery');
-const seeView = require('see-view');
+const seeView = require('see-view').default;
 
 require('component/upload_config');
 

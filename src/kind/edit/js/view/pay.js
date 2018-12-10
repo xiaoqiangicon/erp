@@ -1,5 +1,5 @@
 const $ = require('jquery');
-const seeView = require('see-view');
+const seeView = require('see-view').default;
 
 const payItemTpl = require('../tpl/main/detail/pay_item');
 

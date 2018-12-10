@@ -1,6 +1,6 @@
 const $ = require('jquery');
-const seeView = require('see-view');
-const seeAjax = require('see-ajax');
+const seeView = require('see-view').default;
+const seeAjax = require('see-ajax').default;
 const StoreImage = require('@zzh/store-image');
 require('@zzh/handling/dist/handling.css');
 const zzhHandling = require('@zzh/handling');

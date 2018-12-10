@@ -2,7 +2,7 @@
  * @author senntyou <jiangjinbelief@163.com>
  */
 
-const seeAjax = require('see-ajax');
+const seeAjax = require('see-ajax').default;
 const zzhUtil = require('@zzh/util');
 
 const preHandleAdd = require('./pre_handle_add');
