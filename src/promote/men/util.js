@@ -11,7 +11,8 @@ const $win = $(window);
 const $pendingCount = $('#pending-count');
 
 const renderInfo = res => {
-  if (res.pendingCount) $pendingCount.text(res.pendingCount).removeClass('dp-none');
+  if (res.pendingCount)
+    $pendingCount.text(res.pendingCount).removeClass('dp-none');
   else $pendingCount.text(0).addClass('dp-none');
 
   share.hasPromoteUrl = res.hasPromoteUrl;

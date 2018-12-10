@@ -1,4 +1,3 @@
-
 module.exports = `
 <div class="main-banner">
     <div class="item-1">

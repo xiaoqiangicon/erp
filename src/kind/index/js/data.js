@@ -3,6 +3,6 @@
  */
 
 module.exports = {
-    // 分页组件示例
-    pagination: void 0
+  // 分页组件示例
+  pagination: void 0,
 };

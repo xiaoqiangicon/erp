@@ -38,7 +38,12 @@ export default class extends Component {
     const keys = Object.keys(statusMap);
 
     return (
-      <Select value={status} onChange={this.onChangeStatus} className="mg-l-10" style={{ width: '100px' }}>
+      <Select
+        value={status}
+        onChange={this.onChangeStatus}
+        className="mg-l-10"
+        style={{ width: '100px' }}
+      >
         <Option value="-1">全部</Option>
         {keys.map(key => (
           <Option key={key}>{statusMap[key]}</Option>
@@ -53,7 +58,12 @@ export default class extends Component {
     const keys = Object.keys(typeMap);
 
     return (
-      <Select value={type} onChange={this.onChangeDay} className="mg-l-10" style={{ width: '100px' }}>
+      <Select
+        value={type}
+        onChange={this.onChangeDay}
+        className="mg-l-10"
+        style={{ width: '100px' }}
+      >
         <Option value="-1">全部</Option>
         {keys.map(key => (
           <Option key={key}>{typeMap[key]}</Option>

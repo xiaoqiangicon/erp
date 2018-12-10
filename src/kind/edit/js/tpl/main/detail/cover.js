@@ -1,4 +1,3 @@
-
 module.exports = `
 <div class="container-1">
     <div class="text-2">

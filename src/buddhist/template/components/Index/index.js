@@ -57,11 +57,17 @@ export default class extends Component {
           return;
         }
 
-        this.setState({ loadingSystemTemplateTypeData: false, systemTemplateTypeData: res.data }, () => {
-          if (cb) {
-            cb();
+        this.setState(
+          {
+            loadingSystemTemplateTypeData: false,
+            systemTemplateTypeData: res.data,
+          },
+          () => {
+            if (cb) {
+              cb();
+            }
           }
-        });
+        );
       });
     });
   }
@@ -82,11 +88,14 @@ export default class extends Component {
           return;
         }
 
-        this.setState({ loadingSystemTemplateData: false, systemTemplateData: res.data }, () => {
-          if (cb) {
-            cb();
+        this.setState(
+          { loadingSystemTemplateData: false, systemTemplateData: res.data },
+          () => {
+            if (cb) {
+              cb();
+            }
           }
-        });
+        );
       });
     });
   }
@@ -105,11 +114,14 @@ export default class extends Component {
           return;
         }
 
-        this.setState({ loadingMyTemplateData: false, myTemplateData: res.data }, () => {
-          if (cb) {
-            cb();
+        this.setState(
+          { loadingMyTemplateData: false, myTemplateData: res.data },
+          () => {
+            if (cb) {
+              cb();
+            }
           }
-        });
+        );
       });
     });
   }
@@ -158,7 +170,10 @@ export default class extends Component {
           <Breadcrumb.Item>佛事管理</Breadcrumb.Item>
           <Breadcrumb.Item>创建佛事</Breadcrumb.Item>
         </Breadcrumb>
-        <Top templateType={templateType} changeTemplateType={this.changeTemplateType} />
+        <Top
+          templateType={templateType}
+          changeTemplateType={this.changeTemplateType}
+        />
         {templateType === 'system' ? (
           <Type
             loading={loadingSystemTemplateTypeData}
@@ -176,7 +191,10 @@ export default class extends Component {
             systemTemplateTypeData={systemTemplateTypeData}
           />
         ) : (
-          <MyTemplateList loading={loadingMyTemplateData} data={myTemplateData} />
+          <MyTemplateList
+            loading={loadingMyTemplateData}
+            data={myTemplateData}
+          />
         )}
       </div>
     );

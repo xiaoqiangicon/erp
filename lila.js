@@ -70,7 +70,7 @@ const cssModulesExclude = {
     /src\\component/,
     /src\/less/,
     /src\\less/,
-  ]
+  ],
 };
 
 const splitJs = {
@@ -82,11 +82,15 @@ const splitJs = {
   },
   'kind/edit': {
     lib: ['jquery', 'handlebars'],
-    ueditor: ['component/ueditor_config', '@zzh/ueditor/src/ueditor.config', '@zzh/ueditor'],
+    ueditor: [
+      'component/ueditor_config',
+      '@zzh/ueditor/src/ueditor.config',
+      '@zzh/ueditor',
+    ],
   },
   'component/ueditor_plugins/music': {
     lib: ['jquery', 'react-dom'],
-  }
+  },
 };
 
 export default lila => {
@@ -107,7 +111,7 @@ export default lila => {
     lila.success(
       `\n  ${entries[0]} ${
         entries.length > 2 ? `... ${entries.length} entries are` : 'entry is'
-        } about to ${cmd}, with env[${argv.env}]\n`
+      } about to ${cmd}, with env[${argv.env}]\n`
     );
   });
 
@@ -115,7 +119,7 @@ export default lila => {
     lila.success(
       `\n  ${entries[0]} ${
         entries.length > 2 ? `... ${entries.length} entries have` : 'entry has'
-        } been succeeded to ${cmd}, with env[${argv.env}]\n`
+      } been succeeded to ${cmd}, with env[${argv.env}]\n`
     );
   });
 

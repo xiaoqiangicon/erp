@@ -1,4 +1,3 @@
-
 module.exports = `
 <div class="main-detail-pay">
     <div class="container-0-1">

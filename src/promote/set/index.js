@@ -29,12 +29,16 @@ seeAjax('info', {}, res => {
 
   $('#content-1').show();
   $('#content-2').show();
-  $(`[data-radio="receive"][data-value="${typeof res.data.receive !== 'undefined' ? res.data.receive : 1}"]`).addClass(
-    'active'
-  );
-  $(`[data-radio="verify"][data-value="${typeof res.data.verify !== 'undefined' ? res.data.verify : 1}"]`).addClass(
-    'active'
-  );
+  $(
+    `[data-radio="receive"][data-value="${
+      typeof res.data.receive !== 'undefined' ? res.data.receive : 1
+    }"]`
+  ).addClass('active');
+  $(
+    `[data-radio="verify"][data-value="${
+      typeof res.data.verify !== 'undefined' ? res.data.verify : 1
+    }"]`
+  ).addClass('active');
   share.editor = window.UE.getEditor('editor');
   $('#title').val(res.data.title || '');
 

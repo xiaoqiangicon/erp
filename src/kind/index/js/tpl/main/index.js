@@ -1,4 +1,3 @@
-
 module.exports = `
 <div class="content-container" id="content-container">
     <div class="main-top">

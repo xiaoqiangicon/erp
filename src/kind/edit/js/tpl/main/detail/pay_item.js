@@ -1,7 +1,6 @@
-
 const handlebars = require('handlebars');
 
-let tpl = `
+const tpl = `
 <div class="row-0-1" data-pay-item="{{id}}">
     <div class="item-0-1 item-0-1-1">
         <input class="form-control" value="{{name}}" maxlength="20" data-pay-item-name="{{id}}">

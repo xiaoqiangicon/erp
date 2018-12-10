@@ -14,6 +14,9 @@ const postHandle = res => {
 seeAjax.config('getAwardList', {
   method: ['post', 'post'],
   stringify: [false, false],
-  url: ['/zzhadmin/vr_getSignGiftList/', '/src/vrshow/common/mock/get_award_list'],
+  url: [
+    '/zzhadmin/vr_getSignGiftList/',
+    '/src/vrshow/common/mock/get_award_list',
+  ],
   postHandle: [postHandle, postHandle],
 });

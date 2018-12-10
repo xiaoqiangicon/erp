@@ -7,5 +7,8 @@ import seeAjax from 'see-ajax';
 seeAjax.config('getAwardDetail', {
   method: ['post', 'post'],
   stringify: [false, false],
-  url: ['/zzhadmin/vr_getSignGiftModel/', '/src/vrshow/common/mock/get_award_detail'],
+  url: [
+    '/zzhadmin/vr_getSignGiftModel/',
+    '/src/vrshow/common/mock/get_award_detail',
+  ],
 });

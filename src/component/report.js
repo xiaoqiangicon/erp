@@ -5,7 +5,13 @@ const env = require('../util/env');
 
 // 只有正式机才上报错误
 if (env.serverEnv === 3) {
-  window.onerror = (errorMessage, scriptURI, lineNumber, columnNumber, errorObj) => {
+  window.onerror = (
+    errorMessage,
+    scriptURI,
+    lineNumber,
+    columnNumber,
+    errorObj
+  ) => {
     const data = {
       type: 'scriptError',
       errorMessage,
@@ -19,6 +25,11 @@ if (env.serverEnv === 3) {
       cookie: window.document.cookie,
     };
 
-    $.post('/log/web', { title: $('title').html(), content: JSON.stringify(data) }, console.log, 'json');
+    $.post(
+      '/log/web',
+      { title: $('title').html(), content: JSON.stringify(data) },
+      console.log,
+      'json'
+    );
   };
 }

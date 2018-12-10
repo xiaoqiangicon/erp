@@ -5,6 +5,5 @@
  *
  * @param date
  */
-module.exports = date => {
-    return date.slice(0, 4) + date.slice(5, 7) + date.slice(8, 10);
-};
+module.exports = date =>
+  date.slice(0, 4) + date.slice(5, 7) + date.slice(8, 10);

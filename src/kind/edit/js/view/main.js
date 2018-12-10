@@ -1,4 +1,3 @@
-
 const $ = require('jquery');
 const seeView = require('see-view');
 const seeAjax = require('see-ajax');
@@ -8,60 +7,64 @@ const zzhHandling = require('@zzh/handling');
 
 const dialog = require('util/dialog');
 
-let checkBeforeSave = require('../util/check_before_save');
-let data = require('../data');
+const checkBeforeSave = require('../util/check_before_save');
+const data = require('../data');
 
 seeView({
-    events: {
-        // 点击保存
-        'click #ok': 'onClickOk'
-    },
+  events: {
     // 点击保存
-    onClickOk: function (e) {
-        let self = this;
-        let $this = $(e.target);
-        let handling = !!parseInt($this.attr('data-handling'));
+    'click #ok': 'onClickOk',
+  },
+  // 点击保存
+  onClickOk(e) {
+    const self = this;
+    const $this = $(e.target);
+    const handling = !!parseInt($this.attr('data-handling'));
 
-        if (handling) return;
+    if (handling) return;
 
-        let result = checkBeforeSave();
-        if (!result.success) return;
+    const result = checkBeforeSave();
+    if (!result.success) return;
 
-        $this.attr({'data-handling': 1}).text(`正在${data.info.isEdit ? '更新' : '保存'}中...`);
-        zzhHandling.show();
-        new StoreImage(result.data.intro, newContent => {
-            result.data.intro = newContent;
+    $this
+      .attr({ 'data-handling': 1 })
+      .text(`正在${data.info.isEdit ? '更新' : '保存'}中...`);
+    zzhHandling.show();
+    new StoreImage(result.data.intro, newContent => {
+      result.data.intro = newContent;
 
-            self.save(result.data);
-        });
-    },
-    // 保存
-    save: function (dataToSave) {
-        let self = this;
-        if (data.info.isEdit)
-            seeAjax('edit', dataToSave, res => {
-                if (!res.success) {
-                    dialog(res.message);
-                    return;
-                }
+      self.save(result.data);
+    });
+  },
+  // 保存
+  save(dataToSave) {
+    const self = this;
+    if (data.info.isEdit)
+      seeAjax('edit', dataToSave, res => {
+        if (!res.success) {
+          dialog(res.message);
+          return;
+        }
 
-                self.afterSave();
-            });
-        else
-            seeAjax('add', dataToSave, res => {
-                if (!res.success) {
-                    dialog(res.message);
-                    return;
-                }
+        self.afterSave();
+      });
+    else
+      seeAjax('add', dataToSave, res => {
+        if (!res.success) {
+          dialog(res.message);
+          return;
+        }
 
-                self.afterSave();
-            });
-    },
-    // 保存成功之后的处理函数
-    afterSave: function () {
-        $('#ok').attr({'data-handling': 0}).text(data.info.isEdit ? '更新' : '保存');
-        zzhHandling.hide();
+        self.afterSave();
+      });
+  },
+  // 保存成功之后的处理函数
+  afterSave() {
+    $('#ok')
+      .attr({ 'data-handling': 0 })
+      .text(data.info.isEdit ? '更新' : '保存');
+    zzhHandling.hide();
 
-        location.href = '/zzhadmin/charityIndex/';
-    }
+    location.href = '/zzhadmin/charityIndex/';
+  },
 });

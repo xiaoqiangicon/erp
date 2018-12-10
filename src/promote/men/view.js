@@ -3,7 +3,13 @@ import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import toastr from 'toastr';
 import promotion from '@zzh/promotion';
-import { manFilter, requestManList, requestVerifyList, updatePendingCount, verifyFilter } from './util';
+import {
+  manFilter,
+  requestManList,
+  requestVerifyList,
+  updatePendingCount,
+  verifyFilter,
+} from './util';
 import dialog from '../../util/dialog';
 import confirm from '../../util/confirm';
 import share from './share';

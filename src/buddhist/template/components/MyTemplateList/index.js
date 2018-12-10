@@ -32,22 +32,23 @@ export default class extends Component {
     location.href = url;
   };
 
-  loadingJsx = () => {
-    return (
-      <div className={styles.loadingContainer}>
-        <Spin />
-      </div>
-    );
-  };
+  loadingJsx = () => (
+    <div className={styles.loadingContainer}>
+      <Spin />
+    </div>
+  );
 
-  empTyJsx = () => {
-    return (
-      <div className={styles.emptyContainer}>
-        <img src="https://pic.zizaihome.com/2d1f2e70-e7c5-11e8-8fcf-00163e0c001e.png" alt="" />
-        <div className={styles.text}>您还没有添加过模板，将常用的模板添加进来会方便您发布佛事哦</div>
+  empTyJsx = () => (
+    <div className={styles.emptyContainer}>
+      <img
+        src="https://pic.zizaihome.com/2d1f2e70-e7c5-11e8-8fcf-00163e0c001e.png"
+        alt=""
+      />
+      <div className={styles.text}>
+        您还没有添加过模板，将常用的模板添加进来会方便您发布佛事哦
       </div>
-    );
-  };
+    </div>
+  );
 
   contentJsx() {
     const { data } = this.props;
@@ -97,10 +98,10 @@ export default class extends Component {
 
     if (loading) {
       return this.loadingJsx();
-    } else if (data.length === 0) {
-      return this.empTyJsx();
-    } else {
-      return this.contentJsx();
     }
+    if (data.length === 0) {
+      return this.empTyJsx();
+    }
+    return this.contentJsx();
   }
 }

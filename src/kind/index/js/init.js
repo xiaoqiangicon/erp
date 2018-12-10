@@ -1,9 +1,8 @@
-
 const $ = require('jquery');
 
 const commonTpl = require('common/tpl');
 
-let mainTpl = require('./tpl/main');
+const mainTpl = require('./tpl/main');
 
 $('body').append(mainTpl);
 

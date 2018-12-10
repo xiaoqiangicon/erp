@@ -2,7 +2,14 @@ import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import seeView from 'see-view';
 import toastr from 'toastr';
-import { checkSelect, checkSet, filter, requestItems, requestRecords, updateSet } from './util';
+import {
+  checkSelect,
+  checkSet,
+  filter,
+  requestItems,
+  requestRecords,
+  updateSet,
+} from './util';
 import share from './share';
 import dialog from '../../util/dialog';
 import alert from '../../util/alert';
@@ -69,7 +76,11 @@ seeView({
     if (!item || item.noNeedPay) return;
 
     share.handlingIds = [id];
-    updateSet(item.hasReward && item.rewardType, item.hasReward && item.reward, item.priceType === 3 ? 1 : undefined);
+    updateSet(
+      item.hasReward && item.rewardType,
+      item.hasReward && item.reward,
+      item.priceType === 3 ? 1 : undefined
+    );
 
     checkSet();
   },
@@ -101,7 +112,10 @@ seeView({
     const $set = $('#set');
     const value = parseFloat($('#set-input').val());
     const fixedRewardType = parseInt($set.attr('data-fixed-reward-type'), 10);
-    const rewardType = parseInt($('[data-set-nav].active').attr('data-set-nav'), 10);
+    const rewardType = parseInt(
+      $('[data-set-nav].active').attr('data-set-nav'),
+      10
+    );
 
     $this.attr('data-handling', 1);
 
@@ -151,7 +165,9 @@ seeView({
 
     if (!ids.length) return;
 
-    const suiXiItem = share.items.find(i => i.priceType === 3 && ids.indexOf(i.id) > -1);
+    const suiXiItem = share.items.find(
+      i => i.priceType === 3 && ids.indexOf(i.id) > -1
+    );
 
     share.handlingIds = ids;
 

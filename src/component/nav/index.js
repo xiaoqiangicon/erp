@@ -1,4 +1,3 @@
-
 // ie-tip css
 require('bootstrap/dist/css/bootstrap.css');
 require('@zzh/ie-tip/dist/ie-tip.css');
@@ -11,13 +10,13 @@ require('bootstrap');
 
 const $ = require('jquery');
 
-let data = require('./js/data');
-let init = require('./js/init');
+const data = require('./js/data');
+const init = require('./js/init');
 require('./js/view');
 
 // disable cache
-$.ajaxSetup({cache: !1});
+$.ajaxSetup({ cache: !1 });
 
-$.getJSON(data.url, {}, function (res) {
-    init(res);
+$.getJSON(data.url, {}, res => {
+  init(res);
 });

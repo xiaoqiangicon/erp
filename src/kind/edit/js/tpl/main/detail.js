@@ -1,4 +1,3 @@
-
 module.exports = `
 <div class="main-detail">
     <div class="text-1">详情内容设置</div>

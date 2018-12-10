@@ -83,11 +83,17 @@ export default class extends Component {
           return (
             <div>
               {record.status ? (
-                <a className="mg-r-20" onClick={self.onClickHandle.bind(this, record)}>
+                <a
+                  className="mg-r-20"
+                  onClick={self.onClickHandle.bind(this, record)}
+                >
                   处理
                 </a>
               ) : (
-                <a className="mg-r-20" onClick={self.onClickDetail.bind(this, record)}>
+                <a
+                  className="mg-r-20"
+                  onClick={self.onClickDetail.bind(this, record)}
+                >
                   详情
                 </a>
               )}

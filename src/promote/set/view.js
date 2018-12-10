@@ -30,8 +30,14 @@ seeView({
   },
   // 点击确定
   clickOk() {
-    const receive = parseInt($('[data-radio="receive"].active').attr('data-value'), 10);
-    const verify = parseInt($('[data-radio="verify"].active').attr('data-value'), 10);
+    const receive = parseInt(
+      $('[data-radio="receive"].active').attr('data-value'),
+      10
+    );
+    const verify = parseInt(
+      $('[data-radio="verify"].active').attr('data-value'),
+      10
+    );
     const title = $('#title').val();
     const intro = share.editor.getContent();
 

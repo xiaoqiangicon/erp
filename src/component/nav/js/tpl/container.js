@@ -1,5 +1,3 @@
-
-
 module.exports = `
 <div class="component-nav" id="component-nav">
     <header class="component-nav-header" id="component-nav-header"></header>

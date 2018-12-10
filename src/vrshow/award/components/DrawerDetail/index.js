@@ -141,7 +141,9 @@ export default class extends Component {
         address: awardData.address,
         receiveTime: awardData.receiveTime,
       };
-      const pics = awardData.disposedPic ? awardData.disposedPic.split(',') : [];
+      const pics = awardData.disposedPic
+        ? awardData.disposedPic.split(',')
+        : [];
       this.setState({ loading: false, awardInfo, pics }, () => {
         this.initQRCode();
       });
@@ -195,7 +197,18 @@ export default class extends Component {
 
   awardInfoJsx = () => {
     const { awardInfo } = this.state;
-    const { fromType, writeName, address, days, tel, name, award, alivePeople, deadman, receiveTime } = awardInfo;
+    const {
+      fromType,
+      writeName,
+      address,
+      days,
+      tel,
+      name,
+      award,
+      alivePeople,
+      deadman,
+      receiveTime,
+    } = awardInfo;
     const mapCommon = [
       { key: days, title: '礼佛天数' },
       { key: award, title: '获得奖品' },
@@ -207,7 +220,10 @@ export default class extends Component {
       [], // 无用
       [{ key: address, title: '地址' }],
       [{ key: writeName, title: '功德芳名' }],
-      [{ key: alivePeople, title: '阳上人' }, { key: deadman, title: '往生者' }],
+      [
+        { key: alivePeople, title: '阳上人' },
+        { key: deadman, title: '往生者' },
+      ],
       [], // 其它
     ];
     const map = [...mapCommon, ...mapRest[fromType]];
@@ -231,7 +247,8 @@ export default class extends Component {
     const { type } = this.state;
     if (type === 'detail') {
       return this.handleImageJsx();
-    } else if (type === 'handle') {
+    }
+    if (type === 'handle') {
       return (
         <div>
           {this.handleWay1Jsx()}
@@ -241,50 +258,51 @@ export default class extends Component {
     }
   };
 
-  imageCellJsx = ({ img, hasClose }) => {
-    return (
-      <div key={img} className={styles.imgCellContainer}>
-        <img src={img} className={styles.img} alt="" />
-        {hasClose ? (
-          <div className={styles.delete} onClick={this.onClickDeleteImage.bind(this, img)}>
-            X
-          </div>
-        ) : (
-          ''
-        )}
-      </div>
-    );
-  };
+  imageCellJsx = ({ img, hasClose }) => (
+    <div key={img} className={styles.imgCellContainer}>
+      <img src={img} className={styles.img} alt="" />
+      {hasClose ? (
+        <div
+          className={styles.delete}
+          onClick={this.onClickDeleteImage.bind(this, img)}
+        >
+          X
+        </div>
+      ) : (
+        ''
+      )}
+    </div>
+  );
 
   imagesJsx = () => {
     const { pics } = this.state;
 
     return (
-      <div className={styles.imageContainer}>{pics.map(item => this.imageCellJsx({ img: item, hasClose: true }))}</div>
-    );
-  };
-
-  uploadJsx = () => {
-    return (
-      <div
-        className={styles.uploadContainer}
-        draggable
-        onDragOver={this.onDragOver}
-        onDrop={this.onDrop}
-        onClick={this.onClickUploadImage}
-      >
-        <img
-          className={styles.uploadImage}
-          src="https://pic.zizaihome.com/692097f6-db6d-11e8-9f9a-00163e0c001e.png"
-          alt=""
-        />
-        <div className={styles.uploadText}>
-          <div className={styles.text1}>点击或将图片拖拽到这里上传</div>
-          <div className={styles.text2}>支持格式：.jpg .png .gif</div>
-        </div>
+      <div className={styles.imageContainer}>
+        {pics.map(item => this.imageCellJsx({ img: item, hasClose: true }))}
       </div>
     );
   };
+
+  uploadJsx = () => (
+    <div
+      className={styles.uploadContainer}
+      draggable
+      onDragOver={this.onDragOver}
+      onDrop={this.onDrop}
+      onClick={this.onClickUploadImage}
+    >
+      <img
+        className={styles.uploadImage}
+        src="https://pic.zizaihome.com/692097f6-db6d-11e8-9f9a-00163e0c001e.png"
+        alt=""
+      />
+      <div className={styles.uploadText}>
+        <div className={styles.text1}>点击或将图片拖拽到这里上传</div>
+        <div className={styles.text2}>支持格式：.jpg .png .gif</div>
+      </div>
+    </div>
+  );
 
   handleImageJsx = () => {
     const { pics } = this.state;
@@ -301,16 +319,14 @@ export default class extends Component {
     );
   };
 
-  handleWay1Jsx = () => {
-    return (
-      <div>
-        <div className={styles.head}>处理方式1：扫描二维码</div>
-        <div className={styles.body}>
-          <div ref={this.QRCodeRef} className={styles.QRCodeContainer} />
-        </div>
+  handleWay1Jsx = () => (
+    <div>
+      <div className={styles.head}>处理方式1：扫描二维码</div>
+      <div className={styles.body}>
+        <div ref={this.QRCodeRef} className={styles.QRCodeContainer} />
       </div>
-    );
-  };
+    </div>
+  );
 
   handleWay2Jsx = () => {
     const { pics } = this.state;

@@ -1,16 +1,17 @@
-
 const jsonRefactor = require('json-refactor');
 
 module.exports = req => {
-    req.img = [];
-    req.covers.forEach(url => {
-        req.img.push({url});
-    });
+  req.img = [];
+  req.covers.forEach(url => {
+    req.img.push({ url });
+  });
 
-    delete req.covers;
+  delete req.covers;
 
-    jsonRefactor(req.specs, [{
-        benison: 'desc',
-        indexImg: 'icon'
-    }]);
+  jsonRefactor(req.specs, [
+    {
+      benison: 'desc',
+      indexImg: 'icon',
+    },
+  ]);
 };

@@ -1,4 +1,3 @@
-
 /**
  *
  * 详见: /static/resources/json/menu_items_test.json（测试机）

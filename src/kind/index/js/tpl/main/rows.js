@@ -1,7 +1,6 @@
-
 const handlebars = require('handlebars');
 
-let tpl = `
+const tpl = `
 {{#each data}}
 <div class="row-1" data-row="{{this.id}}">
     <div class="item-1 item-1-1">{{this.id}}</div>

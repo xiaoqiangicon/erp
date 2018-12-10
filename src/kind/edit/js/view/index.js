@@ -1,4 +1,3 @@
-
 require('./common');
 require('./cover');
 require('./pay');

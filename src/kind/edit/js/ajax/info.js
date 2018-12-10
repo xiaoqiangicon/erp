@@ -2,54 +2,47 @@
  * @author senntyou <jiangjinbelief@163.com>
  */
 
-let seeAjax = require('see-ajax');
+const seeAjax = require('see-ajax');
 
-let requestKeys = {
-    id: 'charityId'
+const requestKeys = {
+  id: 'charityId',
 };
 
-let responseRefactor = {
-    data: {
-        title: 'name',
-        intro: 'details',
-        payItems: 'spec',
-        _payItems: [
-            {
-                desc: 'benison',
-                icon: 'indexImg'
-            }
-        ],
-        shareTitle: 'shareName',
-        shareDesc: 'shareDetails',
-        shareIcon: 'shareHeadImg',
-        showPeopleCountWhenShare: 'isShowJoinNum'
-    }
+const responseRefactor = {
+  data: {
+    title: 'name',
+    intro: 'details',
+    payItems: 'spec',
+    _payItems: [
+      {
+        desc: 'benison',
+        icon: 'indexImg',
+      },
+    ],
+    shareTitle: 'shareName',
+    shareDesc: 'shareDetails',
+    shareIcon: 'shareHeadImg',
+    showPeopleCountWhenShare: 'isShowJoinNum',
+  },
 };
 
-let postHandle = res => {
-    let covers = [];
-    res.data.img && res.data.img.length && res.data.img.forEach(item => {
-        covers.push(item.url);
+const postHandle = res => {
+  const covers = [];
+  res.data.img &&
+    res.data.img.length &&
+    res.data.img.forEach(item => {
+      covers.push(item.url);
     });
-    res.data.covers = covers;
+  res.data.covers = covers;
 };
 
 seeAjax.config('info', {
-    url: [
-        '/zzhadmin/charityGet/',
-        '/src/kind/edit/data/info_server.json',
-        '/src/kind/edit/data/info.json'
-    ],
-    requestKeys: [
-        requestKeys,
-        requestKeys
-    ],
-    responseRefactor: [
-        responseRefactor,
-        responseRefactor
-    ],
-    postHandle: [
-        postHandle,
-        postHandle
-    ]
+  url: [
+    '/zzhadmin/charityGet/',
+    '/src/kind/edit/data/info_server.json',
+    '/src/kind/edit/data/info.json',
+  ],
+  requestKeys: [requestKeys, requestKeys],
+  responseRefactor: [responseRefactor, responseRefactor],
+  postHandle: [postHandle, postHandle],
 });

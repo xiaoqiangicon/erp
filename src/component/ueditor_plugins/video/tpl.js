@@ -1,7 +1,6 @@
-
 const handlebars = require('handlebars');
 
-let tpl = `
+const tpl = `
 <div class="ue-pl-video" data-ue-pl-video="{{id}}">
     <div class="inner-1">
         <div class="head-1">插入视频</div>

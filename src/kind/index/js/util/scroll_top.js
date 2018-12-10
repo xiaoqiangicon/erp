@@ -1,6 +1,5 @@
-
 const $ = require('jquery');
 
 module.exports = _ => {
-    $(window).scrollTop(0);
+  $(window).scrollTop(0);
 };

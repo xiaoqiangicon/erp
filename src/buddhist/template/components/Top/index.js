@@ -29,7 +29,9 @@ export default class extends Component {
           onClick={() => {
             this.onClickTab('system');
           }}
-          className={`${styles.tab} ${templateType === 'system' ? styles.active : ''}`}
+          className={`${styles.tab} ${
+            templateType === 'system' ? styles.active : ''
+          }`}
         >
           系统模板
         </div>
@@ -37,7 +39,9 @@ export default class extends Component {
           onClick={() => {
             this.onClickTab('my');
           }}
-          className={`${styles.tab} ${templateType === 'my' ? styles.active : ''}`}
+          className={`${styles.tab} ${
+            templateType === 'my' ? styles.active : ''
+          }`}
         >
           我的模板
         </div>

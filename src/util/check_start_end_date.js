@@ -1,5 +1,4 @@
-
-let getDateNumber = require('./get_date_number');
+const getDateNumber = require('./get_date_number');
 
 /**
  * 检查结束日期是否大于等于开始日期
@@ -7,10 +6,10 @@ let getDateNumber = require('./get_date_number');
  * @param endDate 结束日期，格式 2018-01-01
  */
 module.exports = (startDate, endDate) => {
-    if (!startDate || !endDate) return !0;
+  if (!startDate || !endDate) return !0;
 
-    let startNum = parseInt(getDateNumber(startDate));
-    let endNum = parseInt(getDateNumber(endDate));
+  const startNum = parseInt(getDateNumber(startDate));
+  const endNum = parseInt(getDateNumber(endDate));
 
-    return endNum >= startNum;
+  return endNum >= startNum;
 };

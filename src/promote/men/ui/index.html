@@ -1,137 +1,152 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="renderer" content="webkit"/>
-  <meta name="format-detection" content="telephone=no">
-  <link rel="shortcut icon" type="image/x-icon" href="../../../../images/favicon.ico"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../../../../images/favicon.ico"
+    />
 
-  <title>推广员管理</title>
-</head>
-<body>
-<div id="content-container">
-  <div class="root-1">
-    <div class="nav-1">
-      <a class="item-1 no-underline" href="/">推广列表</a>
-      <a class="item-1 no-underline active" href="/">推广员管理</a>
-      <a class="item-1 no-underline" href="/">招募设置</a>
-    </div>
-    <div class="intro-1">
-      <div class="text-1">信众、团体通过您制定的招募计划成为推广员后，不仅可以实时收到分成收益，还能邀请好友加入推广队伍，帮助知寺院推广传播和弘扬佛法。</div>
-      <button class="clean btn-1">招募推广员</button>
-    </div>
-    <div class="nav-2">
-      <div class="item-2">推广员</div>
-      <div class="item-2 active">待审核<span class="badge">12</span></div>
-    </div>
-    <div class="content-1" style="display: none;">
-      <div class="filter-1">
-        <div class="btn-group btn-group-1">
-          <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="fl-left">状态：</span>
-            全部
+    <title>推广员管理</title>
+  </head>
+  <body>
+    <div id="content-container">
+      <div class="root-1">
+        <div class="nav-1">
+          <a class="item-1 no-underline" href="/">推广列表</a>
+          <a class="item-1 no-underline active" href="/">推广员管理</a>
+          <a class="item-1 no-underline" href="/">招募设置</a>
+        </div>
+        <div class="intro-1">
+          <div class="text-1">
+            信众、团体通过您制定的招募计划成为推广员后，不仅可以实时收到分成收益，还能邀请好友加入推广队伍，帮助知寺院推广传播和弘扬佛法。
           </div>
-          <ul class="dropdown-menu">
-            <li><a>已结算</a></li>
-            <li><a>待结算</a></li>
-            <li><a>未处理</a></li>
-          </ul>
+          <button class="clean btn-1">招募推广员</button>
         </div>
-      </div>
-      <div class="row-1 row-1-head">
-        <div class="cell-1 cell-1-name">用户昵称</div>
-        <div class="cell-1">姓名</div>
-        <div class="cell-1">手机号码</div>
-        <div class="cell-1">支付次数<span class="icon-2"></span></div>
-        <div class="cell-1">支付金额（元）<span class="icon-2"></span></div>
-        <div class="cell-1">状态</div>
-        <div class="cell-1">申请时间</div>
-        <div class="cell-1">操作</div>
-      </div>
-      <div class="list-1">
-        ${require('./row.html')}
-        ${require('./row.html')}
-        ${require('./row.html')}
-        ${require('./row.html')}
-      </div>
-      <div class="page-1" id="page"></div>
-    </div>
-    <div class="content-2">
-      <div class="filter-1">
-        <div class="btn-group btn-group-1">
-          <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="fl-left">状态：</span>
-            全部
+        <div class="nav-2">
+          <div class="item-2">推广员</div>
+          <div class="item-2 active">待审核<span class="badge">12</span></div>
+        </div>
+        <div class="content-1" style="display: none;">
+          <div class="filter-1">
+            <div class="btn-group btn-group-1">
+              <div
+                type="button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                <span class="fl-left">状态：</span> 全部
+              </div>
+              <ul class="dropdown-menu">
+                <li><a>已结算</a></li>
+                <li><a>待结算</a></li>
+                <li><a>未处理</a></li>
+              </ul>
+            </div>
           </div>
-          <ul class="dropdown-menu">
-            <li><a>已结算</a></li>
-            <li><a>待结算</a></li>
-            <li><a>未处理</a></li>
-          </ul>
+          <div class="row-1 row-1-head">
+            <div class="cell-1 cell-1-name">用户昵称</div>
+            <div class="cell-1">姓名</div>
+            <div class="cell-1">手机号码</div>
+            <div class="cell-1">支付次数<span class="icon-2"></span></div>
+            <div class="cell-1">支付金额（元）<span class="icon-2"></span></div>
+            <div class="cell-1">状态</div>
+            <div class="cell-1">申请时间</div>
+            <div class="cell-1">操作</div>
+          </div>
+          <div class="list-1">
+            ${require('./row.html')} ${require('./row.html')}
+            ${require('./row.html')} ${require('./row.html')}
+          </div>
+          <div class="page-1" id="page"></div>
         </div>
-        <div class="search-1">
-          <input class="clean input-1" placeholder="推广员昵称/手机号码">
-          <button class="clean btn-1">搜索</button>
+        <div class="content-2">
+          <div class="filter-1">
+            <div class="btn-group btn-group-1">
+              <div
+                type="button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                <span class="fl-left">状态：</span> 全部
+              </div>
+              <ul class="dropdown-menu">
+                <li><a>已结算</a></li>
+                <li><a>待结算</a></li>
+                <li><a>未处理</a></li>
+              </ul>
+            </div>
+            <div class="search-1">
+              <input class="clean input-1" placeholder="推广员昵称/手机号码" />
+              <button class="clean btn-1">搜索</button>
+            </div>
+          </div>
+          <div class="row-1 row-2 row-1-head">
+            <div class="cell-1 cell-2">头像</div>
+            <div class="cell-1 cell-2">昵称</div>
+            <div class="cell-1 cell-2">姓名</div>
+            <div class="cell-1 cell-2">手机号码</div>
+            <div class="cell-1 cell-2">
+              推广笔数<span class="icon-2"></span>
+            </div>
+            <div class="cell-1 cell-2">
+              推广金额（元）<span class="icon-2"></span>
+            </div>
+            <div class="cell-1 cell-2">
+              累计奖励金（元）<span class="icon-2"></span>
+            </div>
+            <div class="cell-1 cell-2">加入时间</div>
+            <div class="cell-1 cell-2">操作<span class="icon-1"></span></div>
+          </div>
+          <div class="list-1">
+            ${require('./row-2.html')} ${require('./row-2.html')}
+            ${require('./row-2.html')} ${require('./row-2.html')}
+          </div>
+          <div class="page-1" id="page-2"></div>
         </div>
       </div>
-      <div class="row-1 row-2 row-1-head">
-        <div class="cell-1 cell-2">头像</div>
-        <div class="cell-1 cell-2">昵称</div>
-        <div class="cell-1 cell-2">姓名</div>
-        <div class="cell-1 cell-2">手机号码</div>
-        <div class="cell-1 cell-2">推广笔数<span class="icon-2"></span></div>
-        <div class="cell-1 cell-2">推广金额（元）<span class="icon-2"></span></div>
-        <div class="cell-1 cell-2">累计奖励金（元）<span class="icon-2"></span></div>
-        <div class="cell-1 cell-2">加入时间</div>
-        <div class="cell-1 cell-2">操作<span class="icon-1"></span></div>
-      </div>
-      <div class="list-1">
-        ${require('./row-2.html')}
-        ${require('./row-2.html')}
-        ${require('./row-2.html')}
-        ${require('./row-2.html')}
-      </div>
-      <div class="page-1" id="page-2"></div>
     </div>
-  </div>
-</div>
-<div class="verify-overlay" style="display: none;"></div>
-<div class="verify" style="display: none;">
-  <div class="head-11">
-    推广员申请
-    <button class="clean close-11"></button>
-  </div>
-  <div class="text-11">你确定同意推广员 <span class="special-11">赵瑞锋</span> 加入吗？</div>
-  <div class="action-11">
-    <button class="clean btn-11">确认通过</button>
-  </div>
-</div>
-<div class="verify" style="display: none;">
-  <div class="head-11">
-    推广员申请
-    <button class="clean close-11"></button>
-  </div>
-  <div class="text-12">你确定拒绝推广员 <span class="special-11">赵瑞锋</span> 加入吗？</div>
-  <div class="box-11">
-    <textarea class="clean area-11" rows="10" maxlength="200"></textarea>
-    <div class="hint-11">200/200</div>
-  </div>
-  <div class="action-11">
-    <button class="clean btn-11">确认通过</button>
-  </div>
-</div>
-<div class="verify">
-  <div class="head-11">
-    禁用
-    <button class="clean close-11"></button>
-  </div>
-  <div class="text-13">你确定限制推广员 <span class="special-11">赵瑞锋</span> 吗？</div>
-  <div class="text-14">禁止后不影响之前推广的分成结算，也可取消禁用</div>
-  <div class="action-11">
-    <button class="clean btn-11">禁用</button>
-    <button class="clean btn-11 btn-11-2">取消</button>
-  </div>
-</div>
-</body>
+    <div class="verify-overlay" style="display: none;"></div>
+    <div class="verify" style="display: none;">
+      <div class="head-11">
+        推广员申请 <button class="clean close-11"></button>
+      </div>
+      <div class="text-11">
+        你确定同意推广员 <span class="special-11">赵瑞锋</span> 加入吗？
+      </div>
+      <div class="action-11">
+        <button class="clean btn-11">确认通过</button>
+      </div>
+    </div>
+    <div class="verify" style="display: none;">
+      <div class="head-11">
+        推广员申请 <button class="clean close-11"></button>
+      </div>
+      <div class="text-12">
+        你确定拒绝推广员 <span class="special-11">赵瑞锋</span> 加入吗？
+      </div>
+      <div class="box-11">
+        <textarea class="clean area-11" rows="10" maxlength="200"></textarea>
+        <div class="hint-11">200/200</div>
+      </div>
+      <div class="action-11">
+        <button class="clean btn-11">确认通过</button>
+      </div>
+    </div>
+    <div class="verify">
+      <div class="head-11">禁用 <button class="clean close-11"></button></div>
+      <div class="text-13">
+        你确定限制推广员 <span class="special-11">赵瑞锋</span> 吗？
+      </div>
+      <div class="text-14">禁止后不影响之前推广的分成结算，也可取消禁用</div>
+      <div class="action-11">
+        <button class="clean btn-11">禁用</button>
+        <button class="clean btn-11 btn-11-2">取消</button>
+      </div>
+    </div>
+  </body>
 </html>

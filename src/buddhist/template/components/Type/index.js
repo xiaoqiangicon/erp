@@ -27,34 +27,39 @@ export default class extends Component {
           <Spin />
         </div>
       );
-    } else {
-      return (
-        <div className={styles.container}>
-          <div className={styles.left}>分类：</div>
-          <div>
+    }
+    return (
+      <div className={styles.container}>
+        <div className={styles.left}>分类：</div>
+        <div>
+          <div
+            className={`${styles.item} ${
+              systemTemplateType === -1 ? styles.active : ''
+            }`}
+            onClick={() => {
+              this.onClickItem(-1);
+            }}
+          >
+            全部
+          </div>
+          {data.map(item => (
             <div
-              className={`${styles.item} ${systemTemplateType === -1 ? styles.active : ''}`}
+              key={item.id}
+              className={
+                item.id === systemTemplateType
+                  ? `${styles.item} ${styles.active}`
+                  : `${styles.item}`
+              }
               onClick={() => {
-                this.onClickItem(-1);
+                this.onClickItem(item.id);
               }}
             >
-              全部
+              {item.name}
             </div>
-            {data.map(item => (
-              <div
-                key={item.id}
-                className={item.id === systemTemplateType ? `${styles.item} ${styles.active}` : `${styles.item}`}
-                onClick={() => {
-                  this.onClickItem(item.id);
-                }}
-              >
-                {item.name}
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
-      );
-    }
+      </div>
+    );
   }
 
   render() {

@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="renderer" content="webkit"/>
-  <meta name="format-detection" content="telephone=no">
-  <link rel="shortcut icon" type="image/x-icon" href="../../../../images/favicon.ico"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../../../../images/favicon.ico"
+    />
 
-  <title>推广员管理 - 推广员详情</title>
-</head>
-<body>
-<div id="content-container">
-  <div class="root-1">
-    <div class="intro-1">
-      <div class="box-1">
-        <img class="avatar-1" src="/images/chan-zai-128x128.png">
-        <div class="text-1">狗尾巴草</div>
-        <div class="text-2">姓名：杭三 | 手机号码：18677778899</div>
-      </div>
-      <div class="box-2">
-        <div class="text-3">待入账奖励金（元）</div>
-        <div class="text-4">1234</div>
-      </div>
-      <div class="box-2">
-        <div class="text-3">已结算奖励金（元）</div>
-        <div class="text-4">1234</div>
-      </div>
-      <div class="box-2">
-        <div class="text-3">合计奖励金（元）</div>
-        <div class="text-4">1234</div>
-      </div>
-      <div class="box-2">
-        <div class="text-3">推广笔数</div>
-        <div class="text-4">1234</div>
-      </div>
-    </div>
-    <div class="filter-1">
-      <div class="btn-group btn-group-1">
-        <div type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <span class="fl-left">状态：</span>
-          全部
+    <title>推广员管理 - 推广员详情</title>
+  </head>
+  <body>
+    <div id="content-container">
+      <div class="root-1">
+        <div class="intro-1">
+          <div class="box-1">
+            <img class="avatar-1" src="/images/chan-zai-128x128.png" />
+            <div class="text-1">狗尾巴草</div>
+            <div class="text-2">姓名：杭三 | 手机号码：18677778899</div>
+          </div>
+          <div class="box-2">
+            <div class="text-3">待入账奖励金（元）</div>
+            <div class="text-4">1234</div>
+          </div>
+          <div class="box-2">
+            <div class="text-3">已结算奖励金（元）</div>
+            <div class="text-4">1234</div>
+          </div>
+          <div class="box-2">
+            <div class="text-3">合计奖励金（元）</div>
+            <div class="text-4">1234</div>
+          </div>
+          <div class="box-2">
+            <div class="text-3">推广笔数</div>
+            <div class="text-4">1234</div>
+          </div>
         </div>
-        <ul class="dropdown-menu">
-          <li><a>已结算</a></li>
-          <li><a>待结算</a></li>
-          <li><a>未处理</a></li>
-        </ul>
+        <div class="filter-1">
+          <div class="btn-group btn-group-1">
+            <div
+              type="button"
+              class="btn btn-default dropdown-toggle"
+              data-toggle="dropdown"
+            >
+              <span class="fl-left">状态：</span> 全部
+            </div>
+            <ul class="dropdown-menu">
+              <li><a>已结算</a></li>
+              <li><a>待结算</a></li>
+              <li><a>未处理</a></li>
+            </ul>
+          </div>
+          <div class="time-1">
+            <input class="clean input-1" placeholder="下单时间" />
+            <span class="icon-1"></span>
+          </div>
+        </div>
+        <div class="row-1 row-1-head">
+          <div class="cell-1">下单时间</div>
+          <div class="cell-1">名称</div>
+          <div class="cell-1">支付金额（元）</div>
+          <div class="cell-1">佣金比例</div>
+          <div class="cell-1">奖励金（元）</div>
+          <div class="cell-1">状态<span class="icon-1"></span></div>
+        </div>
+        <div class="list-1">
+          ${require('./row.html')} ${require('./row.html')}
+          ${require('./row.html')} ${require('./row.html')}
+        </div>
+        <div class="page-1" id="page"></div>
       </div>
-      <div class="time-1">
-        <input class="clean input-1" placeholder="下单时间">
-        <span class="icon-1"></span>
-      </div>
     </div>
-    <div class="row-1 row-1-head">
-      <div class="cell-1">下单时间</div>
-      <div class="cell-1">名称</div>
-      <div class="cell-1">支付金额（元）</div>
-      <div class="cell-1">佣金比例</div>
-      <div class="cell-1">奖励金（元）</div>
-      <div class="cell-1">状态<span class="icon-1"></span></div>
-    </div>
-    <div class="list-1">
-      ${require('./row.html')}
-      ${require('./row.html')}
-      ${require('./row.html')}
-      ${require('./row.html')}
-    </div>
-    <div class="page-1" id="page"></div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

@@ -1,7 +1,6 @@
-
 const handlebars = require('handlebars');
 
-let tpl = `
+const tpl = `
 <div class="content-container" id="content-container">
     <div class="main-nav">
         <span>微寺院</span>

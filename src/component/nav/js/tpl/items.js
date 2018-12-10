@@ -1,7 +1,6 @@
-
 const handlebars = require('handlebars');
 
-let tpl = `
+const tpl = `
 {{#each items}}
 <li class="component-nav-menu-item hide" data-menu-item-id="{{this.id}}">
     <a class="component-nav-menu-item-header">

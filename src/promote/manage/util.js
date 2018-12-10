@@ -97,7 +97,10 @@ export const checkSet = () => {
   }
 
   const fixedRewardType = parseInt($set.attr('data-fixed-reward-type'), 10);
-  const rewardType = parseInt($('[data-set-nav].active').attr('data-set-nav'), 10);
+  const rewardType = parseInt(
+    $('[data-set-nav].active').attr('data-set-nav'),
+    10
+  );
   const usePercent = fixedRewardType ? fixedRewardType === 1 : rewardType === 1;
   let errorText;
 
@@ -107,7 +110,16 @@ export const checkSet = () => {
       if (errorText) return;
 
       const item = share.items.find(i => i.id === id);
-      const { priceType, price, hasCharge, chargeType, charge, hasPromote, promoteType, promote } = item;
+      const {
+        priceType,
+        price,
+        hasCharge,
+        chargeType,
+        charge,
+        hasPromote,
+        promoteType,
+        promote,
+      } = item;
       let max = 100;
 
       // 有服务费
@@ -145,8 +157,10 @@ export const checkSet = () => {
       }
 
       if (floatValue > max) {
-        if (hasPromote) errorText = `当前佛事正在平台合作，分成比例不可超过<span class="special-11">${max}%</span>`;
-        else errorText = `分成比例不可超过<span class="special-11">${max}%</span>`;
+        if (hasPromote)
+          errorText = `当前佛事正在平台合作，分成比例不可超过<span class="special-11">${max}%</span>`;
+        else
+          errorText = `分成比例不可超过<span class="special-11">${max}%</span>`;
       }
     });
   }
@@ -156,7 +170,16 @@ export const checkSet = () => {
       if (errorText) return;
 
       const item = share.items.find(i => i.id === id);
-      const { priceType, price, hasCharge, chargeType, charge, hasPromote, promoteType, promote } = item;
+      const {
+        priceType,
+        price,
+        hasCharge,
+        chargeType,
+        charge,
+        hasPromote,
+        promoteType,
+        promote,
+      } = item;
 
       if (priceType === 3) {
         errorText = '随喜不能按固定金额提成';
@@ -190,8 +213,10 @@ export const checkSet = () => {
       }
 
       if (floatValue > max) {
-        if (hasPromote) errorText = `当前佛事正在平台合作，分成金额不可超过<span class="special-11">${max}元</span>`;
-        else errorText = `分成金额不可超过<span class="special-11">${max}元</span>`;
+        if (hasPromote)
+          errorText = `当前佛事正在平台合作，分成金额不可超过<span class="special-11">${max}元</span>`;
+        else
+          errorText = `分成金额不可超过<span class="special-11">${max}元</span>`;
       }
     });
   }

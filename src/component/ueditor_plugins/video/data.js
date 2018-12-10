@@ -1,7 +1,6 @@
-
 module.exports = {
-    id: 1,
-    optionsCollection: {
-        // id => options
-    }
+  id: 1,
+  optionsCollection: {
+    // id => options
+  },
 };
