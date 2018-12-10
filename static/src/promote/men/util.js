@@ -17,6 +17,15 @@ const renderInfo = res => {
   share.hasPromoteUrl = res.hasPromoteUrl;
 };
 
+export const updatePendingCount = () => {
+  const count = parseInt($pendingCount.text(), 10) - 1;
+
+  console.log(count);
+
+  if (!count) $pendingCount.text(0).addClass('dp-none');
+  else $pendingCount.text(count);
+};
+
 const $verifyList = $('#list-1');
 const $verifyPage = $('#page-1');
 const $verifyRowHead = $('#verify-row-head');
@@ -27,6 +36,8 @@ export const verifyFilter = {
   status: 0,
   sortField: '',
 };
+
+let renderedInfo = !1;
 
 export const requestVerifyList = (page = 1, init = !0) => {
   $verifyList.html(commonTpl.loading);
@@ -40,7 +51,10 @@ export const requestVerifyList = (page = 1, init = !0) => {
 
     share.verifyList = res.data;
 
-    renderInfo(res);
+    if (!renderedInfo) {
+      renderedInfo = !0;
+      renderInfo(res);
+    }
 
     $verifyList.html(verifyRowsTpl(res));
 

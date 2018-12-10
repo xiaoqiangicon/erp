@@ -7,6 +7,7 @@ const req = {
 const pre = params => ({ ...params, type: 2 });
 
 seeAjax.config('refuse', {
+  method: ['post'],
   url: [
     '/zzhadmin/setPromotionUser/',
     '/static/src/promote/men/mock/refuse-1.json',

@@ -59,6 +59,8 @@ const post = res => {
       else if (item.priceType === 1) item.rewardText = parseFloat(((item.price * item.reward) / 100).toFixed(2));
     }
 
+    if (item.promote) item.promote = parseFloat((item.promote * 100).toFixed(2));
+
     // 推广费
     item.hasPromote = item.promote > 0;
     item.promoteType = 1; // 后台只有比例

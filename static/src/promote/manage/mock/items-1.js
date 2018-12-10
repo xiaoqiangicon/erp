@@ -16,7 +16,7 @@ module.exports = (req, res) => {
           serviceMoney: id * 10,
           promotionType: Math.floor(Math.random() * 3) + 1,
           promotionPrice: id * 10,
-          percent: id * 10,
+          percent: (id * 10) / 100,
         })),
       },
     })

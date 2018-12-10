@@ -3,7 +3,7 @@ import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import toastr from 'toastr';
 import promotion from '@zzh/promotion';
-import { manFilter, requestManList, requestVerifyList, verifyFilter } from './util';
+import { manFilter, requestManList, requestVerifyList, updatePendingCount, verifyFilter } from './util';
 import dialog from '../../util/dialog';
 import confirm from '../../util/confirm';
 import share from './share';
@@ -95,13 +95,13 @@ seeView({
     const id = parseInt($this.attr('data-verify-row-pass'), 10);
     const item = share.verifyList.find(i => i.id === id);
 
-    handlingId = id;
+    handlingId = item.userId;
     $('#pass-name').text(item.name);
     $('#verify-overlay').show();
     $('#pass').show();
   },
   clickPassOk(e) {
-    seeAjax('pass', { id: handlingId }, res => {
+    seeAjax('pass', { userId: handlingId }, res => {
       if (!res.success) {
         dialog(res.message);
         return;
@@ -113,7 +113,9 @@ seeView({
         .hide();
       $('#verify-overlay').hide();
       toastr.success('操作成功');
+      updatePendingCount();
       requestVerifyList();
+      requestManList();
     });
   },
   // 点击拒绝
@@ -152,6 +154,7 @@ seeView({
         .hide();
       $('#verify-overlay').hide();
       toastr.success('操作成功');
+      updatePendingCount();
       requestVerifyList();
     });
   },
