@@ -82,7 +82,7 @@ seeView({
     window.sessionStorage['promote/list:item'] = JSON.stringify(item);
 
     setTimeout(() => {
-      location.href = `/zzhadmin/promotionManageHtml/?id=${id}`;
+      window.location.href = `/zzhadmin/promotionManageHtml/?id=${id}`;
     }, 200);
   },
   clickRowDelete(e) {
@@ -156,13 +156,17 @@ seeView({
       }
 
       $('#add-input').val('');
-      selectedSearchId = 0;
+      // selectedSearchId = 0;
       $('#add-ok').addClass('disabled');
       $('#add-hint').hide();
       $('#add-overlay').hide();
       $('#add').hide();
       requestList();
       toastr.success('添加成功');
+
+      setTimeout(() => {
+        window.location.href = `/zzhadmin/promotionManageHtml/?id=${selectedSearchId}`;
+      }, 1000);
     });
   },
 });

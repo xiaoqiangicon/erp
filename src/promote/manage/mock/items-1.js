@@ -5,6 +5,10 @@ module.exports = (req, res) => {
       result: 1,
       data: {
         total: 199,
+        commodityName:
+          '本焕寺第廿四期施放千台吉祥焰口及供灯法会（农历十月在线登记）',
+        addPromotionTime: '2018-09-20',
+        isFinish: 0,
         list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
           id,
           name: `选择项名称 ${id}`,

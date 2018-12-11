@@ -10,6 +10,23 @@ const $win = $(window);
 const $itemsList = $('#list-1');
 const $selectAllItems = $('#select-all-items');
 
+let infoRendered = !1;
+
+const renderInfo = res => {
+  const { title, statusText, addTime, ended } = res;
+  $('#display-title').text(title);
+  $('#display-status').text(statusText);
+  $('#display-add-time').text(addTime);
+
+  const $content1 = $('[data-content="1"]');
+
+  // -1 未开始 0 进行中 1 已结束
+  if (ended > 0) $content1.addClass('no-select');
+
+  $('#summary').show();
+  $content1.show();
+};
+
 export const requestItems = () => {
   $selectAllItems.prop('checked', !1);
   $itemsList.html(commonTpl.loading);
@@ -17,6 +34,11 @@ export const requestItems = () => {
     if (!res.success || !res.data || !res.data.length) {
       $itemsList.html(commonTpl.noData);
       return;
+    }
+
+    if (!infoRendered) {
+      infoRendered = !0;
+      renderInfo(res);
     }
 
     share.items = res.data;
@@ -90,7 +112,7 @@ export const checkSet = () => {
 
   const floatValue = parseFloat(value);
 
-  if (isNaN(floatValue)) {
+  if (Number.isNaN(floatValue)) {
     $setHint.text(`输入 ${value} 格式不合法，请正确输入数字`).show();
     $setOk.addClass('disabled');
     return;

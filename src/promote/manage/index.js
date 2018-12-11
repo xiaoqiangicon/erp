@@ -1,46 +1,24 @@
-import 'component/nav';
+import '../../component/nav';
 import '@senntyou/shortcut.css';
 import '@zzh/pagination/dist/pagination.css';
 import 'tippy.js/dist/tippy.css';
 import 'toastr/build/toastr.css';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
-import 'less/common.less';
-import 'less/bootstrap.less';
-import 'less/pagination.less';
+import '../../less/common.less';
+import '../../less/bootstrap.less';
+import '../../less/pagination.less';
 import './index.less';
 
 import $ from 'jquery';
-import seeAjax from 'see-ajax';
 import 'tippy.js';
 import 'bootstrap-datepicker';
-import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js';
+import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min';
 import './ajax';
 import './view';
 import { filter, requestItems, requestRecords } from './util';
-import dialog from '../../util/dialog';
 
-seeAjax('info', {}, res => {
-  if (!res.success) {
-    dialog(res.message);
-    return;
-  }
-
-  const { title, statusText, addTime, ended } = res.data;
-  $('#display-title').text(title);
-  $('#display-status').text(statusText);
-  $('#display-add-time').text(addTime);
-
-  const $content1 = $('[data-content="1"]');
-
-  // -1 未开始 0 进行中 1 已结束
-  if (ended > 0) $content1.addClass('no-select');
-
-  $('#summary').show();
-  $content1.show();
-
-  requestItems();
-  requestRecords();
-});
+requestItems();
+requestRecords();
 
 // 初始化日期选择器
 $('#filter-time')
