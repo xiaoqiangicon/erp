@@ -32,7 +32,8 @@ seeAjax('info', {}, res => {
 
   const $content1 = $('[data-content="1"]');
 
-  if (ended) $content1.addClass('no-select');
+  // -1 未开始 0 进行中 1 已结束
+  if (ended > 0) $content1.addClass('no-select');
 
   $('#summary').show();
   $content1.show();
