@@ -7,6 +7,7 @@ module.exports = (req, res) => {
         id,
         title: `本焕寺第廿四期施放千台吉祥焰口及供灯法会（农历十月在线登记） ${id}`,
         added: Math.floor(Math.random() * 2),
+        needPay: Math.floor(Math.random() * 2),
       })),
     })
   );

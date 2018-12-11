@@ -84,7 +84,7 @@
     "@zzh/promotion": "^0.3.0",
     "@zzh/qrcode": "^0.3.0",
     "@zzh/reset": "^0.3.0",
-    "@zzh/store-image": "git+http://git.zizaihome.cn/senntyou/store-image.git#ff9621e2",
+    "@zzh/store-image": "git+http://git.zizaihome.cn/senntyou/store-image.git#db80564b",
     "@zzh/ueditor": "^0.3.0",
     "@zzh/upload": "^0.3.0",
     "@zzh/util": "^0.3.0",

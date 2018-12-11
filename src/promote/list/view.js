@@ -13,6 +13,8 @@ const $body = $('body');
 // 选择的搜索结果
 let selectedSearchId = 0;
 
+let searchResult = [];
+
 seeView({
   events: {
     // 点击切换状态
@@ -53,6 +55,13 @@ seeView({
     const $this = $(e.currentTarget);
     const id = parseInt($this.attr('data-row-status'), 10);
     const online = $this.hasClass('active');
+    const item = share.items.find(i => i.id === id);
+
+    // 不能上架
+    if (!online && item.canOnline) {
+      dialog('还未设置分成奖励金，不可上架推广');
+      return;
+    }
 
     seeAjax('status', { id, online: online ? 0 : 1 }, res => {
       if (!res.success) {
@@ -117,6 +126,7 @@ seeView({
 
     selectedSearchId = 0;
     $('#add-ok').addClass('disabled');
+    $('#add-error').hide();
 
     if (!value) {
       $hint.html('');
@@ -126,6 +136,7 @@ seeView({
     seeAjax('search', { search: value }, res => {
       if (!res.success || !res.data || !res.data.length) $hint.html('');
 
+      searchResult = (res && res.data) || [];
       $hint.html(searchTpl(res)).show();
     });
   },
@@ -138,10 +149,24 @@ seeView({
     const id = parseInt($this.attr('data-search-row'), 10);
     const text = $this.text().trim();
 
+    const item = searchResult.find(i => i.id === id);
+
     $('#add-input').val(text);
     selectedSearchId = id;
-    $('#add-ok').removeClass('disabled');
     $('#add-hint').hide();
+
+    const $ok = $('#add-ok');
+    const $error = $('#add-error');
+
+    console.log(item);
+
+    if (item.needPay) {
+      $ok.removeClass('disabled');
+      $error.hide();
+    } else {
+      $ok.addClass('disabled');
+      $error.show();
+    }
   },
   // 确定添加
   clickAddOk(e) {

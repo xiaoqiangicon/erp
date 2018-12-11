@@ -5,7 +5,7 @@ const StoreImage = require('@zzh/store-image');
 require('@zzh/handling/dist/handling.css');
 const zzhHandling = require('@zzh/handling');
 
-const dialog = require('util/dialog');
+const dialog = require('../../../../util/dialog');
 
 const checkBeforeSave = require('../util/check_before_save');
 const data = require('../data');
@@ -19,7 +19,7 @@ seeView({
   onClickOk(e) {
     const self = this;
     const $this = $(e.target);
-    const handling = !!parseInt($this.attr('data-handling'));
+    const handling = !!parseInt($this.attr('data-handling'), 10);
 
     if (handling) return;
 
@@ -30,11 +30,21 @@ seeView({
       .attr({ 'data-handling': 1 })
       .text(`正在${data.info.isEdit ? '更新' : '保存'}中...`);
     zzhHandling.show();
-    new StoreImage(result.data.intro, newContent => {
-      result.data.intro = newContent;
 
-      self.save(result.data);
-    });
+    // eslint-disable-next-line no-new
+    new StoreImage(
+      result.data.intro,
+      newContent => {
+        result.data.intro = newContent;
+
+        zzhHandling.setText('保存数据');
+
+        self.save(result.data);
+      },
+      (uploaded, total) => {
+        zzhHandling.setText(`上传 ${uploaded}/${total}`);
+      }
+    );
   },
   // 保存
   save(dataToSave) {
@@ -65,6 +75,6 @@ seeView({
       .text(data.info.isEdit ? '更新' : '保存');
     zzhHandling.hide();
 
-    location.href = '/zzhadmin/charityIndex/';
+    window.location.href = '/zzhadmin/charityIndex/';
   },
 });

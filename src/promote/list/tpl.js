@@ -31,9 +31,13 @@ export const rowsTpl = handlebars.compile(`
 
 export const searchTpl = handlebars.compile(`
 {{#each data}}
-<div class="row-3 {{#if added}}disabled{{/if}}" data-search-row="{{id}}">
+<div class="row-3 {{#if added}}disabled{{/if}} {{#unless needPay}}disabled{{/unless}}" data-search-row="{{id}}">
   {{title}}
-  {{#if added}}<span class="badge-1">已添加</span>{{/if}}
+  {{#if added}}
+    <span class="badge-1">已添加</span>
+  {{else}}
+  {{#unless needPay}}<span class="badge-1 badge-1-red">无需支付</span>{{/unless}}
+  {{/if}}
 </div>
 {{/each}}
 `);

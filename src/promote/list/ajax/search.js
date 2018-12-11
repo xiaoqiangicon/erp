@@ -9,6 +9,7 @@ const refactor = {
     {
       title: 'name',
       added: 'isPromotion',
+      needPay: 'isNeedPay',
     },
   ],
 };

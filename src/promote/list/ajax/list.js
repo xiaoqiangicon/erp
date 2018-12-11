@@ -22,6 +22,7 @@ const refactor = {
       count: 'totalJoinNum',
       profit: 'totalPromotionMoney',
       ended: 'isEnd',
+      canOnline: 'senilitySale',
     },
   ],
 };

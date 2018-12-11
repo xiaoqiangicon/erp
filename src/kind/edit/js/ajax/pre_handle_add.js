@@ -1,4 +1,4 @@
-const jsonRefactor = require('json-refactor');
+const jsonRefactor = require('json-refactor').default;
 
 module.exports = req => {
   req.img = [];
