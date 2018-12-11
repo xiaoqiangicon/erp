@@ -1,0 +1,10 @@
+{
+  "data": {
+    "todayJoinNum": 1,
+    "todayPrice": 3,
+    "totalPrice": 3.43,
+    "joinNum": 4
+  },
+  "msg": "成功",
+  "result": 1
+}

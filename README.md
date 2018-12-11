@@ -1,19 +1,13 @@
-# erp工程的web端项目
-
-* [编码规范](https://git.oschina.net/senntyou/web-specification)
-* [工程使用详解](https://github.com/senntyou/lila)
-* [前端须知](http://git.zizaihome.cn/senntyou/web-note)
-
-* 其他详细情况联系 @senntyou(江津)
+# erp 工程的 web 端项目
 
 ## 重要东东
 
-* 每个页面都建议加载 `component/report` 组件
+- 每个页面都建议加载 `component/report` 组件
 
-## 私有npm仓库
+## 私有 npm 仓库
 
-* `web`: [http://npm.senntyou.com](http://npm.senntyou.com)
-* `registry`: [http://registry.npm.senntyou.com](http://registry.npm.senntyou.com)
+- `web`: [http://npm.zizaihome.cn](http://npm.zizaihome.cn)
+- `registry`: [http://registry.npm.zizaihome.cn](http://registry.npm.zizaihome.cn)
 
 ## 组件集合
 

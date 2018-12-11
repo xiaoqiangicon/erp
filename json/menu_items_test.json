@@ -1,0 +1,242 @@
+{
+  "items": [
+    {
+      "id": "temple",
+      "name": "微寺院",
+      "icon": "glyphicon-fire",
+      "subItems": [
+        {
+          "id": "temple-create",
+          "name": "我的寺院",
+          "link": "/zzhadmin/templeIndex/",
+          "controlMark": "pw_website"
+        },
+        {
+          "id": "temple-donate-box",
+          "name": "功德箱",
+          "link": "/zzhadmin/meritBoxIndex/",
+          "controlMark": "pw_website"
+        },
+        {
+          "id": "kind-index",
+          "name": "日行一善",
+          "link": "/zzhadmin/charityIndex/",
+          "controlMark": "pw_website"
+        }
+      ]
+    },
+    {
+      "id": "volunteer",
+      "name": "微义工",
+      "icon": "glyphicon-user",
+      "subItems": [
+        {
+          "id": "volunteer-recruit",
+          "name": "招募管理",
+          "link": "/zzhadmin/volunteerRecruit/",
+          "controlMark": "pw_volunteer"
+        },
+        {
+          "id": "send-message",
+          "name": "群发通知",
+          "link": "/zzhadmin/volunteer_sendSMS_index/",
+          "controlMark": "pw_sendmsg"
+        }
+      ]
+    },
+    {
+      "id": "buddhist",
+      "name": "微佛事",
+      "icon": "glyphicon-grain",
+      "subItems": [
+        {
+          "id": "event-manage",
+          "name": "佛事管理",
+          "link": "/zzhadmin/managerCeremonyIndex/",
+          "controlMark": "pw_ceremony"
+        },
+        {
+          "id": "order-manage",
+          "name": "佛事订单&nbsp;&nbsp;<span class=\"badge\" data-buddhist-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
+          "link": "/zzhadmin/ceremony_index/",
+          "isHtml": true,
+          "controlMark": "pw_order"
+        },
+        {
+          "id": "chanzai-order",
+          "name": "APP订单&nbsp;&nbsp;<span class=\"badge\" data-chanzai-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
+          "link": "/zzhadmin/conversionOrderIndex/",
+          "isHtml": true,
+          "controlMark": "pw_chanzai_order"
+        }
+      ]
+    },
+    {
+      "id": "article",
+      "name": "微文章",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "article-index",
+          "name": "文章管理",
+          "link": "/zzhadmin/articleIndex/",
+          "controlMark": "pw_article"
+        },
+        {
+          "id": "article-interact",
+          "name": "互动管理",
+          "link": "/zzhadmin/articleInteractIndex/",
+          "controlMark": "pw_article"
+        }
+      ]
+    },
+    {
+      "id": "merit",
+      "name": "功德主",
+      "icon": "merit-logo",
+      "subItems": [
+        {
+          "id": "merit-manage",
+          "name": "功德主管理",
+          "link": "/zzhadmin/meritRankManage/",
+          "controlMark": "pw_merit_rank"
+        }
+      ]
+    },
+    {
+      "id": "cash",
+      "name": "微善款",
+      "icon": "glyphicon-briefcase",
+      "subItems": [
+        {
+          "id": "cash-index",
+          "name": "善款统计",
+          "link": "/zzhadmin/cashIndex/",
+          "controlMark": "pw_money_center"
+        },
+        {
+          "id": "cash-take",
+          "name": "提现管理",
+          "link": "/zzhadmin/cashTake/",
+          "controlMark": "pw_money_center"
+        }
+      ]
+    }
+  ],
+  "superItems": [
+    {
+      "id": "wall",
+      "name": "微供奉",
+      "icon": "buddha-logo",
+      "subItems": [
+        {
+          "id": "wall-intro",
+          "name": "礼佛系统",
+          "link": "/zzhadmin/openBuddha/",
+          "controlType": 2
+        },
+        {
+          "id": "wall-index",
+          "name": "供奉管理",
+          "link": "/zzhadmin/buddhaManage/",
+          "controlMark": "pw_buddha_wall"
+        },
+        {
+          "id": "wall-record",
+          "name": "自录数据",
+          "link": "/zzhadmin/buddhaLoggingData/",
+          "controlMark": "pw_buddha_wall_record"
+        },
+        {
+          "id": "wall-order",
+          "name": "订单管理&nbsp;&nbsp;<span class=\"badge\" data-wall-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
+          "link": "/zzhadmin/buddhaOrderManage/",
+          "isHtml": true,
+          "controlMark": "pw_buddha_wall_order"
+        },
+        {
+          "id": "wall-remind",
+          "name": "到期提醒",
+          "link": "/zzhadmin/buddhaExpirationRemind/",
+          "controlMark": "pw_buddha_wall_order"
+        }
+      ]
+    },
+    {
+      "id": "vrshow",
+      "name": "实景探寺",
+      "icon": "glyphicon-globe",
+      "subItems": [
+        {
+          "id": "no-vrshow",
+          "name": "应用介绍",
+          "link": "/zzhadmin/vr_introduce/",
+          "controlType": 2
+        },
+        {
+          "id": "base-set",
+          "name": "基础设置",
+          "link": "/zzhadmin/vr_index/",
+          "controlMark": "pw_vr_devote"
+        },
+        {
+          "id": "scene-manage",
+          "name": "场景管理",
+          "link": "/zzhadmin/vr_scene/",
+          "controlMark": "pw_vr_devote"
+        },
+        {
+          "id": "watchword-manage",
+          "name": "字幕管理",
+          "link": "/zzhadmin/vr_word/",
+          "controlMark": "pw_vr_devote"
+        },
+        {
+          "id": "tributes-record",
+          "name": "供奉记录",
+          "link": "/zzhadmin/vr_record/",
+          "controlMark": "pw_vr_devote"
+        },
+        {
+          "id": "vrshow-award",
+          "name": "获奖反馈&nbsp;&nbsp;<span class=\"badge\" data-vrshow-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
+          "isHtml": true,
+          "link": "/zzhadmin/vr_getSignGiftHtml/",
+          "controlMark": "pw_vr_devote"
+        }
+      ]
+    },
+    {
+      "id": "hardware",
+      "name": "智能设备",
+      "icon": "glyphicon-film",
+      "subItems": [
+        {
+          "id": "hardware-donate",
+          "name": "满福屏管理",
+          "link": "/zzhadmin/merit_machine_index/",
+          "controlMark": "pw_merit_machine"
+        },
+        {
+          "id": "traffic-statistics",
+          "name": "客流统计",
+          "link": "/zzhadmin/traffic/",
+          "controlMark": "pw_guest_traffic"
+        }
+      ]
+    },
+    {
+      "id": "promote",
+      "name": "推广工具",
+      "icon": "glyphicon-share",
+      "subItems": [
+        {
+          "id": "promote-list",
+          "name": "分享推广",
+          "link": "/zzhadmin/promotionListHtml/",
+          "controlMark": "pw_promotion"
+        }
+      ]
+    }
+  ]
+}
