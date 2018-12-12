@@ -55,10 +55,10 @@ seeView({
     const $this = $(e.currentTarget);
     const id = parseInt($this.attr('data-row-status'), 10);
     const online = $this.hasClass('active');
-    const item = share.items.find(i => i.id === id);
+    const disabled = $this.hasClass('disabled');
 
     // 不能上架
-    if (!online && item.canOnline) {
+    if (disabled) {
       dialog('还未设置分成奖励金，不可上架推广');
       return;
     }

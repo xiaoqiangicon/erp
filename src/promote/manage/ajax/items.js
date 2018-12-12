@@ -13,6 +13,8 @@ const refactor = {
   title: 'data.commodityName',
   addTime: 'data.addPromotionTime',
   ended: 'data.isFinish',
+  online: 'data.isPromotion',
+  canOnline: 'data.senilitySale',
   data: 'data.list',
   _data: [
     {

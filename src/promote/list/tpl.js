@@ -12,7 +12,7 @@ export const rowsTpl = handlebars.compile(`
   <div class="cell-1">{{totalMoney}}</div>
   <div class="cell-1">{{profit}}</div>
   <div class="cell-1">
-    <div class="c-switch {{#if online}}active{{/if}}" data-row-status="{{id}}">
+    <div class="c-switch {{#if canOnline}}{{#if online}}active{{/if}}{{else}}disabled{{/if}}" data-row-status="{{id}}">
       <i class="circle-1"></i>
       <span class="text-left-1">上架中</span>
       <span class="text-right-1">已下架</span>

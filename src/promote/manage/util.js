@@ -10,10 +10,8 @@ const $win = $(window);
 const $itemsList = $('#list-1');
 const $selectAllItems = $('#select-all-items');
 
-let infoRendered = !1;
-
 const renderInfo = res => {
-  const { title, statusText, addTime, ended } = res;
+  const { title, statusText, addTime, ended, online, canOnline } = res;
   $('#display-title').text(title);
   $('#display-status').text(statusText);
   $('#display-add-time').text(addTime);
@@ -25,6 +23,12 @@ const renderInfo = res => {
 
   $('#summary').show();
   $content1.show();
+
+  // 这个数据需要每次刷新
+  const $online = $('#online');
+
+  if (!canOnline) $online.addClass('disabled');
+  else if (online) $online.addClass('active');
 };
 
 export const requestItems = () => {
@@ -36,10 +40,9 @@ export const requestItems = () => {
       return;
     }
 
-    if (!infoRendered) {
-      infoRendered = !0;
-      renderInfo(res);
-    }
+    share.canOnline = res.canOnline;
+
+    renderInfo(res);
 
     share.items = res.data;
 

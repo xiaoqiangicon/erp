@@ -7,6 +7,8 @@ module.exports = (req, res) => {
       statusText: '进行中',
       addTime: '2018-09-20',
       ended: 0,
+      online: 1,
+      canOnline: 1,
       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
         id,
         title: `选择项名称 ${id}`,
