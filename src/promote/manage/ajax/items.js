@@ -13,7 +13,6 @@ const refactor = {
   title: 'data.commodityName',
   addTime: 'data.addPromotionTime',
   ended: 'data.isFinish',
-  online: 'data.isPromotion',
   canOnline: 'data.senilitySale',
   data: 'data.list',
   _data: [
@@ -32,6 +31,7 @@ const refactor = {
 
 const post = res => {
   res.statusText = ['未开始', '进行中', '已结束'][res.ended + 1];
+  res.online = res.isPromotion === 1;
 
   res.data.forEach(item => {
     item.noNeedPay = !item.needPay;

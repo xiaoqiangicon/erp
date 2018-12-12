@@ -7,7 +7,7 @@ const req = {
 };
 
 const pre = params => {
-  params.commodityId = parseInt(util.browser.id, 10);
+  params.commodityId = parseInt(util.urlParams.id, 10);
 
   if (params.online === 1) params.isPromotion = 1;
   else params.isPromotion = -1;

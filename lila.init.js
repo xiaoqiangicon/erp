@@ -110,7 +110,7 @@ export default lila => {
   setSetting('beforeTasks', ({ entries, argv, cmd }) => {
     lila.success(
       `\n  ${entries[0]} ${
-        entries.length > 2 ? `... ${entries.length} entries are` : 'entry is'
+        entries.length > 1 ? `... ${entries.length} entries are` : 'entry is'
       } about to ${cmd}, with env[${argv.env}]\n`
     );
   });
@@ -118,7 +118,7 @@ export default lila => {
   setSetting('afterTasks', ({ entries, argv, cmd }) => {
     lila.success(
       `\n  ${entries[0]} ${
-        entries.length > 2 ? `... ${entries.length} entries have` : 'entry has'
+        entries.length > 1 ? `... ${entries.length} entries have` : 'entry has'
       } been succeeded to ${cmd}, with env[${argv.env}]\n`
     );
   });
