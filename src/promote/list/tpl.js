@@ -31,13 +31,20 @@ export const rowsTpl = handlebars.compile(`
 
 export const searchTpl = handlebars.compile(`
 {{#each data}}
-<div class="row-3 {{#if added}}disabled{{/if}} {{#unless needPay}}disabled{{/unless}}" data-search-row="{{id}}">
-  {{title}}
-  {{#if added}}
-    <span class="badge-1">已添加</span>
-  {{else}}
-  {{#unless needPay}}<span class="badge-1 badge-1-red">无需支付</span>{{/unless}}
-  {{/if}}
+<div class="row-0-1">
+  <div class="cell-0-1">
+    <button class="clean check-0-1 {{#if added}}disabled{{/if}} {{#unless needPay}}disabled{{/unless}}" data-add-check="{{id}}"></button>
+  </div>
+  <div class="cell-0-2">{{id}}</div>
+  <button class="clean cell-0-3">{{title}}</button>
+  <div class="cell-0-4">
+    {{#unless needPay}}
+    <button class="clean c-badge c-badge-orange">无需支付</button>
+    {{else}}
+    {{#if added}}<button class="clean c-badge c-badge-blue">已添加</button>{{/if}}
+    {{/unless}}
+  </div>
 </div>
+
 {{/each}}
 `);

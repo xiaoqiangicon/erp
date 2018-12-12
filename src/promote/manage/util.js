@@ -27,8 +27,16 @@ const renderInfo = res => {
   // 这个数据需要每次刷新
   const $online = $('#online');
 
-  if (!canOnline) $online.addClass('disabled');
-  else if (online) $online.addClass('active');
+  if (!canOnline) {
+    $online.removeClass('active');
+    $online.addClass('disabled');
+  } else if (online) {
+    $online.removeClass('disabled');
+    $online.addClass('active');
+  } else {
+    $online.removeClass('disabled');
+    $online.removeClass('active');
+  }
 };
 
 export const requestItems = () => {

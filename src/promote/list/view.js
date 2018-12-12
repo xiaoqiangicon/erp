@@ -2,18 +2,12 @@ import $ from 'jquery';
 import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import toastr from 'toastr';
-import { filter, requestList } from './util';
-import { searchTpl } from './tpl';
+import { addFilter, filter, requestAddList, requestList } from './util';
 import dialog from '../../util/dialog';
 import confirm from '../../util/confirm';
 import share from './share';
 
 const $body = $('body');
-
-// 选择的搜索结果
-let selectedSearchId = 0;
-
-let searchResult = [];
 
 seeView({
   events: {
@@ -27,10 +21,10 @@ seeView({
     '!click #to-add': 'clickToAdd',
     '!click #add-overlay': 'hideAdd',
     '!click #add-close': 'hideAdd',
-    '!input #add-input': 'changeAddInput',
-    '!propertychange #add-input': 'changeAddInput',
+    '!keyup #add-search-input': 'keyUpAddSearchInput',
+    '!click #add-search-ok': 'clickAddSearchOk',
     // 点击选择搜索结果
-    'click [data-search-row]': 'clickSearchRow',
+    'click [data-add-check]': 'clickAddCheck',
     // 确定添加
     '!click #add-ok': 'clickAddOk',
   },
@@ -114,74 +108,48 @@ seeView({
   clickToAdd() {
     $('#add-overlay').show();
     $('#add').show();
+    requestAddList();
   },
   hideAdd() {
     $('#add-overlay').hide();
     $('#add').hide();
   },
-  changeAddInput(e) {
-    const $this = $(e.target);
-    const value = $this.val();
-    const $hint = $('#add-hint');
+  keyUpAddSearchInput(e) {
+    if (e.keyCode === 13) this.clickAddSearchOk();
+  },
+  clickAddSearchOk() {
+    addFilter.search = $('#add-search-input').val();
 
-    selectedSearchId = 0;
-    $('#add-ok').addClass('disabled');
-    $('#add-error').hide();
-
-    if (!value) {
-      $hint.html('');
-      return;
-    }
-
-    seeAjax('search', { search: value }, res => {
-      if (!res.success || !res.data || !res.data.length) $hint.html('');
-
-      searchResult = (res && res.data) || [];
-      $hint.html(searchTpl(res)).show();
-    });
+    requestAddList();
   },
   // 点击选择搜索结果
-  clickSearchRow(e) {
+  clickAddCheck(e) {
     const $this = $(e.currentTarget);
 
     if ($this.hasClass('disabled')) return;
 
-    const id = parseInt($this.attr('data-search-row'), 10);
-    const text = $this.text().trim();
+    $('[data-add-check].active').removeClass('active');
 
-    const item = searchResult.find(i => i.id === id);
-
-    $('#add-input').val(text);
-    selectedSearchId = id;
-    $('#add-hint').hide();
-
-    const $ok = $('#add-ok');
-    const $error = $('#add-error');
-
-    console.log(item);
-
-    if (item.needPay) {
-      $ok.removeClass('disabled');
-      $error.hide();
-    } else {
-      $ok.addClass('disabled');
-      $error.show();
-    }
+    $this.addClass('active');
   },
   // 确定添加
-  clickAddOk(e) {
-    const $this = $(e.target);
+  clickAddOk() {
+    const $check = $('[data-add-check].active');
 
-    if ($this.hasClass('disabled')) return;
+    if (!$check.length) {
+      dialog('请先选择一个佛事');
+      return;
+    }
 
-    seeAjax('add', { id: selectedSearchId }, res => {
+    const id = $check.attr('data-add-check');
+
+    seeAjax('add', { id }, res => {
       if (!res.success) {
         dialog(res.message);
         return;
       }
 
       $('#add-input').val('');
-      // selectedSearchId = 0;
       $('#add-ok').addClass('disabled');
       $('#add-hint').hide();
       $('#add-overlay').hide();
@@ -190,7 +158,7 @@ seeView({
       toastr.success('添加成功');
 
       setTimeout(() => {
-        window.location.href = `/zzhadmin/promotionManageHtml/?id=${selectedSearchId}`;
+        window.location.href = `/zzhadmin/promotionManageHtml/?id=${id}`;
       }, 1000);
     });
   },
