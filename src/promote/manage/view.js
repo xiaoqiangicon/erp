@@ -113,6 +113,12 @@ seeView({
 
     const $set = $('#set');
     const value = parseFloat($('#set-input').val());
+
+    if (value <= 0) {
+      dialog('请设置大于 0 的奖励金');
+      return;
+    }
+
     const fixedRewardType = parseInt($set.attr('data-fixed-reward-type'), 10);
     const rewardType = parseInt(
       $('[data-set-nav].active').attr('data-set-nav'),
