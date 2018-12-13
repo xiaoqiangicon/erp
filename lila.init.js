@@ -49,7 +49,7 @@ const servers = [
 
 const rename = {};
 
-const useCssModules = [
+const cssModules = [
   'buddhist/template',
   'vrshow/award',
   'component/ueditor_plugins/music',
@@ -235,7 +235,7 @@ export default lila => {
       alias: {
         handlebars: 'handlebars/dist/handlebars.js',
       },
-      cssModules: useCssModules.indexOf(entry) > -1,
+      cssModules: cssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
       cssModulesExclude: cssModulesExclude[entry] || undefined,
       babelImport: [{ libraryName: 'antd', style: 'css' }],
