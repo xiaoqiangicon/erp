@@ -9,7 +9,7 @@ const pre = params => ({
   ...params,
   isFinish: params.isFinish - 1,
   pageNum: params.pageNum - 1,
-  pageSize: 20,
+  pageSize: 10,
 });
 
 const refactor = {
@@ -29,7 +29,7 @@ const refactor = {
 
 const post = res => {
   /* eslint-disable no-param-reassign */
-  res.totalPages = Math.ceil((res.totalCount || 1) / 20);
+  res.totalPages = Math.ceil((res.totalCount || 1) / 10);
 
   if (res.data && res.data.length)
     res.data.forEach(item => {

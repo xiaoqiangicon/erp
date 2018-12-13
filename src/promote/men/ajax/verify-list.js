@@ -6,7 +6,7 @@ const req = {
 };
 
 const pre = params => {
-  const result = { ...params, pageNum: params.pageNum - 1, pageSize: 20 };
+  const result = { ...params, pageNum: params.pageNum - 1, pageSize: 10 };
 
   if (result.status === 0) result.type = 4;
   else if (result.status === 1) result.type = 1;
@@ -40,7 +40,7 @@ const refactor = {
 };
 
 const post = res => {
-  res.totalPages = Math.ceil((res.totalCount || 1) / 20);
+  res.totalPages = Math.ceil((res.totalCount || 1) / 10);
   if (res.data && res.data.length)
     res.data.forEach(item => {
       item.statusPending = item.status === 1;

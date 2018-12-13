@@ -12,7 +12,7 @@ const pre = params => ({
   ...params,
   userId: parseInt(util.urlParams.userId, 10),
   pageNum: params.pageNum - 1,
-  pageSize: 20,
+  pageSize: 10,
 });
 
 const refactor = {
@@ -39,11 +39,12 @@ const refactor = {
 
 const post = res => {
   /* eslint-disable no-param-reassign */
-  res.totalPages = Math.ceil((res.totalCount || 1) / 20);
+  res.totalPages = Math.ceil((res.totalCount || 1) / 10);
   res.pendingIncome = res.totalIncome - res.gotIncome;
 
   if (res.data && res.data.length)
     res.data.forEach(item => {
+      item.rewardRateText = item.rewardRate <= 0 ? '-' : `${item.rewardRate}%`;
       item.statusGot = item.status === 1;
       item.statusPending = item.status === 2;
       item.statusUnhandled = item.status === 3;
