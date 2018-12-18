@@ -34,7 +34,7 @@ const post = res => {
   if (res.data && res.data.length)
     res.data.forEach(item => {
       item.online = item.isPromotion === 1;
-      item.showDelete = !item.online && !item.ended;
+      item.showDelete = !item.online || item.ended === 1;
     });
 };
 
