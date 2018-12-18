@@ -209,6 +209,11 @@ seeView({
     const online = $this.hasClass('active');
     const disabled = $this.hasClass('disabled');
 
+    if (share.ended === 1) {
+      dialog('佛事已结束，不可上架推广');
+      return;
+    }
+
     // 不能上架
     if (disabled) {
       dialog('还未设置分成奖励金，不可上架推广');

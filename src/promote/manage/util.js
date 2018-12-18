@@ -27,7 +27,8 @@ const renderInfo = res => {
   // 这个数据需要每次刷新
   const $online = $('#online');
 
-  if (!canOnline) {
+  // 如果佛事以下架，则不能上架
+  if (res.ended === 1 || !canOnline) {
     $online.removeClass('active');
     $online.addClass('disabled');
   } else if (online) {
@@ -49,6 +50,7 @@ export const requestItems = () => {
     }
 
     share.canOnline = res.canOnline;
+    share.ended = res.ended;
 
     renderInfo(res);
 
