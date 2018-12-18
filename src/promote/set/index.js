@@ -1,26 +1,27 @@
-import 'component/nav';
+import '../../component/nav';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
 import '@zzh/handling/dist/handling.css';
 import '@zzh/promotion/dist/promotion.css';
-import 'less/common.less';
-import 'less/bootstrap.less';
+import '../../less/common.less';
+import '../../less/bootstrap.less';
 import './index.less';
 
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import 'component/ueditor_config';
+import '../../component/ueditor_config';
 import '@zzh/ueditor/src/ueditor.config';
 import '@zzh/ueditor';
 
-import 'component/ueditor_plugins/xiu_mi';
-import 'component/ueditor_plugins/import_wx_article';
-import 'component/ueditor_plugins/video';
-import 'component/ueditor_plugins/choose_image';
-import 'component/ueditor_plugins/choose_image_multi';
+import '../../component/ueditor_plugins/xiu_mi';
+import '../../component/ueditor_plugins/import_wx_article';
+import '../../component/ueditor_plugins/video';
+import '../../component/ueditor_plugins/choose_image';
+import '../../component/ueditor_plugins/choose_image_multi';
 import './ajax';
 import './view';
 import share from './share';
+import { defaultDetail, defaultTitle } from './util';
 
 $('[data-temple-name]').text(window.localStorage.templename);
 
@@ -29,22 +30,23 @@ seeAjax('info', {}, res => {
 
   $('#content-1').show();
   $('#content-2').show();
-  $(
-    `[data-radio="receive"][data-value="${
-      typeof res.data.receive !== 'undefined' ? res.data.receive : 1
-    }"]`
-  ).addClass('active');
-  $(
-    `[data-radio="verify"][data-value="${
-      typeof res.data.verify !== 'undefined' ? res.data.verify : 1
-    }"]`
-  ).addClass('active');
+
+  const receive = parseInt(res.data.receive, 10);
+  $(`[data-radio="receive"][data-value="${receive === 0 ? 0 : 1}"]`).addClass(
+    'active'
+  );
+
+  const verify = parseInt(res.data.verify, 10);
+  $(`[data-radio="verify"][data-value="${verify === 0 ? 0 : 1}"]`).addClass(
+    'active'
+  );
+
   share.editor = window.UE.getEditor('editor');
-  $('#title').val(res.data.title || '');
+  $('#title').val(res.data.title || defaultTitle);
 
   share.promoteUrl = res.data.promoteUrl;
 
   share.editor.ready(() => {
-    share.editor.setContent(res.data.intro || '');
+    share.editor.setContent(res.data.intro || defaultDetail);
   });
 });
