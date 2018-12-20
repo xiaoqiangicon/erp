@@ -3,7 +3,7 @@
  */
 
 // 当前子域名
-const subDomain = location.hostname.split('.')[0];
+const subDomain = window.location.hostname.split('.')[0];
 
 // 服务器环境（0：本地环境，1：测试机，2：灰度机，3：正式机）
 const serverEnv = (() => {
@@ -11,6 +11,8 @@ const serverEnv = (() => {
     erptest: 1,
     erprelease: 2,
     zizaihome: 3,
+    www: 3,
+    erp: 3,
   };
 
   return domains[subDomain] || 0;
