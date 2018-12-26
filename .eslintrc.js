@@ -12,6 +12,13 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2017,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.vue'],
+      },
+    },
+  },
   rules: {
     'react/forbid-prop-types': [0],
     'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],
