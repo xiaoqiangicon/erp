@@ -1,0 +1,50 @@
+.content-section {
+  margin-top: 20px;
+}
+.content-section .unit {
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  cursor: pointer;
+}
+.content-section .unit:nth-child(2n + 1) {
+  background: #ffffff;
+}
+.content-section .unit:nth-child(2n) {
+  background: #f8faf9;
+}
+.content-section .unit .cell {
+  width: 20%;
+  float: left;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.content-section .unit .cell.select {
+  overflow: inherit;
+}
+.content-section .unit .cell.select .btn {
+  border-radius: 3px !important;
+}
+.content-section .unit .cell.select .caret {
+  margin-left: 20px;
+  color: #ffffff;
+}
+.content-section .unit .cell.select .dropdown-menu {
+  left: inherit;
+  right: 0;
+}
+.content-section .unit-head {
+  border: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: transparent !important;
+}
+.content-section .unit-head .cell {
+  color: #000;
+  font-size: 20px;
+}

@@ -1,0 +1,46 @@
+.filter-section {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 16px;
+  border-bottom: 1px solid #797979;
+}
+.filter-sub-section {
+  width: 100%;
+}
+.filter-section .cell {
+  float: left;
+  display: inline-block;
+  line-height: 34px;
+  margin-right: 20px;
+}
+.filter-section .cell.active {
+  color: #00cc66;
+}
+.filter-section .name {
+  width: 70px;
+  font-size: 16px;
+}
+.filter-section .time-input {
+  width: 150px;
+  position: relative;
+}
+.filter-section .time-input .form-control {
+  padding-right: 34px;
+}
+.filter-section .btn-group > .btn {
+  border-radius: 3px !important;
+  line-height: 22px !important;
+}
+.filter-section .btn-group .caret {
+  margin-left: 20px;
+}
+.filter-section .calendar-icon {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  width: 20px;
+  height: 20px;
+  background: url('../../../../../images/cash/calendar@2x.png') no-repeat;
+  background-size: contain;
+}

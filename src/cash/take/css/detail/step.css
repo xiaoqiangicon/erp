@@ -1,0 +1,40 @@
+.detail-steps {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.detail-step {
+  float: left;
+  min-height: 1px;
+  width: 14%;
+  font-size: 18px;
+  text-align: center;
+}
+.detail-step-circle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #989898;
+  color: #989898;
+}
+.detail-step-circle.active {
+  color: #71ba31;
+  border-color: #71ba31;
+}
+.detail-step-circle.full {
+  color: #ffffff;
+  background-color: #71ba31;
+  border-color: #71ba31;
+}
+.detail-step-line {
+  display: inline-block;
+  width: 80%;
+  height: 20px;
+  border-bottom: 1px solid #989898;
+}
+.detail-step-line.active {
+  border-color: #71ba31;
+}

@@ -1,0 +1,22 @@
+.detail-summary {
+  position: relative;
+  width: 100%;
+}
+.detail-summary-left {
+  float: left;
+  width: 80%;
+}
+.detail-summary-right {
+  float: right;
+  width: 20%;
+}
+.detail-summary-right-inner {
+  padding-left: 20px;
+  width: 100%;
+}
+.detail-summary.no-right .detail-summary-left {
+  width: 100%;
+}
+.detail-summary.no-right .detail-summary-right {
+  display: none;
+}
