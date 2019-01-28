@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>交易记录</title>
+  </head>
+  <body data-menu-id="cash-record">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section clearfix">
+          <a class="menu-item" href="/zzhadmin/cashIndex/">善款统计</a>
+          <a class="menu-item active">交易记录</a>
+        </div>
+        <div class="filter-section">
+          <div class="filter-sub-section clearfix">
+            <div class="cell name">时间：</div>
+            <div class="cell time-input">
+              <input class="form-control" data-select-date="1" />
+              <i class="calendar-icon"></i>
+            </div>
+            <div class="cell time-input">
+              <input class="form-control" data-select-date="2" />
+              <i class="calendar-icon"></i>
+            </div>
+            <button class="clean-button cell" data-special-date="1">
+              今天
+            </button>
+            <button class="clean-button cell" data-special-date="2">
+              1个月
+            </button>
+            <button class="clean-button cell" data-special-date="3">
+              3个月
+            </button>
+            <button class="clean-button cell" data-special-date="4">1年</button>
+          </div>
+          <div class="filter-sub-section clearfix mgt20">
+            <button class="btn btn-green right" id="export-excel">
+              导出查询结果
+            </button>
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="head">
+            <div class="unit unit-head">
+              <div class="cell cell-common"><span>分类</span></div>
+              <div class="cell cell-date"><span>日期</span></div>
+              <div class="cell cell-title"><span>项目名称</span></div>
+              <div class="cell cell-common"><span>昵称</span></div>
+              <div class="cell cell-common"><span>金额</span></div>
+              <div class="cell cell-common"><span>操作</span></div>
+            </div>
+          </div>
+          <div class="body" id="pagination-content-containers"></div>
+        </div>
+        <div class="pagination-section" id="pagination-containers"></div>
+      </div>
+    </div>
+    <script type="text/html" id="tpl-pagination">
+      {@if totalPages > 1 && currentPage != 1}
+      <button class="clean-button pagination-cell special" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-1" data-start-date="${startDate}" data-end-date="${endDate}">上一页</button>
+      {@/if}
+      {@if totalPages <= 7}
+      {@each pages as page}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}"  data-start-date="${startDate}" data-end-date="${endDate}">${page}</button>
+      {@/each}
+      {@else}
+      {@each pages as page}
+      {@if page == 1 || page == totalPages || currentPage <= 4 && page <= 4 || currentPage >= totalPages - 3 && page >= totalPages - 3 || currentPage - page == 1 || currentPage - page == 0 || currentPage - page == -1}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}" data-start-date="${startDate}" data-end-date="${endDate}">${page}</button>
+      {@else if currentPage >4 && page == 2 || currentPage < totalPages - 3 && page == totalPages - 1}
+      <button class="clean-button pagination-cell disabled">...</button>
+      {@/if}
+      {@/each}
+      {@/if}
+      {@if totalPages > 1 && currentPage != totalPages}
+      <button class="clean-button pagination-cell special" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-2" data-start-date="${startDate}" data-end-date="${endDate}">下一页</button>
+      {@/if}
+    </script>
+    <script type="text/html" id="tpl-pagination-container">
+      <div class="pagination" data-pagination="1" data-start-date="${startDate}" data-end-date="${endDate}"></div>
+    </script>
+    <script type="text/html" id="tpl-detail-unit">
+      <div class="unit {@if !category}no-category{@/if}">
+          <div class="cell cell-common">
+              <span>${type}</span>
+          </div>
+          <div class="cell cell-common cell-date">
+              <span>${time}</span>
+          </div>
+          <div class="cell cell-title">
+              <p class="title">${title}</p>
+              {@if !!category}<p class="category">${category}</p>{@/if}
+          </div>
+          <div class="cell cell-common">
+              <span>${nickname}</span>
+          </div>
+          <div class="cell cell-common">
+              <span>￥${money}</span>
+          </div>
+          <div class="cell cell-common">
+              <button class="btn btn-green btn-outline btn-sm" data-detail-unit-more="${orderId}">详情</button>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-date-content-container">
+      <div data-date-content="1" data-start-date="${startDate}" data-end-date="${endDate}"></div>
+    </script>
+    <script type="text/html" id="tpl-pagination-content-container">
+      <div data-pagination-content="${page}" data-start-date="${startDate}" data-end-date="${endDate}">
+          <div class="common-placeholder"><img src="https://pic.zizaihome.com/1790508a-22c5-11e9-9b75-00163e0c001e.gif"></div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-placeholder">
+      <div class="common-placeholder"><img src="https://pic.zizaihome.com/1790508a-22c5-11e9-9b75-00163e0c001e.gif"></div>
+    </script>
+    <script type="text/html" id="tpl-popup">
+      <div class="promotion" data-popup="${orderId}">
+          <div class="promotion-background" data-popup-overlay="1"></div>
+          <div class="promotion-pane">
+              <div class="promotion-top">
+                  <div class="promotion-title">交易详情</div>
+                  <div class="promotion-close" data-popup-close="1">X</div>
+              </div>
+              <div class="promotion-content">
+                  <div class="promotion-content-unit">
+                      <p class="fs18 fb" style="white-space: normal; overflow: inherit">名称：${title}{@if !!category} - ${category}{@/if}</p>
+                      <p>分类：${type}</p>
+                  </div>
+                  <div class="promotion-content-unit">
+                      <p>订单号：${orderId}</p>
+                  </div>
+                  <div class="promotion-content-unit">
+                      <p>昵称：${nickname}</p>
+                  </div>
+                  <div class="promotion-content-unit">
+                      <p>实际支付：￥${money}</p>
+                  </div>
+                  <div class="promotion-content-unit">
+                      <p>下单时间：${time}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </script>
+  </body>
+</html>
