@@ -1,6 +1,6 @@
-@import 'order/base.css';
-@import 'order/main.css';
-@import 'order/content.css';
-@import 'common/pagination.css';
-@import 'order/popup.css';
-@import 'order/print.css';
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/content.css';
+@import '../common/pagination.css';
+@import 'css/popup.css';
+@import 'css/print.css';

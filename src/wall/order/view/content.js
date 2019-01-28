@@ -5,6 +5,7 @@
 define([
   'jquery',
   'toastr',
+  '@zzh/qrcode',
   'common/function',
   'common/variables',
   '../data',
@@ -14,10 +15,10 @@ define([
   '../util/refresh_selected_count',
   '../ajax',
   'lib/jquery.seeView',
-  'qrcode',
 ], function(
   $,
   toastr,
+  QRCode,
   commonFunc,
   commonVars,
   data,

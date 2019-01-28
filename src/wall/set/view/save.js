@@ -11,10 +11,9 @@ define([
   '../tpl',
   '../function',
   '@zzh/store-image',
-  'component/loader',
+  '@zzh/handling',
   '../ajax',
   'lib/jquery.seeView',
-  'component/editor',
 ], function(
   $,
   toastr,
@@ -24,9 +23,9 @@ define([
   tpl,
   func,
   StoreImage,
-  loader
+  zzhHandling
 ) {
-  loader.setOnClickCloseCallback(function() {
+  zzhHandling.setOnClickCloseCallback(function() {
     commonFunc.alert('正在保存供奉信息，请勿操作或关闭页面。');
   });
 
@@ -49,7 +48,7 @@ define([
       if (!this.onKeepData()) return;
 
       $this.attr({ 'data-handling': 1 }).text('正在保存...');
-      loader.show();
+      zzhHandling.show();
 
       new StoreImage(window.contentData.intro, function(handledContent) {
         window.contentData.intro = handledContent;
@@ -67,7 +66,7 @@ define([
             $('#action-save')
               .attr({ 'data-handling': 0 })
               .text('保存');
-            loader.hide();
+            zzhHandling.hide();
             if (res.success) {
               location.href = '/zzhadmin/buddhaManage/';
             } else {

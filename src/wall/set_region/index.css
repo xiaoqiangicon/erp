@@ -1,7 +1,7 @@
-@import 'common/nav.css';
-@import 'common/misc.css';
-@import 'set_region/base.css';
-@import 'set_region/seat.css';
-@import 'set_region/main.css';
-@import 'set_region/content.css';
-@import 'set_region/modal.css';
+@import '../common/nav.css';
+@import '../common/misc.css';
+@import 'css/base.css';
+@import 'css/seat.css';
+@import 'css/main.css';
+@import 'css/content.css';
+@import 'css/modal.css';

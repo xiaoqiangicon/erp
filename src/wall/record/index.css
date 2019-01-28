@@ -1,8 +1,8 @@
-@import 'common/nav.css';
-@import 'common/misc.css';
-@import 'record/base.css';
-@import 'record/seat.css';
-@import 'record/main.css';
-@import 'record/content.css';
-@import 'record/modal.css';
-@import 'record/hover.css';
+@import '../common/nav.css';
+@import '../common/misc.css';
+@import 'css/base.css';
+@import 'css/seat.css';
+@import 'css/main.css';
+@import 'css/content.css';
+@import 'css/modal.css';
+@import 'css/hover.css';

@@ -36,7 +36,7 @@
 .seat-cell.available,
 .seat-cell.recorded,
 .seat-cell.online {
-  background-image: url('/static/images/wall/record/buddha.png');
+  background-image: url('../../../../images/wall/record/buddha.png');
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 5px;

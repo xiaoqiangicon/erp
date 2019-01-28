@@ -1,6 +1,6 @@
-@import 'common/nav.css';
-@import 'common/misc.css';
-@import 'region/base.css';
-@import 'region/main.css';
-@import 'region/content.css';
-@import 'region/modal.css';
+@import '../common/nav.css';
+@import '../common/misc.css';
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/content.css';
+@import 'css/modal.css';

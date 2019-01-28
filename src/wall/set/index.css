@@ -1,7 +1,7 @@
-@import 'common/nav.css';
-@import 'common/misc.css';
-@import 'set/base.css';
-@import 'set/main.css';
-@import 'set/content.css';
-@import 'set/modal.css';
-@import 'set/share.css';
+@import '../common/nav.css';
+@import '../common/misc.css';
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/content.css';
+@import 'css/modal.css';
+@import 'css/share.css';

@@ -18,7 +18,7 @@
   width: 30px;
   height: 30px;
   vertical-align: middle;
-  background-image: url('/static/images/wall/set/house.png');
+  background-image: url('../../../../images/wall/set/house.png');
   background-size: 60% 60%;
   background-repeat: no-repeat;
   background-position: center;

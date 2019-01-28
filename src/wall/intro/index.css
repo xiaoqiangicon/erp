@@ -1,6 +1,6 @@
-@import 'common/nav.css';
-@import 'common/misc.css';
-@import 'intro/base.css';
-@import 'intro/main.css';
-@import 'intro/modal.css';
-@import 'intro/promotion.css';
+@import '../common/nav.css';
+@import '../common/misc.css';
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/modal.css';
+@import 'css/promotion.css';

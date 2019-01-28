@@ -159,107 +159,73 @@
       </div>
     </div>
     <div class="hover-popup" id="hover-popup"></div>
+
+    <script type="text/html" id="tpl-detail">
+      {@each rowItems as rowItem, rowIndex}
+      <div class="seat-row clearfix">
+          {@each rowItem as columnItem, columnIndex}
+          <div class="seat-cell {@if rowIndex > 0 && columnIndex > 0}
+              {@if columnItem.disabled}disabled
+              {@else}available
+              {@/if}
+          {@/if}"
+              data-detail-cell="{@if rowIndex > 0 && columnIndex > 0}1{@else}0{@/if}"
+               data-row-index="${rowIndex}" data-column-index="${columnIndex}"
+              data-sequence="${columnItem.sequence}" data-available="${columnItem.available}"
+              data-disabled="${columnItem.disabled}"
+              >
+              {@if rowIndex == 0 && columnIndex == 0}全选
+              {@else if rowIndex == 0 && columnIndex > 0}${columnIndex}
+              {@else if columnIndex == 0 && rowIndex > 0}${rowIndex}
+              {@/if}
+          </div>
+          {@/each}
+      </div>
+      {@/each}
+    </script>
+    <script type="text/html" id="tpl-price-row">
+      <tr data-price-row="${index}">
+          <td>
+              <select class="form-control" data-price-row-type="${index}">
+                  <option value="6">按天供奉</option>
+                  <option value="7">按周供奉</option>
+                  <option value="1">按月供奉</option>
+                  <option value="2">按季供奉</option>
+                  <option value="3">按年供奉</option>
+                  <option value="8">十年供奉</option>
+                  <option value="5">终身供奉</option>
+              </select>
+          </td>
+          <td>
+              <input class="form-control" placeholder="需大于0" data-price-row-price="${index}">
+          </td>
+          <td>
+              <button class="btn btn-green" data-price-row-set="${index}" data-value="">设置</button>
+              {@if index > 0}<button class="btn btn-warning" data-price-row-delete="${index}">删除</button>{@/if}
+          </td>
+      </tr>
+    </script>
+    <script type="text/html" id="tpl-price-show-row">
+      <div class="content-price-row" data-price-show-row="${id}">
+          <i class="content-price-row-icon" data-type="${id}"></i>
+          <span>
+          {@each prices as price, index}
+              {@if index > 0}<br>{@/if}${price.typeText}：单价（${price.price}元） {@if price.basePrice > 0}基础价格（${price.basePrice}元）{@/if}
+          {@/each}
+          </span>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-hover">
+      <p>${name} ${row}行${column}列</p>
+      <p>位置编号：${sequence}</p>
+      <hr>
+      {@if prices && prices.length}
+      {@each prices as price}
+      <p>${price.typeText}：单价（${price.price}元） {@if price.basePrice > 0}基础价格（${price.basePrice}元）{@/if}</p>
+      {@/each}
+      {@else}
+      <p>暂未设置价格</p>
+      {@/if}
+    </script>
   </body>
-
-  <script type="text/html" id="tpl-detail">
-    {@each rowItems as rowItem, rowIndex}
-    <div class="seat-row clearfix">
-        {@each rowItem as columnItem, columnIndex}
-        <div class="seat-cell {@if rowIndex > 0 && columnIndex > 0}
-            {@if columnItem.disabled}disabled
-            {@else}available
-            {@/if}
-        {@/if}"
-            data-detail-cell="{@if rowIndex > 0 && columnIndex > 0}1{@else}0{@/if}"
-             data-row-index="${rowIndex}" data-column-index="${columnIndex}"
-            data-sequence="${columnItem.sequence}" data-available="${columnItem.available}"
-            data-disabled="${columnItem.disabled}"
-            >
-            {@if rowIndex == 0 && columnIndex == 0}全选
-            {@else if rowIndex == 0 && columnIndex > 0}${columnIndex}
-            {@else if columnIndex == 0 && rowIndex > 0}${rowIndex}
-            {@/if}
-        </div>
-        {@/each}
-    </div>
-    {@/each}
-  </script>
-  <script type="text/html" id="tpl-price-row">
-    <tr data-price-row="${index}">
-        <td>
-            <select class="form-control" data-price-row-type="${index}">
-                <option value="6">按天供奉</option>
-                <option value="7">按周供奉</option>
-                <option value="1">按月供奉</option>
-                <option value="2">按季供奉</option>
-                <option value="3">按年供奉</option>
-                <option value="8">十年供奉</option>
-                <option value="5">终身供奉</option>
-            </select>
-        </td>
-        <td>
-            <input class="form-control" placeholder="需大于0" data-price-row-price="${index}">
-        </td>
-        <td>
-            <button class="btn btn-green" data-price-row-set="${index}" data-value="">设置</button>
-            {@if index > 0}<button class="btn btn-warning" data-price-row-delete="${index}">删除</button>{@/if}
-        </td>
-    </tr>
-  </script>
-  <script type="text/html" id="tpl-price-show-row">
-    <div class="content-price-row" data-price-show-row="${id}">
-        <i class="content-price-row-icon" data-type="${id}"></i>
-        <span>
-        {@each prices as price, index}
-            {@if index > 0}<br>{@/if}${price.typeText}：单价（${price.price}元） {@if price.basePrice > 0}基础价格（${price.basePrice}元）{@/if}
-        {@/each}
-        </span>
-    </div>
-  </script>
-  <script type="text/html" id="tpl-hover">
-    <p>${name} ${row}行${column}列</p>
-    <p>位置编号：${sequence}</p>
-    <hr>
-    {@if prices && prices.length}
-    {@each prices as price}
-    <p>${price.typeText}：单价（${price.price}元） {@if price.basePrice > 0}基础价格（${price.basePrice}元）{@/if}</p>
-    {@/each}
-    {@else}
-    <p>暂未设置价格</p>
-    {@/if}
-  </script>
-
-  <script
-    src="../../js/lib/in-css/in-css.js"
-    data-in-css-tag="1"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script
-    src="../../js/common/in_css_config.js"
-    data-in-css-tag="1"
-    data-in-css-config-tag="1"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script data-in-css-tag="1" data-in-css-load-tag="1">
-    InCss.use(
-      'bootstrap',
-      'jquery-confirm',
-      'colors',
-      'toastr',
-      'component/navigation',
-      'wall/set_region'
-    );
-  </script>
-  <script
-    src="../../js/lib/requirejs/require.js"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script
-    src="../../js/common/require_js_config.js"
-    data-require-js-config-tag="1"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script>
-    require(['wall/set_region']);
-  </script>
 </html>

@@ -13,7 +13,6 @@ define([
   './html/month',
   './html/day',
   './ajax',
-  'datepicker_zh',
 ], function(
   $,
   _,

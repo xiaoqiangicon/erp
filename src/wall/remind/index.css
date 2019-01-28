@@ -1,5 +1,5 @@
-@import 'remind/base.css';
-@import 'remind/main.css';
-@import 'remind/content.css';
-@import 'common/pagination.css';
-@import 'remind/popup.css';
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/content.css';
+@import '../common/pagination.css';
+@import 'css/popup.css';

@@ -32,7 +32,7 @@
 
 .seat-cell.available,
 .seat-cell.disabled {
-  background-image: url('/static/images/wall/record/buddha.png');
+  background-image: url('../../../../images/wall/record/buddha.png');
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 5px;
@@ -43,41 +43,41 @@
 }
 .seat-cell.available[data-type='1'],
 .seat-cell.disabled[data-type='1'] {
-  background-image: url('/static/images/wall/set_region/price_type_1.png');
+  background-image: url('../../../../images/wall/set_region/price_type_1.png');
 }
 .seat-cell.available[data-type='2'],
 .seat-cell.disabled[data-type='2'] {
-  background-image: url('/static/images/wall/set_region/price_type_2.png');
+  background-image: url('../../../../images/wall/set_region/price_type_2.png');
 }
 .seat-cell.available[data-type='3'],
 .seat-cell.disabled[data-type='3'] {
-  background-image: url('/static/images/wall/set_region/price_type_3.png');
+  background-image: url('../../../../images/wall/set_region/price_type_3.png');
 }
 .seat-cell.available[data-type='4'],
 .seat-cell.disabled[data-type='4'] {
-  background-image: url('/static/images/wall/set_region/price_type_4.png');
+  background-image: url('../../../../images/wall/set_region/price_type_4.png');
 }
 .seat-cell.available[data-type='5'],
 .seat-cell.disabled[data-type='5'] {
-  background-image: url('/static/images/wall/set_region/price_type_5.png');
+  background-image: url('../../../../images/wall/set_region/price_type_5.png');
 }
 .seat-cell.available[data-type='6'],
 .seat-cell.disabled[data-type='6'] {
-  background-image: url('/static/images/wall/set_region/price_type_6.png');
+  background-image: url('../../../../images/wall/set_region/price_type_6.png');
 }
 .seat-cell.available[data-type='7'],
 .seat-cell.disabled[data-type='7'] {
-  background-image: url('/static/images/wall/set_region/price_type_7.png');
+  background-image: url('../../../../images/wall/set_region/price_type_7.png');
 }
 .seat-cell.available[data-type='8'],
 .seat-cell.disabled[data-type='8'] {
-  background-image: url('/static/images/wall/set_region/price_type_8.png');
+  background-image: url('../../../../images/wall/set_region/price_type_8.png');
 }
 .seat-cell.available[data-type='9'],
 .seat-cell.disabled[data-type='9'] {
-  background-image: url('/static/images/wall/set_region/price_type_9.png');
+  background-image: url('../../../../images/wall/set_region/price_type_9.png');
 }
 .seat-cell.available[data-type='10'],
 .seat-cell.disabled[data-type='10'] {
-  background-image: url('/static/images/wall/set_region/price_type_10.png');
+  background-image: url('../../../../images/wall/set_region/price_type_10.png');
 }

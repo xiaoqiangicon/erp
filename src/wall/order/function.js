@@ -11,7 +11,6 @@ define([
   './tpl',
   './util/refresh_selected_count',
   './ajax',
-  'datepicker_zh',
 ], function($, _, commonFunc, commonTpl, data, tpl, refreshSelectedCount) {
   var func = {};
 

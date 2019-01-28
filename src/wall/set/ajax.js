@@ -7,9 +7,9 @@ define(['jquery', 'see-ajax', './ajax_handle', 'lib/jquery.seeAjax'], function(
   seeAjax,
   ajaxHandle
 ) {
-  var env = 0;
+  var env = __SEE_ENV__;
 
-  seeAjax.setEnv(env);
+  seeAjax.default.setEnv(env);
 
   $.seeAjax.config({
     environment: env, //环境标识（用于数组选值）：0->服务器环境, 1->本地服务器测试，2->本地环境
