@@ -8,9 +8,9 @@
     "bankBranchName": "深圳南山支行",
     "bankCardNumber": "0231234567890123456789",
     "bankCardUserName": "雅尼",
-    "certificatePicUrl": "/static/sample/image1.jpg",
-    "identityCardPic": "/static/sample/image2.jpg",
-    "identityCardPic2": "/static/sample/image3.jpg",
+    "certificatePicUrl": "/sample/image1.jpg",
+    "identityCardPic": "/sample/image2.jpg",
+    "identityCardPic2": "/sample/image3.jpg",
     "examineMessage": "审核不通过原因"
   }
 }

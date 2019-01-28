@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>寺院账户资料填写</title>
+  </head>
+  <body data-menu-id="cash-index">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section" id="title"></div>
+        <div class="content-section">
+          <div class="content-row">
+            <div class="content-row-title">
+              选择银行：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <select
+                class="form-control content-row-detail-input"
+                id="input-bank"
+              >
+                <option value="">请选择银行</option>
+                <option value="中国工商银行">中国工商银行</option>
+                <option value="中国银行">中国银行</option>
+                <option value="中国建设银行">中国建设银行</option>
+                <option value="中国农业银行">中国农业银行</option>
+                <option value="招商银行">招商银行</option>
+                <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                <option value="中国光大银行">中国光大银行</option>
+                <option value="上海浦东发展银行">上海浦东发展银行</option>
+                <option value="深圳发展银行">深圳发展银行</option>
+                <option value="兴业银行">兴业银行</option>
+                <option value="平安银行">平安银行</option>
+                <option value="广东发展银行">广东发展银行</option>
+                <option value="中信银行">中信银行</option>
+                <option value="交通银行">交通银行</option>
+                <option value="中国民生银行">中国民生银行</option>
+                <option value="台州商业银行">台州商业银行</option>
+                <option value="杭州银行">杭州银行</option>
+                <option value="东莞农村商业银行">东莞农村商业银行</option>
+                <option value="苏州银行">苏州银行</option>
+                <option value="农村商业银行">农村商业银行</option>
+                <option value="华夏银行">华夏银行</option>
+                <option value="南京银行">南京银行</option>
+                <option value="东莞银行">东莞银行</option>
+                <option value="北京银行">北京银行</option>
+                <option value="贵阳银行">贵阳银行</option>
+                <option value="宁波银行">宁波银行</option>
+                <option value="上海农商银行">上海农商银行</option>
+                <option value="汉口银行">汉口银行</option>
+                <option value="杭州联合农村商业银行"
+                  >杭州联合农村商业银行</option
+                >
+                <option value="宁夏银行股份有限公司"
+                  >宁夏银行股份有限公司</option
+                >
+                <option value="廊坊银行">廊坊银行</option>
+                <option value="珠海农村商业银行">珠海农村商业银行</option>
+                <option value="杭州联合银行">杭州联合银行</option>
+                <option value="台州银行股份有限公司"
+                  >台州银行股份有限公司</option
+                >
+                <option value="上海银行">上海银行</option>
+                <option value="徽商银行股份有限公司"
+                  >徽商银行股份有限公司</option
+                >
+                <option value="葫芦岛银行">葫芦岛银行</option>
+                <option value="农村合作信用社">农村合作信用社</option>
+                <option value="长沙银行">长沙银行</option>
+                <option value="浙江泰隆商业银行">浙江泰隆商业银行</option>
+                <option value="锦州银行">锦州银行</option>
+                <option value="广东华兴银行">广东华兴银行</option>
+                <option value="乐山市商业银行">乐山市商业银行</option>
+                <option value="渤海银行">渤海银行</option>
+                <option value="江苏银行">江苏银行</option>
+                <option value="成都银行">成都银行</option>
+                <option value="洛阳银行">洛阳银行</option>
+                <option value="青岛银行">青岛银行</option>
+                <option value="富滇银行">富滇银行</option>
+                <option value="包商银行">包商银行</option>
+                <option value="兆丰村镇银行">兆丰村镇银行</option>
+                <option value="北京农商银行">北京农商银行</option>
+                <option value="天津银行">天津银行</option>
+                <option value="桂林银行">桂林银行</option>
+                <option value="晋中银行">晋中银行</option>
+                <option value="邯郸银行">邯郸银行</option>
+                <option value="香港上海汇丰银行">香港上海汇丰银行</option>
+                <option value="齐鲁银行">齐鲁银行</option>
+                <option value="盘锦市商业银行">盘锦市商业银行</option>
+                <option value="中原银行">中原银行</option>
+                <option value="郑州银行">郑州银行</option>
+                <option value="盛京银行">盛京银行</option>
+                <option value="张家口市商业银行">张家口市商业银行</option>
+                <option value="甘肃银行">甘肃银行</option>
+                <option value="香港星展銀行">香港星展銀行</option>
+                <option value="日照银行">日照银行</option>
+                <option value="承德银行">承德银行</option>
+                <option value="河北银行">河北银行</option>
+                <option value="广东南粤银行">广东南粤银行</option>
+                <option value="内蒙古银行">内蒙古银行</option>
+                <option value="广州银行">广州银行</option>
+                <option value="营口银行">营口银行</option>
+                <option value="葫芦岛市商业银行">葫芦岛市商业银行</option>
+                <option value="邢台银行">邢台银行</option>
+                <option value="乌海银行">乌海银行</option>
+                <option value="晋商银行">晋商银行</option>
+                <option value="东亚银行">东亚银行</option>
+                <option value="商业银行">商业银行</option>
+                <option value="哈尔滨银行股份有限公司"
+                  >哈尔滨银行股份有限公司</option
+                >
+                <option value="潍坊银行">潍坊银行</option>
+                <option value="莱州农村商业银行">莱州农村商业银行</option>
+                <option value="泰安商业银行">泰安商业银行</option>
+                <option value="石狮农商银行">石狮农商银行</option>
+                <option value="龙江银行">龙江银行</option>
+                <option value="长安银行">长安银行</option>
+                <option value="晋城银行">晋城银行</option>
+                <option value="秦皇岛市商业银行">秦皇岛市商业银行</option>
+                <option value="保定银行">保定银行</option>
+                <option value="恒丰银行">恒丰银行</option>
+                <option value="朝阳银行">朝阳银行</option>
+                <option value="西安银行">西安银行</option>
+                <option value="金华银行">金华银行</option>
+                <option value="齐商银行">齐商银行</option>
+                <option value="芜湖津盛农村商业银行股份有限公司"
+                  >芜湖津盛农村商业银行股份有限公司</option
+                >
+                <option value="南海农商银行">南海农商银行</option>
+                <option value="乐清农商银行">乐清农商银行</option>
+                <option value="兰州银行">兰州银行</option>
+                <option value="山东济南润丰农村合作银行"
+                  >山东济南润丰农村合作银行</option
+                >
+                <option value="江西银行">江西银行</option>
+                <option value="浙商银行">浙商银行</option>
+                <option value="武汉农村商业银行">武汉农村商业银行</option>
+                <option value="伊川农商银行">伊川农商银行</option>
+                <option value="湖州银行">湖州银行</option>
+                <option value="铁岭银行">铁岭银行</option>
+              </select>
+            </div>
+          </div>
+          <div class="content-row">
+            <div class="content-row-title">
+              开户银行支行名称：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <input
+                class="form-control content-row-detail-input"
+                placeholder="请输入开户银行支行名称"
+                id="input-sub-bank"
+              />
+              <p class="content-row-detail-desc">
+                在哪儿找支行名称？<button
+                  class="clean-button special-text"
+                  data-show-dialog="4"
+                >
+                  点击查看提示
+                </button>
+              </p>
+            </div>
+          </div>
+          <div class="content-row">
+            <div class="content-row-title">
+              银行卡号：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <input
+                class="form-control content-row-detail-input content-row-detail-input-region dp-none"
+                placeholder="请输入区号"
+                id="input-bank-region"
+              />
+              <input
+                class="form-control content-row-detail-input"
+                placeholder="请输入银行卡号"
+                id="input-bank-card"
+              />
+              <p class="content-row-detail-desc">
+                此银行卡的开户名必须为善款提款人，区号为开户所在省份代号，有疑问请咨询当地农业银行。
+              </p>
+            </div>
+          </div>
+          <div class="content-row">
+            <div class="content-row-title">
+              银行开户名称：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <input
+                class="form-control content-row-detail-input"
+                placeholder="请输入银行用户名称"
+                id="input-account"
+              />
+              <p class="content-row-detail-desc">
+                什么是银行开户名称？<button
+                  class="clean-button special-text"
+                  data-show-dialog="3"
+                >
+                  点击查看提示
+                </button>
+              </p>
+            </div>
+          </div>
+          <div class="content-row hide" data-content-row="2">
+            <div class="content-row-title">
+              说明函照片：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <div class="content-row-images">
+                <img
+                  src="../../../../images/cash/account/edit/blank@3x.png"
+                  id="image-template"
+                  data-uploaded="0"
+                />
+              </div>
+              <div class="content-row-upload">
+                <div class="content-row-upload-actions">
+                  <button class="btn btn-green btn-custom" id="upload-template">
+                    上传说明函照
+                  </button>
+                  <a
+                    class="btn btn-green btn-custom btn-custom-outline mgl15"
+                    href="https://pic.zizaihome.com/a79c87c0-84b9-11e8-b523-00163e0c001e.doc"
+                    >下载说明函模板</a
+                  >
+                </div>
+                <div class="mgt15">
+                  <p>1.下载说明涵模板，请按要求填写后加盖寺院公章。</p>
+                  <p>
+                    2.格式要求：原件照片、扫描件或复印件加盖企业公章后的扫描件。
+                  </p>
+                  <p>
+                    什么是账户说明涵？
+                    <button
+                      class="clean-button special-text"
+                      data-show-dialog="1"
+                    >
+                      点击查看提示
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-row hide" data-content-row="2">
+            <div class="content-row-title">
+              身份证正面照：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <div class="content-row-images">
+                <img
+                  src="../../../../images/cash/account/edit/blank@3x.png"
+                  id="image-id-card-1"
+                  data-uploaded="0"
+                />
+              </div>
+              <div class="content-row-upload">
+                <div class="content-row-upload-actions">
+                  <button
+                    class="btn btn-green btn-custom"
+                    id="upload-id-card-1"
+                  >
+                    上传身份证正面照
+                  </button>
+                </div>
+                <div class="mgt15">
+                  <p>1.提现人姓名和身份证必须与提现银行卡的开户名为同一人。</p>
+                  <p>
+                    2.格式要求：原件照片，支持 jpg、jpeg、gif、png
+                    格式的照片，大小不超过2M。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-row hide" data-content-row="2">
+            <div class="content-row-title">
+              身份证反面照：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <div class="content-row-images">
+                <img
+                  src="../../../../images/cash/account/edit/blank@3x.png"
+                  id="image-id-card-2"
+                  data-uploaded="0"
+                />
+              </div>
+              <div class="content-row-upload">
+                <div class="content-row-upload-actions">
+                  <button
+                    class="btn btn-green btn-custom"
+                    id="upload-id-card-2"
+                  >
+                    上传身份证反面照
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-row hide" data-content-row="1">
+            <div class="content-row-title">
+              开户许可证照片：<span class="red mgl5">*</span>
+            </div>
+            <div class="content-row-detail">
+              <div class="content-row-images">
+                <img
+                  src="../../../../images/cash/account/edit/blank@3x.png"
+                  id="image-licence"
+                  data-uploaded="0"
+                />
+              </div>
+              <div class="content-row-upload">
+                <div class="content-row-upload-actions">
+                  <button class="btn btn-green btn-custom" id="upload-licence">
+                    上传许可证照片
+                  </button>
+                </div>
+                <div class="mgt15">
+                  <p>1.开户许可证上的信息必须真实有效</p>
+                  <p>
+                    2.子对公账户您可以上传《印鉴卡》照片
+                    <button
+                      class="clean-button special-text"
+                      data-show-dialog="5"
+                    >
+                      点击查看提示
+                    </button>
+                  </p>
+                  <p>
+                    3.格式要求：原件照片、扫描件或复印件加盖企业公章后的扫描件
+                  </p>
+                  <p>
+                    什么是开户许可证照片？<button
+                      class="clean-button special-text"
+                      data-show-dialog="2"
+                    >
+                      点击查看提示
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-row text-center">
+            <button
+              class="btn btn-green btn-lg btn-custom mgr25 btn-custom-outline hide"
+              id="prev-step"
+            >
+              上一步
+            </button>
+            <button class="btn btn-green btn-lg btn-custom" id="save">
+              提交审核
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 许可函模板 -->
+    <div class="dialog" data-dialog="1" style="display: none">
+      <div class="dialog-inner">
+        <div class="dialog-pane">
+          <div class="dialog-content">
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第一步</div>
+              <div class="dialog-template-unit-content">
+                下载说明涵模板，请按要求填写后加盖寺院公章。
+              </div>
+            </div>
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第二步</div>
+              <div class="dialog-template-unit-content">拍照并上传证明文件</div>
+            </div>
+            <div class="dialog-template-body">
+              <img src="../../../../images/cash/account/edit/template@3x.jpg" />
+              <p class="dialog-template-body-desc">
+                “账户说明涵”是否为寺院认可有效的证明材料
+              </p>
+            </div>
+          </div>
+          <div class="dialog-foot">
+            <button
+              class="btn btn-green btn-lg btn-custom btn-custom-outline"
+              data-dialog-close="1"
+            >
+              知道了
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 上传许可证 -->
+    <div class="dialog" data-dialog="2" style="display: none">
+      <div class="dialog-inner">
+        <div class="dialog-pane">
+          <div class="dialog-content">
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第一步</div>
+              <div class="dialog-template-unit-content">
+                找到您寺院的开户许可证。
+              </div>
+            </div>
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第二步</div>
+              <div class="dialog-template-unit-content">
+                拍照并上传您的开户许可证。
+              </div>
+            </div>
+            <div class="dialog-template-body">
+              <img src="../../../../images/cash/account/edit/account-1.jpg" />
+            </div>
+          </div>
+          <div class="dialog-foot">
+            <button
+              class="btn btn-green btn-lg btn-custom btn-custom-outline"
+              data-dialog-close="1"
+            >
+              知道了
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 找银行开户名称 -->
+    <div class="dialog" data-dialog="3" style="display: none">
+      <div class="dialog-inner">
+        <div class="dialog-pane">
+          <div class="dialog-content">
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第一步</div>
+              <div class="dialog-template-unit-content">
+                找到您寺院的开户许可证。
+              </div>
+            </div>
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第二步</div>
+              <div class="dialog-template-unit-content">
+                许可证上显示的开户名称，即为需填写的银行开户名称。
+              </div>
+            </div>
+            <div class="dialog-template-body">
+              <img src="../../../../images/cash/account/edit/account-2.jpg" />
+            </div>
+          </div>
+          <div class="dialog-foot">
+            <button
+              class="btn btn-green btn-lg btn-custom btn-custom-outline"
+              data-dialog-close="1"
+            >
+              知道了
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 找支行名称 -->
+    <div class="dialog" data-dialog="4" style="display: none">
+      <div class="dialog-inner">
+        <div class="dialog-pane">
+          <div class="dialog-content">
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第一步</div>
+              <div class="dialog-template-unit-content">
+                找到您寺院的开户许可证。
+              </div>
+            </div>
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第二步</div>
+              <div class="dialog-template-unit-content">
+                许可证上显示的开户银行，即为开户银行支行名称。
+              </div>
+            </div>
+            <div class="dialog-template-body">
+              <img src="../../../../images/cash/account/edit/account-3.jpg" />
+            </div>
+          </div>
+          <div class="dialog-foot">
+            <button
+              class="btn btn-green btn-lg btn-custom btn-custom-outline"
+              data-dialog-close="1"
+            >
+              知道了
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 印鉴卡 -->
+    <div class="dialog" data-dialog="5" style="display: none">
+      <div class="dialog-inner">
+        <div class="dialog-pane">
+          <div class="dialog-content">
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第一步</div>
+              <div class="dialog-template-unit-content">
+                如果您使用的是“子对公账户”，找到您的账户《印鉴卡》
+              </div>
+            </div>
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第二步</div>
+              <div class="dialog-template-unit-content">
+                拍照并上传您的《印鉴卡》
+              </div>
+            </div>
+            <div class="dialog-template-body">
+              <img
+                src="https://pic.zizaihome.com/19dbe5e6-d665-11e7-b1aa-00163e0c1e1c.jpg"
+              />
+            </div>
+          </div>
+          <div class="dialog-foot">
+            <button
+              class="btn btn-green btn-lg btn-custom btn-custom-outline"
+              data-dialog-close="1"
+            >
+              知道了
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
