@@ -4,17 +4,17 @@
     {
       "id": 1,
       "name": "模板1",
-      "image": "/static/sample/image1.jpg"
+      "image": "/sample/image1.jpg"
     },
     {
       "id": 2,
       "name": "模板2",
-      "image": "/static/sample/image2.jpg"
+      "image": "/sample/image2.jpg"
     },
     {
       "id": 3,
       "name": "模板3",
-      "image": "/static/sample/image3.jpg"
+      "image": "/sample/image3.jpg"
     }
   ]
 }

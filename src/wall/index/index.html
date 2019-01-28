@@ -76,89 +76,54 @@
         </div>
       </div>
     </div>
+    <script type="text/html" id="tpl-unit">
+      <div class="content-unit" data-unit="${id}">
+          <div class="content-unit-inner clearfix">
+              <div class="content-unit-left">
+                  <img class="content-unit-cover" src="${cover}">
+              </div>
+              <div class="content-unit-right">
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">序号</div>
+                      <div class="content-unit-row-right">${sequence}</div>
+                  </div>
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">供奉名称</div>
+                      <div class="content-unit-row-right content-unit-row-name" title="${name}">${name}</div>
+                  </div>
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">所在区域</div>
+                      <div class="content-unit-row-right pointer" {@if regions}data-unit-region="${id}" data-regions="${regions}"{@/if}>{@if regions}查看...{@else}暂无设置{@/if}</div>
+                  </div>
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">操作</div>
+                      <div class="content-unit-row-right clearfix">
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-delete="${id}">删除</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-copy="${id}">复制</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-edit="${id}">编辑</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-promote="${id}" data-url="${url}">推广</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-sort="${id}" data-sequence="${sequence}">排序</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-template-cell">
+      <div class="select-modal-row {@if category == 2}is-pai-wei{@/if}" data-template-cell="${id}">
+          <div class="select-modal-row-image">
+              {@if !notShowCategory}
+              <div class="select-modal-row-fo-xiang">佛像</div>
+              <div class="select-modal-row-pai-wei">牌位</div>
+              {@/if}
+              <img src="https://pic.zizaihome.com/dbe89db2-22d8-11e9-9b75-00163e0c001e.png" class="select-modal-row-selected">
+              <img src="${image}" class="select-modal-row-cover">
+          </div>
+          <p class="mgt10">${name}</p>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-hover-row">
+      <p class="text-center">${name}</p>
+    </script>
   </body>
-  <script type="text/html" id="tpl-unit">
-    <div class="content-unit" data-unit="${id}">
-        <div class="content-unit-inner clearfix">
-            <div class="content-unit-left">
-                <img class="content-unit-cover" src="${cover}">
-            </div>
-            <div class="content-unit-right">
-                <div class="content-unit-row clearfix">
-                    <div class="content-unit-row-left">序号</div>
-                    <div class="content-unit-row-right">${sequence}</div>
-                </div>
-                <div class="content-unit-row clearfix">
-                    <div class="content-unit-row-left">供奉名称</div>
-                    <div class="content-unit-row-right content-unit-row-name" title="${name}">${name}</div>
-                </div>
-                <div class="content-unit-row clearfix">
-                    <div class="content-unit-row-left">所在区域</div>
-                    <div class="content-unit-row-right pointer" {@if regions}data-unit-region="${id}" data-regions="${regions}"{@/if}>{@if regions}查看...{@else}暂无设置{@/if}</div>
-                </div>
-                <div class="content-unit-row clearfix">
-                    <div class="content-unit-row-left">操作</div>
-                    <div class="content-unit-row-right clearfix">
-                        <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-delete="${id}">删除</button>
-                        <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-copy="${id}">复制</button>
-                        <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-edit="${id}">编辑</button>
-                        <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-promote="${id}" data-url="${url}">推广</button>
-                        <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-sort="${id}" data-sequence="${sequence}">排序</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </script>
-  <script type="text/html" id="tpl-template-cell">
-    <div class="select-modal-row {@if category == 2}is-pai-wei{@/if}" data-template-cell="${id}">
-        <div class="select-modal-row-image">
-            {@if !notShowCategory}
-            <div class="select-modal-row-fo-xiang">佛像</div>
-            <div class="select-modal-row-pai-wei">牌位</div>
-            {@/if}
-            <img src="/static/images/wall/index/selected.png" class="select-modal-row-selected">
-            <img src="${image}" class="select-modal-row-cover">
-        </div>
-        <p class="mgt10">${name}</p>
-    </div>
-  </script>
-  <script type="text/html" id="tpl-hover-row">
-    <p class="text-center">${name}</p>
-  </script>
-
-  <script
-    src="../../js/lib/in-css/in-css.js"
-    data-in-css-tag="1"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script
-    src="../../js/common/in_css_config.js"
-    data-in-css-tag="1"
-    data-in-css-config-tag="1"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script data-in-css-tag="1" data-in-css-load-tag="1">
-    InCss.use(
-      'bootstrap',
-      'jquery-confirm',
-      'colors',
-      'toastr',
-      'component/navigation',
-      'component/promotion',
-      'wall/index'
-    );
-  </script>
-  <script
-    src="../../js/lib/requirejs/require.js"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script
-    src="../../js/common/require_js_config.js"
-    data-require-js-config-tag="1"
-    data-lilacs-no-concat="1"
-  ></script>
-  <script>
-    require(['wall/index']);
-  </script>
 </html>

@@ -8,7 +8,8 @@ define(['jquery'], function($) {
     customTemplateData: {
       id: 0,
       name: '自定义',
-      image: '/static/images/wall/index/custom_template.png',
+      image:
+        'https://pic.zizaihome.com/e79d2448-22d8-11e9-9b75-00163e0c001e.png',
       // 不显示类别
       notShowCategory: !0,
     },

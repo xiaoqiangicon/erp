@@ -74,10 +74,10 @@
   background-repeat: no-repeat;
 }
 .select-modal-row-fo-xiang {
-  background-image: url('/static/images/wall/index/fo-xiang@3x.png');
+  background-image: url('../../../../images/wall/index/fo-xiang@3x.png');
 }
 .select-modal-row-pai-wei {
-  background-image: url('/static/images/wall/index/pai-wei@3x.png');
+  background-image: url('../../../../images/wall/index/pai-wei@3x.png');
   display: none;
 }
 /* 是牌位 */

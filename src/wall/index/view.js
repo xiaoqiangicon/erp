@@ -10,7 +10,7 @@ define([
   './data',
   './tpl',
   './function',
-  'component/promotion',
+  '@zzh/promotion',
   './ajax',
   'lib/jquery.seeView',
 ], function($, toastr, commonFunc, commonVars, data, tpl, func, promotion) {
