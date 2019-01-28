@@ -1,0 +1,30 @@
+.brand .menu-4 {
+  display: none;
+}
+.brand-type-2 .brand .menu-4 {
+  display: block;
+}
+.brand-type-2 .brand .menu-1 {
+  display: none;
+}
+.brand .menu-4-item {
+  float: left;
+  height: 76px;
+  margin-left: 114px;
+}
+.brand .menu-4-item:first-child {
+  margin-left: 0;
+}
+
+@media (max-width: 500px) {
+  .brand .menu-4-item {
+    float: none;
+    display: block;
+    height: 76px;
+    clear: both;
+    margin: 40px auto 0 auto;
+  }
+  .brand .menu-4-item:first-child {
+    margin-left: auto;
+  }
+}

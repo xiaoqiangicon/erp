@@ -1,0 +1,19 @@
+.brand .menu-2 {
+  margin-top: 134px;
+}
+.brand .menu-2-item {
+  float: left;
+  display: inline-block;
+
+  color: #ffffff;
+  margin-left: 70px;
+}
+.brand .menu-2-item:first-child {
+  margin-left: 0;
+}
+.brand .menu-2-item,
+.brand .menu-2-item:hover,
+.brand .menu-2-item:active,
+.brand .menu-2-item:focus {
+  text-decoration: none;
+}

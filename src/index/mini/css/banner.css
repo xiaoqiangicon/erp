@@ -1,0 +1,13 @@
+.banner {
+  position: relative;
+  width: 100%;
+}
+.banner > img {
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .banner {
+    display: none;
+  }
+}

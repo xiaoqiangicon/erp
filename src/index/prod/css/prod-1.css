@@ -1,0 +1,48 @@
+.prod-1 {
+  position: relative;
+  width: 100%;
+  padding-top: 24px;
+  padding-right: 8px;
+  text-align: right;
+}
+.prod-1 .image-1 {
+  width: 436px;
+}
+.prod-1 .content {
+  position: absolute;
+  left: 44px;
+  top: 0;
+  text-align: left;
+}
+.prod-1 .image-2 {
+  display: block;
+  height: 43px;
+}
+.prod-1 .common-text-1 {
+  margin-top: 16px;
+}
+.prod-1 .common-btn-1 {
+  margin-top: 24px;
+}
+
+@media (max-width: 500px) {
+  .prod-1 {
+    padding-right: 0;
+    text-align: left;
+  }
+  .prod-1 .image-1 {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .prod-1 .content {
+    position: relative;
+    width: 80%;
+    left: 0;
+    margin: 0 auto;
+  }
+  .prod-1 .image-2 {
+    width: 100%;
+    height: auto;
+  }
+}

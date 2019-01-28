@@ -1,0 +1,17 @@
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  opacity: 1;
+  border-radius: 6px;
+  transition: all 0.5s;
+}
+.swiper-pagination-bullet-active {
+  background-color: #79b7f0;
+  width: 40px;
+}
+.swiper-container-horizontal
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin: 0 5px;
+}

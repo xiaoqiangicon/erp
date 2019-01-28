@@ -1,0 +1,49 @@
+.prod-5 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 22px;
+}
+.prod-5 .image-1 {
+  float: right;
+  margin-top: 40px;
+  margin-right: 37px;
+  width: 476px;
+}
+.prod-5 .content {
+  float: left;
+  margin-left: 44px;
+}
+.prod-5 .image-2 {
+  display: block;
+  height: 43px;
+}
+.prod-5 .image-3 {
+  position: absolute;
+  left: 116px;
+  bottom: 0;
+  height: 95px;
+  z-index: -1;
+}
+.prod-5 .common-btn-1 {
+  margin-top: 47px;
+}
+
+@media (max-width: 500px) {
+  .prod-5 {
+    padding-top: 150px;
+  }
+  .prod-5 .image-1 {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    width: 80%;
+  }
+  .prod-5 .image-3 {
+    display: none;
+  }
+  .prod-5 .content {
+    margin-left: 10%;
+    margin-top: 40px;
+  }
+}

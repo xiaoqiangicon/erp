@@ -1,0 +1,28 @@
+.common-text-1 {
+  padding-left: 50px;
+  font-size: 30px;
+
+  line-height: 42px;
+  color: #333;
+}
+.common-text-2 {
+  padding-left: 50px;
+  font-size: 18px;
+  line-height: 25px;
+  color: #989898;
+  margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .common-text-1 {
+    padding-left: 0;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .common-text-2 {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0 10%;
+  }
+}

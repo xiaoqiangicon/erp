@@ -1,0 +1,57 @@
+.prod-6 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 66px;
+}
+.prod-6 .image-1 {
+  float: right;
+  width: 541px;
+  margin-right: 26px;
+}
+.prod-6 .content {
+  float: left;
+  margin-left: 44px;
+  padding-top: 117px;
+}
+.prod-6 .image-2 {
+  height: 43px;
+  display: block;
+}
+.prod-6 .common-btn-1 {
+  margin-top: 43px;
+}
+.prod-6 .image-3 {
+  position: absolute;
+  left: 105px;
+  height: 172px;
+  bottom: 0;
+}
+
+@media (max-width: 500px) {
+  .prod-6 {
+    padding-bottom: 0;
+  }
+  .prod-6 .image-1 {
+    display: block;
+    float: none;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .prod-6 .image-3 {
+    position: relative;
+    left: 0;
+    width: 40%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .prod-6 .content {
+    float: none;
+    margin-left: 0;
+    padding-top: 60px;
+  }
+  .prod-6 .image-2 {
+    margin: 0 auto;
+  }
+}

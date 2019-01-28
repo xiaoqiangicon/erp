@@ -1,0 +1,51 @@
+.prod-8 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.prod-8 .image-1 {
+  float: left;
+  width: 407px;
+  margin-left: 55px;
+  margin-top: 122px;
+}
+.prod-8 .content {
+  float: right;
+  margin-right: 44px;
+  width: 327px;
+}
+.prod-8 .image-2 {
+  display: block;
+  width: 288px;
+}
+.prod-8 .image-3 {
+  height: 43px;
+  margin-top: 14px;
+}
+.prod-8 .container-1 {
+  text-align: right;
+}
+.prod-8 .common-btn-1 {
+  margin-top: 49px;
+}
+
+@media (max-width: 500px) {
+  .prod-8 {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .prod-8 .image-1 {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .prod-8 .content {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+  }
+  .prod-8 .image-2 {
+    display: none;
+  }
+}

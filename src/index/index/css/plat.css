@@ -1,0 +1,41 @@
+.plat {
+  margin-top: 10px;
+  padding-top: 38px;
+  padding-bottom: 35px;
+  background-color: #ffffff;
+}
+.plat .inner {
+  width: 630px;
+  margin: 0 auto;
+}
+.plat .common-title {
+  padding-left: 0;
+  text-align: center;
+}
+.plat .common-desc {
+  padding-left: 0;
+  text-align: center;
+  margin-top: 8px;
+}
+.plat .image {
+  width: 100%;
+  margin-top: 57px;
+}
+
+@media (max-width: 500px) {
+  .plat {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+  .plat .inner {
+    width: 64%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plat .image {
+    margin-top: 40px;
+  }
+  .plat .common-desc {
+    margin-top: 12px;
+  }
+}

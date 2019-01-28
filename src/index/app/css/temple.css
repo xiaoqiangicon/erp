@@ -1,0 +1,65 @@
+.temple {
+  width: 100%;
+  padding-top: 43px;
+  padding-bottom: 52px;
+}
+.temple .title {
+  font-size: 30px;
+  line-height: 42px;
+
+  color: #333;
+  text-align: center;
+}
+.temple .content {
+  margin-top: 44px;
+}
+.temple-item {
+  padding: 18px 9px 9px 9px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  width: 282px;
+  height: 278px;
+  box-shadow: 0 0 3px #dce4eb;
+}
+.temple-item,
+.temple-item:hover {
+  text-decoration: none;
+}
+.temple-item-image {
+  width: 100%;
+  height: 183px;
+}
+.temple-item-title {
+  margin-top: 10px;
+  padding-left: 12px;
+  font-size: 16px;
+
+  color: #333;
+}
+.temple-item-desc {
+  margin-top: 10px;
+  padding-left: 12px;
+  color: #989898;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 500px) {
+  .temple-item {
+    width: 211px;
+    padding: 14px 7px 7px 7px;
+  }
+  .temple-item-image {
+    height: 137px;
+  }
+  .temple-item-title {
+    font-size: 14px;
+    margin-top: 7px;
+  }
+  .temple-item-desc {
+    font-size: 12px;
+    height: 32px;
+    margin-top: 4px;
+  }
+}
