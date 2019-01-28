@@ -1,0 +1,120 @@
+{
+  "msg": "\u6210\u529f",
+  "data": [
+    {
+      "data": [
+        {
+          "name": "\u76f4\u64ad",
+          "subsidy_counter_fee": 1000.0,
+          "price": 100000.0,
+          "counter_fee": 1000.0,
+          "remarks": "",
+          "percentMoney": 1,
+          "order_num": 1,
+          "id": 81,
+          "isPromotion": 0,
+          "serviceMoney": 99,
+          "promotionMoney": 98
+        },
+        {
+          "name": "\u7688\u4f9d",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.04,
+          "counter_fee": 0.0,
+          "percentMoney": 1,
+          "remarks": "",
+          "order_num": 4,
+          "id": 84,
+          "isPromotion": 1
+        }
+      ],
+      "month": "2016-10"
+    },
+    {
+      "data": [
+        {
+          "name": "\u7688\u4f9d",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.01,
+          "counter_fee": 0.0,
+          "percentMoney": 3,
+          "remarks": "",
+          "order_num": 1,
+          "id": 193
+        }
+      ],
+      "month": "2016-11"
+    },
+    {
+      "data": [
+        {
+          "name": "33",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.01,
+          "counter_fee": 0.0,
+          "remarks": "",
+          "percentMoney": 0,
+          "order_num": 1,
+          "id": 42
+        },
+        {
+          "name": "\u529f\u5fb7\u7bb1",
+          "subsidy_counter_fee": 0.12,
+          "price": 11.58,
+          "counter_fee": 0.12,
+          "remarks": "",
+          "percentMoney": null,
+          "order_num": 25,
+          "id": 67
+        },
+        {
+          "name": "\u65e0\u4fee\u6cd5\u5e08555555\u4f9b\u517b",
+          "subsidy_counter_fee": 0.22,
+          "price": 22.42,
+          "counter_fee": 0.22,
+          "remarks": "",
+          "order_num": 22,
+          "id": 71
+        },
+        {
+          "name": "\u4f5b\u4e8b\u4f9b\u5949\uff08\u65e0\u89c4\u683c\u9700\u652f\u4ed8\u3001\u6709\u9644\u8a00\uff09",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.01,
+          "counter_fee": 0.0,
+          "remarks": "",
+          "order_num": 1,
+          "id": 88
+        },
+        {
+          "name": "\u4f5b\u4e8b\u4f9b\u5949\uff08\u65e0\u89c4\u683c\u9700\u652f\u4ed8\u3001\u65e0\u9644\u8a00\uff09",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.01,
+          "counter_fee": 0.0,
+          "remarks": "",
+          "order_num": 1,
+          "id": 90
+        },
+        {
+          "name": "\u4f9b\u5949\u6cd5\u4e8b\uff08\u6d4b\u8bd5\u6210\u529f\u7684\u56fe\u6807\uff09",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.03,
+          "counter_fee": 0.0,
+          "remarks": "",
+          "order_num": 3,
+          "id": 91
+        },
+        {
+          "name": "111\u4f9b\u517b",
+          "subsidy_counter_fee": 0.11,
+          "price": 11.0,
+          "counter_fee": 0.11,
+          "remarks": "",
+          "order_num": 1,
+          "id": 255
+        }
+      ],
+      "month": "2016-12"
+    }
+  ],
+  "result": 1
+}

@@ -1,0 +1,180 @@
+.prize-pane {
+  position: relative;
+  width: 688px;
+  height: 360px;
+  margin-top: -180px;
+  margin-left: -344px;
+  border-radius: 10px;
+}
+
+.prize-pane input::-webkit-outer-spin-button,
+.prize-pane input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.prize-pane input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.prize-pane .image-1 {
+  display: block;
+  width: 100%;
+}
+
+.prize-pane .container-1 {
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 30px;
+  height: 102px;
+}
+
+.prize-pane .container-2 {
+  float: left;
+  width: 458px;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 12px 15px;
+}
+
+.prize-pane .container-3 {
+  float: right;
+  width: 145px;
+  height: 100%;
+  line-height: 102px;
+  font-size: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.prize-pane .container-3.active {
+  color: #ffffff;
+  background-color: #71ba31;
+}
+
+.prize-pane .container-4 {
+  float: left;
+  margin-top: 25px;
+  height: 18px;
+  width: 300px;
+}
+
+.prize-pane .slider.slider-horizontal {
+  width: 100%;
+  height: 18px;
+}
+
+.prize-pane .slider.slider-horizontal .slider-track {
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 3px;
+}
+
+.prize-pane .slider.slider-horizontal .slider-selection {
+  background-color: #71ba31;
+  background-image: none;
+  border-radius: 3px;
+}
+
+.prize-pane .slider-handle {
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+  border: 1px solid #979797;
+  background-image: none;
+}
+
+.prize-pane .container-5 {
+  float: right;
+  height: 40px;
+  line-height: 40px;
+}
+
+.prize-pane .input-1 {
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  margin-top: 13px;
+  border-radius: 5px;
+  border: 1px solid #979797;
+  color: #9b9b9b;
+  font-size: 16px;
+  text-align: center;
+}
+
+.prize-pane .text-2 {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.prize-pane .container-6 {
+  position: absolute;
+  top: 60px;
+  left: 220px;
+  font-size: 22px;
+  color: #ffffff;
+  line-height: 35px;
+}
+
+.prize-pane .container-6 .special {
+  color: #579c08;
+}
+
+.prize-pane .container-7 {
+  margin-top: 16px;
+  padding: 0 40px;
+  height: 20px;
+}
+
+.prize-pane .text-3 {
+  float: left;
+  color: #9b9b9b;
+}
+
+.prize-pane .container-8 {
+  float: right;
+  color: #9b9b9b;
+}
+
+.prize-pane .container-8 .special {
+  color: #71ba31;
+}
+
+.prize-pane .icon-1 {
+  float: left;
+  margin-top: 1px;
+  margin-right: 8px;
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url('https://pic.zizaihome.com/83705cb0-64a1-11e8-bd57-00163e0c001e.png');
+  background-size: 100% 100%;
+}
+
+.prize-pane .icon-1 i {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  width: 14px;
+  height: 10px;
+  background-image: url('https://pic.zizaihome.com/a2e3492c-64a1-11e8-b9b2-00163e0c001e.png');
+  background-size: 100% 100%;
+  display: none;
+}
+
+.prize-pane .icon-1.active i {
+  display: inline-block;
+}
+
+.prize-pane .icon-2 {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 18px;
+  height: 18px;
+  background-image: url('https://pic.zizaihome.com/7c88be3c-64a2-11e8-b9b2-00163e0c001e.png');
+  background-size: 100% 100%;
+}

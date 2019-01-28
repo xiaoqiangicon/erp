@@ -1,0 +1,24 @@
+.badge-1 {
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 11px;
+  border-radius: 11px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.badge-1-green {
+  color: #00cc66;
+  background-color: #e9f9e9;
+  border: 1px solid #00cc66;
+}
+.badge-1-blue {
+  color: #3399ff;
+  background-color: #e3eeff;
+  border: 1px solid #3399ff;
+}
+.badge-1-yellow {
+  color: #ff9933;
+  background-color: #fff4e9;
+  border: 1px solid #ff9933;
+}

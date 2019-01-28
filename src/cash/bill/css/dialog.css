@@ -1,0 +1,93 @@
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999999;
+  font-family: inherit;
+  overflow: hidden;
+}
+.dialog-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dialog-pane {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 550px;
+  height: 350px;
+  margin-left: -275px;
+  margin-top: -175px;
+  background: #fff;
+  border-radius: 2px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-top {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: #6fba2c;
+}
+
+.dialog-title,
+.dialog-close {
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+}
+
+.dialog-title {
+  float: left;
+  margin-left: 20px;
+}
+
+.dialog-close {
+  float: right;
+  margin-right: 10px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.dialog-content {
+  width: 100%;
+  height: 338px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.dialog-content-title {
+  margin-top: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+.dialog-content-description {
+  text-align: center;
+}
+.dialog-content-input {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
+.dialog-content-input input {
+  width: 250px;
+  display: inline-block;
+  line-height: 50px;
+  height: 50px;
+}
+.dialog-content-submit {
+  margin-top: 30px;
+  text-align: center;
+}
+.dialog-content-submit button {
+  font-size: 16px;
+  color: #009dd9;
+}
