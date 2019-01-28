@@ -1,0 +1,29 @@
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+.content-container-inner {
+  min-width: 900px;
+}
+.btn-add {
+  float: right;
+  margin-right: 80px;
+  border-radius: 10px;
+  padding: 8px 80px;
+}
+.btn-add,
+.btn-add:hover,
+.btn-add:focus {
+  color: #fff;
+  background-color: #73bc32;
+  border-color: #5b991f;
+}
+.btn-promotion {
+  background-color: #fff;
+  border: 1px solid #73bc32;
+  color: #73bc32;
+  margin-right: 20px;
+  float: right;
+  border-radius: 8px;
+  padding: 8px 20px;
+}

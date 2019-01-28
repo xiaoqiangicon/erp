@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>自录数据</title>
+
+    <link rel="stylesheet" href="../../css/lib_extra/bootstrap/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/lib/jquery-confirm2/jquery-confirm.min.css"
+    />
+    <link rel="stylesheet" href="../../css/lib/colors/colors.css" />
+    <link rel="stylesheet" href="../../css/common/base.css" />
+    <link rel="stylesheet" href="../../css/common/common.css" />
+    <link rel="stylesheet" href="../../css/component/navigation.css" />
+    <link rel="stylesheet" href="../../css/wall/record.css" />
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <ul class="nav nav-tabs">
+          <li><a href="/">供奉设置</a></li>
+          <li><a href="/">区域设置</a></li>
+          <li class="active"><a>自录数据</a></li>
+        </ul>
+        <div class="select-section">
+          <div class="clearfix">
+            <div class="select-section-title">选择大殿：</div>
+            <select class="form-control select-section-select">
+              <option value="0">未选择</option>
+              <option value="1">大殿1</option>
+              <option value="2">大殿2</option>
+              <option value="3">大殿3</option>
+              <option value="4">大殿4</option>
+            </select>
+            <div class="select-section-title">选择区域：</div>
+            <select class="form-control select-section-select">
+              <option value="0">未选择</option>
+              <option value="1">区域1</option>
+              <option value="2">区域2</option>
+              <option value="3">区域3</option>
+              <option value="4">区域4</option>
+            </select>
+          </div>
+          <p class="mgt20">
+            提示：单选位置点击“录入数据”填写供奉信息，单选已录入位置可修改供奉信息。
+          </p>
+        </div>
+        <div class="seat-section">
+          <div class="seat-section-intro clearfix">
+            <div class="seat-cell available seat-section-intro-cell"></div>
+            <div class="seat-section-intro-cell">未录入位置</div>
+            <div class="seat-cell recorded seat-section-intro-cell"></div>
+            <div class="seat-section-intro-cell">自录数据</div>
+            <div class="seat-cell online seat-section-intro-cell"></div>
+            <div class="seat-section-intro-cell">线上数据</div>
+            <button class="btn btn-green seat-section-intro-in">
+              录入数据
+            </button>
+          </div>
+          <div class="seat-section-content">
+            <div class="seat-row clearfix">
+              <div class="seat-cell"></div>
+              <div class="seat-cell">1</div>
+              <div class="seat-cell">2</div>
+              <div class="seat-cell">3</div>
+              <div class="seat-cell">4</div>
+              <div class="seat-cell">5</div>
+              <div class="seat-cell">6</div>
+              <div class="seat-cell">7</div>
+              <div class="seat-cell">8</div>
+              <div class="seat-cell">1</div>
+              <div class="seat-cell">2</div>
+              <div class="seat-cell">3</div>
+              <div class="seat-cell">4</div>
+              <div class="seat-cell">5</div>
+              <div class="seat-cell">6</div>
+              <div class="seat-cell">7</div>
+              <div class="seat-cell">8</div>
+              <div class="seat-cell">1</div>
+              <div class="seat-cell">2</div>
+              <div class="seat-cell">3</div>
+              <div class="seat-cell">4</div>
+              <div class="seat-cell">5</div>
+              <div class="seat-cell">6</div>
+              <div class="seat-cell">7</div>
+              <div class="seat-cell">8</div>
+              <div class="seat-cell">1</div>
+              <div class="seat-cell">2</div>
+              <div class="seat-cell">3</div>
+              <div class="seat-cell">4</div>
+              <div class="seat-cell">5</div>
+              <div class="seat-cell">6</div>
+              <div class="seat-cell">7</div>
+              <div class="seat-cell">8</div>
+            </div>
+            <div class="seat-row clearfix">
+              <div class="seat-cell">1</div>
+              <div class="seat-cell available"></div>
+              <div class="seat-cell available active"></div>
+              <div class="seat-cell recorded"></div>
+              <div class="seat-cell recorded active"></div>
+              <div class="seat-cell online"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+            </div>
+            <div class="seat-row clearfix">
+              <div class="seat-cell">1</div>
+              <div class="seat-cell available"></div>
+              <div class="seat-cell available active"></div>
+              <div class="seat-cell recorded"></div>
+              <div class="seat-cell recorded active"></div>
+              <div class="seat-cell online"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+            </div>
+            <div class="seat-row clearfix">
+              <div class="seat-cell">1</div>
+              <div class="seat-cell available"></div>
+              <div class="seat-cell available active"></div>
+              <div class="seat-cell recorded"></div>
+              <div class="seat-cell recorded active"></div>
+              <div class="seat-cell online"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+            </div>
+            <div class="seat-row clearfix">
+              <div class="seat-cell">1</div>
+              <div class="seat-cell available"></div>
+              <div class="seat-cell available active"></div>
+              <div class="seat-cell recorded"></div>
+              <div class="seat-cell recorded active"></div>
+              <div class="seat-cell online"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+            </div>
+            <div class="seat-row clearfix">
+              <div class="seat-cell">1</div>
+              <div class="seat-cell available"></div>
+              <div class="seat-cell available active"></div>
+              <div class="seat-cell recorded"></div>
+              <div class="seat-cell recorded active"></div>
+              <div class="seat-cell online"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+              <div class="seat-cell"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in">
+      <div class="modal-dialog" style="width:540px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">录入数据</h4>
+          </div>
+          <div class="create-modal-content">
+            <div class="create-modal-row">位置行列：1行10列</div>
+            <div class="create-modal-row">位置编号：10</div>
+            <div class="create-modal-row mgt10">到期时间以及功德芳名</div>
+            <div class="create-modal-input">
+              <div class="create-modal-sub-row">
+                <div class="create-modal-sub-row-left">到期时间：</div>
+                <div class="create-modal-sub-row-right">
+                  <input class="form-control" />
+                </div>
+              </div>
+              <div class="create-modal-sub-row">
+                <div class="create-modal-sub-row-left">功德芳名：</div>
+                <div class="create-modal-sub-row-right">
+                  <input class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="create-modal-row mgt10">填写联系人信息(非必填)</div>
+            <div class="create-modal-input">
+              <div class="create-modal-contact-unit">
+                <div class="create-modal-sub-row">
+                  <div class="create-modal-sub-row-left">联系人：</div>
+                  <div class="create-modal-sub-row-right">
+                    <input class="form-control" />
+                    <button
+                      class="clean-button create-modal-sub-row-delete"
+                    ></button>
+                  </div>
+                </div>
+                <div class="create-modal-sub-row">
+                  <div class="create-modal-sub-row-left">手机号码：</div>
+                  <div class="create-modal-sub-row-right">
+                    <input class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="create-modal-contact-unit">
+                <div class="create-modal-sub-row">
+                  <div class="create-modal-sub-row-left">联系人：</div>
+                  <div class="create-modal-sub-row-right">
+                    <input class="form-control" />
+                    <button
+                      class="clean-button create-modal-sub-row-delete"
+                    ></button>
+                  </div>
+                </div>
+                <div class="create-modal-sub-row">
+                  <div class="create-modal-sub-row-left">手机号码：</div>
+                  <div class="create-modal-sub-row-right">
+                    <input class="form-control" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mgt20 text-center">
+              <button class="btn btn-info pdl30 pdr30">添加联系人</button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group text-center">
+              <button class="btn btn-green pdl30 pdr30">保存录入</button>
+              <button class="btn btn-warning">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hover-popup" style="left: 50%; top: 50%;">
+      <div class="hover-popup-content">
+        <p>弥勒佛大殿-弥勒佛佛墙一号 11行10列</p>
+        <p>位置编号：110</p>
+        <hr />
+        <p>到期时间：2017-08-31</p>
+        <p>功德芳名：11-10</p>
+        <hr />
+        <p>联系人：11行10列</p>
+        <p>手机号码：18520843460</p>
+      </div>
+      <div class="hover-popup-actions">
+        <button class="btn btn-hover-popup">修改数据</button>
+        <button class="btn btn-default mgl20">取消</button>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/lib/jquery/jquery.js"></script>
+  <script src="../../js/lib/bootstrap/bootstrap.js"></script>
+</html>

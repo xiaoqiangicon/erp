@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "sequence": 11,
+      "name": "供奉名称1",
+      "place": "区域名称1",
+      "status": 0,
+      "rows": 11,
+      "columns": 11,
+      "remain": 111
+    },
+    {
+      "id": 2,
+      "sequence": 22,
+      "name": "供奉名称2",
+      "place": "区域名称2",
+      "status": 1,
+      "rows": 22,
+      "columns": 22,
+      "remain": 222
+    },
+    {
+      "id": 3,
+      "sequence": 33,
+      "name": "供奉名称3",
+      "place": "区域名称3",
+      "status": 0,
+      "rows": 33,
+      "columns": 33,
+      "remain": 333
+    }
+  ]
+}

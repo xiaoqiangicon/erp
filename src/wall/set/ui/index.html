@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>供奉设置 - 编辑供奉信息</title>
+
+    <link rel="stylesheet" href="../../css/lib_extra/bootstrap/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/lib/jquery-confirm2/jquery-confirm.min.css"
+    />
+    <link rel="stylesheet" href="../../css/lib/colors/colors.css" />
+    <link rel="stylesheet" href="../../css/common/base.css" />
+    <link rel="stylesheet" href="../../css/common/common.css" />
+    <link rel="stylesheet" href="../../css/component/navigation.css" />
+    <link rel="stylesheet" href="../../css/wall/set.css" />
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="content-nav">
+          <span class="content-nav-icon"></span> <span>微供奉</span>
+          <span class="glyphicon glyphicon-menu-right"></span>
+          <span
+            ><a href="/zzhadmin/buddhaManage/" class="green">供奉设置</a></span
+          >
+          <span class="glyphicon glyphicon-menu-right green"></span>
+          <span class="green">编辑供奉信息</span>
+        </div>
+        <h4 class="content-title">供奉信息设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 名 称：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-3">
+              <input name="input-name" id="input-name" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 类 型：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-3">
+              <select
+                name="input-name"
+                id="input-buddha-type"
+                class="form-control"
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 标 签：</span>
+            </div>
+            <div class="col-sm-9 clearfix">
+              <div class="content-tag">标签</div>
+              <div class="content-tag">标签标签</div>
+              <div class="content-tag">标签标签标签</div>
+              <div class="content-tag">标签标签标签标签</div>
+            </div>
+            <div class="col-sm-9 mgt15">
+              <button class="btn btn-green pdl30 pdr30">编辑标签</button>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>所 在 位 置：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-5">
+              <input
+                name="input-name"
+                id="input-place"
+                class="form-control"
+                placeholder="请输入供奉所在位置的信息例如：大雄宝殿A区"
+              />
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 图 片：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9 clearfix">
+              <div class="content-image">
+                <img src="/static/sample/image1.jpg" />
+                <button class="clean-button content-image-delete">X</button>
+              </div>
+              <div class="content-image">
+                <img src="/static/images/common/image-add.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 class="content-title">详情页设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>区 域 效 果 图：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9 clearfix">
+              <div class="content-image">
+                <img src="/static/sample/image1.jpg" />
+                <button class="clean-button content-image-delete">X</button>
+              </div>
+              <div class="content-image">
+                <img src="/static/images/common/image-add.png" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 简 介：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9" id="input-detail"></div>
+          </div>
+        </div>
+        <h4 class="content-title">支付信息设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>随 喜 供 奉：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9" style="padding-top: 7px">
+              <label class="radio-inline">
+                <input type="radio" name="content-pay" value="1" checked />
+                需随喜
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="content-pay" value="0" /> 无随喜
+              </label>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title"></div>
+            <div class="col-sm-5"><input class="form-control" /></div>
+            <div class="col-sm-3">
+              <button class="btn btn-green">自动生成随喜金额</button>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>设 置 附 言：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>选择</th>
+                    <th>附言类型</th>
+                    <th>提示文字</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>功德芳名</td>
+                    <td><input class="form-control" /></td>
+                    <td>- -</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>供奉心愿</td>
+                    <td><input class="form-control" /></td>
+                    <td><button class="clean-button green">设置</button></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>联系人</td>
+                    <td><input class="form-control" /></td>
+                    <td>- -</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>手机号码</td>
+                    <td><input class="form-control" /></td>
+                    <td>- -</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>出生日期</td>
+                    <td><input class="form-control" /></td>
+                    <td>- -</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>小 票 打 印：</span>
+            </div>
+            <div class="col-sm-9">
+              <button class="clean-button content-tag">设置</button>
+            </div>
+          </div>
+        </div>
+        <h4 class="content-title">分享信息设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>标 题 文 字：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9">
+              <input
+                id="input-share-title"
+                class="form-control"
+                maxlength="28"
+              />
+              <div class="share-title-count"><span>0</span> / 28</div>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>分 享 描 述：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9">
+              <textarea
+                id="input-share-content"
+                class="form-control"
+                rows="3"
+                maxlength="120"
+              ></textarea>
+              <div class="share-content-count"><span>0</span> / 120</div>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>分 享 图 片：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9 clearfix">
+              <div class="content-image">
+                <img src="/static/sample/image1.jpg" />
+                <button class="clean-button content-image-delete">X</button>
+              </div>
+              <div class="content-image">
+                <img src="/static/images/common/image-add.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mgt40 text-center">
+          <button class="btn btn-green">保存</button>
+          <button class="btn btn-default mgl40">取消</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in">
+      <div class="modal-dialog" style="width:688px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">
+              请选择标签或自己填写标签,
+              供奉标签功能可以提示用户供养此供奉有什么意义
+            </h4>
+          </div>
+          <div class="pd30">
+            <p>标签（多个标签用空格分隔, 请不要超过四个文字）：</p>
+            <div class="form-group"><input class="form-control" /></div>
+            <div class="mgt40 clearfix">
+              <div class="tag-popup-left">我的标签:</div>
+              <div class="tag-popup-right">
+                <div class="content-tag unselected">
+                  <span>标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+                <div class="content-tag unselected">
+                  <span>标签标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+                <div class="content-tag unselected">
+                  <span>标签标签标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+                <div class="content-tag unselected">
+                  <span>标签标签标签标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+                <div class="content-tag unselected">
+                  <span>标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+                <div class="content-tag unselected">
+                  <span>标签标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+                <div class="content-tag unselected">
+                  <span>标签标签标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+                <div class="content-tag unselected">
+                  <span>标签标签标签标签</span>
+                  <button class="clean-button content-tag-delete">×</button>
+                </div>
+              </div>
+            </div>
+            <div class="mgt20 clearfix">
+              <div class="tag-popup-left">推荐标签:</div>
+              <div class="tag-popup-right">
+                <div class="content-tag"><span>标签</span></div>
+                <div class="content-tag"><span>标签标签</span></div>
+                <div class="content-tag"><span>标签标签标签</span></div>
+                <div class="content-tag"><span>标签标签标签标签</span></div>
+                <div class="content-tag"><span>标签</span></div>
+                <div class="content-tag"><span>标签标签</span></div>
+                <div class="content-tag"><span>标签标签标签</span></div>
+                <div class="content-tag"><span>标签标签标签标签</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group text-center">
+              <button class="btn btn-green">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in">
+      <div class="modal-dialog" style="width:500px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">小票打印设置</h4>
+          </div>
+          <div class="pd20">
+            <div class="form-group clearfix">
+              <div class="col-sm-3 fwb">小票打印：</div>
+              <div class="col-sm-9">
+                <label class="radio-inline">
+                  <input
+                    type="radio"
+                    name="printer-popup-activate"
+                    value="1"
+                    checked
+                  />
+                  开启
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="printer-popup-activate" value="0" />
+                  关闭
+                </label>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-sm-3 fwb">选择打印机：</div>
+              <div class="col-sm-9">
+                <div class="checkbox mgt0">
+                  <label
+                    ><input type="checkbox" value="1" checked /> 打印机1</label
+                  >
+                </div>
+                <p class="green">妙严科技公司：在线，工作状态正常。</p>
+                <div class="checkbox mgt0">
+                  <label
+                    ><input type="checkbox" value="1" checked /> 打印机2</label
+                  >
+                </div>
+                <p class="red">妙严科技公司：在线，工作状态正常。</p>
+                <div class="checkbox mgt0">
+                  <label
+                    ><input type="checkbox" value="1" checked /> 打印机3</label
+                  >
+                </div>
+                <p class="green">妙严科技公司：在线，工作状态正常。</p>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-sm-3 fwb">二维码：</div>
+              <div class="col-sm-9">
+                <label class="radio-inline">
+                  <input
+                    type="radio"
+                    name="printer-popup-print-type"
+                    value="1"
+                    checked
+                  />
+                  隔联打印
+                </label>
+                <label class="radio-inline">
+                  <input
+                    type="radio"
+                    name="printer-popup-print-type"
+                    value="0"
+                  />
+                  全部打印
+                </label>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-sm-3 fwb">打印联数：</div>
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+            </div>
+            <p class="mgt30">
+              二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
+            </p>
+          </div>
+          <div class="modal-footer pdt0 bdtn">
+            <div class="form-group text-center">
+              <button class="btn btn-green">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in">
+      <div class="modal-dialog" style="width:500px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">供奉心愿设置</h4>
+          </div>
+          <div class="pd20">
+            <div class="form-group clearfix">
+              <div class="col-sm-4 fwb text-right" style="line-height: 34px">
+                限制填写字数：
+              </div>
+              <div class="col-sm-6"><input class="form-control" /></div>
+            </div>
+          </div>
+          <div class="modal-footer pdt0 bdtn">
+            <div class="form-group text-center">
+              <button class="btn btn-green">确定</button>
+              <button class="btn btn-default mgl20">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/lib/jquery/jquery.js"></script>
+  <script src="../../js/lib/bootstrap/bootstrap.js"></script>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>区域设置</title>
+  </head>
+  <body data-menu-id="wall-index">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <ul class="nav nav-tabs">
+          <li><a href="/zzhadmin/buddhaManage/">供奉设置</a></li>
+          <li class="active"><a>区域设置</a></li>
+        </ul>
+        <div class="mgt20 clearfix">
+          <div
+            class="col-md-1 pdl0 pdr0 line-height-34 text-right hide"
+            data-filter-container="1"
+          >
+            所在位置：
+          </div>
+          <div class="col-md-3 hide" data-filter-container="1">
+            <select class="form-control" data-filter="place">
+              <option value="">全部</option>
+            </select>
+          </div>
+          <div
+            class="col-md-1 pdl0 pdr0 line-height-34 text-right hide"
+            data-filter-container="2"
+          >
+            供奉名称：
+          </div>
+          <div class="col-md-3 hide" data-filter-container="2">
+            <select class="form-control" data-filter="buddha">
+              <option value="0">全部</option>
+            </select>
+          </div>
+          <button class="btn btn-add" id="action-add">添加区域</button>
+        </div>
+        <div class="mgt20 clearfix" id="content-body"></div>
+      </div>
+    </div>
+    <div class="modal fade in" id="create-popup">
+      <div class="modal-dialog" style="width:550px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">新建区域</h4>
+          </div>
+          <div class="create-modal-body">
+            <div class="create-modal-title">请设置区域名称</div>
+            <div class="create-modal-content clearfix">
+              <span class="create-modal-content-name">区域名称：</span>
+              <input
+                class="create-modal-content-input form-control"
+                id="create-popup-name"
+              />
+              <span class="create-modal-content-desc">例如：A区</span>
+            </div>
+            <div class="create-modal-title">请设置佛墙图</div>
+            <div class="create-modal-content clearfix">
+              <span class="create-modal-content-name">横排：</span>
+              <input
+                class="create-modal-content-input form-control"
+                id="create-popup-rows"
+              />
+            </div>
+            <div class="create-modal-content clearfix">
+              <span class="create-modal-content-name">竖列：</span>
+              <input
+                class="create-modal-content-input form-control"
+                id="create-popup-columns"
+              />
+            </div>
+            <div class="create-modal-content clearfix">
+              <span class="create-modal-content-name">编号：</span>
+              <textarea
+                class="form-control left two-thirds"
+                rows="10"
+                id="create-popup-code"
+              ></textarea>
+            </div>
+            <div class="create-modal-title">请关联此区域供奉类型</div>
+            <div class="create-modal-content clearfix">
+              <span class="create-modal-content-name">选择供奉类型：</span>
+              <select
+                class="form-control create-modal-content-input"
+                id="create-popup-type"
+              ></select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group text-center">
+              <button class="btn btn-green" id="create-popup-ok">确定</button>
+              <button class="btn btn-default mgl20" data-popup-close="1">
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in" id="sort-popup">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">请设置排序号码</h4>
+          </div>
+          <div class="modal-body">
+            <div class="pdt15 pdb15">
+              <input
+                class="form-control"
+                placeholder="数字越小排序越前"
+                id="sort-popup-input"
+              />
+            </div>
+          </div>
+          <div class="modal-footer modalFoot" style="text-align: center">
+            <button type="button" class="btn btn-green" id="sort-popup-ok">
+              确定
+            </button>
+            <button type="button" class="btn btn-default" data-popup-close="1">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/html" id="tpl-unit">
+    <div class="content-unit" data-unit="${id}">
+        <div class="content-unit-inner">
+            <div class="content-unit-row clearfix">
+                <div class="content-unit-row-left">序号</div>
+                <div class="content-unit-row-right">${sequence}</div>
+            </div>
+            <div class="content-unit-row clearfix">
+                <div class="content-unit-row-left">区域名称</div>
+                <div class="content-unit-row-right content-unit-row-name" title="${place}">${place}</div>
+            </div>
+            <div class="content-unit-row clearfix">
+                <div class="content-unit-row-left">状态</div>
+                <div class="content-unit-row-right content-unit-freeze {@if !status}active{@/if}" data-unit-status="${id}">{@if status}未激活{@else}已激活{@/if}</div>
+            </div>
+            <div class="content-unit-row clearfix">
+                <div class="content-unit-row-left">供奉名称</div>
+                <div class="content-unit-row-right content-unit-row-name" title="${name}">${name}</div>
+            </div>
+            <div class="content-unit-row clearfix">
+                <div class="content-unit-row-left">区域规格</div>
+                <div class="content-unit-row-right">横排:${rows}  竖列:${columns}</div>
+            </div>
+            <div class="content-unit-row clearfix">
+                <div class="content-unit-row-left">剩余数量</div>
+                <div class="content-unit-row-right">${remain}</div>
+            </div>
+            <div class="content-unit-row clearfix">
+                <div class="content-unit-row-left">操作</div>
+                <div class="content-unit-row-right clearfix content-unit-actions">
+                    <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-delete="${id}">删除</button>
+                    <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-copy="${id}">复制</button>
+                    <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-edit="${id}">编辑</button>
+                    <button class="btn btn-green btn-xs bdr6 mgt5 mgr5 content-unit-btn-freeze {@if status}active{@/if}" data-unit-freeze="${id}" data-status="${status}">{@if status}激活{@else}冻结{@/if}</button>
+                    <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-sort="${id}" data-sequence="${sequence}">排序</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </script>
+  <script type="text/html" id="tpl-create-type-cell">
+    <option value="${id}">${name}</option>
+  </script>
+  <script type="text/html" id="tpl-option">
+    <option value="${id}">${name}</option>
+  </script>
+
+  <script
+    src="../../js/lib/in-css/in-css.js"
+    data-in-css-tag="1"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script
+    src="../../js/common/in_css_config.js"
+    data-in-css-tag="1"
+    data-in-css-config-tag="1"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script data-in-css-tag="1" data-in-css-load-tag="1">
+    InCss.use(
+      'bootstrap',
+      'jquery-confirm',
+      'colors',
+      'toastr',
+      'component/navigation',
+      'wall/region'
+    );
+  </script>
+  <script
+    src="../../js/lib/requirejs/require.js"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script
+    src="../../js/common/require_js_config.js"
+    data-require-js-config-tag="1"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script>
+    require(['wall/region']);
+  </script>
+</html>

@@ -1,0 +1,14 @@
+.tag-popup-left {
+  float: left;
+  width: 80px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.tag-popup-right {
+  float: right;
+  width: 540px;
+  overflow: hidden;
+}
+.tag-popup-right .content-tag {
+  margin-bottom: 10px;
+}

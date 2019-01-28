@@ -1,0 +1,32 @@
+{
+  "msg": "获取成功",
+  "data": {
+    "supplyType": "1 天",
+    "dispose_pic_url": "",
+    "addTime": "2017-08-12 11:40:48",
+    "price": 0.01,
+    "memo": "",
+    "buddhaName": "弥勒佛",
+    "col": 6,
+    "chanzaiOrderId": "",
+    "place": "弥勒佛佛墙一号 2行6列",
+    "writeName": "随喜位置供佛",
+    "contactList": [
+      {
+        "mobile": "1501708121141",
+        "name": "lalalalala",
+        "isLunar": 1,
+        "birthday": "2016-07-01"
+      }
+    ],
+    "prepayId": "wx20170812114048c17fb9d7790322684050",
+    "number": "16",
+    "transactionId": "4004882001201708125805340854",
+    "endTime": "2017-08-13",
+    "id": 480,
+    "row": 2,
+    "alivePeople": "一个阳上人",
+    "deadman": "一个往生者"
+  },
+  "result": 0
+}

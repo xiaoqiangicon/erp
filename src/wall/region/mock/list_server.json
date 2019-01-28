@@ -1,0 +1,255 @@
+{
+  "msg": "\u83b7\u53d6\u6210\u529f",
+  "data": [
+    {
+      "sort": 0,
+      "status": 0,
+      "name": "\u5927\u96c4\u5b9d\u6bbf-123",
+      "buddhaName": "\u5982\u6765\u4f5b\u7956",
+      "col": 5,
+      "total": 15,
+      "id": 124,
+      "row": 5,
+      "postScript": [
+        {
+          "input_type": 1,
+          "repeat": 0,
+          "font_length": 20,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 2,
+          "repeat": 0,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 3,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 4,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 5,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 6,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 7,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "name": "\u5f25\u52d2\u4f5b\u5927\u6bbf-\u5f25\u52d2\u4f5b\u4f5b\u5899\u4e00\u53f7",
+      "buddhaName": "\u5f25\u52d2\u4f5b",
+      "col": 10,
+      "total": 108,
+      "id": 127,
+      "row": 11,
+      "postScript": [
+        {
+          "input_type": 1,
+          "repeat": 0,
+          "font_length": 20,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 2,
+          "repeat": 0,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 3,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 4,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 5,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "sort": 0,
+      "status": 1,
+      "name": "\u5927\u96c4\u5b9d\u6bbf-\u5982\u6765\u4f5b\u7956\u4f5b\u5899\u4e8c\u53f7",
+      "buddhaName": "\u5982\u6765\u4f5b\u7956",
+      "col": 10,
+      "total": 101,
+      "id": 129,
+      "row": 11,
+      "postScript": [
+        {
+          "input_type": 1,
+          "repeat": 0,
+          "font_length": 20,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 2,
+          "repeat": 0,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 3,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 4,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 5,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "sort": 0,
+      "status": 1,
+      "name": "\u5927\u6bbf-A\u533a",
+      "buddhaName": "\u5c0f\u6613\u6d4b\u8bd5",
+      "col": 2,
+      "total": 4,
+      "id": 130,
+      "row": 2,
+      "postScript": [
+        {
+          "input_type": 1,
+          "repeat": 0,
+          "font_length": 20,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 2,
+          "repeat": 0,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 3,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 4,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 5,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "sort": 10,
+      "status": 1,
+      "name": "\u5927\u96c4\u5b9d\u6bbf-\u5982\u6765\u4f5b\u7956\u4f5b\u5899\u4e00\u53f7",
+      "buddhaName": "\u5982\u6765\u4f5b\u7956",
+      "col": 6,
+      "total": 28,
+      "id": 125,
+      "row": 5,
+      "postScript": [
+        {
+          "input_type": 2,
+          "repeat": 0,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 3,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 4,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 6,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        },
+        {
+          "input_type": 7,
+          "repeat": 1,
+          "font_length": 0,
+          "prompt_text": "提示文字",
+          "alias": null
+        }
+      ]
+    }
+  ],
+  "result": 0
+}

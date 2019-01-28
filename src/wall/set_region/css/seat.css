@@ -1,0 +1,83 @@
+.seat-row {
+  overflow: hidden;
+  margin-top: 10px;
+}
+.seat-cell {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  margin: 3px;
+  background-color: #ffffff;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+}
+.seat-cell.available {
+  background-color: #71b838;
+}
+.seat-cell.available:hover,
+.seat-cell.available:focus,
+.seat-cell.available:active {
+  background-color: #548929;
+}
+
+.seat-cell.disabled {
+  background-color: #f2693d;
+}
+.seat-cell.disabled:hover,
+.seat-cell.disabled:focus,
+.seat-cell.disabled:active {
+  background-color: #f3b09a;
+}
+
+.seat-cell.available,
+.seat-cell.disabled {
+  background-image: url('/static/images/wall/record/buddha.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+}
+.seat-cell.active {
+  border: 3px solid #0f62ff;
+  line-height: 29px;
+}
+.seat-cell.available[data-type='1'],
+.seat-cell.disabled[data-type='1'] {
+  background-image: url('/static/images/wall/set_region/price_type_1.png');
+}
+.seat-cell.available[data-type='2'],
+.seat-cell.disabled[data-type='2'] {
+  background-image: url('/static/images/wall/set_region/price_type_2.png');
+}
+.seat-cell.available[data-type='3'],
+.seat-cell.disabled[data-type='3'] {
+  background-image: url('/static/images/wall/set_region/price_type_3.png');
+}
+.seat-cell.available[data-type='4'],
+.seat-cell.disabled[data-type='4'] {
+  background-image: url('/static/images/wall/set_region/price_type_4.png');
+}
+.seat-cell.available[data-type='5'],
+.seat-cell.disabled[data-type='5'] {
+  background-image: url('/static/images/wall/set_region/price_type_5.png');
+}
+.seat-cell.available[data-type='6'],
+.seat-cell.disabled[data-type='6'] {
+  background-image: url('/static/images/wall/set_region/price_type_6.png');
+}
+.seat-cell.available[data-type='7'],
+.seat-cell.disabled[data-type='7'] {
+  background-image: url('/static/images/wall/set_region/price_type_7.png');
+}
+.seat-cell.available[data-type='8'],
+.seat-cell.disabled[data-type='8'] {
+  background-image: url('/static/images/wall/set_region/price_type_8.png');
+}
+.seat-cell.available[data-type='9'],
+.seat-cell.disabled[data-type='9'] {
+  background-image: url('/static/images/wall/set_region/price_type_9.png');
+}
+.seat-cell.available[data-type='10'],
+.seat-cell.disabled[data-type='10'] {
+  background-image: url('/static/images/wall/set_region/price_type_10.png');
+}

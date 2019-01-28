@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>供奉设置 - 编辑供奉信息</title>
+  </head>
+  <body data-menu-id="wall-set">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="content-nav">
+          <span class="content-nav-icon"></span> <span>微供奉</span>
+          <span class="glyphicon glyphicon-menu-right"></span>
+          <span
+            ><a href="/zzhadmin/buddhaManage/" class="green">供奉设置</a></span
+          >
+          <span class="glyphicon glyphicon-menu-right green"></span>
+          <span class="green">编辑供奉信息</span>
+        </div>
+        <h4 class="content-title">供奉信息设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 名 称：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-3">
+              <input id="input-name" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 类 型：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-3">
+              <select id="input-category" class="form-control">
+                <option value="1">佛像</option>
+                <option value="2">牌位</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix" id="content-row-buddha">
+            <div class="col-sm-2 content-row-title">
+              <span>佛 像 类 型：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-3">
+              <select id="input-buddha" class="form-control"></select>
+            </div>
+          </div>
+          <div
+            class="form-group content-row clearfix"
+            id="content-row-pai-wei"
+            style="display: none;"
+          >
+            <div class="col-sm-2 content-row-title">
+              <span>牌 位 类 型：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-3">
+              <select id="input-pai-wei" class="form-control"></select>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 标 签：</span>
+            </div>
+            <div class="col-sm-9 clearfix" id="content-tags"></div>
+            <div class="col-sm-9 mgt15">
+              <button class="btn btn-green pdl30 pdr30" id="content-edit-tag">
+                编辑标签
+              </button>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>所 在 位 置：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-5">
+              <input
+                id="input-place"
+                class="form-control"
+                placeholder="请输入供奉所在位置的信息例如：大雄宝殿A区"
+              />
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 图 片：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9 clearfix" id="content-cover-images">
+              <div class="content-image" id="content-cover-image-add">
+                <img src="/static/images/common/image-add.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 class="content-title">详情页设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>区 域 效 果 图：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9 clearfix" id="content-preview-images">
+              <div class="content-image" id="content-preview-image-add">
+                <img src="/static/images/common/image-add.png" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>供 奉 简 介：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9" id="input-intro"></div>
+          </div>
+        </div>
+        <h4 class="content-title">支付信息设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>随 喜 供 奉：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9" style="padding-top: 7px">
+              <label class="radio-inline">
+                <input type="radio" name="content-pay" value="1" checked />
+                需随喜
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="content-pay" value="0" /> 无随喜
+              </label>
+            </div>
+          </div>
+          <div
+            class="form-group content-row clearfix"
+            id="content-random-money"
+          >
+            <div class="col-sm-2 content-row-title"></div>
+            <div class="col-sm-5">
+              <input id="input-random-money" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-green" id="fill-random-money">
+                自动生成随喜金额
+              </button>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>设 置 附 言：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>选择</th>
+                    <th>附言类型</th>
+                    <th>标题</th>
+                    <th>提示文字</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input type="checkbox" checked data-memo-checkbox="1" />
+                    </td>
+                    <td data-memo-name="1">功德芳名</td>
+                    <td>
+                      <input
+                        class="form-control"
+                        data-memo-alias="1"
+                        placeholder="功德芳名"
+                      />
+                    </td>
+                    <td><input class="form-control" data-memo-tip="1" /></td>
+                    <td data-memo-config="1" data-length="20" data-disabled="1">
+                      - -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" data-memo-checkbox="6" /></td>
+                    <td data-memo-name="6">阳上人</td>
+                    <td>
+                      <input
+                        class="form-control"
+                        data-memo-alias="6"
+                        placeholder="阳上人"
+                      />
+                    </td>
+                    <td><input class="form-control" data-memo-tip="6" /></td>
+                    <td data-memo-config="6" data-length="" data-disabled="1">
+                      - -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" data-memo-checkbox="7" /></td>
+                    <td data-memo-name="7">往生者</td>
+                    <td>
+                      <input
+                        class="form-control"
+                        data-memo-alias="7"
+                        placeholder="往生者"
+                      />
+                    </td>
+                    <td><input class="form-control" data-memo-tip="7" /></td>
+                    <td data-memo-config="7" data-length="" data-disabled="1">
+                      - -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" data-memo-checkbox="2" /></td>
+                    <td data-memo-name="2">供奉心愿</td>
+                    <td>
+                      <input
+                        class="form-control"
+                        data-memo-alias="2"
+                        placeholder="心愿"
+                      />
+                    </td>
+                    <td><input class="form-control" data-memo-tip="2" /></td>
+                    <td>
+                      <button
+                        class="clean-button green"
+                        data-memo-config="2"
+                        data-length="20"
+                      >
+                        设置
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked
+                        disabled
+                        data-memo-checkbox="3"
+                      />
+                    </td>
+                    <td data-memo-name="3">联系人</td>
+                    <td></td>
+                    <td><input class="form-control" data-memo-tip="3" /></td>
+                    <td data-memo-config="3" data-length="" data-disabled="1">
+                      - -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked
+                        disabled
+                        data-memo-checkbox="4"
+                      />
+                    </td>
+                    <td data-memo-name="4">手机号码</td>
+                    <td></td>
+                    <td><input class="form-control" data-memo-tip="4" /></td>
+                    <td data-memo-config="4" data-length="" data-disabled="1">
+                      - -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" data-memo-checkbox="5" /></td>
+                    <td data-memo-name="5">出生日期</td>
+                    <td></td>
+                    <td><input class="form-control" data-memo-tip="5" /></td>
+                    <td data-memo-config="5" data-length="" data-disabled="1">
+                      - -
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>小 票 打 印：</span>
+            </div>
+            <div class="col-sm-9">
+              <button class="clean-button content-tag" id="content-set-printer">
+                设置
+              </button>
+            </div>
+          </div>
+        </div>
+        <h4 class="content-title">分享信息设置</h4>
+        <div class="content-body">
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>标 题 文 字：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9">
+              <input
+                id="input-share-title"
+                class="form-control"
+                maxlength="28"
+                data-words-count="1"
+              />
+              <div class="share-title-count">
+                <span data-words-count-show="1">0</span> / 28
+              </div>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>分 享 描 述：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9">
+              <textarea
+                id="input-share-content"
+                class="form-control"
+                rows="3"
+                maxlength="120"
+                data-words-count="2"
+              ></textarea>
+              <div class="share-content-count">
+                <span data-words-count-show="2">0</span> / 120
+              </div>
+            </div>
+          </div>
+          <div class="form-group content-row clearfix">
+            <div class="col-sm-2 content-row-title">
+              <span>分 享 图 片：</span><sup class="red">*</sup>
+            </div>
+            <div class="col-sm-9 clearfix" id="content-share-images">
+              <div class="content-image" id="content-share-image-add">
+                <img src="/static/images/common/image-add.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mgt40 text-center">
+          <button class="btn btn-green" id="action-save">保存</button>
+          <button class="btn btn-default mgl40" id="action-cancel">取消</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <div class="modal fade in" id="tag-popup">
+    <div class="modal-dialog" style="width:688px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-popup-close="1">
+            <span>×</span>
+          </button>
+          <h4 class="modal-tip">
+            请选择标签或自己填写标签,
+            供奉标签功能可以提示用户供养此供奉有什么意义
+          </h4>
+        </div>
+        <div class="pd30">
+          <p>标签（多个标签用空格分隔, 请不要超过四个文字）：</p>
+          <div class="form-group">
+            <input class="form-control" id="tag-popup-input" />
+          </div>
+          <div class="mgt40 clearfix">
+            <div class="tag-popup-left">我的标签:</div>
+            <div class="tag-popup-right" id="tag-popup-my"></div>
+          </div>
+          <div class="mgt20 clearfix">
+            <div class="tag-popup-left">推荐标签:</div>
+            <div class="tag-popup-right" id="tag-popup-system"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="form-group text-center">
+            <button class="btn btn-green" id="tag-popup-ok">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade in" id="printer-popup">
+    <div class="modal-dialog" style="width:500px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-popup-close="1">
+            <span>×</span>
+          </button>
+          <h4 class="modal-tip">小票打印设置</h4>
+        </div>
+        <div class="pd20">
+          <div class="form-group clearfix">
+            <div class="col-sm-3 fwb">小票打印：</div>
+            <div class="col-sm-9">
+              <label class="radio-inline">
+                <input type="radio" name="printer-popup-activate" value="1" />
+                开启
+              </label>
+              <label class="radio-inline">
+                <input
+                  type="radio"
+                  name="printer-popup-activate"
+                  value="0"
+                  checked
+                />
+                关闭
+              </label>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <div class="col-sm-3 fwb">选择打印机：</div>
+            <div class="col-sm-9" id="printer-popup-printers"></div>
+          </div>
+          <div class="form-group clearfix">
+            <div class="col-sm-3 fwb">二维码：</div>
+            <div class="col-sm-9">
+              <label class="radio-inline">
+                <input
+                  type="radio"
+                  name="printer-popup-print-type"
+                  value="2"
+                  checked
+                />
+                隔联打印
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="printer-popup-print-type" value="1" />
+                全部打印
+              </label>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <div class="col-sm-3 fwb">打印联数：</div>
+            <div class="col-sm-6">
+              <select class="form-control" id="printer-popup-pages">
+                <option value="1">1联</option>
+                <option value="2" selected>2联</option>
+                <option value="3">3联</option>
+                <option value="4">4联</option>
+                <option value="5">5联</option>
+              </select>
+            </div>
+          </div>
+          <p class="mgt30">
+            二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
+          </p>
+        </div>
+        <div class="modal-footer pdt0 bdtn">
+          <div class="form-group text-center">
+            <button
+              class="btn btn-green"
+              id="printer-popup-ok"
+              data-popup-close="1"
+            >
+              确定
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade in" id="pray-popup">
+    <div class="modal-dialog" style="width:500px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-popup-close="1">
+            <span>×</span>
+          </button>
+          <h4 class="modal-tip">
+            <span id="pray-popup-title">供奉心愿</span>设置
+          </h4>
+        </div>
+        <div class="pd20">
+          <div class="form-group clearfix">
+            <div class="col-sm-4 fwb text-right" style="line-height: 34px">
+              限制填写字数：
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" id="pray-popup-input" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer pdt0 bdtn">
+          <div class="form-group text-center">
+            <button class="btn btn-green" id="pray-popup-ok">确定</button>
+            <button class="btn btn-default mgl20" data-popup-close="1">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading-toast" class="loading-toast unloaded">
+    <img class="loading-toast-image" src="/static/images/common/loading.gif" />
+  </div>
+
+  <script type="text/html" id="tpl-buddha-cell">
+    <option value="${id}">${name}</option>
+  </script>
+  <script type="text/html" id="tpl-tag-cell">
+    <div class="content-tag" data-content-tag="${id}">${name}</div>
+  </script>
+  <script type="text/html" id="tpl-preview-image-cell">
+    <div class="content-image" data-preview-image-cell="1" data-image="${image}">
+        <img src="${image}">
+        <button class="clean-button content-image-delete" data-preview-image-cell-delete="1">X</button>
+    </div>
+  </script>
+  <script type="text/html" id="tpl-cover-image-cell">
+    <div class="content-image" data-cover-image-cell="1" data-image="${image}">
+        <img src="${image}">
+        <button class="clean-button content-image-delete" data-cover-image-cell-delete="1">X</button>
+    </div>
+  </script>
+  <script type="text/html" id="tpl-share-image-cell">
+    <div class="content-image" data-share-image-cell="1" data-image="${image}">
+        <img src="${image}">
+        <button class="clean-button content-image-delete" data-share-image-cell-delete="1">X</button>
+    </div>
+  </script>
+  <script type="text/html" id="tpl-tag-popup-cell">
+    <div class="content-tag unselected" data-tag-popup-cell="${id}" data-type="${type}" data-name="${name}">
+        <span>${name}</span>
+        {@if type == 2}
+        <button class="clean-button content-tag-delete" data-tag-popup-cell-delete="${id}">×</button>
+        {@/if}
+    </div>
+  </script>
+  <script type="text/html" id="tpl-printer-cell">
+    <div class="checkbox mgt0" data-printer-cell="${id}">
+        <label><input type="checkbox" data-printer-cell-input="${id}" value="${id}">${name}</label>
+    </div>
+    <p class="pdl20 hide" data-printer-cell-status="${id}"></p>
+  </script>
+
+  <script
+    src="../../js/lib/in-css/in-css.js"
+    data-in-css-tag="1"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script
+    src="../../js/common/in_css_config.js"
+    data-in-css-tag="1"
+    data-in-css-config-tag="1"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script data-in-css-tag="1" data-in-css-load-tag="1">
+    InCss.use(
+      'bootstrap',
+      'jquery-confirm',
+      'colors',
+      'toastr',
+      'component/navigation',
+      'component/editor',
+      'component/loader',
+      'wall/set'
+    );
+  </script>
+  <script
+    src="../../js/lib/requirejs/require.js"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script
+    src="../../js/common/require_js_config.js"
+    data-require-js-config-tag="1"
+    data-lilacs-no-concat="1"
+  ></script>
+  <script>
+    require(['wall/set']);
+  </script>
+</html>

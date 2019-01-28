@@ -1,0 +1,50 @@
+{
+  "msg": "\u83b7\u53d6\u6210\u529f",
+  "data": [
+    {
+      "templateId": 65,
+      "coverPic": "https://pic.zizaihome.com/1491544435432.jpeg",
+      "id": 8,
+      "name": "\u5927\u795e",
+      "type": 3
+    },
+    {
+      "templateId": 66,
+      "coverPic": "https://pic.zizaihome.com/1491982768143.jpg",
+      "id": 9,
+      "name": "\u5982\u6765\u4f5b\u7956",
+      "type": 3
+    },
+    {
+      "templateId": 67,
+      "coverPic": "https://pic.zizaihome.com/1491986784207.jpg",
+      "id": 10,
+      "name": "\u5143\u59cb\u5929\u5c0a"
+    },
+    {
+      "templateId": 68,
+      "coverPic": "https://pic.zizaihome.com/1491987536775.jpg",
+      "id": 11,
+      "name": "\u89c2\u4e16\u97f3\u83e9\u8428"
+    },
+    {
+      "templateId": 69,
+      "coverPic": "https://pic.zizaihome.com/1492065446738.gif",
+      "id": 12,
+      "name": "\u5f25\u52d2\u4f5b"
+    },
+    {
+      "templateId": 70,
+      "coverPic": "https://pic.zizaihome.com/1492322709811.png",
+      "id": 13,
+      "name": "\u90fd\u53d7\u5230"
+    },
+    {
+      "templateId": 85,
+      "coverPic": "https://pic.zizaihome.com/1494834011751.jpg",
+      "id": 14,
+      "name": "\u65b0\u4f5b\u50cf\u4e00"
+    }
+  ],
+  "result": 0
+}

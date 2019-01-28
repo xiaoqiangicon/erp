@@ -1,0 +1,46 @@
+.hover-popup {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.hover-popup-header {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px;
+  padding: 0 15px;
+}
+.hover-popup-body {
+  position: relative;
+  padding: 15px;
+}
+
+.create-modal-body {
+  padding: 20px;
+}
+.create-modal-title {
+  padding-left: 10px;
+  font-size: 18px;
+  line-height: 36px;
+  border-bottom: 1px solid #aaa;
+}
+.create-modal-content {
+  padding: 20px 0;
+}
+.create-modal-content-name,
+.create-modal-content-desc {
+  float: left;
+  display: inline-block;
+  width: 25%;
+  line-height: 34px;
+  font-weight: bold;
+  text-align: right;
+}
+.create-modal-content-input {
+  float: left;
+  width: 50%;
+}
+.create-modal-content-desc {
+  font-weight: normal;
+  text-align: left;
+  padding-left: 15px;
+}

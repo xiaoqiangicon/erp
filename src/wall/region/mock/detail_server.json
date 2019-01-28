@@ -1,0 +1,79 @@
+{
+  "msg": "\u83b7\u53d6\u6210\u529f",
+  "data": {
+    "wallList": [
+      {
+        "priceArray": [
+          {
+            "price": 30.0,
+            "priceType": 7,
+            "basePrice": 3.0
+          },
+          {
+            "price": 40.0,
+            "priceType": 2,
+            "basePrice": 4.0
+          }
+        ],
+        "id": 1,
+        "seatList": ["1_1", "3_1"]
+      },
+      {
+        "priceArray": [
+          {
+            "price": 2.0,
+            "priceType": 6,
+            "basePrice": 1.0
+          },
+          {
+            "price": 20.0,
+            "priceType": 7,
+            "basePrice": 0.0
+          },
+          {
+            "price": 200.0,
+            "priceType": 8,
+            "basePrice": 100.0
+          }
+        ],
+        "id": 2,
+        "seatList": ["1_2", "3_2"]
+      },
+      {
+        "priceArray": [
+          {
+            "price": 22.0,
+            "priceType": 7,
+            "basePrice": 2.0
+          },
+          {
+            "price": 33.0,
+            "priceType": 2,
+            "basePrice": 3.0
+          }
+        ],
+        "id": 4,
+        "seatList": ["1_3", "3_3"]
+      },
+      {
+        "priceArray": [
+          {
+            "price": 50.0,
+            "priceType": 3,
+            "basePrice": 0.0
+          }
+        ],
+        "id": 3,
+        "seatList": ["2_1", "2_2", "2_3"]
+      }
+    ],
+    "name": "\u5927\u96c4\u5b9d\u6bbf-hhahahaaha",
+    "noSeatList": ["3_2", "2_2", "1_2"],
+    "col": 3,
+    "buddhaId": 29,
+    "numberText": ["1|_|3", "4|_|6", "7|_|9"],
+    "id": 137,
+    "row": 3
+  },
+  "result": 0
+}

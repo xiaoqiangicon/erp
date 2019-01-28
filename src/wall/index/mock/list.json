@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "cover": "/static/sample/image1.jpg",
+      "url": "/static/sample/image1.jpg",
+      "sequence": 11,
+      "name": "供奉名称1",
+      "regions": "haha1,hehe1,hoho1"
+    },
+    {
+      "id": 2,
+      "cover": "/static/sample/image2.jpg",
+      "url": "/static/sample/image2.jpg",
+      "sequence": 22,
+      "name": "供奉名称2",
+      "regions": "haha2,hehe2,hoho2"
+    },
+    {
+      "id": 3,
+      "cover": "/static/sample/image3.jpg",
+      "url": "/static/sample/image3.jpg",
+      "sequence": 33,
+      "name": "供奉名称3",
+      "regions": ""
+    }
+  ]
+}
