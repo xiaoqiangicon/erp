@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>善款统计</title>
+  </head>
+  <body data-menu-id="cash-index">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section clearfix">
+          <a class="menu-item active">善款统计</a>
+          <a class="menu-item" href="/zzhadmin/cashRecord/">交易记录</a>
+        </div>
+        <div class="stat-section">
+          <div class="stat-first-section" id="stat-first-section">
+            <div class="unit">
+              <div class="unit-inner">
+                <p>
+                  <span>累计善款</span>
+                  <span class="special">（每日0点更新）</span>
+                </p>
+                <p class="special-2">
+                  <span id="total-donate">- - - -</span>元
+                </p>
+                <p class="special-2">
+                  <a href="/zzhadmin/cashRecord/">累计交易记录</a>
+                </p>
+              </div>
+            </div>
+            <div class="unit hide" id="chanzai-donate-unit">
+              <div class="unit-inner">
+                <p>
+                  <span>APP转单善款</span>
+                  <button
+                    class="clean-button glyphicon glyphicon-question-sign special-3"
+                    data-tippy="APP转移订单到本寺的善款金额（已包含在累计善款中）"
+                  ></button>
+                </p>
+                <p class="special-2">
+                  <span id="chanzai-donate">- - - -</span>元
+                </p>
+                <p class="special-2">
+                  <a href="/zzhadmin/conversionOrderIndex/">查看转单记录</a>
+                </p>
+              </div>
+            </div>
+            <div class="unit">
+              <div class="unit-inner">
+                <p>
+                  <span>可提现善款</span>
+                  <button
+                    class="clean-button glyphicon glyphicon-question-sign special-3"
+                    data-tippy="当前展示您可提现的金额，自在家善款系统结算周期为31天"
+                  ></button>
+                </p>
+                <p class="special-2">
+                  <span id="available-donate">- - - -</span>元
+                </p>
+                <p class="special-2">
+                  <button class="clean-button" id="action-take">
+                    申请提现
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="unit">
+              <div class="unit-inner">
+                <p><span>累计已提现</span></p>
+                <p class="special-2">
+                  <span id="taken-donate">- - - -</span>元
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="stat-second-section">
+            <div class="title">善款明细统计</div>
+            <div class="btn-group btn-group-sm btn-group-dropdown left">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-toggle="dropdown"
+              >
+                <span class="text" data-selected-year="0">- -年</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" data-select-year-container="1"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="chart-section">
+          <canvas id="chart-section-canvas"></canvas>
+        </div>
+        <div class="detail-section">
+          <div class="head">
+            <div class="unit unit-head">
+              <div class="cell cell-time"><span>日期</span></div>
+              <div class="cell cell-money"><span>善款收入</span></div>
+              <div class="cell cell-count"><span>交易数量</span></div>
+              <div class="cell cell-available no"><span>可提现</span></div>
+              <div class="cell cell-done"><span>已提现</span></div>
+              <div class="cell cell-scan"><span></span></div>
+            </div>
+          </div>
+          <div class="body" id="pagination-content-containers"></div>
+        </div>
+        <div
+          class="pagination-section"
+          id="pagination-containers"
+          style="display: none;"
+        ></div>
+      </div>
+    </div>
+    <div class="dialog" style="display: none" id="dialog-account-pending">
+      <div class="dialog-inner">
+        <div class="dialog-pane" style="width: 684px;">
+          <div class="dialog-content">
+            <div class="dialog-account-icon">
+              <img
+                src="https://pic.zizaihome.com/30f67fc2-22c5-11e9-9b75-00163e0c001e.png"
+              />
+            </div>
+            <div class="dialog-account-title">正在审核中，请耐心等待</div>
+            <div class="dialog-account-content">
+              自在家将在1个工作日内（双休日或法定节假日顺延）完成审核
+            </div>
+            <div class="dialog-account-btn">
+              <button class="btn btn-green btn-outline" data-dialog-close="1">
+                我知道了
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog" style="display: none" id="dialog-account-no">
+      <div class="dialog-inner">
+        <div class="dialog-pane" style="width: 684px;">
+          <div class="dialog-content">
+            <div class="dialog-account-icon">
+              <img
+                src="https://pic.zizaihome.com/39568004-22c5-11e9-9b75-00163e0c001e.png"
+              />
+            </div>
+            <div class="dialog-account-title">您的审核信息未通过</div>
+            <div class="dialog-account-content">
+              自在家将在1个工作日内与您沟通，修改审核信息后请重新提交
+            </div>
+            <div
+              class="olive text-center mgt30 hide"
+              id="dialog-account-no-reason"
+            >
+              原因：<span id="dialog-account-no-reason-content"></span>
+            </div>
+            <div class="dialog-account-btn">
+              <button class="btn btn-green btn-outline" data-dialog-close="1">
+                我知道了
+              </button>
+              <a
+                class="btn btn-green mgl20"
+                href="/static/dist/html/cash/account/index.html?edit=1"
+                >修改审核资料</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/html" id="tpl-select-year-item">
+      <li><a class="item" data-select-year="${year}" href="javascript: void(0);">${year}年</a></li>
+    </script>
+    <script type="text/html" id="tpl-pagination">
+      {@if totalPages > 1 && currentPage != 1}
+      <button class="btn btn-default btn-sm pdl20 pdr20 mgr20" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-1" data-year="${year}">上一页</button>
+      {@/if}
+      {@if totalPages <= 7}
+      {@each pages as page}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}" data-year="${year}">${page}</button>
+      {@/each}
+      {@else}
+      {@each pages as page}
+      {@if page == 1 || page == totalPages || currentPage <= 4 && page <= 4 || currentPage >= totalPages - 3 && page >= totalPages - 3 || currentPage - page == 1 || currentPage - page == 0 || currentPage - page == -1}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}" data-year="${year}">${page}</button>
+      {@else if currentPage >4 && page == 2 || currentPage < totalPages - 3 && page == totalPages - 1}
+      <button class="clean-button pagination-cell disabled">...</button>
+      {@/if}
+      {@/each}
+      {@/if}
+      {@if totalPages > 1 && currentPage != totalPages}
+      <button class="btn btn-default btn-sm pdl20 pdr20 mgl20" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-2" data-year="${year}">下一页</button>
+      {@/if}
+    </script>
+    <script type="text/html" id="tpl-pagination-container">
+      <div class="pagination" data-pagination="${year}"></div>
+    </script>
+    <script type="text/html" id="tpl-detail-unit">
+      <div class="unit">
+          <div class="cell cell-time">
+              <span class="year">${year}年</span>
+              <span class="month">${month}月</span>
+          </div>
+          <div class="cell cell-money">
+              <span>￥${money}</span>
+          </div>
+          <div class="cell cell-count">
+              <span>${count}</span>
+          </div>
+          <div class="cell cell-available no">
+              <span>￥${available}</span>
+          </div>
+          <div class="cell cell-done">
+              <span>￥${taken}</span>
+          </div>
+          <div class="cell cell-scan">
+              <a href="/zzhadmin/cashRecord/?year=${year}&month=${month}">查看交易记录</a>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-year-content-container">
+      <div data-year-content="${year}"></div>
+    </script>
+    <script type="text/html" id="tpl-pagination-content-container">
+      <div data-pagination-content="${page}" data-year="${year}">
+          <div class="common-placeholder"><img src="https://pic.zizaihome.com/1790508a-22c5-11e9-9b75-00163e0c001e.gif"></div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-placeholder">
+      <div class="common-placeholder"><img src="https://pic.zizaihome.com/1790508a-22c5-11e9-9b75-00163e0c001e.gif"></div>
+    </script>
+
+    <script>
+      var globalData = {
+        // -1：未添加过，0：审核中，1：审核通过，2：审核未通过
+        accountStatus: parseInt('{{status}}'),
+      };
+    </script>
+  </body>
+</html>

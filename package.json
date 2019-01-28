@@ -94,6 +94,7 @@
     "bootstrap-datepicker": "^1.8.0",
     "bootstrap-datetime-picker": "^2.4.4",
     "bootstrap-slider": "^10.3.2",
+    "chart.js": "^2.7.3",
     "colors.css": "^3.0.0",
     "events": "^3.0.0",
     "font-awesome": "^4.7.0",

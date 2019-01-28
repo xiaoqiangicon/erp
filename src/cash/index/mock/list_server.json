@@ -1,0 +1,94 @@
+{
+  "msg": "\u6210\u529f",
+  "data": [
+    {
+      "canPickUpMoney": 0.85,
+      "price": 0.87,
+      "surplusPickUpMoney": 0.85,
+      "month": "2017-01",
+      "pickUpMoney": 0.0,
+      "order_num": 86
+    },
+    {
+      "canPickUpMoney": 61.31,
+      "price": 1.32,
+      "surplusPickUpMoney": 61.31,
+      "month": "2017-02",
+      "pickUpMoney": 0.0,
+      "order_num": 144
+    },
+    {
+      "canPickUpMoney": 3.99,
+      "price": 113.07,
+      "surplusPickUpMoney": 3.5200000000000005,
+      "month": "2017-03",
+      "pickUpMoney": 0.47,
+      "order_num": 290
+    },
+    {
+      "canPickUpMoney": 0.05,
+      "price": 0.09,
+      "surplusPickUpMoney": 0.0,
+      "month": "2017-04",
+      "pickUpMoney": 0.05,
+      "order_num": 8
+    },
+    {
+      "canPickUpMoney": 3.81,
+      "price": 3.69,
+      "surplusPickUpMoney": 3.2800000000000002,
+      "month": "2017-05",
+      "pickUpMoney": 0.53,
+      "order_num": 298
+    },
+    {
+      "canPickUpMoney": 1.87,
+      "price": 1.71,
+      "surplusPickUpMoney": 1.7100000000000002,
+      "month": "2017-06",
+      "pickUpMoney": 0.16,
+      "order_num": 165
+    },
+    {
+      "canPickUpMoney": 3.01,
+      "price": 3.04,
+      "surplusPickUpMoney": 2.82,
+      "month": "2017-07",
+      "pickUpMoney": 0.19,
+      "order_num": 270
+    },
+    {
+      "canPickUpMoney": 1.95,
+      "price": 2.21,
+      "surplusPickUpMoney": 1.81,
+      "month": "2017-08",
+      "pickUpMoney": 0.14,
+      "order_num": 191
+    },
+    {
+      "canPickUpMoney": 1.28,
+      "price": 1.71,
+      "surplusPickUpMoney": 1.19,
+      "month": "2017-09",
+      "pickUpMoney": 0.09,
+      "order_num": 155
+    },
+    {
+      "canPickUpMoney": 1.48,
+      "price": 1.74,
+      "surplusPickUpMoney": 1.4,
+      "month": "2017-10",
+      "pickUpMoney": 0.08,
+      "order_num": 152
+    },
+    {
+      "canPickUpMoney": 0.0,
+      "price": 355004.03,
+      "surplusPickUpMoney": 0.0,
+      "month": "2017-11",
+      "pickUpMoney": 0.0,
+      "order_num": 305
+    }
+  ],
+  "result": 1
+}

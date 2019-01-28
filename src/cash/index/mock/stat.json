@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "data": {
+    "total": 20000,
+    "available": 18000,
+    "taken": 2000
+  }
+}
