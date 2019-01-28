@@ -1,0 +1,151 @@
+/* 0的时候不能加 !impotant, 否则上下左右以后就都不能改变了 */
+.pd0 {
+  padding: 0;
+}
+.pdt0 {
+  padding-top: 0 !important;
+}
+.pdl0 {
+  padding-left: 0 !important;
+}
+.pdr0 {
+  padding-right: 0 !important;
+}
+.pdb0 {
+  padding-bottom: 0 !important;
+}
+.pd5 {
+  padding: 5px;
+}
+.pdt5 {
+  padding-top: 5px !important;
+}
+.pdl5 {
+  padding-left: 5px !important;
+}
+.pdr5 {
+  padding-right: 5px !important;
+}
+.pdb5 {
+  padding-bottom: 5px !important;
+}
+.pd10 {
+  padding: 10px;
+}
+.pdt10 {
+  padding-top: 10px !important;
+}
+.pdl10 {
+  padding-left: 10px !important;
+}
+.pdr10 {
+  padding-right: 10px !important;
+}
+.pdb10 {
+  padding-bottom: 10px !important;
+}
+.pd15 {
+  padding: 15px;
+}
+.pdt15 {
+  padding-top: 15px !important;
+}
+.pdl15 {
+  padding-left: 15px !important;
+}
+.pdr15 {
+  padding-right: 15px !important;
+}
+.pdb15 {
+  padding-bottom: 15px !important;
+}
+.pd20 {
+  padding: 20px;
+}
+.pdt20 {
+  padding-top: 20px !important;
+}
+.pdl20 {
+  padding-left: 20px !important;
+}
+.pdr20 {
+  padding-right: 20px !important;
+}
+.pdb20 {
+  padding-bottom: 20px !important;
+}
+.pd25 {
+  padding: 25px;
+}
+.pdt25 {
+  padding-top: 25px !important;
+}
+.pdl25 {
+  padding-left: 25px !important;
+}
+.pdr25 {
+  padding-right: 25px !important;
+}
+.pdb25 {
+  padding-bottom: 25px !important;
+}
+.pd30 {
+  padding: 30px;
+}
+.pdt30 {
+  padding-top: 30px !important;
+}
+.pdl30 {
+  padding-left: 30px !important;
+}
+.pdr30 {
+  padding-right: 30px !important;
+}
+.pdb30 {
+  padding-bottom: 30px !important;
+}
+.pd40 {
+  padding: 40px;
+}
+.pdr40 {
+  padding-right: 40px !important;
+}
+.pdb40 {
+  padding-bottom: 40px !important;
+}
+.pdt40 {
+  padding-top: 40px !important;
+}
+.pdl40 {
+  padding-left: 40px !important;
+}
+.pd50 {
+  padding: 50px;
+}
+.pdr50 {
+  padding-right: 50px !important;
+}
+.pdb50 {
+  padding-bottom: 50px !important;
+}
+.pdt50 {
+  padding-top: 50px !important;
+}
+.pdl50 {
+  padding-left: 50px !important;
+}
+.pd60 {
+  padding: 60px;
+}
+.pdr60 {
+  padding-right: 60px !important;
+}
+.pdb60 {
+  padding-bottom: 60px !important;
+}
+.pdt60 {
+  padding-top: 60px !important;
+}
+.pdl60 {
+  padding-left: 60px !important;
+}

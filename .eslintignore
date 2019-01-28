@@ -3,3 +3,5 @@ dev
 build
 /res
 /src/lib
+/src/article
+/src/common

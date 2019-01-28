@@ -1,0 +1,121 @@
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+
+.content-container-inner {
+  padding: 15px;
+  min-width: 850px;
+  min-height: 500px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+}
+.filter-section,
+.content-section,
+.pagination-section {
+  width: 100%;
+  margin-top: 30px;
+}
+.filter-section-query,
+.filter-section-button {
+  height: 34px;
+  line-height: 34px;
+}
+.filter-section-query {
+  float: left;
+}
+.filter-section-button {
+  float: right;
+}
+.form-group-search {
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+}
+.form-group-search > input {
+  padding-right: 34px;
+}
+.icon-search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+  text-align: center;
+  color: #6fba2c;
+  cursor: pointer;
+}
+.filter-section-query .button,
+.filter-section-button .button,
+.pagination-section .button {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.content-section .article-cell {
+  width: 100%;
+  overflow: hidden;
+}
+.content-section-head .article-cell {
+  background: #eaf4ff;
+  height: 40px;
+  line-height: 40px;
+}
+.condition-content-containers .article-cell {
+  border-bottom: 1px solid #d0e8ff;
+  padding: 15px 0;
+}
+.content-section .article-title,
+.content-section .article-visit-count,
+.content-section .article-support,
+.content-section .article-pay-amount,
+.content-section .article-status,
+.content-section .article-actions {
+  float: left;
+  width: 12%;
+  padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content-section .article-title {
+  width: 40%;
+}
+.condition-content-containers .article-title {
+  position: relative;
+  padding-left: 58px;
+}
+.condition-content-containers .article-cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+}
+.condition-content-containers .article-cell p {
+  margin-bottom: 0;
+  line-height: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content-section .article-support p,
+.content-section .article-pay-amount p,
+.content-section .article-visit-count p,
+.content-section .article-status p {
+  line-height: 50px;
+}
+.content-section .article-title-text {
+  white-space: normal !important;
+  height: 50px;
+}
+.content-section .article-placeholder {
+  line-height: 0 !important;
+}
+.condition-content-containers .article-actions button {
+  color: #6fba2c;
+}
+.pagination-section {
+  text-align: center;
+}

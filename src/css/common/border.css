@@ -1,0 +1,31 @@
+.bdn {
+  border: none;
+}
+.bdln {
+  border-left: none !important;
+}
+.bdtn {
+  border-top: none !important;
+}
+.bdrn {
+  border-right: none !important;
+}
+.bdbn {
+  border-bottom: none !important;
+}
+
+.bd-eeeeee {
+  border: 1px solid #eee;
+}
+.bdl-eeeeee {
+  border-left: 1px solid #eee;
+}
+.bdt-eeeeee {
+  border-top: 1px solid #eee;
+}
+.bdr-eeeeee {
+  border-right: 1px solid #eee;
+}
+.bdb-eeeeee {
+  border-bottom: 1px solid #eee;
+}

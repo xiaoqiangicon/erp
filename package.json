@@ -99,7 +99,7 @@
     "font-awesome": "^4.7.0",
     "handlebars": "^4.0.12",
     "jquery": "^3.3.1",
-    "jquery-confirm": "^3.3.2",
+    "jquery-confirm": "3.3.2",
     "jquery-ui": "^1.12.1",
     "jquery.cookie": "^1.4.1",
     "jquery.nicescroll": "^3.7.6",
@@ -115,8 +115,8 @@
     "see-fetch": "^1.0.1",
     "see-view": "^1.0.0",
     "spinkit": "^1.2.5",
-    "tippy.js": "^3.2.0",
     "swiper": "^3.4.2",
+    "tippy.js": "^3.2.0",
     "toastr": "^2.1.4",
     "underscore": "^1.9.1",
     "vconsole": "^3.2.0"

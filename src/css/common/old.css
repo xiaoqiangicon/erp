@@ -1,0 +1,98 @@
+/* 以下为兼容旧有规范所保留的 */
+
+.width40 {
+  width: 40px;
+}
+.width60 {
+  width: 60px;
+}
+.width80 {
+  width: 80px;
+}
+.width100 {
+  width: 100px;
+}
+.width120 {
+  width: 120px;
+}
+
+.color999 {
+  color: #999;
+}
+
+.color-01a0d8 {
+  color: #01a0d8;
+}
+
+.color-dd524d {
+  color: #dd524d;
+}
+
+.color690 {
+  color: #690;
+}
+.white-force {
+  color: #fff !important;
+}
+
+/* 形如下划线的导航 */
+.underscore-nav {
+  position: relative;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+/* 小尺寸 */
+.underscore-nav-sm {
+  padding-top: 14px;
+}
+.underscore-nav > li {
+  float: left;
+  display: block;
+  color: #555;
+  width: auto;
+  margin: 0 15px 2px;
+  height: 30px;
+  list-style: none;
+
+  /* overflow: hidden; */
+  text-align: center;
+}
+.underscore-nav-sm > li {
+  height: 24px;
+  margin-right: 0;
+}
+
+/* 垂直导航 */
+.underscore-nav-vertical > li {
+  float: none;
+}
+.underscore-nav li a {
+  height: 30px;
+  font-size: 18px;
+  color: #777;
+  line-height: 30px;
+  padding: 0 15px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+.underscore-nav-sm li a {
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 10px;
+}
+.underscore-nav li:hover a,
+.underscore-nav li.active a {
+  color: #333;
+
+  /* text-shadow: 0 0 1px #999; */
+  border-bottom: 3px solid #6fba2c;
+}
+.underscore-nav-sm li:hover a,
+.underscore-nav-sm li.active a {
+  border-bottom: 2px solid #6fba2c;
+}
+
+/* 这里放的都是一些通用的样式，具体，转门针对某一些元素的全局样式，放在 common/base.css 文件中 */
