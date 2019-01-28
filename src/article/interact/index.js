@@ -4,6 +4,7 @@ import '../../css/common/index.css';
 
 import 'jquery-confirm/dist/jquery-confirm.min.css';
 import 'colors.css/css/colors.css';
+import '@senntyou/shortcut.css';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
 import 'bootstrap-datepicker';
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js';
