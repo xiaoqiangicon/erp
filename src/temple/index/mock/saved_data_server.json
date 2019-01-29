@@ -1,0 +1,464 @@
+{
+  "msg": "获取成功",
+  "data": [
+    {
+      "sort": 1,
+      "update_time": "2016-12-12 16:17:00",
+      "temple_id": 1,
+      "op_status": 0,
+      "addition": "",
+      "message_id": 1,
+      "message": {
+        "province": "广东省",
+        "city": "深圳市",
+        "area": null,
+        "update_time": "2016-12-05 00:00:00",
+        "pic": [
+          {
+            "update_time": "2016-12-05 00:00:00",
+            "op_status": 0,
+            "addition": "",
+            "introdaction_id": 1,
+            "img_url": "/sample/image4.jpg",
+            "id": 1,
+            "add_time": "2016-12-05 00:00:00"
+          },
+          {
+            "update_time": "2016-12-05 00:00:00",
+            "op_status": 0,
+            "addition": "",
+            "introdaction_id": 1,
+            "img_url": "/sample/image5.jpg",
+            "id": 2,
+            "add_time": "2016-12-05 00:00:00"
+          }
+        ],
+        "temple_id": 1,
+        "op_status": 0,
+        "addition": "",
+        "describe": "深圳弘法寺位始建于1985年7月1日，<br><br><br>vfeavadf<br><br><br>vadevds位于深圳仙湖植物园内，地处深圳市东郊——有深圳“绿色心肺”之称的梧桐山麓。是1949年建国后，国内兴建的首座寺院。1990年8月31日，经深圳市人民政府批准，弘法寺作为宗教活动场所对公众开放。从此成为深圳地区香火最为鼎盛、规模影响最大的佛教寺庙",
+        "id": 1,
+        "add_time": "2016-12-05 00:00:00"
+      },
+      "type": 1,
+      "id": 1,
+      "add_time": "2016-12-12 16:17:00"
+    },
+    {
+      "sort": 2,
+      "update_time": "2016-12-12 16:17:00",
+      "temple_id": 1,
+      "op_status": 0,
+      "addition": "",
+      "message_id": 1,
+      "message": [
+        {
+          "update_time": "2016-12-05 00:00:00",
+          "temple_id": 1,
+          "religion_prorerb": "智慧从哪里来？<br><br>是佛法中来。我们学习佛法，并非逃避世俗世间，而是要把份内的事做得更好，更加圆满。为社会，为众生做更多的好事，解决现实生活中更多的矛盾和问题。",
+          "religion_name": "另一个法师另一个法师",
+          "img_url": "/images/common/example-avatar.jpg",
+          "id": 1,
+          "type": 2,
+          "add_time": "2016-12-05 00:00:00",
+          "religion_title": "荣誉名字荣誉名字",
+          "showType": 2
+        },
+        {
+          "update_time": "2016-12-05 00:00:00",
+          "temple_id": 1,
+          "religion_prorerb": "智慧从哪里来？<br><br>是佛法中来。我们学习佛法，并非逃避世俗世间，而是要把份内的事做得更好，更加圆满。为社会，为众生做更多的好事，解决现实生活中更多的矛盾和问题。",
+          "religion_name": "一个法师",
+          "img_url": "/images/common/example-avatar.jpg",
+          "id": 3,
+          "type": 2,
+          "add_time": "2016-12-05 00:00:00",
+          "showType": 2
+        },
+        {
+          "update_time": "2016-12-05 00:00:00",
+          "temple_id": 1,
+          "religion_prorerb": "智慧从哪里来？<br><br>是佛法中来。我们学习佛法，并非逃避世俗世间，而是要把份内的事做得更好，更加圆满。为社会，为众生做更多的好事，解决现实生活中更多的矛盾和问题。",
+          "religion_name": "另一个法师",
+          "img_url": "/images/common/example-avatar.jpg",
+          "id": 2,
+          "type": 2,
+          "add_time": "2016-12-05 00:00:00",
+          "religion_title": "荣誉名字荣誉名字",
+          "showType": 2
+        },
+        {
+          "update_time": "2016-12-05 00:00:00",
+          "temple_id": 1,
+          "religion_prorerb": "智慧从哪里来？<br><br>是佛法中来。我们学习佛法，并非逃避世俗世间，而是要把份内的事做得更好，更加圆满。为社会，为众生做更多的好事，解决现实生活中更多的矛盾和问题。",
+          "religion_name": "另一个法师另一个法师",
+          "img_url": "/images/common/example-avatar.jpg",
+          "id": 4,
+          "type": 2,
+          "add_time": "2016-12-05 00:00:00",
+          "showType": 2
+        }
+      ],
+      "type": 2,
+      "id": 2,
+      "add_time": "2016-12-12 16:17:00"
+    },
+    {
+      "sort": 3,
+      "update_time": "2016-12-12 16:17:00",
+      "temple_id": 1,
+      "op_status": 0,
+      "addition": "",
+      "message_id": 1,
+      "message": {
+        "update_time": "2016-12-05 00:00:00",
+        "temple_id": 1,
+        "op_status": 0,
+        "addition": "",
+        "list_num": 8,
+        "title": "活动",
+        "buddnist_ceremony_type_id": 111,
+        "article_type_id": 111,
+        "show_type": 2,
+        "content_type": 2,
+        "show_list_type": 4,
+        "is_show_more": 1,
+        "is_show_title": 1,
+        "id": 1,
+        "templeWebsiteImageTextlist": [
+          {
+            "update_time": "2017-01-03 19:52:15",
+            "pic": "http://imgs.zizaihome.com/c45b8b7a-bd3e-11e6-a26d-00163e0c1e1c.jpg",
+            "op_status": 0,
+            "addition": "",
+            "link_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=None",
+            "title": "33",
+            "image_text_id": 1,
+            "buddnist_ceremony_commodity_id": 1,
+            "article_id": 1,
+            "id": 31,
+            "add_time": "2017-01-03 19:52:15",
+            "progressType": 1
+          },
+          {
+            "update_time": "2017-01-03 19:52:15",
+            "pic": "http://imgs.zizaihome.com/ec477232-bd1d-11e6-a755-00163e0c1e1c.jpg",
+            "op_status": 0,
+            "addition": "",
+            "link_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=None",
+            "title": "供奉佛事（无支付、无附言）",
+            "image_text_id": 1,
+            "buddnist_ceremony_commodity_id": 2,
+            "article_id": 2,
+            "id": 32,
+            "add_time": "2017-01-03 19:52:15",
+            "progressType": 2
+          },
+          {
+            "update_time": "2017-01-03 19:52:15",
+            "pic": "http://imgs.zizaihome.com/2ce86e34-bce9-11e6-ac2c-00163e0c1e1c.jpg",
+            "op_status": 0,
+            "addition": "",
+            "link_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=None",
+            "title": "佛事供奉（无规格需支付、无附言）",
+            "image_text_id": 1,
+            "buddnist_ceremony_commodity_id": 3,
+            "article_id": 3,
+            "id": 33,
+            "add_time": "2017-01-03 19:52:15",
+            "progressType": 3
+          },
+          {
+            "update_time": "2017-01-03 19:52:15",
+            "pic": "http://imgs.zizaihome.com/7c81b770-bd16-11e6-a755-00163e0c1e1c.jpg",
+            "op_status": 0,
+            "addition": "",
+            "link_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=None",
+            "title": "佛事供奉（无需支付，有附言）",
+            "image_text_id": 1,
+            "buddnist_ceremony_commodity_id": 4,
+            "article_id": 4,
+            "id": 34,
+            "add_time": "2017-01-03 19:52:15",
+            "progressType": 1
+          },
+          {
+            "update_time": "2017-01-03 19:52:15",
+            "pic": "http://imgs.zizaihome.com/e3dd0ffc-bc60-11e6-a9af-00163e0c1e1c.jpg",
+            "op_status": 0,
+            "addition": "",
+            "link_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=None",
+            "title": "供奉法事（有规格可选、附言）",
+            "image_text_id": 1,
+            "buddnist_ceremony_commodity_id": 5,
+            "article_id": 5,
+            "id": 35,
+            "add_time": "2017-01-03 19:52:15",
+            "progressType": 1
+          }
+        ],
+        "add_time": "2016-12-05 00:00:00"
+      },
+      "type": 3,
+      "id": 3,
+      "add_time": "2016-12-12 16:17:00"
+    },
+    {
+      "sort": 4,
+      "update_time": "2016-12-12 16:17:00",
+      "temple_id": 1,
+      "op_status": 0,
+      "addition": "",
+      "message_id": 1,
+      "message": {
+        "update_time": "2016-12-22 00:00:00",
+        "show_list_num": 10,
+        "is_show_real_time_list": 1,
+        "is_show_month_list": 0,
+        "is_show_total_list": 1,
+        "title": "功德箱",
+        "addition": "",
+        "id": 1,
+        "add_time": "2016-12-22 00:00:00"
+      },
+      "type": 4,
+      "id": 4,
+      "add_time": "2016-12-12 16:17:00"
+    },
+    {
+      "sort": 5,
+      "update_time": "2016-12-12 16:17:00",
+      "temple_id": 1,
+      "op_status": 0,
+      "addition": "",
+      "message_id": 1,
+      "message": [
+        {
+          "date": "2017-01-01",
+          "events": [
+            {
+              "id": 10,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 10,
+              "commodityName": "佛事标题10",
+              "commodityPic": "/sample/image1.jpg"
+            },
+            {
+              "id": 11,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 11,
+              "commodityName": "佛事标题11",
+              "commodityPic": "/sample/image2.jpg"
+            },
+            {
+              "id": 12,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 12,
+              "commodityName": "佛事标题12",
+              "commodityPic": "/sample/image3.jpg"
+            },
+            {
+              "id": 13,
+              "title": "事件标题13",
+              "cover_pic": "",
+              "commodityId": 0,
+              "commodityName": "",
+              "commodityPic": ""
+            },
+            {
+              "id": 14,
+              "title": "事件标题14",
+              "cover_pic": "",
+              "commodityId": 0,
+              "commodityName": "",
+              "commodityPic": ""
+            }
+          ]
+        },
+        {
+          "date": "2017-01-05",
+          "events": [
+            {
+              "id": 20,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 20,
+              "commodityName": "佛事标题20",
+              "commodityPic": "/sample/image1.jpg"
+            },
+            {
+              "id": 21,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 21,
+              "commodityName": "佛事标题21",
+              "commodityPic": "/sample/image2.jpg"
+            },
+            {
+              "id": 22,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 22,
+              "commodityName": "佛事标题22",
+              "commodityPic": "/sample/image3.jpg"
+            },
+            {
+              "id": 23,
+              "title": "事件标题23",
+              "cover_pic": "",
+              "commodityId": 0,
+              "commodityName": "",
+              "commodityPic": ""
+            },
+            {
+              "id": 24,
+              "title": "事件标题24",
+              "cover_pic": "",
+              "commodityId": 0,
+              "commodityName": "",
+              "commodityPic": ""
+            }
+          ]
+        },
+        {
+          "date": "2017-02-09",
+          "events": [
+            {
+              "id": 30,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 30,
+              "commodityName": "佛事标题30",
+              "commodityPic": "/sample/image1.jpg"
+            },
+            {
+              "id": 31,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 31,
+              "commodityName": "佛事标题31",
+              "commodityPic": "/sample/image2.jpg"
+            },
+            {
+              "id": 32,
+              "title": "",
+              "cover_pic": "",
+              "commodityId": 32,
+              "commodityName": "佛事标题32",
+              "commodityPic": "/sample/image3.jpg"
+            },
+            {
+              "id": 33,
+              "title": "事件标题33",
+              "cover_pic": "",
+              "commodityId": 0,
+              "commodityName": "",
+              "commodityPic": ""
+            },
+            {
+              "id": 34,
+              "title": "事件标题34",
+              "cover_pic": "",
+              "commodityId": 0,
+              "commodityName": "",
+              "commodityPic": ""
+            }
+          ]
+        }
+      ],
+      "total": 100,
+      "pageNumber": 1,
+      "type": 5,
+      "id": 5,
+      "add_time": "2016-12-12 16:17:00"
+    },
+    {
+      "sort": 8,
+      "update_time": "2017-05-10 19:58:44",
+      "temple_id": 1,
+      "op_status": 0,
+      "addition": "",
+      "message_id": 8,
+      "message": {
+        "linkList": [
+          {
+            "name": "佛事1",
+            "quick_entry_id": 8,
+            "pic": "/images/common/example-avatar.jpg",
+            "message_id": 2,
+            "link": "http://test.com",
+            "type": 3,
+            "id": 2,
+            "link_type": 2
+          },
+          {
+            "name": "佛事2",
+            "quick_entry_id": 9,
+            "pic": "/images/common/example-avatar.jpg",
+            "message_id": 13,
+            "link": "http://test.com",
+            "type": 3,
+            "id": 2,
+            "link_type": 1
+          }
+        ],
+        "id": 8,
+        "title": "测试"
+      },
+      "type": 6,
+      "id": 44,
+      "add_time": "2017-05-10 19:58:44"
+    },
+    {
+      "sort": 9,
+      "update_time": "2017-05-10 19:58:44",
+      "temple_id": 1,
+      "op_status": 0,
+      "addition": "",
+      "message_id": 9,
+      "id": 777,
+      "type": 7,
+      "message": {
+        "hasVr": 1,
+        "list": [
+          {
+            "id": 1,
+            "name": "殿堂1",
+            "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
+            "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
+            "moduleName": "寺院殿堂标题",
+            "showType": 2
+          },
+          {
+            "id": 2,
+            "name": "殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2",
+            "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
+            "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法<br>释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
+            "moduleName": "寺院殿堂标题",
+            "showType": 2
+          },
+          {
+            "id": 3,
+            "name": "殿堂3",
+            "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
+            "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
+            "moduleName": "寺院殿堂标题",
+            "showType": 2
+          },
+          {
+            "id": 4,
+            "name": "殿堂4",
+            "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
+            "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
+            "moduleName": "寺院殿堂标题",
+            "showType": 2
+          }
+        ]
+      }
+    }
+  ],
+  "result": 1
+}

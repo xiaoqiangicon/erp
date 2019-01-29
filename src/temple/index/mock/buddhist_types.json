@@ -1,0 +1,101 @@
+{
+  "success": true,
+  "data": [
+    {
+      "name": "全部",
+      "id": 0,
+      "images": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "status": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "status": 3
+        }
+      ]
+    },
+    {
+      "name": "供奉法事",
+      "id": 67,
+      "images": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "status": 2
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "status": 1
+        }
+      ]
+    },
+    {
+      "name": "长生佛事",
+      "id": 82,
+      "images": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "status": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "status": 3
+        }
+      ]
+    },
+    {
+      "name": "正月佛事",
+      "id": 83,
+      "images": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "status": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "status": 1
+        }
+      ]
+    },
+    {
+      "name": "天朝法事",
+      "id": 94,
+      "images": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "status": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "status": 1
+        }
+      ]
+    },
+    {
+      "name": "火供法事",
+      "id": 111,
+      "images": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "status": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "name": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "status": 1
+        }
+      ]
+    }
+  ]
+}

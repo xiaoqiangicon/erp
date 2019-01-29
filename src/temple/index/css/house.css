@@ -1,0 +1,53 @@
+.com-house .title-1 {
+  position: relative;
+  height: 52px;
+  line-height: 52px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-left: 43px;
+  font-size: 16px;
+}
+
+.com-house .icon-1 {
+  position: absolute;
+  top: 11px;
+  left: 12px;
+  width: 26px;
+  height: 22px;
+  background-image: url('https://pic.zizaihome.com/772bf13a-0375-11e9-9a6f-00163e0c001e.png');
+  background-size: 100% 100%;
+}
+
+.com-house .inner-1 {
+  padding: 0 7px;
+}
+
+.com-house .row-1 {
+  margin: 0 8px;
+  padding: 13px 0;
+  border-top: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.com-house .row-1:first-child {
+  border-top: none;
+}
+
+.com-house .cover-1 {
+  float: left;
+  width: 43%;
+  border-radius: 6px;
+}
+
+.com-house .inner-2 {
+  float: right;
+  width: 52%;
+}
+
+.com-house .desc-1 {
+  margin-top: 4px;
+  color: #999999;
+  font-size: 12px;
+  max-height: 68px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

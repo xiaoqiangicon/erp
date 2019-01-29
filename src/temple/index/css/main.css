@@ -1,0 +1,174 @@
+.content-container {
+  padding: 20px 20px 60px 20px;
+  position: relative;
+}
+
+.content-container-inner {
+  padding: 15px;
+  min-width: 850px;
+  min-height: 500px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+}
+
+.fixed-bottom {
+  position: fixed;
+  left: 226px;
+  right: 20px;
+  height: 50px;
+  bottom: 0;
+  text-align: center;
+  z-index: 2;
+  padding: 10px;
+  background-color: #ffc;
+}
+
+.design {
+  min-width: 850px;
+  width: 850px;
+  margin: 0 auto;
+}
+
+.design-preview {
+  position: relative;
+  float: left;
+  width: 320px;
+  margin-bottom: 24px;
+}
+
+.design-sidebar {
+  position: relative;
+  float: left;
+  width: 520px;
+  margin-left: 10px;
+  padding-bottom: 50px;
+}
+
+.design-container {
+  width: 320px;
+  margin: 0 auto;
+  min-height: 200px;
+  background: #eeeeee;
+  box-shadow: 0 0 0 1px #c5c5c5;
+  padding-bottom: 11px;
+}
+
+.design-add {
+  position: relative;
+  box-shadow: 0 0 0 1px #ddd;
+  background: #eeeeee;
+  width: 320px;
+  margin: 0 auto;
+}
+
+.design-add:before,
+.design-add:after {
+  position: absolute;
+  content: ' ';
+  border: 8px solid transparent;
+  border-bottom: 10px solid #eeeeee;
+  top: -16px;
+  left: 148px;
+}
+
+.design-add:before {
+  top: -18px;
+  border-bottom-color: #ddd;
+}
+
+.design-add h4 {
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.component-add-container {
+  width: 100%;
+  color: #333;
+  font-size: 12px;
+  padding: 0 32px 20px 32px;
+}
+
+.component-add-container li {
+  float: left;
+  width: 58px;
+  display: table;
+  margin: 5px 3px;
+  background: #fff;
+}
+
+.component-add-container .component-add {
+  display: table-cell;
+  width: 56px;
+  height: 40px;
+  border: 1px solid #d1d1d1;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #38f;
+}
+
+.design-title {
+  width: 100%;
+  padding: 18px 60px 0 60px;
+  height: 64px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  background: url(../../../../images/temple/mobile-title-bar.png) no-repeat;
+}
+
+.design-title h3 {
+  display: inline-block;
+  height: 46px;
+  width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 46px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.design-components {
+  width: 100%;
+  padding: 16px 10px 0 10px;
+  position: relative;
+}
+
+.design-sidebar .arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 7px 6px 0;
+  border-color: transparent #d1d1d1 transparent transparent;
+  position: absolute;
+  left: -6px;
+  top: 19px;
+}
+
+.design-sidebar .arrow:after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 7px 6px 0;
+  border-color: transparent #f8f8f8 transparent transparent;
+  content: '';
+  left: 2px;
+  top: -6px;
+}
+
+.design-sidebar-inner {
+  padding: 12px;
+  min-height: 28px;
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+}
