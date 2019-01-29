@@ -1,0 +1,120 @@
+/*修改table布局方式，使其不根据内容随意改变宽度*/
+table {
+  table-layout: fixed;
+}
+main {
+  padding: 10px 20px;
+}
+.main-header {
+  margin-bottom: 20px;
+}
+.main-table {
+}
+.main-footer {
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+thead {
+  border-bottom: 2px solid #d0cdc7;
+}
+thead th {
+  padding: 10px 0;
+  text-align: center;
+}
+tbody tr {
+  border-bottom: 1px solid #d0cdc7;
+}
+tbody tr:nth-child(2n + 1) {
+  background-color: #f9f9f9;
+}
+tbody tr:nth-child(2n) {
+  background-color: transparent;
+}
+tbody td {
+  padding: 10px;
+  text-align: center;
+}
+tbody tr td:nth-child(1) {
+  padding-left: 50px;
+  text-align: left;
+}
+tbody tr td:nth-child(2) {
+  padding-left: 50px;
+  text-align: left;
+}
+
+tbody .head-icon {
+  vertical-align: middle;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+tbody .head-icon-info {
+  vertical-align: middle;
+  height: 50px;
+  line-height: 50px;
+}
+tbody .table-cell-option {
+  color: #71ba31;
+}
+tbody .table-cell-option:hover {
+  color: green;
+  text-decoration: none;
+  cursor: pointer;
+}
+.add-watchword-modal .modal-dialog {
+  width: 500px;
+}
+.add-watchword-modal .form-group {
+  margin: 10px 0;
+}
+.add-watchword-modal .form-group label {
+  float: left;
+}
+.add-watchword-modal .image-container {
+  float: right;
+  width: 398px;
+}
+.add-watchword-modal .image-cell {
+  float: left;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+.add-watchword-modal .image-cell img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+.add-watchword-modal .image-cell img.active {
+  border: 3px solid orange;
+}
+.add-watchword-modal .image-cell-delete {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.add-watchword-modal .add-head-icon {
+  float: left;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  background: url(../../../../images/temple/image-add.png) no-repeat;
+  background-size: contain;
+}
+.add-watchword-modal .textarea-num {
+  margin-left: 346px;
+}

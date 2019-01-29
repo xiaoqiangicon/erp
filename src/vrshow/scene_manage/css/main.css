@@ -1,0 +1,62 @@
+/*修改table布局方式，使其不根据内容随意改变宽度*/
+table {
+  table-layout: fixed;
+}
+/*主要样式*/
+.main-table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.main-table thead {
+  border-bottom: 2px solid #d0cdc7;
+}
+.main-table thead th {
+  padding: 10px 0;
+  text-align: center;
+}
+.main-table tbody tr {
+  border-bottom: 1px solid #d0cdc7;
+}
+.main-table tbody tr:nth-child(2n + 1) {
+  background-color: #f9f9f9;
+}
+.main-table tbody tr:nth-child(2n) {
+  background-color: transparent;
+}
+.main-table tbody td {
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main-table tbody tr td:nth-child(1) {
+  padding-left: 50px;
+  text-align: left;
+}
+.main-table tbody .head-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+.main-table tbody .head-icon-info {
+  margin-left: 10px;
+}
+.main-table tbody .table-cell-option {
+  color: green;
+}
+.main-table tbody .table-cell-option:hover {
+  color: green;
+  text-decoration: none;
+}
+/*tab*/
+.nav-tabs > li {
+  width: 236px;
+  text-align: center;
+}
+.nav-tabs .active a {
+  font-size: 20px;
+  color: #fff !important;
+  background-color: #70b931 !important;
+}

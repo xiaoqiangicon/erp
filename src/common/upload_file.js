@@ -21,7 +21,7 @@
 define([
   'jquery',
   './function',
-  'lib/blueimp-file-upload/jquery.fileupload',
+  '@zzh/jquery-file-upload/js/jquery.fileupload',
   'lib/jquery.seeAjax',
 ], function($, commonFunc) {
   var env;

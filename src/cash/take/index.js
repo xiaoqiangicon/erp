@@ -22,4 +22,8 @@ import './index.css';
 
 import 'tippy.js';
 
+import '../../component/upload_config';
+import '../../component/choose_image_config';
+import '../../component/choose_icon_config';
+
 import './old';

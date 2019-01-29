@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>场景管理</title>
+  </head>
+  <body data-menu-id="scene-manage">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a
+              data-ele="summary-tab"
+              data-index="0"
+              href="#summary-pane"
+              aria-controls="summary-pane"
+              role="tab"
+              data-toggle="tab"
+              >简介管理</a
+            >
+          </li>
+          <!--<li role="presentation"><a data-ele="link-tab" href="#link-pane" data-index="1" aria-controls="link-pane" role="tab" data-toggle="tab">广告位管理</a></li>-->
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content pd10">
+          <div role="tabpanel" class="tab-pane active" id="summary-pane">
+            <button
+              class="btn btn-success pull-right mgt10 mgb20"
+              id="add-summary-btn"
+            >
+              添加
+            </button>
+            <table class="main-table" id="summary-table">
+              <thead>
+                <tr>
+                  <th style="width: 20%">场景</th>
+                  <th style="width: 30%">简介</th>
+                  <th style="width: 30%">语音</th>
+                  <th style="width: 20%">操作</th>
+                </tr>
+              </thead>
+              <tbody id="summary-tbody"></tbody>
+            </table>
+            <audio
+              src=""
+              style="display: none"
+              data-ele="summary-audio"
+              data-id=""
+              loop="loop"
+            ></audio>
+          </div>
+          <!--<div role="tabpanel" class="tab-pane" id="link-pane">-->
+          <!--<button class="btn btn-success pull-right mgt10 mgb20" id="add-link-btn">添加</button>-->
+          <!--<table class="main-table" id="link-table">-->
+          <!--<thead>-->
+          <!--<tr>-->
+          <!--<th style="width: 20%">场景</th>-->
+          <!--<th style="width: 60%">标题</th>-->
+          <!--<th style="width: 20%">操作</th>-->
+          <!--</tr>-->
+          <!--</thead>-->
+          <!--<tbody id="link-tbody">-->
+          <!--</tbody>-->
+          <!--</table>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <!-- 添加广告位Modal -->
+    <div class="modal fade" id="add-link-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">添加广告位</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="add-link-modal-scene-select">选择场景</label>
+                <div class="one-third">
+                  <select
+                    class="form-control select-picker"
+                    id="add-link-modal-scene-select"
+                    data-ele="scene-select"
+                  ></select>
+                </div>
+              </div>
+            </form>
+            <form>
+              <div class="form-group">
+                <label for="add-link-modal-title">标题</label>
+                <div class="two-thirds">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="add-link-modal-title"
+                    data-ele="link-title"
+                    placeholder="输入广告位的标题（最多10个字）"
+                    maxlength="10"
+                  />
+                </div>
+              </div>
+            </form>
+            <form>
+              <div class="form-group">
+                <label for="add-link-modal-link-textarea">链接地址</label>
+                <textarea
+                  class="form-control"
+                  id="add-link-modal-link-textarea"
+                  data-ele="link-textarea"
+                  style="resize: none;"
+                  rows="3"
+                  placeholder="请填写链接"
+                ></textarea>
+                <p class="mgt5" style="color: #999;">
+                  填写的链接必须是自在家平台上的链接
+                </p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" style="text-align: center">
+            <button type="button" class="btn btn-primary" id="add-link-submit">
+              保存
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 编辑广告位Modal -->
+    <div
+      class="modal fade"
+      id="edit-link-modal"
+      data-id=""
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">编辑链接</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="edit-link-modal-scene-select">选择场景</label>
+                <div class="one-third">
+                  <select
+                    class="form-control"
+                    id="edit-link-modal-scene-select"
+                    data-ele="scene-select"
+                  ></select>
+                </div>
+              </div>
+            </form>
+            <form>
+              <div class="form-group">
+                <label for="edit-link-modal-title">标题</label>
+                <div class="two-thirds">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="edit-link-modal-title"
+                    data-ele="link-title"
+                    placeholder="输入广告位的标题（最多10个字）"
+                    maxlength="10"
+                  />
+                </div>
+              </div>
+            </form>
+            <form>
+              <div class="form-group">
+                <label for="edit-link-modal-link-textarea">链接地址</label>
+                <textarea
+                  class="form-control"
+                  id="edit-link-modal-link-textarea"
+                  data-ele="link-textarea"
+                  style="resize: none;"
+                  rows="3"
+                  placeholder="请填写链接"
+                ></textarea>
+                <p class="mgt5" style="color: #999;">
+                  填写的链接必须是自在家平台上的链接
+                </p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="edit-link-submit">
+              保存
+            </button>
+            <button
+              type="button"
+              class="btn btn-default"
+              id="edit-link-preview"
+            >
+              预览
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 预览Modal -->
+    <div
+      class="modal fade text-center"
+      id="preview-modal"
+      data-id=""
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!--<div class="modal-header">-->
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+          <!--<h4 class="modal-title">编辑链接</h4>-->
+          <!--</div>-->
+          <div class="modal-body">
+            <div id="qrcode-container" class="mgt40 mgb40"></div>
+            <p class="mgb30" style="color: #999;">
+              扫描上方二维码，可在手机端预览效果
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 载入等待图片 开始 -->
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+    <!--载入等待图片 结束-->
+
+    <script
+      src="../../js/lib/in-css/in-css.js"
+      data-in-css-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/in_css_config.js"
+      data-in-css-tag="1"
+      data-in-css-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script data-in-css-tag="1" data-in-css-load-tag="1">
+      InCss.use(
+        'bootstrap',
+        'jquery-confirm',
+        'colors',
+        'component/navigation',
+        'bootstrap-select',
+        '@senntyou/shortcut.css', // promotion 必须加载此样式
+        '@zzh/promotion/dist/promotion',
+        'vrshow/scene_manage'
+      );
+    </script>
+    <script
+      src="../../js/lib/requirejs/require.js"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/require_js_config.js"
+      data-require-js-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script>
+      require(['vrshow/scene_manage']);
+    </script>
+  </body>
+</html>

@@ -22,6 +22,10 @@ import '@zzh/choose-icon/dist/choose-icon.css';
 import '../../css/base.css';
 import './index.css';
 
+import '../../component/upload_config';
+import '../../component/choose_image_config';
+import '../../component/choose_icon_config';
+
 import './old';
 
 // import './old-extra';
