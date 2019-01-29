@@ -3,9 +3,11 @@ dev
 build
 /res
 /src/lib
+/src/old
 /src/article
 /src/cash
 /src/wall
 /src/index
 /src/temple
 /src/hardware
+/src/volunteer

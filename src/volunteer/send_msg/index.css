@@ -1,0 +1,99 @@
+label {
+  cursor: pointer;
+}
+input[type='radio'] {
+  display: none;
+}
+.checkbox {
+  background: url(/static/images/common/unchecked.png) no-repeat center;
+  background-size: 60%;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+input[type='radio']:checked + .checkbox {
+  background-image: url('/static/images/common/checked.png') !important;
+}
+.sum {
+  padding: 20px 127px 20px 10px;
+  color: #8d8d8d;
+}
+.topSection {
+  overflow: hidden;
+}
+.sum span:last-child {
+  font-size: 12px;
+  display: block;
+}
+
+.sum span:first-child {
+  font-size: 32px;
+  color: rgb(111, 186, 44);
+}
+
+.payBox {
+  padding: 17px;
+  overflow: hidden;
+  border: 1px solid #e7e7eb;
+  border-radius: 4px;
+  margin: 20px 10px;
+}
+
+main {
+  padding-right: 50px;
+}
+
+.pay-btn {
+  margin-top: 34px;
+}
+
+.sendMsgs {
+  margin-top: 72px;
+}
+
+.submit_msg {
+  margin-right: 30px;
+}
+
+.info-icon {
+  background: url('/static/images/volunteer/info_icon.png') no-repeat center;
+  float: left;
+  background-size: 100%;
+  width: 38px;
+  height: 38px;
+  margin-right: 20px;
+}
+
+.error-icon {
+  background-image: url('/static/images/volunteer/error_icon.png');
+  margin: 0 20px 30px 0;
+}
+
+.success_icon {
+  background-image: url('/static/images/volunteer/success_icon.png');
+  margin: 10px 20px 30px 0;
+}
+
+.bottomSection {
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+.paginationFooter {
+  width: 650px;
+  margin: 0 auto;
+  /*display: inline-block;*/
+}
+.footers {
+  padding: 10px 0;
+  border: 1px solid #e7e7eb;
+  margin: 0 15px;
+}
+.m-pagination-page > li.active > a {
+  background-color: rgb(111, 186, 44);
+  border-color: rgb(111, 186, 44);
+}

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>招募管理</title>
+  </head>
+  <body data-menu-id="query-volunteer">
+    <div id="content-container">
+      <section id="main">
+        <main data-id="queryVolunteer">
+          <section class="leftBox">
+            <div class="navigateBar" data-id="navigateBar">
+              <span class="icon smallHouse"></span><span>微义工</span>
+              <span
+                class="glyphicon glyphicon-menu-right"
+                aria-hidden="true"
+              ></span>
+              <span
+                ><a
+                  style="color:rgb(111, 186, 44);"
+                  href="/zzhadmin/volunteerRecruit/"
+                  >招募管理</a
+                ></span
+              >
+              <span
+                class="glyphicon glyphicon-menu-right green "
+                aria-hidden="true"
+              ></span>
+              <span class="green" data-id="titleName">自行录入义工数据</span>
+            </div>
+            <div class="searchWrap">
+              <div class="searchBox">
+                <div class="screenBox form-horizontal">
+                  <div class="form-group">
+                    <div class="col-xs-9 searchBar">
+                      <label
+                        class="col-xs-2 control-label"
+                        for="search"
+                      ></label>
+                      <input
+                        class="form-control"
+                        id="search"
+                        type="text"
+                        name="search"
+                        placeholder="输入搜索关键词，如义工姓名、手机号等"
+                      />
+                      <span class="searchIconBox" aria-hidden="true">
+                        <span
+                          class="glyphicon glyphicon-search search-icon"
+                          aria-hidden="true"
+                        ></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <form
+                  action="/zzhadmin/volunteer_search/"
+                  name="queryForm"
+                  id="queryForm"
+                  class="form-inline"
+                >
+                  <div class="row ">
+                    <div class="col-xs-4 form-group label-group">
+                      <label for="label"
+                        ><span style="letter-spacing: 1em">标签</span>：</label
+                      >
+                      <select name="label" id="label" class="selectpicker">
+                      </select>
+                    </div>
+                    <div class="col-xs-3 form-group">
+                      <label for="sex">性别：</label>
+                      <select name="sex" id="sex" class="selectpicker">
+                        <option value="-1">不限</option>
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-4 form-group">
+                      <label for="from_age">年龄：</label>
+                      <input
+                        type="number"
+                        name="from_age"
+                        class="input form-control"
+                        style="width:35%"
+                        id="from_age"
+                      /><span>-</span
+                      ><input
+                        class="input form-control"
+                        name="to_age"
+                        style="width: 35%"
+                        type="number"
+                        id="to_age"
+                      />
+                    </div>
+                    <div class="col-xs-5 form-group">
+                      <label for="beginDate" class="font-normal"
+                        >登记时间：</label
+                      >
+                      <div class="input-daterange input-group" id="datepicker">
+                        <input
+                          id="beginDate"
+                          type="text"
+                          class="input form-control"
+                          name="start"
+                          style="width: 120px"
+                        />
+                        <span class="input-group-addon">至</span>
+                        <input
+                          id="endDate"
+                          type="text"
+                          class="input form-control"
+                          name="end"
+                          style="width: 120px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div
+                      class="col-xs-12 form-group "
+                      style="text-align: center"
+                    >
+                      <button
+                        type="button"
+                        class="btn btn-success backgroundGreen btn-width"
+                        id="query"
+                        data-toggle="modal"
+                        data-target=".newModal"
+                      >
+                        筛&nbsp;选
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-default btn-width"
+                        id="clear"
+                      >
+                        重&nbsp;置
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="volGroup">
+              <div class="volGroupTitleBox" style="width:100%">
+                <span class="pull-left volGroupTitle">全部义工</span>
+                <span
+                  class="pull-left volunteerAmount"
+                  data-type="volunteerAmount"
+                ></span>
+                <div
+                  class="pull-left hide editNameBox"
+                  style="position: relative;"
+                >
+                  <label for="editName"></label>
+                  <input
+                    class="form-control editInput "
+                    id="editName"
+                    type="text"
+                    placeholder="标签名"
+                  />
+                  <span
+                    class="cancel-icon"
+                    style="top: -5px;right: 7px"
+                    aria-hidden="true"
+                    >&times;</span
+                  >
+                </div>
+                <div class="labelOperation pull-left">
+                  <span class=" del"
+                    ><span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span
+                    ><span>删除</span></span
+                  >
+                  <span class="rename" data-toggle="popover">
+                    <span
+                      class="glyphicon glyphicon-pencil"
+                      aria-hidden="true"
+                    ></span
+                    ><span>重命名</span></span
+                  >
+                </div>
+                <div class="batchOperations pull-right">
+                  <div class="sidebar-menu sidebar-menu2 " id="">
+                    <div class="pull-right">
+                      <a href="" target="_blank" id="recordData">
+                        <span class="btn btn-default batchBtn action"
+                          >自录数据</span
+                        >
+                      </a>
+                    </div>
+                    <div
+                      class="pull-right"
+                      id="batchOperation"
+                      data-container="body"
+                      data-toggle="popover"
+                      data-placement="left"
+                    >
+                      <a href="#" class="">
+                        <span class="btn btn-default batchBtn action"
+                          >批量操作</span
+                        >
+                      </a>
+                    </div>
+                    <div
+                      class="pull-right"
+                      id="addNewLabel"
+                      data-toggle="modal"
+                      data-target="#newModal"
+                    >
+                      <a href="#" class="">
+                        <span class="btn btn-default batchBtn action"
+                          >新建标签</span
+                        >
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="volGroupWarp"></div>
+            </div>
+            <div id="scrollTop">
+              <div class="level-2"></div>
+              <div class="level-3"></div>
+            </div>
+          </section>
+        </main>
+      </section>
+      <!-- 新增及修改消息文本模版BEGIN-->
+      <div
+        class="modal fade "
+        id="newModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="newModal"
+      >
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header modalHead">
+              <h5 class="modal-title">
+                <strong class="newLabelChange">创建新标签</strong>
+              </h5>
+            </div>
+            <div class="modal-body modalBd">
+              <div>
+                <label class=" control-label" for="labelName"></label>
+                <input
+                  class="form-control"
+                  id="labelName"
+                  type="text"
+                  placeholder="输入标签名"
+                />
+                <span
+                  class="cancel-icon"
+                  style="position: absolute; top: 18px; right: 20px"
+                  aria-hidden="true"
+                  >&times;</span
+                >
+                <div class="errorTips">标签名至少2个字</div>
+              </div>
+            </div>
+            <div class="modal-footer modalFoot" style="text-align: center">
+              <button
+                type="button"
+                class="btn btn-success backgroundGreen btn-width "
+                id="sureAddLabel"
+              >
+                确定
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-width"
+                data-dismiss="modal"
+              >
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 新增及修改消息文本模版END-->
+      <div
+        class="modal fade "
+        id="groupingModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="groupingModal"
+      >
+        <div class="modal-dialog modal-sm " style="width: 290px">
+          <div class="modal-content forLabelSingle">
+            <div class="modal-body modalBd">
+              <div id="labelGroup">
+                <div
+                  class="js_tag_putOn_tags popover_tag_list"
+                  style="width: 290px"
+                ></div>
+              </div>
+              <span
+                class="pull-right green"
+                id="newLabel"
+                data-toggle="modal"
+                data-target="#newModal"
+                >新建标签</span
+              >
+              <br />
+            </div>
+            <div class="modal-footer modalFoot">
+              <button
+                type="button"
+                class="btn btn-success backgroundGreen  "
+                id="sureAddGrouping"
+              >
+                确定
+              </button>
+              <button
+                type="button"
+                class="btn btn-default "
+                data-dismiss="modal"
+              >
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 确认删除的标签BEGIN-->
+      <div class="popover">
+        <div class="popover_content ">
+          <div class="popover-content3">
+            <div class="labelNameBox">
+              <div style="width: 190px;padding-bottom: 10px">
+                删除标签后，该标签下的所有用户将失去该标签属性。是否确定删除？
+              </div>
+              <div class="popover_bar">
+                <a
+                  href="javascript:;"
+                  class="btn btn-success backgroundGreen sureDelBtn"
+                  >确定</a
+                >&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:;" class="btn btn-default cancelDel"
+                  >取消</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 确认删除的标签END-->
+      <!-- 确认删除义工BEGIN-->
+      <div class="popover">
+        <div class="popover_content ">
+          <div class="popover-content4">
+            <div class="labelNameBox">
+              <div style="width: 150px;padding: 10px 0;text-align: center">
+                确认删除该义工吗？
+              </div>
+              <div class="popover_bar">
+                <a
+                  href="javascript:;"
+                  class="btn btn-success backgroundGreen sureDelVolBtn"
+                  >确定</a
+                >&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:;" class="btn btn-default cancelDel"
+                  >取消</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 确认删除义工END-->
+      <!-- 确认批量删除义工BEGIN-->
+      <div
+        class="modal fade "
+        id="batchDelVolModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="batchDelVolModal"
+      >
+        <div class="modal-dialog modal-sm " style="width: 220px">
+          <div class="modal-content">
+            <div class="modal-body modalBd">
+              <div style="padding: 20px 0;text-align: center">
+                确认删除义工吗？
+              </div>
+            </div>
+            <div class="modal-footer modalFoot">
+              <button
+                type="button"
+                class="btn btn-success backgroundGreen  "
+                id="sureBatchDelVol"
+              >
+                确定
+              </button>
+              <button
+                type="button"
+                class="btn btn-default "
+                data-dismiss="modal"
+              >
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 确认批量删除义工END-->
+      <!-- 编辑标签名称BEGIN-->
+      <div class="popover">
+        <div class="popover_content jsPopOverContent">
+          <div class="popover-content2">
+            <div class="labelNameBox">
+              <form action="#">
+                <div class="form-group">
+                  <label for="InputEdit" class="sr-only">编辑名称</label>
+                  <input
+                    type="text"
+                    class="form-control input-sm"
+                    id="InputEdit"
+                    value=""
+                    placeholder="标签名称应大于2个字"
+                    data-id=""
+                  />
+                  <div class="errorTips">标签名不能为空且至少2个字</div>
+                </div>
+              </form>
+              <div class="popover_bar">
+                <a
+                  href="javascript:;"
+                  class="btn btn-success backgroundGreen sureRenameBtn"
+                  >确定</a
+                >
+                &nbsp;<a
+                  href="javascript:;"
+                  class="btn btn-default cancelRename"
+                  >取消</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 编辑标签名称END-->
+      <div class="popover">
+        <div class="popover_content jsPopOverContent">
+          <div class="popover-content1">
+            <div class="pop-container">
+              <button class="btn btn-default selectAll btn-width">反选</button>
+              <button class="btn btn-default clearSelect btn-width">
+                清除选中
+              </button>
+              <button class="btn btn-default addLabel btn-width">加标签</button>
+              <button
+                class="btn btn-default dels btn-width"
+                data-toggle="modal"
+              >
+                删除
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="/static/images/common/loading.gif"
+      />
+    </div>
+
+    <script
+      src="../../js/lib/in-css/in-css.js"
+      data-in-css-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/in_css_config.js"
+      data-in-css-tag="1"
+      data-in-css-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script data-in-css-tag="1" data-in-css-load-tag="1">
+      InCss.use(
+        'bootstrap',
+        'jquery-confirm',
+        'colors',
+        'bootstrap-select',
+        'datepicker3',
+        'component/navigation',
+        'volunteer/query_volunteer'
+      );
+    </script>
+    <script src="../../js/lib/requirejs/require.js"></script>
+    <script
+      src="../../js/common/require_js_config.js"
+      data-require-js-config-tag="1"
+    ></script>
+    <script>
+      require(['volunteer/query_volunteer']);
+      window.manageType = parseInt('{{type | safe}}');
+    </script>
+  </body>
+</html>

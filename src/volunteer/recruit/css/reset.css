@@ -1,0 +1,14 @@
+/* 滑动组件的弹出框600px像素宽度分页不够，故在此更改 */
+.modal-dialog {
+  width: 700px;
+}
+.btn-group-dropdown > .btn {
+  border-radius: 4px !important;
+}
+.btn-group-dropdown > .btn > .text {
+  display: inline-block;
+  margin-right: 10px;
+}
+.dropdown-menu .item {
+  cursor: pointer;
+}

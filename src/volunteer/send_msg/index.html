@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>群发短信</title>
+  </head>
+  <body data-menu-id="send-message">
+    <div id="content-container">
+      <section id="main">
+        <main data-id="sendMsg">
+          <div class="topSection">
+            <div class="payBox pull-left">
+              <span class="pull-left sum">
+                <span class="remainingText"></span> <span>剩余短信数量</span>
+              </span>
+              <button
+                class="btn btn-default btn-width pull-right pay-btn"
+                data-toggle="modal"
+                data-target="#recharge"
+              >
+                充值
+              </button>
+            </div>
+            <button
+              class="btn btn-default btn-width sendMsgs pull-right"
+              data-toggle="modal"
+              data-target=".newModal"
+            >
+              群发短信
+            </button>
+          </div>
+          <div class="bottomSection ">
+            <div class="row">
+              <div class="col-lg-12">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>发送内容</th>
+                      <th style="width: 100px">发送日期</th>
+                      <th style="width: 100px">发送人数</th>
+                      <th style="width: 100px">消耗短信</th>
+                    </tr>
+                  </thead>
+                  <tbody id="textList"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row footers">
+              <div class="paginationFooter">
+                <div
+                  id="page"
+                  class="m-pagination "
+                  data-page-btn-count="9"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+
+    <!--模态框-->
+    <!--新增消息的模态框BEGIN-->
+    <div
+      class="modal fade newModal"
+      tabindex=""
+      role="dialog"
+      aria-labelledby="newModal"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="panel" style="margin-bottom:0;">
+            <div class="panel-body">
+              <form action="#" id="editMsg" class="form-horizontal">
+                <div class=" form-group" style="margin-bottom: 5px">
+                  <label
+                    for="textCtn"
+                    class="col-xs-3 control-label"
+                    style="padding-top: 0"
+                    >通知内容：</label
+                  >
+                  <div class="col-sm-8">
+                    <span>【</span><span class="countFirstLetter"></span
+                    ><span>】</span>
+                  </div>
+                </div>
+                <div class=" form-group">
+                  <label class="col-xs-3 control-label"></label>
+                  <div class="col-sm-8">
+                    <textarea
+                      name="content"
+                      class="form-control"
+                      id="textCtn"
+                      rows="5"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class=" form-group">
+                  <label class="col-xs-3 control-label"></label>
+                  <div class="col-sm-8 text-muted">
+                    <span>已输入：</span><span class="countLetter">2</span
+                    ><span>字&nbsp;&nbsp;&nbsp;&nbsp;每70个字消耗1条短信</span>
+                  </div>
+                </div>
+                <!-- <div class=" form-group">
+                 <label class="col-xs-3 control-label">联系人：</label>
+                 <div class="col-sm-8">
+                     <input type="text" id="contact_person" class="form-control">
+                 </div>
+             </div>
+             <div class=" form-group">
+                 <label class="col-xs-3 control-label">联系电话：</label>
+                 <div class="col-sm-8">
+                     <input type="text" id="contact_tel" class="form-control">
+                 </div>
+             </div>-->
+                <div class=" form-group multi_sele">
+                  <label
+                    for="groupId"
+                    class="col-xs-3 control-label"
+                    style="padding-top: 3px;"
+                    >群发对象：</label
+                  >
+                  <label for="phoneSend">
+                    <input
+                      type="radio"
+                      id="phoneSend"
+                      value="0"
+                      name="phoneSend"
+                      checked="true"
+                    />
+                    <span class="checkbox"></span>
+                    <span style="vertical-align: middle">按手机号群发</span>
+                  </label>
+                  <label for="groupSend">
+                    <input
+                      type="radio"
+                      id="groupSend"
+                      value="1"
+                      name="groupSend"
+                    />
+                    <span class="checkbox"></span>
+                    <span style="vertical-align: middle">分组群发</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"></label>
+                  <div data-id="phoneInput" class="col-sm-9">
+                    <textarea
+                      name="phoneInput"
+                      id="phoneInput"
+                      class="jq_watermark"
+                      cols="45"
+                      rows="10"
+                      placeholder="例如：<br/>13600000000<br/>13700000000<br/>13800000000"
+                    ></textarea>
+                  </div>
+                  <div data-id="groupSelect" class="col-sm-9 hide">
+                    <select
+                      name="groupId"
+                      id="groupId"
+                      class="selectpicker"
+                      multiple
+                      style="width: 200px;padding: 6px 12px ;height: 34px"
+                    >
+                      <option value="all">全部义工</option>
+                      <option value="1">大殿组</option>
+                    </select>
+                  </div>
+                </div>
+                <div data-id="phoneTip" class="form-group">
+                  <label class="col-xs-3 control-label"></label>
+                  <div class="col-sm-8">
+                    <span class="text-muted">请输入手机号，一个手机号一行</span>
+                  </div>
+                </div>
+                <div data-id="groupTip" class="form-group hide">
+                  <label class="col-xs-3 control-label"></label>
+                  <div class="col-sm-8">
+                    <span class="text-muted"
+                      >您可以通过标签将义工分组，然后按组群发</span
+                    >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-offset-3 col-xs-7">
+                    <span
+                      class="btn btn-success btn-width submit_msg backgroundGreen"
+                      data-toggle="modal"
+                      >立即群发</span
+                    >
+                    <!--<input type="submit" value="提交" class="btn btn-primary submit_msg" data-toggle="modal" data-target="#countPeople"/>-->
+                    <span class="btn btn-default btn-width" data-dismiss="modal"
+                      >取消</span
+                    >
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--新增消息的模态框END-->
+    <!-- 显示已选中人数模态框BEGIN-->
+    <div class="modal fade" id="countPeople">
+      <div class="modal-dialog " style="width: 400px">
+        <div class="modal-content">
+          <div class="panel" style="margin-bottom:0;">
+            <div class="panel-body">
+              <div
+                class=" form-group "
+                style="margin-bottom: 140px;margin-top: 40px"
+              >
+                <label class="col-xs-1 control-label"></label>
+                <div class="col-sm-10">
+                  <span class="icon info-icon"></span>
+                  <p id="numHint">
+                    此消息将发送给<span class="peopleCnt"></span>确认发送？
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-9">
+                  <span
+                    class="btn btn-success btn-width backgroundGreen"
+                    id="sureSend"
+                    >立即群发</span
+                  >
+                  <span class="btn btn-default btn-width" data-dismiss="modal"
+                    >取消</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 显示已选中人数模态框END-->
+    <!-- 短信余额不足模态框BEGIN-->
+    <div class="modal fade" id="insufficient">
+      <div class="modal-dialog " style="width: 480px">
+        <div class="modal-content">
+          <div class="panel" style="margin-bottom:0;">
+            <div class="panel-body">
+              <div
+                class=" form-group "
+                style="margin-bottom: 120px;margin-top: 20px"
+              >
+                <label class="col-xs-1 control-label"></label>
+                <div class="col-sm-10">
+                  <span class="icon info-icon error-icon"></span>
+                  <p class="hint">
+                    短信余额不足，请联系自在家管理员充值。（微信搜索关注"自在家平台"公众号留言）
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12" style="text-align: center">
+                  <span class="btn btn-default btn-width" data-dismiss="modal"
+                    >关闭</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 短信余额不足模态框END-->
+    <!-- 充值模态框BEGIN-->
+    <div class="modal fade" id="recharge">
+      <div class="modal-dialog " style="width: 580px">
+        <div class="modal-content">
+          <div class="panel" style="margin-bottom:0;">
+            <div class="panel-body">
+              <div
+                class=" form-group "
+                style="margin-bottom: 120px;margin-top: 20px"
+              >
+                <label class="col-xs-1 control-label"></label>
+                <div class="col-sm-10" style="text-align: center;">
+                  <img
+                    src="https://pic.zizaihome.com/3b5e2b70-678d-11e8-8200-00163e0c001e.png"
+                    alt="微信二维码"
+                    style="width: 160px;height: 160px; margin-bottom: 25px;"
+                  />
+                  <p class="hint" style="text-align: left; margin-bottom: 0px;">
+                    请微信扫描二维码进入自在家平台微店，拍下您所需要的短信
+                  </p>
+                  <p
+                    class="hint"
+                    style="text-align: left; margin-bottom: 30px;"
+                  >
+                    群发套餐后，与管理员联系增加短信条数。
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12" style="text-align: center">
+                  <span class="btn btn-default btn-width" data-dismiss="modal"
+                    >关闭</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 充值模态框END-->
+    <!-- 交易成功模态框BEGIN-->
+    <div class="modal fade" id="paySuccess">
+      <div class="modal-dialog " style="width: 480px">
+        <div class="modal-content">
+          <div class="panel" style="margin-bottom:0;">
+            <div class="panel-body">
+              <div
+                class=" form-group "
+                style="margin-bottom: 120px;margin-top: 20px"
+              >
+                <label class="col-xs-1 control-label"></label>
+                <div class="col-sm-10">
+                  <span class="icon info-icon success_icon"></span>
+                  <p class="hint">
+                    发送指令提交成功！<br />短信正在发送中，需要一点时间。
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12" style="text-align: center">
+                  <span class="btn btn-default btn-width" data-dismiss="modal"
+                    >关闭</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--模态框结束-->
+
+    <script
+      src="../../js/lib/in-css/in-css.js"
+      data-in-css-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/in_css_config.js"
+      data-in-css-tag="1"
+      data-in-css-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script data-in-css-tag="1" data-in-css-load-tag="1">
+      InCss.use(
+        'bootstrap',
+        'jquery-confirm',
+        'colors',
+        'jquery.pagination',
+        'bootstrap-select',
+        'component/navigation',
+        'volunteer/send_msg'
+      );
+    </script>
+    <script
+      src="../../js/lib/requirejs/require.js"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/require_js_config.js"
+      data-require-js-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script>
+      require(['volunteer/send_msg']);
+    </script>
+  </body>
+</html>

@@ -3,6 +3,7 @@ dev
 build
 /res
 /src/lib
+/src/old
 /src/article
 /src/common
 /src/component
@@ -12,3 +13,4 @@ build
 /src/pages
 /src/temple
 /src/hardware
+/src/volunteer

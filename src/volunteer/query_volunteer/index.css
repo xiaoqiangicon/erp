@@ -1,0 +1,510 @@
+main {
+  min-height: 500px;
+}
+/*导航*/
+.navigateBar {
+  padding: 10px 20px;
+}
+
+.navigateBar span {
+  padding: 3px;
+}
+
+.smallHouse {
+  background-image: url('/static/images/buddha/smallHouse.png');
+}
+
+.navigateBar span:first-child {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*左box*/
+.leftBox {
+  margin-right: 4px;
+  position: relative;
+}
+
+.searchWrap {
+  margin: 6px;
+}
+
+.search-icon {
+  position: absolute;
+  color: grey;
+  font-size: 18px;
+  top: 50%;
+  right: 25px;
+  margin-right: 5px;
+  margin-top: -6px;
+  cursor: pointer;
+}
+
+.cancel-icon {
+  position: relative;
+}
+
+.searchIconBox {
+  right: 25px;
+  top: 5px;
+}
+
+#search {
+  height: 50px;
+}
+
+.searchBar {
+  position: relative;
+}
+
+.screenBox {
+  position: relative;
+  height: 57px;
+  line-height: 57px;
+  margin-bottom: 6px;
+}
+
+.screenBox > div > span {
+  font-size: 18px;
+  color: rgb(111, 186, 44);
+  position: relative;
+  top: 4px;
+}
+
+.up-icon {
+  margin-left: 9px;
+}
+
+.searchBox {
+  background: #fff;
+  border: 1px solid #e7e7eb;
+  padding: 0 6px;
+  padding-bottom: 32px;
+}
+
+.bootstrap-select:not([class*='span']):not([class*='col-']):not([class*='form-control']) {
+  width: 50% !important;
+}
+
+.row {
+  margin: 10px;
+  vertical-align: middle;
+  line-height: 34px;
+  height: 34px;
+}
+
+.volGroupTitleBox {
+  margin: 5px 6px;
+  overflow: hidden;
+}
+
+.volGroupTitleBox > span,
+.volGroupTitleBox > div {
+  padding: 10px 20px;
+}
+
+.volGroupTitleBox > div > span > span {
+  padding: 0 5px;
+}
+
+.labelOperation {
+  display: none;
+}
+
+/*右边*/
+.sidebar-menu2 ul {
+  width: 100%;
+}
+
+.sidebar-menu2 li {
+  cursor: pointer;
+  text-align: center;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.rightBox {
+  position: absolute;
+  right: 0;
+  width: 10%;
+  min-height: 520px;
+  background: #fff;
+  z-index: 10;
+}
+
+.rightBox::before {
+  content: '';
+  display: block;
+  background: url('/static/img/shadow.png') no-repeat;
+  width: 100%;
+  height: 12px;
+  position: absolute;
+  left: 0;
+}
+
+/*卡片*/
+.bell_icon {
+  background: url('/static/img/bell.png') no-repeat center;
+  background-size: 50%;
+  width: 97px;
+  height: 141px;
+}
+
+@media screen and (max-device-width: 1400px) {
+  .volGroupWarp {
+    width: 930px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-device-width: 1400px) and (max-device-width: 1682px) {
+  .volGroupWarp {
+    width: 1230px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-device-width: 1682px) {
+  .volGroupWarp {
+    width: 1530px;
+    margin: 0 auto;
+  }
+}
+
+.volGroupWarp {
+  /*margin: 6px 10px 6px 25px;*/
+  position: relative;
+}
+
+.nothingFound {
+  width: 430px;
+  margin: 0 auto;
+}
+
+.rename:hover,
+.del:hover {
+  color: rgb(111, 186, 44);
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.panelTop {
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+}
+
+.panelBottom {
+  position: relative;
+  padding: 1px 10px;
+  cursor: pointer;
+}
+
+.volGroupPanel {
+  width: 300px;
+  background: #fff;
+  border: 1px solid #e7e7eb;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 5px 0;
+  vertical-align: text-top;
+  cursor: pointer;
+}
+
+.portrait {
+  border: 1px solid rgba(0, 128, 0, 0.7);
+  border-radius: 3px;
+  width: 56px;
+  height: 56px;
+}
+
+.topRight {
+  display: inline-block;
+  padding: 5px 15px 0 5px;
+  width: 200px;
+  border-bottom: 1px solid #e7e7eb;
+}
+
+.topRight div {
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailInfo div {
+  margin: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailInfo div span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.addMargin {
+  margin: 0 9px;
+}
+
+.mask {
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  width: 17%;
+  height: 64%;
+  top: 1px;
+  right: 1px;
+  display: none;
+  background: url('/static/img/selectedCard.png') no-repeat center;
+  z-index: 50;
+}
+
+.maskDown {
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  width: 17%;
+  height: 64%;
+  top: 1px;
+  right: 1px;
+  display: none;
+  background: url('/static/img/selectedCard2.png') no-repeat center;
+}
+
+.volGroupPanel:hover .maskDown {
+  display: block;
+}
+
+.mask span {
+  position: relative;
+  top: 22%;
+}
+
+.modalHead {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modalFoot {
+  border-top: none;
+  text-align: center;
+}
+
+.modalBd {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#labelName {
+  height: 42px;
+}
+
+.btn-width {
+  width: 100px;
+}
+
+.selected {
+  display: block;
+}
+
+.editInput {
+  display: inline-block;
+  vertical-align: middle;
+  height: 34px;
+  padding: 6px 12px;
+  width: 300px;
+  margin-left: 15px;
+}
+
+.weChat-msg-del-box {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  display: none;
+}
+
+.weChat-msg-del-box span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+}
+
+.weChat-icon {
+  background: url('/static/img/WeChat-icon.png') no-repeat center;
+  background-size: 100%;
+}
+
+.msg-icon {
+  background: url('/static/img/msg-icon.png') no-repeat center;
+  background-size: 100%;
+}
+
+.del-icon {
+  background: url('/static/img/del-icon.png') no-repeat center;
+  background-size: 70%;
+}
+
+.pop-container {
+  width: 100px;
+  text-align: center;
+}
+
+.pop-container button {
+  margin: 2px 0;
+}
+
+.popover-content {
+  padding: 2px;
+}
+
+.errorTips {
+  color: #ff0000;
+  display: none;
+}
+
+/*.active1 {*/
+/*background-color: rgb(111, 186, 44);*/
+/*color: #fff;*/
+/*}*/
+.pop-container button:hover,
+.pop-container button:active,
+.pop-container button:focus {
+  background-color: rgb(111, 186, 44);
+  color: #fff;
+}
+
+.pop-container button:hover {
+  opacity: 0.6;
+}
+
+.btn-default:active:focus,
+.btn-default:active:hover {
+  background-color: rgb(111, 186, 44);
+  color: #fff;
+}
+
+#groupList li {
+  list-style: none;
+  text-align: center;
+  padding: 10px;
+}
+
+#groupList span:first-child {
+}
+
+#groupList {
+  padding: 5px;
+  border: 2px solid #e7e7eb;
+}
+
+.groupCnt {
+  padding: 2px 4px;
+  margin-left: 5px;
+  border-radius: 10px;
+  font-weight: 100;
+}
+
+.labelNameBox {
+  padding: 10px 20px;
+}
+
+.popover_bar {
+  text-align: center;
+}
+
+.frm_checkbox_label {
+  display: inline-block;
+  width: 8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  vertical-align: top;
+  margin-right: 1em;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.popover_tag_list {
+  min-height: 110px;
+  padding: 20px 10px;
+}
+
+#newLabel {
+  cursor: pointer;
+}
+
+.batchBtn {
+  margin-left: 5px;
+}
+
+.del-icon {
+  cursor: pointer;
+}
+
+.volGroupPanel:hover .weChat-msg-del-box {
+  display: block;
+}
+
+/*top*/
+#scrollTop,
+#scrollTop .level-2 {
+  background: url(/static/img/rocket_up02.png) no-repeat 0 0;
+  background-size: 400%;
+}
+
+#scrollTop div {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 149px;
+  margin: 0;
+  padding: 0;
+}
+
+#scrollTop .level-2 {
+  background-position: -200px 0;
+  display: none;
+  height: 180px;
+  opacity: 0;
+  z-index: 1;
+}
+
+#scrollTop .level-3 {
+  background: none;
+  cursor: pointer;
+  display: block;
+  height: 180px;
+  z-index: 2;
+}
+
+#scrollTop {
+  cursor: pointer;
+  display: block;
+  height: 180px;
+  overflow: hidden;
+  position: fixed;
+  right: -42px;
+  top: 86%;
+  width: 149px;
+  z-index: 11;
+  margin: -40px 0 0;
+  padding: 0;
+}

@@ -1,0 +1,360 @@
+.form-group {
+  /*padding: 0.2rem 0.1rem;*/
+  position: relative;
+  /*overflow: hidden;*/
+}
+
+.form-group input,
+.form-group textarea {
+  padding-left: 14px;
+  width: 80%;
+}
+
+.tip_icon {
+  /*background-image: url("../img/success.png");*/
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  top: 50%;
+  margin-top: -0.35rem;
+  position: absolute;
+  right: 0.1rem;
+}
+
+.tip_icon_error {
+  /*background-image: url("../img/error.png");*/
+  opacity: 1;
+}
+
+.upload_wrap {
+  float: left;
+  width: 100px;
+  /*background-color: rgb(215,151,87);*/
+  background-image: url('../../../images/buddha/picPlus.png');
+  background-size: 100% 100%;
+  height: 100px;
+  position: relative;
+  margin-left: 2%;
+}
+
+.upload_wrap_change {
+  background: transparent;
+}
+
+a:active {
+  color: #000;
+}
+
+a:-webkit-any-link {
+  color: #000000;
+}
+
+label.checkRadio {
+  background: url('../../../images/buddha/unchecked.png') no-repeat left center;
+  background-size: 12%;
+  margin-left: 15px;
+  width: 14%;
+}
+
+[type='radio'] {
+  cursor: pointer;
+}
+
+.chooseBox .checkSex {
+  background: none;
+  background-size: 15%;
+  width: auto;
+  display: inline-block;
+  border: 1px solid #e7e7eb;
+  border-radius: 2px;
+  padding: 2px;
+}
+
+.chooseBox input {
+  display: none;
+}
+
+.chooseBox input:checked + label {
+  border-color: green;
+}
+
+.checked {
+  background-image: url('../../../images/buddha/checked.png') !important;
+}
+
+.checkRadio input {
+  opacity: 0;
+  width: auto;
+}
+
+sup {
+  color: #ff0000;
+  font-size: 13px;
+}
+
+.loggingForm label {
+  text-align: left;
+}
+
+.navigateBar {
+  padding: 10px 20px;
+}
+
+.navigateBar span {
+  padding: 3px;
+}
+
+.smallHouse {
+  background-image: url('../../../images/buddha/smallHouse.png');
+}
+
+.navigateBar span:first-child {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.bootstrap-select {
+  margin-left: 15px !important;
+}
+.icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.cancel-icon {
+  position: absolute;
+  color: lightgrey;
+  right: 22.5%;
+  top: -2px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.img_icon {
+  top: 2px;
+  right: 22%;
+}
+
+.birthday_icon {
+  background-image: url('../../../images/buddha/glyphicons-46-calendar.png');
+}
+
+.ID_icon {
+  background-image: url('../../../images/buddhist/glyphicons-353-nameplate.png');
+}
+
+.interestedWork_icon {
+  background-image: url('../../../images/buddhist/glyphicons-66-tag.png');
+}
+
+.tel_icon {
+  background-image: url('../../../images/buddhist/glyphicons-164-iphone.png');
+}
+
+.skill_icon {
+  background-image: url('../../../images/buddhist/glyphicons-235-brush.png');
+}
+
+.hobby_icon {
+  background-image: url('../../../images/buddhist/glyphicons-251-snorkel-diving.png');
+}
+
+.graduatedSchool_icon {
+  background-image: url('../../../images/buddhist/glyphicons-164-iphone.png');
+}
+
+.major_icon {
+  background-image: url('../../../images/volunteer/major_icon.png');
+}
+
+.accustomedAction_icon {
+  background-image: url('../../../images/volunteer/accustomedAction_icon.png');
+}
+
+.books_icon {
+  background-image: url('../../../images/volunteer/books_icon.png');
+}
+
+.ceremony_icon {
+  background-image: url('../../../images/volunteer/ceremony_icon.png');
+}
+
+.convertTime_icon {
+  background-image: url('../../../images/volunteer/convertTime_icon.png');
+}
+
+.disability_icon {
+  background-image: url('../../../images/volunteer/disability_icon.png');
+}
+
+.email_icon {
+  background-image: url('../../../images/volunteer/email_icon.png');
+}
+
+.employer_icon {
+  background-image: url('../../../images/volunteer/employer_icon.png');
+}
+
+.fahao_icon {
+  background-image: url('../../../images/volunteer/fahao_icon.png');
+}
+
+.graduatedSchool_icon {
+  background-image: url('../../../images/volunteer/graduateSchool_icon.png');
+}
+
+.inherit_icon {
+  background-image: url('../../../images/volunteer/inherit_icon.png');
+}
+
+.occupation_icon {
+  background-image: url('../../../images/volunteer/occupation_icon.png');
+}
+
+.participateTime_icon {
+  background-image: url('../../../images/volunteer/participateTime_icon.png');
+}
+
+.suppliedResource_icon {
+  background-image: url('../../../images/volunteer/suppliedResource_icon.png');
+}
+
+.form-control[readonly] {
+  background-color: #fff;
+}
+
+.form-horizontal .form-group {
+  margin-right: 0;
+  /*margin-left: 0;*/
+}
+
+.chooseBox input {
+  width: auto;
+}
+
+.chooseBox label {
+  margin: 5px;
+}
+
+.chooseBox {
+  border: 1px solid #e7e7eb;
+  width: 78%;
+  min-height: 60px;
+  background-color: #fff;
+  padding: 9px 5px 3px 3px;
+  display: none;
+  position: absolute;
+  z-index: 10;
+}
+
+.chooseBox ul {
+  list-style: none;
+}
+
+.rdact {
+  color: #072;
+  text-decoration: none;
+  /*font-size: 12px;*/
+  text-align: center;
+  /*border-right: 1px solid #AAFFAA;*/
+  /*border-bottom: 1px solid #AAFFAA;*/
+  /*background-color: #f2fbf2;*/
+  padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.gract {
+  color: #bfbfbf;
+  text-decoration: none;
+  /*font-size: 12px;*/
+  text-align: center;
+  /*border-right: 1px solid #AAFFAA;*/
+  /*border-bottom: 1px solid #AAFFAA;*/
+  background-color: #f5f6f8;
+  padding: 4px 5px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.tagbtn {
+  cursor: pointer;
+}
+
+.city-picker-dropdown {
+  left: 15px !important;
+}
+
+.close {
+  width: 47px;
+  height: 47px;
+  background: url('../../../images/common/close.png') no-repeat 0 0;
+  position: fixed;
+  top: 5px;
+  right: 30px;
+  _position: absolute;
+  _top: expression(documentElement.scrollTop + 5+'px');
+  cursor: pointer;
+}
+
+.close:hover {
+  background: url('../../../images/common/close.png') no-repeat;
+}
+
+.city-picker-span {
+  padding-left: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s,
+    -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+input[name='agree'] {
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+.radio {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+.radioLabel {
+  padding-top: 0px !important;
+}
+
+.confirm {
+  padding-top: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/*has-error 下的错误提示样式*/
+.has-error span {
+  color: #a94442;
+}
