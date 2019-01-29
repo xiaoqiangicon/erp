@@ -1,0 +1,460 @@
+/*顶部form部分*/
+.icon-search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+  text-align: center;
+  color: #6fba2c;
+  cursor: pointer;
+}
+
+.icon-search:hover {
+  color: #6fba2c;
+}
+
+/*排序按钮*/
+.default-sort {
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+}
+
+.unsort {
+  background-image: url('../../../../images/common/unsortIcon.png');
+}
+
+.asc {
+  background-image: url('../../../../images/common/ascIcon.png');
+}
+
+.desc {
+  background-image: url('../../../../images/common/descIcon.png');
+}
+
+/*中部表格部分*/
+table {
+  table-layout: fixed;
+}
+
+table tr > td {
+  vertical-align: middle !important;
+}
+
+.table-cell-common {
+  position: relative;
+}
+
+.table-cell-buddhist {
+  position: relative;
+  overflow: hidden;
+}
+
+.table-cell-buddhist-image {
+  float: left;
+  width: 50px;
+  height: 50px;
+}
+
+.table-cell-buddhist-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.table-cell-buddhist-text {
+  margin-left: 60px;
+}
+
+.table-cell-buddhist-text p {
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.table-cell-buddhist-content {
+  font-size: 13px;
+}
+
+.table-cell-buddhist-title a {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+
+.table-cell-buddhist-title a:hover {
+  color: #337ab7;
+}
+
+.buddhist-status,
+.buddhist-opt {
+  margin-bottom: 0 !important;
+}
+
+.buddhist-status a {
+  cursor: default;
+}
+
+.buddhist-status a:hover {
+  text-decoration: none;
+}
+
+.buddhist-status .tooltip-inner {
+  text-align: center;
+}
+
+.table-cell-button,
+.table-cell-link,
+.table-cell-link a {
+  cursor: pointer;
+  color: #6fba2c;
+}
+
+.table-cell-button:hover,
+.table-cell-link:hover,
+.table-cell-link a:hover {
+  color: #6fba2c;
+}
+
+.table-cell-button:first-child {
+  margin-right: 5px;
+}
+
+/*tooltip*/
+.tooltip {
+  min-width: 200px;
+  text-align: left;
+}
+
+.tooltip-inner {
+  text-align: left;
+  padding: 5px 5px;
+}
+
+.icon-container {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: inline-block;
+  float: left;
+  margin: 0 4px;
+}
+
+.green-select-icon {
+  background: url('../../../../images/common/green_selected.png') no-repeat
+    center;
+  background-size: 80%;
+}
+
+.yellow-selected-icon {
+  background: url('../../../../images/common/yellow_selected.png') no-repeat
+    center;
+  background-size: 80%;
+}
+
+.more-opt {
+  width: 45px !important;
+}
+
+.more-opt.bootstrap-select {
+  margin-left: 0 !important;
+}
+
+.more-opt .dropdown-toggle {
+  padding: 0 10px 0 0 !important;
+}
+
+.more-opt .dropdown-toggle:focus {
+  outline: none !important;
+}
+
+.more-opt button {
+  color: #6fba2c !important;
+  background-color: inherit !important;
+  border: none;
+  padding-right: 10px !important;
+}
+
+.more-opt .caret {
+  right: 6px !important;
+}
+
+/*自定义modal*/
+.my-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999999;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+.my-modal-pane {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 490px;
+  margin-left: -210px;
+  margin-top: -150px;
+  padding: 30px 0px;
+  background: #fff;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.my-modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.my-modal h4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tmpl-name {
+  width: 250px;
+  margin: 0 auto;
+}
+/*
+**拟态框样式
+*/
+.modal-header {
+  padding: 0 !important;
+  position: relative;
+  width: 100%;
+  height: 32px;
+  background: #6fba2c;
+}
+
+.modal-header h4 {
+  margin: 0 !important;
+  line-height: 32px;
+  padding-left: 12px;
+  color: #fff;
+}
+
+.modal-header .close {
+  line-height: 32px;
+  margin-right: 10px;
+  margin-top: 0 !important;
+  opacity: 0.8 !important;
+}
+
+.modal-header .close span {
+  color: #fff;
+}
+
+.modal-tip {
+  margin: 0;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.bootstrap-select {
+  margin-left: 15px !important;
+}
+
+.no-sub-prt {
+  overflow: hidden;
+}
+
+/*改变原始的单复选框样式*/
+input[type='checkbox'] {
+  display: none;
+}
+
+.checkbox {
+  background: url('../../../../images/buddhist/unchecked.png') no-repeat center;
+  background-size: 60%;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type='checkbox']:checked + .checkbox {
+  background-image: url('../../../../images/buddhist/checked.png') !important;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+.radio {
+  background: url('../../../../images/buddhist/unchecked.png') no-repeat center;
+  background-size: 60%;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type='radio']:checked + .radio {
+  background-image: url('../../../../images/buddhist/checked.png') !important;
+}
+
+.exception-tip {
+  color: #ff9900;
+}
+
+.sub-list-ctnr {
+  height: 300px;
+  overflow: auto;
+  border: 1px solid #666;
+  padding: 16px;
+}
+
+.sub-checkbox {
+  display: inline !important;
+  width: 20px !important;
+  margin-top: 0 !important;
+  cursor: pointer;
+}
+
+.sub-cont {
+  display: inline;
+  font-size: 20px;
+  font-weight: normal;
+}
+/*无规格打印机列表样式*/
+.prt-div {
+  max-width: 100%;
+  float: left;
+}
+
+.prt-checkbox {
+  display: inline !important;
+  width: 20px !important;
+  vertical-align: middle;
+  margin-top: -1px !important;
+  cursor: pointer;
+}
+
+.prt-cont {
+  display: inline;
+  font-weight: normal;
+}
+/*schedule-modal*/
+.schedule-modal-head {
+  height: 50px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #6fba2c;
+}
+.schedule-modal .head-nav {
+  display: inline-block;
+  width: 130px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  color: #333;
+}
+.schedule-modal .head-nav.active {
+  color: #fff;
+  background-color: #6fba2c;
+}
+.schedule-modal-body {
+  padding: 30px;
+  min-height: 507px;
+}
+
+.schedule-img-cell {
+  float: left;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.schedule-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.schedule-img-del {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  cursor: pointer;
+}
+.schedule-modal .add-img-container {
+  float: left;
+  width: 140px;
+  height: 140px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.schedule-modal .add-img-container .add-img {
+  width: 100%;
+  height: 100%;
+}
+.schedule-modal .add-img-container .add-img-text {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.schedule-list-modal-body .schedule-item {
+  padding: 0 20px 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 3px #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.schedule-list-modal-body .schedule-item .btn-save-schedule,
+.schedule-list-modal-body .schedule-item .btn-cancel-schedule,
+.schedule-list-modal-body .schedule-item .schedule-img-del,
+.schedule-list-modal-body .schedule-item .add-img-container,
+.schedule-list-modal-body .schedule-item .item-push-set,
+.schedule-list-modal-body .schedule-item.edit .btn-edit-schedule {
+  display: none;
+}
+
+.schedule-list-modal-body .schedule-item .btn-edit-schedule,
+.schedule-list-modal-body .schedule-item.edit .btn-save-schedule,
+.schedule-list-modal-body .schedule-item.edit .btn-cancel-schedule,
+.schedule-list-modal-body .schedule-item.edit .schedule-img-del,
+.schedule-list-modal-body .schedule-item.edit .add-img-container,
+.schedule-list-modal-body .schedule-item.edit .item-push-set {
+  display: block;
+}
+
+.schedule-list-modal-body .item-head {
+  height: 51px;
+  line-height: 50px;
+  border-bottom: 1px solid #ddd;
+  color: rgb(154, 151, 145);
+  margin-bottom: 10px;
+}
+.schedule-list-modal-body .item-icon {
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 5px;
+  border: 1px solid #0eb2d4;
+  border-radius: 11px;
+  background-color: #bce4ff;
+  margin-left: 20px;
+  font-size: 12px;
+  color: #0eb2d4;
+}

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>订单管理</title>
+  </head>
+  <body data-menu-id="order-manage">
+    <div id="content-container">
+      <section id="main">
+        <main data-id="orderManage">
+          <div id="screenBox">
+            <form
+              action="#"
+              name="screenForm"
+              id="screenForm"
+              class="form-inline clearfix"
+            >
+              <div class="row">
+                <div
+                  id="buddhistSelect"
+                  class="col-xs-5 form-group"
+                  style="padding: 0;text-align: center"
+                >
+                  <label for="buddishService" class="font-noraml"
+                    >佛事项目：</label
+                  >
+                  <select
+                    name="buddishService"
+                    id="buddishService"
+                    class="selectpicker"
+                  >
+                  </select>
+                </div>
+                <div class="col-xs-4 form-group hide" style="padding: 0;">
+                  <label for="buddishSizes" class="font-noraml"
+                    >佛事选择项：</label
+                  >
+                  <select
+                    name="buddishSizes"
+                    id="buddishSizes"
+                    class="selectpicker"
+                  >
+                    <option value="-1" class="sr-only">--</option>
+                  </select>
+                </div>
+                <div class="col-xs-3 form-group " style="padding: 0;">
+                  <!--  <label for="feed_back_pic">
+                                <input type="radio" id="feed_back_pic" value="1" name="feed_back_pic">
+                                <span class="checkbox"></span>
+                                <span style="vertical-align: middle">有反馈图片</span>
+                            </label>-->
+                  <label for="non_feed_back_pic" class="myCheckboxLabel">
+                    <input
+                      type="checkbox"
+                      id="non_feed_back_pic"
+                      value="0"
+                      name="non_feed_back_pic"
+                      class="myCheckbox"
+                    />
+                    <span class="checkbox"></span>
+                    <span style="vertical-align: middle">无反馈图片</span>
+                  </label>
+                  <label for="hasNotPrint" class="myCheckboxLabel mgl20">
+                    <input
+                      type="checkbox"
+                      id="hasNotPrint"
+                      value="0"
+                      name="hasNotPrint"
+                      class="myCheckbox"
+                    />
+                    <span class="checkbox"></span>
+                    <span style="vertical-align: middle">未打印小票</span>
+                  </label>
+                </div>
+              </div>
+              <div class="row" style="line-height: 60px;height: 94px">
+                <div
+                  class="col-xs-5 form-group "
+                  style="padding: 0;text-align: center"
+                >
+                  <label for="beginDate" class="font-noraml">下单时间：</label>
+
+                  <div class="input-group input-daterange " id="datepicker">
+                    <input
+                      id="beginDate"
+                      type="text"
+                      class="input form-control"
+                      name="start"
+                      style="width: 100px"
+                    />
+                    <span class="input-group-addon">至</span>
+                    <input
+                      id="endDate"
+                      type="text"
+                      class="input form-control"
+                      name="end"
+                      style="width: 100px"
+                    />
+                  </div>
+                </div>
+                <div class="col-xs-3 form-group" style="padding: 0">
+                  <label for="tel">手机号：</label>
+                  <input type="tel" id="tel" class="input form-control" />
+                </div>
+                <div class="col-xs-4 form-group tiaozheng" style="padding: 0;">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    id="query"
+                    data-id="tab1"
+                  >
+                    查&nbsp;询
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    id="reset"
+                    data-id="tab1"
+                  >
+                    重&nbsp;置
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    id="exportExcel"
+                    data-id="tab1"
+                  >
+                    导出Excel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <ul id="myTabs" class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active">
+                <a
+                  id="unScheduledTab"
+                  class="scheduledTab"
+                  href="#unScheduled"
+                  aria-controls="unScheduled"
+                  role="tab"
+                  data-toggle="tab"
+                  aria-expanded="false"
+                  >未处理&nbsp;&nbsp;<span
+                    class="badge numBadge"
+                    style="background-color: #d9534f"
+                    >...</span
+                  ></a
+                >
+              </li>
+              <!--<li role="presentation"><a id="scheduledTab" href="#scheduled" aria-controls="scheduled" role="tab"-->
+              <!--data-toggle="tab"> 已排单</a></li>-->
+              <li role="presentation" class="">
+                <a
+                  id="finishedTab"
+                  class="scheduledTab"
+                  href="#finished"
+                  aria-controls="finished"
+                  role="tab"
+                  data-toggle="tab"
+                  aria-expanded="false"
+                >
+                  已处理</a
+                >
+              </li>
+              <li role="presentation" class="">
+                <a
+                  id="allTab"
+                  class="scheduledTab"
+                  href="#all"
+                  aria-controls="all"
+                  role="tab"
+                  data-toggle="tab"
+                  aria-expanded="false"
+                  >全部订单</a
+                >
+              </li>
+            </ul>
+            <div
+              style="height: 43px; border-top: 2px solid #6fba2c; border-bottom: 1px solid #e0e0e0;padding: 5px 20px;margin-top: 0px;"
+            >
+              <div
+                id="selectNum"
+                class="left"
+                style="height: 30px;line-height: 30px;color:#989898;"
+              >
+                已选择<span
+                  style=" display:inline-block;width: 25px;text-align:center;"
+                  >0</span
+                >项
+              </div>
+              <button
+                type="button"
+                class="btn btn-default btn-sm mgl20 left"
+                id="dispose"
+                data-id="tab1"
+              >
+                设为已处理
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-sm right"
+                id="printOrder"
+              >
+                小票打印
+              </button>
+            </div>
+            <!--未处理-->
+            <div role="tabpanel" class="tab-pane active" id="unScheduled">
+              <div class="bottomSection ">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <table class="table table-striped ">
+                      <thead>
+                        <tr>
+                          <th style="width:90px;text-align: center">
+                            <input
+                              name="Fruit"
+                              class="selectAll"
+                              type="checkbox"
+                              value=""
+                              style="margin-left: 15px;cursor:pointer"
+                            /><span style="margin-left: 4px">全选</span>
+                          </th>
+                          <th class="text-left">
+                            <div style="margin-left: 60px">佛事</div>
+                          </th>
+                          <th class="text-center">联系人</th>
+                          <th class="text-center">数量</th>
+                          <th
+                            class="text-center csp"
+                            data-id="table-title-pay-money"
+                          >
+                            支付 <i class="defaultSort csp unsort"></i>
+                          </th>
+                          <th
+                            class="text-center csp"
+                            data-id="table-title-pay-time"
+                          >
+                            下单时间 <i class="defaultSort csp unsort"></i>
+                          </th>
+                          <th class="text-center">打印状态</th>
+                          <th class="text-center">操作</th>
+                        </tr>
+                      </thead>
+                      <tbody id="unScheduledList" class="text-center"></tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row footers">
+                  <div class="paginationFooter paginationFooter1">
+                    <div
+                      id="page1"
+                      class="m-pagination "
+                      data-page-btn-count="9"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--已处理-->
+            <div role="tabpanel" class="tab-pane" id="finished">
+              <div class="bottomSection ">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <table class="table table-striped ">
+                      <thead>
+                        <tr>
+                          <th style="width:90px;text-align: center">
+                            <input
+                              name="Fruit"
+                              class="selectAll"
+                              type="checkbox"
+                              value=""
+                              style="margin-left: 15px;cursor:pointer"
+                            /><span style="margin-left: 4px">全选</span>
+                          </th>
+                          <th class="text-left">
+                            <div style="margin-left: 60px">佛事</div>
+                          </th>
+                          <th class="text-center">联系人</th>
+                          <th class="text-center">数量</th>
+                          <th
+                            class="text-center csp"
+                            data-id="table-title-pay-money"
+                          >
+                            支付 <i class="defaultSort csp unsort"></i>
+                          </th>
+                          <th
+                            class="text-center csp"
+                            data-id="table-title-pay-time"
+                          >
+                            下单时间 <i class="defaultSort csp unsort"></i>
+                          </th>
+                          <th class="text-center">打印状态</th>
+                          <th class="text-center">操作</th>
+                        </tr>
+                      </thead>
+                      <tbody id="finishedList" class="text-center"></tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row footers">
+                  <div class="paginationFooter paginationFooter3">
+                    <div
+                      id="page3"
+                      class="m-pagination "
+                      data-page-btn-count="9"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--全部-->
+            <div role="tabpanel" class="tab-pane" id="all">
+              <div class="bottomSection ">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <table class="table table-striped ">
+                      <thead>
+                        <tr>
+                          <th style="width:90px;text-align: center">
+                            <input
+                              name="Fruit"
+                              class="selectAll"
+                              type="checkbox"
+                              value=""
+                              style="margin-left: 15px;cursor:pointer"
+                            /><span style="margin-left: 4px">全选</span>
+                          </th>
+                          <th class="text-left">
+                            <div style="margin-left: 60px">佛事</div>
+                          </th>
+                          <th class="text-center">联系人</th>
+                          <th class="text-center">数量</th>
+                          <th
+                            class="text-center csp"
+                            data-id="table-title-pay-money"
+                          >
+                            支付 <i class="defaultSort csp unsort"></i>
+                          </th>
+                          <th
+                            class="text-center csp"
+                            data-id="table-title-pay-time"
+                          >
+                            下单时间 <i class="defaultSort csp unsort"></i>
+                          </th>
+                          <th class="text-center">打印状态</th>
+                          <th class="text-center">操作</th>
+                        </tr>
+                      </thead>
+                      <tbody id="allList" class="text-center"></tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row footers">
+                  <div class="paginationFooter paginationFooter2">
+                    <div
+                      id="page2"
+                      class="m-pagination "
+                      data-page-btn-count="9"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+    <!-- 订单详情Modal -->
+    <div
+      class="modal fade scrollModal"
+      id="orderDetailModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="orderDetailModal"
+    >
+      <div class="modal-dialog" style="width:500px;margin-top: 10px;">
+        <div class="modal-content" style="padding: 5px 20px">
+          <div class="modal-body modalBd" id="orderDetailBox"></div>
+          <div class="modal-footer modalFoot " style="text-align: center">
+            <form role="form" class="form-horizontal">
+              <div class="form-group" style="margin: 10px 0 20px;">
+                <div class="" style="text-align: left;padding-bottom: 10px;">
+                  <strong>备注：</strong>
+                </div>
+                <div class="" style="text-align: left">
+                  <textarea
+                    class="remark"
+                    id="orderDetailRemark"
+                    name="remark"
+                  ></textarea>
+                </div>
+              </div>
+            </form>
+            <button type="button" class="btn btn-success" id="saveRemark">
+              保存新备注
+            </button>
+            <button
+              type="button"
+              class="btn btn-success backgroundGreen btn-width"
+              id="sureAddToAccomplishBtn"
+            >
+              设为已处理
+            </button>
+            <button
+              type="button"
+              class="btn btn-success backgroundGreen btn-width"
+              id="sureAddToUndoBtn"
+            >
+              设为未处理
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 订单详情Modal EDN-->
+    <!-- 设为已处理Modal -->
+    <div
+      class="modal fade set-dispose-modal"
+      id="setDisposeModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              &times;
+            </button>
+            <h4 class="modal-title">设为已处理</h4>
+          </div>
+          <div class="modal-body">
+            <div class="clearfix mgb10">
+              <p class="">请添加反馈图片</p>
+              <div
+                class="mgb10 images-content"
+                data-id=""
+                style="display: inline-block;vertical-align: top;"
+              ></div>
+              <div class="clean-button upload-button" id="addFeedBackPic"></div>
+            </div>
+            <div>
+              <p>请填写备注信息</p>
+              <textarea
+                class="remark"
+                id="setDisposeModalRemark"
+                cols="30"
+                rows="10"
+                style="width: 100%;resize: none;"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer" style="text-align: center">
+            <button
+              type="button"
+              id="setDisposeModalSubmit"
+              class="btn btn-success"
+              data-dismiss="modal"
+            >
+              保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 设为已处理Modal EDN-->
+    <!-- 小票打印Modal -->
+    <div
+      class="modal fade"
+      id="printModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="printModal"
+      aria-hidden="true"
+      style="overflow: scroll; overflow-y: scroll;"
+      data-backdrop="static"
+      data-keyboard="false"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              data-id="closeSizePostscript"
+              class="close"
+              data-dismiss="modal"
+              data-popup-close="1"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-tip">小票打印</h4>
+          </div>
+          <div class="size-modal-body ">
+            <div class="form-group">
+              <label for="selectPrinter">选择打印机：</label>
+              <div data-type="noSelectPrinter" class="noSelectPrinter"></div>
+            </div>
+            <div class="form-group">
+              <span data-type="exception_tip" class="exception_tip"></span>
+            </div>
+            <div class="form-group">
+              <label for="printNumber">打印联数：</label>
+              <select name="printNumber" id="printNumber" class="selectpicker">
+              </select>
+            </div>
+            <div class="form-group"><div id="print_prompt"></div></div>
+            <div class="form-group mgb0" data-type="dimension_code">
+              <label for="dimension_code">二维码：</label>
+              <label
+                for="print_divide"
+                data-type="dimension_code_label"
+                class="dimension_code_label"
+              >
+                <input
+                  id="print_divide"
+                  name="print_method"
+                  value="2"
+                  type="radio"
+                />
+                <span class="checkbox"></span
+                ><span class="vam">&nbsp;&nbsp;隔联打印</span>
+              </label>
+              <label
+                for="print_all"
+                data-type="dimension_code_label"
+                class="dimension_code_label"
+              >
+                <input
+                  id="print_all"
+                  name="print_method"
+                  value="1"
+                  type="radio"
+                  checked=""
+                />
+                <span class="checkbox"></span
+                ><span class="vam">&nbsp;&nbsp;全部打印</span>
+              </label>
+              <label
+                for="print_non_qrcode"
+                data-type="dimension_code_label"
+                class="dimension_code_label"
+              >
+                <input
+                  id="print_non_qrcode"
+                  name="print_method"
+                  value="3"
+                  type="radio"
+                />
+                <span class="checkbox"></span
+                ><span style="vertical-align: middle">&nbsp;&nbsp;不打印</span>
+              </label>
+            </div>
+            <div class="form-group" data-type="code_tips">
+              <p>
+                二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
+              </p>
+            </div>
+            <div class="form-group mgb0" data-type="print_tel">
+              <label for="print_tel">电话号码：</label>
+              <label
+                for="print_tel"
+                data-type="print_tel_label"
+                class="print_tel_label"
+              >
+                <input
+                  id="print_tel"
+                  name="print_tel_method"
+                  value="1"
+                  type="radio"
+                  checked
+                />
+                <span class="checkbox"></span
+                ><span class="vam">&nbsp;&nbsp;打印</span>
+              </label>
+              <label
+                for="print_non_tel"
+                data-type="print_tel_label"
+                class="print_tel_label"
+              >
+                <input
+                  id="print_non_tel"
+                  name="print_tel_method"
+                  value="0"
+                  type="radio"
+                />
+                <span class="checkbox"></span
+                ><span class="vam">&nbsp;&nbsp;不打印</span>
+              </label>
+            </div>
+            <div class="form-group" data-type="code_tips">
+              <p>如果不希望透露功德主的联系方式，可以选择不打印电话号码。</p>
+            </div>
+            <div class="form-group tac mgb0">
+              <button
+                type="button"
+                data-type="surePrint"
+                class="btn btn-default btn-success"
+              >
+                立即打印
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer tac"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 小票打印Modal 结束-->
+    <!--未设置小票打印机开始 Modal -->
+    <div
+      class="modal fade"
+      id="noPrinterModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="noPrinterModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">小票打印机</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group pdl10">
+              <img
+                src="../../../images/buddhist/rechargeMsg.jpg"
+                alt="选购打印机"
+                style="width:30%;vertical-align: top"
+              />
+              <div style="display: inline-block;margin-left: 20px;width:60%">
+                <p>步骤1：扫描左侧二维码选购小票打印机。</p>
+                <p>步骤2：联系自在家平台管理员开通功能。</p>
+                <p>步骤3：收到小票打印机，按照指示设置。</p>
+                <p>然后就可以实现订单自动打印啦！</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer tac"></div>
+        </div>
+      </div>
+    </div>
+    <!--未设置小票打印机 Modal 结束-->
+    <!--反馈图片大图 Modal-->
+    <div
+      class="modal fade"
+      id="show_feed_back_pic"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="feedBackPicModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" style="text-align: center; width: 500px">
+        <img src="" alt="反馈图片" width="500" />
+      </div>
+    </div>
+    <!--反馈图片大图 Modal 结束-->
+    <!--反馈视频预览 Modal 开始-->
+    <div
+      class="modal fade"
+      id="show_feed_back_video"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="feedBackPicModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" style="text-align: center; width: 500px">
+        <video id="video-player" class="video-js" controls preload="auto">
+          <source id="video-source" src="" type="video/mp4" />
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading
+            to a web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">
+              supports HTML5 video
+            </a>
+          </p>
+        </video>
+      </div>
+    </div>
+    <!--反馈视频预览 Modal 结束-->
+    <!--附言自定义图片大图 Modal-->
+    <div
+      class="modal fade"
+      id="show_post_script_pic"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="postScriptPicModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" style="text-align: center; width: 500px">
+        <img src="" alt="反馈图片" width="500" />
+      </div>
+    </div>
+    <!--附言自定义图片大图 Modal 结束-->
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+
+    <script
+      src="../../js/lib/in-css/in-css.js"
+      data-in-css-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/in_css_config.js"
+      data-in-css-tag="1"
+      data-in-css-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script data-in-css-tag="1" data-in-css-load-tag="1">
+      InCss.use(
+        'bootstrap',
+        'jquery-confirm',
+        'colors',
+        'component/navigation',
+        'bootstrap-select',
+        'jquery.pagination',
+        'datepicker3',
+        'component/editor',
+        'video.js/dist/video-js.min',
+        'buddhist/order_manage'
+      );
+    </script>
+    <script
+      src="../../js/lib/requirejs/require.js"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/require_js_config.js"
+      data-require-js-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script>
+      require(['buddhist/order_manage']);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "msg": "更新成功",
+  "data": [
+    {
+      "qrcodePrint": 1,
+      "isPrintMobile": 1,
+      "continuousPrintNum": 2,
+      "address": "妙严科技公司",
+      "printerSn": "916505265",
+      "id": 1
+    }
+  ],
+  "result": 1
+}

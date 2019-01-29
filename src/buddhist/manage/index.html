@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh-cmn-Hans">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>佛事管理</title>
+  </head>
+  <body data-menu-id="event-manage">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="buddhist-type-select">佛事分类：</label>
+            <select
+              name="buddhist-type-select"
+              id="buddhist-type-select"
+              data-ele="select-picker"
+            ></select>
+          </div>
+          <div class="form-group mgl20">
+            <label for="buddhist-status-select">佛事状态：</label>
+            <select
+              name="buddhist-status-select"
+              id="buddhist-status-select"
+              data-ele="select-picker"
+            ></select>
+          </div>
+          <div class="form-group mgl20" style="position: relative;">
+            <a class="glyphicon glyphicon-search icon-search" id="search"></a>
+            <input
+              type="text"
+              class="form-control width-auto"
+              id="search-input"
+              placeholder="搜索"
+            />
+          </div>
+          <a
+            class="btn btn-green pull-right mgr20"
+            href="/zzhadmin/selectCeremonyTemplate/"
+            >新建佛事</a
+          >
+        </form>
+        <table class="table table-striped mgt60">
+          <thead>
+            <tr>
+              <th class="text-center" style="width: 5%">ID</th>
+              <th class="text-center" style="width: 28%">佛事</th>
+              <th
+                class="text-center csp"
+                style="width: 10%"
+                id="table-title-total-join"
+              >
+                参与人次 <i class="default-sort csp unsort"></i>
+              </th>
+              <th
+                class="text-center csp"
+                style="width: 10%"
+                id="table-title-total-collect"
+              >
+                募集金额 <i class="default-sort csp unsort"></i>
+              </th>
+              <th class="text-center" style="width: 10%">浏览次数</th>
+              <th class="text-center text-align-left" style="width: 9%">
+                打印机
+              </th>
+              <th class="text-center" style="width: 9%">状态</th>
+              <th class="text-center" style="width: 20%">操作</th>
+            </tr>
+          </thead>
+          <tbody class="text-center" id="table-body"></tbody>
+        </table>
+        <!--分页器-->
+        <div id="pagination-container"></div>
+      </div>
+    </div>
+    <!--设置打印机Modal开始-->
+    <div
+      class="modal fade"
+      id="set-prt-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="set-prt-modal-title"
+      aria-hidden="true"
+      style="overflow: scroll; overflow-y: scroll;"
+    >
+      <div class="modal-dialog" style="width:36%;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="set-prt-modal-title">小票打印设置</h4>
+          </div>
+          <div class="modal-body">
+            <!--无选择项打印机开关-->
+            <div class="form-group mgb0" id="no-sub-prt-switch-form-group">
+              <strong>小票打印：</strong>
+              <label class="csp mgr30">
+                <input
+                  id="open-prt"
+                  name="no-sub-prt-switch"
+                  value="1"
+                  type="radio"
+                />
+                <span class="radio"></span
+                ><span class="vam">&nbsp;&nbsp;&nbsp;开启</span>
+              </label>
+              <label class="csp mgr30">
+                <input
+                  id="close-prt"
+                  name="no-sub-prt-switch"
+                  value="0"
+                  type="radio"
+                  checked
+                />
+                <span class="radio"></span
+                ><span class="vam">&nbsp;&nbsp;&nbsp;关闭</span>
+              </label>
+            </div>
+            <!--有选择项打印机下拉列表-->
+            <div class="form-group" id="sub-prt-form-group">
+              <label for="sub-prt-select">选择打印机：</label>
+              <select
+                id="sub-prt-select"
+                data-ele="select-picker"
+                title="请选择打印机"
+              ></select>
+            </div>
+            <!--无选择项打印机列表-->
+            <div class="form-group" id="no-sub-prt-form-group">
+              <label>选择打印机：</label>
+              <div id="no-sub-prt-ctnr" class="no-sub-prt-ctnr clearfix"></div>
+            </div>
+            <!--打印机状态提示-->
+            <div class="form-group">
+              <span id="exception-tip" class="exception-tip"></span>
+            </div>
+            <!--有选择项提示勾选选择项-->
+            <div class="form-group" id="sub-tip">
+              <p>请勾选需要打印的选择项</p>
+            </div>
+            <!--有选择项选择项列表-->
+            <div class="form-group" id="sub-list-form-group">
+              <div id="sub-list-ctnr" class="sub-list-ctnr"></div>
+            </div>
+            <!--打印联数-->
+            <div class="form-group">
+              <label for="prt-num-select">打印联数：</label>
+              <select
+                name="prt-num"
+                id="prt-num-select"
+                data-ele="select-picker"
+              >
+                <option value="1">1联</option>
+                <option value="2">2联</option>
+                <option value="3">3联</option>
+                <option value="4">4联</option>
+                <option value="5">5联</option>
+              </select>
+            </div>
+            <!--二维码打印方式-->
+            <div class="form-group mgb0">
+              <label>二维码：</label>
+              <label for="prt-all-qrcode" class="csp mgr30">
+                <input
+                  id="prt-all-qrcode"
+                  name="prt-qrcode"
+                  value="1"
+                  type="radio"
+                  checked
+                />
+                <span class="radio"></span
+                ><span class="vam">&nbsp;&nbsp;全部打印</span>
+              </label>
+              <label for="prt-divide-qrcode" class="csp mgr30">
+                <input
+                  id="prt-divide-qrcode"
+                  name="prt-qrcode"
+                  value="2"
+                  type="radio"
+                />
+                <span class="radio"></span
+                ><span class="vam">&nbsp;&nbsp;隔联打印</span>
+              </label>
+              <label for="prt-no-qrcode" class="csp mgr30">
+                <input
+                  id="prt-no-qrcode"
+                  name="prt-qrcode"
+                  value="3"
+                  type="radio"
+                />
+                <span class="radio"></span
+                ><span class="vam">&nbsp;&nbsp;不打印</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <p>
+                二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
+              </p>
+            </div>
+            <!--电话号码-->
+            <div class="form-group mgb0" data-ele="prt-tel">
+              <label for="prt-tel">电话号码：</label>
+              <label for="prt-tel" class="csp mgr30">
+                <input
+                  id="prt-tel"
+                  name="prt-tel"
+                  value="1"
+                  type="radio"
+                  checked
+                />
+                <span class="radio"></span
+                ><span class="vam">&nbsp;&nbsp;打印</span>
+              </label>
+              <label for="prt-no-tel" class="csp mgr30">
+                <input id="prt-no-tel" name="prt-tel" value="0" type="radio" />
+                <span class="radio"></span
+                ><span class="vam">&nbsp;&nbsp;不打印</span>
+              </label>
+            </div>
+            <div class="form-group" data-ele="code-tips">
+              <p>如果不希望透露功德主的联系方式，可以选择不打印电话号码。</p>
+            </div>
+            <div class="form-group" style="text-align: center;">
+              <button
+                type="button"
+                id="save-prt-set"
+                class="btn btn-default btn-success"
+              >
+                确认
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--设置打印机Modal结束-->
+    <!--未设置小票打印机Modal开始 -->
+    <div
+      class="modal fade"
+      id="no-prt-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="no-prt-modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only">Close</span>
+            </button>
+            <h4 id="no-prt-modal-title">设置小票打印机</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" style="padding-left: 10px;">
+              <img
+                src="../../../images/buddhist/rechargeMsg.jpg"
+                alt="选购打印机"
+                style="width:180px;height:180px;vertical-align: top"
+              />
+              <div style="display: inline-block;" class="mgl20">
+                <p>步骤1：扫描左侧二维码选购小票打印机。</p>
+                <p>步骤2：联系自在家平台管理员开通功能。</p>
+                <p>步骤3：收到小票打印机，按照指示设置。</p>
+                <p>然后就可以实现订单自动打印啦！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--未设置小票打印机Modal结束-->
+    <!--设为模板Modal开始-->
+    <div class="my-modal" id="set-tmpl-modal" style="display:none;">
+      <div class="my-modal-background"></div>
+      <div class="my-modal-pane">
+        <h4>将此佛事添加到佛事模板库中</h4>
+        <p style="text-align: center;color: #989898;">请填写备注名称</p>
+        <input
+          type="text"
+          class="form-control tmpl-name"
+          id="tmpl-name"
+          maxlength="12"
+          placeholder="最多12字"
+        />
+        <div class="text-center mgt30">
+          <button
+            type="button"
+            class="btn btn-success mgr20"
+            id="confirm-set-tmpl"
+          >
+            确定
+          </button>
+          <button
+            type="button"
+            class="btn"
+            id="cancel-set-tmpl"
+            style="margin-left: 30px;"
+          >
+            取消
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--设为模板Modal结束-->
+    <!--佛事进展Modal开始-->
+    <div
+      class="modal fade schedule-modal"
+      id="schedule-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="schedule-modal-title"
+      aria-hidden="true"
+      style="overflow: scroll; overflow-y: scroll;"
+    >
+      <div class="modal-dialog" style="width:60%;">
+        <div
+          class="modal-content"
+          style="border-radius: 8px; overflow: hidden;"
+        >
+          <div class="modal-header schedule-modal-head">
+            <span
+              class="head-nav active"
+              data-ele="modal-head-nav"
+              data-index="0"
+              >发布进展</span
+            >
+            <span class="head-nav" data-ele="modal-head-nav" data-index="1"
+              >发布记录</span
+            >
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span
+                class="mgt10"
+                aria-hidden="true"
+                style="display: inline-block;color:#333;"
+                >&times;</span
+              >
+            </button>
+          </div>
+          <div
+            class="modal-body schedule-modal-body create-schedule-modal-body"
+            data-ele="schedule-modal-body"
+            data-index="0"
+            id="create-schedule-modal-body"
+          >
+            <!--内容-->
+            <div class="row">
+              <div class="col-md-1 fwb">内容</div>
+              <div class="col-md-11">
+                <div
+                  class="s-textarea-container"
+                  data-ele="s-textarea-container"
+                >
+                  <textarea
+                    id="schedule-content"
+                    data-ele="s-textarea"
+                    class="form-control"
+                    name=""
+                    maxlength="300"
+                    cols="30"
+                    rows="8"
+                    style="resize: none;"
+                    placeholder="请填写进展动态的内容"
+                  ></textarea>
+                  <div class="s-textarea-num-tip" data-ele="s-textarea-num-tip">
+                    0/300
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--图片-->
+            <div class="row mgt40">
+              <div class="col-md-1 fwb">图片</div>
+              <div class="col-md-11 clearfix" id="schedule-img-container">
+                <div class="add-img-container" data-ele="add-img">
+                  <img
+                    class="add-img"
+                    src="https://pic.zizaihome.com/f71efdc0-a12c-11e8-9f56-00163e0c001e.png"
+                    alt=""
+                  />
+                  <div class="add-img-text">添加图片</div>
+                </div>
+              </div>
+            </div>
+
+            <!--推送-->
+            <div class="row mgt40">
+              <div
+                class="col-md-1 fwb"
+                style="height: 40px; line-height: 40px;"
+              >
+                推送
+              </div>
+              <div class="col-md-11">
+                <label
+                  class="radio-inline"
+                  style="padding-left: 0;"
+                  for="push-schedule"
+                >
+                  <input
+                    type="radio"
+                    name="if-push"
+                    id="push-schedule"
+                    value="1"
+                    checked
+                  />
+                  <span class="radio"></span> <span>推送给参与者</span>
+                </label>
+                <label
+                  class="radio-inline"
+                  style="padding-left: 0;"
+                  for="not-push-schedule"
+                >
+                  <input
+                    type="radio"
+                    name="if-push"
+                    id="not-push-schedule"
+                    value="0"
+                  />
+                  <span class="radio"></span> <span>不推送</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="text-align: center;">
+              <button
+                type="button"
+                id="save-schedule"
+                class="btn btn-default btn-success"
+              >
+                保存并发布
+              </button>
+            </div>
+          </div>
+          <div
+            class="modal-body schedule-modal-body schedule-list-modal-body"
+            data-ele="schedule-modal-body"
+            data-index="1"
+            id="schedule-list-modal-body"
+            style="display: none;"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <!--佛事进展Modal结束-->
+    <!-- 载入等待图片 开始 -->
+    <div
+      id="loading-toast"
+      class="loading-toast unloaded"
+      style="z-index: 999999999;"
+    >
+      <div class="loading-toast-title" id="loading-toast-title"></div>
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+    <!-- 载入等待图片 结束 -->
+
+    <script
+      src="../../js/lib/in-css/in-css.js"
+      data-in-css-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/in_css_config.js"
+      data-in-css-tag="1"
+      data-in-css-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script data-in-css-tag="1" data-in-css-load-tag="1">
+      InCss.use(
+        'bootstrap',
+        'jquery-confirm',
+        'colors',
+        'component/navigation',
+        '@zzh/pagination',
+        '@senntyou/shortcut.css',
+        '@zzh/promotion/dist/promotion',
+        'bootstrap-select',
+        'datepicker3',
+        '@zzh/choose-image/dist/choose-image',
+        'buddhist/manage'
+      );
+    </script>
+    <script
+      src="../../js/lib/requirejs/require.js"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script
+      src="../../js/common/require_js_config.js"
+      data-require-js-config-tag="1"
+      data-lilacs-no-concat="1"
+    ></script>
+    <script>
+      require(['buddhist/manage']);
+    </script>
+  </body>
+</html>

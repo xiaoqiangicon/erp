@@ -1,0 +1,189 @@
+{
+  "result": 1,
+  "isEnd": 0,
+  "showClient": 1,
+  "id": 936,
+  "title": "新建测试获取数据页面",
+  "explain": "",
+  "detail": "<p>新建测试获取数据页面</p>",
+  "opName": "嗯？？？",
+  "showStatictics": 1,
+  "stock": -1,
+  "showEndTime": 0,
+  "price": "",
+  "startTime": "2017-11-22 17:57:29",
+  "feedbackType": 0,
+  "ceremonyTypeId": 83,
+  "pay_succ_details_flag": 0,
+  "pics": [
+    "https://pic.zizaihome.com/4f6c1aae-8d6e-11e7-b262-00163e0c1e1c.png",
+    "https://pic.zizaihome.com/91269772-b216-11e7-850a-00163e0c1e1c.jpg",
+    "https://pic.zizaihome.com/0bd15354-8d6e-11e7-b262-00163e0c1e1c.png",
+    "https://pic.zizaihome.com/b1286216-9ebc-11e7-b1ba-00163e0c1e1c.png",
+    "https://pic.zizaihome.com/456e2832-b012-11e7-850a-00163e0c1e1c.png"
+  ],
+  "postScript": [
+    {
+      "name": "11",
+      "pic_num": 3,
+      "dataType": 2,
+      "describe": "",
+      "font_length": 0,
+      "prompt_text": "22",
+      "inputType": 1,
+      "id": 26889,
+      "is_must": 1
+    },
+    {
+      "name": "阳上人",
+      "pic_num": 3,
+      "dataType": 2,
+      "describe": "",
+      "font_length": 0,
+      "prompt_text": "请填写功德主姓名（在世）",
+      "inputType": 10,
+      "id": 26890,
+      "is_must": 1
+    }
+  ],
+  "isAutoFinish": 0,
+  "endTime": "2099-12-31 00:00:00",
+  "payDetail": "<section><section style=\"position:relative;margin:0 auto;width: 100%;box-sizing: border-box;overflow: hidden\"><img style=\"width: 100%;\" src=\"https://pic.zizaihome.com/dcb2d320-7820-11e7-8246-00163e0c1e1c.png\" alt=\"\"/><section style=\"position:absolute;left:0;width: 100%;top:35%;height:65%;box-sizing: border-box;overflow: hidden\"><p style=\"font-family:&quot;隶书&quot;;font-weight:500;text-align:center;font-size:40px;color:#fff;letter-spacing: 6px;text-indent: 34px;width: 100%;margin: 0;\">随喜赞叹！</p></section></section></section>",
+  "subdivideStr": [
+    {
+      "sort": 0,
+      "printer": [
+        {
+          "qrcodePrint": 1,
+          "printerId": 3,
+          "continuousPrintNum": 3,
+          "isPrintMobile": 1
+        },
+        {
+          "qrcodePrint": 1,
+          "printerId": 2,
+          "continuousPrintNum": 2,
+          "isPrintMobile": 1
+        }
+      ],
+      "name": "普通佛事",
+      "subdivide_type": 1,
+      "price": 1,
+      "pic": "https://pic.zizaihome.com/4f6c1aae-8d6e-11e7-b262-00163e0c1e1c.png",
+      "postScript": [
+        {
+          "name": "功德芳名",
+          "pic_num": 3,
+          "dataType": 2,
+          "describe": "",
+          "font_length": 0,
+          "prompt_text": "请填写功德主姓名啊啊啊",
+          "inputType": 12,
+          "id": 26887,
+          "is_must": 0
+        },
+        {
+          "name": "111",
+          "pic_num": 3,
+          "dataType": 0,
+          "describe": "",
+          "font_length": 120,
+          "prompt_text": ["11", "22", "33", "44"],
+          "inputType": 14,
+          "id": 26,
+          "is_must": 1
+        },
+        {
+          "name": "111",
+          "pic_num": 3,
+          "dataType": 2,
+          "describe": "",
+          "font_length": 0,
+          "prompt_text": "2012-7-9",
+          "inputType": 2,
+          "id": 26889,
+          "is_must": 1
+        },
+        {
+          "name": "1111",
+          "pic_num": 3,
+          "dataType": 2,
+          "describe": "",
+          "font_length": 0,
+          "prompt_text": "111",
+          "inputType": 1,
+          "id": 26888,
+          "is_must": 1
+        },
+        {
+          "dataType": 1,
+          "describe": "",
+          "font_length": 0,
+          "id": 26942,
+          "inputType": 3,
+          "is_must": 1,
+          "name": "自定义下拉列表",
+          "pic_num": 3,
+          "prompt_text": [
+            { "id": 17948, "name": "选择项1" },
+            { "id": 17949, "name": "选择项2" },
+            { "id": 17950, "name": "选择项3" }
+          ]
+        }
+      ],
+      "explain": "",
+      "isAutoFinish": 0,
+      "id": 1475,
+      "stock": 2
+    },
+    {
+      "sort": 1,
+      "printer": [
+        {
+          "qrcodePrint": 1,
+          "printerId": 2,
+          "continuousPrintNum": 2,
+          "isPrintMobile": 1
+        },
+        {
+          "qrcodePrint": 1,
+          "printerId": 3,
+          "continuousPrintNum": 3,
+          "isPrintMobile": 1
+        }
+      ],
+      "name": "往生牌位",
+      "subdivide_type": 2,
+      "price": "[5,5,5,5.55,5.88,6,6,6.66,6.68,6.88,7.77,8,8.88,9.66,9.99,10,10,10,10,10.01,10.88,11.11,13.14,13.88,15.68,16,16.66,16.88,18,18.18,18.88,19.19,19.88,20,20,20,20.66,22,22.22,25.55,26.66,26.88,28,28.88,33.33,36,38.88,46.66,49.99,50,66.66,68.68,88.88,99.99,100,108,168]",
+      "pic": "",
+      "explain": "",
+      "isAutoFinish": 1,
+      "id": 1476,
+      "stock": 1
+    },
+    {
+      "sort": 2,
+      "printer": [
+        {
+          "qrcodePrint": 1,
+          "printerId": 3,
+          "continuousPrintNum": 3,
+          "isPrintMobile": 1
+        }
+      ],
+      "name": "普通佛事",
+      "subdivide_type": 3,
+      "price": "[5,5,5,5.55,5.88,6,6,6.66,6.68,6.88,7.77,8,8.88,9.66,9.99,10,10,10,10,10.01,10.88,11.11,13.14,13.88,15.68,16,16.66,16.88,18,18.18,18.88,19.19,19.88,20,20,20,20.66,22,22.22,25.55,26.66,26.88,28,28.88,33.33,36,38.88,46.66,49.99,50,66.66,68.68,88.88,99.99,100,108,168]",
+      "pic": "http://erptest.zizaihome.com/static/images/suixi.jpg",
+      "explain": "",
+      "isAutoFinish": 0,
+      "id": 1477,
+      "stock": 1
+    }
+  ],
+  "isOpenPrinter": 0,
+  "printerId": "[1,2]",
+  "continuousPrintNum": 2,
+  "qrcodePrint": 1,
+  "isPrintMobile": 0
+}

@@ -1,0 +1,10 @@
+/*自定义组件*/
+.s-textarea-container {
+  position: relative;
+}
+.s-textarea-num-tip {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #ddd;
+}

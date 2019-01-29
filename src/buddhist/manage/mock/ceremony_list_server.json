@@ -1,0 +1,54 @@
+{
+  "msg": "",
+  "data": [
+    {
+      "ceremonyTypeId": 67,
+      "name": "供奉法事"
+    },
+    {
+      "ceremonyTypeId": 82,
+      "name": "长生佛事"
+    },
+    {
+      "ceremonyTypeId": 83,
+      "name": "正月佛事"
+    },
+    {
+      "ceremonyTypeId": 94,
+      "name": "天朝法事"
+    },
+    {
+      "ceremonyTypeId": 111,
+      "name": "火供法事"
+    },
+    {
+      "ceremonyTypeId": 128,
+      "name": "测试1"
+    },
+    {
+      "ceremonyTypeId": 135,
+      "name": "佛事申请"
+    },
+    {
+      "ceremonyTypeId": 165,
+      "name": "佛事优化"
+    },
+    {
+      "ceremonyTypeId": 166,
+      "name": "测试测试"
+    },
+    {
+      "ceremonyTypeId": 187,
+      "name": "testttt"
+    },
+    {
+      "ceremonyTypeId": 207,
+      "name": "供灯祈福"
+    },
+    {
+      "ceremonyTypeId": 209,
+      "name": "祈福法会"
+    }
+  ],
+  "result": 0
+}

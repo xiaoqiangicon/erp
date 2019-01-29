@@ -1,0 +1,12 @@
+@import 'css/reset.css';
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/common.css';
+
+/* zzh-choose-image */
+.zzh-choose-image .checkbox {
+  background: none;
+  width: 100%;
+  display: block;
+  height: auto;
+}
