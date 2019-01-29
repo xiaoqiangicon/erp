@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>功德主详情</title>
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="nav-bar">
+          <span>功德主</span
+          ><span
+            class="glyphicon glyphicon-menu-right"
+            aria-hidden="true"
+          ></span>
+          <span
+            ><a href="/zzhadmin/meritRankManage/" class="green"
+              >功德主管理</a
+            ></span
+          >
+          <span
+            class="glyphicon glyphicon-menu-right green "
+            aria-hidden="true"
+          ></span>
+          <span class="green " data-id="titleName">功德主详情</span>
+        </div>
+        <div class="cont clearfix">
+          <div class="cont-left">
+            <div class="cont-title">功德主资料</div>
+            <div class="cont-inner">
+              <div class="table-cell-user">
+                <div class="table-cell-user-image">
+                  <img
+                    src=""
+                    id="head_pic"
+                    data-toggle="modal"
+                    data-target="#userDetailModal"
+                  />
+                </div>
+                <div class="table-cell-user-info">
+                  <p class="table-cell-user-name" id="user_name"></p>
+                  <p class="table-cell-user-id" id="zizai_code">
+                    自在家号：<span></span>
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-success right follow-btn"
+                  id="add-to-follow"
+                >
+                  加入分组
+                </button>
+              </div>
+              <div class="green-line-title">所属分组</div>
+              <div class="tag-ctnr" id="tag-ctnr"></div>
+              <div class="green-line-title">系统资料</div>
+              <div id="merit-info-ctnr" class="mgt5"></div>
+            </div>
+          </div>
+          <div class="cont-right">
+            <div class="cont-title">功德主轨迹</div>
+            <div class="cont-inner clearfix">
+              <div class="donation_container">
+                <div class="donation_info donation_money">
+                  <span id="merit_total_money" class="merit_info"></span>
+                  <span class="merit_title">善款总计</span>
+                </div>
+                <div class="donation_info donation_account">
+                  <span id="merit_total_number" class="merit_info"></span>
+                  <span class="merit_title">捐款次数</span>
+                </div>
+              </div>
+              <div style="width: 100%; max-height: 660px;overflow-y: auto;">
+                <table class="table table-striped ">
+                  <thead>
+                    <tr>
+                      <th class="text-center" style="width: 20%">分类</th>
+                      <th class="text-center" style="width: 30%">项目名称</th>
+                      <th class="text-center" style="width: 15%">金额</th>
+                      <th class="text-center" style="width: 25%">参与时间</th>
+                      <th class="text-center" style="width: 10%">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center" id="table-body"></tbody>
+                </table>
+                <!--分页器-->
+                <div class="mgb20" id="pagination-container"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--给功德主添加标签modal-->
+    <div
+      class="modal"
+      id="add-to-follow-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" style="width: 50%;">
+        <div class="modal-content mgt60">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only">Close</span>
+            </button>
+            <h4>选择关注分组</h4>
+          </div>
+          <div
+            class="modal-body pdt60 pdr30 pdb30 pdl30"
+            style="text-align: center;"
+          >
+            <select data-ele="tag-select" multiple title="请选择分组"></select>
+            <div class="text-center mgt60">
+              <button class="btn btn-success" id="save-add-to-follow">
+                保存
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--供佛墙订单详情-->
+    <div class="modal fade in overflow-auto" id="wall-popup">
+      <div class="modal-dialog popup-dialog">
+        <div class="modal-content popup-content" style="border-radius: 6px;">
+          <p><span class="fwb" id="wall-popup-title"></span></p>
+          <p>
+            <span class="fwb">位置编号：</span
+            ><span id="wall-popup-sequence"></span>
+          </p>
+          <p>
+            <span class="fwb">下单时间：</span
+            ><span id="wall-popup-time"></span>
+          </p>
+          <p>
+            <span class="fwb">支付：</span><span id="wall-popup-money"></span>
+          </p>
+          <p>
+            <span class="fwb">供奉类型：</span
+            ><span id="wall-popup-type"></span>
+          </p>
+          <p>
+            <span class="fwb">支付订单号：</span
+            ><span id="wall-popup-order-number"></span>
+          </p>
+          <p>
+            <span class="fwb">支付流水号：</span
+            ><span id="wall-popup-flow-number"></span>
+          </p>
+          <p>
+            <span class="fwb">订单二维码：</span
+            ><span class="inline-block" id="wall-popup-qr-code"></span>
+          </p>
+          <hr />
+          <p><span class="fwb">供奉信息</span></p>
+          <p class="hide">
+            <span>功德芳名：</span><span id="wall-popup-write-name"></span>
+          </p>
+          <p class="hide">
+            <span>阳上人：</span><span id="wall-popup-yang-shang-ren"></span>
+          </p>
+          <p class="hide">
+            <span>往生者：</span><span id="wall-popup-wang-sheng-zhe"></span>
+          </p>
+          <p class="hide">
+            <span>心愿：</span><span id="wall-popup-wish"></span>
+          </p>
+          <div id="wall-popup-contact"></div>
+          <hr />
+          <p><span class="fwb">反馈图片</span></p>
+          <div class="clearfix" id="wall-popup-feed-images"></div>
+          <hr />
+          <p><span class="fwb">备注</span></p>
+          <div id="wall-popup-memo"></div>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <!--佛事订单详情-->
+    <div class="modal fade in overflow-auto" id="buddhist-popup">
+      <div class="modal-dialog popup-dialog">
+        <div
+          class="modal-content popup-content"
+          id="buddhist-popup-cont"
+          style="border-radius: 6px;"
+        ></div>
+      </div>
+    </div>
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+  </body>
+</html>
