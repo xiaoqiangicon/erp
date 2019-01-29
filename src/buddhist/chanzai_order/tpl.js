@@ -81,8 +81,8 @@ var tpl = {
         </p>
         {@else}
         <p class="fwb">反馈图：</p>
-        <div class="image-cell no-feed-back-container" data-src="http://erptest.zizaihome.com/static/images/noPic.jpg" >
-            <img class="csp" data-action="scaleImg" src="http://erptest.zizaihome.com/static/images/noPic.jpg">
+        <div class="image-cell no-feed-back-container" data-src="https://pic.zizaihome.com/9ccf25dc-23a1-11e9-9b75-00163e0c001e.jpg" >
+            <img class="csp" data-action="scaleImg" src="https://pic.zizaihome.com/9ccf25dc-23a1-11e9-9b75-00163e0c001e.jpg">
         </div>
         <div class="mgb10 image-container" data-ele="image-container" data-id="\${id}" style="display: inline-block;vertical-align: top;">
         </div>

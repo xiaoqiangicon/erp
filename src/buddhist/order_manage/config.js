@@ -103,7 +103,7 @@ define(['juicer'], function() {
     '</p>',
     '{@else}',
     '<p class="fwb">反馈图：</p>',
-    '<img id="feed_back_pic" src="http://erptest.zizaihome.com/static/images/noPic.jpg" width="100" height="100"/>',
+    '<img id="feed_back_pic" src="https://pic.zizaihome.com/9ccf25dc-23a1-11e9-9b75-00163e0c001e.jpg" width="100" height="100"/>',
     '<div class="mgb10 images-content" data-id="${id}">',
     '</div>',
     '<p class="upload_wrap inline-block" id="feed_back_pic_box">',

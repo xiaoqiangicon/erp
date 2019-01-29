@@ -2874,47 +2874,9 @@
       />
     </div>
 
-    <script
-      src="../../js/lib/in-css/in-css.js"
-      data-in-css-tag="1"
-      data-lilacs-no-concat="1"
-    ></script>
-    <script
-      src="../../js/common/in_css_config.js"
-      data-in-css-tag="1"
-      data-in-css-config-tag="1"
-      data-lilacs-no-concat="1"
-    ></script>
-    <script data-in-css-tag="1" data-in-css-load-tag="1">
-      InCss.use(
-        'bootstrap',
-        'bootstrap-switch',
-        'bootstrap-select',
-        'jquery-confirm',
-        'colors',
-        'component/navigation',
-        'jquery-ui',
-        'datepicker3',
-        'bootstrap-datetimepicker',
-        'summernote',
-        'city-picker',
-        'component/editor',
-        'buddhist/create'
-      );
-    </script>
-    <script
-      src="../../js/lib/requirejs/require.js"
-      data-lilacs-no-concat="1"
-    ></script>
-    <script
-      src="../../js/common/require_js_config.js"
-      data-require-js-config-tag="1"
-      data-lilacs-no-concat="1"
-    ></script>
     <script>
-      var ceremonyMap = {{ceremonyMap | safe}};
-      // var ceremonyMap = {};
-      require(['buddhist/create']);
+      // var ceremonyMap = {{ceremonyMap | safe}};
+      var ceremonyMap = {};
     </script>
   </body>
 </html>

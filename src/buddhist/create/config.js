@@ -32,7 +32,7 @@ define(['juicer'], function() {
   appConfig.urls = appConfig.urls || {};
   var buddistTypeList = [
     '/zzhadmin/createCeremonyTypeList',
-    '/static/data/buddhist/type_list.json',
+    '/src/buddhist/mock/type_list.json',
   ];
   // 标签URL
   appConfig.urls.buddhist = {};
@@ -54,7 +54,7 @@ define(['juicer'], function() {
     '<td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png" data-index="15" data-src="https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png" alt="心愿"></td>',
     '{@else}',
     '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-    '<img src="/static/img/sorting-arrows.png" data-id="${inputId}" alt="换位置"></td>',
+    '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
     '<td>',
     '<select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="${cid}">',
     '<option value="4">联系人</option>',
@@ -82,7 +82,7 @@ define(['juicer'], function() {
     '<td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" data-index="11" data-src="https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png" alt="往生者"></td>',
     '{@else}',
     '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-    '<img src="/static/img/sorting-arrows.png" data-id="${inputId}" alt="换位置"></td>',
+    '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
     '<td>',
     '<select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="${cid}">',
     '<option value="4">联系人</option>',
@@ -103,7 +103,7 @@ define(['juicer'], function() {
     '{@/if}',
     '{@else}',
     '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-    '<img src="/static/img/sorting-arrows.png" data-id="${inputId}" alt="换位置"></td>',
+    '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
     '<td>',
     '<select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="${cid}">',
     '<option value="4">联系人</option>',
@@ -195,7 +195,7 @@ define(['juicer'], function() {
   // 附言模板
   appConfig.template.component.additionItem_tmp = [
     '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-    '<img src="/static/img/sorting-arrows.png" data-id="${inputId}" alt="换位置"></td>',
+    '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
     '<td>',
     '<select name="additionType" class="additionType selectpicker sizePosSelect" data-cid="${cid}">',
     '<option value="4">联系人</option>',
@@ -276,7 +276,7 @@ define(['juicer'], function() {
   // 选择项模板
   appConfig.template.component.size_tmp = [
     '<td class="sortable-handle" style="cursor: pointer;line-height: 50px;text-align: center" data-id="${id}">',
-    '<img src="/static/img/sorting-arrows.png" alt="换位置"></td>',
+    '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" alt="换位置"></td>',
     '<td class="tac">',
     '<select name="sizeType" style="mgl0" class="sizeType selectpicker sizePosSelect" data-cid="${cid}">',
     '<option value="1">普通佛事</option>',
