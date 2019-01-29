@@ -153,47 +153,47 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
     url: {
       getBuddhistType: [
         '/zzhadmin/createCeremonyTypeList/',
-        '/static/data/buddhist/manage_new/ceremony_list_server.json',
-        '/static/data/buddhist/manage_new/ceremony_list.json',
+        '/src/buddhist/manage/mock/ceremony_list_server.json',
+        '/src/buddhist/manage/mock/ceremony_list.json',
       ],
       getList: [
         '/zzhadmin/managerCeremonyList/',
-        '/static/data/buddhist/manage_new/index_list_server.json',
-        '/static/data/buddhist/manage_new/index_list.json',
+        '/src/buddhist/manage/mock/index_list_server.json',
+        '/src/buddhist/manage/mock/index_list.json',
       ],
       deleteItem: [
         '/zzhadmin/managerDelCeremony/',
-        '/static/data/buddhist/ceremony_delete.json',
+        '/src/buddhist/mock/ceremony_delete.json',
       ],
       addTemplate: ['/zzhadmin/saveCeremonyTemplate/'],
       endItem: ['/zzhadmin/endCommodity/'],
       printerList: [
         '/zzhadmin/getPrinterList/',
-        '/static/data/buddhist/manage_new/printer_list_server.json',
-        '/static/data/buddhist/manage_new/printer_list.json',
+        '/src/buddhist/manage/mock/printer_list_server.json',
+        '/src/buddhist/manage/mock/printer_list.json',
       ],
       printerStatus: [
         '/zzhadmin/getPrinterStatus/',
-        '/static/data/buddhist/manage_new/printer_status_server.json',
-        '/static/data/buddhist/manage_new/printer_status.json',
+        '/src/buddhist/manage/mock/printer_status_server.json',
+        '/src/buddhist/manage/mock/printer_status.json',
       ],
       CommoditySubdivide: [
         // 佛事的所有规格
         '/zzhadmin/getCommoditySubdivide/',
-        '/static/data/buddhist/manage_new/commodity_subbidivide_server.json',
-        '/static/data/buddhist/manage_new/commodity_subbidivide.json',
+        '/src/buddhist/manage/mock/commodity_subbidivide_server.json',
+        '/src/buddhist/manage/mock/commodity_subbidivide.json',
       ],
       CommodityPrinter: [
         // 佛事的打印机配置
         '/zzhadmin/getCommodityPrinter/',
-        '/static/data/buddhist/manage_new/commodity_printer_server.json',
-        '/static/data/buddhist/manage_new/commodity_printer.json',
+        '/src/buddhist/manage/mock/commodity_printer_server.json',
+        '/src/buddhist/manage/mock/commodity_printer.json',
       ],
       addAndUpdateCommodity2Printer: [
         // 保存打印机配置
         '/zzhadmin/addAndUpdateCommodity2Printer/',
-        '/static/data/buddhist/manage_new/commodity_printer_server.json',
-        '/static/data/buddhist/manage_new/commodity_printer.json',
+        '/src/buddhist/manage/mock/commodity_printer_server.json',
+        '/src/buddhist/manage/mock/commodity_printer.json',
       ],
       getBuddhistPoster: [
         // 获取佛事海报信息
