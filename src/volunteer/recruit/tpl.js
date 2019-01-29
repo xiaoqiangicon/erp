@@ -37,7 +37,7 @@ var tpl = {
         <div class="condition-content-container" data-container="condition-content">
             <div class="pagination-content-container" data-container="pagination-content" data-page-index="1">
                 <div class="content-placeholder">
-                    <img src="/static/images/common/loading.gif">
+                    <img src="../../../images/common/loading.gif">
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ var tpl = {
   paginationContentContainer: `
         <div class="pagination-content-container" data-container="pagination-content" data-page-index="\${pageIndex}">
             <div class="content-placeholder">
-                <img src="/static/images/common/loading.gif">
+                <img src="../../../images/common/loading.gif">
             </div>
         </div>
     `,
@@ -54,7 +54,7 @@ var tpl = {
     `,
   paginationContentContainerLoading: `
         <div class="content-placeholder">
-            <img src="/static/images/common/loading.gif">
+            <img src="../../../images/common/loading.gif">
         </div>
     `,
   paginationContainer: `

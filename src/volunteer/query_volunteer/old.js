@@ -3,13 +3,11 @@
  */
 define([
   'jquery',
-  'toast',
-  './query_volunteer_config',
-  'bootstrap-select',
-  'datepicker_zh',
-  'backbone',
+  'old/toast',
+  './config',
+  'old/bootstrap-select.min',
+  'old/backbone',
   'juicer',
-  'component/navigation',
 ], function($, Toast, config) {
   $.ajaxSetup({
     cache: false,

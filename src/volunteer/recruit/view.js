@@ -10,10 +10,9 @@ define([
   './tpl',
   './function',
   'clipboard',
-  'component/promotion',
-  'jquery-qrcode',
+  '@zzh/promotion',
   './ajax',
-  'jquery.seeView',
+  'lib/jquery.seeView',
 ], function($, commonFunc, commonVars, data, tpl, func, Clipboard, Promotion) {
   $.seeView({
     events: {

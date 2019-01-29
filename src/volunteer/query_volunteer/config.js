@@ -1,7 +1,7 @@
 /**
  * Created by Linfe on 2017/4/1.
  */
-define(['juicer'], function() {
+define(['./images', 'juicer'], function(images) {
   var appConfig = {
     environment: 0, //环境标识（用于数组选值）：0->',服务器环境, 1->',本地服务器测试
   };
@@ -17,11 +17,11 @@ define(['juicer'], function() {
     '<div class="topleft pull-left">',
     '{@if item.head_img == ""}',
     '{@if item.sex == "男"}',
-    '<img src="/static/images/volunteer/male.png" alt="头像" class="portrait"/>',
+    '<img src="' + images.maleImage + '" alt="头像" class="portrait"/>',
     '{@else if item.sex == "女"}',
-    '<img src="/static/images/volunteer/female.png" alt="默认头像" class="portrait"/>',
+    '<img src="' + images.femaleImage + '" alt="默认头像" class="portrait"/>',
     '{@else}',
-    '<img src="/static/images/volunteer/user.png" alt="默认头像" class="portrait"/>',
+    '<img src="' + images.userImage + '" alt="默认头像" class="portrait"/>',
     '{@/if}',
     '{@else}',
     '<img src="${item.head_img}" alt="头像" class="portrait"/>',

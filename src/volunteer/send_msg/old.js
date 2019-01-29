@@ -3,16 +3,14 @@
  */
 define([
   'jquery',
-  'volunteer/send_msg_config',
-  'bootstrap',
-  'toast',
-  'backbone',
+  './config',
+  'old/toast',
+  'old/backbone',
   'juicer',
-  'component/navigation',
-  'bootstrap-select',
-  'jqPagination',
-  'waterMark',
-], function($, config, Bootstrap, Toast) {
+  'old/bootstrap-select.min',
+  'old/jquery.pagination',
+  'old/jquery.watermark.min',
+], function($, config, Toast) {
   var View = Backbone.View.extend({
     el: 'body',
     events: {

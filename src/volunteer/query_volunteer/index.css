@@ -11,7 +11,7 @@ main {
 }
 
 .smallHouse {
-  background-image: url('/static/images/buddha/smallHouse.png');
+  background-image: url('../../../images/buddha/smallHouse.png');
 }
 
 .navigateBar span:first-child {
@@ -143,7 +143,7 @@ main {
 .rightBox::before {
   content: '';
   display: block;
-  background: url('/static/img/shadow.png') no-repeat;
+  background: url('../../../images/old/shadow.png') no-repeat;
   width: 100%;
   height: 12px;
   position: absolute;
@@ -152,7 +152,7 @@ main {
 
 /*卡片*/
 .bell_icon {
-  background: url('/static/img/bell.png') no-repeat center;
+  background: url('../../../images/old/bell.png') no-repeat center;
   background-size: 50%;
   width: 97px;
   height: 141px;
@@ -267,7 +267,7 @@ main {
   top: 1px;
   right: 1px;
   display: none;
-  background: url('/static/img/selectedCard.png') no-repeat center;
+  background: url('../../../images/old/selectedCard.png') no-repeat center;
   z-index: 50;
 }
 
@@ -283,7 +283,7 @@ main {
   top: 1px;
   right: 1px;
   display: none;
-  background: url('/static/img/selectedCard2.png') no-repeat center;
+  background: url('../../../images/old/selectedCard2.png') no-repeat center;
 }
 
 .volGroupPanel:hover .maskDown {
@@ -346,17 +346,17 @@ main {
 }
 
 .weChat-icon {
-  background: url('/static/img/WeChat-icon.png') no-repeat center;
+  background: url('../../../images/old/WeChat-icon.png') no-repeat center;
   background-size: 100%;
 }
 
 .msg-icon {
-  background: url('/static/img/msg-icon.png') no-repeat center;
+  background: url('../../../images/old/msg-icon.png') no-repeat center;
   background-size: 100%;
 }
 
 .del-icon {
-  background: url('/static/img/del-icon.png') no-repeat center;
+  background: url('../../../images/old/del-icon.png') no-repeat center;
   background-size: 70%;
 }
 
@@ -465,7 +465,7 @@ main {
 /*top*/
 #scrollTop,
 #scrollTop .level-2 {
-  background: url(/static/img/rocket_up02.png) no-repeat 0 0;
+  background: url(../../../images/old/rocket_up02.png) no-repeat 0 0;
   background-size: 400%;
 }
 

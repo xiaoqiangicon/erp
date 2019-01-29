@@ -5,7 +5,7 @@ input[type='radio'] {
   display: none;
 }
 .checkbox {
-  background: url(/static/images/common/unchecked.png) no-repeat center;
+  background: url(../../../images/common/unchecked.png) no-repeat center;
   background-size: 60%;
   padding: 0;
   width: 24px;
@@ -14,7 +14,7 @@ input[type='radio'] {
   vertical-align: middle;
 }
 input[type='radio']:checked + .checkbox {
-  background-image: url('/static/images/common/checked.png') !important;
+  background-image: url('../../../images/common/checked.png') !important;
 }
 .sum {
   padding: 20px 127px 20px 10px;
@@ -58,7 +58,7 @@ main {
 }
 
 .info-icon {
-  background: url('/static/images/volunteer/info_icon.png') no-repeat center;
+  background: url('../../../images/volunteer/info_icon.png') no-repeat center;
   float: left;
   background-size: 100%;
   width: 38px;
@@ -67,12 +67,12 @@ main {
 }
 
 .error-icon {
-  background-image: url('/static/images/volunteer/error_icon.png');
+  background-image: url('../../../images/volunteer/error_icon.png');
   margin: 0 20px 30px 0;
 }
 
 .success_icon {
-  background-image: url('/static/images/volunteer/success_icon.png');
+  background-image: url('../../../images/volunteer/success_icon.png');
   margin: 10px 20px 30px 0;
 }
 

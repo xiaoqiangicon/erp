@@ -2,7 +2,7 @@
  * Created by senntyou on 2017/8/3.
  */
 
-define(['jquery', 'jquery.seeAjax'], function($) {
+define(['jquery', 'lib/jquery.seeAjax'], function($) {
   var requestKeysOuter = {
     // 左侧本地，右侧服务器
     list: {
@@ -43,7 +43,7 @@ define(['jquery', 'jquery.seeAjax'], function($) {
   };
 
   $.seeAjax.config({
-    environment: 0, //环境标识（用于数组选值）：0->服务器环境, 1->本地服务器测试，2->本地环境
+    environment: __SEE_ENV__, //环境标识（用于数组选值）：0->服务器环境, 1->本地服务器测试，2->本地环境
     //所有请求的名字，这里可以是对象，也可是数组，但请不要使用“common”字段和值
     name: {
       // 获取义工活动列表
@@ -53,8 +53,8 @@ define(['jquery', 'jquery.seeAjax'], function($) {
     url: {
       list: [
         '/zzhadmin/getActivityList/',
-        '/static/data/volunteer/recruit/index_list_server.json',
-        '/static/data/volunteer/recruit/index_list.json',
+        '/src/volunteer/recruit/mock/index_list_server.json',
+        '/src/volunteer/recruit/mock/index_list.json',
       ],
     },
     // 请求参数
