@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>功德箱管理</title>
+  </head>
+  <body data-menu-id="temple-donate-box">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section clearfix">
+          <div class="title-section-stat">
+            <div class="title-section-stat-cell">
+              <div class="content" id="total-donate">- -</div>
+              <div class="title">总善款</div>
+            </div>
+            <div class="title-section-stat-cell">
+              <div class="content" id="month-donate">- -</div>
+              <div class="title">月善款</div>
+            </div>
+            <div class="title-section-stat-cell">
+              <div class="content" id="day-donate">- -</div>
+              <div class="title">日善款</div>
+            </div>
+          </div>
+          <div class="title-section-tip">
+            小贴士：微信端的功德箱，显示的是所有项目的流水合集。后台此处的统计，仅包含功德箱和高僧供养的善款部分。
+          </div>
+        </div>
+        <div class="filter-section clearfix">
+          <div class="filter-section-query">
+            <span class="start">时间：</span>
+            <span class="input-container">
+              <input
+                class="form-control input"
+                type="text"
+                id="filter-start-date"
+                data-time-input="1"
+                placeholder="起始时间"
+              />
+              <i class="glyphicon glyphicon-calendar calendar-icon"></i>
+            </span>
+            <span class="input-container">
+              <input
+                class="form-control input"
+                type="text"
+                id="filter-end-date"
+                data-time-input="2"
+                placeholder="结束时间"
+              />
+              <i class="glyphicon glyphicon-calendar calendar-icon"></i>
+            </span>
+            <button class="btn btn-default button" id="filter-submit">
+              查询
+            </button>
+          </div>
+          <div class="filter-section-button">
+            <button class="btn btn-green button mgr15" id="promotion">
+              推广入口
+            </button>
+            <button class="btn btn-default button" id="export">
+              导出EXCEL
+            </button>
+          </div>
+        </div>
+        <div class="content-section">
+          <div class="content-section-head">
+            <div class="pay-cell">
+              <span class="pay-nick-name">随喜者</span>
+              <span class="pay-wish">心愿</span>
+              <span class="pay-source">来源</span>
+              <span class="pay-amount">随喜金额</span>
+              <span class="pay-time">随喜时间</span>
+            </div>
+          </div>
+          <div class="date-content-containers" id="date-content-containers">
+            <div
+              class="date-content-container"
+              data-container="date-content"
+              data-start-date=""
+              data-end-date=""
+            >
+              <div
+                class="pagination-content-container"
+                data-container="pagination-content"
+                data-page-index="1"
+              >
+                <div class="content-placeholder">
+                  <img src="../../../images/common/loading.gif" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-section" id="pagination-containers">
+          <div
+            class="pagination-container"
+            data-container="pagination"
+            data-start-date=""
+            data-end-date=""
+          ></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
