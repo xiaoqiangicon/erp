@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "image": "/sample/image1.jpg",
+      "hide": 0,
+      "type": 1,
+      "typeText": "佛事",
+      "title": "haha1",
+      "link": "hehe1",
+      "contentId": 1,
+      "templeIds": [1, 2]
+    },
+    {
+      "id": 2,
+      "image": "/sample/image2.jpg",
+      "hide": 1,
+      "type": 2,
+      "typeText": "文章",
+      "title": "haha2",
+      "link": "hehe2",
+      "contentId": 2,
+      "templeIds": [1, 2]
+    },
+    {
+      "id": 3,
+      "image": "/sample/image3.jpg",
+      "hide": 0,
+      "type": 3,
+      "typeText": "自定义",
+      "title": "haha3",
+      "link": "hehe3",
+      "contentId": 3,
+      "templeIds": [1, 2]
+    }
+  ]
+}

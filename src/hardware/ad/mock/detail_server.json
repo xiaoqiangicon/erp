@@ -1,0 +1,35 @@
+{
+  "result": 0,
+  "data": [
+    {
+      "id": 1,
+      "picUrl": "/sample/image1.jpg",
+      "status": 0,
+      "type": 1,
+      "title": "haha1",
+      "linkUrl": "hehe1",
+      "contentId": 1,
+      "templeId": "1,2"
+    },
+    {
+      "id": 2,
+      "picUrl": "/sample/image2.jpg",
+      "status": 1,
+      "type": 2,
+      "title": "haha2",
+      "linkUrl": "hehe2",
+      "contentId": 2,
+      "templeId": "1,2"
+    },
+    {
+      "id": 3,
+      "picUrl": "/sample/image3.jpg",
+      "status": 0,
+      "type": 0,
+      "title": "haha3",
+      "linkUrl": "hehe3",
+      "contentId": 3,
+      "templeId": "1,2"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>满福屏电子海报管理</title>
+  </head>
+  <body data-menu-id="hardware-ad">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title">
+          <span id="machine-name"></span> 满福屏 电子海报：
+        </div>
+        <div class="divider"></div>
+        <div class="content-section">
+          <div class="head">
+            <div class="content-row">
+              <div class="content-cell">海报ID</div>
+              <div class="content-cell">标题</div>
+              <div class="content-cell">状态</div>
+              <div class="content-cell">来源</div>
+              <div class="content-cell">操作</div>
+            </div>
+          </div>
+          <div class="body" id="content-body"></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/html" id="tpl-row">
+      <div class="content-row {@if hide}hided{@/if}" data-row="${id}">
+          <div class="content-cell">${id}</div>
+          <div class="content-cell">${title}</div>
+          <div class="content-cell content-cell-status" data-row-hide="${id}">{@if hide}隐藏{@else}显示{@/if}</div>
+          <div class="content-cell" data-row-type="${id}">${typeText}</div>
+          <div class="content-cell">
+              <button class="btn {@if hide}btn-show{@else}btn-hide{@/if}" data-row-switch="${id}" data-hide="${hide}">{@if hide}显示{@else}隐藏{@/if}</button>
+          </div>
+      </div>
+    </script>
+  </body>
+</html>
