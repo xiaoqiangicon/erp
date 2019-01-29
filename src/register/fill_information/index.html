@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>填写信息</title>
+  </head>
+  <body>
+    <section>
+      <section id="menu">
+        <header>
+          <div class="leftHead">
+            <a href="javascript:void[0]"
+              ><span class="logo pull-left"></span
+            ></a>
+            <!--<div class="slogan">
+                    <span>这是一句slogan</span>
+                </div>-->
+          </div>
+          <div class="rightHead">
+            <span class="loginPic"></span>
+            <span class="login" id="login"
+              ><a href="/accounts/login/">登录</a></span
+            >
+            <span class="login hide" id="logined"></span>
+            <span class="certifi uncerticicated hide">认证中</span>
+          </div>
+        </header>
+      </section>
+      <section id="main">
+        <main data-id="fillInformation">
+          <nav>
+            <div class="nav1"><span>资料准备</span></div>
+            <div class="nav2"><span>填写信息</span></div>
+            <div class="nav3"><span>提交资料</span></div>
+          </nav>
+          <div class="tip"><h3>寺院信息设置</h3></div>
+          <div class="form">
+            <form
+              action="#"
+              class="form-horizontal"
+              id="templeInfor"
+              onClick="return false"
+            >
+              <div class="form-group templeForm">
+                <label for="templeName" class="col-sm-2 control-label"
+                  >寺院名称</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templeName"
+                    name="templeName"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>
+                    需与当地政府颁发的宗教活动场地登记证上的名称完全一致，信息审核成功后，寺院名称不可修改。
+                  </p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"
+                    >只能输入中文</span
+                  >
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templeCode" class="col-sm-2 control-label"
+                  >场所编号</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templeCode"
+                    name="templeCode"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>请输入宗教活动场地登记编号，如：冀 F010230006</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"></span>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label class="col-sm-2 control-label">详细地址</label>
+                <div id="province" style="display:inline-block">
+                  <select data-id="province"></select>
+                  <select data-id="city"></select>
+                  <select data-id="district"></select>
+                </div>
+                <div class="col-sm-10 templeValue" style="margin-left:18%;">
+                  <p>请选择寺院所在省份和城市位置信息。</p>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >请选择所在地址</span
+                  >
+                </div>
+                <div style="display:inline-block;width:82%;margin-left:18%;">
+                  <input
+                    id="address"
+                    name="address"
+                    type="text"
+                    class="form-control required"
+                  />
+                </div>
+                <div class="col-sm-10 templeValue" style="margin-left:18%;">
+                  <p>请填写寺院所在详细位置信息。</p>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >请填写详细地址</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templeLegal" class="col-sm-2 control-label"
+                  >寺院法人</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templeLegal"
+                    name="templeLegal"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>请输入宗教活动场地登记证上寺院法人信息一致的真实姓名。</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"></span>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templeTel" class="col-sm-2 control-label"
+                  >手机号码</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templeTel"
+                    name="templeTel"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>请输入寺院法人常用的手机号码。</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"
+                    >请输入有效的手机号码</span
+                  >
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templeEmail" class="col-sm-2 control-label"
+                  >电子邮箱</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templeEmail"
+                    name="templeEmail"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>输入常用的邮箱。</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"
+                    >请输入正确的邮箱</span
+                  >
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="tip2"><h3>后台登录设置</h3></div>
+              <div class="form-group templeForm">
+                <label
+                  class="col-sm-2 control-label"
+                  style="width:18%;margin-bottom: 5px"
+                  >您是寺院法人？</label
+                >
+                <label id="isLegal">
+                  <input type="radio" value="1" name="Legal" />
+                  <span class="checkbox"></span>
+                  <span style="vertical-align: middle">是</span>
+                </label>
+                <label id="noLegal">
+                  <input
+                    type="radio"
+                    value="0"
+                    name="Legal"
+                    checked="checked"
+                  />
+                  <span class="checkbox"></span>
+                  <span style="vertical-align: middle">否</span>
+                </label>
+                <div class="loginTip">
+                  <span>注册人手机号码为登录账号</span>
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templeSignin" class="col-sm-2 control-label"
+                  >注册人</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templeSignin"
+                    name="templeSignin"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>请输入注册自在家项目人的真实姓名。</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"></span>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templePhone" class="col-sm-2 control-label"
+                  >手机号码</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templePhone"
+                    name="templePhone"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>请输入您的手机号码，一个手机号码只能注册1个自在家帐号。</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"
+                    >请输入正确的手机号码</span
+                  >
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templeVertifica" class="col-sm-2 control-label"
+                  >短信验证码</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templeVertifica"
+                    name="clear"
+                    type="text"
+                    class="form-control required"
+                    minlength="6"
+                    maxlength="6"
+                    autocomplete="off"
+                  />
+                  <button id="vertifica" data-id="vertifica" class="vertifica">
+                    获取验证码
+                  </button>
+                  <p>请输入手机短信收到的验证码</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"></span>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templePassword" class="col-sm-2 control-label"
+                  >登录密码</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templePassword"
+                    name="clear"
+                    type="password"
+                    class="form-control required"
+                    autocomplete="off"
+                  />
+                  <span id="showPassword" class="showPassword"></span>
+                  <p>请输入管理自在家寺院的登录密码（至少6位）</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"></span>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="templePassword2" class="col-sm-2 control-label"
+                  >确认密码</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="templePassword2"
+                    name="clear"
+                    type="password"
+                    class="form-control required"
+                    autocomplete="off"
+                  />
+                  <span id="showPassword2" class="showPassword"></span>
+                  <p>请输入确认密码（至少6位）</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"></span>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="divider"></div>
+          <div><button class="next" id="fillNext">下一步</button></div>
+        </main>
+      </section>
+      <footer>
+        <div class="footer">
+          <a href="javascript:void[0]">关于自在家</a>
+          <a href="javascript:void[0]">服务协议</a>
+          <a href="javascript:void[0]">运营规范</a>
+          <a href="javascript:void[0]">客服中心</a>
+          <a href="javascript:void[0]">侵权投诉</a>
+          <span>Copyright © 2012-2017 Miaoyan. All Rights Reserved</span>
+        </div>
+      </footer>
+    </section>
+  </body>
+</html>

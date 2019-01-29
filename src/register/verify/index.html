@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>审核</title>
+  </head>
+  <body>
+    <section>
+      <section id="menu">
+        <header>
+          <div class="leftHead">
+            <a href="javascript:void[0]"
+              ><span class="logo pull-left"></span
+            ></a>
+            <!--<div class="slogan">
+                    <span class="sloganText"></span>
+                </div>-->
+          </div>
+          <div class="rightHead">
+            <span class="loginPic"></span>
+            <span class="login" id="login"
+              ><a href="/accounts/login/">登录</a></span
+            >
+            <span class="login hide" id="logined"></span>
+            <span class="certifi uncerticicated ">认证中</span>
+            <span class="certifi certicicateFail hide">未认证</span>
+            <span class="logout"><a href="/zzhadmin/logout/">注销</a></span>
+          </div>
+        </header>
+      </section>
+      <section id="main">
+        <main data-id="submitVerify" class="hide">
+          <div class="icon1"></div>
+          <div class="tip">已提交审核</div>
+          <div class="tip2">
+            预计5个工作日内完成审核，将有专人和您电话沟通确认
+          </div>
+          <!--<div><button class="zizaihom">了解自在家</button></div>-->
+          <div>
+            <button class="supplement" id="suppleInfo">补填资料</button>
+          </div>
+          <div class="question">有疑问？</div>
+          <div class="public">
+            <h3>扫描进入公众号</h3>
+            <img src="../../../images/register/public.png" alt="公众号" />
+            <h3>可直接拨打电话</h3>
+            <p>400-8816-318</p>
+          </div>
+        </main>
+        <main data-id="submitFail" class="hide">
+          <div class="icon2"></div>
+          <div class="tip">抱歉，您未通过审核</div>
+          <!--<div class="tip2">未通过审核的原因</div>-->
+          <div><button class="previous" id="returnPrev">修改资料</button></div>
+          <div class="question">有疑问？</div>
+          <div class="public">
+            <h3>扫描进入公众号</h3>
+            <img src="../../../images/register/public.png" alt="公众号" />
+            <h3>可直接拨打电话</h3>
+            <p>400-8816-318</p>
+          </div>
+        </main>
+        <!--<main data-id="submitSuccess" class="hide">
+            <div class="icon3"></div>
+            <div class="tip">已审核通过</div>
+            <div class="tip2">登录自在家构建您的寺院</div>
+            <div><button class="login">登录</button></div>
+            <div class="question">有疑问？</div>
+            <div class="public">
+                <h3>扫描进入公众号</h3>
+                <img src="../../../images/register/public.png" alt="公众号">
+                <h3>可直接拨打电话</h3>
+                <p>400-8816-318</p>
+            </div>
+        </main>-->
+      </section>
+      <footer>
+        <div class="footer">
+          <a href="javascript:void[0]">关于自在家</a>
+          <a href="javascript:void[0]">服务协议</a>
+          <a href="javascript:void[0]">运营规范</a>
+          <a href="javascript:void[0]">客服中心</a>
+          <a href="javascript:void[0]">侵权投诉</a>
+          <span>Copyright © 2012-2017 Miaoyan. All Rights Reserved</span>
+        </div>
+      </footer>
+    </section>
+
+    <script>
+      var verifyData = {{ data | safe}};
+      console.log(verifyData);
+    </script>
+  </body>
+</html>
