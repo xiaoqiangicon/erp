@@ -7,10 +7,8 @@ define([
   'common/function',
   './tpl',
   './data',
-  'component/pagination',
+  '@zzh/pagination',
   './ajax',
-  'datepicker',
-  'datepicker_zh',
 ], function($, commonFunc, tpl, data, Pagination) {
   var func = {};
   func.init = function() {

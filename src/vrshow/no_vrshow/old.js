@@ -3,12 +3,7 @@
  * 实景礼佛-应用介绍
  */
 
-define([
-  'jquery',
-  './no_vrshow/function',
-  './no_vrshow/view',
-  'component/navigation',
-], function($, func) {
+define(['jquery', './function', './view'], function($, func) {
   //设置AJAX的全局默认选项
   $.ajaxSetup({
     cache: !1, // 禁用缓存
