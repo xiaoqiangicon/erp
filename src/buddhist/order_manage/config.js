@@ -10,40 +10,40 @@ define(['juicer'], function() {
   // url列表
   var commodityList = [
       '/zzhadmin/getCommodityNameList/',
-      '/static/data/buddhist/commodity_list_get_data.json',
+      '/src/buddhist/mock/commodity_list_get_data.json',
     ],
     commoditySelectionList = [
       '/zzhadmin/getCommoditySubtypeList/',
-      '/static/data/buddhist/selection_list_get_data.json',
+      '/src/buddhist/mock/selection_list_get_data.json',
     ],
     printerList = [
       '/zzhadmin/getPrinterList/',
-      '/static/data/buddhist/printer_list.json',
+      '/src/buddhist/mock/printer_list.json',
     ],
     printerStatus = [
       '/zzhadmin/getPrinterStatus/',
-      '/static/data/buddhist/printer_status.json',
+      '/src/buddhist/mock/printer_status.json',
     ],
     printOrders = [
       '/zzhadmin/printAppointOrder/',
-      '/static/data/buddhist/print_orders.json',
+      '/src/buddhist/mock/print_orders.json',
     ],
     // 批量处理订单接口
     finishMultiOrder = [
       '/zzhadmin/finishMoreOrder/',
-      '/static/data/buddhist/finish_multi_order.json',
+      '/src/buddhist/mock/finish_multi_order.json',
     ],
     unFinishMultiOrder = [
       '/zzhadmin/finishMoreOrder/',
-      '/static/data/buddhist/un_finish_multi_order.json',
+      '/src/buddhist/mock/un_finish_multi_order.json',
     ],
     finishOrder = [
       '/zzhadmin/finishOrder/',
-      '/static/data/buddhist/finish_order.json',
+      '/src/buddhist/mock/finish_order.json',
     ],
     orderList = [
       '/zzhadmin/ceremonyGetList/',
-      '/static/data/buddhist/order_list.json',
+      '/src/buddhist/mock/order_list.json',
     ],
     updateFeedBackPic = ['/zzhadmin/updateDisposePic/', ''];
 
