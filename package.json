@@ -72,7 +72,7 @@
     "@senntyou/canvas2image": "^0.0.1",
     "@senntyou/shortcut.css": "^0.1.0",
     "@zzh/choose-icon": "git+http://git.zizaihome.cn/senntyou/choose-icon.git#71cd2add",
-    "@zzh/choose-image": "git+http://git.zizaihome.cn/senntyou/choose-image.git#400f0dea",
+    "@zzh/choose-image": "git+http://git.zizaihome.cn/senntyou/choose-image.git#4c1baea6",
     "@zzh/common.css": "^0.3.0",
     "@zzh/count-down": "^0.3.0",
     "@zzh/distpicker": "^0.3.0",
