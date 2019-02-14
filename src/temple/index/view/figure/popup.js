@@ -78,10 +78,10 @@ define([
         return;
       }
 
-      if (!honorName) {
-        dialog('法师称谓不能为空');
-        return;
-      }
+      // if (!honorName) {
+      //   dialog('法师称谓不能为空');
+      //   return;
+      // }
 
       if (!description) {
         dialog('简介不能为空');

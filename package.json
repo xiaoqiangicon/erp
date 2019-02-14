@@ -36,6 +36,7 @@
     "lila-webpack": "^0.5.4",
     "lila-webpack-config": "^0.5.4",
     "lint-staged": "^7.3.0",
+    "moment-locales-webpack-plugin": "^1.0.7",
     "prettier": "^1.14.3",
     "stylelint": "^9.6.0",
     "stylelint-config-prettier": "^4.0.0",

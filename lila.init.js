@@ -2,6 +2,7 @@
 import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack';
 import webpackConfigPlugin from 'lila-webpack-config';
+import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
 import accounts from '../accounts';
 
 const servers = [
@@ -90,6 +91,9 @@ const splitJs = {
   },
   'component/ueditor_plugins/music': {
     lib: ['jquery', 'react-dom'],
+  },
+  'temple/index': {
+    lib: ['jquery', 'handlebars', '@zzh/distpicker', 'moment'],
   },
 };
 
@@ -240,6 +244,11 @@ export default lila => {
       cssModulesExclude: cssModulesExclude[entry] || undefined,
       babelImport: [{ libraryName: 'antd', style: 'css' }],
       splitJs: splitJs[entry] || undefined,
+      plugins: [
+        new MomentLocalesPlugin({
+          localesToKeep: ['es-us', 'zh-cn'],
+        }),
+      ],
     };
   };
 };
