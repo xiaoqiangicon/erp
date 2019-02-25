@@ -244,6 +244,7 @@ export default lila => {
       cssModulesExclude: cssModulesExclude[entry] || undefined,
       babelImport: [{ libraryName: 'antd', style: 'css' }],
       splitJs: splitJs[entry] || undefined,
+      babelPlugins: ['@babel/plugin-proposal-class-properties'],
       plugins: [
         new MomentLocalesPlugin({
           localesToKeep: ['es-us', 'zh-cn'],
