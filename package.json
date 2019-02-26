@@ -76,6 +76,7 @@
     "@zzh/choose-image": "git+http://git.zizaihome.cn/senntyou/choose-image.git#4c1baea6",
     "@zzh/common.css": "^0.3.0",
     "@zzh/count-down": "^0.3.0",
+    "@zzh/data": "^0.0.1",
     "@zzh/distpicker": "^0.3.0",
     "@zzh/handling": "^0.3.0",
     "@zzh/ie-tip": "^0.3.0",

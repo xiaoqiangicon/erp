@@ -12,8 +12,10 @@ import '@fancyapps/fancybox/dist/jquery.fancybox.css';
 import '@zzh/choose-image/dist/choose-image.css';
 import './index.css';
 
-import '../../component/upload_config';
-import '../../component/choose_image_config';
-import '../../component/choose_icon_config';
+import '../../../component/upload_config';
+import '../../../component/choose_image_config';
+import '../../../component/choose_icon_config';
+
+import './init';
 
 import './old';
