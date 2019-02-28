@@ -664,8 +664,8 @@ define([
           showJump: true,
           jumpBtnText: '跳转',
           showPageSizes: true,
-          pageSizeItems: [25, 50],
-          pageSize: 25,
+          pageSizeItems: [25, 50, 75, 100],
+          pageSize: 50,
           infoFormat: '共{total}条',
           remote: {
             url: url,
