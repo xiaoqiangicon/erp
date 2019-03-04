@@ -48,7 +48,7 @@ define([
     pushOrderList: [], // 选中的未处理订单子项集合
     pushOrderList2: [], // 选中的已处理订单子项集合
     pushOrderList3: [], // 选中的全部订单子项集合
-    tabId2: null, // 记录当前是未处理还是已处理还是全部订单 1:未处理，3：已处理，2：全部
+    tabId: null, // 记录当前是未处理还是已处理还是全部订单 1:未处理，3：已处理，2：全部 unScheduled finished all
     un_complete_order_ids: [], // 未处理待打印订单的ID
     complete_order_ids: [], // 已处理待打印的ID
     all_order_ids: [], // 全部待打印的ID
@@ -169,6 +169,7 @@ define([
         tab = $('#exportExcel').attr('data-id'),
         curBuddhistId = $('#buddishService').val();
       self.buddishService = curBuddhistId;
+
       $.ajax({
         url: config.urls.order.selection,
         data: {
@@ -217,6 +218,7 @@ define([
         tab = $('#exportExcel').attr('data-id');
       var curBuddhistId = $('#buddishService').val(),
         subId = $('#buddishSizes').val();
+
       $.ajax({
         url: config.urls.order.selection,
         data: {
@@ -455,39 +457,39 @@ define([
         $selectNum = $('#selectNum').find('span'),
         tab = $('#dispose').attr('data-id');
       if (tab == 'tab1') {
-        self.tabId2 = '#unScheduled';
+        self.tabId = '#unScheduled';
       } else if (tab == 'tab3') {
-        self.tabId2 = '#finished';
+        self.tabId = '#finished';
       } else if (tab == 'tab2') {
-        self.tabId2 = '#all';
+        self.tabId = '#all';
       }
       var $tar = $(e.target);
       if ($tar.prop('checked')) {
-        for (var i = 0; i < $(self.tabId2 + ' .orderCheck').length; i++) {
-          if ($($(self.tabId2 + ' .orderCheck')[i]).prop('checked') != true) {
-            $($(self.tabId2 + ' .orderCheck')[i]).prop('checked', true);
+        for (var i = 0; i < $(self.tabId + ' .orderCheck').length; i++) {
+          if ($($(self.tabId + ' .orderCheck')[i]).prop('checked') != true) {
+            $($(self.tabId + ' .orderCheck')[i]).prop('checked', true);
             if (tab == 'tab1') {
               self.pushOrderList.push(
-                $($(self.tabId2 + ' .orderCheck')[i]).val()
+                $($(self.tabId + ' .orderCheck')[i]).val()
               );
               $selectNum.html(self.pushOrderList.length);
             } else if (tab == 'tab3') {
               self.pushOrderList2.push(
-                $($(self.tabId2 + ' .orderCheck')[i]).val()
+                $($(self.tabId + ' .orderCheck')[i]).val()
               );
               $selectNum.html(self.pushOrderList2.length);
             } else if (tab == 'tab2') {
               self.pushOrderList3.push(
-                $($(self.tabId2 + ' .orderCheck')[i]).val()
+                $($(self.tabId + ' .orderCheck')[i]).val()
               );
               $selectNum.html(self.pushOrderList3.length);
             }
           }
         }
       } else {
-        for (var i = 0; i < $(self.tabId2 + ' .orderCheck').length; i++) {
-          if ($($(self.tabId2 + ' .orderCheck')[i]).prop('checked') != false) {
-            $($(self.tabId2 + ' .orderCheck')[i]).prop('checked', false);
+        for (var i = 0; i < $(self.tabId + ' .orderCheck').length; i++) {
+          if ($($(self.tabId + ' .orderCheck')[i]).prop('checked') != false) {
+            $($(self.tabId + ' .orderCheck')[i]).prop('checked', false);
             if (tab == 'tab1') {
               self.pushOrderList = [];
               $selectNum.html(self.pushOrderList.length);
@@ -664,7 +666,7 @@ define([
           showJump: true,
           jumpBtnText: '跳转',
           showPageSizes: true,
-          pageSizeItems: [25, 50, 75, 100],
+          pageSizeItems: [25, 50, 75],
           pageSize: 50,
           infoFormat: '共{total}条',
           remote: {
@@ -754,6 +756,10 @@ define([
         searchNotPrint = Number($('#hasNotPrint').prop('checked')),
         // btnId=e.currentTarget.id || query,
         flag = false;
+
+      // 重置选中的佛事列表数据
+      self.resetPushOrderList();
+
       self.arr['tab1'] = [
         '#page1',
         config.urls.order.list,
@@ -870,12 +876,8 @@ define([
       var self = this;
       e.preventDefault();
       $(this).tab('show');
-      self.pushOrderList = [];
-      self.pushOrderList2 = [];
-      self.pushOrderList3 = [];
-      $('#selectNum')
-        .find('span')
-        .html('0');
+
+      self.resetPushOrderList();
     },
     loadSelectData: function() {
       $.ajax({
@@ -1288,6 +1290,17 @@ define([
           Toast('网络服务出错，上传失败');
         },
       });
+    },
+
+    resetPushOrderList: function() {
+      var self = this;
+
+      self.pushOrderList = [];
+      self.pushOrderList2 = [];
+      self.pushOrderList3 = [];
+      $('#selectNum')
+        .find('span')
+        .html('0');
     },
     initialize: function() {
       var self = this,

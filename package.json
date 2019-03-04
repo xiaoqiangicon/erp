@@ -102,6 +102,7 @@
     "chart.js": "^2.7.3",
     "clone": "^2.1.2",
     "colors.css": "^3.0.0",
+    "element-ui": "^2.6.1",
     "events": "^3.0.0",
     "font-awesome": "^4.7.0",
     "handlebars": "^4.0.12",
@@ -129,6 +130,9 @@
     "toastr": "^2.1.4",
     "underscore": "^1.9.1",
     "vconsole": "^3.2.0",
-    "video.js": "^7.4.1"
+    "video.js": "^7.4.1",
+    "vue": "^2.6.8",
+    "vue-router": "^3.0.2",
+    "vuex": "^3.1.0"
   }
 }
