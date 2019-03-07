@@ -5798,8 +5798,10 @@ define([
             subType = self.model.get(psId).get('subType'),
             inputType = self.model.get(psId).get('inputType');
           if (
-            (subType == 3 && (inputType == 12 || inputType == 15)) ||
-            (subType == 2 && (inputType == 10 || inputType == 11))
+            (subType === 2 && (inputType === 10 || inputType === 11)) ||
+            (subType === 3 && (inputType === 12 || inputType === 15)) ||
+            (subType === 4 &&
+              (inputType === 4 || inputType === 5 || inputType === 6))
           ) {
             $specialSubPsBox.append($ele.prop('outerHTML'));
             $ele.remove();
@@ -5860,7 +5862,7 @@ define([
       );
       $(selectpicker.get(0)).selectpicker('refresh');
       $(selectpicker.get(0)).on('changed.bs.select', function(e) {
-        var subType = e.currentTarget.value,
+        var subType = parseInt(e.currentTarget.value),
           pic = self.model.get('pic'),
           wangshengSrc =
             'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
@@ -5870,39 +5872,10 @@ define([
         // console.log(new sizesAdditionCollection([new sizesAdditionModel({}),new sizesAdditionModel({})]));
         // 改变选择项时 修正特殊附言的数据
         var psModelArr = self.model.get('postScript');
+
+        // 无附言切换时
         if (!psModelArr) {
-          // 无附言切换时
-          if (subType == 3) {
-            // 祈福类 生成默认功德芳名心愿数据
-            psModelArr = new sizesAdditionCollection([
-              new sizesAdditionModel({
-                dataType: 2,
-                describe: '',
-                font_length: 8,
-                inputId: '',
-                inputType: 12,
-                is_must: 1,
-                name: '功德芳名',
-                pic_num: 4,
-                prompt_text: '请填写功德主姓名',
-                selectInput: [],
-                subType: 3,
-              }),
-              new sizesAdditionModel({
-                dataType: 2,
-                describe: '',
-                font_length: 20,
-                inputId: '',
-                inputType: 15,
-                is_must: 1,
-                name: '心愿',
-                pic_num: 0,
-                prompt_text: '请填写您的心愿',
-                selectInput: [],
-                subType: 3,
-              }),
-            ]);
-          } else if (subType == 2) {
+          if (subType === 2) {
             // 往生类 生成默认阳上人往生者数据
             psModelArr = new sizesAdditionCollection([
               new sizesAdditionModel({
@@ -5932,32 +5905,104 @@ define([
                 subType: 2,
               }),
             ]);
-          } else {
+          } else if (subType === 3) {
+            // 祈福类 生成默认功德芳名心愿数据
+            psModelArr = new sizesAdditionCollection([
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 8,
+                inputId: '',
+                inputType: 12,
+                is_must: 1,
+                name: '功德芳名',
+                pic_num: 4,
+                prompt_text: '请填写功德主姓名',
+                selectInput: [],
+                subType: 3,
+              }),
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 20,
+                inputId: '',
+                inputType: 15,
+                is_must: 1,
+                name: '心愿',
+                pic_num: 0,
+                prompt_text: '请填写您的心愿',
+                selectInput: [],
+                subType: 3,
+              }),
+            ]);
+          } else if (subType === 4) {
+            // 快递类 生成默认的 联系人 手机号码 地址
+            psModelArr = new sizesAdditionCollection([
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 8,
+                inputId: '',
+                inputType: 4,
+                is_must: 1,
+                name: '联系人',
+                pic_num: 0,
+                prompt_text: '请填写联系人姓名（方便寺院与您联系）',
+                selectInput: [],
+                subType: 4,
+              }),
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 20,
+                inputId: '',
+                inputType: 5,
+                is_must: 1,
+                name: '手机号码',
+                pic_num: 0,
+                prompt_text: '请填写联系人电话（方便寺院与您联系）',
+                selectInput: [],
+                subType: 4,
+              }),
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 20,
+                inputId: '',
+                inputType: 6,
+                is_must: 1,
+                name: '地址',
+                pic_num: 0,
+                prompt_text: '请填写您常用的居住地址',
+                selectInput: [],
+                subType: 4,
+              }),
+            ]);
           }
         } else {
           // 修改内层数据的subType
           psModelArr.models.map(function(ps) {
-            ps.set('subType', e.target.value);
+            ps.set('subType', parseInt(e.target.value));
           });
           // 置顶特殊附言 并保证至少存在两项
-          if (subType == 3) {
+          if (subType === 3) {
             //祈福类
             var FMPs = [],
               XYPs = [],
               otherPs = [];
             psModelArr.models.map(function(ps) {
-              if (ps.get('inputType') == 12) {
+              if (ps.get('inputType') === 12) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 8);
                 }
-                if (ps.get('pic_num') == 0) {
+                if (ps.get('pic_num') === 0) {
                   ps.set('pic_num', 4);
                 }
                 FMPs.push(ps);
-              } else if (ps.get('inputType') == 15) {
+              } else if (ps.get('inputType') === 15) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 20);
                 }
                 ps.set('pic_num', 0);
@@ -6003,25 +6048,25 @@ define([
               );
             }
             psModelArr.models = FMPs.concat(XYPs, otherPs);
-          } else if (subType == 2) {
+          } else if (subType === 2) {
             // 往生类
             var YSRPs = [],
               WSZPs = [],
               otherPs = [];
             psModelArr.models.map(function(ps) {
-              if (ps.get('inputType') == 10) {
+              if (ps.get('inputType') === 10) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 8);
                 }
                 ps.set('pic_num', 0);
                 YSRPs.push(ps);
-              } else if (ps.get('inputType') == 11) {
+              } else if (ps.get('inputType') === 11) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 8);
                 }
-                if (ps.get('pic_num') == 0) {
+                if (ps.get('pic_num') === 0) {
                   ps.set('pic_num', 4);
                 }
                 WSZPs.push(ps);
@@ -6066,26 +6111,98 @@ define([
               );
             }
             psModelArr.models = YSRPs.concat(WSZPs, otherPs);
-          } else {
+          } else if (subType === 4) {
+            // 快递类
+            var ps4 = [], // 联系人
+              ps5 = [], // 电话号码
+              ps6 = [], // 地址
+              psOther = [];
+            psModelArr.models.map(function(ps) {
+              if (ps.get('inputType') === 4) {
+                ps4.push(ps);
+              } else if (ps.get('inputType') === 5) {
+                ps5.push(ps);
+              } else if (ps.get('inpputType') === 6) {
+                ps6.push(ps);
+              } else {
+                psOther.push(ps);
+              }
+            });
+
+            if (!ps4.length) {
+              ps4.push(
+                new sizesAdditionModel({
+                  dataType: 2,
+                  describe: '',
+                  font_length: 8,
+                  inputId: '',
+                  inputType: 4,
+                  is_must: 1,
+                  name: '联系人',
+                  pic_num: 0,
+                  prompt_text: '请填写联系人姓名（方便寺院与您联系）',
+                  selectInput: [],
+                  subType: 4,
+                })
+              );
+            }
+            if (!ps5.length) {
+              ps5.push(
+                new sizesAdditionModel({
+                  dataType: 2,
+                  describe: '',
+                  font_length: 20,
+                  inputId: '',
+                  inputType: 5,
+                  is_must: 1,
+                  name: '手机号码',
+                  pic_num: 0,
+                  prompt_text: '请填写联系人电话（方便寺院与您联系）',
+                  selectInput: [],
+                  subType: 4,
+                })
+              );
+            }
+            if (!ps6.length) {
+              ps6.push(
+                new sizesAdditionModel({
+                  dataType: 2,
+                  describe: '',
+                  font_length: 20,
+                  inputId: '',
+                  inputType: 6,
+                  is_must: 1,
+                  name: '地址',
+                  pic_num: 0,
+                  prompt_text: '请填写您常用的居住地址',
+                  selectInput: [],
+                  subType: 4,
+                })
+              );
+            }
+            psModelArr.models = ps4.concat(ps5, ps6, psOther);
           }
         }
         // console.log(psModelArr.models);
         self.model.set('postScript', psModelArr);
         self.model.set('subdivide_type', subType);
-        if (subType == 1) {
-          if (pic == wangshengSrc || pic == qifuSrc) {
+        if (subType === 1) {
+          if (pic === wangshengSrc || pic === qifuSrc) {
             self.model.set('pic', '');
           }
-        } else if (subType == 2) {
+        } else if (subType === 2) {
           // 往生 祈福选择项 添加默认图片
-          if (pic == '' || pic == qifuSrc) {
+          if (pic === '' || pic === qifuSrc) {
             self.model.set('pic', wangshengSrc);
           }
-        } else if (subType == 3) {
-          if (pic == '' || pic == wangshengSrc) {
+        } else if (subType === 3) {
+          if (pic === '' || pic === wangshengSrc) {
             self.model.set('pic', qifuSrc);
           }
-        } else {
+        } else if (subType === 4) {
+          if (pic === wangshengSrc || pic === qifuSrc) {
+            self.model.set('pic', '');
+          }
         }
         // modelDispose.method.change_size_name(e.target.value, self.model);
       });
@@ -6121,7 +6238,6 @@ define([
       }
       // 初始化switch控件
       var isAutoFinish = !!this.model.get('isAutoFinish'); // 布尔化参数
-      // debugger
       // 每次初始化会触发两次重绘，一次selectinput 的change一次subdivide_type改写触发
       this.$('.autoFinishSwitch').bootstrapSwitch({
         size: 'mini',

@@ -1,11 +1,14 @@
 /**
  * Created by Linfe on 2017/3/1.
  */
-define(['./tpl/sub', './tpl/ps', './tpl/sub_ps', 'juicer'], function(
-  sub,
-  ps,
-  subPs
-) {
+define([
+  './tpl/sub',
+  './tpl/ps',
+  './tpl/sub_ps',
+  './tpl/fb',
+  './tpl/modal_saving',
+  './tpl/modal_set_tpl',
+], function(sub, ps, subPs, fb, modalSaving, modalSetTpl) {
   var appConfig = {
     environment: __SEE_ENV__, //环境标识（用于数组选值）：0->服务器环境, 1->本地服务器测试，2->本地环境
   };
@@ -44,384 +47,44 @@ define(['./tpl/sub', './tpl/ps', './tpl/sub_ps', 'juicer'], function(
   appConfig.template.component = {};
 
   // 选择项模板
-  // 附言模板
-  // 选择项附言模板
-  // type 1 普通选择项
-  // type 2 往生选择项 inputType 10 阳上人 11 往生者
-  // type 3 祈福选择项 inputType 12 功德芳名 15 心愿
-  // type 4 快递选择项 inputType 4 联系人 5 手机号码 6 地址
-
-  // appConfig.template.component.size_tmp = [
-  //   '<td class="sortable-handle" style="cursor: pointer;line-height: 50px;text-align: center" data-id="${id}">',
-  //   '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" alt="换位置"></td>',
-  //   '<td class="tac">',
-  //   '<select name="sizeType" style="mgl0" class="sizeType selectpicker sizePosSelect" data-cid="${cid}">',
-  //   '<option value="1">普通佛事</option>',
-  //   '<option value="2">往生牌位</option>',
-  //   '<option value="3">祈福牌位</option>',
-  //   '<option value="4">邮寄佛事</option>',
-  //   '</select>',
-  //   '</td>',
-  //   '<td>',
-  //   '<input type="text" class="form-control proSizeName" data-cid="${cid}" value="${name}" maxlength="24" placeholder="不超过24个文字">',
-  //   '</td>',
-  //   '<td style="position: relative">',
-  //   // 由switch生成dom结构
-  //   '{@if isSingleMoney === 1}',
-  //   '<div class="hide" style="display: inline-block; position: absolute; top:0; right:2px; background-color: #fff; border: 1px solid #ddd; border-radius: 20px;">',
-  //   '<label class="mgb0 pdl10" data-id="autoFinishOrder" data-rid="${cid}" style="padding:0 1px">自动处理订单：</label>',
-  //   '<input class="autoFinishSwitch" type="checkbox">',
-  //   '</div>',
-  //   '{@else}',
-  //   '<div style="display: inline-block; position: absolute; top:0; right:2px; background-color: #fff; border: 1px solid #ddd; border-radius: 20px;">',
-  //   '<label class="mgb0 pdl10" data-id="autoFinishOrder" data-rid="${cid}" style="padding:0 1px">自动处理订单：</label>',
-  //   '<input class="autoFinishSwitch" type="checkbox">',
-  //   '</div>',
-  //   '{@/if}',
-  //   '<button type="button" data-id="generateRandomPrice" data-rid="${cid}" class="btn btn-success backgroundGreen hide" style="position: absolute; top:-10px; right:2px;padding:0 1px">自动生成随喜金额</button>',
-  //   '<input type="text" id="money${cid}" name="money${cid}" class="form-control proPrice" data-cid="${cid}" data-isAutoFinish="${isAutoFinish}" placeholder="为0或不填为无需支付" value="${price}">',
-  //   '</td>',
-  //   '<td class="stock_td">',
-  //   '<input type="number" name="${cid}" class="form-control proStock" data-cid="${cid}" value="${stock}">',
-  //   '</td>',
-  //   // '<td class="sub-limit-date-td">',
-  //   // '<input data-ele="sub-limit-date" value="${endTime}" name="sub-limit-date" type="text" readonly class="form-control pull-left" placeholder="请选择到期时间"/>',
-  //   // '</td>',
-  //   '<td class="text-center">',
-  //   '<a class="upload_box" style="height: 50px;margin: 0; position: relative;" href="javascript:;" >',
-  //   '<input name="file" data-cid="${cid}" class="btn btn-sm btn-primary smallPicture" id="sizePic0" style="width:50px;height:50px;opacity: 0; padding: 0"/>',
-  //   '</a>',
-  //   '</td>',
-  //   '<td class="text-center">',
-  //   '<span class="green tagbtn mgr10" data-cid="${cid}" data-sub-type="${subdivide_type}" data-toggle="modal" data-target="#sizesPostModal"',
-  //   'data-ele="tooltip" data-placement="left" title="设置信众参与此项时需填写的信息">附言</span>',
-  //   '<span class="green tagbtn" data-cid="${cid}" data-toggle="modal" data-target="#sub-set-modal">设置</span>',
-  //   '<br>',
-  //   '<span class="green tagbtn copyProSize mgr10" data-cid="${cid}">复制</span>',
-  //   '<span class="green tagbtn removeProSize" data-cid="${cid}">删除</span>',
-  //   '<br>',
-  //   '</td>',
-  // ].join(' ');
-
-  // appConfig.template.component.additionItem_tmp = [
-  //   '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-  //   '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
-  //   '<td>',
-  //   '<select name="additionType" class="additionType selectpicker sizePosSelect" data-cid="${cid}">',
-  //   '<option value="4">联系人</option>',
-  //   '<option value="12">功德芳名</option>',
-  //   '<option value="15">心愿</option>',
-  //   '<option value="8">性别</option>',
-  //   '<option value="9">出生日期</option>',
-  //   '<option value="5">手机号码</option>',
-  //   '<option value="6">地址</option>',
-  //   '<option value="10">阳上人</option>',
-  //   '<option value="11">往生者</option>',
-  //   '<option value="13">自定义-提示框</option>',
-  //   '<option value="1">自定义-单行文本框</option>',
-  //   '<option value="2">自定义-日期选择</option>',
-  //   '<option value="3">自定义-下拉列表</option>',
-  //   '<option value="7">自定义-多行文本框</option>',
-  //   '<option value="14">自定义-图片上传</option>',
-  //   '</select>',
-  //   '</td>',
-  //   '<td>',
-  //   '{@if inputType==13}',
-  //   '<input type="text" class="form-control additionName" data-cid="${cid}"value="" disabled="disabled">',
-  //   '{@else}',
-  //   '<input type="text" class="form-control additionName" data-cid="${cid}" maxlength="30" value="${name}" placeholder="请输入不超过30个文字">',
-  //   '{@/if}',
-  //   '</td>',
-  //   '<td>',
-  //   '{@if inputType==2 || inputType==9}',
-  //   '<div class="col-sm-12" style="width: 100%;padding: 0">',
-  //   '<span class="preview posTitle">${name}</span>',
-  //   '<input type="text" class="form-control datePreview birthday_icon" style="width: 220px;margin-left: 15px" data-cid="${cid}" disabled="disabled">',
-  //   '</div>',
-  //   '{@else if inputType==3}',
-  //   '<span class="preview posTitle">${name}</span>',
-  //   '{@if dataType == 1}',
-  //   '<select name="additionTypes" class="additionTypes selectpicker" data-cid="${cid}" multiple>',
-  //   '{@else}',
-  //   '<select name="additionTypes" class="additionTypes selectpicker" data-cid="${cid}">',
-  //   '{@/if}',
-  //   '{@each selectInput as item, index}',
-  //   '<option>${item}</option>',
-  //   '{@/each}',
-  //   '</select>',
-  //   '{@else}',
-  //   '<span class="preview posTitle">${name}</span>',
-  //   '<input type="text" class="form-control additionPreview" style="width: 220px;margin-left: 15px"',
-  //   'data-cid="${cid}" placeholder="${prompt_text}" disabled="disabled">',
-  //   '{@/if}',
-  //   '</td>',
-  //   '<td style="line-height: 34px;text-align: center">',
-  //   '{@if inputType==2 || inputType==9}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="additionDateSetting" data-toggle="modal" data-target="#dateAdditionModal" data-cid="${cid}">设置</span>',
-  //   '--<span class="additionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==8}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="additionRadioSetting" data-toggle="modal" data-target="#radioAdditionModal" data-cid="${cid}">设置</span>--',
-  //   '<span class="additionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==3}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="additionSelectSetting" data-toggle="modal" data-target="#selectAdditionModal" data-cid="${cid}">设置</span>',
-  //   '--<span class="additionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==13}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="additionInstuctSetting" data-toggle="modal" data-target="#instuctAdditionModal" data-cid="${cid}">设置</span>--',
-  //   '<span class="additionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==14}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="additionImagesSetting" data-toggle="modal" data-target="#imagesAdditionModal" data-cid="${cid}">设置</span>--',
-  //   '<span class="additionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="additionInputSetting " data-toggle="modal" data-target="#inputAdditionModal"  data-cid="${cid}">设置</span>',
-  //   '--<span class="additionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@/if}',
-  //   '</td>',
-  // ].join('');
-
-  // appConfig.template.component.sizesAdditionItem_tmp =  [
-  //   //前两列
-  //   '{@if subType == 3}',
-  //   '{@if inputType == 12}',
-  //   '<td style="line-height: 36px;text-align: center">可视化项</td>',
-  //   '<td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png" data-index="12" data-src="https://pic.zizaihome.com/478059f6-0bfc-11e8-91da-00163e0c001e.png" alt="功德芳名"></td>',
-  //   '{@else if inputType == 15}',
-  //   '<td style="line-height: 36px;text-align: center">可视化项</td>',
-  //   '<td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png" data-index="15" data-src="https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png" alt="心愿"></td>',
-  //   '{@else}',
-  //   '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-  //   '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
-  //   '<td>',
-  //   '<select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="${cid}">',
-  //   '<option value="4">联系人</option>',
-  //   '<option value="8">性别</option>',
-  //   '<option value="9">出生日期</option>',
-  //   '<option value="5">手机号码</option>',
-  //   '<option value="6">地址</option>',
-  //   '<option value="10">阳上人</option>',
-  //   '<option value="11">往生者</option>',
-  //   '<option value="13">自定义-提示框</option>',
-  //   '<option value="1">自定义-单行文本框</option>',
-  //   '<option value="2">自定义-日期选择</option>',
-  //   '<option value="3">自定义-下拉列表</option>',
-  //   '<option value="7">自定义-多行文本框</option>',
-  //   '<option value="14">自定义-图片上传</option>',
-  //   '</select>',
-  //   '</td>',
-  //   '{@/if}',
-  //   '{@else if subType == 2}',
-  //   '{@if inputType == 10}',
-  //   '<td style="line-height: 36px;text-align: center">可视化项</td>',
-  //   '<td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" data-index="10" data-src="https://pic.zizaihome.com/fd4dd4da-0bfb-11e8-91da-00163e0c001e.png" alt="阳上人"></td>',
-  //   '{@else if inputType == 11}',
-  //   '<td style="line-height: 36px;text-align: center">可视化项</td>',
-  //   '<td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" data-index="11" data-src="https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png" alt="往生者"></td>',
-  //   '{@else}',
-  //   '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-  //   '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
-  //   '<td>',
-  //   '<select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="${cid}">',
-  //   '<option value="4">联系人</option>',
-  //   '<option value="12">功德芳名</option>',
-  //   '<option value="15">心愿</option>',
-  //   '<option value="8">性别</option>',
-  //   '<option value="9">出生日期</option>',
-  //   '<option value="5">手机号码</option>',
-  //   '<option value="6">地址</option>',
-  //   '<option value="13">自定义-提示框</option>',
-  //   '<option value="1">自定义-单行文本框</option>',
-  //   '<option value="2">自定义-日期选择</option>',
-  //   '<option value="3">自定义-下拉列表</option>',
-  //   '<option value="7">自定义-多行文本框</option>',
-  //   '<option value="14">自定义-图片上传</option>',
-  //   '</select>',
-  //   '</td>',
-  //   '{@/if}',
-  //   '{@else}',
-  //   '<td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">',
-  //   '<img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="${inputId}" alt="换位置"></td>',
-  //   '<td>',
-  //   '<select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="${cid}">',
-  //   '<option value="4">联系人</option>',
-  //   '<option value="12">功德芳名</option>',
-  //   '<option value="15">心愿</option>',
-  //   '<option value="8">性别</option>',
-  //   '<option value="9">出生日期</option>',
-  //   '<option value="5">手机号码</option>',
-  //   '<option value="6">地址</option>',
-  //   '<option value="10">阳上人</option>',
-  //   '<option value="11">往生者</option>',
-  //   '<option value="13">自定义-提示框</option>',
-  //   '<option value="1">自定义-单行文本框</option>',
-  //   '<option value="2">自定义-日期选择</option>',
-  //   '<option value="3">自定义-下拉列表</option>',
-  //   '<option value="7">自定义-多行文本框</option>',
-  //   '<option value="14" disabled>自定义-图片上传</option>',
-  //   '</select>',
-  //   '</td>',
-  //   '{@/if}',
-  //   //第三列
-  //   '<td class="tac">',
-  //   '{@if ((subType == 2) && (inputType == 10 || inputType == 11)) || ((subType == 3) && (inputType == 12 || inputType == 15))}',
-  //   '${name}',
-  //   '{@else if inputType==13}',
-  //   '<input type="text" class="form-control sizeAdditionName" data-cid="${cid}" value="" disabled="disabled">',
-  //   '{@else}',
-  //   '<input type="text" class="form-control sizeAdditionName" data-cid="${cid}" maxlength="30" value="${name}" placeholder="请输入不超过30个文字">',
-  //   '{@/if}',
-  //   '</td>',
-  //   //第四列
-  //   '<td>',
-  //   '{@if inputType==2 || inputType==9}',
-  //   '<div class="col-sm-12" style="width: 100%;padding: 0">',
-  //   '<span class="preview">${name}</span>',
-  //   '<input type="text" class="form-control datePreview birthday_icon" data-cid="${cid}" disabled="disabled">',
-  //   '</div>',
-  //   '{@else if inputType==3}',
-  //   '<span class="preview">${name}</span>',
-  //   '{@if dataType == 1}',
-  //   '<select name="additionTypes" class="additionTypes selectpicker" data-cid="${cid}" multiple>',
-  //   '{@else}',
-  //   '<select name="additionTypes" class="additionTypes selectpicker" data-cid="${cid}">',
-  //   '{@/if}',
-  //   '{@each selectInput as item, index}',
-  //   '<option>${item}</option>',
-  //   '{@/each}',
-  //   '</select>',
-  //   '{@else}',
-  //   '<span class="preview">${name}</span>',
-  //   '<input type="text" class="form-control additionPreview"',
-  //   'data-cid="${cid}" placeholder="${prompt_text}" disabled="disabled">',
-  //   '{@/if}',
-  //   '</td>',
-  //   //第五列
-  //   '<td style="line-height: 34px;text-align: center">',
-  //   '{@if (subType == 3 && (inputType == 12 || inputType == 15)) || (subType == 2 && (inputType == 10 || inputType == 11))}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="sizeAdditionInputSetting " data-toggle="modal" data-target="#inputSizeAdditionModal" data-cid="${cid}">设置</span>',
-  //   '</span>',
-  //   '{@else if inputType==2 || inputType==9}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="sizeAdditionDateSetting " data-toggle="modal" data-target="#dateSizeAdditionModal" data-cid="${cid}">设置</span>',
-  //   '--<span class="sizesAdditionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==8}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="sizeAdditionRadioSetting" data-toggle="modal" data-target="#radioSizeAdditionModal" data-cid="${cid}">设置</span>--',
-  //   '<span class="sizesAdditionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==3}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="sizeAdditionSelectSetting" data-toggle="modal" data-target="#selectSizeAdditionModal" data-cid="${cid}">设置</span>--',
-  //   '<span class="sizesAdditionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==13}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="sizeAdditionInstuctSetting" data-toggle="modal" data-target="#instuctSizeAdditionModal" data-cid="${cid}">设置</span>--',
-  //   '<span class="sizesAdditionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else if inputType==14}',
-  //   '<span class="green tagbtn additionOperation">',
-  //   '<span class="sizeAdditionImagesSetting" data-toggle="modal" data-target="#imagesSizeAdditionModal" data-cid="${cid}">设置</span>--',
-  //   '<span class="sizesAdditionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@else}',
-  //   // 1 4 5 6 7 10 11 12 15自定义单行文本框 联系人 手机号码 地址 自定义多行文本框 阳上人 往生者 功德芳名 心愿  => 调用单行文本狂
-  //   '<span class="green tagbtn additionOperation"><span class="sizeAdditionInputSetting " data-cid="${cid}" data-toggle="modal" data-target="#inputSizeAdditionModal">设置</span>--',
-  //   '<span class="sizesAdditionRemove" data-cid="${cid}">删除</span></span>',
-  //   '{@/if}',
-  //   '</td>',
-  // ].join('');
-
-  // 选择项模板
-  // 附言模板
-  // 选择项附言模板
-
   appConfig.template.component.size_tmp = sub;
+  // 附言模板
   appConfig.template.component.additionItem_tmp = ps;
+  // 选择项附言模板
   appConfig.template.component.sizesAdditionItem_tmp = subPs;
+  // 反馈信息模板
+  appConfig.template.component.pay_succ_details = fb;
+  // 保存中弹框
+  appConfig.template.component.savingModal = modalSaving;
+  // 设置佛事模板弹框
+  appConfig.template.component.templateSetting = modalSetTpl;
 
   // 设置打印小票中的选择项列表模板
-  appConfig.template.component.print_tmp = [
-    '{@each data as item, index}',
-    '<div class="selection_div">',
-    '<input type="checkbox" class="selection_checkbox" data-type="selection_checkbox" data-sort="${item.curId}">',
-    '<span class="selection_content">${item.name}</span>',
-    '</div>',
-    '{@/each}',
-  ].join('');
+  appConfig.template.component.print_tmp = `
+    {@each data as item, index}
+      <div class="selection_div">
+      <input type="checkbox" class="selection_checkbox" data-type="selection_checkbox" data-sort="\${item.curId}">
+      <span class="selection_content">\${item.name}</span>
+      </div>
+    {@/each}
+  `;
   // 设置打印小票中的无选择项时打印机列表模板
-  appConfig.template.component.print_list = [
-    '{@each data as item, index}',
-    '<div class="printer_div">',
-    '<input type="checkbox" class="printer_checkbox" data-id="${item.id}" data-type="no_selection_printer_div">',
-    '<span class="printer_content">${item.address}</span>',
-    '</div>',
-    '{@/each}',
-  ].join('');
-  // 反馈信息模板
-  appConfig.template.component.pay_succ_details = [
-    '<section>',
-    '<section style="margin: 10px auto;">',
-    '<section style="border-style: solid;-webkit-border-image: url(http://mpt.135editor.com/mmbiz_png/yqVAqoZvDibGpfYS2cC4YzbozH31oekibOFPBxA1CDIwaGogibNAnYBrrLIvt9q2U2RhpJruHxyI9YyMStIK84ibgw/0?wx_fmt=png) 65 fill;border-width: 20px;padding: 5px;color:#feda8c;">',
-    '<p style="text-align: center;">',
-    '<span style="font-size: 24px; caret-color: red;"><br/></span>',
-    '</p>',
-    '<p style="text-align: center;">',
-    '<span style="font-size: 24px; caret-color: red;">随喜赞叹，功德无量。</span>',
-    '</p>',
-    '<p style="text-align: center;">',
-    '<span style="font-size: 24px; caret-color: red;">福慧双增，所愿皆遂。</span>',
-    '</p>',
-    '<p>',
-    '<span style="font-size: 24px; caret-color: red;"><br/></span>',
-    '</p>',
-    '</section>',
-    '</section>',
-    '</section>',
-  ].join('');
-  // 保存中弹框
-  appConfig.template.component.savingModal = [
-    '<div class="promotion" data-role="submit-container" style="display: none">',
-    '<div class="promotion-background"></div>',
-    '<div class="promotion-pane-submit">',
-    '<div class="promotion-content-submit">',
-    '<div class="loader loader4 loader4-green duration-3s-after">',
-    '<a href="javascript:;">保存中</a>',
-    '</div>',
-    '<div class="promotion-close-submit">',
-    '<button type="button" data-action="close" data-type="promotion" data-id="${id}" class="btn btn-success">关闭</button>',
-    '</div>',
-    '</div>',
-    '</div>',
-    '</div>',
-  ].join('');
-  // 设置佛事模板弹框
-  appConfig.template.component.templateSetting = [
-    '<div class="my_modal" data-role="my_modal" style="display: none">',
-    '<div class="my_modal-background"></div>',
-    '<div class="my_modal-pane">',
-    '<h4>将此佛事添加到佛事模板库中</h4>',
-    '<p style="text-align: center;color: #989898;">请填写备注名称</p>',
-    '<input type="text" class="form-control template_name" data-type="template_name" maxlength="12" placeholder="最多12字">',
-    '<div class="operation">',
-    '<button type="button" class="btn btn-success" data-type="confirm_template">确定</button>',
-    '<button type="button" class="btn" data-type="cancel_template" style="margin-left: 30px;">取消</button>',
-    '</div>',
-    '</div>',
-    '</div>',
-  ].join(' ');
+  appConfig.template.component.print_list = `
+    {@each data as item, index}
+      <div class="printer_div">
+      <input type="checkbox" class="printer_checkbox" data-id="\${item.id}" data-type="no_selection_printer_div">
+      <span class="printer_content">\${item.address}</span>
+      </div>
+    {@/each}
+  `;
   // 功德证书预览弹框
-  appConfig.template.component.gongdeOverview = [
-    '<div class="gongde_overview_modal-pane" data-role="gongde_overview_modal_${index}">',
-    '<img src="${src}" />',
-    '</div>',
-  ].join(' ');
+  appConfig.template.component.gongdeOverview = `
+    <div class="gongde_overview_modal-pane" data-role="gongde_overview_modal_\${index}"><img src="\${src}" /></div>
+  `;
   // 特殊选择项附言预览弹框
-  appConfig.template.component.spclSubPsOverview = [
-    '<div class="spcl-sub-ps-overview-pane" data-ele="spcl-sub-ps-overview-modal-${index}">',
-    '<img src="${src}" />',
-    '</div>',
-  ].join(' ');
+  appConfig.template.component.spclSubPsOverview = `
+    <div class="spcl-sub-ps-overview-pane" data-ele="spcl-sub-ps-overview-modal-\${index}"><img src="\${src}" /></div>
+  `;
+
   return appConfig;
 });
