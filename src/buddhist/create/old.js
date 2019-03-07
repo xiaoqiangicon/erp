@@ -4816,6 +4816,7 @@ define([
       function detailNullEditor() {
         ue.setContent('', false);
       }
+
       ue.ready(function() {
         details = ue.getContent();
         typeof details == 'string' && details.length > 0
