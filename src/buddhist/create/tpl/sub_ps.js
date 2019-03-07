@@ -5,32 +5,17 @@ define([], function() {
   // type 3 祈福选择项 inputType 12 功德芳名 15 心愿
   // type 4 快递选择项 inputType 4 联系人 5 手机号码 6 地址
 
-  const tpl = `
-    <!--前两列-->
+  // 前两列
+  const td12 = `
     {@if subType == 3}
       {@if inputType == 12}
         <td style="line-height: 36px;text-align: center">可视化项</td>
-        <td class="text-center">
-          <img class="spcl-sub-ps-preview" 
-            data-ele="preview-spcl-sub-ps" 
-            src="https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png" 
-            data-index="12" data-src="https://pic.zizaihome.com/478059f6-0bfc-11e8-91da-00163e0c001e.png" 
-            alt="功德芳名"
-          >
-        </td>
+        <td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png" data-index="12" data-src="https://pic.zizaihome.com/478059f6-0bfc-11e8-91da-00163e0c001e.png" alt="功德芳名"></td>
       {@else if inputType == 15}
         <td style="line-height: 36px;text-align: center">可视化项</td>
-        <td class="text-center">
-        <img class="spcl-sub-ps-preview" 
-          data-ele="preview-spcl-sub-ps" 
-          src="https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png" 
-          data-index="15" 
-          data-src="https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png" alt="心愿"
-        >
-        </td>
+        <td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png" data-index="15" data-src="https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png" alt="心愿"></td>
       {@else}
-        <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">
-        <img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
+        <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center"><img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
         <td>
           <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
             <option value="4">联系人</option>
@@ -49,77 +34,59 @@ define([], function() {
           </select>
         </td>
       {@/if}
-      
     {@else if subType == 2}
       {@if inputType == 10}
         <td style="line-height: 36px;text-align: center">可视化项</td>
-        <td class="text-center">
-          <img 
-            class="spcl-sub-ps-preview" 
-            data-ele="preview-spcl-sub-ps" 
-            src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" 
-            data-index="10" 
-            data-src="https://pic.zizaihome.com/fd4dd4da-0bfb-11e8-91da-00163e0c001e.png" 
-            alt="阳上人"
-            >
-        </td>
+        <td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" data-index="10" data-src="https://pic.zizaihome.com/fd4dd4da-0bfb-11e8-91da-00163e0c001e.png" alt="阳上人"></td>
       {@else if inputType == 11}
         <td style="line-height: 36px;text-align: center">可视化项</td>
-        <td class="text-center">
-          <img 
-            class="spcl-sub-ps-preview" 
-            data-ele="preview-spcl-sub-ps" 
-            src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" data-index="11" 
-            data-src="https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png" 
-            alt="往生者"
-          >
-        </td>
+        <td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" data-index="11" data-src="https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png" alt="往生者"></td>
       {@else}
-        <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">
-        <img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
+        <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center"><img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
         <td>
-        <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
-        <option value="4">联系人</option>
-        <option value="12">功德芳名</option>
-        <option value="15">心愿</option>
-        <option value="8">性别</option>
-        <option value="9">出生日期</option>
-        <option value="5">手机号码</option>
-        <option value="6">地址</option>
-        <option value="13">自定义-提示框</option>
-        <option value="1">自定义-单行文本框</option>
-        <option value="2">自定义-日期选择</option>
-        <option value="3">自定义-下拉列表</option>
-        <option value="7">自定义-多行文本框</option>
-        <option value="14">自定义-图片上传</option>
-        </select>
+          <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
+            <option value="4">联系人</option>
+            <option value="12">功德芳名</option>
+            <option value="15">心愿</option>
+            <option value="8">性别</option>
+            <option value="9">出生日期</option>
+            <option value="5">手机号码</option>
+            <option value="6">地址</option>
+            <option value="13">自定义-提示框</option>
+            <option value="1">自定义-单行文本框</option>
+            <option value="2">自定义-日期选择</option>
+            <option value="3">自定义-下拉列表</option>
+            <option value="7">自定义-多行文本框</option>
+            <option value="14">自定义-图片上传</option>
+          </select>
         </td>
       {@/if}
     {@else}
-      <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">
-      <img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
+      <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center"><img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
       <td>
-      <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
-      <option value="4">联系人</option>
-      <option value="12">功德芳名</option>
-      <option value="15">心愿</option>
-      <option value="8">性别</option>
-      <option value="9">出生日期</option>
-      <option value="5">手机号码</option>
-      <option value="6">地址</option>
-      <option value="10">阳上人</option>
-      <option value="11">往生者</option>
-      <option value="13">自定义-提示框</option>
-      <option value="1">自定义-单行文本框</option>
-      <option value="2">自定义-日期选择</option>
-      <option value="3">自定义-下拉列表</option>
-      <option value="7">自定义-多行文本框</option>
-      <option value="14">自定义-图片上传</option>
-      </select>
+        <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
+          <option value="4">联系人</option>
+          <option value="12">功德芳名</option>
+          <option value="15">心愿</option>
+          <option value="8">性别</option>
+          <option value="9">出生日期</option>
+          <option value="5">手机号码</option>
+          <option value="6">地址</option>
+          <option value="10">阳上人</option>
+          <option value="11">往生者</option>
+          <option value="13">自定义-提示框</option>
+          <option value="1">自定义-单行文本框</option>
+          <option value="2">自定义-日期选择</option>
+          <option value="3">自定义-下拉列表</option>
+          <option value="7">自定义-多行文本框</option>
+          <option value="14">自定义-图片上传</option>
+        </select>
       </td>
     {@/if}
-   
-    <!--第三列-->
+  `;
+
+  // 第三列
+  const td3 = `
     <td class="tac">
       {@if ((subType == 2) && (inputType == 10 || inputType == 11)) || ((subType == 3) && (inputType == 12 || inputType == 15))}
         \${name}
@@ -129,8 +96,10 @@ define([], function() {
         <input type="text" class="form-control sizeAdditionName" data-cid="\${cid}" maxlength="30" value="\${name}" placeholder="请输入不超过30个文字">
       {@/if}
     </td>
-   
-    <!--第四列-->
+  `;
+
+  // 第四列
+  const td4 = `
     <td>
       {@if inputType==2 || inputType==9}
         <div class="col-sm-12" style="width: 100%;padding: 0">
@@ -154,9 +123,11 @@ define([], function() {
         data-cid="\${cid}" placeholder="\${prompt_text}" disabled="disabled">
       {@/if}
     </td>
-   
-    <!--第五列-->
-    <td style="line-height: 34px;text-align: center">
+  `;
+
+  // 第五列
+  const td5 = `
+  <td style="line-height: 34px;text-align: center">
     {@if (subType == 3 && (inputType == 12 || inputType == 15)) || (subType == 2 && (inputType == 10 || inputType == 11))}
       <span class="green tagbtn additionOperation">
       <span class="sizeAdditionInputSetting " data-toggle="modal" data-target="#inputSizeAdditionModal" data-cid="\${cid}">设置</span>
@@ -188,6 +159,8 @@ define([], function() {
     {@/if}
     </td>
   `;
+
+  const tpl = td12 + td3 + td4 + td5;
 
   return tpl;
 });
