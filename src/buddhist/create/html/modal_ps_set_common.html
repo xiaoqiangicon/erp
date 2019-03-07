@@ -1,0 +1,164 @@
+<!--附言单行文本框设置 Modal -->
+<div
+  class="modal fade"
+  id="inputAdditionModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="inputAdditionModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span
+          ><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">文本框设置</h4>
+      </div>
+      <div class="modal-body">
+        <!--手机号码的短信验证-->
+        <div
+          class="form-group overflow-hidden hide"
+          data-ele="tel-verify-form-group"
+        >
+          <span class="col-sm-3 control-label"
+            ><strong style="height: 45px;line-height: 45px"
+              >短信验证：</strong
+            ></span
+          >
+          <div class="col-sm-8">
+            <label for="telVerify" style="margin-right: 35px">
+              <input
+                id="telVerify"
+                name="telVerify"
+                value="1"
+                type="radio"
+                checked
+              />
+              <span class="checkbox"></span
+              ><span style="vertical-align: middle"
+                >&nbsp;&nbsp;&nbsp;需要</span
+              >
+            </label>
+            <label for="telUnVerify">
+              <input id="telUnVerify" name="telVerify" value="0" type="radio" />
+              <span class="checkbox"></span
+              ><span style="vertical-align: middle"
+                >&nbsp;&nbsp;&nbsp;无需</span
+              >
+            </label>
+            <div style="color:#999;" id="msg-num-tip">
+              剩余短信数量<span style="color:#00CC33" id="msg-num">...</span
+              >，若不足请点击
+              <button
+                class="btn btn-default btn-xs"
+                data-ele="recharge-msg-num"
+                style="color:#00CC33;border: 1px solid #00CC33;"
+              >
+                充值
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--必填项-->
+        <div class="form-group overflow-hidden" id="input-required-form-group">
+          <span class="col-sm-3 control-label"
+            ><strong style="height: 45px;line-height: 45px"
+              >必填项：</strong
+            ></span
+          >
+          <div class="col-sm-8">
+            <label for="inputRequired" style="margin-right: 35px">
+              <input
+                id="inputRequired"
+                name="inputRequire"
+                value="1"
+                type="radio"
+                checked
+              />
+              <span class="checkbox"></span
+              ><span style="vertical-align: middle">&nbsp;&nbsp;&nbsp;是</span>
+            </label>
+            <label for="inputUnRequired">
+              <input
+                id="inputUnRequired"
+                name="inputRequire"
+                value="0"
+                type="radio"
+              />
+              <span class="checkbox"></span
+              ><span style="vertical-align: middle">&nbsp;&nbsp;&nbsp;否</span>
+            </label>
+          </div>
+        </div>
+        <!--填写字数-->
+        <div class="form-group overflow-hidden hide">
+          <label
+            for="wishWordLimit"
+            class="col-sm-3 control-label"
+            style="height: 30px;line-height: 30px"
+            >填写字数：</label
+          >
+          <div class="col-sm-8">
+            <input
+              id="wishWordLimit"
+              style="width: 30%"
+              name="wishWordLimit"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!--示例文字-->
+        <div class="form-group overflow-hidden">
+          <label
+            for="proName"
+            class="col-sm-3 control-label"
+            style="height: 30px;line-height: 30px"
+            >示例文字：</label
+          >
+          <div class="col-sm-8">
+            <input
+              id="inputPlaceholder"
+              style="width: 100%"
+              name="inputPlaceholder"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!--描述-->
+        <div class="form-group overflow-hidden hide">
+          <label
+            for="inputDescribtion"
+            class="col-sm-3 control-label"
+            style="height: 30px;line-height: 30px"
+            >描述：</label
+          >
+          <div class="col-sm-8">
+            <input
+              id="inputDescribtion"
+              style="width: 100%"
+              name="inputDescribtion"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="text-align: center">
+        <button
+          type="button"
+          class="btn btn-success backgroundGreen white"
+          id="saveInputSetting"
+        >
+          保存
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@ define([
   '@zzh/choose-image',
   './config',
   './dispose_model',
-  './buddhist_tool',
+  './util',
   '@zzh/store-image',
   'util/purify_a_target',
   'old/utils',
