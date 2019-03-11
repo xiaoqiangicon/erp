@@ -4,23 +4,31 @@
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="10">
           <label for="">佛事项目：</label>
-          <el-select size="medium">
-            <el-option>
-              全部
+          <el-select size="medium" v-model="buddhistId" filterable>
+            <el-option
+              v-for="item in buddhistList"
+              :key="item.buddhistId"
+              :label="item.buddhistName"
+              :value="item.buddhistId"
+            >
             </el-option>
           </el-select>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="8" v-show="subList.length !== 0">
           <label for="">佛事选择项：</label>
-          <el-select size="medium">
-            <el-option>
-              全部
+          <el-select size="medium" v-model="subId" filterable>
+            <el-option
+              v-for="item in subList"
+              :key="item.subId"
+              :label="item.subName"
+              :value="item.subId"
+            >
             </el-option>
           </el-select>
         </el-col>
         <el-col :span="6">
-          <el-checkbox label="复选框 A"></el-checkbox>
-          <el-checkbox label="复选框 B"></el-checkbox>
+          <el-checkbox label="无反馈图片" v-model="hasFb"></el-checkbox>
+          <el-checkbox label="未打印图片" v-model="notPrint"></el-checkbox>
         </el-col>
       </el-row>
 
@@ -33,19 +41,26 @@
             range-separator="-"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+            format="yyyy-MM-dd"
+            value-format="yyyy-MM-dd"
+            unlink-panels
           >
           </el-date-picker>
         </el-col>
 
         <el-col :span="6">
           <label for="">手机号：</label>
-          <el-input style="width: 150px;" size="medium"></el-input>
+          <el-input
+            style="width: 150px;"
+            size="medium"
+            v-model="tel"
+          ></el-input>
         </el-col>
 
         <el-col :span="6">
-          <el-button size="medium">查询</el-button>
-          <el-button size="medium">重置</el-button>
-          <el-button size="medium">导出</el-button>
+          <el-button size="medium" @click="onClickSearch">查询</el-button>
+          <el-button size="medium" @click="onClickReset">重置</el-button>
+          <el-button size="medium" @click="onClickExport">导出</el-button>
         </el-col>
       </el-row>
     </div>
@@ -61,8 +76,8 @@
         </div>
         <div
           class="s-tab-panel"
-          @click="onClickType(2)"
-          v-bind:class="{ active: type === 2 }"
+          @click="onClickType(4)"
+          v-bind:class="{ active: type === 4 }"
         >
           已发货
         </div>
@@ -75,19 +90,31 @@
         </div>
         <div
           class="s-tab-panel"
-          @click="onClickType(4)"
-          v-bind:class="{ active: type === 4 }"
+          @click="onClickType(2)"
+          v-bind:class="{ active: type === 2 }"
         >
           全部订单
         </div>
       </div>
 
-      <div class="mg-b-10">
+      <div class="mg-b-10" style="height: 28px; line-height: 28px;">
         <span class="mg-r-10 mg-l-30" style="color:#989898;"
           >已选择<span class="mg-l-10 mg-r-10">0</span>项</span
         >
-        <el-button type="default" size="mini">设为已处理</el-button>
-        <el-button type="default" class="pull-right mg-r-20" size="mini"
+        <el-button
+          type="default"
+          size="mini"
+          v-show="type === 1 || type === 3"
+          @click="onClickHandleOrderGroup"
+        >
+          <span v-if="type === 1">设为已处理</span>
+          <span v-else-if="type === 3">设为未处理</span>
+        </el-button>
+        <el-button
+          type="default"
+          class="pull-right mg-r-20"
+          size="mini"
+          @click="onClickPrintGroup"
           >小票打印</el-button
         >
       </div>
@@ -100,48 +127,56 @@
         style="width: 100%"
         @selection-change="handleSelectionChange"
       >
-        <el-table-column type="selection" width="55"> </el-table-column>
+        <el-table-column type="selection"> </el-table-column>
         <el-table-column label="佛事">
-          <template slot-scope="scope">{{ scope.row.date }}</template>
+          <template slot-scope="scope">
+            <img class="td-cover" v-bind:src="scope.row.productImg" />
+            <p class="mg-b-0">{{ scope.row.productName }}</p>
+            <p class="mg-b-0">{{ scope.row.productSize }}</p>
+          </template>
         </el-table-column>
-        <el-table-column prop="name" label="联系人" width="200">
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="数量"
-          width="150"
-          show-overflow-tooltip
-        >
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="支付"
-          width="150"
-          sortable
-          show-overflow-tooltip
-        >
+        <el-table-column width="200" label="联系人">
+          <template slot-scope="scope">
+            <p>{{ scope.row.customerName }}</p>
+            <p>{{ scope.row.customerTel }}</p>
+          </template>
         </el-table-column>
         <el-table-column
-          prop="address"
-          label="下单时间"
-          width="200"
-          sortable
-          show-overflow-tooltip
-        >
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="打印状态"
-          width="150"
-          show-overflow-tooltip
-        >
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="操作"
           width="100"
+          prop="buyNum"
+          label="数量"
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column
+          width="100"
+          prop="productSumPrice"
+          label="支付"
+          sortable
           show-overflow-tooltip
         >
+        </el-table-column>
+        <el-table-column
+          width="180"
+          prop="orderTime"
+          label="下单时间"
+          sortable
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column width="100" label="打印状态" show-overflow-tooltip>
+          <template slot-scope="scope">
+            <p v-if="scope.row.isPrint">已打印</p>
+            <p v-else>未打印</p>
+          </template>
+        </el-table-column>
+        <el-table-column width="100" label="操作" show-overflow-tooltip>
+          <template slot-scope="scope">
+            <a
+              class="s-a"
+              href="javascript:void(0);"
+              @click="onClickDetail(scope.row)"
+              >详情</a
+            >
+          </template>
         </el-table-column>
       </el-table>
 
@@ -159,10 +194,13 @@
         </el-pagination>
       </div>
     </div>
+
+    <el-dialog title="detail.buddhistName"> </el-dialog>
   </main>
 </template>
 
 <script>
+import { Notification } from 'element-ui';
 import seeFetch from 'see-fetch';
 
 export default {
@@ -172,12 +210,13 @@ export default {
       loading: false,
       unHandleNum: 10,
       // 列表请求参数
+      buddhistId: 0,
+      subId: 0,
       hasFb: false,
       notPrint: false,
-      startDate: '',
-      endDate: '',
+      date: ['', ''],
       tel: '',
-      type: 1,
+      type: 1, // 未处理 1 已处理 3  已发货 4 全部订单 2
       orderByPayType: 1,
       orderByTimeType: 1,
       // 分页
@@ -185,11 +224,43 @@ export default {
       currentPage: 0,
       totalCount: 0,
       // 数据
+      buddhistList: [],
       list: [],
       selected: [],
 
-      detail: {},
+      detail: {
+        productName: '',
+        productSize: '',
+        buy_num: '',
+        price: '',
+        orderTime: '',
+        order_number: '',
+        accomplish_time: '',
+        outer_order_number: '',
+        running_number: '',
+        order_qrcode: '',
+        dispose_pic_url: '',
+        dispose_video_url: '',
+        posiscript: '',
+        user: '',
+        remark: '',
+      },
     };
+  },
+  computed: {
+    subList: function() {
+      const curBuddhist = this.buddhistList.find(
+        item => item.buddhistId === this.buddhistId
+      );
+      if (curBuddhist) {
+        const subList = curBuddhist.subList;
+        return subList.length
+          ? [{ subName: '全部', subId: 0 }, ...subList]
+          : [];
+      } else {
+        return [];
+      }
+    },
   },
   created() {
     this.requestBuddhistList();
@@ -197,23 +268,115 @@ export default {
   },
   methods: {
     requestBuddhistList() {
-      seeFetch('getBuddhistList', {}, res => {
-        console.log(res, 1123);
-        debugger;
+      seeFetch('getBuddhistList', {}).then(res => {
+        this.buddhistList = [
+          { buddhistId: 0, buddhistName: '全部', subList: [] },
+          ...res.data,
+        ];
       });
     },
     requestList() {
       this.loading = true;
 
-      this.loading = false;
-    },
+      const {
+        currentPage: page,
+        currentSize: pageSize,
+        type,
+        buddhistId,
+        subId,
+        hasFb,
+        notPrint,
+        date,
+        tel,
+      } = this;
 
+      seeFetch('getList', {
+        page,
+        pageSize,
+        type,
+        buddhistId,
+        subId,
+        hasFb: Number(hasFb),
+        notPrint: Number(notPrint),
+        beginDate: date[0],
+        endDate: date[1],
+        tel,
+      }).then(res => {
+        this.totalCount = res.totalCount;
+        this.list = res.data;
+
+        this.loading = false;
+      });
+    },
+    onClickSearch() {
+      this.requestList();
+    },
+    onClickReset() {
+      this.buddhistId = 0;
+      this.subId = 0;
+      this.tel = '';
+      this.hasFb = false;
+      this.notPrint = false;
+      this.date = ['', ''];
+      this.tel = '';
+      this.requestList();
+    },
+    onClickExport() {
+      const {
+        currentPage: page,
+        currentSize: pageSize,
+        type,
+        buddhistId,
+        subId,
+        hasFb,
+        notPrint,
+        date,
+        tel,
+      } = this;
+
+      // templeId 暂时不传了 看看后台能否从 cookies 中获取
+      window.open(`/zzhadmin/bcDownloadExcel/?beginDate=${date[0]}&endDate=${
+        date[1]
+      }
+      &tel=${tel}&buddishService=${buddhistId}&type=${type}&subdirideId=${subId}
+      &isSearchNoPic=${hasFb}&searchNotPrint=${notPrint}`);
+    },
     onClickType(type) {
       this.type = type;
       this.currentPage = 0;
       this.requestList();
     },
+    onClickHandleOrderGroup() {
+      const { selected, type } = this;
 
+      if (!selected.length) {
+        Notification({
+          title: '警告',
+          message: '请先选中订单',
+          type: 'warning',
+        });
+        return;
+      } else {
+        // 处理订单弹窗
+      }
+    },
+    onClickPrintGroup() {
+      const { selected, type } = this;
+
+      if (!selected.length) {
+        Notification({
+          title: '警告',
+          message: '请先选中订单',
+          type: 'warning',
+        });
+        return;
+      } else {
+        // 打印小票弹窗
+      }
+    },
+    handleSelectionChange(selectedData) {
+      this.selected = selectedData.map(item => ({ id: item.id }));
+    },
     handleSizeChange(size) {
       this.currentSize = size;
       this.currentPage = 0;
@@ -222,6 +385,29 @@ export default {
     handleCurrentChange(page) {
       this.currentPage = page;
       this.requestList();
+    },
+    onClickDetail(rowData) {
+      console.log(rowData);
+
+      const {
+        productName: buddhistName,
+        productSize: subName,
+        buy_num: buyNum,
+        price,
+        orderTime,
+        order_number: orderNum,
+        accomplish_time: accomplishTime,
+        outer_order_number: outerOrderNum,
+        running_number: runningNum,
+        order_qrcode: orderQrcode,
+        dispose_pic_url: disposePicUrl,
+        dispose_video_url: disposeVideo,
+        posiscript,
+        user,
+        remark,
+      } = rowData;
+
+      this.detail = {};
     },
   },
 };
@@ -258,7 +444,19 @@ main {
   }
 }
 
+.s-a {
+  color: #2ecc40;
+}
+
 .badge {
   background-color: #d9534f;
+}
+
+.td-cover {
+  float: left;
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  margin-right: 10px;
 }
 </style>

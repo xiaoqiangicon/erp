@@ -2,48 +2,45 @@
 import seeFetch from 'see-fetch';
 
 const req = {
-  page: 'pageNum',
-  handled: 'status',
-  exchange: 'type',
+  page: 'pageIndex',
+  // pageSize: 'pageSize',
+  // type: 'type',
+  buddhistId: 'buddhistService',
+  // subId: 'subId',
+  hasFb: 'isSearchNoPic',
+  notPrint: 'searchNotPrint',
+  // beginDate: 'beginDate',
+  // endDate: 'endDate',
+  // tel: 'tel',
 };
 
 const pre = params => ({
   ...params,
-  pageNum: params.pageNum - 1,
-  pageSize: 10,
+  // 添加排序规则 orderByPriceType orderByTimeType
 });
 
 const refactor = {
-  totalCount: 'data.count',
-  data: 'data.list',
-  _data: [
+  totalCount: 'total',
+  data: [
     {
-      title: 'giftName',
-      nickname: 'nickName',
-      exchangeTime: 'addTime',
-      expressType: 'isReal',
-      name: 'name|default-string!-',
-      address: 'address|default-string!-',
-      phone: 'tel|default-string!-',
-      expressCompany: 'deliveryCompany|default-string!-',
-      expressOrder: 'deliveryNumber|default-string!-',
+      // customerName: 'customerName',
+      // customerTel: 'customerTel',
+      buyNum: 'buy_num',
+      // productSumPrice: 'productSumPrice',
+      // orderTime: 'orderTime',
+      isPrint: 'is_print',
     },
   ],
 };
 
-const post = res => {
-  if (res.data)
-    res.data.forEach(item => {
-      item.cover = item.giftPic.split(',')[0];
-    });
-};
-
-seeFetch.config('list', {
+seeFetch.config('getList', {
   method: ['post'],
   stringify: [!0],
-  url: ['/wish/getWishGiftProcessList', '/list1', '/list'],
+  url: [
+    '/zzhadmin/ceremonyGetList',
+    '/src/buddhist/order_manage_new/mock/get_list.json',
+  ],
   req: [req, req],
   pre: [pre, pre],
   refactor: [refactor, refactor],
-  post: [post, post],
 });

@@ -6,25 +6,20 @@ const req = {};
 const refactor = {
   data: [
     {
-      subList: 'subdivideList',
-      _subList: [
+      subdivideList: [
         {
           subName: 'name',
           subId: 'subdivideId',
         },
       ],
+      subList: 'subdivideList',
       buddhistId: 'commodityId',
       buddhistName: 'name',
     },
   ],
 };
 
-const post = res => {
-  if (res.data)
-    res.data.forEach(item => {
-      item.cover = item.giftPic.split(',')[0];
-    });
-};
+const post = res => {};
 
 seeFetch.config('getBuddhistList', {
   method: ['post'],
