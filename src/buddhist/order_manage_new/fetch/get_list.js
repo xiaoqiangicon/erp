@@ -12,12 +12,9 @@ const req = {
   // beginDate: 'beginDate',
   // endDate: 'endDate',
   // tel: 'tel',
+  // orderByPriceType: 'orderByPriceType', // 0 不起效 1 降 2 升
+  // orderByTimeType: 'orderByTimeType',
 };
-
-const pre = params => ({
-  ...params,
-  // 添加排序规则 orderByPriceType orderByTimeType
-});
 
 const refactor = {
   totalCount: 'total',
@@ -41,6 +38,5 @@ seeFetch.config('getList', {
     '/src/buddhist/order_manage_new/mock/get_list.json',
   ],
   req: [req, req],
-  pre: [pre, pre],
   refactor: [refactor, refactor],
 });

@@ -5,11 +5,15 @@ import 'less/common.less';
 import 'element-ui/lib/theme-chalk/index.css';
 import '@senntyou/shortcut.css';
 import '@zzh/upload/dist/upload.css';
+import './element_ui_zzh.less';
 
 import '../../component/upload_config';
 
 import Vue from 'vue';
 import {
+  CheckboxGroup,
+  RadioGroup,
+  Radio,
   Badge,
   Row,
   Col,
@@ -32,11 +36,15 @@ import {
   Tabs,
   TabPane,
 } from 'element-ui';
-import App from './App';
+import App from './App.vue';
 import './fetch';
+import store from './store';
 
 Vue.config.devtools = true;
 
+Vue.use(CheckboxGroup);
+Vue.use(RadioGroup);
+Vue.use(Radio);
 Vue.use(Badge);
 Vue.use(Row);
 Vue.use(Col);
@@ -62,5 +70,6 @@ Vue.use(TabPane);
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
+  store,
   render: h => h(App),
 });

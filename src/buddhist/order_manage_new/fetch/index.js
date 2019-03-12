@@ -5,6 +5,7 @@ import './get_printer_list';
 import './get_printer_status';
 import './handle_order';
 import './handle_single_order';
+import './print';
 
 seeFetch.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 

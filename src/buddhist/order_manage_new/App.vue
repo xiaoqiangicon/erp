@@ -86,7 +86,7 @@
           @click="onClickType(3)"
           v-bind:class="{ active: type === 3 }"
         >
-          已处理
+          已完成
         </div>
         <div
           class="s-tab-panel"
@@ -99,16 +99,23 @@
 
       <div class="mg-b-10" style="height: 28px; line-height: 28px;">
         <span class="mg-r-10 mg-l-30" style="color:#989898;"
-          >已选择<span class="mg-l-10 mg-r-10">0</span>项</span
+          >已选择<span
+            class="mg-l-10 mg-r-10 text-center"
+            style="width: 20px;display: inline-block;"
+            >{{ selected.length }}</span
+          >项</span
         >
         <el-button
-          type="default"
+          type="success"
           size="mini"
           v-show="type === 1 || type === 3"
           @click="onClickHandleOrderGroup"
         >
-          <span v-if="type === 1">设为已处理</span>
+          <span v-if="type === 1">设为已完成</span>
           <span v-else-if="type === 3">设为未处理</span>
+        </el-button>
+        <el-button type="default" size="mini" @click="onClickLogistics">
+          批量发货
         </el-button>
         <el-button
           type="default"
@@ -126,6 +133,7 @@
         tooltip-effect="dark"
         style="width: 100%"
         @selection-change="handleSelectionChange"
+        @sort-change="handleSortChange"
       >
         <el-table-column type="selection"> </el-table-column>
         <el-table-column label="佛事">
@@ -151,7 +159,7 @@
           width="100"
           prop="productSumPrice"
           label="支付"
-          sortable
+          sortable="custom"
           show-overflow-tooltip
         >
         </el-table-column>
@@ -159,7 +167,7 @@
           width="180"
           prop="orderTime"
           label="下单时间"
-          sortable
+          sortable="custom"
           show-overflow-tooltip
         ></el-table-column>
         <el-table-column width="100" label="打印状态" show-overflow-tooltip>
@@ -196,15 +204,26 @@
     </div>
 
     <el-dialog title="detail.buddhistName"> </el-dialog>
+    <Printer />
+    <Detail />
+    <Logistics />
   </main>
 </template>
 
 <script>
 import { Notification } from 'element-ui';
 import seeFetch from 'see-fetch';
+import Detail from './Detail';
+import Printer from './Printer';
+import Logistics from './Logistics.vue';
 
 export default {
   name: 'App',
+  components: {
+    Printer,
+    Detail,
+    Logistics,
+  },
   data() {
     return {
       loading: false,
@@ -217,8 +236,8 @@ export default {
       date: ['', ''],
       tel: '',
       type: 1, // 未处理 1 已处理 3  已发货 4 全部订单 2
-      orderByPayType: 1,
-      orderByTimeType: 1,
+      orderByPriceType: 0,
+      orderByTimeType: 0,
       // 分页
       currentSize: 25,
       currentPage: 0,
@@ -226,8 +245,6 @@ export default {
       // 数据
       buddhistList: [],
       list: [],
-      selected: [],
-
       detail: {
         productName: '',
         productSize: '',
@@ -248,6 +265,10 @@ export default {
     };
   },
   computed: {
+    selected() {
+      return this.$store.state.selected;
+    },
+
     subList: function() {
       const curBuddhist = this.buddhistList.find(
         item => item.buddhistId === this.buddhistId
@@ -288,6 +309,8 @@ export default {
         notPrint,
         date,
         tel,
+        orderByPriceType,
+        orderByTimeType,
       } = this;
 
       seeFetch('getList', {
@@ -301,6 +324,8 @@ export default {
         beginDate: date[0],
         endDate: date[1],
         tel,
+        orderByPriceType,
+        orderByTimeType,
       }).then(res => {
         this.totalCount = res.totalCount;
         this.list = res.data;
@@ -351,31 +376,73 @@ export default {
 
       if (!selected.length) {
         Notification({
-          title: '警告',
+          title: '提示',
           message: '请先选中订单',
           type: 'warning',
         });
         return;
       } else {
         // 处理订单弹窗
+        this.$store.commit({
+          type: 'updateDetailVisible',
+          state: true,
+        });
       }
+    },
+    onClickLogistics() {
+      this.$store.commit({ type: 'updateLogisticsDialogVisible', state: true });
     },
     onClickPrintGroup() {
       const { selected, type } = this;
 
       if (!selected.length) {
         Notification({
-          title: '警告',
+          title: '提示',
           message: '请先选中订单',
           type: 'warning',
         });
         return;
       } else {
         // 打印小票弹窗
+        this.$store.commit({
+          type: 'updatePrinterVisible',
+          state: true,
+        });
       }
     },
     handleSelectionChange(selectedData) {
-      this.selected = selectedData.map(item => ({ id: item.id }));
+      const selected = selectedData.map(item => ({ id: item.id }));
+      this.$store.commit({
+        type: 'updateSelected',
+        state: selected,
+      });
+    },
+    handleSortChange({ prop, order }) {
+      let orderKey;
+      let orderType; // 0 不排序 1
+
+      // 重置
+      this.orderByPriceType = 0;
+      this.orderByTimeType = 0;
+
+      if (prop === 'orderTime') {
+        orderKey = 'orderByTimeType';
+      } else if (prop === 'productSumPrice') {
+        orderKey = 'orderByPriceType';
+      }
+
+      if (order === 'ascending') {
+        // 1 降 2 升 0 无效
+        orderType = 2;
+      } else if (order === 'descending') {
+        orderType = 1;
+      }
+
+      if (orderKey) {
+        this[orderKey] = orderType;
+      }
+
+      this.requestList();
     },
     handleSizeChange(size) {
       this.currentSize = size;
