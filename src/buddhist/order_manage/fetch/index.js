@@ -4,8 +4,8 @@ import './get_list';
 import './get_printer_list';
 import './get_printer_status';
 import './handle_order';
-import './handle_single_order';
 import './print';
+import './get_courier_company_list';
 
 seeFetch.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 

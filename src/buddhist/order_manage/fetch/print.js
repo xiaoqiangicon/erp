@@ -14,7 +14,7 @@ seeFetch.config('print', {
   stringify: [!0],
   url: [
     '/zzhadmin/printAppointOrder',
-    '/src/buddhist/order_manage_new/mock/success.json',
+    '/src/buddhist/order_manage/mock/success.json',
   ],
   req: [req, req],
 });

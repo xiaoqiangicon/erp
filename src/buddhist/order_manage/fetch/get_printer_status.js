@@ -9,8 +9,7 @@ seeFetch.config('getPrinterStatus', {
   method: ['post'],
   stringify: [!0],
   url: [
-    '/zzhadmin/getPrinterList',
-    '/src/buddhist/order_manage_new/mock/get_printer_status.json',
+    '/zzhadmin/getPrinterStatus/',
+    '/src/buddhist/order_manage/mock/get_printer_status.json',
   ],
-  req: [req, req],
 });

@@ -8,7 +8,6 @@ const store = new Vuex.Store({
     selected: [],
 
     detailDialogVisible: false,
-    detail: {},
 
     printerDialogVisible: false,
 
@@ -17,9 +16,6 @@ const store = new Vuex.Store({
   mutations: {
     updateSelected(state, payload) {
       state.selected = payload.state;
-    },
-    updateDetail(state, payload) {
-      state.detail = payload.state;
     },
     updateDetailVisible(state, payload) {
       state.detailDialogVisible = payload.state;

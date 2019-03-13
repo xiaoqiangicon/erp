@@ -127,6 +127,7 @@
       </div>
 
       <el-table
+        highlight-current-row
         v-loading="loading"
         ref="multipleTable"
         :data="list"
@@ -157,7 +158,7 @@
         ></el-table-column>
         <el-table-column
           width="100"
-          prop="productSumPrice"
+          prop="price"
           label="支付"
           sortable="custom"
           show-overflow-tooltip
@@ -172,8 +173,8 @@
         ></el-table-column>
         <el-table-column width="100" label="打印状态" show-overflow-tooltip>
           <template slot-scope="scope">
-            <p v-if="scope.row.isPrint">已打印</p>
-            <p v-else>未打印</p>
+            <div v-if="scope.row.isPrint">已打印</div>
+            <div v-else>未打印</div>
           </template>
         </el-table-column>
         <el-table-column width="100" label="操作" show-overflow-tooltip>
@@ -203,9 +204,8 @@
       </div>
     </div>
 
-    <el-dialog title="detail.buddhistName"> </el-dialog>
     <Printer />
-    <Detail />
+    <Detail :detail="detail" :type="type" />
     <Logistics />
   </main>
 </template>
@@ -227,7 +227,7 @@ export default {
   data() {
     return {
       loading: false,
-      unHandleNum: 10,
+      unHandleNum: null,
       // 列表请求参数
       buddhistId: 0,
       subId: 0,
@@ -245,23 +245,7 @@ export default {
       // 数据
       buddhistList: [],
       list: [],
-      detail: {
-        productName: '',
-        productSize: '',
-        buy_num: '',
-        price: '',
-        orderTime: '',
-        order_number: '',
-        accomplish_time: '',
-        outer_order_number: '',
-        running_number: '',
-        order_qrcode: '',
-        dispose_pic_url: '',
-        dispose_video_url: '',
-        posiscript: '',
-        user: '',
-        remark: '',
-      },
+      detail: {},
     };
   },
   computed: {
@@ -329,6 +313,14 @@ export default {
       }).then(res => {
         this.totalCount = res.totalCount;
         this.list = res.data;
+
+        if (type === 1) {
+          this.unHandleNum = res.totalCount;
+          // 导航栏的total显示
+          window.localStorage.setItem('orderNumber', res.totalCount);
+          document.querySelector('[data-buddhist-order-count]').innerHTML =
+            res.totalCount;
+        }
 
         this.loading = false;
       });
@@ -427,7 +419,7 @@ export default {
 
       if (prop === 'orderTime') {
         orderKey = 'orderByTimeType';
-      } else if (prop === 'productSumPrice') {
+      } else if (prop === 'price') {
         orderKey = 'orderByPriceType';
       }
 
@@ -455,26 +447,8 @@ export default {
     },
     onClickDetail(rowData) {
       console.log(rowData);
-
-      const {
-        productName: buddhistName,
-        productSize: subName,
-        buy_num: buyNum,
-        price,
-        orderTime,
-        order_number: orderNum,
-        accomplish_time: accomplishTime,
-        outer_order_number: outerOrderNum,
-        running_number: runningNum,
-        order_qrcode: orderQrcode,
-        dispose_pic_url: disposePicUrl,
-        dispose_video_url: disposeVideo,
-        posiscript,
-        user,
-        remark,
-      } = rowData;
-
-      this.detail = {};
+      this.$store.commit({ type: 'updateDetailVisible', state: true });
+      this.detail = { ...rowData };
     },
   },
 };
