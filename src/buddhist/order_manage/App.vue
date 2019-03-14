@@ -264,7 +264,7 @@ export default {
       loadingList: true,
       unHandleNum: null,
       // 列表请求参数
-      buddhistId: -1,
+      buddhistId: '',
       subId: -1,
       hasFb: false,
       notPrint: false,
@@ -312,7 +312,7 @@ export default {
       seeFetch('getBuddhistList', {}).then(res => {
         if (res.success) {
           this.buddhistList = [
-            { buddhistId: -1, buddhistName: '全部', subList: [] },
+            { buddhistId: '', buddhistName: '全部', subList: [] },
             ...res.data,
           ];
           this.loadingBuddhistList = false;
@@ -390,7 +390,7 @@ export default {
       this.requestList();
     },
     onClickReset() {
-      this.buddhistId = -1;
+      this.buddhistId = '';
       this.subId = -1;
       this.tel = '';
       this.hasFb = false;
