@@ -4,6 +4,9 @@ import '@senntyou/shortcut.css';
 
 import 'element-ui/lib/theme-chalk/index.css';
 
+// video.js
+import 'video.js/dist/video-js.min.css';
+
 // choose-image
 import '@zzh/upload/dist/upload.css'; // @zzh/upload css
 import '@zzh/pagination/dist/pagination.css'; // @zzh/pagination css
@@ -17,6 +20,10 @@ import '../../component/ueditor_config';
 import '@zzh/ueditor/src/ueditor.config';
 import '@zzh/ueditor';
 import '../../component/ueditor_plugins/xiu_mi';
+
+// upload
+import '@zzh/upload/dist/upload.css';
+import '../../component/upload_config';
 
 import './index.less';
 

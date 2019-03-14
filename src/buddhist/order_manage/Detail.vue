@@ -68,26 +68,55 @@
           </div>
         </div>
 
-        <div class="cell">
+        <div v-show="!isGroup" class="cell">
           <div class="cell-title">反馈视频</div>
-          <div class="cell-body"></div>
-        </div>
-
-        <div class="cell">
-          <div class="cell-title">附言信息</div>
           <div class="cell-body">
-            <div class="ps-row">
-              <div class="ps-title">祈福人名：</div>
-              <div class="ps-content">巴啦啦小魔仙</div>
-            </div>
-            <div class="ps-row">
-              <div class="ps-title">联系电话：</div>
-              <div class="ps-content">110</div>
-            </div>
+            <template v-if="videos.length">
+              <div v-for="item in videos" class="video-cell">
+                <video :src="item"></video>
+                <img
+                  class="video-play"
+                  @click="onClickPlayVideo(item)"
+                  src="https://pic.zizaihome.com/7788d7f2-8007-11e8-b517-00163e0c001e.png"
+                />
+              </div>
+            </template>
+            <template v-else
+              >暂无反馈视频</template
+            >
           </div>
         </div>
 
-        <div class="cell">
+        <div v-show="!isGroup" class="cell">
+          <div class="cell-title">附言信息</div>
+          <div class="cell-body">
+            <template v-if="ps.length">
+              <div v-for="item in ps" :key="item.inputId" class="ps-row">
+                <div class="ps-title">{{ item.name }}：</div>
+                <div class="ps-content">
+                  <!--图片-->
+                  <template v-if="item.type === 14 && item.value">
+                    <img
+                      v-for="img in item.value.split(',')"
+                      class="ps-image"
+                      :src="img"
+                      alt=""
+                    />
+                  </template>
+                  <!--非图片-->
+                  <template v-else>
+                    <div class="ps-content">{{ item.value }}</div>
+                  </template>
+                </div>
+              </div>
+            </template>
+            <template v-else
+              >暂无附言信息</template
+            >
+          </div>
+        </div>
+
+        <div v-show="!isGroup" class="cell">
           <div class="cell-title">功德主信息</div>
           <div class="cell-body">
             <div class="ps-row">
@@ -101,7 +130,7 @@
           </div>
         </div>
 
-        <div class="cell">
+        <div v-show="!isGroup" class="cell">
           <div class="cell-title">
             订单详情
             <span class="cell-title-tip"
@@ -115,7 +144,7 @@
             </div>
             <div class="detail-row">
               <div class="detail-title">选择项：</div>
-              <div class="detail-content">旗鼓牌位</div>
+              <div class="detail-content">{{ subName }}</div>
             </div>
             <div class="detail-row">
               <div class="detail-title">下单时间：</div>
@@ -137,41 +166,54 @@
           </div>
         </div>
 
-        <div class="foot">
-          <div class="s-btn">设为已完成</div>
+        <div v-show="type === 1 || type === 4 || type === 3" class="foot">
+          <div @click="onClickHandle" v-if="logisticsOrder" class="s-btn">
+            设为已发货
+          </div>
+          <div @click="onClickHandle" v-else class="s-btn">设为已完成</div>
         </div>
       </div>
+      <VideoPlayer :src="videoPlayerSrc" />
     </div>
   </transition>
 </template>
 
 <script>
+import VideoPlayer from './VideoPlayer';
+
 import { Notification } from 'element-ui';
 import seeFetch from 'see-fetch';
 import QRCode from '@zzh/qrcode';
 import ChooseImage from '@zzh/choose-image';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
 
+let qrCodeImg;
 let remarkEditor;
 
 export default {
   name: 'Detail',
-  props: ['detail', 'type'],
+  components: {
+    VideoPlayer,
+  },
+  props: ['isGroup', 'detail', 'type'],
   data() {
     return {
       mounted: false, // 组件是否建立
       courierCompanyList: [],
 
       // detail中的静态字段
+      id: 0,
       user: { name: '', tel: '' }, // 功德主
       buyNum: '', // 下单数量
       price: '', // 支付金额
       buddhistName: '', // 佛事名
+      subName: '', // 选择项名称
       qrcode: '', // 二维码
       orderTime: '', // 下单时间
       orderNumber: '', // 订单号
       outerOrderNumber: '', // 外部订单号
       runningNumber: '', // 支付流水号
+      ps: [], // 附言 {inputId name type value}
 
       // detail中的动态字段
       images: [], // 反馈图片
@@ -179,9 +221,15 @@ export default {
       remark: '', // 备注
       courierCompanyCode: 'SF', // 快递公司编号
       logisticsOrder: '', // 物流编号
+
+      videoPlayerSrc:
+        'https://pic.zizaihome.com/b7c155f70d6a2d0a49cabcb6b790ce6b.mp4',
     };
   },
   computed: {
+    selected() {
+      return this.$store.state.selected;
+    },
     visible() {
       return this.$store.state.detailDialogVisible;
     },
@@ -203,13 +251,16 @@ export default {
     this.getCourierCompanyList();
   },
   mounted() {
-    // 初始化 ueditor
-    remarkEditor = window.UE.getEditor('remark-editor');
-    remarkEditor.ready(() => {
-      remarkEditor.setContent(this.remark);
-    });
+    // mounted 执行时 dom 并没有渲染完成
+    this.$nextTick(() => {
+      // 初始化 ueditor
+      remarkEditor = window.UE.getEditor('remark-editor');
+      remarkEditor.ready(() => {
+        remarkEditor.setContent(this.remark);
+      });
 
-    this.mounted = true;
+      this.mounted = true;
+    });
   },
   watch: {
     visible(newValue, oldValue) {
@@ -229,32 +280,56 @@ export default {
   methods: {
     init() {
       console.log('init');
-      const {
-        user,
-        buyNum,
-        price,
-        buddhistName,
-        qrcode,
-        orderTime,
-        orderNumber,
-        outerOrderNumber,
-        runningNumber,
-        images,
-        videos,
-        remark,
-        courierCompanyCode,
-        logisticsOrder,
-      } = this.detail;
 
-      this.user = user;
-      this.buyNum = buyNum;
-      this.price = price;
-      this.buddhistName = buddhistName;
-      this.qrcode = qrcode;
-      this.orderTime = orderTime;
-      this.orderNumber = orderNumber;
-      this.outerOrderNumber = outerOrderNumber;
-      this.runningNumber = runningNumber;
+      const { isGroup } = this;
+
+      let images = [];
+      let videos = [];
+      let remark = '';
+      let courierCompanyCode = 'SF';
+      let logisticsOrder = '';
+
+      if (!isGroup) {
+        const {
+          id,
+          user,
+          buyNum,
+          price,
+          buddhistName,
+          subName,
+          qrcode,
+          orderTime,
+          orderNumber,
+          outerOrderNumber,
+          runningNumber,
+          ps,
+        } = this.detail;
+
+        ({
+          images,
+          videos,
+          remark,
+          courierCompanyCode,
+          logisticsOrder,
+        } = this.detail);
+
+        this.id = id;
+        this.user = user;
+        this.buyNum = buyNum;
+        this.price = price;
+        this.buddhistName = buddhistName;
+        this.subName = subName;
+        this.qrcode = qrcode;
+        this.orderTime = orderTime;
+        this.orderNumber = orderNumber;
+        this.outerOrderNumber = outerOrderNumber;
+        this.runningNumber = runningNumber;
+        this.ps = ps;
+
+        // 初始化qrcode
+        this.$refs.qrcode.innerHTML = '';
+        qrCodeImg = new QRCode(this.$refs.qrcode, qrcode);
+      }
 
       this.images = images;
       this.videos = videos;
@@ -266,10 +341,6 @@ export default {
       if (remarkEditor) {
         remarkEditor.setContent(this.remark);
       }
-
-      // 初始化qrcode
-      this.$refs.qrcode.innerHTML = '';
-      this.QRCode = new QRCode(this.$refs.qrcode, this.detail.qrcode);
     },
     onClickMask() {
       this.$store.commit({ type: 'updateDetailVisible', state: false });
@@ -291,6 +362,10 @@ export default {
       let images = [...this.images];
       images.splice(images.indexOf(img), 1);
       this.images = images;
+    },
+    onClickPlayVideo(video) {
+      this.videoPlayerSrc = video;
+      this.$store.commit({ type: 'updateVideoPlayerVisible', state: true });
     },
     onDrop(e) {
       console.log('drop');
@@ -325,6 +400,38 @@ export default {
     },
     onClickChooseImage() {
       this.chooseImage.show();
+    },
+    onClickHandle() {
+      const { isGroup, images, courierCompanyCode, logisticsOrder } = this;
+      const remark = remarkEditor.getContent();
+      let orderIds;
+
+      if (isGroup) {
+        // 从selected中取orderIds
+        orderIds = JSON.stringify(this.selected);
+      } else {
+        // 从detail 中 取 orderId
+        orderIds = `[${this.id}]`;
+      }
+
+      seeFetch('handleOrder', {
+        orderIds,
+        pics: images,
+        courierCompanyCode,
+        logisticsOrder,
+        remark,
+      }).then(res => {
+        if (res.success) {
+          this.$emit('refresh');
+          this.$store.commit({ type: 'updateDetailVisible', state: false });
+        } else {
+          Notification({
+            title: '提示',
+            message: '接口出错',
+            type: 'error',
+          });
+        }
+      });
     },
   },
 };
@@ -468,18 +575,44 @@ export default {
   width: 130px;
 }
 
+.video-cell {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  video {
+    width: 100%;
+    height: 100%;
+    background-color: #edeef5;
+  }
+}
+.video-play {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 35px;
+  top: 35px;
+  cursor: pointer;
+}
+
 .ps-row {
-  display: flex;
-  flex-direction: row;
+  /*display: flex;*/
+  /*flex-direction: row;*/
   font-size: 18px;
   color: #333;
   margin-bottom: 10px;
 }
 .ps-title {
-  flex: 1;
+  /*flex: 1;*/
 }
 .ps-content {
-  flex: 3;
+  /*flex: 3;*/
+}
+.ps-image {
+  width: 80px;
+  height: 80px;
+  margin: 0 10px 10px 0;
 }
 
 .detail-row {

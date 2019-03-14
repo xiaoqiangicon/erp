@@ -12,6 +12,8 @@ const store = new Vuex.Store({
     printerDialogVisible: false,
 
     logisticsDialogVisible: false,
+
+    videoPlayerVisible: false,
   },
   mutations: {
     updateSelected(state, payload) {
@@ -25,6 +27,9 @@ const store = new Vuex.Store({
     },
     updateLogisticsDialogVisible(state, payload) {
       state.logisticsDialogVisible = payload.state;
+    },
+    updateVideoPlayerVisible(state, payload) {
+      state.videoPlayerVisible = payload.state;
     },
   },
 });

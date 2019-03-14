@@ -5,8 +5,8 @@ const req = {
   page: 'pageIndex',
   // pageSize: 'pageSize',
   // type: 'type',
-  buddhistId: 'buddhistService',
-  subId: 'subid',
+  buddhistId: 'buddishService',
+  subId: 'subdivideId', // 此处上传选择项名称
   hasFb: 'isSearchNoPic',
   notPrint: 'searchNotPrint',
   // beginDate: 'beginDate',
@@ -21,7 +21,7 @@ const refactor = {
   data: [
     {
       buddhistName: 'productName', // 佛事名称
-
+      productImg: 'productImg', // 封面图
       customerName: 'customerName', // 联系人
       customerTel: 'customerTel', // 联系电话
       buyNum: 'buy_num', // 数量
@@ -29,7 +29,7 @@ const refactor = {
       orderTime: 'orderTime', // 下单时间
       isPrint: 'is_print', // 是否打印
 
-      productSize: 'productSize', // 规格
+      subName: 'productSize', // 选择项
       price: 'price', // 价格
       orderNumber: 'order_number', // 订单号
       outerOrderNumber: 'outer_order_number', // 外部订单号

@@ -14,7 +14,7 @@ seeFetch.config('getCourierCompanyList', {
   method: ['get'],
   stringify: [!0],
   url: [
-    '/zzhadmin/ceremonyGetList',
+    '/zzhadmin/getCourierCompanyList',
     '/src/buddhist/order_manage/mock/get_courier_company_list.json',
   ],
   refactor: [refactor, refactor],

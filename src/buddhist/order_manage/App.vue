@@ -4,7 +4,13 @@
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="10">
           <label for="">佛事项目：</label>
-          <el-select size="medium" v-model="buddhistId" filterable>
+          <el-select
+            @change="onChangeBuddhistId"
+            size="medium"
+            v-model="buddhistId"
+            filterable
+            :loading="loadingBuddhistList"
+          >
             <el-option
               v-for="item in buddhistList"
               :key="item.buddhistId"
@@ -16,7 +22,12 @@
         </el-col>
         <el-col :span="8" v-show="subList.length !== 0">
           <label for="">佛事选择项：</label>
-          <el-select size="medium" v-model="subId" filterable>
+          <el-select
+            @change="onChangeFilter"
+            size="medium"
+            v-model="subId"
+            filterable
+          >
             <el-option
               v-for="item in subList"
               :key="item.subId"
@@ -27,8 +38,16 @@
           </el-select>
         </el-col>
         <el-col :span="6">
-          <el-checkbox label="无反馈图片" v-model="hasFb"></el-checkbox>
-          <el-checkbox label="未打印图片" v-model="notPrint"></el-checkbox>
+          <el-checkbox
+            @change="onChangeFilter"
+            label="无反馈图片"
+            v-model="hasFb"
+          ></el-checkbox>
+          <el-checkbox
+            @change="onChangeFilter"
+            label="未打印小票"
+            v-model="notPrint"
+          ></el-checkbox>
         </el-col>
       </el-row>
 
@@ -36,6 +55,7 @@
         <el-col :span="12">
           <label for="">下单时间：</label>
           <el-date-picker
+            @change="onChangeFilter"
             v-model="date"
             type="daterange"
             range-separator="-"
@@ -111,10 +131,14 @@
           v-show="type === 1 || type === 3"
           @click="onClickHandleOrderGroup"
         >
-          <span v-if="type === 1">设为已完成</span>
-          <span v-else-if="type === 3">设为未处理</span>
+          批量处理
         </el-button>
-        <el-button type="default" size="mini" @click="onClickLogistics">
+        <el-button
+          v-show="type === 1"
+          type="default"
+          size="mini"
+          @click="onClickLogistics"
+        >
           批量发货
         </el-button>
         <el-button
@@ -128,7 +152,7 @@
 
       <el-table
         highlight-current-row
-        v-loading="loading"
+        v-loading="loadingList"
         ref="multipleTable"
         :data="list"
         tooltip-effect="dark"
@@ -140,8 +164,8 @@
         <el-table-column label="佛事">
           <template slot-scope="scope">
             <img class="td-cover" v-bind:src="scope.row.productImg" />
-            <p class="mg-b-0">{{ scope.row.productName }}</p>
-            <p class="mg-b-0">{{ scope.row.productSize }}</p>
+            <p class="mg-b-0">{{ scope.row.buddhistName }}</p>
+            <p class="mg-b-0">{{ scope.row.subName }}</p>
           </template>
         </el-table-column>
         <el-table-column width="200" label="联系人">
@@ -205,8 +229,18 @@
     </div>
 
     <Printer />
-    <Detail :detail="detail" :type="type" />
-    <Logistics />
+    <Detail
+      :isGroup="isGroup"
+      :type="type"
+      :detail="detail"
+      @refresh="requestList"
+    />
+    <Logistics
+      :buddhistId="buddhistId"
+      :subId="subId"
+      :date="date"
+      @refresh="requestList"
+    />
   </main>
 </template>
 
@@ -215,7 +249,7 @@ import { Notification } from 'element-ui';
 import seeFetch from 'see-fetch';
 import Detail from './Detail';
 import Printer from './Printer';
-import Logistics from './Logistics.vue';
+import Logistics from './Logistics';
 
 export default {
   name: 'App',
@@ -226,16 +260,17 @@ export default {
   },
   data() {
     return {
-      loading: false,
+      loadingBuddhistList: true,
+      loadingList: true,
       unHandleNum: null,
       // 列表请求参数
-      buddhistId: 0,
-      subId: 0,
+      buddhistId: -1,
+      subId: -1,
       hasFb: false,
       notPrint: false,
       date: ['', ''],
       tel: '',
-      type: 1, // 未处理 1 已处理 3  已发货 4 全部订单 2
+      type: 1, // 未处理 1 已完成 3  已发货 4 全部订单 2
       orderByPriceType: 0,
       orderByTimeType: 0,
       // 分页
@@ -245,7 +280,8 @@ export default {
       // 数据
       buddhistList: [],
       list: [],
-      detail: {},
+      isGroup: false, // 是否是批量处理
+      detail: {}, // 当前选中项的detail
     };
   },
   computed: {
@@ -260,7 +296,7 @@ export default {
       if (curBuddhist) {
         const subList = curBuddhist.subList;
         return subList.length
-          ? [{ subName: '全部', subId: 0 }, ...subList]
+          ? [{ subName: '全部', subId: -1 }, ...subList]
           : [];
       } else {
         return [];
@@ -274,14 +310,23 @@ export default {
   methods: {
     requestBuddhistList() {
       seeFetch('getBuddhistList', {}).then(res => {
-        this.buddhistList = [
-          { buddhistId: 0, buddhistName: '全部', subList: [] },
-          ...res.data,
-        ];
+        if (res.success) {
+          this.buddhistList = [
+            { buddhistId: -1, buddhistName: '全部', subList: [] },
+            ...res.data,
+          ];
+          this.loadingBuddhistList = false;
+        } else {
+          Notification({
+            title: '提示',
+            message: '接口出错',
+            type: 'error',
+          });
+        }
       });
     },
     requestList() {
-      this.loading = true;
+      this.loadingList = true;
 
       const {
         currentPage: page,
@@ -311,26 +356,42 @@ export default {
         orderByPriceType,
         orderByTimeType,
       }).then(res => {
-        this.totalCount = res.totalCount;
-        this.list = res.data;
+        if (res.success) {
+          this.totalCount = res.totalCount;
+          this.list = res.data;
 
-        if (type === 1) {
-          this.unHandleNum = res.totalCount;
-          // 导航栏的total显示
-          window.localStorage.setItem('orderNumber', res.totalCount);
-          document.querySelector('[data-buddhist-order-count]').innerHTML =
-            res.totalCount;
+          if (type === 1) {
+            this.unHandleNum = res.totalCount;
+            // 导航栏的total显示
+            window.localStorage.setItem('orderNumber', res.totalCount);
+            document.querySelector('[data-buddhist-order-count]').innerHTML =
+              res.totalCount;
+          }
+
+          this.loadingList = false;
+        } else {
+          Notification({
+            title: '提示',
+            message: '接口出错',
+            type: 'error',
+          });
         }
-
-        this.loading = false;
       });
+    },
+    onChangeBuddhistId() {
+      this.subId = -1;
+      this.onChangeFilter();
+    },
+    onChangeFilter() {
+      this.currentPage = 0;
+      this.requestList();
     },
     onClickSearch() {
       this.requestList();
     },
     onClickReset() {
-      this.buddhistId = 0;
-      this.subId = 0;
+      this.buddhistId = -1;
+      this.subId = -1;
       this.tel = '';
       this.hasFb = false;
       this.notPrint = false;
@@ -339,26 +400,17 @@ export default {
       this.requestList();
     },
     onClickExport() {
-      const {
-        currentPage: page,
-        currentSize: pageSize,
-        type,
-        buddhistId,
-        subId,
-        hasFb,
-        notPrint,
-        date,
-        tel,
-      } = this;
+      const { type, buddhistId, hasFb, notPrint, date, tel } = this;
 
-      // templeId 暂时不传了 看看后台能否从 cookies 中获取
       window.open(`/zzhadmin/bcDownloadExcel/?beginDate=${date[0]}&endDate=${
         date[1]
       }
-      &tel=${tel}&buddishService=${buddhistId}&type=${type}&subdirideId=${subId}
+      &tel=${tel}&buddishService=${buddhistId}&type=${type}
       &isSearchNoPic=${hasFb}&searchNotPrint=${notPrint}`);
     },
     onClickType(type) {
+      if (this.type === type) return;
+
       this.type = type;
       this.currentPage = 0;
       this.requestList();
@@ -375,6 +427,8 @@ export default {
         return;
       } else {
         // 处理订单弹窗
+        this.isGroup = true;
+        this.detail = {};
         this.$store.commit({
           type: 'updateDetailVisible',
           state: true,
@@ -403,7 +457,11 @@ export default {
       }
     },
     handleSelectionChange(selectedData) {
-      const selected = selectedData.map(item => ({ id: item.id }));
+      let selected = [];
+      selectedData.forEach(item => {
+        selected.push(item.id);
+      });
+
       this.$store.commit({
         type: 'updateSelected',
         state: selected,
@@ -448,6 +506,7 @@ export default {
     onClickDetail(rowData) {
       console.log(rowData);
       this.$store.commit({ type: 'updateDetailVisible', state: true });
+      this.isGroup = false;
       this.detail = { ...rowData };
     },
   },
