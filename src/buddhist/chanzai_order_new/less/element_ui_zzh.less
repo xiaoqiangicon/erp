@@ -1,0 +1,64 @@
+@color : #6fba2c;
+
+// 单选
+.el-radio__input.is-checked .el-radio__inner {
+  border-color: @color;
+  background: @color;
+}
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  color: @color;
+}
+.el-checkbox__input.is-focus .el-checkbox__inner {
+  border-color: @color;
+}
+
+// 复选框
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: @color;
+  border-color: @color;
+}
+
+// 下拉
+.el-select-dropdown__item.selected {
+  color: @color;
+}
+
+// 分页
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: @color;
+}
+
+// dialog
+.el-dialog__header {
+  padding: 0 0 0 20px;
+  background-color: @color;
+  height: 32px;
+  line-height: 32px;
+}
+.el-dialog__title {
+  line-height: 32px;
+  font-size: 18px;
+  color: #fff;
+}
+.el-dialog__headerbtn {
+  top: 0;
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
+}
+.el-icon-close:before {
+  font-weight: bold;
+}
+.el-dialog__headerbtn:focus .el-dialog__close,
+.el-dialog__headerbtn:hover .el-dialog__close {
+  color: #fff;
+}
+
+// 表格
+.el-table .ascending .sort-caret.ascending {
+  border-bottom-color: #333;
+}
+.el-table .descending .sort-caret.descending {
+  border-top-color: #333;
+}
