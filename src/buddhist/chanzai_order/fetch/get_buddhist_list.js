@@ -24,7 +24,7 @@ seeFetch.config('getBuddhistList', {
   stringify: [!0],
   url: [
     '/zzhadmin/getCommodityNameList',
-    '/src/buddhist/chanzai_order_new/mock/get_buddhist_list.json',
+    '/src/buddhist/chanzai_order/mock/get_buddhist_list.json',
   ],
   refactor: [refactor, refactor],
   post: [post, post],

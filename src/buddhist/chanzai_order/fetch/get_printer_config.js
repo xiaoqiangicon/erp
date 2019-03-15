@@ -19,7 +19,7 @@ seeFetch.config('getPrinterConfig', {
   stringify: [!0],
   url: [
     '/zzhadmin/getConversionOrderPrinter',
-    '/src/buddhist/chanzai_order_new/mock/get_printer_config.json',
+    '/src/buddhist/chanzai_order/mock/get_printer_config.json',
   ],
   refactor: [refactor, refactor],
 });

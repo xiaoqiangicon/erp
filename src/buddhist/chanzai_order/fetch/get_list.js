@@ -58,7 +58,7 @@ seeFetch.config('getList', {
   stringify: [!0],
   url: [
     '/zzhadmin/getConversionOrderList',
-    '/src/buddhist/chanzai_order_new/mock/get_list.json',
+    '/src/buddhist/chanzai_order/mock/get_list.json',
   ],
   req: [req, req],
   post: [post, post],

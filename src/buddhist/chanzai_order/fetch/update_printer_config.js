@@ -18,7 +18,7 @@ seeFetch.config('updatePrinterConfig', {
   stringify: [!0],
   url: [
     '/zzhadmin/addConversionOrderPrinter',
-    '/src/buddhist/chanzai_order_new/mock/success.json',
+    '/src/buddhist/chanzai_order/mock/success.json',
   ],
   req: [req, req],
 });

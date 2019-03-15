@@ -10,6 +10,6 @@ seeFetch.config('getPrinterStatus', {
   stringify: [!0],
   url: [
     '/zzhadmin/getPrinterStatus/',
-    '/src/buddhist/chanzai_order_new/mock/get_printer_status.json',
+    '/src/buddhist/chanzai_order/mock/get_printer_status.json',
   ],
 });

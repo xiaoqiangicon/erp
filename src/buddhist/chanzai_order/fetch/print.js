@@ -14,7 +14,7 @@ seeFetch.config('print', {
   stringify: [!0],
   url: [
     '/zzhadmin/printConversionOrder',
-    '/src/buddhist/chanzai_order_new/mock/success.json',
+    '/src/buddhist/chanzai_order/mock/success.json',
   ],
   req: [req, req],
 });

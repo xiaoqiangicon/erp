@@ -6,6 +6,6 @@ seeFetch.config('getPrinterList', {
   stringify: [!0],
   url: [
     '/zzhadmin/getPrinterList',
-    '/src/buddhist/chanzai_order_new/mock/get_printer_list.json',
+    '/src/buddhist/chanzai_order/mock/get_printer_list.json',
   ],
 });

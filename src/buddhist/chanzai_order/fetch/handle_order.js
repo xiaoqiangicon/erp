@@ -18,7 +18,7 @@ seeFetch.config('handleOrder', {
   stringify: [!0],
   url: [
     '/zzhadmin/finishConversionOrder',
-    '/src/buddhist/chanzai_order_new/mock/success.json',
+    '/src/buddhist/chanzai_order/mock/success.json',
   ],
   req: [req, req],
   pre: [pre, pre],
