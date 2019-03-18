@@ -64,18 +64,17 @@ define([], function() {
     {@else if subType === 4}
       {@if inputType === 4 || inputType === 5 || inputType === 6}
         <td style="line-height: 36px;text-align: center">固定项</td>
-        <td class="text-center"><img class="spcl-sub-ps-preview" data-ele="preview-spcl-sub-ps" src="https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png" data-index="10" data-src="https://pic.zizaihome.com/fd4dd4da-0bfb-11e8-91da-00163e0c001e.png" alt="阳上人"></td>
+        <td class="text-center">邮寄佛事</td>
       {@else}
         <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center"><img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
         <td>
           <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
-            <option value="4">联系人</option>
             <option value="12">功德芳名</option>
             <option value="15">心愿</option>
             <option value="8">性别</option>
             <option value="9">出生日期</option>
-            <option value="5">手机号码</option>
-            <option value="6">地址</option>
+            <option value="10">阳上人</option>
+            <option value="11">往生者</option>
             <option value="13">自定义-提示框</option>
             <option value="1">自定义-单行文本框</option>
             <option value="2">自定义-日期选择</option>
@@ -89,10 +88,13 @@ define([], function() {
       <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center"><img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
       <td>
         <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
+          <option value="4">联系人</option>
           <option value="12">功德芳名</option>
           <option value="15">心愿</option>
           <option value="8">性别</option>
           <option value="9">出生日期</option>
+          <option value="5">手机号码</option>
+          <option value="6">地址</option>
           <option value="10">阳上人</option>
           <option value="11">往生者</option>
           <option value="13">自定义-提示框</option>
