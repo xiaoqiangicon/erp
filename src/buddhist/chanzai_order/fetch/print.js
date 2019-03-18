@@ -4,16 +4,16 @@ import seeFetch from 'see-fetch';
 const req = {
   // orderIdList: 'orderIdList',
   // printerIdList: 'printerIdList',
-  printNum: 'printNum',
+  // printNum: 'printNum',
   printQrcode: 'qrcodePrint',
   printTel: 'isPrintMobile',
 };
 
 seeFetch.config('print', {
-  method: ['get'],
-  stringify: [!0],
+  method: ['post'],
+  stringify: [!1],
   url: [
-    '/zzhadmin/printConversionOrder',
+    '/zzhadmin/printConversionOrder/',
     '/src/buddhist/chanzai_order/mock/success.json',
   ],
   req: [req, req],

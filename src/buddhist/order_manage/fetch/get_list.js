@@ -9,7 +9,7 @@ const req = {
   subId: 'subdivideId', // 此处上传选择项名称
   hasFb: 'isSearchNoPic',
   notPrint: 'searchNotPrint',
-  // beginDate: 'beginDate',
+  // beginDate: 'beginDate',\
   // endDate: 'endDate',
   // tel: 'tel',
   // orderByPriceType: 'orderByPriceType', // 0 不起效 1 降 2 升
@@ -49,6 +49,10 @@ const refactor = {
   ],
 };
 
+const pre = params => {
+  params.pageIndex -= 1;
+};
+
 const post = res => {
   res.data.forEach(item => {
     item.images = item.dispose_pic_url ? item.dispose_pic_url.split(',') : [];
@@ -66,6 +70,7 @@ seeFetch.config('getList', {
     '/src/buddhist/order_manage/mock/get_list.json',
   ],
   req: [req, req],
+  pre: [pre, pre],
   post: [post, post],
   refactor: [refactor, refactor],
 });

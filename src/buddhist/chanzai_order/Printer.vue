@@ -142,6 +142,13 @@ export default {
   created() {
     this.getPrinterList();
   },
+  watch: {
+    visible(newValue, oldValue) {
+      if (newValue) {
+        this.getPrinterConfig();
+      }
+    },
+  },
 
   methods: {
     getPrinterConfig() {
@@ -227,8 +234,8 @@ export default {
       }
 
       seeFetch('print', {
-        orderIdList,
-        printerIdList,
+        orderIdList: JSON.stringify(orderIdList),
+        printerIdList: JSON.stringify(printerIdList),
         printNum,
         printQrcode,
         printTel,
@@ -253,17 +260,19 @@ export default {
       const { printer, printNum, printQrcode, printTel } = this;
 
       // 组装数据
-      let printerList = [];
+      let printerSnList = [];
       printer.forEach(item => {
-        printerList.push({
-          printerId: item,
-          printNum,
-          printQrcode,
-          printTel,
+        printerSnList.push({
+          id: item,
+          continuousPrintNum: printNum,
+          qrcodePrint: printQrcode,
+          isPrintMobile: printTel,
         });
       });
 
-      seeFetch('', { printerList }).then(res => {
+      seeFetch('updatePrinterConfig', {
+        printerSnList: JSON.stringify(printerSnList),
+      }).then(res => {
         if (res.success) {
           Notification({
             title: '提示',

@@ -237,13 +237,16 @@ export default {
   created() {
     // 初始化图片上传
     this.chooseImage = new ChooseImage({
-      multiUpload: false,
-      multiSelect: false,
+      multiUpload: true,
+      multiSelect: true,
       showManage: true,
       onSubmit: items => {
-        const { src } = items[0];
         let images = [...this.images];
-        images.push(src);
+
+        items.map(({ src }) => {
+          images.push(src);
+        });
+
         this.images = images;
       },
     });
@@ -422,6 +425,12 @@ export default {
         remark,
       }).then(res => {
         if (res.success) {
+          Notification({
+            title: '提示',
+            message: '处理成功',
+            type: 'success',
+          });
+
           this.$emit('refresh');
           this.$store.commit({ type: 'updateDetailVisible', state: false });
         } else {

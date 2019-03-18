@@ -85,10 +85,10 @@ export default {
 
     onClickExport() {
       const { buddhistId, subId, date } = this;
-      window.open(`/zzhadmin/logisticsOrderDownloadExcel/?beginDate=${
-        date[0]
-      }&endDate=${date[1]}
-     &commodityId=${buddhistId}&subdirideId=${subId}`);
+      window.open(
+        `/zzhadmin/logisticsOrderDownloadExcel/?beginDate=${date[0]}` +
+          `&endDate=${date[1]}&commodityId=${buddhistId}&subdirideId=${subId}`
+      );
     },
     onClickUpload() {},
   },

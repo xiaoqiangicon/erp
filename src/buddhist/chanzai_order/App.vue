@@ -26,14 +26,13 @@
         <el-col :span="12">
           <label for="">下单时间：</label>
           <el-date-picker
-            @change="onChangeFilter"
+            @change="onChangeDatePicker"
             v-model="date"
             type="daterange"
             range-separator="-"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             format="yyyy-MM-dd"
-            value-format="yyyy-MM-dd"
             unlink-panels
           >
           </el-date-picker>
@@ -60,8 +59,8 @@
       <div class="s-tabs">
         <div
           class="s-tab-panel"
-          @click="onClickType(2)"
-          v-bind:class="{ active: type === 2 }"
+          @click="onClickType(1)"
+          v-bind:class="{ active: type === 1 }"
         >
           未处理 <span class="badge mg-l-20">{{ unHandleNum }}</span>
         </div>
@@ -74,8 +73,8 @@
         </div>
         <div
           class="s-tab-panel"
-          @click="onClickType(1)"
-          v-bind:class="{ active: type === 1 }"
+          @click="onClickType(2)"
+          v-bind:class="{ active: type === 2 }"
         >
           已完成
         </div>
@@ -205,6 +204,7 @@ import { Notification } from 'element-ui';
 import seeFetch from 'see-fetch';
 import Detail from './Detail';
 import Printer from './Printer';
+import formatTime from '../../util/format_time';
 
 export default {
   name: 'App',
@@ -220,11 +220,12 @@ export default {
       // 列表请求参数
       buddhistId: '',
       date: ['', ''],
+      formatDate: ['', ''],
       tel: '',
-      type: 1, // 1 已完成 2 未处理 3 已发货
+      type: 1, // 1 未处理 2 已完成  3 已发货
       // 分页
       currentSize: 25,
-      currentPage: 0,
+      currentPage: 1,
       totalCount: 0,
       // 数据
       buddhistList: [],
@@ -268,7 +269,7 @@ export default {
         currentSize: pageSize,
         type,
         buddhistId,
-        date,
+        formatDate,
         tel,
       } = this;
 
@@ -277,15 +278,15 @@ export default {
         pageSize,
         type,
         buddhistId,
-        beginDate: date[0],
-        endDate: date[1],
+        beginDate: formatDate[0],
+        endDate: formatDate[1],
         tel,
       }).then(res => {
         if (res.success) {
           this.totalCount = res.totalCount;
           this.list = res.data;
 
-          if (type === 2) {
+          if (type === 1) {
             this.unHandleNum = res.totalCount;
             // 导航栏的total显示
             window.localStorage.setItem('chanzai_orderNumber', res.totalCount);
@@ -306,8 +307,13 @@ export default {
     onChangeBuddhistId() {
       this.onChangeFilter();
     },
+    onChangeDatePicker() {
+      const { date } = this;
+      this.formatDate = date.map(item => formatTime(`${item}`));
+      this.onChangeFilter();
+    },
     onChangeFilter() {
-      this.currentPage = 0;
+      this.currentPage = 1;
       this.requestList();
     },
     onClickSearch() {
@@ -317,23 +323,24 @@ export default {
       this.buddhistId = '';
       this.tel = '';
       this.date = ['', ''];
+      this.formatDate = ['', ''];
       this.tel = '';
       this.requestList();
     },
     onClickExport() {
-      const { type, buddhistId, date, tel } = this;
+      const { type, buddhistId, formatDate, tel } = this;
 
       window.open(
         `/zzhadmin/getConversionOrderExcel/?type=${type}&startTime=${
-          date[0]
-        }&endTime=${date[1]}&mobile=${tel}&commodityId=${buddhistId}`
+          formatDate[0]
+        }&endTime=${formatDate[1]}&mobile=${tel}&commodityId=${buddhistId}`
       );
     },
     onClickType(type) {
       if (this.type === type) return;
 
       this.type = type;
-      this.currentPage = 0;
+      this.currentPage = 1;
       this.requestList();
     },
     onClickHandleOrderGroup() {
@@ -393,7 +400,7 @@ export default {
     },
     handleSizeChange(size) {
       this.currentSize = size;
-      this.currentPage = 0;
+      this.currentPage = 1;
       this.requestList();
     },
     handleCurrentChange(page) {

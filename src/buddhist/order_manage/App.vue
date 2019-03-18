@@ -55,14 +55,13 @@
         <el-col :span="12">
           <label for="">下单时间：</label>
           <el-date-picker
-            @change="onChangeFilter"
+            @change="onChangeDatePicker"
             v-model="date"
             type="daterange"
             range-separator="-"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             format="yyyy-MM-dd"
-            value-format="yyyy-MM-dd"
             unlink-panels
           >
           </el-date-picker>
@@ -250,6 +249,7 @@ import seeFetch from 'see-fetch';
 import Detail from './Detail';
 import Printer from './Printer';
 import Logistics from './Logistics';
+import formatTime from '../../util/format_time';
 
 export default {
   name: 'App',
@@ -269,13 +269,14 @@ export default {
       hasFb: false,
       notPrint: false,
       date: ['', ''],
+      formatDate: ['', ''],
       tel: '',
       type: 1, // 未处理 1 已完成 3  已发货 4 全部订单 2
       orderByPriceType: 0,
       orderByTimeType: 0,
       // 分页
       currentSize: 25,
-      currentPage: 0,
+      currentPage: 1,
       totalCount: 0,
       // 数据
       buddhistList: [],
@@ -336,7 +337,7 @@ export default {
         subId,
         hasFb,
         notPrint,
-        date,
+        formatDate,
         tel,
         orderByPriceType,
         orderByTimeType,
@@ -350,8 +351,8 @@ export default {
         subId,
         hasFb: Number(hasFb),
         notPrint: Number(notPrint),
-        beginDate: date[0],
-        endDate: date[1],
+        beginDate: formatDate[0],
+        endDate: formatDate[1],
         tel,
         orderByPriceType,
         orderByTimeType,
@@ -382,8 +383,13 @@ export default {
       this.subId = -1;
       this.onChangeFilter();
     },
+    onChangeDatePicker() {
+      const { date } = this;
+      this.formatDate = date.map(item => formatTime(`${item}`));
+      this.onChangeFilter();
+    },
     onChangeFilter() {
-      this.currentPage = 0;
+      this.currentPage = 1;
       this.requestList();
     },
     onClickSearch() {
@@ -396,23 +402,24 @@ export default {
       this.hasFb = false;
       this.notPrint = false;
       this.date = ['', ''];
+      this.formatDate = ['', ''];
       this.tel = '';
       this.requestList();
     },
     onClickExport() {
-      const { type, buddhistId, hasFb, notPrint, date, tel } = this;
+      const { type, buddhistId, hasFb, notPrint, formatDate, tel } = this;
 
-      window.open(`/zzhadmin/bcDownloadExcel/?beginDate=${date[0]}&endDate=${
-        date[1]
-      }
-      &tel=${tel}&buddishService=${buddhistId}&type=${type}
-      &isSearchNoPic=${hasFb}&searchNotPrint=${notPrint}`);
+      window.open(
+        `/zzhadmin/bcDownloadExcel/?beginDate=${formatDate[0]}` +
+          `&endDate=${formatDate[1]}&tel=${tel}&buddishService=${buddhistId}` +
+          `&type=${type}&isSearchNoPic=${hasFb}&searchNotPrint=${notPrint}`
+      );
     },
     onClickType(type) {
       if (this.type === type) return;
 
       this.type = type;
-      this.currentPage = 0;
+      this.currentPage = 1;
       this.requestList();
     },
     onClickHandleOrderGroup() {
@@ -496,7 +503,7 @@ export default {
     },
     handleSizeChange(size) {
       this.currentSize = size;
-      this.currentPage = 0;
+      this.currentPage = 1;
       this.requestList();
     },
     handleCurrentChange(page) {

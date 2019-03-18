@@ -5,7 +5,7 @@ const req = {
   page: 'pageIndex',
   // pageSize: 'pageSize',
   // type: 'type', // 1 已完成 2 未处理 3 已发货
-  buddhistId: 'buddishService',
+  buddhistId: 'commodityId',
   beginDate: 'startTime',
   endDate: 'endTime',
   tel: 'mobile',
@@ -44,6 +44,13 @@ const refactor = {
   ],
 };
 
+const pre = params => {
+  params.pageIndex -= 1;
+  if (params.commodityId === '') {
+    params.commodityId = 0;
+  }
+};
+
 const post = res => {
   res.data.forEach(item => {
     item.images = item.dispose_pic_url ? item.dispose_pic_url.split(',') : [];
@@ -61,6 +68,7 @@ seeFetch.config('getList', {
     '/src/buddhist/chanzai_order/mock/get_list.json',
   ],
   req: [req, req],
+  pre: [pre, pre],
   post: [post, post],
   refactor: [refactor, refactor],
 });
