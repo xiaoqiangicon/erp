@@ -573,6 +573,11 @@ export default {
   /*width: 130px;*/
   border: 1px solid #969696;
 }
+.logistics-container input,
+.logistics-container input:focus {
+  border: none;
+  border-left: 1px solid #969696;
+}
 .logistics-select {
   background-color: #fff;
   width: 130px;
