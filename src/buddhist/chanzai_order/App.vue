@@ -5,11 +5,13 @@
         <el-col :span="10">
           <label for="">佛事项目：</label>
           <el-select
+            clearable
             @change="onChangeBuddhistId"
             size="medium"
             v-model="buddhistId"
             filterable
             :loading="loadingBuddhistList"
+            placeholder="请选择或填写关键词搜索"
           >
             <el-option
               v-for="item in buddhistList"
@@ -80,7 +82,7 @@
         </div>
       </div>
 
-      <div class="mg-b-10" style="height: 28px; line-height: 28px;">
+      <div class="mg-b-10" style="height: 40px; line-height: 40px;">
         <span class="mg-r-10 mg-l-30" style="color:#989898;"
           >已选择<span
             class="mg-l-10 mg-r-10 text-center"
@@ -90,7 +92,7 @@
         >
         <el-button
           type="success"
-          size="mini"
+          size="medium"
           v-show="type === 1 || type === 2"
           @click="onClickHandleOrderGroup"
         >
@@ -100,7 +102,7 @@
         <el-button
           type="default"
           class="pull-right mg-r-20"
-          size="mini"
+          size="medium"
           @click="onClickPrint"
           >立即打印</el-button
         >
@@ -108,7 +110,7 @@
         <el-button
           type="default"
           class="pull-right mg-r-20"
-          size="mini"
+          size="medium"
           @click="onClickSetPrinter"
           >打印设置</el-button
         >
@@ -248,7 +250,7 @@ export default {
       seeFetch('getBuddhistList', {}).then(res => {
         if (res.success) {
           this.buddhistList = [
-            { buddhistId: '', buddhistName: '全部' },
+            //            { buddhistId: '', buddhistName: '全部' },
             ...res.data,
           ];
           this.loadingBuddhistList = false;

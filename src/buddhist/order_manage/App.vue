@@ -5,11 +5,13 @@
         <el-col :span="10">
           <label for="">佛事项目：</label>
           <el-select
+            clearable
             @change="onChangeBuddhistId"
             size="medium"
             v-model="buddhistId"
             filterable
             :loading="loadingBuddhistList"
+            placeholder="请选择或填写关键词搜索"
           >
             <el-option
               v-for="item in buddhistList"
@@ -27,6 +29,7 @@
             size="medium"
             v-model="subId"
             filterable
+            placeholder="请选择或填写关键词搜索"
           >
             <el-option
               v-for="item in subList"
@@ -116,7 +119,7 @@
         </div>
       </div>
 
-      <div class="mg-b-10" style="height: 28px; line-height: 28px;">
+      <div class="mg-b-10" style="height: 40px; line-height: 40px;">
         <span class="mg-r-10 mg-l-30" style="color:#989898;"
           >已选择<span
             class="mg-l-10 mg-r-10 text-center"
@@ -126,7 +129,7 @@
         >
         <el-button
           type="success"
-          size="mini"
+          size="medium"
           v-show="type === 1 || type === 3"
           @click="onClickHandleOrderGroup"
         >
@@ -135,15 +138,15 @@
         <el-button
           v-show="type === 1"
           type="default"
-          size="mini"
+          size="medium"
           @click="onClickLogistics"
         >
           批量发货
         </el-button>
         <el-button
           type="default"
+          size="medium"
           class="pull-right mg-r-20"
-          size="mini"
           @click="onClickPrintGroup"
           >小票打印</el-button
         >
@@ -313,7 +316,7 @@ export default {
       seeFetch('getBuddhistList', {}).then(res => {
         if (res.success) {
           this.buddhistList = [
-            { buddhistId: '', buddhistName: '全部', subList: [] },
+            //            { buddhistId: '', buddhistName: '全部', subList: [] },
             ...res.data,
           ];
           this.loadingBuddhistList = false;

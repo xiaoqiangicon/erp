@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="cell">
+        <div v-show="!isGroup" class="cell">
           <div class="cell-title">物流单号</div>
           <div class="cell-body">
             <el-input
@@ -289,7 +289,7 @@ export default {
       let images = [];
       let videos = [];
       let remark = '';
-      let courierCompanyCode = 'SF';
+      let courierCompanyCode = '';
       let logisticsOrder = '';
 
       if (!isGroup) {
