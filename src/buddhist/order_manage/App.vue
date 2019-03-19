@@ -65,6 +65,7 @@
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             format="yyyy-MM-dd"
+            :picker-options="pickerOptions"
             unlink-panels
           >
           </el-date-picker>
@@ -286,6 +287,38 @@ export default {
       list: [],
       isGroup: false, // 是否是批量处理
       detail: {}, // 当前选中项的detail
+
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            },
+          },
+          {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            },
+          },
+          {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            },
+          },
+        ],
+      },
     };
   },
   computed: {
