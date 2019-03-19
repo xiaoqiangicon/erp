@@ -337,8 +337,8 @@ export default {
       this.images = images;
       this.videos = videos;
       this.remark = remark;
-      this.courierCompanyCode = courierCompanyCode;
-      this.logisticsOrder = logisticsOrder;
+      this.courierCompanyCode = courierCompanyCode || '';
+      this.logisticsOrder = logisticsOrder || '';
 
       // 渲染 ueditor 数据
       if (remarkEditor) {

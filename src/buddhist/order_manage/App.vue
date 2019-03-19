@@ -411,12 +411,12 @@ export default {
     },
     onClickExport() {
       const { type, buddhistId, hasFb, notPrint, formatDate, tel } = this;
-
-      window.open(
-        `/zzhadmin/bcDownloadExcel/?beginDate=${formatDate[0]}` +
-          `&endDate=${formatDate[1]}&tel=${tel}&buddishService=${buddhistId}` +
-          `&type=${type}&isSearchNoPic=${hasFb}&searchNotPrint=${notPrint}`
-      );
+      const excelUrl =
+        `/zzhadmin/bcDownloadExcel/?type=${type}` +
+        `&beginDate=${formatDate[0]}&endDate=${formatDate[1]}` +
+        `&buddishService=${buddhistId}&tel=${tel}` +
+        `&isSearchNoPic=${hasFb}&searchNotPrint=${notPrint}`;
+      window.open(excelUrl);
     },
     onClickType(type) {
       if (this.type === type) return;

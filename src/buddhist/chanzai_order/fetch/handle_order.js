@@ -14,10 +14,10 @@ const pre = params => {
 };
 
 seeFetch.config('handleOrder', {
-  method: ['get'],
-  stringify: [!0],
+  method: ['post'],
+  stringify: [!1],
   url: [
-    '/zzhadmin/finishConversionOrder',
+    '/zzhadmin/finishConversionOrder/',
     '/src/buddhist/chanzai_order/mock/success.json',
   ],
   req: [req, req],

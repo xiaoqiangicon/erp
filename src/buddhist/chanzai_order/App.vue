@@ -331,12 +331,11 @@ export default {
     },
     onClickExport() {
       const { type, buddhistId, formatDate, tel } = this;
-
-      window.open(
-        `/zzhadmin/getConversionOrderExcel/?type=${type}&startTime=${
-          formatDate[0]
-        }&endTime=${formatDate[1]}&mobile=${tel}&commodityId=${buddhistId}`
-      );
+      const excelUrl =
+        `/zzhadmin/getConversionOrderExcel/?type=${type}` +
+        `&startTime=${formatDate[0]}&endTime=${formatDate[1]}` +
+        `&mobile=${tel}&commodityId=${buddhistId ? buddhistId : 0}`;
+      window.open(excelUrl);
     },
     onClickType(type) {
       if (this.type === type) return;
