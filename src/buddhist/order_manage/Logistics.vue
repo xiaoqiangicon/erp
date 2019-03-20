@@ -53,7 +53,9 @@ export default {
 
       upload(
         this.$refs.uploadRef,
-        () => {
+        (url, e, data) => {
+          console.log('上传文件', data.result);
+
           Notification({
             title: '提示',
             message: '上传成功！',

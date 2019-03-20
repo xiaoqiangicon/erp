@@ -116,7 +116,7 @@
           @click="onClickType(3)"
           v-bind:class="{ active: type === 3 }"
         >
-          已完成
+          已处理
         </div>
         <div
           class="s-tab-panel"
@@ -174,7 +174,9 @@
         <el-table-column label="佛事">
           <template slot-scope="scope">
             <img class="td-cover" v-bind:src="scope.row.productImg" />
-            <p class="mg-b-0">{{ scope.row.buddhistName }}</p>
+            <p class="mg-b-0" style="font-size: 16px;">
+              {{ scope.row.buddhistName }}
+            </p>
             <p class="mg-b-0">{{ scope.row.subName }}</p>
           </template>
         </el-table-column>
