@@ -69,7 +69,7 @@
     </div>
     ${require('./html/loading_toast.html')}
     <script>
-      var ceremonyMap = {};
+      var ceremonyMap = {{ceremonyMap | safe}};
     </script>
   </body>
 </html>
