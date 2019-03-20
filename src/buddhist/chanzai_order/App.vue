@@ -76,6 +76,13 @@
         </div>
         <div
           class="s-tab-panel"
+          @click="onClickType(4)"
+          v-bind:class="{ active: type === 4 }"
+        >
+          已收货
+        </div>
+        <div
+          class="s-tab-panel"
           @click="onClickType(2)"
           v-bind:class="{ active: type === 2 }"
         >

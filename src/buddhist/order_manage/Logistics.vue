@@ -49,7 +49,7 @@ export default {
       if (this.hasInitUpload) return;
 
       // 自定义上传接口
-      window.zzhUploadUrl = '/zzhadmin/logisticsOrderUploadExcel';
+      window.zzhUploadUrl = '/zzhadmin/logisticsOrderUploadExcel/';
 
       upload(
         this.$refs.uploadRef,
@@ -66,9 +66,17 @@ export default {
           this.$emit('refresh');
         },
         {
+          type: 'file',
           componentOption: {
             dataType: 'json',
             paramName: 'myfile',
+            fail: () => {
+              Notification({
+                title: '提示',
+                message: '请确认文件内填写了具体信息',
+                type: 'error',
+              });
+            },
           },
         }
       );

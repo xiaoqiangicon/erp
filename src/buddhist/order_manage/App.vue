@@ -106,6 +106,13 @@
         </div>
         <div
           class="s-tab-panel"
+          @click="onClickType(5)"
+          v-bind:class="{ active: type === 5 }"
+        >
+          已收货
+        </div>
+        <div
+          class="s-tab-panel"
           @click="onClickType(3)"
           v-bind:class="{ active: type === 3 }"
         >
@@ -137,7 +144,7 @@
           批量处理
         </el-button>
         <el-button
-          v-show="type === 1"
+          v-show="type === 1 && buddhistId"
           type="default"
           size="medium"
           @click="onClickLogistics"
