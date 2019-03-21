@@ -54,18 +54,25 @@ export default {
       upload(
         this.$refs.uploadRef,
         (url, e, data) => {
-          console.log('上传文件', data.result);
-
-          Notification({
-            title: '提示',
-            message: '上传成功！',
-            type: 'success',
-          });
-          this.$store.commit({
-            type: 'updateLogisticsDialogVisible',
-            state: false,
-          });
-          this.$emit('refresh');
+          if (data.result.result >= 0) {
+            Notification({
+              title: '提示',
+              message: '上传成功！',
+              type: 'success',
+            });
+            this.$store.commit({
+              type: 'updateLogisticsDialogVisible',
+              state: false,
+            });
+            this.$emit('refresh');
+          } else {
+            Notification({
+              title: '提示',
+              duration: 6000,
+              message: data.result.msg,
+              type: 'error',
+            });
+          }
         },
         {
           type: 'file',
@@ -75,7 +82,9 @@ export default {
             fail: () => {
               Notification({
                 title: '提示',
-                message: '请确认文件内填写了具体信息',
+                duration: 6000,
+                message:
+                  '文件格式或内容填写有误,请核对并修改信息后，再重新提交。',
                 type: 'error',
               });
             },

@@ -166,11 +166,14 @@
           </div>
         </div>
 
-        <div v-show="type === 1 || type === 4 || type === 3" class="foot">
+        <div
+          v-show="type === 1 || type === 4 || type === 3 || type === 2"
+          class="foot"
+        >
           <div @click="onClickHandle" v-if="logisticsOrder" class="s-btn">
             设为已发货
           </div>
-          <div @click="onClickHandle" v-else class="s-btn">设为已完成</div>
+          <div @click="onClickHandle" v-else class="s-btn">设为已处理</div>
         </div>
       </div>
       <VideoPlayer :src="videoPlayerSrc" />
@@ -405,9 +408,15 @@ export default {
       this.chooseImage.show();
     },
     onClickHandle() {
-      const { isGroup, images, courierCompanyCode, logisticsOrder } = this;
+      const { isGroup, images, logisticsOrder } = this;
+      let { courierCompanyCode } = this;
       const remark = remarkEditor.getContent();
       let orderIds;
+
+      if (!logisticsOrder) {
+        // 设为已处理
+        courierCompanyCode = '';
+      }
 
       if (isGroup) {
         // 从selected中取orderIds
@@ -613,9 +622,11 @@ export default {
 }
 .ps-title {
   /*flex: 1;*/
+  display: inline-block;
 }
 .ps-content {
   /*flex: 3;*/
+  display: inline-block;
 }
 .ps-image {
   width: 80px;

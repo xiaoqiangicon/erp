@@ -4,11 +4,12 @@ import seeFetch from 'see-fetch';
 const req = {
   page: 'pageIndex',
   // pageSize: 'pageSize',
-  // type: 'type', // 1 已完成 2 未处理 3 已发货
+  // type: 'type', // 1 已处理 2 未处理 3 已发货 4 已收货
   buddhistId: 'commodityId',
   beginDate: 'startTime',
   endDate: 'endTime',
   tel: 'mobile',
+  // logisticsOrder: 'logisticsOrder',
 };
 
 const refactor = {

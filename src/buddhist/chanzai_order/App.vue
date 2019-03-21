@@ -2,9 +2,10 @@
   <main>
     <div class="head">
       <el-row class="mg-b-10" style="line-height: 40px;">
-        <el-col :span="10">
+        <el-col :span="11">
           <label for="">佛事项目：</label>
           <el-select
+            style="width: 350px;"
             clearable
             @change="onChangeBuddhistId"
             size="medium"
@@ -25,7 +26,7 @@
       </el-row>
 
       <el-row class="mg-b-10" style="line-height: 40px;">
-        <el-col :span="12">
+        <el-col :span="11">
           <label for="">下单时间：</label>
           <el-date-picker
             @change="onChangeDatePicker"
@@ -41,12 +42,13 @@
           </el-date-picker>
         </el-col>
 
-        <el-col :span="6">
+        <el-col :span="7">
           <label for="">手机号：</label>
           <el-input
             style="width: 150px;"
             size="medium"
             v-model="tel"
+            @keyup.enter.native="onClickSearch"
           ></el-input>
         </el-col>
 
@@ -54,6 +56,18 @@
           <el-button size="medium" @click="onClickSearch">查询</el-button>
           <el-button size="medium" @click="onClickReset">重置</el-button>
           <el-button size="medium" @click="onClickExport">导出</el-button>
+        </el-col>
+      </el-row>
+
+      <el-row class="mg-b-10" style="line-height: 40px;">
+        <el-col :span="10">
+          <label for="">物流单号：</label>
+          <el-input
+            style="width: 350px;"
+            size="medium"
+            v-model="logisticsOrder"
+            @keyup.enter.native="onClickSearch"
+          ></el-input>
         </el-col>
       </el-row>
     </div>
@@ -234,7 +248,8 @@ export default {
       date: ['', ''],
       formatDate: ['', ''],
       tel: '',
-      type: 1, // 1 未处理 2 已完成  3 已发货
+      logisticsOrder: '',
+      type: 1, // 1 已处理 2 未处理 3 已发货 4 已收货
       // 分页
       currentSize: 25,
       currentPage: 1,
@@ -315,6 +330,7 @@ export default {
         buddhistId,
         formatDate,
         tel,
+        logisticsOrder,
       } = this;
 
       seeFetch('getList', {
@@ -325,6 +341,7 @@ export default {
         beginDate: formatDate[0],
         endDate: formatDate[1],
         tel,
+        logisticsOrder,
       }).then(res => {
         if (res.success) {
           this.totalCount = res.totalCount;
@@ -366,9 +383,9 @@ export default {
     onClickReset() {
       this.buddhistId = '';
       this.tel = '';
+      this.logisticsOrder = '';
       this.date = ['', ''];
       this.formatDate = ['', ''];
-      this.tel = '';
       this.requestList();
     },
     onClickExport() {
@@ -466,7 +483,7 @@ main {
 }
 .head {
   margin: 20px 0 50px;
-  padding: 0 5%;
+  padding: 0 3%;
 }
 
 .s-tabs {

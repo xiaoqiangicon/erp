@@ -5,6 +5,7 @@
         <el-col :span="10">
           <label for="">佛事项目：</label>
           <el-select
+            style="width: 350px;"
             clearable
             @change="onChangeBuddhistId"
             size="medium"
@@ -55,7 +56,7 @@
       </el-row>
 
       <el-row class="mg-b-10" style="line-height: 40px;">
-        <el-col :span="12">
+        <el-col :span="10">
           <label for="">下单时间：</label>
           <el-date-picker
             @change="onChangeDatePicker"
@@ -70,20 +71,31 @@
           >
           </el-date-picker>
         </el-col>
-
-        <el-col :span="6">
+        <el-col :span="8">
           <label for="">手机号：</label>
           <el-input
             style="width: 150px;"
             size="medium"
             v-model="tel"
+            @keyup.enter.native="onClickSearch"
           ></el-input>
         </el-col>
-
         <el-col :span="6">
           <el-button size="medium" @click="onClickSearch">查询</el-button>
           <el-button size="medium" @click="onClickReset">重置</el-button>
           <el-button size="medium" @click="onClickExport">导出</el-button>
+        </el-col>
+      </el-row>
+
+      <el-row class="mg-b-10" style="line-height: 40px;">
+        <el-col :span="10">
+          <label for="">物流单号：</label>
+          <el-input
+            style="width: 350px;"
+            size="medium"
+            v-model="logisticsOrder"
+            @keyup.enter.native="onClickSearch"
+          ></el-input>
         </el-col>
       </el-row>
     </div>
@@ -284,7 +296,8 @@ export default {
       date: ['', ''],
       formatDate: ['', ''],
       tel: '',
-      type: 1, // 未处理 1 已完成 3  已发货 4 全部订单 2
+      logisticsOrder: '',
+      type: 1, // 1 未处理 3 已处理 4 已发货 2 全部订单 5 已发货
       orderByPriceType: 0,
       orderByTimeType: 0,
       // 分页
@@ -384,6 +397,7 @@ export default {
         notPrint,
         formatDate,
         tel,
+        logisticsOrder,
         orderByPriceType,
         orderByTimeType,
       } = this;
@@ -399,6 +413,7 @@ export default {
         beginDate: formatDate[0],
         endDate: formatDate[1],
         tel,
+        logisticsOrder,
         orderByPriceType,
         orderByTimeType,
       }).then(res => {
@@ -444,11 +459,11 @@ export default {
       this.buddhistId = '';
       this.subId = -1;
       this.tel = '';
+      this.logisticsOrder = '';
       this.hasFb = false;
       this.notPrint = false;
       this.date = ['', ''];
       this.formatDate = ['', ''];
-      this.tel = '';
       this.requestList();
     },
     onClickExport() {
@@ -571,7 +586,7 @@ main {
 }
 .head {
   margin: 20px 0 50px;
-  padding: 0 5%;
+  padding: 0 3%;
 }
 
 .s-tabs {

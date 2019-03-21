@@ -4,14 +4,15 @@ import seeFetch from 'see-fetch';
 const req = {
   page: 'pageIndex',
   // pageSize: 'pageSize',
-  // type: 'type',
+  // type: 'type',  // 1 未处理 3 已处理 4 已发货 2 全部订单 5 已发货
   buddhistId: 'buddishService',
   subId: 'subdivideId', // 此处上传选择项名称
   hasFb: 'isSearchNoPic',
   notPrint: 'searchNotPrint',
-  // beginDate: 'beginDate',\
+  // beginDate: 'beginDate',
   // endDate: 'endDate',
   // tel: 'tel',
+  // logisticsOrder: 'logisticsOrder',
   // orderByPriceType: 'orderByPriceType', // 0 不起效 1 降 2 升
   // orderByTimeType: 'orderByTimeType',
 };
