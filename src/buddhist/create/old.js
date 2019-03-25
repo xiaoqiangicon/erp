@@ -4897,7 +4897,8 @@ define([
           var res = data.data;
           if (data['result'] == 0 || res) {
             self.render_ueditor();
-            // 查找当前佛事分类并渲染
+
+            // 获取分类数据并渲染下拉列表
             if (typeof res == 'object' && res.length > 0) {
               var opHtml = '';
               _.each(res, function(item, index) {
@@ -4920,41 +4921,49 @@ define([
               $('.selectpicker').selectpicker({});
               self.res = res;
             }
+
+            // 编辑佛事选中佛事分类
             if (foshiId) {
-              if (
-                $('#classification')
-                  .prev()
-                  .find('.selected')
-                  .find('.text')
-                  .text() != foshiName
-              ) {
-                // 分类名和佛事名不相同
-                if (!is_test_environment) {
-                  $('#classification').selectpicker(
-                    'val',
-                    ceremonyMap.ceremonyTypeId
-                  );
-                }
-                var foshiNameList = $('#classification')
-                  .prev()
-                  .find('.selected')
-                  .siblings();
-                $('#classification')
-                  .prev()
-                  .find('.selected')
-                  .removeClass('selected');
-                foshiNameList.each(function(index, item) {
-                  var currentName = $('.text', item).text();
-                  if (currentName == foshiName) {
-                    item.setAttribute('class', 'selected');
-                  }
-                });
-                $('[data-id="classification"]').attr('title', foshiName);
-                $('[data-id="classification"]')
-                  .find('span')
-                  .eq(0)
-                  .text(foshiName);
-              }
+              $('#classification').selectpicker(
+                'val',
+                ceremonyMap.ceremonyTypeId
+              );
+
+              // 以下代码莫名其妙 建议删除
+              // if (
+              //   $('#classification')
+              //     .prev()
+              //     .find('.selected')
+              //     .find('.text')
+              //     .text() != foshiName
+              // ) {
+              //   // 分类名和佛事名不相同
+              //   if (!is_test_environment) {
+              //     $('#classification').selectpicker(
+              //       'val',
+              //       ceremonyMap.ceremonyTypeId
+              //     );
+              //   }
+              //   var foshiNameList = $('#classification')
+              //     .prev()
+              //     .find('.selected')
+              //     .siblings();
+              //   $('#classification')
+              //     .prev()
+              //     .find('.selected')
+              //     .removeClass('selected');
+              //   foshiNameList.each(function(index, item) {
+              //     var currentName = $('.text', item).text();
+              //     if (currentName == foshiName) {
+              //       item.setAttribute('class', 'selected');
+              //     }
+              //   });
+              //   $('[data-id="classification"]').attr('title', foshiName);
+              //   $('[data-id="classification"]')
+              //     .find('span')
+              //     .eq(0)
+              //     .text(foshiName);
+              // }
             }
             // 初始化模板
             self.additionItems = new AdditionCollection([
