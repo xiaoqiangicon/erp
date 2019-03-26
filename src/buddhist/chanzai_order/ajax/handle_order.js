@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign, prefer-destructuring */
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 
 const req = {
   // orderIds: 'orderIds', // 数组
@@ -13,7 +13,7 @@ const pre = params => {
   params.pics = params.pics.join(',');
 };
 
-seeFetch.config('handleOrder', {
+seeAjax.config('handleOrder', {
   method: ['post'],
   stringify: [!1],
   url: [

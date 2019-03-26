@@ -123,7 +123,6 @@
     "react-dom": "^16.6.3",
     "reqwest": "^2.0.5",
     "see-ajax": "^1.0.1",
-    "see-fetch": "^1.0.1",
     "see-view": "^1.0.0",
     "spinkit": "^1.2.5",
     "swiper": "^3.4.2",

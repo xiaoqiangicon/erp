@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign, prefer-destructuring */
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 
 const req = {
   // orderIdList: 'orderIdList',
@@ -9,12 +9,12 @@ const req = {
   printTel: 'isPrintMobile',
 };
 
-seeFetch.config('print', {
+seeAjax.config('print', {
   method: ['post'],
-  stringify: [!0],
+  stringify: [!1],
   url: [
-    '/zzhadmin/printAppointOrder/',
-    '/src/buddhist/order_manage/mock/success.json',
+    '/zzhadmin/printConversionOrder/',
+    '/src/buddhist/chanzai_order/mock/success.json',
   ],
   req: [req, req],
 });

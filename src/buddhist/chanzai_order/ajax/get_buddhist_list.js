@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign, prefer-destructuring */
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 
 const refactor = {
   data: [
@@ -19,12 +19,12 @@ const refactor = {
 
 const post = res => {};
 
-seeFetch.config('getBuddhistList', {
+seeAjax.config('getBuddhistList', {
   method: ['get'],
   stringify: [!0],
   url: [
     '/zzhadmin/getCommodityNameList',
-    '/src/buddhist/order_manage/mock/get_buddhist_list.json',
+    '/src/buddhist/chanzai_order/mock/get_buddhist_list.json',
   ],
   refactor: [refactor, refactor],
   post: [post, post],

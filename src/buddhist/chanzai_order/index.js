@@ -55,7 +55,7 @@ import {
   TabPane,
 } from 'element-ui';
 import App from './App.vue';
-import './fetch';
+import './ajax';
 import store from './store';
 
 Vue.config.devtools = true;

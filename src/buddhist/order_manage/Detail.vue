@@ -185,7 +185,7 @@
 import VideoPlayer from './VideoPlayer';
 
 import { Notification } from 'element-ui';
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 import QRCode from '@zzh/qrcode';
 import ChooseImage from '@zzh/choose-image';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
@@ -352,7 +352,7 @@ export default {
       this.$store.commit({ type: 'updateDetailVisible', state: false });
     },
     getCourierCompanyList() {
-      seeFetch('getCourierCompanyList', {}).then(res => {
+      seeAjax('getCourierCompanyList', {}, res => {
         if (res.success) {
           this.courierCompanyList = res.data;
         } else {
@@ -426,30 +426,34 @@ export default {
         orderIds = `[${this.id}]`;
       }
 
-      seeFetch('handleOrder', {
-        orderIds,
-        pics: images,
-        courierCompanyCode,
-        logisticsOrder,
-        remark,
-      }).then(res => {
-        if (res.success) {
-          Notification({
-            title: '提示',
-            message: '处理成功',
-            type: 'success',
-          });
+      seeAjax(
+        'handleOrder',
+        {
+          orderIds,
+          pics: images,
+          courierCompanyCode,
+          logisticsOrder,
+          remark,
+        },
+        res => {
+          if (res.success) {
+            Notification({
+              title: '提示',
+              message: '处理成功',
+              type: 'success',
+            });
 
-          this.$emit('refresh');
-          this.$store.commit({ type: 'updateDetailVisible', state: false });
-        } else {
-          Notification({
-            title: '提示',
-            message: '接口出错',
-            type: 'error',
-          });
+            this.$emit('refresh');
+            this.$store.commit({ type: 'updateDetailVisible', state: false });
+          } else {
+            Notification({
+              title: '提示',
+              message: '接口出错',
+              type: 'error',
+            });
+          }
         }
-      });
+      );
     },
   },
 };

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign, prefer-destructuring */
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 
-seeFetch.config('getPrinterList', {
+seeAjax.config('getPrinterList', {
   method: ['get'],
   stringify: [!0],
   url: [

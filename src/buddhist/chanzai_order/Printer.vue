@@ -102,7 +102,7 @@
 
 <script>
 import { Notification } from 'element-ui';
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 
 export default {
   name: 'Printer',
@@ -152,7 +152,7 @@ export default {
 
   methods: {
     getPrinterConfig() {
-      seeFetch('getPrinterConfig', {}).then(res => {
+      seeAjax('getPrinterConfig', {}, res => {
         if (res.success) {
           // 配置到本地
           const { printNum, printQrcode, printTel } = res.data[0];
@@ -175,7 +175,7 @@ export default {
       });
     },
     getPrinterList() {
-      seeFetch('getPrinterList', {}).then(res => {
+      seeAjax('getPrinterList', {}, res => {
         if (res.success) {
           this.hasPrinter = true;
 
@@ -184,7 +184,7 @@ export default {
           let count = 0;
 
           res.data.forEach(item => {
-            seeFetch('getPrinterStatus', { printerId: item.id }).then(res => {
+            seeAjax('getPrinterStatus', { printerId: item.id }, res => {
               item.status = res.success;
               count += 1;
               if (count === length) {
@@ -233,28 +233,32 @@ export default {
         return;
       }
 
-      seeFetch('print', {
-        orderIdList: JSON.stringify(orderIdList),
-        printerIdList: JSON.stringify(printerIdList),
-        printNum,
-        printQrcode,
-        printTel,
-      }).then(res => {
-        if (res.success) {
-          Notification({
-            title: '提示',
-            message: `正在打印 ${orderIdList.length} 笔订单，请稍候...`,
-          });
+      seeAjax(
+        'print',
+        {
+          orderIdList: JSON.stringify(orderIdList),
+          printerIdList: JSON.stringify(printerIdList),
+          printNum,
+          printQrcode,
+          printTel,
+        },
+        res => {
+          if (res.success) {
+            Notification({
+              title: '提示',
+              message: `正在打印 ${orderIdList.length} 笔订单，请稍候...`,
+            });
 
-          this.handleClose();
-        } else {
-          Notification({
-            title: '提示',
-            message: '网络出错！',
-            type: 'error',
-          });
+            this.handleClose();
+          } else {
+            Notification({
+              title: '提示',
+              message: '网络出错！',
+              type: 'error',
+            });
+          }
         }
-      });
+      );
     },
     onClickSave() {
       const { printer, printNum, printQrcode, printTel } = this;
@@ -270,25 +274,29 @@ export default {
         });
       });
 
-      seeFetch('updatePrinterConfig', {
-        printerSnList: JSON.stringify(printerSnList),
-      }).then(res => {
-        if (res.success) {
-          Notification({
-            title: '提示',
-            message: '更新成功',
-            type: 'success',
-          });
+      seeAjax(
+        'updatePrinterConfig',
+        {
+          printerSnList: JSON.stringify(printerSnList),
+        },
+        res => {
+          if (res.success) {
+            Notification({
+              title: '提示',
+              message: '更新成功',
+              type: 'success',
+            });
 
-          this.handleClose();
-        } else {
-          Notification({
-            title: '提示',
-            message: '接口出错',
-            type: 'error',
-          });
+            this.handleClose();
+          } else {
+            Notification({
+              title: '提示',
+              message: '接口出错',
+              type: 'error',
+            });
+          }
         }
-      });
+      );
     },
   },
 };

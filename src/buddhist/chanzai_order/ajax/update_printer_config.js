@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign, prefer-destructuring */
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 
-seeFetch.config('updatePrinterConfig', {
+seeAjax.config('updatePrinterConfig', {
   method: ['post'],
   stringify: [!1],
   url: [

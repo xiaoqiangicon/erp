@@ -270,7 +270,7 @@
 
 <script>
 import { Notification } from 'element-ui';
-import seeFetch from 'see-fetch';
+import seeAjax from 'see-ajax';
 import Detail from './Detail';
 import Printer from './Printer';
 import Logistics from './Logistics';
@@ -368,7 +368,7 @@ export default {
   },
   methods: {
     requestBuddhistList() {
-      seeFetch('getBuddhistList', {}).then(res => {
+      seeAjax('getBuddhistList', {}, res => {
         if (res.success) {
           this.buddhistList = [
             //            { buddhistId: '', buddhistName: '全部', subList: [] },
@@ -402,42 +402,46 @@ export default {
         orderByTimeType,
       } = this;
 
-      seeFetch('getList', {
-        page,
-        pageSize,
-        type,
-        buddhistId,
-        subId,
-        hasFb: Number(hasFb),
-        notPrint: Number(notPrint),
-        beginDate: formatDate[0],
-        endDate: formatDate[1],
-        tel,
-        logisticsOrder,
-        orderByPriceType,
-        orderByTimeType,
-      }).then(res => {
-        if (res.success) {
-          this.totalCount = res.totalCount;
-          this.list = res.data;
+      seeAjax(
+        'getList',
+        {
+          page,
+          pageSize,
+          type,
+          buddhistId,
+          subId,
+          hasFb: Number(hasFb),
+          notPrint: Number(notPrint),
+          beginDate: formatDate[0],
+          endDate: formatDate[1],
+          tel,
+          logisticsOrder,
+          orderByPriceType,
+          orderByTimeType,
+        },
+        res => {
+          if (res.success) {
+            this.totalCount = res.totalCount;
+            this.list = res.data;
 
-          if (type === 1) {
-            this.unHandleNum = res.totalCount;
-            // 导航栏的total显示
-            window.localStorage.setItem('orderNumber', res.totalCount);
-            document.querySelector('[data-buddhist-order-count]').innerHTML =
-              res.totalCount;
+            if (type === 1) {
+              this.unHandleNum = res.totalCount;
+              // 导航栏的total显示
+              window.localStorage.setItem('orderNumber', res.totalCount);
+              document.querySelector('[data-buddhist-order-count]').innerHTML =
+                res.totalCount;
+            }
+
+            this.loadingList = false;
+          } else {
+            Notification({
+              title: '提示',
+              message: '接口出错',
+              type: 'error',
+            });
           }
-
-          this.loadingList = false;
-        } else {
-          Notification({
-            title: '提示',
-            message: '接口出错',
-            type: 'error',
-          });
         }
-      });
+      );
     },
     onChangeBuddhistId() {
       this.subId = -1;
