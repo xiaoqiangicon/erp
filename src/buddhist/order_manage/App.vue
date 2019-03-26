@@ -275,6 +275,7 @@ import Detail from './Detail';
 import Printer from './Printer';
 import Logistics from './Logistics';
 import formatTime from '../../util/format_time';
+import underscore from 'underscore';
 
 export default {
   name: 'App',
@@ -349,9 +350,15 @@ export default {
     },
 
     subList: function() {
-      const curBuddhist = this.buddhistList.find(
-        item => item.buddhistId === this.buddhistId
-      );
+      // 为了兼容 360 兼容模式 不能使用 find
+      const curBuddhist = underscore.find(this.buddhistList, item => {
+        return item.buddhistId === this.buddhistId;
+      });
+
+      //      const curBuddhist = this.buddhistList.find(
+      //        item => item.buddhistId === this.buddhistId
+      //      );
+
       if (curBuddhist) {
         const subList = curBuddhist.subList;
         return subList.length
