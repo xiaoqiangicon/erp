@@ -182,20 +182,20 @@ export default lila => {
           ]
         );
       } else if (isGray || isProd) {
-        staticServer = 'https://wx.zizaihome.com/h5/static/erp';
+        staticServer = '/static';
         tasks.push(
           [
             '@lila/sync-build',
             {
-              server: servers[2],
-              remotePath: '/data/h5/static/erp',
+              server: isProd ? servers[2] : servers[1],
+              remotePath: '/data/www/myerp/static',
               sourceMap: !1,
             },
           ],
           [
             '@lila/sync-source-map',
             {
-              server: servers[2],
+              server: isProd ? servers[2] : servers[1],
               remotePath: '/data/h5/static/erp-source-map',
             },
           ],
