@@ -483,7 +483,7 @@ export default {
         `/zzhadmin/bcDownloadExcel/?type=${type}` +
         `&beginDate=${formatDate[0]}&endDate=${formatDate[1]}` +
         `&buddishService=${buddhistId}&tel=${tel}` +
-        `&isSearchNoPic=${hasFb}&searchNotPrint=${notPrint}`;
+        `&isSearchNoPic=${Number(hasFb)}&searchNotPrint=${Number(notPrint)}`;
       window.open(excelUrl);
     },
     onClickType(type) {
