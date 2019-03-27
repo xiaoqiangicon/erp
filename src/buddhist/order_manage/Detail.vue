@@ -490,7 +490,7 @@ export default {
   right: 0;
   width: 460px;
   height: 100%;
-  padding-bottom: 30px;
+  padding-bottom: 80px;
   bottom: 0;
   background-color: #fff;
   color: #333;
@@ -526,11 +526,17 @@ export default {
   padding: 14px 20px;
 }
 .foot {
+  position: fixed;
+  bottom: 30px;
+  right: 105px;
+  padding-top: 10px;
+  border-top: 2px solid gray;
   text-align: center;
+  z-index: 999;
 }
 .s-btn {
   display: inline-block;
-  width: 234px;
+  width: 233px;
   height: 48px;
   line-height: 48px;
   border-radius: 24px;
