@@ -1392,6 +1392,7 @@ define([
         subCid = $('#sizesPostModal').attr('data-sub-cid'),
         cid = $relatedTarget.attr('data-cid'),
         cur_title = $tar.find('.modal-title');
+
       if (typeof cid == 'string' && cid.length > 0) {
         var subModal = self.sizes.get(subCid),
           subType = subModal.get('subdivide_type'),
