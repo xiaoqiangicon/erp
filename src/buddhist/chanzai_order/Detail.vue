@@ -2,170 +2,165 @@
   <transition name="slide-fade">
     <div class="s-mask" v-show="visible" @click.self="onClickMask">
       <div class="s-container">
-        <div class="cell">
-          <div class="cell-title">处理反馈</div>
-          <div class="cell-body">
-            <div class="fb-images-container mg-b-5">
-              <div v-for="item in images" class="img-cell">
-                <img :src="item" alt="" />
-                <img
-                  @click="onClickImgDelete(item)"
-                  src="https://pic.zizaihome.com/4c8b28d8-455b-11e9-9667-00163e0c001e.png"
-                  class="img-delete"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div
-              class="fb-upload-container"
-              draggable
-              @dragover.prevent
-              @drop.prevent="onDrop"
-              @click="onClickChooseImage"
-            >
-              <img
-                class="fb-img"
-                src="https://pic.zizaihome.com/692097f6-db6d-11e8-9f9a-00163e0c001e.png"
-                alt=""
-              />
-              <div class="fb-text1">点击或将图片拖拽到这里上传</div>
-              <div class="fb-text2">支持格式：.jpg .png .gif</div>
-            </div>
-          </div>
-        </div>
-
-        <div v-show="!isGroup" class="cell">
-          <div class="cell-title">物流单号</div>
-          <div class="cell-body">
-            <el-input
-              placeholder="请输入内容"
-              v-model="logisticsOrder"
-              class="logistics-container"
-            >
-              <el-select
-                filterable
-                v-model="courierCompanyCode"
-                slot="prepend"
-                placeholder="请选择"
-                class="logistics-select"
-              >
-                <el-option
-                  v-for="item in courierCompanyList"
-                  :key="item.value"
-                  :label="item.name"
-                  :value="item.value"
-                >
-                </el-option>
-              </el-select>
-            </el-input>
-          </div>
-        </div>
-
-        <div class="cell">
-          <div class="cell-title">处理备注</div>
-          <div class="cell-body">
-            <div class="remark" id="remark-editor"></div>
-          </div>
-        </div>
-
-        <div v-show="!isGroup" class="cell">
-          <div class="cell-title">反馈视频</div>
-          <div class="cell-body">
-            <template v-if="videos.length">
-              <div v-for="item in videos" class="video-cell">
-                <video :src="item"></video>
-                <img
-                  class="video-play"
-                  @click="onClickPlayVideo(item)"
-                  src="https://pic.zizaihome.com/7788d7f2-8007-11e8-b517-00163e0c001e.png"
-                />
-              </div>
-            </template>
-            <template v-else
-              >暂无反馈视频</template
-            >
-          </div>
-        </div>
-
-        <div v-show="!isGroup" class="cell">
-          <div class="cell-title">附言信息</div>
-          <div class="cell-body">
-            <template v-if="ps.length">
-              <div v-for="item in ps" :key="item.inputId" class="ps-row">
-                <div class="ps-title">{{ item.name }}：</div>
-                <div class="ps-content">
-                  <!--图片-->
-                  <template v-if="item.type === 14 && item.value">
-                    <img
-                      v-for="img in item.value.split(',')"
-                      class="ps-image"
-                      :src="img"
-                      alt=""
-                    />
-                  </template>
-                  <!--非图片-->
-                  <template v-else>
-                    <div class="ps-content">{{ item.value }}</div>
-                  </template>
+        <div class="body">
+          <div class="cell">
+            <div class="cell-title">处理反馈</div>
+            <div class="cell-body">
+              <div class="fb-images-container mg-b-5">
+                <div v-for="item in images" class="img-cell">
+                  <img :src="item" alt="" />
+                  <img
+                    @click="onClickImgDelete(item)"
+                    src="https://pic.zizaihome.com/4c8b28d8-455b-11e9-9667-00163e0c001e.png"
+                    class="img-delete"
+                    alt=""
+                  />
                 </div>
               </div>
-            </template>
-            <template v-else
-              >暂无附言信息</template
-            >
+              <div
+                class="fb-upload-container"
+                draggable
+                @dragover.prevent
+                @drop.prevent="onDrop"
+                @click="onClickChooseImage"
+              >
+                <img
+                  class="fb-img"
+                  src="https://pic.zizaihome.com/692097f6-db6d-11e8-9f9a-00163e0c001e.png"
+                  alt=""
+                />
+                <div class="fb-text1">点击或将图片拖拽到这里上传</div>
+                <div class="fb-text2">支持格式：.jpg .png .gif</div>
+              </div>
+            </div>
+          </div>
+          <div v-show="!isGroup" class="cell">
+            <div class="cell-title">物流单号</div>
+            <div class="cell-body">
+              <el-input
+                placeholder="请输入内容"
+                v-model="logisticsOrder"
+                class="logistics-container"
+              >
+                <el-select
+                  filterable
+                  v-model="courierCompanyCode"
+                  slot="prepend"
+                  placeholder="请选择"
+                  class="logistics-select"
+                >
+                  <el-option
+                    v-for="item in courierCompanyList"
+                    :key="item.value"
+                    :label="item.name"
+                    :value="item.value"
+                  >
+                  </el-option>
+                </el-select>
+              </el-input>
+            </div>
+          </div>
+          <div class="cell">
+            <div class="cell-title">处理备注</div>
+            <div class="cell-body">
+              <div class="remark" id="remark-editor"></div>
+            </div>
+          </div>
+          <div v-show="!isGroup" class="cell">
+            <div class="cell-title">反馈视频</div>
+            <div class="cell-body">
+              <template v-if="videos.length">
+                <div v-for="item in videos" class="video-cell">
+                  <video :src="item"></video>
+                  <img
+                    class="video-play"
+                    @click="onClickPlayVideo(item)"
+                    src="https://pic.zizaihome.com/7788d7f2-8007-11e8-b517-00163e0c001e.png"
+                  />
+                </div>
+              </template>
+              <template v-else
+                >暂无反馈视频</template
+              >
+            </div>
+          </div>
+          <div v-show="!isGroup" class="cell">
+            <div class="cell-title">附言信息</div>
+            <div class="cell-body">
+              <template v-if="ps.length">
+                <div v-for="item in ps" :key="item.inputId" class="ps-row">
+                  <div class="ps-title">{{ item.name }}：</div>
+                  <div class="ps-content">
+                    <!--图片-->
+                    <template v-if="item.type === 14 && item.value">
+                      <img
+                        v-for="img in item.value.split(',')"
+                        class="ps-image"
+                        :src="img"
+                        alt=""
+                      />
+                    </template>
+                    <!--非图片-->
+                    <template v-else>
+                      <div class="ps-content">{{ item.value }}</div>
+                    </template>
+                  </div>
+                </div>
+              </template>
+              <template v-else
+                >暂无附言信息</template
+              >
+            </div>
+          </div>
+          <div v-show="!isGroup" class="cell">
+            <div class="cell-title">功德主信息</div>
+            <div class="cell-body">
+              <div class="ps-row">
+                <div class="ps-title">购买人：</div>
+                <div class="ps-content">{{ user.name }}</div>
+              </div>
+              <div class="ps-row">
+                <div class="ps-title">联系电话：</div>
+                <div class="ps-content">{{ user.tel }}</div>
+              </div>
+            </div>
+          </div>
+          <div v-show="!isGroup" class="cell">
+            <div class="cell-title">
+              订单详情
+              <span class="cell-title-tip"
+                >下单数量：{{ buyNum }}&nbsp;&nbsp;支付金额：{{ price }}</span
+              >
+            </div>
+            <div class="cell-body">
+              <div class="detail-row">
+                <div class="detail-title">佛事名称：</div>
+                <div class="detail-content">{{ buddhistName }}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-title">选择项：</div>
+                <div class="detail-content">{{ subName }}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-title">下单时间：</div>
+                <div class="detail-content">{{ orderTime }}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-title">订单号：</div>
+                <div class="detail-content">{{ orderNumber }}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-title">外部订单号：</div>
+                <div class="detail-content">{{ outerOrderNumber }}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-title">支付流水号：</div>
+                <div class="detail-content">{{ runningNumber }}</div>
+              </div>
+              <div ref="qrcode" class="qrcode"></div>
+            </div>
           </div>
         </div>
-
-        <div v-show="!isGroup" class="cell">
-          <div class="cell-title">功德主信息</div>
-          <div class="cell-body">
-            <div class="ps-row">
-              <div class="ps-title">购买人：</div>
-              <div class="ps-content">{{ user.name }}</div>
-            </div>
-            <div class="ps-row">
-              <div class="ps-title">联系电话：</div>
-              <div class="ps-content">{{ user.tel }}</div>
-            </div>
-          </div>
-        </div>
-
-        <div v-show="!isGroup" class="cell">
-          <div class="cell-title">
-            订单详情
-            <span class="cell-title-tip"
-              >下单数量：{{ buyNum }}&nbsp;&nbsp;支付金额：{{ price }}</span
-            >
-          </div>
-          <div class="cell-body">
-            <div class="detail-row">
-              <div class="detail-title">佛事名称：</div>
-              <div class="detail-content">{{ buddhistName }}</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-title">选择项：</div>
-              <div class="detail-content">{{ subName }}</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-title">下单时间：</div>
-              <div class="detail-content">{{ orderTime }}</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-title">订单号：</div>
-              <div class="detail-content">{{ orderNumber }}</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-title">外部订单号：</div>
-              <div class="detail-content">{{ outerOrderNumber }}</div>
-            </div>
-            <div class="detail-row">
-              <div class="detail-title">支付流水号：</div>
-              <div class="detail-content">{{ runningNumber }}</div>
-            </div>
-            <div ref="qrcode" class="qrcode"></div>
-          </div>
-        </div>
-
         <div
           v-show="type === 1 || type === 4 || type === 3 || type === 2"
           class="foot"
@@ -488,57 +483,66 @@ export default {
   bottom: 0;
   background-color: #fff;
   color: #333;
-  overflow-y: scroll;
-}
-
-.cell-title {
-  height: 50px;
-  line-height: 50px;
-  font-size: 18px;
-  position: relative;
-  padding-left: 34px;
-  font-weight: bold;
-  border-bottom: 1px solid #d8d8d8;
-  &:before {
+  .body {
     position: absolute;
-    top: 11px;
-    left: 18px;
-    content: '';
-    width: 6px;
-    height: 28px;
-    background-color: #71ba31;
+    top: 0;
+    left: 0;
+    bottom: 80px;
+    width: 100%;
+    overflow-y: scroll;
+    .cell-title {
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      position: relative;
+      padding-left: 34px;
+      font-weight: bold;
+      border-bottom: 1px solid #d8d8d8;
+      &:before {
+        position: absolute;
+        top: 11px;
+        left: 18px;
+        content: '';
+        width: 6px;
+        height: 28px;
+        background-color: #71ba31;
+      }
+    }
+    .cell-title-tip {
+      font-size: 16px;
+      color: #71ba31;
+      float: right;
+      margin-right: 20px;
+      font-weight: normal;
+    }
+    .cell-body {
+      padding: 14px 20px;
+    }
   }
-}
-.cell-title-tip {
-  font-size: 16px;
-  color: #71ba31;
-  float: right;
-  margin-right: 20px;
-  font-weight: normal;
-}
-.cell-body {
-  padding: 14px 20px;
-}
-.foot {
-  position: fixed;
-  bottom: 30px;
-  right: 105px;
-  padding-top: 10px;
-  border-top: 2px solid gray;
-  text-align: center;
-  z-index: 999;
-}
-.s-btn {
-  display: inline-block;
-  width: 233px;
-  height: 48px;
-  line-height: 48px;
-  border-radius: 24px;
-  background-color: #71ba31;
-  text-align: center;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
+  .foot {
+    position: absolute;
+    width: 100%;
+    height: 82px;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 16px 0;
+    border-top: 2px solid #d8d8d8;
+    text-align: center;
+    z-index: 999;
+    .s-btn {
+      display: inline-block;
+      width: 233px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 24px;
+      background-color: #71ba31;
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
 }
 
 .img-cell {
@@ -668,6 +672,9 @@ export default {
 /*ueditor样式修改*/
 .remark .edui-default .edui-editor-toolbarbox {
   display: none !important;
+}
+.edui-editor-iframeholder.edui-default {
+  height: 100px !important;
 }
 /*默认z-index为1005,设为已处理的modal为1050*/
 .edui-default {
