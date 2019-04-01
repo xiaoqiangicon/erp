@@ -28,6 +28,7 @@ import '../../component/upload_config';
 import './index.less';
 
 import Vue from 'vue';
+import gallery from 'img-vuer';
 import {
   CheckboxGroup,
   RadioGroup,
@@ -84,6 +85,7 @@ Vue.use(Dialog);
 Vue.use(Input);
 Vue.use(Tabs);
 Vue.use(TabPane);
+Vue.use(gallery);
 
 // eslint-disable-next-line no-new
 new Vue({

@@ -107,6 +107,7 @@
     "events": "^3.0.0",
     "font-awesome": "^4.7.0",
     "handlebars": "^4.0.12",
+    "img-vuer": "^0.17.2",
     "jquery": "^3.3.1",
     "jquery-confirm": "3.3.2",
     "jquery-ui": "^1.12.1",

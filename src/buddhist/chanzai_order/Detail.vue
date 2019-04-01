@@ -8,7 +8,7 @@
             <div class="cell-body">
               <div class="fb-images-container mg-b-5">
                 <div v-for="item in images" class="img-cell">
-                  <img :src="item" alt="" />
+                  <img v-gallery :src="item" alt="" />
                   <img
                     @click="onClickImgDelete(item)"
                     src="https://pic.zizaihome.com/4c8b28d8-455b-11e9-9667-00163e0c001e.png"
