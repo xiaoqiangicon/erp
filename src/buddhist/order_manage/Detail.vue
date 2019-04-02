@@ -1,7 +1,12 @@
 <template>
   <transition name="slide-fade">
     <div class="s-mask" v-show="visible" @click.self="onClickMask">
-      <div class="s-container">
+      <div
+        class="s-container"
+        v-loading="handleLoading"
+        element-loading-text="订单处理中"
+        element-loading-background="rgba(0, 0, 0, 0.5)"
+      >
         <div class="body">
           <div class="cell">
             <div class="cell-title">处理反馈</div>
@@ -198,6 +203,8 @@ export default {
     return {
       mounted: false, // 组件是否建立
       courierCompanyList: [],
+
+      handleLoading: false, // 订单处理接口等待位
 
       // detail中的静态字段
       id: 0,
@@ -421,6 +428,8 @@ export default {
         orderIds = `[${this.id}]`;
       }
 
+      this.handleLoading = true;
+
       seeAjax(
         'handleOrder',
         {
@@ -432,6 +441,8 @@ export default {
         },
         res => {
           if (res.success) {
+            this.handleLoading = false;
+
             Notification({
               title: '提示',
               message: '处理成功',
@@ -447,6 +458,13 @@ export default {
               type: 'error',
             });
           }
+        },
+        () => {
+          Notification({
+            title: '提示',
+            message: '接口出错',
+            type: 'error',
+          });
         }
       );
     },
