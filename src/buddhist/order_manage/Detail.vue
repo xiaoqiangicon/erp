@@ -117,11 +117,11 @@
             <div class="cell-body">
               <div class="ps-row">
                 <div class="ps-title">购买人：</div>
-                <div class="ps-content">{{ user.name }}</div>
+                <div class="ps-content">{{ user && user.name }}</div>
               </div>
               <div class="ps-row">
                 <div class="ps-title">联系电话：</div>
-                <div class="ps-content">{{ user.tel }}</div>
+                <div class="ps-content">{{ user && user.tel }}</div>
               </div>
             </div>
           </div>
@@ -315,7 +315,7 @@ export default {
         } = this.detail);
 
         this.id = id;
-        this.user = user;
+        this.user = user; // 此属性后台出现了 无返回字段的情况
         this.buyNum = buyNum;
         this.price = price;
         this.buddhistName = buddhistName;
