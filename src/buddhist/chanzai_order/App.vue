@@ -3,7 +3,7 @@
     <div class="head">
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="11">
-          <label for="">佛事项目：</label>
+          <label for>佛事项目：</label>
           <el-select
             style="width: 350px;"
             clearable
@@ -19,15 +19,14 @@
               :key="item.buddhistId"
               :label="item.buddhistName"
               :value="item.buddhistId"
-            >
-            </el-option>
+            ></el-option>
           </el-select>
         </el-col>
       </el-row>
 
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="11">
-          <label for="">下单时间：</label>
+          <label for>下单时间：</label>
           <el-date-picker
             @change="onChangeDatePicker"
             v-model="date"
@@ -38,12 +37,11 @@
             format="yyyy-MM-dd"
             :picker-options="pickerOptions"
             unlink-panels
-          >
-          </el-date-picker>
+          ></el-date-picker>
         </el-col>
 
         <el-col :span="7">
-          <label for="">手机号：</label>
+          <label for>手机号：</label>
           <el-input
             style="width: 150px;"
             size="medium"
@@ -61,7 +59,7 @@
 
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="10">
-          <label for="">物流单号：</label>
+          <label for>物流单号：</label>
           <el-input
             style="width: 350px;"
             size="medium"
@@ -79,7 +77,8 @@
           @click="onClickType(1)"
           v-bind:class="{ active: type === 1 }"
         >
-          未处理 <span class="badge mg-l-20">{{ unHandleNum }}</span>
+          未处理
+          <span class="badge mg-l-20">{{ unHandleNum }}</span>
         </div>
         <div
           class="s-tab-panel"
@@ -105,21 +104,21 @@
       </div>
 
       <div class="mg-b-10" style="height: 40px; line-height: 40px;">
-        <span class="mg-r-10 mg-l-30" style="color:#989898;"
-          >已选择<span
+        <span class="mg-r-10 mg-l-30" style="color:#989898;">
+          已选择
+          <span
             class="mg-l-10 mg-r-10 text-center"
             style="width: 20px;display: inline-block;"
             >{{ selected.length }}</span
-          >项</span
-        >
+          >项
+        </span>
         <el-button
           type="success"
           size="medium"
           v-show="type === 1 || type === 2"
           @click="onClickHandleOrderGroup"
+          >批量处理</el-button
         >
-          批量处理
-        </el-button>
 
         <el-button
           type="default"
@@ -147,7 +146,7 @@
         style="width: 100%"
         @selection-change="handleSelectionChange"
       >
-        <el-table-column type="selection"> </el-table-column>
+        <el-table-column type="selection"></el-table-column>
         <el-table-column label="佛事">
           <template slot-scope="scope">
             <img class="td-cover" v-bind:src="scope.row.productImg" />
@@ -174,8 +173,7 @@
           prop="price"
           label="支付"
           show-overflow-tooltip
-        >
-        </el-table-column>
+        ></el-table-column>
         <el-table-column
           width="180"
           prop="orderTime"
@@ -210,8 +208,7 @@
           background
           layout="sizes, prev, pager, next"
           :total="totalCount"
-        >
-        </el-pagination>
+        ></el-pagination>
       </div>
     </div>
 
