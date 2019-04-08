@@ -588,7 +588,8 @@ define([
     showSubSetModal: function(e) {
       var $relatedTarget = $(e.relatedTarget),
         $tar = $(e.target),
-        $subEndTime = $('#sub-end-time');
+        $subEndTime = $('#sub-end-time'),
+        $subSetModal = $('#sub-set-modal');
       // 时间选择插件input blur 时 会触发此modal展示函数 莫名奇怪的bug
       if ($tar.get(0) === $subEndTime.get(0)) {
         return;
@@ -600,7 +601,8 @@ define([
         $subSetModalTitle = $('#sub-set-modal-title'),
         name = curSubModal.get('name'),
         endTime = curSubModal.get('endTime'),
-        enrollNum = curSubModal.get('enroll_num');
+        enrollNum = curSubModal.get('enroll_num'),
+        subType = curSubModal.get('subdivide_type');
       // 保存cid
       $saveSubSet.attr('data-cid', cid);
       // 设置modal标题
@@ -612,6 +614,22 @@ define([
         'checked',
         true
       );
+
+      // 时效佛事 展示时长
+      var $timeDurationFormGroup = $('#sub-time-duration-form-group');
+      var $timeDurationNum = $('#sub-time-duration-num');
+      var $timeDurationUnit = $('#sub-time-duration-unit');
+      var timeDurationNum = curSubModal.get('占位符');
+      var timeDurationUnit = curSubModal.get('占位符');
+      if (subType == 5) {
+        $timeDurationFormGroup.show();
+        $timeDurationNum.val(timeDurationNum);
+        $timeDurationUnit.selectpicker('val', timeDurationUnit);
+      } else {
+        $timeDurationFormGroup.hide();
+        $timeDurationNum.val('');
+        $timeDurationUnit.selectpicker('val', 'day');
+      }
     },
     // 点击选择项设置modal保存按钮
     onClickSaveSubSet: function(e) {
@@ -619,17 +637,53 @@ define([
         $modal = $('#sub-set-modal'),
         self = this,
         cid = $tar.attr('data-cid'), // 获取选择项cid
-        curSubModal = self.sizes.get(cid);
+        curSubModal = self.sizes.get(cid),
+        subType = curSubModal.get('subdivide_type'),
+        verifyObj = {
+          value: true,
+          reason: '',
+        };
+
       var $endTime = $('#sub-end-time'),
         endTime = $endTime.val();
+
       var enrollNum = parseInt($('[name="sub-enroll-limit"]:checked').val());
-      if (typeof cid == 'string' && cid.length > 0) {
-        // 文本框类附言默认均设置 是否必填 示例文字
-        // 保存到期时间
+
+      var timeDurationNum = $('#sub-time-duration-num').val();
+      var timeDurationUnit = $('#sub-time-duration-unit').val();
+
+      // 数据校验
+      if (subType === 5) {
+        // 时效佛事
+        if (timeDurationUnit == 'day') {
+          // 1 - 30
+          if (timeDurationNum < 1 || timeDurationNum > 30) {
+            verifyObj.value = false;
+            verifyObj.reason = '天数应为1-30';
+          }
+        } else if (timeDurationUnit == 'month') {
+          // 1 - 12
+          if (timeDurationNum < 1 || timeDurationNum > 12) {
+            verifyObj.value = false;
+            verifyObj.reason = '月份应为1-12';
+          }
+        } else if (timeDurationUnit == 'year') {
+          // 1 - 20
+          if (timeDurationNum < 1 || timeDurationNum > 20) {
+            verifyObj.value = false;
+            verifyObj.reason = '年份应为1-20';
+          }
+        }
+      }
+
+      if (verifyObj.value) {
         curSubModal.set('endTime', endTime);
-        // 保存参与限制
         curSubModal.set('enroll_num', enrollNum);
+        curSubModal.set('占位符', timeDurationNum);
+        curSubModal.set('占位符', timeDurationUnit);
         $modal.modal('hide');
+      } else {
+        Toast(verifyObj.reason, 2);
       }
     },
     // 增加第一个选择项,   !!!此函数在渲染表格函数里分情况被触发了既页面初始化时触发了，通过主动触发proStyleBtn的click事件
@@ -1073,7 +1127,9 @@ define([
         subModel = self.sizes.get(subCid),
         subType = subModel.get('subdivide_type');
       self.sizesAddition = new sizesAdditionCollection([
-        new sizesAdditionModel({ subType: subType }),
+        new sizesAdditionModel({
+          subType: subType,
+        }),
       ]);
       self.sizesAdditionView = new SizesAdditionsView({
         el: '#sizesAdditionBox',
@@ -1099,7 +1155,11 @@ define([
       var subCid = $('#sizesPostModal').attr('data-sub-cid'),
         subModel = self.sizes.get(subCid),
         subType = subModel.get('subdivide_type');
-      self.sizesAddition.add(new sizesAdditionModel({ subType: subType }));
+      self.sizesAddition.add(
+        new sizesAdditionModel({
+          subType: subType,
+        })
+      );
       var curSizesAddition = self.sizesAddition,
         curSizesAdditionModels = curSizesAddition.models,
         curSizesAdditionModelsLen = curSizesAdditionModels.length;
@@ -5046,7 +5106,10 @@ define([
         $aContent.attr('href', 'javascript:;');
         var $inputContent = $(document.createElement('input'));
         $inputContent.addClass('btn btn-sm btn-primary dpblock');
-        $inputContent.attr({ name: 'file', type: '' });
+        $inputContent.attr({
+          name: 'file',
+          type: '',
+        });
         $inputContent.css({
           width: '100px',
           height: '100px',
@@ -5620,7 +5683,9 @@ define([
         'input[name="if_feedback"][value="' +
           getContent.pay_succ_details_flag +
           '"]'
-      ).prop({ checked: !0 });
+      ).prop({
+        checked: !0,
+      });
       getContent.pay_succ_details_flag && $('#myEditor2').removeClass('hide');
     },
     // 渲染打印机状态（即改变按钮的设置与已设置文本）
@@ -5792,7 +5857,9 @@ define([
       this.model.each(function(sizeModal, index, models) {
         sizeModal.set('cid', sizeModal.cid);
         sizeModal.set('sort', index);
-        var sizesAdditionView = new SizesAdditionView({ model: sizeModal });
+        var sizesAdditionView = new SizesAdditionView({
+          model: sizeModal,
+        });
         fragment.appendChild(sizesAdditionView.render().el);
       });
       self.$el.html(fragment);
@@ -5883,8 +5950,8 @@ define([
         // 改变选择项时 修正特殊附言的数据
         var psModelArr = self.model.get('postScript');
 
-        // 无附言切换时
         if (!psModelArr) {
+          // 无附言切换时
           if (subType === 2) {
             // 往生类 生成默认阳上人往生者数据
             psModelArr = new sizesAdditionCollection([
@@ -5990,6 +6057,7 @@ define([
             ]);
           }
         } else {
+          // 有附言
           // 修改内层数据的subType
           psModelArr.models.map(function(ps) {
             ps.set('subType', parseInt(e.target.value));
@@ -6213,6 +6281,10 @@ define([
           if (pic === wangshengSrc || pic === qifuSrc) {
             self.model.set('pic', '');
           }
+        } else if (subType === 5) {
+          if (pic === wangshengSrc || pic === qifuSrc) {
+            self.model.set('pic', '');
+          }
         }
         // modelDispose.method.change_size_name(e.target.value, self.model);
       });
@@ -6286,7 +6358,9 @@ define([
         sizeModal.set('cid', sizeModal.cid); // ?? 此处导致死循环 ???
         // sizeModal.set("modelsLength", models.length);
         sizeModal.set('sort', index);
-        var sizeView = new SizeView({ model: sizeModal });
+        var sizeView = new SizeView({
+          model: sizeModal,
+        });
         fragment.appendChild(sizeView.render().el);
       });
       self.$el.html(fragment);
@@ -6390,7 +6464,9 @@ define([
         sizeModal.set('cid', sizeModal.cid);
         //                        sizeModal.set("modelsLength", models.length);
         sizeModal.set('sort', index);
-        var sizeView = new AdditionView({ model: sizeModal });
+        var sizeView = new AdditionView({
+          model: sizeModal,
+        });
         fragment.appendChild(sizeView.render().el);
       });
 

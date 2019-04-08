@@ -1,6 +1,6 @@
 <!--选择项设置 Modal -->
 <div
-  class="modal fade"
+  class="modal fade sub-set-modal"
   id="sub-set-modal"
   tabindex="-1"
   role="dialog"
@@ -17,7 +17,44 @@
         <h4 class="modal-title" id="sub-set-modal-title">选择项设置</h4>
       </div>
       <div class="modal-body" style="overflow: visible;">
-        <!--到期时间-->
+        <!-- 供奉时长 -->
+        <div
+          class="form-group"
+          style="height: 35px; display: none;"
+          id="sub-time-duration-form-group"
+        >
+          <label
+            for="proName"
+            class="col-sm-3 control-label"
+            style="height: 30px;line-height: 30px"
+          >
+            供奉时长
+            <i
+              class="glyphicon glyphicon-question-sign"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="设置当前项目时长，临近到期时会通知用户续供"
+            >
+            </i>
+            ：
+          </label>
+          <div class="col-sm-8">
+            <input
+              id="sub-time-duration-num"
+              name="sub-time-duration-num"
+              style="width: 40%;"
+              class="form-control pull-left"
+              type="number"
+              placeholder=""
+            />
+            <select name="" id="sub-time-duration-unit" class="selectpicker">
+              <option value="day">天</option>
+              <option value="month">个月</option>
+              <option value="year">年</option>
+            </select>
+          </div>
+        </div>
+        <!-- 到期时间 -->
         <div
           class="form-group"
           style="height: 35px;"

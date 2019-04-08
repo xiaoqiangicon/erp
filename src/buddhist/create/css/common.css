@@ -33,3 +33,7 @@
 .scrollModal {
   overflow: scroll !important;
 }
+
+.sub-set-modal .dropdown {
+  width: 80px !important;
+}
