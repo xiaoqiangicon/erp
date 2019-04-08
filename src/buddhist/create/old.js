@@ -616,19 +616,32 @@ define([
       );
 
       // 时效佛事 展示时长
-      var $timeDurationFormGroup = $('#sub-time-duration-form-group');
-      var $timeDurationNum = $('#sub-time-duration-num');
-      var $timeDurationUnit = $('#sub-time-duration-unit');
-      var timeDurationNum = curSubModal.get('占位符');
-      var timeDurationUnit = curSubModal.get('占位符');
+      var $durationTimeFormGroup = $('#sub-duration-time-form-group');
+      var $durationTimeNum = $('#sub-duration-time-num');
+      var $durationTimeUnit = $('#sub-duration-time-unit');
+      var durationDay = curSubModal.get('durationDay');
+      var durationTimeNum = null;
+      var durationTimeUnit = null;
+
       if (subType == 5) {
-        $timeDurationFormGroup.show();
-        $timeDurationNum.val(timeDurationNum);
-        $timeDurationUnit.selectpicker('val', timeDurationUnit);
+        if (durationDay < 30) {
+          durationTimeUnit = 'day';
+          durationTimeNum = durationDay;
+        } else if (durationDay < 365) {
+          durationTimeUnit = 'month';
+          durationTimeNum = Math.ceil(durationDay / 30);
+        } else {
+          durationTimeUnit = 'year';
+          durationTimeNum = Math.ceil(durationDay / 365);
+        }
+
+        $durationTimeFormGroup.show();
+        $durationTimeNum.val(durationTimeNum);
+        $durationTimeUnit.selectpicker('val', durationTimeUnit);
       } else {
-        $timeDurationFormGroup.hide();
-        $timeDurationNum.val('');
-        $timeDurationUnit.selectpicker('val', 'day');
+        $durationTimeFormGroup.hide();
+        $durationTimeNum.val('');
+        $durationTimeUnit.selectpicker('val', 'day');
       }
     },
     // 点击选择项设置modal保存按钮
@@ -649,29 +662,36 @@ define([
 
       var enrollNum = parseInt($('[name="sub-enroll-limit"]:checked').val());
 
-      var timeDurationNum = $('#sub-time-duration-num').val();
-      var timeDurationUnit = $('#sub-time-duration-unit').val();
+      var durationTimeNum = $('#sub-duration-time-num').val();
+      var durationTimeUnit = $('#sub-duration-time-unit').val();
+      var durationDay = null;
 
       // 数据校验
       if (subType === 5) {
         // 时效佛事
-        if (timeDurationUnit == 'day') {
+        if (durationTimeUnit == 'day') {
           // 1 - 30
-          if (timeDurationNum < 1 || timeDurationNum > 30) {
+          if (durationTimeNum < 1 || durationTimeNum > 30) {
             verifyObj.value = false;
             verifyObj.reason = '天数应为1-30';
+          } else {
+            durationDay = durationTimeNum;
           }
-        } else if (timeDurationUnit == 'month') {
+        } else if (durationTimeUnit == 'month') {
           // 1 - 12
-          if (timeDurationNum < 1 || timeDurationNum > 12) {
+          if (durationTimeNum < 1 || durationTimeNum > 12) {
             verifyObj.value = false;
             verifyObj.reason = '月份应为1-12';
+          } else {
+            durationDay = durationTimeNum * 30;
           }
-        } else if (timeDurationUnit == 'year') {
+        } else if (durationTimeUnit == 'year') {
           // 1 - 20
-          if (timeDurationNum < 1 || timeDurationNum > 20) {
+          if (durationTimeNum < 1 || durationTimeNum > 20) {
             verifyObj.value = false;
             verifyObj.reason = '年份应为1-20';
+          } else {
+            durationDay = durationTimeNum * 365;
           }
         }
       }
@@ -679,8 +699,7 @@ define([
       if (verifyObj.value) {
         curSubModal.set('endTime', endTime);
         curSubModal.set('enroll_num', enrollNum);
-        curSubModal.set('占位符', timeDurationNum);
-        curSubModal.set('占位符', timeDurationUnit);
+        curSubModal.set('durationDay', durationDay);
         $modal.modal('hide');
       } else {
         Toast(verifyObj.reason, 2);
@@ -5896,6 +5915,7 @@ define([
       price: '',
       stock: '',
       endTime: '', // 到期时间
+      durationDay: '', // 时效时长
       enroll_num: 0, // 参与次数限制
       pic: '',
       id: '',
@@ -5966,6 +5986,7 @@ define([
                 pic_num: 0,
                 prompt_text: '请填写功德主姓名（在世）',
                 selectInput: [],
+                durationDay: 0,
                 subType: 2,
               }),
               new sizesAdditionModel({
@@ -5979,6 +6000,7 @@ define([
                 pic_num: 4,
                 prompt_text: '请填写已故者姓名（已去世）',
                 selectInput: [],
+                durationDay: 0,
                 subType: 2,
               }),
             ]);
@@ -5996,6 +6018,7 @@ define([
                 pic_num: 4,
                 prompt_text: '请填写功德主姓名',
                 selectInput: [],
+                durationDay: 0,
                 subType: 3,
               }),
               new sizesAdditionModel({
@@ -6009,6 +6032,7 @@ define([
                 pic_num: 0,
                 prompt_text: '请填写您的心愿',
                 selectInput: [],
+                durationDay: 0,
                 subType: 3,
               }),
             ]);
@@ -6026,6 +6050,7 @@ define([
                 pic_num: 0,
                 prompt_text: '请填写联系人姓名（方便寺院与您联系）',
                 selectInput: [],
+                durationDay: 0,
                 subType: 4,
               }),
               new sizesAdditionModel({
@@ -6039,6 +6064,7 @@ define([
                 pic_num: 0,
                 prompt_text: '请填写联系人电话（方便寺院与您联系）',
                 selectInput: [],
+                durationDay: 0,
                 subType: 4,
               }),
               new sizesAdditionModel({
@@ -6052,6 +6078,7 @@ define([
                 pic_num: 0,
                 prompt_text: '请填写您常用的居住地址',
                 selectInput: [],
+                durationDay: 0,
                 subType: 4,
               }),
             ]);
@@ -6103,6 +6130,7 @@ define([
                   pic_num: 4,
                   prompt_text: '请填写功德主姓名',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 3,
                 })
               );
@@ -6121,6 +6149,7 @@ define([
                   pic_num: 0,
                   prompt_text: '请填写您的心愿',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 3,
                 })
               );
@@ -6166,6 +6195,7 @@ define([
                   pic_num: 0,
                   prompt_text: '请填写功德主姓名（在世）',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 2,
                 })
               );
@@ -6184,6 +6214,7 @@ define([
                   pic_num: 4,
                   prompt_text: '请填写已故者姓名（已去世）',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 2,
                 })
               );
@@ -6220,6 +6251,7 @@ define([
                   pic_num: 0,
                   prompt_text: '请填写联系人姓名（方便寺院与您联系）',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 4,
                 })
               );
@@ -6237,6 +6269,7 @@ define([
                   pic_num: 0,
                   prompt_text: '请填写联系人电话（方便寺院与您联系）',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 4,
                 })
               );
@@ -6254,6 +6287,7 @@ define([
                   pic_num: 0,
                   prompt_text: '请填写您常用的居住地址',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 4,
                 })
               );
@@ -6286,6 +6320,7 @@ define([
             self.model.set('pic', '');
           }
         }
+
         // modelDispose.method.change_size_name(e.target.value, self.model);
       });
       // 添加下拉菜单结束
