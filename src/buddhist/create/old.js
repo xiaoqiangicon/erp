@@ -4090,6 +4090,7 @@ define([
           subdivide['isAutoFinish'] = curModel.get('isAutoFinish'); // 新加的自动完成订单字段
           subdivide['subdivide_type'] = curModel.get('subdivide_type'); // 新加分类字段
           subdivide['endTime'] = curModel.get('endTime'); // 新加选择项到期时间
+          subdivide['durationDay'] = parseInt(curModel.get('durationDay')) || 0; // 新加选择项时效时长
           subdivide['enroll_num'] = curModel.get('enroll_num'); // 新加选择项参与次数限制
           selection_list.length > 0 &&
             (subdivide['printer'] = curModel.get('printer')); //有选择项时小票打印设置
@@ -5915,7 +5916,7 @@ define([
       price: '',
       stock: '',
       endTime: '', // 到期时间
-      durationDay: '', // 时效时长
+      durationDay: 0, // 时效时长
       enroll_num: 0, // 参与次数限制
       pic: '',
       id: '',
