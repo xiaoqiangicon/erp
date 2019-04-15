@@ -320,7 +320,7 @@ define([
     },
     addLabel: function() {
       var self = this,
-        labelSize = $('#label option').size(),
+        labelSize = $('#label').find('option').length,
         selectedItemLength = $('.mask.selected').length;
       //  alert(labelSize);
       if (selectedItemLength == 0) {
@@ -518,11 +518,11 @@ define([
     },
     batchOperation: function(e) {
       var $tar = $(e.target);
-      $(e.currentTarget)
-        .find('button')
-        .not('.selectAll')
-        .removeClass('active1');
-      $tar.toggleClass('active1');
+
+      if ($tar.hasClass('selectAll')) {
+        $tar.toggleClass('active1');
+      }
+
       if ($tar.hasClass('selectAll')) {
         $('.mask').toggleClass('selected');
       }
@@ -692,6 +692,8 @@ define([
           $('.rename').popover('hide');
           $('.del').popover('hide');
         });
+      console.log('初始化成功');
+
       $('.rename')
         .popover({
           html: true,
@@ -705,6 +707,7 @@ define([
           $('#batchOperation').popover('hide');
           $('.del').popover('hide');
         });
+
       $('.del')
         .popover({
           html: true,

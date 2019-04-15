@@ -378,23 +378,28 @@ main {
   display: none;
 }
 
-/*.active1 {*/
-/*background-color: rgb(111, 186, 44);*/
-/*color: #fff;*/
-/*}*/
-.pop-container button:hover,
-.pop-container button:active,
-.pop-container button:focus {
+.active1 {
   background-color: rgb(111, 186, 44);
   color: #fff;
 }
+/*.pop-container button:hover,*/
+/*.pop-container button:active,*/
+/*.pop-container button:focus {*/
+/*background-color: rgb(111, 186, 44);*/
+/*color: #fff;*/
+/*}*/
 
 .pop-container button:hover {
   opacity: 0.6;
 }
 
-.btn-default:active:focus,
-.btn-default:active:hover {
+/*.btn-default:active:focus,*/
+/*.btn-default:active:hover {*/
+/*background-color: rgb(111, 186, 44);*/
+/*color: #fff;*/
+/*}*/
+
+.btn-default.active1:hover {
   background-color: rgb(111, 186, 44);
   color: #fff;
 }
