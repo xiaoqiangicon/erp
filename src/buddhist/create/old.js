@@ -623,26 +623,20 @@ define([
       var durationTimeNum = null;
       var durationTimeUnit = null;
 
-      if (subType == 5) {
-        if (durationDay < 30) {
-          durationTimeUnit = 'day';
-          durationTimeNum = durationDay;
-        } else if (durationDay < 365) {
-          durationTimeUnit = 'month';
-          durationTimeNum = Math.ceil(durationDay / 30);
-        } else {
-          durationTimeUnit = 'year';
-          durationTimeNum = Math.ceil(durationDay / 365);
-        }
-
-        $durationTimeFormGroup.show();
-        $durationTimeNum.val(durationTimeNum);
-        $durationTimeUnit.selectpicker('val', durationTimeUnit);
+      if (durationDay < 30) {
+        durationTimeUnit = 'day';
+        durationTimeNum = durationDay;
+      } else if (durationDay < 365) {
+        durationTimeUnit = 'month';
+        durationTimeNum = Math.ceil(durationDay / 30);
       } else {
-        $durationTimeFormGroup.hide();
-        $durationTimeNum.val('');
-        $durationTimeUnit.selectpicker('val', 'day');
+        durationTimeUnit = 'year';
+        durationTimeNum = Math.ceil(durationDay / 365);
       }
+
+      $durationTimeFormGroup.show();
+      $durationTimeNum.val(durationTimeNum);
+      $durationTimeUnit.selectpicker('val', durationTimeUnit);
     },
     // 点击选择项设置modal保存按钮
     onClickSaveSubSet: function(e) {
@@ -667,31 +661,38 @@ define([
       var durationDay = null;
 
       // 数据校验
-      if (subType === 5) {
-        // 时效佛事
-        if (durationTimeUnit == 'day') {
-          // 1 - 30
-          if (durationTimeNum < 1 || durationTimeNum > 30) {
-            verifyObj.value = false;
-            verifyObj.reason = '天数应为1-30';
-          } else {
-            durationDay = durationTimeNum;
-          }
-        } else if (durationTimeUnit == 'month') {
-          // 1 - 12
-          if (durationTimeNum < 1 || durationTimeNum > 12) {
-            verifyObj.value = false;
-            verifyObj.reason = '月份应为1-12';
-          } else {
-            durationDay = durationTimeNum * 30;
-          }
-        } else if (durationTimeUnit == 'year') {
-          // 1 - 20
-          if (durationTimeNum < 1 || durationTimeNum > 20) {
-            verifyObj.value = false;
-            verifyObj.reason = '年份应为1-20';
-          } else {
-            durationDay = durationTimeNum * 365;
+      if (durationTimeNum === '' || durationTimeNum === '0') {
+        // 不设置
+        durationDay = 0;
+      } else {
+        if (isNaN(parseInt(durationTimeNum, 10))) {
+          verifyObj.value = false;
+          verifyObj.reason = '供奉时长应为整数';
+        } else {
+          if (durationTimeUnit == 'day') {
+            // 1 - 30
+            if (durationTimeNum < 1 || durationTimeNum > 30) {
+              verifyObj.value = false;
+              verifyObj.reason = '天数应为1-30';
+            } else {
+              durationDay = durationTimeNum;
+            }
+          } else if (durationTimeUnit == 'month') {
+            // 1 - 12
+            if (durationTimeNum < 1 || durationTimeNum > 12) {
+              verifyObj.value = false;
+              verifyObj.reason = '月份应为1-12';
+            } else {
+              durationDay = durationTimeNum * 30;
+            }
+          } else if (durationTimeUnit == 'year') {
+            // 1 - 20
+            if (durationTimeNum < 1 || durationTimeNum > 20) {
+              verifyObj.value = false;
+              verifyObj.reason = '年份应为1-20';
+            } else {
+              durationDay = durationTimeNum * 365;
+            }
           }
         }
       }
@@ -1450,19 +1451,19 @@ define([
     },
     //规格附言说明打开模态框
     /*showInstructionModal: function(e){
-            var $relatedTarget = $(e.relatedTarget),      //获取规格附言数据
-                self = this,
-                cid = $relatedTarget.attr("data-cid"),
-                model = self.sizes.get(cid),
-                name = model.get("name");
-            $("#sizeName2").text(name+"附言文本说明");
-            $('[data-type="saveInstruction"]').attr('data-cid', cid);
-            if (typeof cid == "string" && cid.length > 0) {
-                var model = self.sizes.get(cid),
-                    instruction = model.get("explain");
-                $('#sizeInstruction').val(instruction);
-            }
-        },*/
+              var $relatedTarget = $(e.relatedTarget),      //获取规格附言数据
+                  self = this,
+                  cid = $relatedTarget.attr("data-cid"),
+                  model = self.sizes.get(cid),
+                  name = model.get("name");
+              $("#sizeName2").text(name+"附言文本说明");
+              $('[data-type="saveInstruction"]').attr('data-cid', cid);
+              if (typeof cid == "string" && cid.length > 0) {
+                  var model = self.sizes.get(cid),
+                      instruction = model.get("explain");
+                  $('#sizeInstruction').val(instruction);
+              }
+          },*/
     // 规格附言设置展开模态框
     showSizeAdditionModal: function(e) {
       var $relatedTarget = $(e.relatedTarget),
@@ -1781,14 +1782,14 @@ define([
     },
     // 保存规格附言说明
     /*saveInstruction: function (e) {
-            var self = this,
-                $tar = $(e.target),
-                cid = $tar.attr("data-cid"),
-                getSizeInstruction = $('#sizeInstruction').val(),
-                model = self.sizes.get(cid);
-            model.set("explain", getSizeInstruction);
-            $('#instructionModal').modal('hide');
-        },*/
+              var self = this,
+                  $tar = $(e.target),
+                  cid = $tar.attr("data-cid"),
+                  getSizeInstruction = $('#sizeInstruction').val(),
+                  model = self.sizes.get(cid);
+              model.set("explain", getSizeInstruction);
+              $('#instructionModal').modal('hide');
+          },*/
     // 点击是否需要短信验证
     onClickSizeTelVerify: function(e) {
       var $checkedRadio = $('[name="sizeTelVerify"]:checked');
@@ -2354,32 +2355,32 @@ define([
     },
     // 将反馈动态值插入ueditor
     /*insert_feedback_modal_item: function (e) {
-                    var $tar = $(e.target),
-                        cur_typeId = $tar.attr('data-typeId'),
-                        modal_html = '',
-                        ue2 = UE.getEditor('myEditor2');
-                    switch (cur_typeId){
-                        case "1":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_buddhist_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">佛事名称</span>';
-                            break;
-                        case "2":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_temple_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">寺院名称</span>';
-                            break;
-                        case "3":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_time" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付时间</span>';
-                            break;
-                        case "4":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_amount" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付金额</span>';
-                            break;
-                        case "5":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_merit_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">功德姓名</span>';
-                            break;
-                        default:
-                            break;
-                    }
-                    var modal_dom = $(modal_html).prop('outerHTML');
-                    ue2.execCommand( 'inserthtml', modal_dom)
-                },*/
+                      var $tar = $(e.target),
+                          cur_typeId = $tar.attr('data-typeId'),
+                          modal_html = '',
+                          ue2 = UE.getEditor('myEditor2');
+                      switch (cur_typeId){
+                          case "1":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_buddhist_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">佛事名称</span>';
+                              break;
+                          case "2":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_temple_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">寺院名称</span>';
+                              break;
+                          case "3":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_time" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付时间</span>';
+                              break;
+                          case "4":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_amount" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付金额</span>';
+                              break;
+                          case "5":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_merit_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">功德姓名</span>';
+                              break;
+                          default:
+                              break;
+                      }
+                      var modal_dom = $(modal_html).prop('outerHTML');
+                      ue2.execCommand( 'inserthtml', modal_dom)
+                  },*/
 
     /**打印机**/
     // 绑定有规格时切换打印机选择事件
@@ -3398,11 +3399,11 @@ define([
             },
           },
           /*cancel: {
-                        text: '取消',
-                        action: function () {
-
-                        }
-                    }*/
+                          text: '取消',
+                          action: function () {
+  
+                          }
+                      }*/
         },
       });
     },
@@ -4854,23 +4855,23 @@ define([
         ue2 = UE.getEditor('myEditor2');
       // 为ueditor添加placeholder的自定义函数
       /*UE.Editor.prototype.placeholder = function (justPlainText) {
-                var _editor = this;
-                _editor.addListener("focus", function () {
-                    var localHtml = _editor.getPlainTxt();
-                    if ($.trim(localHtml) === $.trim(justPlainText)) {
-                        _editor.setContent(" ");
-                    }
-                });
-                _editor.addListener("blur", function () {
-                    var localHtml = _editor.getContent();
-                    if (!localHtml) {
-                        _editor.setContent(justPlainText);
-                    }
-                });
-                _editor.ready(function () {
-                    _editor.fireEvent("blur");
-                });
-            };*/
+                  var _editor = this;
+                  _editor.addListener("focus", function () {
+                      var localHtml = _editor.getPlainTxt();
+                      if ($.trim(localHtml) === $.trim(justPlainText)) {
+                          _editor.setContent(" ");
+                      }
+                  });
+                  _editor.addListener("blur", function () {
+                      var localHtml = _editor.getContent();
+                      if (!localHtml) {
+                          _editor.setContent(justPlainText);
+                      }
+                  });
+                  _editor.ready(function () {
+                      _editor.fireEvent("blur");
+                  });
+              };*/
       function editorSlideTop() {
         // 最新版本佛事反馈，微信端还没适配好，先隐藏
         pay_succ_details = config.template.component.pay_succ_details;
@@ -6313,10 +6314,6 @@ define([
             self.model.set('pic', qifuSrc);
           }
         } else if (subType === 4) {
-          if (pic === wangshengSrc || pic === qifuSrc) {
-            self.model.set('pic', '');
-          }
-        } else if (subType === 5) {
           if (pic === wangshengSrc || pic === qifuSrc) {
             self.model.set('pic', '');
           }

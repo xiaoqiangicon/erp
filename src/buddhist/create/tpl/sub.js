@@ -9,7 +9,6 @@ define([], function() {
         <option value="2">往生牌位</option>
         <option value="3">祈福牌位</option>
         <option value="4">邮寄佛事</option>
-        <option value="5">时效佛事</option>
       </select>
     </td>
     <td>

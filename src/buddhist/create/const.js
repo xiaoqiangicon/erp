@@ -5,7 +5,7 @@ define(function() {
       price: '',
       stock: '',
       endTime: '', // 到期时间
-      durationDay: '', // 时效时长
+      durationDay: 0, // 时效时长
       enroll_num: 0, // 参与次数限制
       pic: '',
       id: '',
