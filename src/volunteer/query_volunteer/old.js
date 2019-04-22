@@ -30,6 +30,7 @@ define([
       'click #query': 'query', // 点击筛选
       'click .addLabel': 'addLabel', // 点击加标签
       'click .del': 'delLabel', // 点击删除标签
+      'click #exportExcel': 'exportExcel', // 点击导出Excel
       'click #sureBatchDelVol': 'delVolunteer', // 点击删除义工按钮
       'click .search-icon': 'search', // 点击问号查询图标
       'click .cancelDel': 'cancelDel', // 点击取消删除标签
@@ -306,6 +307,32 @@ define([
             });
           }
         });
+    },
+    exportExcel: function() {
+      let searchContent = $('#search').val();
+      let tagId = $('#label').val();
+      let fromAge = $('#from_age').val();
+      let toAge = $('#to_age').val();
+      let start = $('#beginDate').val();
+      let end = $('#endDate').val();
+
+      let sexValue = $('#sex')
+        .prev()
+        .find('.selected')
+        .attr('data-original-index');
+      let sex;
+      if (sexValue == '1') {
+        sex = '男';
+      } else if (sexValue == '2') {
+        sex = '女';
+      }
+
+      let url =
+        `/zzhadmin/downloadVolunteerList?from_age=${fromAge}&to_age=${toAge}` +
+        `&start=${start}&end=${end}&searchContent=${searchContent}&activityId=${activityId}` +
+        `&tagId=${tagId}${sex ? `&sex=${sex}` : ''}`;
+      console.log(url);
+      window.open(url);
     },
     selectedVolunteerIds: function() {
       var Item = $('.mask.selected');
