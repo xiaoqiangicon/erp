@@ -230,6 +230,13 @@ var tpl = {
             <img data-ele="del-img" class="schedule-img-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
         </div>
     `,
+  scheduleVideoCell: `
+        <div class="schedule-video-cell" data-ele="video-cell">
+            <img data-ele="schedule-video" class="schedule-video" data-src="\${src}" src="\${src}?vframe/jpg/offset/1" alt="">
+            <img data-ele="del-video" class="schedule-video-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
+            <img data-ele="play-video" class="schedule-video-play" src=""> 
+        </div>
+    `,
   scheduleListEmpty: `
         <div style="height: 400px; line-height: 400px;text-align: center;">
         此佛事还没有发布过进展动态哦，现在就去发布吧
@@ -251,15 +258,24 @@ var tpl = {
                     \${content}
                 </div>
                 <div class="item-img mgt10 clearfix">
+                    <div class="clearfix"> 
                     {@each img as item}
                      <div class="schedule-img-cell" data-ele="img-cell">
                         <img data-ele="schedule-img" class="schedule-img" src="\${item}" alt="">
                         <img data-ele="del-img" class="schedule-img-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
                     </div>
                     {@/each}
-                    <div class="add-img-container" data-ele="add-img">
-                        <img class="add-img" src="https://pic.zizaihome.com/f71efdc0-a12c-11e8-9f56-00163e0c001e.png" alt="">
-                        <div class="add-img-text">添加图片</div>
+                    {@each video as item}
+                    <div class="schedule-video-cell" data-ele="video-cell">
+                        <img data-ele="schedule-video" class="schedule-video" data-src="\${item}" src="\${item}?vframe/jpg/offset/1" alt="">
+                        <img data-ele="del-video" class="schedule-video-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
+                        <img data-ele="play-video" class="schedule-video-play" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
+                    </div>
+                    {@/each}
+                    </div>
+                    <div>
+                    <div class="upload-btn" data-ele="add-img">上传图片</div>
+                    <div class="upload-btn" data-ele="add-video">上传小视频</div>
                     </div>
                 </div>
                 <!--推送-->

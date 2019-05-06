@@ -100,6 +100,13 @@ define([
       'click [data-ele="add-img"]': 'onClickAddImg',
       // 点击删除图片
       'click [data-ele="del-img"]': 'onClickDelImg',
+      // 点击删除视频
+      'click [data-ele="del-video"]': 'onClickDelVideo',
+      // 点击播放视频
+      'click [data-ele="play-video"]': 'onClickPlayVideo',
+      // 点击videoPlayerMask
+      'click #video-player-mask': 'onClickVideoPlayerMask',
+
       // 点击保存并发布
       'click #save-schedule': 'onClickSaveSchedule',
       // 点击编辑佛事进展
@@ -698,9 +705,9 @@ define([
         func.initScheduleModal(index);
       }
     },
-    // 点击上传图片
+    // 点击上传图片 有两个地方用到 所以回调内插入html片段与结构相关
     onClickAddImg: function(e) {
-      var $curAddImg = $(e.currentTarget);
+      var $curTar = $(e.currentTarget);
       var upload = new ChooseImage({
         type: 1, // 1: 图片, 2: 图标
         multiUpload: true, // 是否支持多张图片上传(多张图片会以数组的形式上传)
@@ -713,7 +720,10 @@ define([
           resData.map(function(item) {
             htmlStr += tpl.scheduleImgCell.render({ src: item.src });
           });
-          $curAddImg.before(htmlStr);
+          $curTar
+            .parent()
+            .prev()
+            .append(htmlStr);
         },
       });
       upload.show();
@@ -723,6 +733,30 @@ define([
       var $curTar = $(e.currentTarget),
         $curImgCell = $curTar.parents('[data-ele="img-cell"]');
       $curImgCell.remove();
+    },
+    // 点击删除视频
+    onClickDelVideo: function(e) {
+      var $curTar = $(e.currentTarget),
+        $curVideoCell = $curTar.parents('[data-ele="video-cell"]');
+      $curVideoCell.remove();
+    },
+    // 点击播放视频
+    onClickPlayVideo: function(e) {
+      var $curTar = $(e.currentTarget),
+        $curVideoCell = $curTar.parents('[data-ele="video-cell"]'),
+        src = $curVideoCell.attr('data-src');
+      var $videoPlayerMask = $('#video-player-mask');
+      var videoPlayer = Data.videoPlayer;
+      videoPlayer.src(src);
+      videoPlayer.load();
+      $videoPlayerMask.show();
+    },
+    // 点击播放器mask
+    onClickVideoPlayerMask: function(e) {
+      let $tar = $(e.target);
+      let $videoPlayerMask = $('#video-player-mask');
+      if ($tar.get(0) !== $videoPlayerMask.get(0)) return;
+      $videoPlayerMask.hide();
     },
     // 点击保存并发布
     onClickSaveSchedule: function(e) {
@@ -737,14 +771,22 @@ define([
       // 内容
       var $scheduleContent = $('#schedule-content');
       params.content = $scheduleContent.val();
+      params.scheduleId = 0;
       // 图片
       var $scheduleImg = $modalBody.find('[data-ele="schedule-img"]');
       params.img = [];
-      params.scheduleId = 0;
       $scheduleImg.each(function(index, ele) {
         var $ele = $(ele),
-          src = $ele.prop('src');
+          src = $ele.attr('src');
         params.img.push(src);
+      });
+      // 视频
+      var $scheduleVideo = $modalBody.find('[data-ele="schedule-video"]');
+      params.video = [];
+      $scheduleVideo.each(function(index, ele) {
+        var $ele = $(ele),
+          src = $ele.attr('data-src');
+        params.video.push(src);
       });
       // 推送
       params.isShow = parseInt($('[name="if-push"]:checked').val(), 10);
@@ -794,8 +836,16 @@ define([
       var $scheduleImg = $curScheduleItem.find('[data-ele="schedule-img"]');
       $scheduleImg.each(function(index, ele) {
         var $ele = $(ele),
-          src = $ele.prop('src');
+          src = $ele.attr('src');
         params.img.push(src);
+      });
+      // 视频
+      params.video = [];
+      var $scheduleVideo = $curScheduleItem.find('[data-ele="schedule-video"]');
+      $scheduleVideo.each(function(index, ele) {
+        var $ele = $(ele),
+          src = $ele.attr('data-src');
+        params.video.push(src);
       });
       // 推送
       var $ifPush = $curScheduleItem.find(
@@ -816,6 +866,7 @@ define([
       api.updateBuddhistSchedule(params, function(res) {
         var data = Data.buddhistScheduleListHandleData[scheduleId];
         data.img = params.img;
+        data.video = params.video;
         data.content = params.content;
         if (typeof params.isShow !== 'undefined') {
           // 说明之前是不推送

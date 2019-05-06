@@ -3,7 +3,6 @@
  */
 
 //新的佛事管理页 等待测试
-
 define([
   'jquery',
   'common/function',
@@ -12,9 +11,11 @@ define([
   '@zzh/pagination',
   'common/variables',
   './api',
+  '../../../../node_modules/@zzh/upload/dist/upload.js',
+  './upload_config.js',
   './ajax',
   'bootstrap-select',
-], function($, commonFunc, Data, tpl, Pagination, commonVars, api) {
+], function($, commonFunc, Data, tpl, Pagination, commonVars, api, zzhUpload) {
   var func = {};
 
   func.init = function() {
@@ -25,8 +26,65 @@ define([
     });
     func.renderBuddhistStatus();
     func.refreshList();
+    func.initVideoPlay();
+
+    // 初始化发布进展内的视频上传按钮
+    func.initVideoUpload($('[data-ele="add-video"]'));
   };
-  // 通用逻辑 数据请求 -> 回调执行 数据处理 渲染 ...
+
+  // 初始化播放器
+  func.initVideoPlay = function() {
+    const videoPlayer = videojs('video-player');
+    videoPlayer.ready(() => {
+      console.log('初始化videojs成功');
+    });
+    Data.videoPlayer = videoPlayer;
+  };
+
+  // 初始化按钮的视频上传 两处：发布进展和发布记录下的上传视频按钮 两处dom结构保持一致 可以在回调内通用插入video节点
+  func.initVideoUpload = function($btn) {
+    zzhUpload(
+      $btn,
+      function(url) {
+        $btn
+          .parent()
+          .prev()
+          .append(tpl.scheduleVideoCell.render({ src: url })); // 转化为海报图
+        console.log('上传成功');
+      },
+      function() {},
+      {
+        type: 'file',
+        componentOption: {
+          add: function(e, data) {
+            // 判断大小 < 50M 判断格式 video/mp4 video/wmv video/mov
+            const { size, type } = data.originalFiles[0];
+            const limitSize = 50 * 1024 * 1024;
+            let uploadError = [];
+            const acceptFileTypes = /^video\/(mp4|wmv|mov)$/i;
+
+            console.log(size, type);
+
+            // 类型判断
+            if (!acceptFileTypes.test(type)) {
+              uploadError.push('请上传mp4、wmv或mov格式的文件');
+            }
+
+            // 大小判断
+            if (size > limitSize) {
+              uploadError.push('请上传不超过50M的文件');
+            }
+
+            if (uploadError.length) {
+              commonFunc.alert(uploadError.join('\n'));
+            } else {
+              data.submit();
+            }
+          },
+        },
+      }
+    );
+  };
 
   // 请求所有佛事分类
   func.getBuddhistType = function(params, callback) {
@@ -615,6 +673,11 @@ define([
         });
       }
       $modalBody.html(htmlStr);
+      // 初始化视频上传按钮
+      const $addVideos = $modalBody.find('[data-ele="add-video"]');
+      $addVideos.each(function(index, ele) {
+        func.initVideoUpload($(ele));
+      });
     });
   };
 

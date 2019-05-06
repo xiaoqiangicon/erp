@@ -28,6 +28,8 @@ define([], function() {
     buddhistScheduleListHandleData: {}, // {id: {...}}
 
     isSubmit: 0, // 是否正在向服务器提交数据标志位
+
+    videoPlayer: '', // 播放器
   };
 
   return data;

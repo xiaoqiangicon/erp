@@ -1,4 +1,4 @@
-import './preset';
+import './func/preset';
 import '../../component/nav';
 import '../../css/common/index.css';
 
@@ -20,5 +20,6 @@ import './index.css';
 
 import 'bootstrap-datepicker';
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js';
+import 'video.js/dist/video-js.min.css';
 
-import './old';
+import './func/old';

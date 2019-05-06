@@ -59,6 +59,7 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
       scheduleId: 'scheduleId',
       content: 'content',
       img: 'img',
+      video: 'video',
       isShow: 'isShow',
     },
   };
@@ -109,6 +110,8 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
     updateBuddhistSchedule: function(reqData) {
       // 图片数组转字符串
       reqData.img = reqData.img.join(',');
+      // 视频数组转字符串
+      reqData.video = reqData.video.join(',');
     },
   };
   var postHandleOuter = {
@@ -126,6 +129,12 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
           item.img = item.img.split(',');
         } else {
           item.img = [];
+        }
+        // 视频字符串转数组
+        if (item.video) {
+          item.video = item.video.split(',');
+        } else {
+          item.video = [];
         }
       });
     },
@@ -201,8 +210,16 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
         '',
         '',
       ],
-      getBuddhistSchedule: ['/zzhadmin/getCommoditySchedule/'],
-      updateBuddhistSchedule: ['/zzhadmin/addOrUpdateCommoditySchedule/'],
+      getBuddhistSchedule: [
+        '/zzhadmin/getCommoditySchedule/',
+        '/src/buddhist/manage/mock/commodity_schedule_server.json',
+        '/src/buddhist/manage/mock/commodity_schedule.json',
+      ],
+      updateBuddhistSchedule: [
+        '/zzhadmin/addOrUpdateCommoditySchedule/',
+        '/src/buddhist/manage/mock/success_server.json',
+        '/src/buddhist/manage/mock/success.json',
+      ],
     },
     // 请求参数
     requestKeys: {
