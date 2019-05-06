@@ -26,19 +26,41 @@ define([
     });
     func.renderBuddhistStatus();
     func.refreshList();
-    func.initVideoPlay();
 
     // 初始化发布进展内的视频上传按钮
     func.initVideoUpload($('[data-ele="add-video"]'));
   };
 
   // 初始化播放器
-  func.initVideoPlay = function() {
-    const videoPlayer = videojs('video-player');
-    videoPlayer.ready(() => {
-      console.log('初始化videojs成功');
-    });
-    Data.videoPlayer = videoPlayer;
+  func.renderVideoPlayer = function(src) {
+    const srcData = {
+      src,
+      type: 'video/mp4',
+    };
+    if (!Data.videoPlayer) {
+      const $videoPlayer = $('#video-player');
+      const videoPlayer = window.videojs(
+        $videoPlayer.get(0),
+        {
+          controls: !0,
+          preload: 'auto',
+          autoplay: !1,
+          fluid: !1,
+          language: 'zh-cN',
+          muted: !1,
+          sources: [srcData],
+        },
+        () => {
+          console.log('videoJs初始化成功');
+        }
+      );
+      Data.videoPlayer = videoPlayer;
+    } else {
+      console.log('重置videoJs');
+      Data.videoPlayer.pause();
+      Data.videoPlayer.src(srcData);
+      Data.videoPlayer.load(srcData);
+    }
   };
 
   // 初始化按钮的视频上传 两处：发布进展和发布记录下的上传视频按钮 两处dom结构保持一致 可以在回调内通用插入video节点
@@ -46,13 +68,27 @@ define([
     zzhUpload(
       $btn,
       function(url) {
+        // 替换等待元素
+        console.log('上传成功');
+        $('[data-ele="video-upload-loading"]').remove();
         $btn
           .parent()
           .prev()
           .append(tpl.scheduleVideoCell.render({ src: url })); // 转化为海报图
-        console.log('上传成功');
+        $btn.show();
       },
-      function() {},
+      function(e, data) {
+        // 添加等待元素 禁止继续上传
+        const $progress = $('[data-ele="progress"]');
+        const $progressText = $('[data-ele="progress-text"]');
+        let progress = parseInt((data.loaded / data.total) * 100, 10);
+        if (progress > 95) {
+          progress = 95;
+        }
+        $progress.css({ width: `${progress}%` });
+        $progressText.text(`${progress}%`);
+        console.log(progress);
+      },
       {
         type: 'file',
         componentOption: {
@@ -78,7 +114,12 @@ define([
             if (uploadError.length) {
               commonFunc.alert(uploadError.join('\n'));
             } else {
-              data.submit();
+              Data.curUploadJqXHR = data.submit();
+              $btn
+                .parent()
+                .prev()
+                .append(tpl.scheduleVideoUploadLoading.render({}));
+              $btn.hide();
             }
           },
         },

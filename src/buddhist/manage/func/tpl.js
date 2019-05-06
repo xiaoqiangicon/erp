@@ -230,11 +230,22 @@ var tpl = {
             <img data-ele="del-img" class="schedule-img-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
         </div>
     `,
+  scheduleVideoUploadLoading: `
+    <div class="schedule-video-upload-loading" data-ele="video-upload-loading">
+        <div class="progress-container">
+            <div class="progress" data-ele="progress"></div>
+        </div>
+        <div class="progress-text" data-ele="progress-text"></div>
+        <img data-ele="del-video-upload" class="schedule-video-del"
+            src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png"
+            alt="">
+    </div>
+  `,
   scheduleVideoCell: `
-        <div class="schedule-video-cell" data-ele="video-cell">
-            <img data-ele="schedule-video" class="schedule-video" data-src="\${src}" src="\${src}?vframe/jpg/offset/1" alt="">
+        <div class="schedule-video-cell" data-ele="video-cell" data-src="\${src}">
+            <img data-ele="schedule-video" class="schedule-video" src="\${src}?vframe/jpg/offset/1" alt="">
             <img data-ele="del-video" class="schedule-video-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
-            <img data-ele="play-video" class="schedule-video-play" src=""> 
+            <img data-ele="play-video" class="schedule-video-play" src="https://pic.zizaihome.com/92a3ad40-6fef-11e9-9c48-00163e0c001e.png"> 
         </div>
     `,
   scheduleListEmpty: `
@@ -266,15 +277,15 @@ var tpl = {
                     </div>
                     {@/each}
                     {@each video as item}
-                    <div class="schedule-video-cell" data-ele="video-cell">
-                        <img data-ele="schedule-video" class="schedule-video" data-src="\${item}" src="\${item}?vframe/jpg/offset/1" alt="">
+                    <div class="schedule-video-cell" data-ele="video-cell" data-src="\${item}">
+                        <img data-ele="schedule-video" class="schedule-video" src="\${item}?vframe/jpg/offset/1" alt="">
                         <img data-ele="del-video" class="schedule-video-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
-                        <img data-ele="play-video" class="schedule-video-play" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
+                        <img data-ele="play-video" class="schedule-video-play" src="https://pic.zizaihome.com/92a3ad40-6fef-11e9-9c48-00163e0c001e.png" alt="">
                     </div>
                     {@/each}
                     </div>
                     <div>
-                    <div class="upload-btn" data-ele="add-img">上传图片</div>
+                    <div class="upload-btn mgr10" data-ele="add-img">上传图片</div>
                     <div class="upload-btn" data-ele="add-video">上传小视频</div>
                     </div>
                 </div>

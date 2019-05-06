@@ -30,6 +30,7 @@ define([], function() {
     isSubmit: 0, // 是否正在向服务器提交数据标志位
 
     videoPlayer: '', // 播放器
+    curUploadJqXHR: '', // 当前正在上传的视频jqXHR
   };
 
   return data;

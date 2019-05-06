@@ -98,6 +98,8 @@ define([
       'click [data-ele="modal-head-nav"]': 'onClickModalHeadNav',
       // 点击上传图片
       'click [data-ele="add-img"]': 'onClickAddImg',
+      // 点击中断视频上传
+      'click [data-ele="del-video-upload"]': 'onClickDelUploadVideo',
       // 点击删除图片
       'click [data-ele="del-img"]': 'onClickDelImg',
       // 点击删除视频
@@ -734,6 +736,18 @@ define([
         $curImgCell = $curTar.parents('[data-ele="img-cell"]');
       $curImgCell.remove();
     },
+    // 点击中断视频上传
+    onClickDelUploadVideo: function(e) {
+      const $curTar = $(e.currentTarget);
+      const $btn = $curTar
+        .parent()
+        .parent()
+        .next()
+        .find('[data-ele="add-video"]');
+      Data.curUploadJqXHR.abort();
+      $('[data-ele="video-upload-loading"]').remove();
+      $btn.show();
+    },
     // 点击删除视频
     onClickDelVideo: function(e) {
       var $curTar = $(e.currentTarget),
@@ -746,9 +760,7 @@ define([
         $curVideoCell = $curTar.parents('[data-ele="video-cell"]'),
         src = $curVideoCell.attr('data-src');
       var $videoPlayerMask = $('#video-player-mask');
-      var videoPlayer = Data.videoPlayer;
-      videoPlayer.src(src);
-      videoPlayer.load();
+      func.renderVideoPlayer(src);
       $videoPlayerMask.show();
     },
     // 点击播放器mask
@@ -756,6 +768,7 @@ define([
       let $tar = $(e.target);
       let $videoPlayerMask = $('#video-player-mask');
       if ($tar.get(0) !== $videoPlayerMask.get(0)) return;
+      Data.videoPlayer.pause();
       $videoPlayerMask.hide();
     },
     // 点击保存并发布
@@ -781,9 +794,9 @@ define([
         params.img.push(src);
       });
       // 视频
-      var $scheduleVideo = $modalBody.find('[data-ele="schedule-video"]');
+      var $videoCells = $modalBody.find('[data-ele="video-cell"]');
       params.video = [];
-      $scheduleVideo.each(function(index, ele) {
+      $videoCells.each(function(index, ele) {
         var $ele = $(ele),
           src = $ele.attr('data-src');
         params.video.push(src);
@@ -841,8 +854,8 @@ define([
       });
       // 视频
       params.video = [];
-      var $scheduleVideo = $curScheduleItem.find('[data-ele="schedule-video"]');
-      $scheduleVideo.each(function(index, ele) {
+      var $videoCells = $curScheduleItem.find('[data-ele="video-cell"]');
+      $videoCells.each(function(index, ele) {
         var $ele = $(ele),
           src = $ele.attr('data-src');
         params.video.push(src);
