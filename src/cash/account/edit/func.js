@@ -45,7 +45,7 @@ define([
   };
 
   func.fillInfo = function(info) {
-    info.bank && $('#input-bank').val(info.bank);
+    info.bank && $('#input-bank').selectpicker('val', info.bank);
     info.subBank && $('#input-sub-bank').val(info.subBank);
 
     if (info.bankCard) {

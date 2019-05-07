@@ -4,7 +4,6 @@
 .content-row {
   width: 100%;
   margin-bottom: 50px;
-  overflow: hidden;
 }
 .content-row:last-child {
   margin-bottom: 0;
