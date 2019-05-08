@@ -26,6 +26,12 @@ define(['common/env_data'], function(envData) {
       500, // 中
       1000, // 大
     ],
+    filter: {
+      category: 0,
+      status: 0,
+      searchKey: '',
+    },
+    pagination: undefined,
   };
 
   return data;

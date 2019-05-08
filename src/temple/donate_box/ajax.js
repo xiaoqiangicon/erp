@@ -41,7 +41,7 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
       typeof res.msg != 'undefined' && (res.message = res.msg);
     },
     list: function(res) {
-      res.nextPage = res.pageNumber + 1;
+      res.totalPages = Math.ceil((res.total || 1) / 20);
     },
   };
 
