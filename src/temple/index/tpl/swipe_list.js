@@ -9,7 +9,7 @@ var tpl = {
                     <i class="inline-icon"></i>
                     <span data-swipe-list-title-display="\${id}">\${title}</span>
                 </div>
-                <button class="clean-button component-swipe-list-title-more" data-action="swipe-list-more" data-id="\${id}">
+                <button class="clean-button component-swipe-list-title-more" data-swipe-list-more="\${id}">
                     <span class="text">查看更多</span>
                     <i class="inline-icon"></i>
                 </button>

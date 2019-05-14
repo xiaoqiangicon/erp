@@ -3,7 +3,7 @@ require('juicer');
 var tpl = {
   display: `
         <div class="component-container component-shortcut"  data-container="component-display" data-type="6" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
-            <div class="component-shortcut-title" data-display-shortcut-title="\${id}" style="{@if !title}display: none;{@/if}">\${title}</div>
+            <div class="component-shortcut-title" data-display-shortcut-title="\${id}">\${title}</div>
             <div class="component-shortcut-body" data-display-shortcut-body="\${id}">
                 {@each items as item}
                 <a class="component-shortcut-item" href="\${item.link}" data-display-shortcut-cell="\${id}">
