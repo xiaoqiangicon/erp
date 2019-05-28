@@ -54,6 +54,7 @@ import {
   Input,
   Tabs,
   TabPane,
+  Upload,
 } from 'element-ui';
 import App from './App.vue';
 import './ajax';
@@ -86,6 +87,7 @@ Vue.use(Input);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(gallery);
+Vue.use(Upload);
 
 // eslint-disable-next-line no-new
 new Vue({

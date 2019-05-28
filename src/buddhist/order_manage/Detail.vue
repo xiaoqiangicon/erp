@@ -11,31 +11,79 @@
           <div class="cell">
             <div class="cell-title">处理反馈</div>
             <div class="cell-body">
-              <div class="fb-images-container mg-b-5">
-                <div v-for="item in images" class="img-cell">
+              <div class="mg-b-5">
+                <!-- 反馈图片 -->
+                <div
+                  v-for="item in images"
+                  :key="item"
+                  class="fb-cell img-cell"
+                >
                   <img v-gallery :src="item" alt="" />
-                  <img
-                    @click="onClickImgDelete(item)"
-                    src="https://pic.zizaihome.com/4c8b28d8-455b-11e9-9667-00163e0c001e.png"
-                    class="img-delete"
-                    alt=""
-                  />
+                  <div @click="onClickImgDelete(item)" class="img-delete"></div>
+                </div>
+                <!-- 反馈视频 -->
+                <div
+                  v-for="item in videos"
+                  :key="item"
+                  class="fb-cell video-cell"
+                >
+                  <video :src="item"></video>
+                  <div class="video-play" @click="onClickPlayVideo(item)"></div>
+                  <div
+                    @click="onClickVideoDelete(item)"
+                    class="video-delete"
+                  ></div>
+                </div>
+                <!-- 视频正在上传 -->
+                <div
+                  v-show="curUploadVideo.uploading"
+                  v-loading="curUploadVideo.uploading"
+                  class="fb-cell"
+                  :element-loading-text="curUploadVideo.progress + '%'"
+                  element-loading-background="rgba(0, 0, 0, 0.8)"
+                >
+                  <div
+                    @click="onClickVideoUploadDelete"
+                    class="video-uploading-delete"
+                  ></div>
                 </div>
               </div>
-              <div
-                class="fb-upload-container"
-                draggable
-                @dragover.prevent
-                @drop.prevent="onDrop"
-                @click="onClickChooseImage"
-              >
-                <img
-                  class="fb-img"
-                  src="https://pic.zizaihome.com/692097f6-db6d-11e8-9f9a-00163e0c001e.png"
-                  alt=""
-                />
-                <div class="fb-text1">点击或将图片拖拽到这里上传</div>
-                <div class="fb-text2">支持格式：.jpg .png .gif</div>
+              <div class="upload-container">
+                <!-- 图片上传 -->
+                <div
+                  class="upload-img-container"
+                  draggable=""
+                  @dragover.prevent
+                  @drop.prevent="onDrop"
+                  @click="onClickChooseImage"
+                >
+                  <img
+                    class="upload-icon"
+                    src="https://pic.zizaihome.com/d8b82484-8122-11e9-8e0f-00163e0c001e.png"
+                  />
+                  <div class="upload-text">图片拖到此处或点击上传</div>
+                </div>
+                <!-- 视频上传 -->
+                <el-upload
+                  ref="uploadVideo"
+                  :show-file-list="false"
+                  :action="uploadUrl"
+                  class="upload-video-container"
+                  drag
+                  :before-upload="beforeUploadVideo"
+                  :on-success="handleUploadVideoSuccess"
+                  :on-progress="handleUploadVideoProgress"
+                  :on-error="handleUploadVideoError"
+                >
+                  <img
+                    class="upload-icon"
+                    src="https://pic.zizaihome.com/d58bd06c-8122-11e9-b793-00163e0c001e.png"
+                  />
+                  <div class="upload-text">视频拖到此处或点击上传</div>
+                </el-upload>
+              </div>
+              <div class="tip">
+                图片格式支持JPG、PNG、GIF等，视频格式支持MP4、WMV、MOV等，文件大小不超过80M
               </div>
             </div>
           </div>
@@ -59,8 +107,7 @@
                     :key="item.value"
                     :label="item.name"
                     :value="item.value"
-                  >
-                  </el-option>
+                  ></el-option>
                 </el-select>
               </el-input>
             </div>
@@ -69,24 +116,6 @@
             <div class="cell-title">处理备注</div>
             <div class="cell-body">
               <div class="remark" id="remark-editor"></div>
-            </div>
-          </div>
-          <div v-show="!isGroup" class="cell">
-            <div class="cell-title">反馈视频</div>
-            <div class="cell-body">
-              <template v-if="videos.length">
-                <div v-for="item in videos" class="video-cell">
-                  <video :src="item"></video>
-                  <img
-                    class="video-play"
-                    @click="onClickPlayVideo(item)"
-                    src="https://pic.zizaihome.com/7788d7f2-8007-11e8-b517-00163e0c001e.png"
-                  />
-                </div>
-              </template>
-              <template v-else
-                >暂无反馈视频</template
-              >
             </div>
           </div>
           <div v-show="!isGroup" class="cell">
@@ -100,6 +129,7 @@
                     <template v-if="item.type === 14 && item.value">
                       <img
                         v-for="img in item.value.split(',')"
+                        :key="img"
                         class="ps-image"
                         :src="img"
                         alt=""
@@ -201,6 +231,13 @@ export default {
   props: ['isGroup', 'detail', 'type'],
   data() {
     return {
+      uploadUrl: `${window.location.origin}/zzhadmin/uploadPic/`, // 上传地址 返回 {msg, result:0, url}
+
+      curUploadVideo: {
+        uploading: !1,
+        progress: 0,
+      },
+
       mounted: false, // 组件是否建立
       courierCompanyList: [],
 
@@ -371,9 +408,86 @@ export default {
       images.splice(images.indexOf(img), 1);
       this.images = images;
     },
+    onClickVideoDelete(video) {
+      let videos = [...this.videos];
+      videos.splice(videos.indexOf(video), 1);
+      this.videos = videos;
+    },
     onClickPlayVideo(video) {
       this.videoPlayerSrc = video;
       this.$store.commit({ type: 'updateVideoPlayerVisible', state: true });
+    },
+    onClickVideoUploadDelete() {
+      this.$refs.uploadVideo.abort();
+      this.curUploadVideo = {
+        uploading: !1,
+        progress: 0,
+      };
+      console.log('取消上传');
+    },
+    beforeUploadVideo(file) {
+      const MAX_SIZE = 50;
+      const ACCEPT_FILE_TYPES = /^video\/(avi|mp4|wmv|mov|ogg|flv|rmvb)$/i;
+
+      if (this.curUploadVideo.uploading) {
+        Notification({
+          type: 'info',
+          title: '提示',
+          message: '暂不支持多选上传哦，请耐心等待',
+        });
+        return false;
+      }
+      console.log('beforeUploadVideo');
+      console.log(file);
+
+      const isLarge = file.size / 1024 / 1024 > MAX_SIZE;
+
+      if (!ACCEPT_FILE_TYPES.test(file.type)) {
+        Notification({
+          type: 'warning',
+          title: '提示',
+          message: '请上传正确的视频格式',
+        });
+        return false;
+      }
+
+      if (isLarge) {
+        Notification({
+          type: 'warning',
+          title: '提示',
+          message: `上传视频大小不能超过${MAX_SIZE}MB哦!`,
+        });
+        return false;
+      }
+
+      this.curUploadVideo = {
+        uploading: !0,
+        progress: 0,
+      };
+    },
+    handleUploadVideoSuccess(res) {
+      console.log('handleUploadVideoSuccess');
+      this.videos.push(res.url);
+      this.curUploadVideo = {
+        uploading: !1,
+        progress: 0,
+      };
+    },
+    handleUploadVideoProgress(e) {
+      console.log('handleUploadVideoProgress');
+      this.curUploadVideo.progress = e.percent.toFixed(0);
+    },
+    handleUploadVideoError(err, file, fileList) {
+      console.log('handleUploadVideoError');
+      Notification({
+        type: 'error',
+        title: '提示',
+        message: '未知错误，请刷新页面重试',
+      });
+      this.curUploadVideo = {
+        uploading: !1,
+        progress: 0,
+      };
     },
     onDrop(e) {
       console.log('drop');
@@ -410,7 +524,7 @@ export default {
       this.chooseImage.show();
     },
     onClickHandle() {
-      const { isGroup, images, logisticsOrder } = this;
+      const { isGroup, images, videos, logisticsOrder } = this;
       let { courierCompanyCode } = this;
       const remark = remarkEditor.getContent();
       let orderIds;
@@ -435,6 +549,7 @@ export default {
         {
           orderIds,
           pics: images,
+          videos,
           courierCompanyCode,
           logisticsOrder,
           remark,
@@ -574,7 +689,7 @@ export default {
   }
 }
 
-.img-cell {
+.fb-cell {
   font-size: 0;
   width: 120px;
   height: 120px;
@@ -582,43 +697,72 @@ export default {
   margin-right: 15px;
   margin-bottom: 15px;
   position: relative;
-  .img-delete {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: -10px;
-    right: -10px;
-    cursor: pointer;
-  }
+  vertical-align: middle;
   &:nth-child(3n) {
     margin-right: 0;
   }
+}
+
+.img-cell {
   img {
     width: 100%;
     height: 100%;
   }
 }
-.fb-upload-container {
-  width: 411px;
-  height: 155px;
-  margin: 0 auto;
-  border: 2px dashed #7bafef;
-  border-radius: 54px;
+.video-cell {
+  video {
+    width: 100%;
+    height: 100%;
+    background-color: #edeef5;
+  }
+}
+.img-delete,
+.video-delete,
+.video-uploading-delete {
+  background: url('https://pic.zizaihome.com/4c8b28d8-455b-11e9-9667-00163e0c001e.png')
+    no-repeat;
+  background-size: 24px 24px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: -10px;
+  right: -10px;
   cursor: pointer;
-  text-align: center;
-  .fb-img {
-    display: block;
-    width: 59px;
-    height: 47px;
-    margin: 23px auto 20px;
+  z-index: 99999;
+}
+.upload-container {
+  display: flex;
+  justify-content: space-between;
+
+  .upload-img-container {
+    flex: 1 0 auto;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
   }
-  .fb-text1 {
-    font-size: 18px;
+  .upload-video-container {
+    flex: 1 0 auto;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
   }
-  .fb-text2 {
-    font-size: 16px;
-    color: #9b9b9b;
+  .upload-icon {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
+  .upload-text {
+    flex: 0 0 100px;
+  }
+}
+.tip {
+  font-size: 16px;
+  color: #999;
+  margin-top: 20px;
 }
 
 .logistics-container {
@@ -634,24 +778,16 @@ export default {
   width: 130px;
 }
 
-.video-cell {
-  position: relative;
-  display: inline-block;
-  width: 90px;
-  height: 90px;
-  margin: 5px;
-  video {
-    width: 100%;
-    height: 100%;
-    background-color: #edeef5;
-  }
-}
 .video-play {
+  background: url('https://pic.zizaihome.com/7788d7f2-8007-11e8-b517-00163e0c001e.png')
+    no-repeat;
+  background-size: 30px 30px;
   position: absolute;
   width: 30px;
   height: 30px;
-  left: 35px;
-  top: 35px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   cursor: pointer;
 }
 
@@ -697,6 +833,20 @@ export default {
     height: 100%;
   }
 }
+/*el-upload样式修改*/
+.el-upload {
+  width: 100%;
+  height: 100%;
+  .el-upload-dragger {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .el-upload__input {
+    display: none;
+  }
+}
+
 /*ueditor样式修改*/
 .remark .edui-default .edui-editor-toolbarbox {
   display: none !important;

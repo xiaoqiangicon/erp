@@ -12,6 +12,7 @@ const req = {
 
 const pre = params => {
   params.pics = params.pics.join(',');
+  params.videos = params.videos.join(',');
 };
 
 seeAjax.config('handleOrder', {
