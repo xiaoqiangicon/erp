@@ -408,6 +408,11 @@ export default {
       images.splice(images.indexOf(img), 1);
       this.images = images;
     },
+    onClickVideoDelete(video) {
+      let videos = [...this.videos];
+      videos.splice(videos.indexOf(video), 1);
+      this.videos = videos;
+    },
     onClickPlayVideo(video) {
       this.videoPlayerSrc = video;
       this.$store.commit({ type: 'updateVideoPlayerVisible', state: true });

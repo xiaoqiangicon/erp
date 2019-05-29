@@ -4,7 +4,7 @@ import seeAjax from 'see-ajax';
 const req = {
   // orderIds: 'orderIds', // 数组
   // pics: 'pics', // 逗号分隔
-  // videos: 'videos', // 逗号分隔 erp端 暂时没有视频处理 此字段不传
+  videos: 'videoUrl', // 逗号分隔 erp端 暂时没有视频处理 此字段不传
   // remark: 'remark',
   // courierCompanyCode: 'courierCompanyCode',
   // logisticsOrder: 'logisticsOrder',
@@ -12,7 +12,7 @@ const req = {
 
 const pre = params => {
   params.pics = params.pics.join(',');
-  params.videos = params.videos.join(',');
+  params.videoUrl = params.videoUrl.join(',');
 };
 
 seeAjax.config('handleOrder', {
