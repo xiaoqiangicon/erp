@@ -59,7 +59,7 @@
                 >
                   <img
                     class="upload-icon"
-                    src="https://pic.zizaihome.com/d8b82484-8122-11e9-8e0f-00163e0c001e.png"
+                    src="https://pic.zizaihome.com/7181a6a2-81c5-11e9-bda2-00163e0c001e.png"
                   />
                   <div class="upload-text">图片拖到此处或点击上传</div>
                 </div>
@@ -77,7 +77,7 @@
                 >
                   <img
                     class="upload-icon"
-                    src="https://pic.zizaihome.com/d58bd06c-8122-11e9-b793-00163e0c001e.png"
+                    src="https://pic.zizaihome.com/6b9b5dd2-81c5-11e9-8458-00163e0c001e.png"
                   />
                   <div class="upload-text">视频拖到此处或点击上传</div>
                 </el-upload>
@@ -733,26 +733,31 @@ export default {
 .upload-container {
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
 
   .upload-img-container {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     cursor: pointer;
-    border: 1px solid gray;
     border-radius: 10px;
     padding: 10px;
     margin-right: 10px;
+    background-color: #7bafef;
+    color: #fff;
+    display: flex;
+    align-items: center;
   }
   .upload-video-container {
-    flex: 1 0 auto;
-    border: 1px solid gray;
+    flex: 1 1 auto;
+    border: 2px dashed #7bafef;
     border-radius: 10px;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    color: #333;
   }
   .upload-icon {
-    float: left;
-    width: 50px;
-    height: 50px;
-    margin-left: 10px;
+    width: 55px;
+    height: 45px;
     margin-right: 10px;
   }
   .upload-text {
@@ -839,6 +844,12 @@ export default {
   width: 100%;
   height: 100%;
   .el-upload-dragger {
+    flex: 1 1 auto;
+    border: 2px dashed #7bafef;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #333;
     width: 100%;
     height: 100%;
     border: none;
