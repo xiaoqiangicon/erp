@@ -1,0 +1,67 @@
+<div class="content-container" id="content-container">
+  <div class="content-container-inner">
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="buddhist-type-select">佛事分类：</label>
+        <select
+          name="buddhist-type-select"
+          id="buddhist-type-select"
+          data-ele="select-picker"
+        ></select>
+      </div>
+      <div class="form-group mgl20">
+        <label for="buddhist-status-select">佛事状态：</label>
+        <select
+          name="buddhist-status-select"
+          id="buddhist-status-select"
+          data-ele="select-picker"
+        ></select>
+      </div>
+      <div class="form-group mgl20" style="position: relative;">
+        <a class="glyphicon glyphicon-search icon-search" id="search"></a>
+        <input
+          type="text"
+          class="form-control width-auto"
+          id="search-input"
+          placeholder="搜索"
+        />
+      </div>
+      <a
+        class="btn btn-green pull-right mgr20"
+        href="/zzhadmin/selectCeremonyTemplate/"
+        >新建佛事</a
+      >
+    </form>
+    <table class="table table-striped mgt60">
+      <thead>
+        <tr>
+          <th class="text-center" style="width: 5%">ID</th>
+          <th class="text-center" style="width: 28%">佛事</th>
+          <th
+            class="text-center csp"
+            style="width: 10%"
+            id="table-title-total-join"
+          >
+            参与人次 <i class="default-sort csp unsort"></i>
+          </th>
+          <th
+            class="text-center csp"
+            style="width: 10%"
+            id="table-title-total-collect"
+          >
+            募集金额 <i class="default-sort csp unsort"></i>
+          </th>
+          <th class="text-center" style="width: 10%">浏览次数</th>
+          <th class="text-center text-align-left" style="width: 9%">
+            打印机
+          </th>
+          <th class="text-center" style="width: 9%">状态</th>
+          <th class="text-center" style="width: 20%">操作</th>
+        </tr>
+      </thead>
+      <tbody class="text-center" id="table-body"></tbody>
+    </table>
+    <!--分页器-->
+    <div id="pagination-container"></div>
+  </div>
+</div>

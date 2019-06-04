@@ -1,0 +1,152 @@
+<!--选择项设置 Modal -->
+<div
+  class="modal fade sub-set-modal"
+  id="sub-set-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="sub-set-modal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span
+          ><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="sub-set-modal-title">选择项设置</h4>
+      </div>
+      <div class="modal-body" style="overflow: visible;">
+        <!-- 供奉时长 -->
+        <div
+          class="form-group"
+          style="height: 35px; display: none;"
+          id="sub-duration-time-form-group"
+        >
+          <label
+            for="proName"
+            class="col-sm-3 control-label"
+            style="height: 30px;line-height: 30px"
+          >
+            供奉时长
+            <i
+              class="glyphicon glyphicon-question-sign"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="请选择当前项的供奉时长，临近到期时会通知用户续供"
+            >
+            </i>
+            ：
+          </label>
+          <div class="col-sm-8">
+            <input
+              id="sub-duration-time-num"
+              name="sub-duration-time-num"
+              style="width: 40%;"
+              class="form-control pull-left"
+              type="number"
+              placeholder=""
+            />
+            <select name="" id="sub-duration-time-unit" class="selectpicker">
+              <option value="day">天</option>
+              <option value="month">个月</option>
+              <option value="year">年</option>
+            </select>
+          </div>
+        </div>
+        <!-- 到期时间 -->
+        <div
+          class="form-group"
+          style="height: 35px;"
+          id="sub-end-time-form-group"
+        >
+          <label
+            for="proName"
+            class="col-sm-3 control-label"
+            style="height: 30px;line-height: 30px"
+          >
+            到期时间
+            <i
+              class="glyphicon glyphicon-question-sign"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="如果选择项有时间限制，请在此处选择到期的准确时间，若没有则可不选择。"
+            >
+            </i>
+            ：
+          </label>
+          <div class="col-sm-8">
+            <input
+              id="sub-end-time"
+              style="width: 100%"
+              name="sub-end-time"
+              class="form-control"
+              type="text"
+              placeholder="请选择到期时间"
+            />
+          </div>
+        </div>
+        <!--参与限制-->
+        <div
+          class="form-group"
+          style="height: 35px;"
+          id="sub-enroll-limit-form-group"
+        >
+          <span class="col-sm-3 control-label">
+            <strong style="height: 45px;line-height: 45px">
+              参与限制
+              <i
+                class="glyphicon glyphicon-question-sign"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="控制当前选择项每位用户是否只可报名一次。"
+              >
+              </i>
+              ：
+            </strong>
+          </span>
+          <div class="col-sm-8">
+            <label for="sub-enroll-unlimited" style="margin-right: 35px">
+              <input
+                id="sub-enroll-unlimited"
+                name="sub-enroll-limit"
+                value="0"
+                type="radio"
+                checked
+              />
+              <span class="checkbox"></span
+              ><span style="vertical-align: middle"
+                >&nbsp;&nbsp;&nbsp;不限制</span
+              >
+            </label>
+            <label for="sub-enroll-limited">
+              <input
+                id="sub-enroll-limited"
+                name="sub-enroll-limit"
+                value="1"
+                type="radio"
+              />
+              <span class="checkbox"></span
+              ><span style="vertical-align: middle"
+                >&nbsp;&nbsp;&nbsp;每人限参与一次</span
+              >
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="text-align: center">
+        <button
+          type="button"
+          class="btn btn-success backgroundGreen white"
+          data-cid=""
+          id="save-sub-set"
+        >
+          保存
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

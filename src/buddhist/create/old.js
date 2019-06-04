@@ -13,7 +13,7 @@ define([
   '@zzh/choose-image',
   './config',
   './dispose_model',
-  './buddhist_tool',
+  './util',
   '@zzh/store-image',
   'util/purify_a_target',
   'old/utils',
@@ -588,7 +588,8 @@ define([
     showSubSetModal: function(e) {
       var $relatedTarget = $(e.relatedTarget),
         $tar = $(e.target),
-        $subEndTime = $('#sub-end-time');
+        $subEndTime = $('#sub-end-time'),
+        $subSetModal = $('#sub-set-modal');
       // 时间选择插件input blur 时 会触发此modal展示函数 莫名奇怪的bug
       if ($tar.get(0) === $subEndTime.get(0)) {
         return;
@@ -600,7 +601,8 @@ define([
         $subSetModalTitle = $('#sub-set-modal-title'),
         name = curSubModal.get('name'),
         endTime = curSubModal.get('endTime'),
-        enrollNum = curSubModal.get('enroll_num');
+        enrollNum = curSubModal.get('enroll_num'),
+        subType = curSubModal.get('subdivide_type');
       // 保存cid
       $saveSubSet.attr('data-cid', cid);
       // 设置modal标题
@@ -612,6 +614,29 @@ define([
         'checked',
         true
       );
+
+      // 时效佛事 展示时长
+      var $durationTimeFormGroup = $('#sub-duration-time-form-group');
+      var $durationTimeNum = $('#sub-duration-time-num');
+      var $durationTimeUnit = $('#sub-duration-time-unit');
+      var durationDay = curSubModal.get('durationDay');
+      var durationTimeNum = null;
+      var durationTimeUnit = null;
+
+      if (durationDay < 30) {
+        durationTimeUnit = 'day';
+        durationTimeNum = durationDay;
+      } else if (durationDay < 365) {
+        durationTimeUnit = 'month';
+        durationTimeNum = Math.ceil(durationDay / 30);
+      } else {
+        durationTimeUnit = 'year';
+        durationTimeNum = Math.ceil(durationDay / 365);
+      }
+
+      $durationTimeFormGroup.show();
+      $durationTimeNum.val(durationTimeNum);
+      $durationTimeUnit.selectpicker('val', durationTimeUnit);
     },
     // 点击选择项设置modal保存按钮
     onClickSaveSubSet: function(e) {
@@ -619,17 +644,66 @@ define([
         $modal = $('#sub-set-modal'),
         self = this,
         cid = $tar.attr('data-cid'), // 获取选择项cid
-        curSubModal = self.sizes.get(cid);
+        curSubModal = self.sizes.get(cid),
+        subType = curSubModal.get('subdivide_type'),
+        verifyObj = {
+          value: true,
+          reason: '',
+        };
+
       var $endTime = $('#sub-end-time'),
         endTime = $endTime.val();
+
       var enrollNum = parseInt($('[name="sub-enroll-limit"]:checked').val());
-      if (typeof cid == 'string' && cid.length > 0) {
-        // 文本框类附言默认均设置 是否必填 示例文字
-        // 保存到期时间
+
+      var durationTimeNum = $('#sub-duration-time-num').val();
+      var durationTimeUnit = $('#sub-duration-time-unit').val();
+      var durationDay = null;
+
+      // 数据校验
+      if (durationTimeNum === '' || durationTimeNum === '0') {
+        // 不设置
+        durationDay = 0;
+      } else {
+        if (isNaN(parseInt(durationTimeNum, 10))) {
+          verifyObj.value = false;
+          verifyObj.reason = '供奉时长应为整数';
+        } else {
+          if (durationTimeUnit == 'day') {
+            // 1 - 30
+            if (durationTimeNum < 1 || durationTimeNum > 30) {
+              verifyObj.value = false;
+              verifyObj.reason = '天数应为1-30';
+            } else {
+              durationDay = durationTimeNum;
+            }
+          } else if (durationTimeUnit == 'month') {
+            // 1 - 12
+            if (durationTimeNum < 1 || durationTimeNum > 12) {
+              verifyObj.value = false;
+              verifyObj.reason = '月份应为1-12';
+            } else {
+              durationDay = durationTimeNum * 30;
+            }
+          } else if (durationTimeUnit == 'year') {
+            // 1 - 20
+            if (durationTimeNum < 1 || durationTimeNum > 20) {
+              verifyObj.value = false;
+              verifyObj.reason = '年份应为1-20';
+            } else {
+              durationDay = durationTimeNum * 365;
+            }
+          }
+        }
+      }
+
+      if (verifyObj.value) {
         curSubModal.set('endTime', endTime);
-        // 保存参与限制
         curSubModal.set('enroll_num', enrollNum);
+        curSubModal.set('durationDay', durationDay);
         $modal.modal('hide');
+      } else {
+        Toast(verifyObj.reason, 2);
       }
     },
     // 增加第一个选择项,   !!!此函数在渲染表格函数里分情况被触发了既页面初始化时触发了，通过主动触发proStyleBtn的click事件
@@ -1073,7 +1147,9 @@ define([
         subModel = self.sizes.get(subCid),
         subType = subModel.get('subdivide_type');
       self.sizesAddition = new sizesAdditionCollection([
-        new sizesAdditionModel({ subType: subType }),
+        new sizesAdditionModel({
+          subType: subType,
+        }),
       ]);
       self.sizesAdditionView = new SizesAdditionsView({
         el: '#sizesAdditionBox',
@@ -1099,7 +1175,11 @@ define([
       var subCid = $('#sizesPostModal').attr('data-sub-cid'),
         subModel = self.sizes.get(subCid),
         subType = subModel.get('subdivide_type');
-      self.sizesAddition.add(new sizesAdditionModel({ subType: subType }));
+      self.sizesAddition.add(
+        new sizesAdditionModel({
+          subType: subType,
+        })
+      );
       var curSizesAddition = self.sizesAddition,
         curSizesAdditionModels = curSizesAddition.models,
         curSizesAdditionModelsLen = curSizesAdditionModels.length;
@@ -1371,19 +1451,19 @@ define([
     },
     //规格附言说明打开模态框
     /*showInstructionModal: function(e){
-            var $relatedTarget = $(e.relatedTarget),      //获取规格附言数据
-                self = this,
-                cid = $relatedTarget.attr("data-cid"),
-                model = self.sizes.get(cid),
-                name = model.get("name");
-            $("#sizeName2").text(name+"附言文本说明");
-            $('[data-type="saveInstruction"]').attr('data-cid', cid);
-            if (typeof cid == "string" && cid.length > 0) {
-                var model = self.sizes.get(cid),
-                    instruction = model.get("explain");
-                $('#sizeInstruction').val(instruction);
-            }
-        },*/
+              var $relatedTarget = $(e.relatedTarget),      //获取规格附言数据
+                  self = this,
+                  cid = $relatedTarget.attr("data-cid"),
+                  model = self.sizes.get(cid),
+                  name = model.get("name");
+              $("#sizeName2").text(name+"附言文本说明");
+              $('[data-type="saveInstruction"]').attr('data-cid', cid);
+              if (typeof cid == "string" && cid.length > 0) {
+                  var model = self.sizes.get(cid),
+                      instruction = model.get("explain");
+                  $('#sizeInstruction').val(instruction);
+              }
+          },*/
     // 规格附言设置展开模态框
     showSizeAdditionModal: function(e) {
       var $relatedTarget = $(e.relatedTarget),
@@ -1392,6 +1472,7 @@ define([
         subCid = $('#sizesPostModal').attr('data-sub-cid'),
         cid = $relatedTarget.attr('data-cid'),
         cur_title = $tar.find('.modal-title');
+
       if (typeof cid == 'string' && cid.length > 0) {
         var subModal = self.sizes.get(subCid),
           subType = subModal.get('subdivide_type'),
@@ -1701,14 +1782,14 @@ define([
     },
     // 保存规格附言说明
     /*saveInstruction: function (e) {
-            var self = this,
-                $tar = $(e.target),
-                cid = $tar.attr("data-cid"),
-                getSizeInstruction = $('#sizeInstruction').val(),
-                model = self.sizes.get(cid);
-            model.set("explain", getSizeInstruction);
-            $('#instructionModal').modal('hide');
-        },*/
+              var self = this,
+                  $tar = $(e.target),
+                  cid = $tar.attr("data-cid"),
+                  getSizeInstruction = $('#sizeInstruction').val(),
+                  model = self.sizes.get(cid);
+              model.set("explain", getSizeInstruction);
+              $('#instructionModal').modal('hide');
+          },*/
     // 点击是否需要短信验证
     onClickSizeTelVerify: function(e) {
       var $checkedRadio = $('[name="sizeTelVerify"]:checked');
@@ -2277,32 +2358,32 @@ define([
     },
     // 将反馈动态值插入ueditor
     /*insert_feedback_modal_item: function (e) {
-                    var $tar = $(e.target),
-                        cur_typeId = $tar.attr('data-typeId'),
-                        modal_html = '',
-                        ue2 = UE.getEditor('myEditor2');
-                    switch (cur_typeId){
-                        case "1":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_buddhist_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">佛事名称</span>';
-                            break;
-                        case "2":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_temple_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">寺院名称</span>';
-                            break;
-                        case "3":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_time" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付时间</span>';
-                            break;
-                        case "4":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_amount" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付金额</span>';
-                            break;
-                        case "5":
-                            modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_merit_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">功德姓名</span>';
-                            break;
-                        default:
-                            break;
-                    }
-                    var modal_dom = $(modal_html).prop('outerHTML');
-                    ue2.execCommand( 'inserthtml', modal_dom)
-                },*/
+                      var $tar = $(e.target),
+                          cur_typeId = $tar.attr('data-typeId'),
+                          modal_html = '',
+                          ue2 = UE.getEditor('myEditor2');
+                      switch (cur_typeId){
+                          case "1":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_buddhist_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">佛事名称</span>';
+                              break;
+                          case "2":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_temple_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">寺院名称</span>';
+                              break;
+                          case "3":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_time" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付时间</span>';
+                              break;
+                          case "4":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_amount" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付金额</span>';
+                              break;
+                          case "5":
+                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_merit_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">功德姓名</span>';
+                              break;
+                          default:
+                              break;
+                      }
+                      var modal_dom = $(modal_html).prop('outerHTML');
+                      ue2.execCommand( 'inserthtml', modal_dom)
+                  },*/
 
     /**打印机**/
     // 绑定有规格时切换打印机选择事件
@@ -3321,11 +3402,11 @@ define([
             },
           },
           /*cancel: {
-                        text: '取消',
-                        action: function () {
-
-                        }
-                    }*/
+                          text: '取消',
+                          action: function () {
+  
+                          }
+                      }*/
         },
       });
     },
@@ -4025,6 +4106,7 @@ define([
           subdivide['isAutoFinish'] = curModel.get('isAutoFinish'); // 新加的自动完成订单字段
           subdivide['subdivide_type'] = curModel.get('subdivide_type'); // 新加分类字段
           subdivide['endTime'] = curModel.get('endTime'); // 新加选择项到期时间
+          subdivide['durationDay'] = parseInt(curModel.get('durationDay')) || 0; // 新加选择项时效时长
           subdivide['enroll_num'] = curModel.get('enroll_num'); // 新加选择项参与次数限制
           selection_list.length > 0 &&
             (subdivide['printer'] = curModel.get('printer')); //有选择项时小票打印设置
@@ -4797,23 +4879,23 @@ define([
         });
       // 为ueditor添加placeholder的自定义函数
       /*UE.Editor.prototype.placeholder = function (justPlainText) {
-                var _editor = this;
-                _editor.addListener("focus", function () {
-                    var localHtml = _editor.getPlainTxt();
-                    if ($.trim(localHtml) === $.trim(justPlainText)) {
-                        _editor.setContent(" ");
-                    }
-                });
-                _editor.addListener("blur", function () {
-                    var localHtml = _editor.getContent();
-                    if (!localHtml) {
-                        _editor.setContent(justPlainText);
-                    }
-                });
-                _editor.ready(function () {
-                    _editor.fireEvent("blur");
-                });
-            };*/
+                  var _editor = this;
+                  _editor.addListener("focus", function () {
+                      var localHtml = _editor.getPlainTxt();
+                      if ($.trim(localHtml) === $.trim(justPlainText)) {
+                          _editor.setContent(" ");
+                      }
+                  });
+                  _editor.addListener("blur", function () {
+                      var localHtml = _editor.getContent();
+                      if (!localHtml) {
+                          _editor.setContent(justPlainText);
+                      }
+                  });
+                  _editor.ready(function () {
+                      _editor.fireEvent("blur");
+                  });
+              };*/
       function editorSlideTop() {
         // 最新版本佛事反馈，微信端还没适配好，先隐藏
         pay_succ_details = config.template.component.pay_succ_details;
@@ -4840,6 +4922,7 @@ define([
       function detailNullEditor() {
         ue.setContent('', false);
       }
+
       ue.ready(function() {
         details = ue.getContent();
         typeof details == 'string' && details.length > 0
@@ -4920,7 +5003,8 @@ define([
           var res = data.data;
           if (data['result'] == 0 || res) {
             self.render_ueditor();
-            // 查找当前佛事分类并渲染
+
+            // 获取分类数据并渲染下拉列表
             if (typeof res == 'object' && res.length > 0) {
               var opHtml = '';
               _.each(res, function(item, index) {
@@ -4943,41 +5027,49 @@ define([
               $('.selectpicker').selectpicker({});
               self.res = res;
             }
+
+            // 编辑佛事选中佛事分类
             if (foshiId) {
-              if (
-                $('#classification')
-                  .prev()
-                  .find('.selected')
-                  .find('.text')
-                  .text() != foshiName
-              ) {
-                // 分类名和佛事名不相同
-                if (!is_test_environment) {
-                  $('#classification').selectpicker(
-                    'val',
-                    ceremonyMap.ceremonyTypeId
-                  );
-                }
-                var foshiNameList = $('#classification')
-                  .prev()
-                  .find('.selected')
-                  .siblings();
-                $('#classification')
-                  .prev()
-                  .find('.selected')
-                  .removeClass('selected');
-                foshiNameList.each(function(index, item) {
-                  var currentName = $('.text', item).text();
-                  if (currentName == foshiName) {
-                    item.setAttribute('class', 'selected');
-                  }
-                });
-                $('[data-id="classification"]').attr('title', foshiName);
-                $('[data-id="classification"]')
-                  .find('span')
-                  .eq(0)
-                  .text(foshiName);
-              }
+              $('#classification').selectpicker(
+                'val',
+                ceremonyMap.ceremonyTypeId
+              );
+
+              // 以下代码莫名其妙 建议删除
+              // if (
+              //   $('#classification')
+              //     .prev()
+              //     .find('.selected')
+              //     .find('.text')
+              //     .text() != foshiName
+              // ) {
+              //   // 分类名和佛事名不相同
+              //   if (!is_test_environment) {
+              //     $('#classification').selectpicker(
+              //       'val',
+              //       ceremonyMap.ceremonyTypeId
+              //     );
+              //   }
+              //   var foshiNameList = $('#classification')
+              //     .prev()
+              //     .find('.selected')
+              //     .siblings();
+              //   $('#classification')
+              //     .prev()
+              //     .find('.selected')
+              //     .removeClass('selected');
+              //   foshiNameList.each(function(index, item) {
+              //     var currentName = $('.text', item).text();
+              //     if (currentName == foshiName) {
+              //       item.setAttribute('class', 'selected');
+              //     }
+              //   });
+              //   $('[data-id="classification"]').attr('title', foshiName);
+              //   $('[data-id="classification"]')
+              //     .find('span')
+              //     .eq(0)
+              //     .text(foshiName);
+              // }
             }
             // 初始化模板
             self.additionItems = new AdditionCollection([
@@ -5059,7 +5151,10 @@ define([
         $aContent.attr('href', 'javascript:;');
         var $inputContent = $(document.createElement('input'));
         $inputContent.addClass('btn btn-sm btn-primary dpblock');
-        $inputContent.attr({ name: 'file', type: '' });
+        $inputContent.attr({
+          name: 'file',
+          type: '',
+        });
         $inputContent.css({
           width: '100px',
           height: '100px',
@@ -5639,7 +5734,9 @@ define([
         'input[name="if_feedback"][value="' +
           getContent.pay_succ_details_flag +
           '"]'
-      ).prop({ checked: !0 });
+      ).prop({
+        checked: !0,
+      });
       getContent.pay_succ_details_flag && $('#myEditor2').removeClass('hide');
     },
     // 渲染打印机状态（即改变按钮的设置与已设置文本）
@@ -5811,7 +5908,9 @@ define([
       this.model.each(function(sizeModal, index, models) {
         sizeModal.set('cid', sizeModal.cid);
         sizeModal.set('sort', index);
-        var sizesAdditionView = new SizesAdditionView({ model: sizeModal });
+        var sizesAdditionView = new SizesAdditionView({
+          model: sizeModal,
+        });
         fragment.appendChild(sizesAdditionView.render().el);
       });
       self.$el.html(fragment);
@@ -5827,8 +5926,10 @@ define([
             subType = self.model.get(psId).get('subType'),
             inputType = self.model.get(psId).get('inputType');
           if (
-            (subType == 3 && (inputType == 12 || inputType == 15)) ||
-            (subType == 2 && (inputType == 10 || inputType == 11))
+            (subType === 2 && (inputType === 10 || inputType === 11)) ||
+            (subType === 3 && (inputType === 12 || inputType === 15)) ||
+            (subType === 4 &&
+              (inputType === 4 || inputType === 5 || inputType === 6))
           ) {
             $specialSubPsBox.append($ele.prop('outerHTML'));
             $ele.remove();
@@ -5846,6 +5947,7 @@ define([
       price: '',
       stock: '',
       endTime: '', // 到期时间
+      durationDay: 0, // 时效时长
       enroll_num: 0, // 参与次数限制
       pic: '',
       id: '',
@@ -5889,7 +5991,7 @@ define([
       );
       $(selectpicker.get(0)).selectpicker('refresh');
       $(selectpicker.get(0)).on('changed.bs.select', function(e) {
-        var subType = e.currentTarget.value,
+        var subType = parseInt(e.currentTarget.value),
           pic = self.model.get('pic'),
           wangshengSrc =
             'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
@@ -5899,39 +6001,10 @@ define([
         // console.log(new sizesAdditionCollection([new sizesAdditionModel({}),new sizesAdditionModel({})]));
         // 改变选择项时 修正特殊附言的数据
         var psModelArr = self.model.get('postScript');
+
         if (!psModelArr) {
           // 无附言切换时
-          if (subType == 3) {
-            // 祈福类 生成默认功德芳名心愿数据
-            psModelArr = new sizesAdditionCollection([
-              new sizesAdditionModel({
-                dataType: 2,
-                describe: '',
-                font_length: 8,
-                inputId: '',
-                inputType: 12,
-                is_must: 1,
-                name: '功德芳名',
-                pic_num: 4,
-                prompt_text: '请填写功德主姓名',
-                selectInput: [],
-                subType: 3,
-              }),
-              new sizesAdditionModel({
-                dataType: 2,
-                describe: '',
-                font_length: 20,
-                inputId: '',
-                inputType: 15,
-                is_must: 1,
-                name: '心愿',
-                pic_num: 0,
-                prompt_text: '请填写您的心愿',
-                selectInput: [],
-                subType: 3,
-              }),
-            ]);
-          } else if (subType == 2) {
+          if (subType === 2) {
             // 往生类 生成默认阳上人往生者数据
             psModelArr = new sizesAdditionCollection([
               new sizesAdditionModel({
@@ -5945,6 +6018,7 @@ define([
                 pic_num: 0,
                 prompt_text: '请填写功德主姓名（在世）',
                 selectInput: [],
+                durationDay: 0,
                 subType: 2,
               }),
               new sizesAdditionModel({
@@ -5958,35 +6032,114 @@ define([
                 pic_num: 4,
                 prompt_text: '请填写已故者姓名（已去世）',
                 selectInput: [],
+                durationDay: 0,
                 subType: 2,
               }),
             ]);
-          } else {
+          } else if (subType === 3) {
+            // 祈福类 生成默认功德芳名心愿数据
+            psModelArr = new sizesAdditionCollection([
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 8,
+                inputId: '',
+                inputType: 12,
+                is_must: 1,
+                name: '功德芳名',
+                pic_num: 4,
+                prompt_text: '请填写功德主姓名',
+                selectInput: [],
+                durationDay: 0,
+                subType: 3,
+              }),
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 20,
+                inputId: '',
+                inputType: 15,
+                is_must: 1,
+                name: '心愿',
+                pic_num: 0,
+                prompt_text: '请填写您的心愿',
+                selectInput: [],
+                durationDay: 0,
+                subType: 3,
+              }),
+            ]);
+          } else if (subType === 4) {
+            // 快递类 生成默认的 联系人 手机号码 地址
+            psModelArr = new sizesAdditionCollection([
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 8,
+                inputId: '',
+                inputType: 4,
+                is_must: 1,
+                name: '联系人',
+                pic_num: 0,
+                prompt_text: '请填写联系人姓名（方便寺院与您联系）',
+                selectInput: [],
+                durationDay: 0,
+                subType: 4,
+              }),
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 20,
+                inputId: '',
+                inputType: 5,
+                is_must: 1,
+                name: '手机号码',
+                pic_num: 0,
+                prompt_text: '请填写联系人电话（方便寺院与您联系）',
+                selectInput: [],
+                durationDay: 0,
+                subType: 4,
+              }),
+              new sizesAdditionModel({
+                dataType: 2,
+                describe: '',
+                font_length: 20,
+                inputId: '',
+                inputType: 6,
+                is_must: 1,
+                name: '地址',
+                pic_num: 0,
+                prompt_text: '请填写您常用的居住地址',
+                selectInput: [],
+                durationDay: 0,
+                subType: 4,
+              }),
+            ]);
           }
         } else {
+          // 有附言
           // 修改内层数据的subType
           psModelArr.models.map(function(ps) {
-            ps.set('subType', e.target.value);
+            ps.set('subType', parseInt(e.target.value));
           });
           // 置顶特殊附言 并保证至少存在两项
-          if (subType == 3) {
+          if (subType === 3) {
             //祈福类
             var FMPs = [],
               XYPs = [],
               otherPs = [];
             psModelArr.models.map(function(ps) {
-              if (ps.get('inputType') == 12) {
+              if (ps.get('inputType') === 12) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 8);
                 }
-                if (ps.get('pic_num') == 0) {
+                if (ps.get('pic_num') === 0) {
                   ps.set('pic_num', 4);
                 }
                 FMPs.push(ps);
-              } else if (ps.get('inputType') == 15) {
+              } else if (ps.get('inputType') === 15) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 20);
                 }
                 ps.set('pic_num', 0);
@@ -6009,6 +6162,7 @@ define([
                   pic_num: 4,
                   prompt_text: '请填写功德主姓名',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 3,
                 })
               );
@@ -6027,30 +6181,31 @@ define([
                   pic_num: 0,
                   prompt_text: '请填写您的心愿',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 3,
                 })
               );
             }
             psModelArr.models = FMPs.concat(XYPs, otherPs);
-          } else if (subType == 2) {
+          } else if (subType === 2) {
             // 往生类
             var YSRPs = [],
               WSZPs = [],
               otherPs = [];
             psModelArr.models.map(function(ps) {
-              if (ps.get('inputType') == 10) {
+              if (ps.get('inputType') === 10) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 8);
                 }
                 ps.set('pic_num', 0);
                 YSRPs.push(ps);
-              } else if (ps.get('inputType') == 11) {
+              } else if (ps.get('inputType') === 11) {
                 // 修改默认值 兼容老数据
-                if (ps.get('font_length') == 0) {
+                if (ps.get('font_length') === 0) {
                   ps.set('font_length', 8);
                 }
-                if (ps.get('pic_num') == 0) {
+                if (ps.get('pic_num') === 0) {
                   ps.set('pic_num', 4);
                 }
                 WSZPs.push(ps);
@@ -6072,6 +6227,7 @@ define([
                   pic_num: 0,
                   prompt_text: '请填写功德主姓名（在世）',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 2,
                 })
               );
@@ -6090,32 +6246,109 @@ define([
                   pic_num: 4,
                   prompt_text: '请填写已故者姓名（已去世）',
                   selectInput: [],
+                  durationDay: 0,
                   subType: 2,
                 })
               );
             }
             psModelArr.models = YSRPs.concat(WSZPs, otherPs);
-          } else {
+          } else if (subType === 4) {
+            // 快递类
+            var ps4 = [], // 联系人
+              ps5 = [], // 电话号码
+              ps6 = [], // 地址
+              psOther = [];
+            psModelArr.models.map(function(ps) {
+              if (ps.get('inputType') === 4) {
+                ps4.push(ps);
+              } else if (ps.get('inputType') === 5) {
+                ps5.push(ps);
+              } else if (ps.get('inpputType') === 6) {
+                ps6.push(ps);
+              } else {
+                psOther.push(ps);
+              }
+            });
+
+            if (!ps4.length) {
+              ps4.push(
+                new sizesAdditionModel({
+                  dataType: 2,
+                  describe: '',
+                  font_length: 8,
+                  inputId: '',
+                  inputType: 4,
+                  is_must: 1,
+                  name: '联系人',
+                  pic_num: 0,
+                  prompt_text: '请填写联系人姓名（方便寺院与您联系）',
+                  selectInput: [],
+                  durationDay: 0,
+                  subType: 4,
+                })
+              );
+            }
+            if (!ps5.length) {
+              ps5.push(
+                new sizesAdditionModel({
+                  dataType: 2,
+                  describe: '',
+                  font_length: 20,
+                  inputId: '',
+                  inputType: 5,
+                  is_must: 1,
+                  name: '手机号码',
+                  pic_num: 0,
+                  prompt_text: '请填写联系人电话（方便寺院与您联系）',
+                  selectInput: [],
+                  durationDay: 0,
+                  subType: 4,
+                })
+              );
+            }
+            if (!ps6.length) {
+              ps6.push(
+                new sizesAdditionModel({
+                  dataType: 2,
+                  describe: '',
+                  font_length: 20,
+                  inputId: '',
+                  inputType: 6,
+                  is_must: 1,
+                  name: '地址',
+                  pic_num: 0,
+                  prompt_text: '请填写您常用的居住地址',
+                  selectInput: [],
+                  durationDay: 0,
+                  subType: 4,
+                })
+              );
+            }
+            psModelArr.models = ps4.concat(ps5, ps6, psOther);
           }
         }
         // console.log(psModelArr.models);
         self.model.set('postScript', psModelArr);
         self.model.set('subdivide_type', subType);
-        if (subType == 1) {
-          if (pic == wangshengSrc || pic == qifuSrc) {
+        if (subType === 1) {
+          if (pic === wangshengSrc || pic === qifuSrc) {
             self.model.set('pic', '');
           }
-        } else if (subType == 2) {
+        } else if (subType === 2) {
           // 往生 祈福选择项 添加默认图片
-          if (pic == '' || pic == qifuSrc) {
+          if (pic === '' || pic === qifuSrc) {
             self.model.set('pic', wangshengSrc);
           }
-        } else if (subType == 3) {
-          if (pic == '' || pic == wangshengSrc) {
+        } else if (subType === 3) {
+          if (pic === '' || pic === wangshengSrc) {
             self.model.set('pic', qifuSrc);
           }
-        } else {
+        } else if (subType === 4) {
+          if (pic === wangshengSrc || pic === qifuSrc) {
+            self.model.set('pic', '');
+          }
         }
+
         // modelDispose.method.change_size_name(e.target.value, self.model);
       });
       // 添加下拉菜单结束
@@ -6150,7 +6383,6 @@ define([
       }
       // 初始化switch控件
       var isAutoFinish = !!this.model.get('isAutoFinish'); // 布尔化参数
-      // debugger
       // 每次初始化会触发两次重绘，一次selectinput 的change一次subdivide_type改写触发
       this.$('.autoFinishSwitch').bootstrapSwitch({
         size: 'mini',
@@ -6189,7 +6421,9 @@ define([
         sizeModal.set('cid', sizeModal.cid); // ?? 此处导致死循环 ???
         // sizeModal.set("modelsLength", models.length);
         sizeModal.set('sort', index);
-        var sizeView = new SizeView({ model: sizeModal });
+        var sizeView = new SizeView({
+          model: sizeModal,
+        });
         fragment.appendChild(sizeView.render().el);
       });
       self.$el.html(fragment);
@@ -6293,7 +6527,9 @@ define([
         sizeModal.set('cid', sizeModal.cid);
         //                        sizeModal.set("modelsLength", models.length);
         sizeModal.set('sort', index);
-        var sizeView = new AdditionView({ model: sizeModal });
+        var sizeView = new AdditionView({
+          model: sizeModal,
+        });
         fragment.appendChild(sizeView.render().el);
       });
 

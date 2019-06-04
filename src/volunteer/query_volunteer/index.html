@@ -7,6 +7,7 @@
     <meta name="format-detection" content="telephone=no" />
     <title>招募管理</title>
   </head>
+
   <body data-menu-id="query-volunteer">
     <div id="content-container">
       <section id="main">
@@ -188,6 +189,13 @@
                 <div class="batchOperations pull-right">
                   <div class="sidebar-menu sidebar-menu2 " id="">
                     <div class="pull-right">
+                      <a href="#" id="exportExcel">
+                        <span class="btn btn-default batchBtn action"
+                          >导出Excel</span
+                        >
+                      </a>
+                    </div>
+                    <div class="pull-right">
                       <a href="" target="_blank" id="recordData">
                         <span class="btn btn-default batchBtn action"
                           >自录数据</span
@@ -197,12 +205,12 @@
                     <div
                       class="pull-right"
                       id="batchOperation"
-                      data-container="body"
                       data-toggle="popover"
-                      data-placement="left"
                     >
                       <a href="#" class="">
-                        <span class="btn btn-default batchBtn action"
+                        <span
+                          class="btn btn-default batchBtn action"
+                          style="color: #333;"
                           >批量操作</span
                         >
                       </a>
@@ -449,17 +457,12 @@
         <div class="popover_content jsPopOverContent">
           <div class="popover-content1">
             <div class="pop-container">
-              <button class="btn btn-default selectAll btn-width">反选</button>
-              <button class="btn btn-default clearSelect btn-width">
-                清除选中
-              </button>
-              <button class="btn btn-default addLabel btn-width">加标签</button>
-              <button
-                class="btn btn-default dels btn-width"
-                data-toggle="modal"
-              >
+              <div class="btn btn-default selectAll btn-width">反选</div>
+              <div class="btn btn-default clearSelect btn-width">清除选中</div>
+              <div class="btn btn-default addLabel btn-width">加标签</div>
+              <div class="btn btn-default dels btn-width" data-toggle="modal">
                 删除
-              </button>
+              </div>
             </div>
           </div>
         </div>
