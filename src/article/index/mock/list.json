@@ -1,6 +1,6 @@
 {
   "success": true,
-  "nextPage": 2,
+  "totalPages": 10,
   "data": [
     {
       "id": 1,

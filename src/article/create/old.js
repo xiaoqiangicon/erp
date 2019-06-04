@@ -28,7 +28,10 @@ define([
   commonFunc.addCloseWindowHint();
 
   // 创建编辑器示例
-  data.editor = UE.getEditor('input-content');
+  data.editor = UE.getEditor('input-content', {
+    initialFrameWidth: 700,
+    initialFrameHeight: 400,
+  });
   data.editor.addListener('ready', function(editor) {
     func.init();
   });

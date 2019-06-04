@@ -38,41 +38,6 @@ var tpl = {
             </div>
         </div>
     `,
-  pagination: `
-        {@if currentPage > 1}
-        <button class="btn btn-default button mgr20" data-current-page="\${currentPage}" data-pagination-index="-1" data-category="\${category}" data-status="\${status}" data-search-key="\${searchKey}">上一页</button>
-        {@/if}
-        {@if nextPage > currentPage}
-        <button class="btn btn-default button" data-current-page="\${currentPage}" data-pagination-index="-2" data-category="\${category}" data-status="\${status}" data-search-key="\${searchKey}">下一页</button>
-        {@/if}
-    `,
-  conditionContentContainer: `
-        <div class="condition-content-container" data-container="condition-content" data-category="\${category}" data-status="\${status}" data-search-key="\${searchKey}">
-            <div class="pagination-content-container" data-container="pagination-content" data-page-index="1">
-                <div class="content-placeholder">
-                    <img src="${loading}">
-                </div>
-            </div>
-        </div>
-    `,
-  paginationContentContainer: `
-        <div class="pagination-content-container" data-container="pagination-content" data-page-index="\${pageIndex}">
-            <div class="content-placeholder">
-                <img src="${loading}">
-            </div>
-        </div>
-    `,
-  paginationContentContainerEmpty: `
-        <div class="content-empty-hint">暂无数据</div>
-    `,
-  paginationContentContainerLoading: `
-        <div class="content-placeholder">
-            <img src="${loading}">
-        </div>
-    `,
-  paginationContainer: `
-        <div class="pagination-container" data-container="pagination" data-category="\${category}" data-status="\${status}" data-search-key="\${searchKey}"></div>
-    `,
   viewPopup: `
         <div class="promotion" data-popup="\${id}" data-type="article-view">
             <div class="promotion-background" data-popup-overlay="\${id}"></div>

@@ -241,9 +241,12 @@ define([
       checked: !0,
     });
 
-    data.showTitle
-      ? $displayComponent.find('[data-swipe-list-title-container]').show()
-      : $displayComponent.find('[data-swipe-list-title-container]').hide();
+    const $titleContainer = $displayComponent.find(
+      '[data-swipe-list-title-container]'
+    );
+    data.showTitle ? $titleContainer.show() : $titleContainer.hide();
+    const $moreContainer = $displayComponent.find('[data-swipe-list-more]');
+    data.showMore ? $moreContainer.show() : $moreContainer.hide();
     // 更新是否展示标题到展示组件中
 
     // 更新是否展示标题到编辑组件中

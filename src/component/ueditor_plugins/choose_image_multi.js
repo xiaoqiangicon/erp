@@ -29,7 +29,6 @@ window.UE.registerUI('zzh-choose-image-multi', (editor, uiName) => {
             items.map(item => {
               formatedImages.push({
                 src: item.src,
-                width: 600,
               });
             });
 

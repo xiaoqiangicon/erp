@@ -21,6 +21,11 @@ define(['common/env_data'], function(envData) {
       500, // 中
       1000, // 大
     ],
+    filter: {
+      startDate: '',
+      endDate: '',
+    },
+    pagination: undefined,
   };
 
   return data;

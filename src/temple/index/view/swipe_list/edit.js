@@ -18,6 +18,8 @@ define([
       'keyup [data-swipe-list-title]': 'onKeyUpInSwipeListTitle',
       // 图文组件点击显示标题
       'change [data-swipe-list-show-title]': 'onChangeSwipeListShowTitle',
+      // 图文组件点击显示更多
+      'change [data-swipe-list-show-more]': 'onChangeSwipeListShowMore',
       // 图文组件的条数
       'change [data-swipe-list-items-count]': 'onChangeInSwipeListItemsCount',
       // 图文组件子类型
@@ -48,6 +50,15 @@ define([
         id = parseInt($this.attr('data-swipe-list-show-title')),
         show = $this.prop('checked'),
         $container = $('[data-swipe-list-title-container="' + id + '"]');
+      show ? $container.show() : $container.hide();
+    },
+    // 图文组件点击显示更多
+    onChangeSwipeListShowMore(e) {
+      const $this = $(e.target);
+      const id = parseInt($this.attr('data-swipe-list-show-more'));
+      const show = $this.prop('checked');
+      const $container = $('[data-swipe-list-more="' + id + '"]');
+
       show ? $container.show() : $container.hide();
     },
     // 图文组件的条数

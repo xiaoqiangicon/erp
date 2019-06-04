@@ -9,6 +9,8 @@ import '@senntyou/shortcut.css';
 import '../../lib/material-icons.css';
 import '../../lib/bootstrap-material-datetimepicker.css';
 import 'toastr/build/toastr.css';
+import '@zzh/pagination/dist/pagination.css';
+import '../../less/pagination.less';
 
 import '../../css/base.css';
 import './index.css';

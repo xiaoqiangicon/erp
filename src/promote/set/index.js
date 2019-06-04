@@ -41,7 +41,10 @@ seeAjax('info', {}, res => {
     'active'
   );
 
-  share.editor = window.UE.getEditor('editor');
+  share.editor = window.UE.getEditor('editor', {
+    initialFrameWidth: 700,
+    initialFrameHeight: 400,
+  });
   $('#title').val(res.data.title || defaultTitle);
 
   share.promoteUrl = res.data.promoteUrl;

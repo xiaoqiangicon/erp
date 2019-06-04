@@ -16,8 +16,6 @@ define([
 ], function($, commonFunc, commonVars, data, tpl, func, Clipboard) {
   $.seeView({
     events: {
-      // 点击分页
-      'click [data-pagination-index]': 'onClickPaginationIndex',
       // 点击查询按钮
       'click #filter-submit': 'onClickFilterSubmit',
       // 点击推广按钮
@@ -28,68 +26,6 @@ define([
       'click [data-switch-qrcode]': 'onClickSwitchQrcode',
       // 点击导出
       'click #export': 'onClickExport',
-    },
-    // 点击分页
-    onClickPaginationIndex: function(e) {
-      var $this = $(e.target),
-        currentPage = parseInt($this.attr('data-current-page')),
-        pageIndex = parseInt($this.attr('data-pagination-index')),
-        startDate = $this.attr('data-start-date'),
-        endDate = $this.attr('data-end-date'),
-        page =
-          pageIndex == -1
-            ? currentPage - 1
-            : pageIndex == -2
-            ? currentPage + 1
-            : pageIndex,
-        totalPages = data.totalPagesRecord['date:' + startDate + ':' + endDate];
-
-      var $parentContentContainer = $(
-          '[data-container="date-content"][data-start-date="' +
-            startDate +
-            '"]' +
-            '[data-end-date="' +
-            endDate +
-            '"]'
-        ),
-        $contentContainers = $parentContentContainer.find(
-          '[data-container="pagination-content"]'
-        ),
-        $currentContentContainer = $parentContentContainer.find(
-          '[data-container="pagination-content"]' +
-            '[data-page-index="' +
-            page +
-            '"]'
-        ),
-        $paginationContainer = $(
-          '[data-container="pagination"][data-start-date="' +
-            startDate +
-            '"][data-end-date="' +
-            endDate +
-            '"]'
-        );
-
-      $contentContainers.hide();
-
-      if (!$currentContentContainer.length) {
-        $currentContentContainer = $(
-          tpl.paginationContentContainer.render({
-            pageIndex: page,
-          })
-        );
-        $parentContentContainer.append($currentContentContainer);
-        func.requestList(page, startDate, endDate);
-      } else {
-        $currentContentContainer.show();
-        $paginationContainer.html(
-          tpl.pagination.render({
-            currentPage: page,
-            nextPage: !!totalPages && page >= totalPages ? 0 : page + 1,
-            startDate: startDate,
-            endDate: endDate,
-          })
-        );
-      }
     },
     // 点击查询按钮
     onClickFilterSubmit: function(e) {
@@ -108,24 +44,7 @@ define([
           !!endDate &&
           parseInt(
             endDate.slice(0, 4) + endDate.slice(5, 7) + endDate.slice(8, 10)
-          ),
-        $dateContentContainers = $('[data-container="date-content"]'),
-        $currentDateContentContainer = $(
-          '[data-container="date-content"][data-start-date="' +
-            startDate +
-            '"]' +
-            '[data-end-date="' +
-            endDate +
-            '"]'
-        ),
-        $paginationContainers = $('[data-container="pagination"]'),
-        $currentPaginationContainer = $(
-          '[data-container="pagination"][data-start-date="' +
-            startDate +
-            '"][data-end-date="' +
-            endDate +
-            '"]'
-        );
+          );
 
       if (!!startDateInt && !!endDateInt && startDateInt > endDateInt) {
         $.alert({
@@ -137,27 +56,9 @@ define([
         return;
       }
 
-      $dateContentContainers.hide();
-      $paginationContainers.hide();
-      if (!$currentDateContentContainer.length) {
-        $currentDateContentContainer = $(
-          tpl.dateContentContainer.render({
-            startDate: startDate,
-            endDate: endDate,
-          })
-        );
-        $('#date-content-containers').append($currentDateContentContainer);
-        $currentPaginationContainer = $(
-          tpl.paginationContainer.render({
-            startDate: startDate,
-            endDate: endDate,
-          })
-        );
-        $('#pagination-containers').append($currentPaginationContainer);
-        func.requestList(1, startDate, endDate);
-      }
-      $currentDateContentContainer.show();
-      $currentPaginationContainer.show();
+      data.filter.startDate = startDate;
+      data.filter.endDate = endDate;
+      func.requestList();
     },
     // 点击推广按钮
     onClickPromotion: function(e) {

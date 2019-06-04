@@ -48,7 +48,9 @@ const servers = [
   },
 ];
 
-const rename = {};
+const rename = {
+  'index/login': 'admin/registration/login',
+};
 
 const cssModules = [
   'buddhist/template',
