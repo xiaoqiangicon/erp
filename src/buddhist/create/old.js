@@ -3401,7 +3401,7 @@ define([
           /*cancel: {
                           text: '取消',
                           action: function () {
-  
+
                           }
                       }*/
         },
@@ -5531,7 +5531,10 @@ define([
         jsonAdditionAdd = $.parseJSON(JSON.stringify(inputResPos));
       for (var j = 0; j < jsonAdditionAdd.length; j++) {
         var inputPrompt = jsonAdditionAdd[j].prompt_text;
-        if (Object.prototype.toString.call(inputPrompt) == '[object Array]') {
+        if (
+          Object.prototype.toString.call(inputPrompt) == '[object Array]' &&
+          inputPrompt.length
+        ) {
           if (typeof inputPrompt[0]['name'] != 'undefined') {
             var temp_arr = [];
             for (var k = 0; k < inputPrompt.length; k++) {
