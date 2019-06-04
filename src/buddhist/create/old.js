@@ -2117,7 +2117,10 @@ define([
     if_feedback: function(e) {
       var $tar = $(e.target),
         cur_id = $tar.attr('id'),
-        ue2 = UE.getEditor('myEditor2');
+        ue2 = UE.getEditor('myEditor2', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        });
       if (cur_id === 'open_feedback') {
         $('#myEditor2').removeClass('hide');
         ue2.ready(function() {
@@ -3511,8 +3514,14 @@ define([
         productionImg.push($(Dom).attr('src'));
       });
       current_content['pics'] = productionImg;
-      var detailsEdi = UE.getEditor('myEditor'),
-        pay_succ_detailsEdi = UE.getEditor('myEditor2');
+      var detailsEdi = UE.getEditor('myEditor', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        }),
+        pay_succ_detailsEdi = UE.getEditor('myEditor2', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        });
       detailsEdi.ready(function() {
         current_content['details'] = detailsEdi.getContent(); //详情编辑器内容
       });
@@ -3669,8 +3678,14 @@ define([
     // 开始验证数据
     startVerify: function() {
       var self = this,
-        detailsEdi = UE.getEditor('myEditor'),
-        pay_succ_detailsEdi = UE.getEditor('myEditor2'),
+        detailsEdi = UE.getEditor('myEditor', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        }),
+        pay_succ_detailsEdi = UE.getEditor('myEditor2', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        }),
         details = null,
         pay_succ_details = '',
         feedback_type = '',
@@ -4516,7 +4531,10 @@ define([
     },
     // 渲染反馈模板
     render_feedback_item: function(feedback_modal) {
-      var ue2 = UE.getEditor('myEditor2'),
+      var ue2 = UE.getEditor('myEditor2', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        }),
         feedback_html = '';
       feedback_modal != '' && (feedback_html = feedback_modal.render({}));
       ue2.setContent(feedback_html, false);
@@ -4769,8 +4787,14 @@ define([
     },
     render_ueditor: function() {
       var self = this,
-        ue = UE.getEditor('myEditor'),
-        ue2 = UE.getEditor('myEditor2');
+        ue = UE.getEditor('myEditor', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        }),
+        ue2 = UE.getEditor('myEditor2', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        });
       // 为ueditor添加placeholder的自定义函数
       /*UE.Editor.prototype.placeholder = function (justPlainText) {
                 var _editor = this;
@@ -5076,8 +5100,14 @@ define([
     // 渲染编辑器内容
     showDetail: function(getContent, ifLocalStorage) {
       var self = this,
-        ue = UE.getEditor('myEditor'),
-        ue2 = UE.getEditor('myEditor2'),
+        ue = UE.getEditor('myEditor', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        }),
+        ue2 = UE.getEditor('myEditor2', {
+          initialFrameWidth: 700,
+          initialFrameHeight: 400,
+        }),
         ue_content = '',
         ue2_content = '';
       if (editType == 2 || ifLocalStorage) {
