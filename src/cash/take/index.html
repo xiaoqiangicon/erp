@@ -262,7 +262,7 @@
                                       <span class="detail-step-circle {@if type == 1}active{@else if type == 2}full{@/if}">{@if type == 1}✓{@else}1{@/if}</span>
                                       <span>有疑问</span>
                                   </p>
-                                  {@if type == 1 && updatedAt}<p class="fs14 gray">${updatedAt}</p>{@/if}
+                                  {@if updatedAt}<p class="fs14 gray">${createdAt}</p>{@/if}
                               </div>
                               <div class="detail-step">
                                   <p class="detail-step-line {@if type == 2}active{@/if}"></p>
@@ -287,7 +287,7 @@
                                       <span class="detail-step-circle {@if type == 1}active{@else if type == 2 || type == 4 || type == 6 || type == 5}full{@/if}">{@if type == 1}✓{@else}1{@/if}</span>
                                       <span>提现中</span>
                                   </p>
-                                  {@if type == 1 && updatedAt}<p class="fs14 gray">${updatedAt}</p>{@/if}
+                                  {@if createdAt}<p class="fs14 gray">${createdAt}</p>{@/if}
                               </div>
                               <div class="detail-step">
                                   <p class="detail-step-line {@if type == 2 || type == 4 || type == 6 || type == 5}active{@/if}"></p>

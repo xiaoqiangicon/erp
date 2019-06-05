@@ -25,11 +25,12 @@ define(['jquery', './data', 'lib/jquery.seeAjax'], function($, data) {
       data: [
         {
           specialCharge: 'specialPickUpMoney',
-          time: 'add_time',
+          time: 'add_time^',
           money: 'price',
           isQuestion: 'is_question', // 0：申请提现，1：疑问订单
           feedBackImages: 'picList', // 回单
           receipts: 'feedBackPicList', // 收据
+          createdAt: 'add_time^',
           updatedAt: 'update_time',
           details: [
             {
