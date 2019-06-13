@@ -4346,8 +4346,6 @@ define([
       }
       // 功德证书类型
       feedback_type = $('#feedback-type').val();
-      console.log(feedback_type);
-      debugger;
       if (typeof feedback_type == 'undefined') {
         Toast('请选择功德证书!', 2);
         return false;
