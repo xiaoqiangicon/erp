@@ -59,15 +59,17 @@ define([
   // 设置佛事模板弹框
   appConfig.template.component.templateSetting = modalSetTpl;
 
-  // 设置打印小票中的选择项列表模板
-  appConfig.template.component.print_tmp = `
+  // option
+  (appConfig.template.component.option = `<option value="\${value}">\${text}</option>`),
+    // 设置打印小票中的选择项列表模板
+    (appConfig.template.component.print_tmp = `
     {@each data as item, index}
       <div class="selection_div">
       <input type="checkbox" class="selection_checkbox" data-type="selection_checkbox" data-sort="\${item.curId}">
       <span class="selection_content">\${item.name}</span>
       </div>
     {@/each}
-  `;
+  `);
   // 设置打印小票中的无选择项时打印机列表模板
   appConfig.template.component.print_list = `
     {@each data as item, index}

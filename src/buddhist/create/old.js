@@ -12,6 +12,7 @@ define([
   'clipboard',
   '@zzh/choose-image',
   './config',
+  './const',
   './dispose_model',
   './util',
   '@zzh/store-image',
@@ -31,6 +32,7 @@ define([
   ClipBoard,
   ChooseImage,
   config,
+  Const,
   modelDispose,
   myTool,
   StoreImage,
@@ -180,12 +182,12 @@ define([
       'click [data-ele="recharge-msg-num"]': 'onClickRechargeMsgNum', // 点击手机号码附言 充值短信
 
       /**其他项： 按钮文字 参与者列表 统计区域 开始时间 结束时间 剩余时间 功德证书 反馈信息**/
+      'changed.bs.select #feedback-type': 'onChangeFeedbackType', // 切换功德证书
       'click [name="if_feedback"]': 'if_feedback', // 开启或关闭反馈类型
       'mouseenter [data-ele="preview-spcl-sub-ps"]': 'enter_spcl_sub_ps', // enter特殊选择项附言
       'mouseleave [data-ele="preview-spcl-sub-ps"]': 'leave_spcl_sub_ps', // leave特殊选择项附言
-      'mouseenter [data-type="feedback_item"]': 'enter_get_feedback_item', // enter渲染反馈模板
-      'mouseleave [data-type="feedback_item"]': 'leave_get_feedback_item', // leave渲染反馈模板
-      'click [data-type="feedback_item"]': 'click_get_feedback_item', // click调整反馈模板状态
+      'mouseenter #feedback-img': 'enterFeedbackImg', // enter功德证书反馈图片
+      'mouseleave #feedback-img': 'leaveFeedbackImg', // leave功德证书反馈图
       'click [name="summaryArea"]': 'onClickSummaryArea', // 点击统计区域radio
       'click [data-ele="summary-area-type"]': 'onClickSummaryAreaType', // 点击统计样式
       // 'click [data-type="feedback_modal_box_list_attr_item_name"]': 'insert_feedback_modal_item',     // 将反馈动态值插入ueditor
@@ -2194,6 +2196,25 @@ define([
     },
 
     /**其他项： 按钮文字 参与者列表 统计区域 开始时间 结束时间 剩余时间 功德证书 反馈信息**/
+    // 切换功德证书
+    onChangeFeedbackType: function(e) {
+      const $curTar = $(e.currentTarget);
+      const $feedbackImgContainer = $('#feedback-img-container');
+      const $feedbackImg = $('#feedback-img');
+      const feedbackType = parseInt($curTar.val(), 10);
+      const feedbackImgSrc = Const.feedbackImgArr.find(
+        item => item.value === feedbackType
+      ).src;
+
+      if (feedbackImgSrc) {
+        $feedbackImg.attr('src', feedbackImgSrc);
+        $feedbackImg.attr('data-src', feedbackImgSrc);
+        $feedbackImg.attr('data-index', feedbackType);
+        $feedbackImgContainer.show();
+      } else {
+        $feedbackImgContainer.hide();
+      }
+    },
     // 开启或关闭反馈类型
     if_feedback: function(e) {
       var $tar = $(e.target),
@@ -2244,18 +2265,14 @@ define([
         .stop(true)
         .fadeOut();
     },
-    // enter渲染反馈模板
-    enter_get_feedback_item: function(e) {
-      var $tar = $(e.target);
-      // 如果事件对象是img就找到其父元素
-      if (!$tar.is('div')) $tar = $tar.parent();
-      var cur_index = $tar.attr('data-index'),
-        cur_img = $tar.attr('data-src');
-      if (cur_index == '0') return false;
+    // enter功德证书反馈图片
+    enterFeedbackImg: function(e) {
+      const $curTar = $(e.currentTarget);
+      const src = $curTar.attr('data-src');
+      const index = $curTar.attr('data-index');
+
       // 已经存在时，直接获取并显示，stop为防止快速移入的防抖
-      var $container = $(
-        '[data-role="gongde_overview_modal_' + cur_index + '"]'
-      );
+      var $container = $('[data-role="gongde_overview_modal_' + index + '"]');
       if (!!$container.length) {
         $container.stop(true).fadeIn();
         return !1;
@@ -2263,8 +2280,8 @@ define([
       // 不存在时，生成新元素，插入并显示
       var $container = $(
         juicer(config.template.component.gongdeOverview).render({
-          src: cur_img,
-          index: cur_index,
+          src,
+          index,
         })
       );
       $container
@@ -2272,42 +2289,13 @@ define([
         .stop(true)
         .fadeIn();
     },
-    // leave渲染反馈模板
-    leave_get_feedback_item: function(e) {
-      var $tar = $(e.target);
-      if (!$tar.is('div')) $tar = $tar.parent();
-      var cur_index = $tar.attr('data-index');
-      if (cur_index == '0') return false;
-      if (!$tar.is('div')) $tar = $tar.parent();
-      var cur_index = $tar.attr('data-index');
-      $('[data-role="gongde_overview_modal_' + cur_index + '"]')
+    // leave功德证书反馈图
+    leaveFeedbackImg: function(e) {
+      const $curTar = $(e.currentTarget);
+      const index = $curTar.attr('data-index');
+      $('[data-role="gongde_overview_modal_' + index + '"]')
         .stop(true)
         .fadeOut();
-    },
-    // click调整反馈模板状态
-    click_get_feedback_item: function(e) {
-      var $tar = $(e.target);
-      if (!$tar.is('div')) $tar = $tar.parent();
-      if ($tar.hasClass('selected_feedback_item')) {
-        $tar.removeClass('selected_feedback_item');
-        $tar.find('.show_selected').remove();
-      } else {
-        $('#feedback_box')
-          .find('.feedback_modal_box_list_item')
-          .not($tar)
-          .removeClass('selected_feedback_item')
-          .find('.show_selected')
-          .remove();
-        $tar.addClass('selected_feedback_item');
-        var selected_img = document.createElement('img');
-        $(selected_img)
-          .attr({
-            src:
-              'https://pic.zizaihome.com/10b73976-23a2-11e9-88db-00163e0c001e.png',
-          })
-          .addClass('show_selected');
-        $tar.prepend(selected_img);
-      }
     },
     // 点击统计区域radio
     onClickSummaryArea: function(e) {
@@ -3733,8 +3721,8 @@ define([
               self.showAddition(current_content, 1);
               // 渲染价格、库存、是否完成订单
               self.showPrimeSize(current_content);
-              // 渲染checkBox
-              self.inputCheck(current_content);
+              // 渲染其它项
+              self.showOthers(current_content);
 
               var add_wrap_obj = {};
               add_wrap_obj['isOpenPrinter'] = current_content.isOpenPrinter;
@@ -4357,7 +4345,9 @@ define([
         return false;
       }
       // 功德证书类型
-      feedback_type = $('.selected_feedback_item').attr('data-index');
+      feedback_type = $('#feedback-type').val();
+      console.log(feedback_type);
+      debugger;
       if (typeof feedback_type == 'undefined') {
         Toast('请选择功德证书!', 2);
         return false;
@@ -4666,6 +4656,8 @@ define([
       }
       // 初始化日期选择
       self.initDateTimepicker();
+      // 初始化功德证书select
+      self.initFeedbackTypeSelect();
       // 初始化拖拽排序
       self.initSortable();
       // 初始化提示框
@@ -4797,6 +4789,18 @@ define([
         },
       });
     },
+    // 初始化功德证书select
+    initFeedbackTypeSelect: function() {
+      const $container = $('#feedback-type');
+      const data = Const.feedbackImgArr;
+      const tpl = config.template.component.option;
+      let htmlStr = '';
+      data.forEach(item => {
+        htmlStr += juicer(tpl).render(item);
+      });
+      $container.html(htmlStr);
+      $container.selectpicker();
+    },
     // 获取佛事模板内容
     get_buddhist_template: function() {
       var self = this,
@@ -4853,8 +4857,8 @@ define([
       self.showAddition(getContent);
       // 渲染价格、库存
       self.showPrimeSize(getContent);
-      // 渲染checkBox
-      self.inputCheck(getContent);
+      // 渲染其它项
+      self.showOthers(getContent);
       // 后台模板新加反馈信息的开启关闭状态
       // 兼容老的模板数据 无开关反馈信息字段则置为0
       if (typeof getContent.pay_succ_details_flag === 'undefined') {
@@ -5648,8 +5652,8 @@ define([
         $('#proStore').val(primeStock);
       }
     },
-    // 渲染checkBox
-    inputCheck: function(getContent) {
+    // 渲染其它项
+    showOthers: function(getContent) {
       $('#operation').val(getContent.opName); //  操作输入框
       // 复制时不复制开始、结束时间
       var $timeStart = $('#timeStart'),
@@ -5724,11 +5728,20 @@ define([
         $('#hideRemainingTime').attr('checked', true);
         $('#hideRemainingTime').click();
       }
-      // 功德证书
-      if (getContent.feedbackType != 1) {
-        $('#feedback_box')
-          .find('[data-index="' + getContent.feedbackType + '"]')
-          .click();
+      // 功德证书下拉
+      const $feedbackTypeSelect = $('#feedback-type');
+      $feedbackTypeSelect.selectpicker('val', getContent.feedbackType);
+      // 功德证书图片
+      const $feedbackImgContainer = $('#feedback-img-container');
+      const $feedbackImg = $('#feedback-img');
+      const feedbackImgSrc = Const.feedbackImgArr.find(
+        item => item.value === getContent.feedbackType
+      ).src;
+      if (feedbackImgSrc) {
+        $feedbackImg.attr('src', feedbackImgSrc);
+        $feedbackImg.attr('data-src', feedbackImgSrc);
+        $feedbackImg.attr('data-index', getContent.feedbackType);
+        $feedbackImgContainer.show();
       }
     },
     // 渲染是否开启反馈信息
@@ -6591,7 +6604,7 @@ define([
       // 渲染附言
       msgListView.showAddition(ceremonyMap);
       // 渲染参与者列表、统计区域等input
-      msgListView.inputCheck(ceremonyMap);
+      msgListView.showOthers(ceremonyMap);
       // 渲染打印机状态
       msgListView.setPrinterStatus(ceremonyMap);
       // 是否开启反馈信息

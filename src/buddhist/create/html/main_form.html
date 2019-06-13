@@ -527,34 +527,21 @@
       <label class="control-label col-sm-2" for="feedback_box"
         >选择功德证书：&nbsp;</label
       >
+      <div class="col-xs-4" style="padding-left: 0; float:left">
+        <select name="" id="feedback-type"></select>
+      </div>
+    </div>
+    <!-- 功德证书预览 -->
+    <div class="form-group" style="display: none;" id="feedback-img-container">
+      <div class="col-sm-2"></div>
       <div class="col-xs-6">
-        <div id="feedback_box" class="feedback_modal_box">
-          <div
-            class="feedback_modal_box_list_item feedback_item1 selected_feedback_item"
-            data-type="feedback_item"
-            data-action="feedback_item_apply"
-            data-index="1"
-            data-src="https://pic.zizaihome.com/0342dffc-8196-11e7-9fe0-00163e0c1e1c.png"
-          >
-            <img
-              src="https://pic.zizaihome.com/fe0ea670-a1eb-11e8-9f56-00163e0c001e.png"
-              class="show_selected"
-            />
-          </div>
-          <div
-            class="feedback_modal_box_list_item feedback_item2"
-            data-type="feedback_item"
-            data-action="feedback_item_cargo"
-            data-index="2"
-            data-src="https://pic.zizaihome.com/e9b00aba-8195-11e7-9fe0-00163e0c1e1c.png"
-          ></div>
-          <div
-            class="feedback_modal_box_list_item feedback_item0"
-            data-type="feedback_item"
-            data-action="feedback_item_blank"
-            data-index="0"
-          ></div>
-        </div>
+        <img
+          id="feedback-img"
+          class="feedback-img"
+          src="https://pic.zizaihome.com/e2ed6db0-8d8e-11e9-9733-00163e0c001e.png"
+          data-src=""
+          data-index=""
+        />
       </div>
     </div>
     <!--反馈信息-->

@@ -529,8 +529,7 @@ tr > td {
   line-height: 50px;
   margin-left: 10px;
 }
-.feedback_modal_box {
-}
+
 .feedback_modal_box_header {
   display: inline-block;
   box-sizing: border-box;
@@ -549,10 +548,8 @@ tr > td {
   color: #fff;
   cursor: default;
 }
-.feedback_modal_box_list_item {
+.feedback-img {
   display: inline-block;
-  position: relative;
-  float: left;
   box-sizing: border-box;
   width: 130px;
   height: 186px;
@@ -562,77 +559,6 @@ tr > td {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-}
-.feedback_modal_box_list_item:after {
-  content: '';
-  display: block;
-  width: 124px;
-  height: 180px;
-  opacity: 0.3;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 121px 177px;
-}
-.selected_feedback_item {
-  border: 3px solid #75bc36;
-  border-radius: 8px;
-}
-.selected_feedback_item:after {
-  opacity: 1 !important;
-}
-.feedback_item0:after {
-  background-image: url('../../../../images/buddhist/blank_feedback.png');
-}
-.feedback_item2:after {
-  background-image: url('../../../../images/buddhist/gongde0.png');
-}
-.feedback_item1:after {
-  background-image: url('../../../../images/buddhist/gongde1.png');
-}
-
-.show_selected {
-  position: absolute;
-  bottom: -15px;
-  right: -15px;
-  width: 30px;
-  z-index: 998;
-}
-.feedback_modal_box_list_tip {
-  box-sizing: border-box;
-  display: inline-block;
-  float: left;
-  width: 160px;
-  text-indent: 20px;
-  margin-top: 8px;
-  overflow: hidden;
-}
-.feedback_modal_box_list_tip span {
-  font-size: 14px;
-}
-.feedback_modal_box_list_attr {
-  display: inline-block;
-  overflow: hidden;
-  margin-left: 16px;
-}
-.feedback_modal_box_list_attr_item {
-  box-sizing: border-box;
-  display: inline-block;
-  float: left;
-  margin-right: 10px;
-}
-.feedback_modal_box_list_attr_item_name {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 4px 0;
-  margin-top: 6px;
-  border-style: solid;
-  border-color: #2ecc40;
-  border-radius: 5px;
-  border-width: 1px;
-  cursor: pointer;
-  width: 28px;
-  text-align: center;
-  color: #2ecc40;
 }
 
 .default_btn {
