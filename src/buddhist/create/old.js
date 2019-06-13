@@ -182,12 +182,11 @@ define([
       'click [data-ele="recharge-msg-num"]': 'onClickRechargeMsgNum', // 点击手机号码附言 充值短信
 
       /**其他项： 按钮文字 参与者列表 统计区域 开始时间 结束时间 剩余时间 功德证书 反馈信息**/
-      'changed.bs.select #feedback-type': 'onChangeFeedbackType', // 切换功德证书
+      'click [name="showFeedbackImg"]': 'onClickShowFeedbackImg', // 切换功德证书显隐
+      'click [data-ele="feedback-type"]': 'onClickFeedbackType', // 点击功德证书类型
       'click [name="if_feedback"]': 'if_feedback', // 开启或关闭反馈类型
       'mouseenter [data-ele="preview-spcl-sub-ps"]': 'enter_spcl_sub_ps', // enter特殊选择项附言
       'mouseleave [data-ele="preview-spcl-sub-ps"]': 'leave_spcl_sub_ps', // leave特殊选择项附言
-      'mouseenter #feedback-img': 'enterFeedbackImg', // enter功德证书反馈图片
-      'mouseleave #feedback-img': 'leaveFeedbackImg', // leave功德证书反馈图
       'click [name="summaryArea"]': 'onClickSummaryArea', // 点击统计区域radio
       'click [data-ele="summary-area-type"]': 'onClickSummaryAreaType', // 点击统计样式
       // 'click [data-type="feedback_modal_box_list_attr_item_name"]': 'insert_feedback_modal_item',     // 将反馈动态值插入ueditor
@@ -1453,19 +1452,19 @@ define([
     },
     //规格附言说明打开模态框
     /*showInstructionModal: function(e){
-              var $relatedTarget = $(e.relatedTarget),      //获取规格附言数据
-                  self = this,
-                  cid = $relatedTarget.attr("data-cid"),
-                  model = self.sizes.get(cid),
-                  name = model.get("name");
-              $("#sizeName2").text(name+"附言文本说明");
-              $('[data-type="saveInstruction"]').attr('data-cid', cid);
-              if (typeof cid == "string" && cid.length > 0) {
-                  var model = self.sizes.get(cid),
-                      instruction = model.get("explain");
-                  $('#sizeInstruction').val(instruction);
-              }
-          },*/
+                var $relatedTarget = $(e.relatedTarget),      //获取规格附言数据
+                    self = this,
+                    cid = $relatedTarget.attr("data-cid"),
+                    model = self.sizes.get(cid),
+                    name = model.get("name");
+                $("#sizeName2").text(name+"附言文本说明");
+                $('[data-type="saveInstruction"]').attr('data-cid', cid);
+                if (typeof cid == "string" && cid.length > 0) {
+                    var model = self.sizes.get(cid),
+                        instruction = model.get("explain");
+                    $('#sizeInstruction').val(instruction);
+                }
+            },*/
     // 规格附言设置展开模态框
     showSizeAdditionModal: function(e) {
       var $relatedTarget = $(e.relatedTarget),
@@ -1784,14 +1783,14 @@ define([
     },
     // 保存规格附言说明
     /*saveInstruction: function (e) {
-              var self = this,
-                  $tar = $(e.target),
-                  cid = $tar.attr("data-cid"),
-                  getSizeInstruction = $('#sizeInstruction').val(),
-                  model = self.sizes.get(cid);
-              model.set("explain", getSizeInstruction);
-              $('#instructionModal').modal('hide');
-          },*/
+                var self = this,
+                    $tar = $(e.target),
+                    cid = $tar.attr("data-cid"),
+                    getSizeInstruction = $('#sizeInstruction').val(),
+                    model = self.sizes.get(cid);
+                model.set("explain", getSizeInstruction);
+                $('#instructionModal').modal('hide');
+            },*/
     // 点击是否需要短信验证
     onClickSizeTelVerify: function(e) {
       var $checkedRadio = $('[name="sizeTelVerify"]:checked');
@@ -2196,24 +2195,31 @@ define([
     },
 
     /**其他项： 按钮文字 参与者列表 统计区域 开始时间 结束时间 剩余时间 功德证书 反馈信息**/
-    // 切换功德证书
-    onChangeFeedbackType: function(e) {
+    // 切换功德证书显隐
+    onClickShowFeedbackImg: function(e) {
       const $curTar = $(e.currentTarget);
-      const $feedbackImgContainer = $('#feedback-img-container');
-      const $feedbackImg = $('#feedback-img');
       const feedbackType = parseInt($curTar.val(), 10);
+      const $feedbackImgContainer = $('#feedback-img-container');
+
+      if (feedbackType === 0) {
+        $feedbackImgContainer.hide();
+      } else {
+        $(`[data-ele="feedback-type"][data-type="${feedbackType}"]`).click();
+        $feedbackImgContainer.show();
+      }
+    },
+    // 点击功德证书类型
+    onClickFeedbackType: function(e) {
+      const $curTar = $(e.currentTarget);
+      const $feedbackImg = $('#feedback-img');
+      const feedbackType = parseInt($curTar.attr('data-type'), 10);
       const feedbackImgSrc = Const.feedbackImgArr.find(
         item => item.value === feedbackType
       ).src;
 
-      if (feedbackImgSrc) {
-        $feedbackImg.attr('src', feedbackImgSrc);
-        $feedbackImg.attr('data-src', feedbackImgSrc);
-        $feedbackImg.attr('data-index', feedbackType);
-        $feedbackImgContainer.show();
-      } else {
-        $feedbackImgContainer.hide();
-      }
+      $('[data-ele="feedback-type"]').removeClass('active');
+      $curTar.addClass('active');
+      $feedbackImg.attr('src', feedbackImgSrc);
     },
     // 开启或关闭反馈类型
     if_feedback: function(e) {
@@ -2262,38 +2268,6 @@ define([
       var $tar = $(e.target);
       var curIndex = $tar.attr('data-index');
       $('[data-ele="spcl-sub-ps-overview-modal-' + curIndex + '"]')
-        .stop(true)
-        .fadeOut();
-    },
-    // enter功德证书反馈图片
-    enterFeedbackImg: function(e) {
-      const $curTar = $(e.currentTarget);
-      const src = $curTar.attr('data-src');
-      const index = $curTar.attr('data-index');
-
-      // 已经存在时，直接获取并显示，stop为防止快速移入的防抖
-      var $container = $('[data-role="gongde_overview_modal_' + index + '"]');
-      if (!!$container.length) {
-        $container.stop(true).fadeIn();
-        return !1;
-      }
-      // 不存在时，生成新元素，插入并显示
-      var $container = $(
-        juicer(config.template.component.gongdeOverview).render({
-          src,
-          index,
-        })
-      );
-      $container
-        .appendTo('body')
-        .stop(true)
-        .fadeIn();
-    },
-    // leave功德证书反馈图
-    leaveFeedbackImg: function(e) {
-      const $curTar = $(e.currentTarget);
-      const index = $curTar.attr('data-index');
-      $('[data-role="gongde_overview_modal_' + index + '"]')
         .stop(true)
         .fadeOut();
     },
@@ -2346,32 +2320,32 @@ define([
     },
     // 将反馈动态值插入ueditor
     /*insert_feedback_modal_item: function (e) {
-                      var $tar = $(e.target),
-                          cur_typeId = $tar.attr('data-typeId'),
-                          modal_html = '',
-                          ue2 = UE.getEditor('myEditor2');
-                      switch (cur_typeId){
-                          case "1":
-                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_buddhist_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">佛事名称</span>';
-                              break;
-                          case "2":
-                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_temple_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">寺院名称</span>';
-                              break;
-                          case "3":
-                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_time" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付时间</span>';
-                              break;
-                          case "4":
-                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_amount" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付金额</span>';
-                              break;
-                          case "5":
-                              modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_merit_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">功德姓名</span>';
-                              break;
-                          default:
-                              break;
-                      }
-                      var modal_dom = $(modal_html).prop('outerHTML');
-                      ue2.execCommand( 'inserthtml', modal_dom)
-                  },*/
+                        var $tar = $(e.target),
+                            cur_typeId = $tar.attr('data-typeId'),
+                            modal_html = '',
+                            ue2 = UE.getEditor('myEditor2');
+                        switch (cur_typeId){
+                            case "1":
+                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_buddhist_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">佛事名称</span>';
+                                break;
+                            case "2":
+                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_temple_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">寺院名称</span>';
+                                break;
+                            case "3":
+                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_time" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付时间</span>';
+                                break;
+                            case "4":
+                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_amount" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付金额</span>';
+                                break;
+                            case "5":
+                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_merit_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">功德姓名</span>';
+                                break;
+                            default:
+                                break;
+                        }
+                        var modal_dom = $(modal_html).prop('outerHTML');
+                        ue2.execCommand( 'inserthtml', modal_dom)
+                    },*/
 
     /**打印机**/
     // 绑定有规格时切换打印机选择事件
@@ -3390,11 +3364,11 @@ define([
             },
           },
           /*cancel: {
-                          text: '取消',
-                          action: function () {
+                            text: '取消',
+                            action: function () {
 
-                          }
-                      }*/
+                            }
+                        }*/
         },
       });
     },
@@ -4345,11 +4319,24 @@ define([
         return false;
       }
       // 功德证书类型
-      feedback_type = $('#feedback-type').val();
+      const ifShowFeedbackImg = parseInt(
+        $('[name="showFeedbackImg"]:checked').val(),
+        10
+      );
+
+      if (ifShowFeedbackImg) {
+        feedback_type = $('[data-ele="feedback-type"].active').attr(
+          'data-type'
+        );
+      } else {
+        feedback_type = 0;
+      }
+
       if (typeof feedback_type == 'undefined') {
         Toast('请选择功德证书!', 2);
         return false;
       }
+
       var opt = {};
       if (
         $('#sizeBox')
@@ -4655,7 +4642,7 @@ define([
       // 初始化日期选择
       self.initDateTimepicker();
       // 初始化功德证书select
-      self.initFeedbackTypeSelect();
+      self.initFeedbackType();
       // 初始化拖拽排序
       self.initSortable();
       // 初始化提示框
@@ -4788,16 +4775,18 @@ define([
       });
     },
     // 初始化功德证书select
-    initFeedbackTypeSelect: function() {
-      const $container = $('#feedback-type');
+    initFeedbackType: function() {
+      const $container = $('#feedback-type-list');
       const data = Const.feedbackImgArr;
-      const tpl = config.template.component.option;
+      const tpl = config.template.component.feedbackType;
       let htmlStr = '';
       data.forEach(item => {
         htmlStr += juicer(tpl).render(item);
       });
-      $container.html(htmlStr);
-      $container.selectpicker();
+      $container.append(htmlStr);
+      // 默认选中 1
+      $('#show-feedback-img').prop('checked', !0);
+      $('[data-ele="feedback-type"][data-type="1"]').click();
     },
     // 获取佛事模板内容
     get_buddhist_template: function() {
@@ -4881,23 +4870,23 @@ define([
         });
       // 为ueditor添加placeholder的自定义函数
       /*UE.Editor.prototype.placeholder = function (justPlainText) {
-                  var _editor = this;
-                  _editor.addListener("focus", function () {
-                      var localHtml = _editor.getPlainTxt();
-                      if ($.trim(localHtml) === $.trim(justPlainText)) {
-                          _editor.setContent(" ");
-                      }
-                  });
-                  _editor.addListener("blur", function () {
-                      var localHtml = _editor.getContent();
-                      if (!localHtml) {
-                          _editor.setContent(justPlainText);
-                      }
-                  });
-                  _editor.ready(function () {
-                      _editor.fireEvent("blur");
-                  });
-              };*/
+                    var _editor = this;
+                    _editor.addListener("focus", function () {
+                        var localHtml = _editor.getPlainTxt();
+                        if ($.trim(localHtml) === $.trim(justPlainText)) {
+                            _editor.setContent(" ");
+                        }
+                    });
+                    _editor.addListener("blur", function () {
+                        var localHtml = _editor.getContent();
+                        if (!localHtml) {
+                            _editor.setContent(justPlainText);
+                        }
+                    });
+                    _editor.ready(function () {
+                        _editor.fireEvent("blur");
+                    });
+                };*/
       function editorSlideTop() {
         // 最新版本佛事反馈，微信端还没适配好，先隐藏
         pay_succ_details = config.template.component.pay_succ_details;
@@ -5727,18 +5716,16 @@ define([
         $('#hideRemainingTime').click();
       }
       // 功德证书下拉
-      const $feedbackTypeSelect = $('#feedback-type');
-      $feedbackTypeSelect.selectpicker('val', getContent.feedbackType);
-      // 功德证书图片
+      const { feedbackType } = getContent;
       const $feedbackImgContainer = $('#feedback-img-container');
-      const $feedbackImg = $('#feedback-img');
-      const feedbackImgSrc = Const.feedbackImgArr.find(
-        item => item.value === getContent.feedbackType
-      ).src;
-      if (feedbackImgSrc) {
-        $feedbackImg.attr('src', feedbackImgSrc);
-        $feedbackImg.attr('data-src', feedbackImgSrc);
-        $feedbackImg.attr('data-index', getContent.feedbackType);
+
+      if (feedbackType === 0) {
+        $('#hide-feedback-img').prop('checked', !0);
+        $feedbackImgContainer.hide();
+      } else {
+        $('#show-feedback-img').prop('checked', !0);
+        // 样式列表选中
+        $(`[data-ele="feedback-type"][data-type="${feedbackType}"]`).click();
         $feedbackImgContainer.show();
       }
     },

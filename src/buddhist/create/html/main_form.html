@@ -527,21 +527,37 @@
       <label class="control-label col-sm-2" for="feedback_box"
         >选择功德证书：&nbsp;</label
       >
-      <div class="col-xs-4" style="padding-left: 0; float:left">
-        <select name="" id="feedback-type"></select>
+      <div class="col-sm-9" style="line-height: 33px">
+        <label for="show-feedback-img" style="margin-right: 35px">
+          <input
+            id="show-feedback-img"
+            name="showFeedbackImg"
+            value="1"
+            type="radio"
+          />
+          <span class="checkbox"></span
+          ><span style="vertical-align: middle">&nbsp;&nbsp;&nbsp;显示</span>
+        </label>
+        <label for="hide-feedback-img">
+          <input
+            id="hide-feedback-img"
+            name="showFeedbackImg"
+            value="0"
+            type="radio"
+          />
+          <span class="checkbox"></span
+          ><span style="vertical-align: middle">&nbsp;&nbsp;&nbsp;不显示</span>
+        </label>
       </div>
     </div>
     <!-- 功德证书预览 -->
-    <div class="form-group" style="display: none;" id="feedback-img-container">
+    <div class="form-group" id="feedback-img-container">
       <div class="col-sm-2"></div>
-      <div class="col-xs-6">
-        <img
-          id="feedback-img"
-          class="feedback-img"
-          src="https://pic.zizaihome.com/e2ed6db0-8d8e-11e9-9733-00163e0c001e.png"
-          data-src=""
-          data-index=""
-        />
+      <div class="col-sm-9" style="font-size: 0;">
+        <div id="feedback-type-list" class="feedback-type-list">
+          <div class="title">样式列表</div>
+        </div>
+        <img id="feedback-img" class="feedback-img" />
       </div>
     </div>
     <!--反馈信息-->

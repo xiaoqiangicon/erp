@@ -548,17 +548,39 @@ tr > td {
   color: #fff;
   cursor: default;
 }
-.feedback-img {
+.feedback-type-list {
   display: inline-block;
-  box-sizing: border-box;
-  width: 130px;
-  height: 186px;
-  margin-top: 9px;
-  margin-right: 12px;
+  width: 150px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  line-height: 38px;
+  font-size: 14px;
+}
+.feedback-type-list .title {
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-left: 10px;
+}
+.feedback-type-list .item {
+  padding-left: 30px;
+  border-bottom: 1px solid #ddd;
   cursor: pointer;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  color: #999;
+}
+.feedback-type-list .item.active {
+  background: #5cb85c;
+  color: #fff;
+}
+.feedback-type-list .item:last-child {
+  border-bottom: none;
+}
+.feedback-img {
+  width: 300px;
+  height: 450px;
+  margin-left: 40px;
+  margin-top: 10px;
+  vertical-align: top;
 }
 
 .default_btn {

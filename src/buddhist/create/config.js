@@ -60,16 +60,18 @@ define([
   appConfig.template.component.templateSetting = modalSetTpl;
 
   // option
-  (appConfig.template.component.option = `<option value="\${value}">\${text}</option>`),
-    // 设置打印小票中的选择项列表模板
-    (appConfig.template.component.print_tmp = `
-    {@each data as item, index}
-      <div class="selection_div">
-      <input type="checkbox" class="selection_checkbox" data-type="selection_checkbox" data-sort="\${item.curId}">
-      <span class="selection_content">\${item.name}</span>
-      </div>
-    {@/each}
-  `);
+  appConfig.template.component.option = `<option value="\${value}">\${text}</option>`;
+  // feedbackType
+  appConfig.template.component.feedbackType = `<div data-ele="feedback-type" data-type="\${value}" class="item">\${text}</div>`;
+  // 设置打印小票中的选择项列表模板
+  appConfig.template.component.print_tmp = `
+  {@each data as item, index}
+    <div class="selection_div">
+    <input type="checkbox" class="selection_checkbox" data-type="selection_checkbox" data-sort="\${item.curId}">
+    <span class="selection_content">\${item.name}</span>
+    </div>
+  {@/each}
+  `;
   // 设置打印小票中的无选择项时打印机列表模板
   appConfig.template.component.print_list = `
     {@each data as item, index}
@@ -78,10 +80,6 @@ define([
       <span class="printer_content">\${item.address}</span>
       </div>
     {@/each}
-  `;
-  // 功德证书预览弹框
-  appConfig.template.component.gongdeOverview = `
-    <div class="gongde_overview_modal-pane" data-role="gongde_overview_modal_\${index}"><img src="\${src}" /></div>
   `;
   // 特殊选择项附言预览弹框
   appConfig.template.component.spclSubPsOverview = `
