@@ -12,15 +12,27 @@ define([
   'common/variables',
   './api',
   '../../../../node_modules/@zzh/upload/dist/upload.js',
+  'toastr',
   './upload_config.js',
   './ajax',
   'bootstrap-select',
-], function($, commonFunc, Data, tpl, Pagination, commonVars, api, zzhUpload) {
+], function(
+  $,
+  commonFunc,
+  Data,
+  tpl,
+  Pagination,
+  commonVars,
+  api,
+  zzhUpload,
+  toastr
+) {
   var func = {};
 
   func.init = function() {
     $('#loading-toast').hide();
     $('[data-ele="select-picker"]').selectpicker('refresh');
+    func.initBuddhistVerifyModal();
     func.getBuddhistType({}, function(res) {
       func.renderBuddhistTypeSelect(res);
     });
@@ -29,6 +41,19 @@ define([
 
     // 初始化发布进展内的视频上传按钮
     func.initVideoUpload($('[data-ele="add-video"]'));
+  };
+
+  // 从佛事跳转来的审核提醒
+  func.initBuddhistVerifyModal = function() {
+    const buddhistVerify = window.sessionStorage.getItem('buddhistVerify');
+    if (1) {
+      toastr.success(
+        '工作人员已收到通知，请耐心等待处理 <br> 周一至周五：10:00-19:30 <br> 周末节假日：10:00-17:00 （整点审核）',
+        '提交成功，审核中',
+        { timeOut: 20000, closeButton: !0, escapeHtml: !1 }
+      );
+      window.sessionStorage.setItem('buddhistVerify', !1);
+    }
   };
 
   // 初始化播放器
