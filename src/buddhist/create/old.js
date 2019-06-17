@@ -4439,7 +4439,7 @@ define([
             self.change_url();
           } else {
             // 添加审核提醒 需求要求在佛事列表页展示 因此使用 sessionStorage
-            window.sessionStorage.setItem('buddhistVerify', !0);
+            window.sessionStorage.setItem('buddhistVerify', 1);
 
             // 非草稿
             if (res.createCalendar !== 1) {

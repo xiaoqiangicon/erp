@@ -46,7 +46,7 @@ define([
   // 从佛事跳转来的审核提醒
   func.initBuddhistVerifyModal = function() {
     const buddhistVerify = window.sessionStorage.getItem('buddhistVerify');
-    if (1) {
+    if (parseInt(buddhistVerify)) {
       toastr.success(
         '工作人员已收到通知，请耐心等待处理 <br> 周一至周五：10:00-19:30 <br> 周末节假日：10:00-17:00 （整点审核）',
         '提交成功，审核中',
