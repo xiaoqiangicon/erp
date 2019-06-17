@@ -189,7 +189,6 @@ define([
       'mouseleave [data-ele="preview-spcl-sub-ps"]': 'leave_spcl_sub_ps', // leave特殊选择项附言
       'click [name="summaryArea"]': 'onClickSummaryArea', // 点击统计区域radio
       'click [data-ele="summary-area-type"]': 'onClickSummaryAreaType', // 点击统计样式
-      // 'click [data-type="feedback_modal_box_list_attr_item_name"]': 'insert_feedback_modal_item',     // 将反馈动态值插入ueditor
 
       /**打印机**/
       'changed.bs.select #selectPrinter': 'selectPrinter', // 绑定有规格时切换打印机选择事件
@@ -460,7 +459,6 @@ define([
               }
             }
           }
-          // self.afterAddUploadFilesForPersonSaying(data);
         },
       });
       upload.show();
@@ -2318,35 +2316,6 @@ define([
         $summaryAreaSet2.hide();
       }
     },
-    // 将反馈动态值插入ueditor
-    /*insert_feedback_modal_item: function (e) {
-                        var $tar = $(e.target),
-                            cur_typeId = $tar.attr('data-typeId'),
-                            modal_html = '',
-                            ue2 = UE.getEditor('myEditor2');
-                        switch (cur_typeId){
-                            case "1":
-                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_buddhist_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">佛事名称</span>';
-                                break;
-                            case "2":
-                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_temple_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">寺院名称</span>';
-                                break;
-                            case "3":
-                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_time" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付时间</span>';
-                                break;
-                            case "4":
-                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_pay_amount" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">支付金额</span>';
-                                break;
-                            case "5":
-                                modal_html = '<span class="dynamic_attribute" data-type="feedback_modal_item_merit_name" style="padding:0;margin:0;font-size: 1em;line-height: 22px;">功德姓名</span>';
-                                break;
-                            default:
-                                break;
-                        }
-                        var modal_dom = $(modal_html).prop('outerHTML');
-                        ue2.execCommand( 'inserthtml', modal_dom)
-                    },*/
-
     /**打印机**/
     // 绑定有规格时切换打印机选择事件
     selectPrinter: function(e) {
@@ -4868,38 +4837,9 @@ define([
           initialFrameWidth: 700,
           initialFrameHeight: 400,
         });
-      // 为ueditor添加placeholder的自定义函数
-      /*UE.Editor.prototype.placeholder = function (justPlainText) {
-                    var _editor = this;
-                    _editor.addListener("focus", function () {
-                        var localHtml = _editor.getPlainTxt();
-                        if ($.trim(localHtml) === $.trim(justPlainText)) {
-                            _editor.setContent(" ");
-                        }
-                    });
-                    _editor.addListener("blur", function () {
-                        var localHtml = _editor.getContent();
-                        if (!localHtml) {
-                            _editor.setContent(justPlainText);
-                        }
-                    });
-                    _editor.ready(function () {
-                        _editor.fireEvent("blur");
-                    });
-                };*/
       function editorSlideTop() {
         // 最新版本佛事反馈，微信端还没适配好，先隐藏
         pay_succ_details = config.template.component.pay_succ_details;
-        // pay_succ_details = [
-        // '<section>',
-        // '<section style="position:relative;margin:0 auto;width: 100%;box-sizing: border-box;overflow: hidden">',
-        // '<img style="width: 100%;" src="https://pic.zizaihome.com/dcb2d320-7820-11e7-8246-00163e0c1e1c.png" alt=""/>',
-        // '<section style="position:absolute;left:0;width: 100%;top:35%;height:65%;box-sizing: border-box;overflow: hidden">',
-        // '<p style="font-family:&quot;隶书&quot;;font-weight:500;text-align:center;font-size:40px;color:#fff;letter-spacing: 6px;text-indent: 34px;width: 100%;margin: 0;">随喜赞叹！</p>',
-        // '</section>',
-        // '</section>',
-        // '</section>'
-        // ].join('');
         ue2.setContent(pay_succ_details, false);
         setTimeout(function() {
           $('body,html').scrollTop(0);
@@ -4928,8 +4868,6 @@ define([
           : editorSlideTop();
         self.hide_loading();
       });
-      // ue.placeholder("欢迎使用“导入微信图文”功能，导入成功后请将内文进行相应的编辑与更新。");
-      // ue2.placeholder("欢迎使用“导入微信图文”功能，导入成功后请将内文进行相应的编辑与更新。");
     },
     // 隐藏loading图标
     hide_loading: function() {
@@ -5025,42 +4963,6 @@ define([
                 'val',
                 ceremonyMap.ceremonyTypeId
               );
-
-              // 以下代码莫名其妙 建议删除
-              // if (
-              //   $('#classification')
-              //     .prev()
-              //     .find('.selected')
-              //     .find('.text')
-              //     .text() != foshiName
-              // ) {
-              //   // 分类名和佛事名不相同
-              //   if (!is_test_environment) {
-              //     $('#classification').selectpicker(
-              //       'val',
-              //       ceremonyMap.ceremonyTypeId
-              //     );
-              //   }
-              //   var foshiNameList = $('#classification')
-              //     .prev()
-              //     .find('.selected')
-              //     .siblings();
-              //   $('#classification')
-              //     .prev()
-              //     .find('.selected')
-              //     .removeClass('selected');
-              //   foshiNameList.each(function(index, item) {
-              //     var currentName = $('.text', item).text();
-              //     if (currentName == foshiName) {
-              //       item.setAttribute('class', 'selected');
-              //     }
-              //   });
-              //   $('[data-id="classification"]').attr('title', foshiName);
-              //   $('[data-id="classification"]')
-              //     .find('span')
-              //     .eq(0)
-              //     .text(foshiName);
-              // }
             }
             // 初始化模板
             self.additionItems = new AdditionCollection([

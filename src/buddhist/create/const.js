@@ -98,79 +98,77 @@ define(function() {
         text: '自定义-图片上传',
       },
     ],
-
     feedbackImgArr: [
       // {
       //   value: 0,
       //   text: '不显示',
-      //   src:
-      //     '',
+      //   src: '',
       // },
       {
         value: 1,
         text: '通用法会',
         src:
-          'https://pic.zizaihome.com/4e6f5fa2-8c14-11e9-ba95-00163e0c001e.png',
+          'https://pic.zizaihome.com/5cc635f6-90ad-11e9-b31f-00163e0c001e.png',
       },
       {
         value: 2,
         text: '通用捐赠',
         src:
-          'https://pic.zizaihome.com/4e725bc6-8c14-11e9-9ef8-00163e0c001e.png',
+          'https://pic.zizaihome.com/5d1ebe38-90ad-11e9-8c90-00163e0c001e.png',
       },
       {
         value: 3,
         text: '供养万僧',
         src:
-          'https://pic.zizaihome.com/9ea6f6de-8dcb-11e9-a2ef-00163e0c001e.png',
+          'https://pic.zizaihome.com/3066b49a-90b2-11e9-ac35-00163e0c001e.png',
       },
       {
         value: 4,
         text: '放生修福',
         src:
-          'https://pic.zizaihome.com/9e52a796-8dcb-11e9-93ca-00163e0c001e.png',
+          'https://pic.zizaihome.com/305dfbd4-90b2-11e9-8569-00163e0c001e.png',
       },
       {
         value: 5,
         text: '助印经书',
         src:
-          'https://pic.zizaihome.com/a07b4370-8dcb-11e9-92f9-00163e0c001e.png',
+          'https://pic.zizaihome.com/3069f40c-90b2-11e9-a570-00163e0c001e.png',
       },
       {
         value: 6,
         text: '生日法会',
         src:
-          'https://pic.zizaihome.com/9e9c530a-8dcb-11e9-9ea0-00163e0c001e.png',
+          'https://pic.zizaihome.com/5cbacbc6-90ad-11e9-9890-00163e0c001e.png',
       },
       {
         value: 7,
         text: '斋天普佛',
         src:
-          'https://pic.zizaihome.com/9e859d5e-8dcb-11e9-b895-00163e0c001e.png',
+          'https://pic.zizaihome.com/5ca50d7c-90ad-11e9-aed0-00163e0c001e.png',
       },
       {
         value: 8,
         text: '佛前供灯',
         src:
-          'https://pic.zizaihome.com/9e7dc200-8dcb-11e9-ae0b-00163e0c001e.png',
+          'https://pic.zizaihome.com/5db06af4-90ad-11e9-858e-00163e0c001e.png',
       },
       {
         value: 9,
         text: '奉花礼佛',
         src:
-          'https://pic.zizaihome.com/9e5680fa-8dcb-11e9-ba45-00163e0c001e.png',
+          'https://pic.zizaihome.com/5d4f00c0-90ad-11e9-a299-00163e0c001e.png',
       },
       {
         value: 10,
         text: '功德宝树',
         src:
-          'https://pic.zizaihome.com/9e828fce-8dcb-11e9-952e-00163e0c001e.png',
+          'https://pic.zizaihome.com/5e6d3b52-90ad-11e9-bfa9-00163e0c001e.png',
       },
       {
         value: 11,
         text: '日行一善',
         src:
-          'https://pic.zizaihome.com/9e85d260-8dcb-11e9-9e79-00163e0c001e.png',
+          'https://pic.zizaihome.com/305dfde6-90b2-11e9-9666-00163e0c001e.png',
       },
     ],
   };
