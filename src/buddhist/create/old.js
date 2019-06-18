@@ -4438,8 +4438,8 @@ define([
             // 草稿直接跳转
             self.change_url();
           } else {
-            // 添加审核提醒 需求要求在佛事列表页展示 因此使用 sessionStorage
-            if (!Number(verifyId))
+            // 添加审核提醒 所有的新建添加提醒
+            if (editType != 1 && editType != 3)
               window.sessionStorage.setItem('buddhistVerify', 1);
 
             // 非草稿
