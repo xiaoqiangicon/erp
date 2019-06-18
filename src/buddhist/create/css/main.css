@@ -315,10 +315,7 @@ input[type='checkbox']:checked + .checkbox {
   opacity: 0.3;
 }
 .sizePosSelect {
-  width: 180px;
-}
-.btn-group.bootstrap-select.sizeType.sizePosSelect {
-  width: 120px;
+  width: 100px !important;
 }
 /*规格附言设置模态框*/
 #selectSizeAdditionModal,
