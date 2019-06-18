@@ -4439,7 +4439,7 @@ define([
             self.change_url();
           } else {
             // 添加审核提醒 所有的新建添加提醒
-            if (editType != 1 && editType != 3)
+            if (editType != 1 && !(editType == 3 && ifTemplate == 1))
               window.sessionStorage.setItem('buddhistVerify', 1);
 
             // 非草稿
