@@ -203,7 +203,11 @@
           <div @click="onClickHandle" v-if="logisticsOrder" class="s-btn">
             设为已发货
           </div>
-          <div @click="onClickHandle" v-else class="s-btn">设为已处理</div>
+          <div @click="onClickHandle" v-else class="s-btn">
+            <span v-if="isGroup && type === 2">确定替换反馈内容</span>
+            <span v-else-if="!isGroup && type === 2">保存</span>
+            <span v-else>设为已处理</span>
+          </div>
         </div>
       </div>
       <VideoPlayer :src="videoPlayerSrc" />

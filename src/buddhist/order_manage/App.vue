@@ -153,7 +153,8 @@
           v-show="type === 1 || type === 3"
           @click="onClickHandleOrderGroup"
         >
-          批量处理
+          <span v-if="type === 3">批量修改反馈</span>
+          <span v-else>批量处理</span>
         </el-button>
         <el-button
           v-show="type === 1 && buddhistId"

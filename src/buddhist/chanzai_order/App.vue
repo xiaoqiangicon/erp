@@ -3,7 +3,7 @@
     <div class="head">
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="11">
-          <label for>佛事项目：</label>
+          <label for="">佛事项目：</label>
           <el-select
             style="width: 350px;"
             clearable
@@ -23,10 +23,9 @@
           </el-select>
         </el-col>
       </el-row>
-
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="11">
-          <label for>下单时间：</label>
+          <label for="">下单时间：</label>
           <el-date-picker
             @change="onChangeDatePicker"
             v-model="date"
@@ -39,9 +38,8 @@
             unlink-panels
           ></el-date-picker>
         </el-col>
-
         <el-col :span="7">
-          <label for>手机号：</label>
+          <label for="">手机号：</label>
           <el-input
             style="width: 150px;"
             size="medium"
@@ -49,17 +47,15 @@
             @keyup.enter.native="onClickSearch"
           ></el-input>
         </el-col>
-
         <el-col :span="6">
           <el-button size="medium" @click="onClickSearch">查询</el-button>
           <el-button size="medium" @click="onClickReset">重置</el-button>
           <el-button size="medium" @click="onClickExport">导出</el-button>
         </el-col>
       </el-row>
-
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="10">
-          <label for>物流单号：</label>
+          <label for="">物流单号：</label>
           <el-input
             style="width: 350px;"
             size="medium"
@@ -69,7 +65,6 @@
         </el-col>
       </el-row>
     </div>
-
     <div class="content">
       <div class="s-tabs">
         <div
@@ -102,7 +97,6 @@
           已处理
         </div>
       </div>
-
       <div class="mg-b-10" style="height: 40px; line-height: 40px;">
         <span class="mg-r-10 mg-l-30" style="color:#989898;">
           已选择
@@ -117,9 +111,10 @@
           size="medium"
           v-show="type === 1 || type === 2"
           @click="onClickHandleOrderGroup"
-          >批量处理</el-button
         >
-
+          <span v-if="type === 2">批量修改反馈</span>
+          <span v-else>批量处理</span>
+        </el-button>
         <el-button
           type="default"
           class="pull-right mg-r-20"
@@ -127,7 +122,6 @@
           @click="onClickPrint"
           >立即打印</el-button
         >
-
         <el-button
           type="default"
           class="pull-right mg-r-20"
@@ -136,7 +130,6 @@
           >打印设置</el-button
         >
       </div>
-
       <el-table
         highlight-current-row
         v-loading="loadingList"
@@ -197,7 +190,6 @@
           </template>
         </el-table-column>
       </el-table>
-
       <div class="mg-t-10" style="text-align: center;">
         <el-pagination
           @size-change="handleSizeChange"
@@ -205,13 +197,12 @@
           :current-page.sync="currentPage"
           :page-sizes="[25, 50, 75, 100]"
           :page-size="currentSize"
-          background
+          background=""
           layout="sizes, prev, pager, next"
           :total="totalCount"
         ></el-pagination>
       </div>
     </div>
-
     <Printer />
     <Detail
       :isGroup="isGroup"
@@ -246,7 +237,7 @@ export default {
       formatDate: ['', ''],
       tel: '',
       logisticsOrder: '',
-      type: 1, // 1 已处理 2 未处理 3 已发货 4 已收货
+      type: 1, // 1 未处理 2 已处理  3 已发货 4 已收货
       // 分页
       currentSize: 25,
       currentPage: 1,
