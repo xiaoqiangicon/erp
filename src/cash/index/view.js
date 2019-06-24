@@ -141,7 +141,7 @@ define(['jquery', 'common/function', './data', 'lib/jquery.seeView'], function(
     onClickActionTake: function() {
       // 未提交过账户申请
       if (commonData.accountStatus == -1) {
-        location.href = '/static/dist/html/cash/account/index.html';
+        location.href = '/static/build/cash/account/index.html';
       }
       // 正在审核
       else if (commonData.accountStatus === 0) {

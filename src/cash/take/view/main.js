@@ -81,7 +81,7 @@ define([
     onClickActionTake: function() {
       // 未提交过账户申请
       if (data.accountStatus == -1) {
-        location.href = '/static/dist/html/cash/account/index.html';
+        location.href = '/static/build/cash/account/index.html';
       }
       // 正在审核
       else if (data.accountStatus === 0) {
