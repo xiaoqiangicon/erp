@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { banks } from '@zzh/data';
+import { banks } from '../../../../pro-com/src/data';
 
 const $inputBank = $('#input-bank');
 
