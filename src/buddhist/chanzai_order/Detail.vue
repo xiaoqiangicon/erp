@@ -539,6 +539,15 @@ export default {
         courierCompanyCode = '';
       }
 
+      if (logisticsOrder && !courierCompanyCode) {
+        Notification({
+          title: '提示',
+          message: '请选择快递公司',
+          type: 'error',
+        });
+        return;
+      }
+
       if (isGroup) {
         // 从selected中取orderIds
         orderIds = JSON.stringify(this.selected);
