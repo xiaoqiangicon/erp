@@ -719,7 +719,21 @@ define([
       .parents('[data-ele="img-cell"]');
     $scheduleImgCell.remove();
     // 推送
-    $('[name="if-push"][value="1"]').click();
+    $.seeAjax.get('getPushTimes', {}, res => {
+      let todayNum = 0;
+      if (res.success) {
+        // 次数充足
+        todayNum = res.todayNum;
+        $('[name="if-push]').prop('disabled', false);
+        $('[name="if-push"][value="1"]').click();
+      } else {
+        // 次数不足
+        $('[name="if-push"][value="1"]').prop('disabled', true);
+        $('[name="if-push"][value="0"]').prop('disabled', false);
+        $('[name="if-push"][value="0"]').click();
+      }
+      $('#push-times').html(todayNum);
+    });
   };
   func.initScheduleListModalBody = function() {
     // 渲染进展列表modal body
@@ -730,19 +744,25 @@ define([
         // page: 0,  暂时不做分页
         // pageSize: 20
       };
-    api.getBuddhistSchedule(params, function(res) {
-      if (!res.data.length) {
-        htmlStr = tpl.scheduleListEmpty.render({});
-      } else {
-        res.data.map(function(item) {
-          htmlStr += tpl.scheduleItem.render(item);
+
+    $.seeAjax.get('getPushTimes', {}, res => {
+      let todayNum = 0;
+      if (res.success) todayNum = res.todayNum;
+      api.getBuddhistSchedule(params, function(res) {
+        if (!res.data.length) {
+          htmlStr = tpl.scheduleListEmpty.render({});
+        } else {
+          res.data.map(function(item) {
+            item.todayNum = todayNum;
+            htmlStr += tpl.scheduleItem.render(item);
+          });
+        }
+        $modalBody.html(htmlStr);
+        // 初始化视频上传按钮
+        const $addVideos = $modalBody.find('[data-ele="add-video"]');
+        $addVideos.each(function(index, ele) {
+          func.initVideoUpload($(ele));
         });
-      }
-      $modalBody.html(htmlStr);
-      // 初始化视频上传按钮
-      const $addVideos = $modalBody.find('[data-ele="add-video"]');
-      $addVideos.each(function(index, ele) {
-        func.initVideoUpload($(ele));
       });
     });
   };

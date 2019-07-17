@@ -890,6 +890,19 @@ define([
         var htmlStr = tpl.scheduleItem.render(data);
         $curScheduleItem.replaceWith(htmlStr);
         Toast('修改成功', 1);
+
+        // 修改列表所有隐藏的推送按钮区域设置
+        $.seeAjax.get('getPushTimes', {}, function(res) {
+          let todayNum = 0;
+          if (res.success) todayNum = res.todayNum;
+
+          $('[data-ele="push-times"]').html(todayNum);
+
+          if (!todayNum) {
+            $('[name^="if-push"][value="0"]').prop('checked', true);
+            $('[name^="if-push"][value="1"]').prop('disabled', true);
+          }
+        });
       });
     },
     // 点击取消编辑当前佛事进展

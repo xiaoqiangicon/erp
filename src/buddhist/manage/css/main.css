@@ -431,6 +431,21 @@ input[type='radio']:checked + .radio {
   right: -5px;
   cursor: pointer;
 }
+.push-times {
+  display: inline-block;
+  margin-left: 20px;
+  height: 30px;
+  line-height: 30px;
+  color: #67c23a;
+  background: #f0f9eb;
+  border: 1px solid #c2e7b0;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+.push-times-tip {
+  margin-left: 5px;
+  color: #aaa;
+}
 
 .upload-btn {
   display: inline-block;

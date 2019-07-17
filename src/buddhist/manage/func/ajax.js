@@ -53,7 +53,6 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
       page: 'pageIndex',
       pageSize: 'pageSize',
     },
-
     updateBuddhistSchedule: {
       buddhistId: 'commodityId',
       scheduleId: 'scheduleId',
@@ -157,6 +156,7 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
       getBuddhistPoster: 'getBuddhistPoster', // 获取佛事海报信息
       getBuddhistSchedule: 'getBuddhistSchedule', // 获取佛事进度
       updateBuddhistSchedule: 'updateBuddhistSchedule', // 新建或更新佛事进度
+      getPushTimes: 'getPushTimes', // 获取寺院推送次数
     },
     //url请求地址
     url: {
@@ -219,6 +219,11 @@ define(['jquery', 'lib/jquery.seeAjax'], function($) {
         '/zzhadmin/addOrUpdateCommoditySchedule/',
         '/src/buddhist/manage/mock/success_server.json',
         '/src/buddhist/manage/mock/success.json',
+      ],
+      getPushTimes: [
+        '/zzhadmin/getPushTimes/',
+        '/src/buddhist/manage/mock/get_push_times.json',
+        '/src/buddhist/manage/mock/get_push_times.json',
       ],
     },
     // 请求参数

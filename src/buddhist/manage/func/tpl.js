@@ -101,7 +101,7 @@ var tpl = {
                     <!-- === 2 -->
                     <span style="color:#999;">草稿</span>
                 {@/if}
-                
+
                 </a>
                 </p>
                 </div>
@@ -167,7 +167,7 @@ var tpl = {
                             <p class="inline-block buddhist-opt">
                                 <a class="table-cell-button" data-id="\${id}" data-opt="template">设为模板</a>
                             </p>
-                           
+
                         {@/if}
                     {@else if status === 1}
                         <!-- 待审核 编辑、预览、删除 -->
@@ -195,7 +195,7 @@ var tpl = {
                     {@/if}
                 </div>
             </td>
-        </tr> 
+        </tr>
     `,
   noSubPrtList: `
         {@each data as item, index}
@@ -207,7 +207,7 @@ var tpl = {
     `,
   subPrtOption: `
         {@each data as item, index}
-        <option value="\${item.id}">\${item.address}</option>    
+        <option value="\${item.id}">\${item.address}</option>
         {@/each}
     `,
   subList: `
@@ -245,7 +245,7 @@ var tpl = {
         <div class="schedule-video-cell" data-ele="video-cell" data-src="\${src}">
             <img data-ele="schedule-video" class="schedule-video" src="\${src}?vframe/jpg/offset/1" alt="">
             <img data-ele="del-video" class="schedule-video-del" src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png" alt="">
-            <img data-ele="play-video" class="schedule-video-play" src="https://pic.zizaihome.com/92a3ad40-6fef-11e9-9c48-00163e0c001e.png"> 
+            <img data-ele="play-video" class="schedule-video-play" src="https://pic.zizaihome.com/92a3ad40-6fef-11e9-9c48-00163e0c001e.png">
         </div>
     `,
   scheduleListEmpty: `
@@ -269,7 +269,7 @@ var tpl = {
                     \${content}
                 </div>
                 <div class="item-img mgt10 clearfix">
-                    <div class="clearfix"> 
+                    <div class="clearfix">
                     {@each img as item}
                      <div class="schedule-img-cell" data-ele="img-cell">
                         <img data-ele="schedule-img" class="schedule-img" src="\${item}" alt="">
@@ -295,7 +295,11 @@ var tpl = {
                     <div class="col-md-1 fwb" style="height: 40px; line-height: 40px;">推送</div>
                     <div class="col-md-11">
                         <label class="radio-inline" style="padding-left: 0;" for="push-schedule-\${id}">
-                            <input type="radio" name="if-push-\${id}" id="push-schedule-\${id}" value="1" >
+                            {@if todayNum <= 0}
+                            <input type="radio" name="if-push-\${id}" id="push-schedule-\${id}" value="1" disabled>
+                            {@else}
+                            <input type="radio" name="if-push-\${id}" id="push-schedule-\${id}" value="1">
+                            {@/if}
                             <span class="radio"></span>
                             <span>推送给参与者</span>
                         </label>
@@ -304,6 +308,8 @@ var tpl = {
                             <span class="radio"></span>
                             <span>不推送</span>
                         </label>
+                        <span class="push-times">剩余次数：<span data-ele="push-times">\${todayNum}</span></span>
+                        <div class="push-times-tip">  为了保证良好的体验避免对用户造成过多的打扰，已限制推送次数（每日0:00刷新次数）</div>
                     </div>
                 </div>
                 {@/if}
