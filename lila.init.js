@@ -139,8 +139,6 @@ export default lila => {
     const isGray = argv.env === 'gray';
     const isProd = argv.env === 'prod';
 
-    let staticServer = '';
-
     const tasks = [
       '@lila/webpack',
       [
@@ -158,13 +156,12 @@ export default lila => {
 
     if (cmd === 'sync') {
       if (isTest) {
-        staticServer = 'http://test.zizaihome.com/h5/static/erp';
         tasks.push(
           [
             '@lila/sync-build',
             {
               server: servers[0],
-              remotePath: '/data/h5/static/erp',
+              remotePath: '/data1/www/myerp/static',
             },
           ],
           [
@@ -184,7 +181,6 @@ export default lila => {
           ]
         );
       } else if (isGray || isProd) {
-        staticServer = '/static';
         tasks.push(
           [
             '@lila/sync-build',
@@ -230,7 +226,7 @@ export default lila => {
 
     return {
       tasks,
-      staticServer,
+      staticServer: '/static',
       define: {
         __SEE_ENV__: isDev ? 1 : 0,
       },
