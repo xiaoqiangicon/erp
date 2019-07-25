@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>订单管理 - 线上订单</title>
+
+    <link rel="stylesheet" href="../../css/lib_extra/bootstrap/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/lib/jquery-confirm2/jquery-confirm.min.css"
+    />
+    <link rel="stylesheet" href="../../css/lib/colors/colors.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/lib_extra/material-icons/material-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/lib/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.css"
+    />
+    <link rel="stylesheet" href="../../css/common/base.css" />
+    <link rel="stylesheet" href="../../css/common/common.css" />
+    <link rel="stylesheet" href="../../css/component/navigation.css" />
+    <link rel="stylesheet" href="../../css/wall/order.css" />
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <ul class="nav nav-tabs">
+          <li class="active"><a>线上订单</a></li>
+          <li><a href="/">自录订单</a></li>
+        </ul>
+        <div class="filter-section">
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">选择区域：</div>
+            <div class="filter-section-row-content">
+              <select class="form-control">
+                <option>哈哈</option>
+                <option>哈哈</option>
+                <option>哈哈</option>
+                <option>哈哈</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">下单时间：</div>
+            <div class="filter-section-row-content">
+              <input class="form-control" data-time-input="1" />
+            </div>
+            <div class="filter-section-row-divider">至</div>
+            <div class="filter-section-row-content">
+              <input class="form-control" data-time-input="1" />
+            </div>
+          </div>
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">供奉名称：</div>
+            <div class="filter-section-row-content">
+              <input class="form-control" />
+            </div>
+          </div>
+          <div class="filter-section-row filter-section-action clearfix">
+            <button class="btn btn-green left">查询</button>
+            <button class="btn btn-default left mgl20">重置</button>
+            <button class="btn btn-default left mgl20">设为已处理</button>
+            <button class="btn btn-default left mgl20">导出Excel</button>
+          </div>
+        </div>
+        <ul class="nav nav-tabs nav-tabs-custom mgt40">
+          <li class="active">
+            <a>
+              <span class="mgr10">未处理</span> <span class="badge">89</span>
+            </a>
+          </li>
+          <li><a>已处理</a></li>
+        </ul>
+        <div class="content-section">
+          <div class="content-section-head">
+            <div class="content-row">
+              <div class="content-row-cell">
+                <button class="clean-button content-row-select">
+                  <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <span>全选</span>
+              </div>
+              <div class="content-row-cell content-row-name">名称</div>
+              <div class="content-row-cell">供奉类型</div>
+              <div class="content-row-cell content-row-place">位置信息</div>
+              <div class="content-row-cell">支付</div>
+              <div class="content-row-cell">下单时间</div>
+              <div class="content-row-cell">操作</div>
+            </div>
+          </div>
+          <div class="content-section-body">
+            <div class="content-row">
+              <div class="content-row-cell">
+                <button class="clean-button content-row-select">
+                  <i class="glyphicon glyphicon-ok"></i>
+                </button>
+              </div>
+              <div class="content-row-cell content-row-name">小易测试</div>
+              <div class="content-row-cell">36480天</div>
+              <div class="content-row-cell content-row-place">
+                土地公左下11不连号
+              </div>
+              <div class="content-row-cell">已发送(6)</div>
+              <div class="content-row-cell">2017-08-22 14:28:43</div>
+              <div class="content-row-cell content-row-actions">
+                <button class="clean-button mgr5">详情</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-section">
+          <div class="pagination">
+            <button class="clean-button pagination-cell special">上一页</button>
+            <button class="clean-button pagination-cell ">1</button>
+            <button class="clean-button pagination-cell ">2</button>
+            <button class="clean-button pagination-cell active">3</button>
+            <button class="clean-button pagination-cell ">4</button>
+            <button class="clean-button pagination-cell disabled">...</button>
+            <button class="clean-button pagination-cell ">79</button>
+            <button class="clean-button pagination-cell special">下一页</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in show overflow-auto">
+      <div class="modal-dialog detail-popup-dialog">
+        <div class="modal-content detail-popup-content">
+          <p><span class="fwb">弥勒佛 弥勒佛佛墙一号 5行9列</span></p>
+          <p><span class="fwb">位置编号：</span><span>49</span></p>
+          <p>
+            <span class="fwb">下单时间：</span><span>2017-08-12 12:05:25</span>
+          </p>
+          <p><span class="fwb">支付：</span><span>0.01</span></p>
+          <p><span class="fwb">供奉类型：</span><span>1 天</span></p>
+          <p>
+            <span class="fwb">支付订单号：</span
+            ><span>wx201708121205256b4e29a0800306082134</span>
+          </p>
+          <p>
+            <span class="fwb">支付流水号：</span
+            ><span>4004882001201708125808202525</span>
+          </p>
+          <p>
+            <span class="fwb">订单二维码：</span
+            ><span class="inline-block"
+              ><img
+                width="100"
+                src="../../../../images/common/example-avatar.jpg"
+            /></span>
+          </p>
+          <hr />
+          <p><span class="fwb">供奉人信息</span></p>
+          <div id="detail-popup-contact">
+            <div class="clearfix">
+              <p class="left one-half">
+                <span>名称：</span><span>弥勒佛4行9列</span>
+              </p>
+              <p class="right one-half">
+                <span>联系电话：</span><span>15008121208</span>
+              </p>
+            </div>
+            <div class="clearfix">
+              <p class="left one-half">
+                <span>名称：</span><span>弥勒佛4行9列</span>
+              </p>
+              <p class="right one-half">
+                <span>联系电话：</span><span>15008121208</span>
+              </p>
+            </div>
+          </div>
+          <hr />
+          <p><span class="fwb">反馈图片</span></p>
+          <div class="clearfix" id="detail-popup-feed-images">
+            <div class="detail-popup-feed-item">
+              <img src="/sample/image1.jpg" />
+              <button class="clean-button detail-popup-feed-item-delete">
+                X
+              </button>
+            </div>
+          </div>
+          <p><button class="btn btn-success">点击上传</button></p>
+          <hr />
+          <p><span class="fwb">备注</span></p>
+          <textarea class="form-control" rows="3"></textarea>
+          <p class="mgt10">
+            <button class="clean-button green">保存备注</button>
+          </p>
+          <hr />
+          <p class="text-center">
+            <button class="btn btn-green">设为已处理</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/lib/jquery/jquery.js"></script>
+  <script src="../../js/lib/bootstrap/bootstrap.js"></script>
+  <script src="../../js/lib/momentjs/moment-with-locales.js"></script>
+  <script src="../../js/lib_extra/LunarCalendar/LunarCalendar.js"></script>
+  <script src="../../js/lib_extra/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js"></script>
+  <script>
+    $('[data-time-input]').bootstrapMaterialDatePicker({
+      time: false,
+      lang: 'zh-cn',
+      cancelText: '取消',
+      okText: '确定',
+      clearText: '清除',
+      nowText: '现在',
+    });
+  </script>
+</html>

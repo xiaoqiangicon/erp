@@ -1,0 +1,108 @@
+[
+  {
+    "id": 0,
+    "province": "河南省",
+    "city": "信阳市",
+    "images": [
+      {
+        "id": 0,
+        "url": "/sample/image4.jpg"
+      },
+      {
+        "id": 0,
+        "url": "/sample/image4.jpg"
+      },
+      {
+        "id": 0,
+        "url": "/sample/image4.jpg"
+      },
+      {
+        "id": 0,
+        "url": "/sample/image4.jpg"
+      },
+      {
+        "id": 0,
+        "url": "/sample/image4.jpg"
+      }
+    ],
+    "introduction": "hahahahahahahahahahahahahahahahahahahahahahahahahahahahahhaahahahahahhaahahahah",
+    "type": 1,
+    "sort": 1,
+    "sortId": 0
+  },
+  {
+    "id": 0,
+    "name": "bvjfdnvjkf",
+    "description": "bfdvbfndvnfjkdnvcxkz",
+    "avatar": "/sample/image4.jpg",
+    "type": 2,
+    "sort": 2,
+    "sortId": 0
+  },
+  {
+    "id": 0,
+    "title": "活动",
+    "displaySource": 2,
+    "sourceSubCategory": 0,
+    "itemsCount": 10,
+    "subType": 3,
+    "showTitle": 1,
+    "showMore": 1,
+    "images": [
+      {
+        "id": 200,
+        "url": "http://imgs.zizaihome.com/c45b8b7a-bd3e-11e6-a26d-00163e0c1e1c.jpg",
+        "content": "33"
+      },
+      {
+        "id": 191,
+        "url": "http://imgs.zizaihome.com/ec477232-bd1d-11e6-a755-00163e0c1e1c.jpg",
+        "content": "供奉佛事（无支付、无附言）"
+      },
+      {
+        "id": 189,
+        "url": "http://imgs.zizaihome.com/2ce86e34-bce9-11e6-ac2c-00163e0c1e1c.jpg",
+        "content": "佛事供奉（无规格需支付、无附言）"
+      },
+      {
+        "id": 188,
+        "url": "http://imgs.zizaihome.com/7c81b770-bd16-11e6-a755-00163e0c1e1c.jpg",
+        "content": "佛事供奉（无需支付，有附言）"
+      },
+      {
+        "id": 186,
+        "url": "http://imgs.zizaihome.com/e3dd0ffc-bc60-11e6-a9af-00163e0c1e1c.jpg",
+        "content": "供奉法事（有规格可选、附言）"
+      }
+    ],
+    "type": 3,
+    "sort": 3,
+    "sortId": 0
+  },
+  {
+    "id": 0,
+    "title": "功德箱",
+    "itemsCount": 10,
+    "type": 4,
+    "sort": 4,
+    "sortId": 0
+  },
+  {
+    "id": 0,
+    "type": 4,
+    "sort": 4,
+    "sortId": 0,
+    "data": {
+      "2017-01-01": [
+        {
+          "id": 1,
+          "type": 1
+        },
+        {
+          "id": 1,
+          "type": 2
+        }
+      ]
+    }
+  }
+]

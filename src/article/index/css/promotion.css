@@ -1,0 +1,135 @@
+.promotion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999999;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+.promotion-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.promotion-pane {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 600px;
+  height: 400px;
+  margin-left: -300px;
+  margin-top: -200px;
+  background: #fff;
+  border-radius: 2px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.promotion-top {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  background: #6fba2c;
+}
+
+.promotion-title,
+.promotion-close {
+  height: 32px;
+  line-height: 32px;
+  color: #ffffff;
+}
+
+.promotion-title {
+  float: left;
+  margin-left: 20px;
+}
+
+.promotion-close {
+  float: right;
+  margin-right: 10px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.promotion-content {
+  width: 100%;
+  height: 368px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.promotion-content-container {
+  height: 100%;
+}
+
+.promotion-content-cell {
+  width: 50%;
+  height: 100%;
+}
+
+.promotion-content-title,
+.promotion-content-action {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.promotion-content-content {
+  height: 150px;
+  margin: 10px 0;
+  overflow: hidden;
+  text-align: center;
+  line-height: 150px;
+}
+
+.promotion-content-action a {
+  font-size: 13px;
+  color: #666666;
+  text-underline: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.promotion-content-action a:first-child {
+  margin-left: 0;
+}
+.promotion-content-action a:last-child {
+  margin-right: 0;
+}
+
+.promotion-content-action a.active,
+.promotion-content-action a:hover,
+.promotion-content-action a:hover.active {
+  color: #6fba2c;
+}
+
+.promotion-content-action span {
+  color: #cccccc;
+}
+
+.promotion-qrcode {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+.promotion-content-content canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+.promotion-tip {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  color: #2ecc40;
+  margin-top: 25px;
+}

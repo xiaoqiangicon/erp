@@ -1,0 +1,199 @@
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+
+.content-container-inner {
+  padding: 15px;
+  min-width: 850px;
+  min-height: 500px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+}
+.filter-section,
+.content-section,
+.pagination-section {
+  width: 100%;
+  margin-top: 30px;
+}
+.filter-section-query,
+.filter-section-button {
+  height: 34px;
+  line-height: 34px;
+}
+.filter-section-query {
+  float: left;
+}
+.filter-section-button {
+  float: right;
+}
+.form-group-search {
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+}
+.form-group-search > input {
+  padding-right: 34px;
+}
+.icon-search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+  text-align: center;
+  color: #6fba2c;
+  cursor: pointer;
+}
+.filter-section-query .button,
+.filter-section-button .button,
+.pagination-section .button {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.content-section .recruit-cell {
+  width: 100%;
+  overflow: hidden;
+}
+.content-section-head .recruit-cell {
+  background: #eaf4ff;
+  height: 40px;
+  line-height: 40px;
+}
+.condition-content-containers .recruit-cell {
+  border-bottom: 1px solid #d0e8ff;
+  padding: 5px 0;
+}
+.content-section .recruit-title,
+.content-section .recruit-count,
+.content-section .recruit-record-count,
+.content-section .recruit-signIn-count,
+.content-section .recruit-adm,
+.content-section .recruit-actions {
+  float: left;
+  width: 12%;
+  padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content-section .recruit-title {
+  height: 60px;
+}
+.content-section .recruit-count,
+.content-section .recruit-record-count,
+.content-section .recruit-signIn-count {
+  text-align: center;
+}
+.content-section .recruit-title {
+  width: 40%;
+}
+.condition-content-containers .recruit-title {
+  position: relative;
+  padding-left: 68px;
+}
+.condition-content-containers .recruit-adm {
+  min-height: 60px;
+  /*position: relative;*/
+}
+.recruit-title .recruit-cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+}
+.recruit-adm .recruit-cover {
+  display: block;
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px 5px 0;
+}
+.recruit-adm .recruit-cover:nth-child(2n + 2) {
+  margin-right: 0;
+}
+.condition-content-containers .recruit-cell p {
+  margin-bottom: 0;
+  line-height: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content-section .recruit-count p,
+.content-section .recruit-record-count p,
+.content-section .recruit-signIn-count p {
+  line-height: 60px;
+}
+.content-section .recruit-title-text {
+  white-space: normal !important;
+  /*height: 60px;*/
+  cursor: pointer;
+}
+.content-section .recruit-placeholder {
+  line-height: 0 !important;
+}
+.condition-content-containers .recruit-actions button {
+  color: #6fba2c;
+}
+.pagination-section {
+  text-align: center;
+}
+
+/*尾部分页器*/
+.pagination-container {
+  display: inline-block;
+  overflow: hidden;
+}
+.pagination-cell {
+  float: left;
+  height: 34px;
+  line-height: 34px;
+  color: #333;
+  background: #ffffff;
+  font-size: 16px;
+}
+.pagination-cell.special {
+  width: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.pagination-cell-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dddddd;
+  border-left: 0;
+}
+.pagination-cell-btn:first-child {
+  border-left: 1px solid #dddddd;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination-cell-btn:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.pagination-cell-btn:hover,
+.pagination-cell-btn.active {
+  color: #ffffff;
+  background: #70ba2c;
+}
+.pagination-cell-input {
+  width: 80px;
+  margin-left: 10px;
+  padding: 0 12px;
+  border: 1px solid #dddddd;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination-cell-description {
+  float: left;
+  height: 34px;
+  padding: 0 12px;
+  line-height: 34px;
+  color: #333;
+  background: #ffffff;
+  font-size: 16px;
+}

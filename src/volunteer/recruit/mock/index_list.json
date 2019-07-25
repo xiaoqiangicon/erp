@@ -1,0 +1,151 @@
+{
+  "message": "获取成功",
+  "data": [
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 19,
+      "activityName": "课堂",
+      "manageUser": [
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/chanzai_avatar_170619.png",
+          "nickName": "禅在用户000723"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEL6xRmXD0OFibFzib7BS8bL6fgjwSPwoVvpskQnr04Uz1gQYDmvNd3LZIaKFtInib11OFI8ic9yAumV1Q/0",
+          "nickName": "Terry吴天"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEL6xRmXD0OFibFzib7BS8bL6fgjwSPwoVvpskQnr04Uz1gQYDmvNd3LZIaKFtInib11OFI8ic9yAumV1Q/0",
+          "nickName": "Terry吴天"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/chanzai_avatar_170619.png",
+          "nickName": "禅在用户000723"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/chanzai_avatar_170619.png",
+          "nickName": "禅在用户000723"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/chanzai_avatar_170619.png",
+          "nickName": "禅在用户000723"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/iaeytjqFH51ewAdric7ohzdMN3mjOBadOeaICOhukPyHZHSVqHMRLUIJRx0dkqcNv7qf32ictkFeH4pMLn4jD87lNHktxWWZhmY/0",
+          "nickName": "麦子"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM7teXJKiaVquWCIffLoIETicj6jAuwaIu7ZaLiac4q6VXpFV3L12CpiaqZJfZmkFSRX94NAmbjt1CdswpUW8QNxhcMZBKrhWLNQEbA/0",
+          "nickName": "谢树文"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM7teXJKiaVquWCIffLoIETicj6jAuwaIu7ZaLiac4q6VXpFV3L12CpiaqZJfZmkFSRX94NAmbjt1CdswpUW8QNxhcMZBKrhWLNQEbA/0",
+          "nickName": "谢树文"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM7teXJKiaVquWCIffLoIETicj6jAuwaIu7ZaLiac4q6VXpFV3L12CpiaqZJfZmkFSRX94NAmbjt1CdswpUW8QNxhcMZBKrhWLNQEbA/0",
+          "nickName": "谢树文"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM7teXJKiaVquWCIffLoIETicj6jAuwaIu7ZaLiac4q6VXpFV3L12CpiaqZJfZmkFSRX94NAmbjt1CdswpUW8QNxhcMZBKrhWLNQEbA/0",
+          "nickName": "谢树文"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM7teXJKiaVquWCIffLoIETicj6jAuwaIu7ZaLiac4q6VXpFV3L12CpiaqZJfZmkFSRX94NAmbjt1CdswpUW8QNxhcMZBKrhWLNQEbA/0",
+          "nickName": "谢树文"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM7teXJKiaVquWCIffLoIETicj6jAuwaIu7ZaLiac4q6VXpFV3L12CpiaqZJfZmkFSRX94NAmbjt1CdswpUW8QNxhcMZBKrhWLNQEbA/0",
+          "nickName": "谢树文"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM7teXJKiaVquWCIffLoIETicj6jAuwaIu7ZaLiac4q6VXpFV3L12CpiaqZJfZmkFSRX94NAmbjt1CdswpUW8QNxhcMZBKrhWLNQEbA/0",
+          "nickName": "谢树文"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/AA79A7D5999A89C837921F0ACB2DE2F4",
+          "nickName": "小小易"
+        },
+        {
+          "pic": "https://pic.zizaihome.com/1495867003416.png",
+          "nickName": "匿名"
+        },
+        {
+          "pic": "https://pic.zizaihome.com/1495867003416.png",
+          "nickName": "匿名"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEK3UIKZyXvIK9CSUmD6ibLic4b1RE1nt64hqCPIpZacWPnTXHDBia0sLXdzgiaXBFiaZbpKicq2zgrSbzTibnYAYegoI1Td3KFRxQYpdk/0",
+          "nickName": "苏诱i"
+        }
+      ],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=1",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 19
+    }
+  ],
+  "total": 2,
+  "pageNumber": -1,
+  "success": 1
+}

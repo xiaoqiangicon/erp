@@ -1,0 +1,83 @@
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: ' ';
+}
+.clearfix::after {
+  clear: both;
+}
+.clear {
+  clear: both;
+}
+.clear-left {
+  clear: left;
+}
+.clear-right {
+  clear: right;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.float-none {
+  float: none !important;
+}
+.overflow-visible {
+  overflow: visible !important;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+}
+.relative,
+.position-relative {
+  position: relative;
+}
+.inline-block {
+  display: inline-block;
+}
+.block {
+  display: block;
+}
+.visible-hidden {
+  visibility: hidden;
+}
+.underline-none,
+.underline-none:hover,
+.underline-none:active {
+  text-underline: none;
+}
+.pointer {
+  cursor: pointer;
+}
+.width-100-percent {
+  width: 100%;
+}
+.width-auto {
+  width: auto;
+}
+.display-table {
+  display: table;
+}
+.display-table-cell {
+  display: table-cell;
+}
+.background-none {
+  background: none;
+}
+.outline-none {
+  outline: none;
+}
+.border-none {
+  border: none;
+}
+
+/* 清除了所有默认样式的button */
+.clean-button {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}

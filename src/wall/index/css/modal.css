@@ -1,0 +1,28 @@
+.select-modal-content {
+  margin: 10px 0 10px 30px;
+  overflow: hidden;
+}
+.select-modal-row {
+  position: relative;
+  width: 100px;
+  height: 180px;
+  float: left;
+  text-align: center;
+  margin-right: 30px;
+}
+
+.hover-popup {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.hover-popup-header {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px;
+  padding: 0 15px;
+}
+.hover-popup-body {
+  position: relative;
+  padding: 15px;
+}

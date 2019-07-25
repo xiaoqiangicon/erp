@@ -1,0 +1,59 @@
+{
+  "msg": "\u83b7\u53d6\u6210\u529f",
+  "data": [
+    {
+      "buddhaList": [
+        {
+          "id": 29,
+          "name": "\u5982\u6765\u4f5b\u7956"
+        }
+      ],
+      "name": "\u5927\u96c4\u5b9d\u6bbf"
+    },
+    {
+      "buddhaList": [
+        {
+          "id": 25,
+          "name": "\u5143\u59cb\u5929\u5c0a\u4e00"
+        },
+        {
+          "id": 79,
+          "name": "\u8fe6\u53f6\u5c0a\u8005\u4e00"
+        }
+      ],
+      "name": "\u73c8\u84dd\u6bbf"
+    },
+    {
+      "buddhaList": [],
+      "name": "\u5f25\u52d2\u4f5b\u5927\u6bbf"
+    },
+    {
+      "buddhaList": [
+        {
+          "id": 50,
+          "name": "\u81ea\u5b9a\u4e49\u5efa\u4f5b\u50cf\u81ea\u5b9a\u4e49\u5efa\u4f5b\u50cf"
+        }
+      ],
+      "name": "\u5927\u795e"
+    },
+    {
+      "buddhaList": [
+        {
+          "id": 74,
+          "name": "\u724c\u4f4d\u4e00\uff08erp\u7aef\u6dfb\u52a0\uff09"
+        }
+      ],
+      "name": "\u95e8\u524d\u90a3\u68f5\u5927\u69d0\u6811"
+    },
+    {
+      "buddhaList": [
+        {
+          "id": 78,
+          "name": "\u724c\u4f4d\u4e8c"
+        }
+      ],
+      "name": "\u95e8\u524d\u53e6\u4e00\u68f5\u5927\u69d0\u6811"
+    }
+  ],
+  "result": 0
+}

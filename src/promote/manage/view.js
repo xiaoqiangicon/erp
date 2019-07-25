@@ -35,6 +35,8 @@ seeView({
     '!click [data-filter-status]': 'clickFilterStatus',
     '!keyup #filter-search': 'keyUpFilterSearch',
     '!click #filter-search-ok': 'clickFilterSearchOk',
+    // 点击切换上架状态
+    '!click #online': 'clickOnline',
   },
   // 切换 tab
   clickContentTab(e) {
@@ -111,6 +113,12 @@ seeView({
 
     const $set = $('#set');
     const value = parseFloat($('#set-input').val());
+
+    if (value <= 0) {
+      dialog('请设置大于 0 的奖励金');
+      return;
+    }
+
     const fixedRewardType = parseInt($set.attr('data-fixed-reward-type'), 10);
     const rewardType = parseInt(
       $('[data-set-nav].active').attr('data-set-nav'),
@@ -194,5 +202,37 @@ seeView({
     filter.search = $('#filter-search').val();
 
     requestRecords();
+  },
+  // 点击切换上架状态
+  clickOnline(e) {
+    const $this = $(e.currentTarget);
+    const online = $this.hasClass('active');
+    const disabled = $this.hasClass('disabled');
+
+    if (share.ended === 1) {
+      dialog('佛事已结束，不可上架推广');
+      return;
+    }
+
+    // 不能上架
+    if (disabled) {
+      dialog('还未设置分成奖励金，不可上架推广');
+      return;
+    }
+
+    seeAjax('status', { online: online ? 0 : 1 }, res => {
+      if (!res.success) {
+        dialog(res.message);
+        return;
+      }
+
+      if (online) {
+        $this.removeClass('active');
+        toastr.success('下架成功');
+      } else {
+        $this.addClass('active');
+        toastr.success('上架成功');
+      }
+    });
   },
 });

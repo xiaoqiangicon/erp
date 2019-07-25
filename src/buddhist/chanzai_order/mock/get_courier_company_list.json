@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "name": "顺丰速运",
+      "value": "SF"
+    },
+    {
+      "name": "圆通快递",
+      "value": "YTO"
+    },
+    {
+      "name": "中通快递",
+      "value": "ZTO"
+    },
+    {
+      "name": "韵达速递",
+      "value": "YD"
+    },
+    {
+      "name": "百世快递",
+      "value": "HTKY"
+    },
+    {
+      "name": "京东快递",
+      "value": "JD"
+    },
+    {
+      "name": "EMS",
+      "value": "EMS"
+    },
+    {
+      "name": "邮政包裹",
+      "value": "YZPY"
+    },
+    {
+      "name": "优速快递",
+      "value": "UC"
+    },
+    {
+      "name": "天天快递",
+      "value": "HHTT"
+    },
+    {
+      "name": "德邦快递",
+      "value": "DBL"
+    },
+    {
+      "name": "宅急送",
+      "value": "ZJS"
+    }
+  ],
+  "message": "成功",
+  "result": 1
+}

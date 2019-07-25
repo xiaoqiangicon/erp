@@ -1,0 +1,348 @@
+{
+  "msg": "获取成功",
+  "data": [
+    {
+      "sort": 0,
+      "status": 0,
+      "update_time": "2017-01-05 15:09:07",
+      "name": "全部",
+      "addition": 0,
+      "pics": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 2
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        }
+      ],
+      "shop_id": 0,
+      "id": 0,
+      "add_time": "2017-01-05 15:09:07"
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "update_time": "2016-12-09 12:15:40",
+      "name": "供奉法事",
+      "pics": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        }
+      ],
+      "addition": "",
+      "shop_id": 1,
+      "id": 67,
+      "add_time": "2016-11-21 16:23:12"
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "update_time": "2016-12-07 12:06:34",
+      "name": "长生佛事",
+      "pics": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 2
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 3
+        }
+      ],
+      "addition": "",
+      "shop_id": 1,
+      "id": 82,
+      "add_time": "2016-12-07 11:27:51"
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "update_time": "2016-12-07 11:29:24",
+      "name": "正月佛事",
+      "pics": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 2
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        }
+      ],
+      "addition": "",
+      "shop_id": 1,
+      "id": 83,
+      "add_time": "2016-12-07 11:29:24"
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "update_time": "2016-12-07 12:07:32",
+      "name": "天朝法事",
+      "pics": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 2
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 3
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        }
+      ],
+      "addition": "",
+      "shop_id": 1,
+      "id": 94,
+      "add_time": "2016-12-07 12:07:32"
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "update_time": "2016-12-09 14:45:10",
+      "name": "火供法事",
+      "pics": [
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/wangshenglianwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        },
+        {
+          "url": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "title": "http://oax4peezh.bkt.clouddn.com/changshengpaiwei_cover.jpg",
+          "progressType": 1
+        }
+      ],
+      "addition": "",
+      "shop_id": 1,
+      "id": 111,
+      "add_time": "2016-12-09 14:45:10"
+    }
+  ],
+  "result": 1
+}

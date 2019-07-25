@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "data": {
+    "title": "文章",
+    "category": 2,
+    "cover": "/images/example-avatar.jpg",
+    "content": "<p>文章</p><p><strong>文章</strong></p><p></p><table><tbody><tr class=\"firstRow\"><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td></tr><tr><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td></tr></tbody></table><p>文章<br/></p>",
+    "introduction": "文章文章文章文章文章文章文章文章文章文章",
+    "usePay": 0,
+    "payDisplay": "随喜文章",
+    "payDefault": "5,10,15,20,25,35",
+    "payGuide": "随缘布施，广种福田。文章",
+    "showCoverInDetail": 1
+  }
+}

@@ -1,0 +1,248 @@
+/* swipe list */
+.component-swipe-list {
+  width: 100%;
+  position: relative;
+}
+
+.component-swipe-list-title {
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.component-swipe-list-title-main {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+.component-swipe-list-title-main .inline-icon {
+  width: 24px;
+  height: 22px;
+  background-image: url(../../../../images/temple/index/ic-huodong@2x.png);
+  margin-bottom: -4px;
+}
+
+.component-swipe-list-title-more {
+  float: right;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.component-swipe-list-title-more .text {
+  display: inline-block;
+  font-size: 13px;
+  color: #999;
+  line-height: 40px;
+  margin-right: 10px;
+}
+
+.component-swipe-list-title-more .inline-icon {
+  width: 12px;
+  height: 12px;
+  background-image: url(../../../../images/temple/icon-forward-chevron.png);
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.component-swipe-list-body {
+  padding: 10px 0 10px 15px;
+}
+
+.component-swipe-list-body.vertical,
+.component-swipe-list-body.two-columns {
+  padding-left: 0;
+}
+
+.component-swipe-list-body.vertical .swiper-wrapper,
+.component-swipe-list-body.two-columns .swiper-wrapper,
+.component-swipe-list-body.vertical-small .swiper-wrapper {
+  display: block;
+}
+.component-swipe-list-body.vertical .component-swipe-list-cell-more,
+.component-swipe-list-body.two-columns .component-swipe-list-cell-more,
+.component-swipe-list-body.vertical-small .component-swipe-list-cell-more {
+  display: none !important;
+}
+.component-swipe-list-cell {
+  width: 250px;
+  display: block;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.component-swipe-list-body.vertical .component-swipe-list-cell,
+.component-swipe-list-body.two-columns .component-swipe-list-cell,
+.component-swipe-list-body.vertical-small .component-swipe-list-cell {
+  margin-right: 0;
+}
+.component-swipe-list-cell:hover,
+.component-swipe-list-cell:active {
+  text-decoration: none;
+}
+
+.component-swipe-list-cell-image {
+  height: 140px;
+  width: 100%;
+  position: relative;
+}
+.component-swipe-list-cell-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.component-swipe-list-cell-image .status,
+.popup-swipe-list-cell-image .status {
+  position: absolute;
+  top: 19px;
+  right: 14px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 11px;
+  width: 60px;
+  text-align: center;
+  background: #4c70c6;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.component-swipe-list-cell-image .status.ended,
+.popup-swipe-list-cell-image .status.ended {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.component-swipe-list-cell-description {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: #333333;
+  letter-spacing: 0.1em;
+  margin-top: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.component-swipe-list-cell-more {
+  width: 67px;
+  height: 150px;
+  padding-left: 20px;
+}
+
+.component-swipe-list-cell-more-link {
+  width: 100%;
+  height: 100%;
+  background: url(../../../../images/temple/icon-oval.png) no-repeat;
+  background-size: contain;
+  text-decoration: none;
+  color: #666666;
+  font-size: 16px;
+  font-weight: 500;
+  writing-mode: vertical-lr;
+  text-align: center;
+  letter-spacing: 0.1em;
+  padding-left: 20px;
+}
+
+.component-swipe-list-cell-more-link:hover,
+.component-swipe-list-cell-more-link:active {
+  text-decoration: none;
+}
+
+/* 竖向排列 */
+.component-swipe-list-body.vertical .swiper-container,
+.component-swipe-list-body.two-columns .swiper-container {
+  width: 100%;
+}
+
+.component-swipe-list-body.vertical .component-swipe-list-cell {
+  width: 100%;
+}
+
+.component-swipe-list-body.vertical .component-swipe-list-cell-image {
+  height: auto;
+}
+
+.component-swipe-list.vertical .component-swipe-list-title {
+  border-bottom: none;
+}
+
+.component-swipe-list-body.vertical .component-swipe-list-cell-image img {
+  border-radius: 0;
+}
+
+/* 两列排列 */
+.component-swipe-list-body.two-columns .swiper-wrapper {
+  overflow: hidden;
+}
+.component-swipe-list-body.two-columns .component-swipe-list-cell {
+  float: left;
+  display: inline-block;
+  width: 50%;
+}
+
+.component-swipe-list-body.two-columns
+  .component-swipe-list-cell:nth-child(odd) {
+  padding-right: 5px;
+  padding-left: 10px;
+}
+
+.component-swipe-list-body.two-columns
+  .component-swipe-list-cell:nth-child(even) {
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+.component-swipe-list-body.two-columns .component-swipe-list-cell-image {
+  height: auto;
+}
+
+/* 竖向小图排列 */
+.component-swipe-list-body.vertical-small {
+  width: 100%;
+  padding: 0;
+}
+.component-swipe-list-body.vertical-small .swiper-container {
+  width: 100%;
+  padding: 0 15px;
+}
+.component-swipe-list-body.vertical-small .component-swipe-list-cell {
+  width: 100%;
+  height: 95px;
+  padding: 10px 0;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid #eeeeee;
+}
+.component-swipe-list-body.vertical-small
+  .component-swipe-list-cell:last-child {
+  border-bottom: none;
+}
+.component-swipe-list-body.vertical-small .component-swipe-list-cell-image {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 140px;
+  height: 75px;
+}
+.component-swipe-list-body.vertical-small .component-swipe-list-cell-image img {
+  width: 100%;
+  height: 100%;
+}
+.component-swipe-list-body.vertical-small
+  .component-swipe-list-cell-description {
+  height: 74px;
+  line-height: 37px;
+  font-size: 16px;
+  color: #262626;
+  padding-left: 150px;
+  margin-top: 0;
+  text-align: left;
+  white-space: normal;
+  overflow: hidden;
+}

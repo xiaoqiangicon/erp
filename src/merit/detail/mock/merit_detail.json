@@ -1,0 +1,51 @@
+{
+  "msg": "获取成功",
+  "result": 0,
+  "pageNum": 1,
+  "total": 5,
+  "data": {
+    "name": "张三",
+    "pic": "http://wx.qlogo.cn/mmopen/iaeytjqFH51dMvBCzmYra2LiaxuvUzFWZ0ocQRkTgJlOMTSTkvWwaGFvvszppDz9Lt9VBhI5slafZPckBiaZ3LE22NRRYUZZYu5/0",
+    "money": "200",
+    "payTimes": 5,
+    "total": "5",
+    "pageNum": 1,
+    "orderList": [
+      {
+        "type": "皈依",
+        "title": "标题1",
+        "detail": "副标题1",
+        "price": "100",
+        "addTime": "2017-03-03 12:12:12"
+      },
+      {
+        "type": "佛事",
+        "title": "标题2",
+        "detail": "副标题2",
+        "price": "200",
+        "addTime": "2017-03-05 12:12:12"
+      },
+      {
+        "type": "皈依",
+        "title": "标题3",
+        "detail": "副标题3",
+        "price": "300",
+        "addTime": "2017-04-03 12:12:12"
+      },
+      {
+        "type": "佛事",
+        "title": "标题4",
+        "detail": "副标题4",
+        "price": "400",
+        "addTime": "2017-05-03 12:12:12"
+      },
+      {
+        "type": "皈依",
+        "title": "标题5",
+        "detail": "副标题5",
+        "price": "500",
+        "addTime": "2017-05-18 12:12:12"
+      }
+    ]
+  }
+}

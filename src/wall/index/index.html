@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>供奉设置</title>
+  </head>
+  <body data-menu-id="wall-index">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <ul class="nav nav-tabs">
+          <li class="active"><a>供奉设置</a></li>
+          <li><a href="/zzhadmin/buddhaRegion/">区域设置</a></li>
+        </ul>
+        <div class="mgt20 clearfix">
+          <button class="btn btn-add" id="action-add">添加供奉类型</button>
+          <button class="btn btn-promotion" id="action-promotion">
+            全部推广
+          </button>
+        </div>
+        <div class="mgt20 clearfix" id="content-body"></div>
+      </div>
+    </div>
+    <div class="modal fade in" id="select-modal">
+      <div class="modal-dialog" style="width:688px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">供奉模板选择</h4>
+          </div>
+          <div class="select-modal-content" id="select-modal-content"></div>
+          <div class="modal-footer">
+            <div class="form-group text-center">
+              <button class="btn btn-green" id="select-modal-ok">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hover-popup" id="hover-popup" style="display: none;">
+      <div class="hover-popup-content">
+        <h4 class="hover-popup-header">所在区域</h4>
+        <div class="hover-popup-body" id="hover-popup-body"></div>
+      </div>
+    </div>
+    <div class="modal fade in" id="sort-popup">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">请设置排序号码</h4>
+          </div>
+          <div class="modal-body">
+            <div class="pdt15 pdb15">
+              <input
+                class="form-control"
+                placeholder="数字越小排序越前"
+                id="sort-popup-input"
+              />
+            </div>
+          </div>
+          <div class="modal-footer modalFoot" style="text-align: center">
+            <button type="button" class="btn btn-green" id="sort-popup-ok">
+              确定
+            </button>
+            <button type="button" class="btn btn-default" data-popup-close="1">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/html" id="tpl-unit">
+      <div class="content-unit" data-unit="${id}">
+          <div class="content-unit-inner clearfix">
+              <div class="content-unit-left">
+                  <img class="content-unit-cover" src="${cover}">
+              </div>
+              <div class="content-unit-right">
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">序号</div>
+                      <div class="content-unit-row-right">${sequence}</div>
+                  </div>
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">供奉名称</div>
+                      <div class="content-unit-row-right content-unit-row-name" title="${name}">${name}</div>
+                  </div>
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">所在区域</div>
+                      <div class="content-unit-row-right pointer" {@if regions}data-unit-region="${id}" data-regions="${regions}"{@/if}>{@if regions}查看...{@else}暂无设置{@/if}</div>
+                  </div>
+                  <div class="content-unit-row clearfix">
+                      <div class="content-unit-row-left">操作</div>
+                      <div class="content-unit-row-right clearfix">
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-delete="${id}">删除</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-copy="${id}">复制</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-edit="${id}">编辑</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-promote="${id}" data-url="${url}">推广</button>
+                          <button class="btn btn-green btn-xs bdr6 mgt5 mgr5" data-unit-sort="${id}" data-sequence="${sequence}">排序</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-template-cell">
+      <div class="select-modal-row {@if category == 2}is-pai-wei{@/if}" data-template-cell="${id}">
+          <div class="select-modal-row-image">
+              {@if !notShowCategory}
+              <div class="select-modal-row-fo-xiang">佛像</div>
+              <div class="select-modal-row-pai-wei">牌位</div>
+              {@/if}
+              <img src="https://pic.zizaihome.com/dbe89db2-22d8-11e9-9b75-00163e0c001e.png" class="select-modal-row-selected">
+              <img src="${image}" class="select-modal-row-cover">
+          </div>
+          <p class="mgt10">${name}</p>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-hover-row">
+      <p class="text-center">${name}</p>
+    </script>
+  </body>
+</html>

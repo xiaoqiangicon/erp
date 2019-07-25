@@ -1,0 +1,28 @@
+.nav-btn-1,
+.nav-btn-2 {
+  display: inline-block;
+  width: 80px;
+  height: 32px;
+  border-radius: 6px;
+  text-align: center;
+  color: #ffffff;
+}
+.nav-btn-1 {
+  line-height: 29px;
+  border: 1.5px solid #ffffff;
+}
+.nav-btn-2 {
+  line-height: 32px;
+  background-color: #ffc966;
+}
+.nav-btn-1,
+.nav-btn-1:hover,
+.nav-btn-1:focus,
+.nav-btn-1:active,
+.nav-btn-2,
+.nav-btn-2:hover,
+.nav-btn-2:focus,
+.nav-btn-2:active {
+  text-decoration: none;
+  color: #ffffff;
+}

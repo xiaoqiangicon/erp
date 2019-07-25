@@ -1,0 +1,47 @@
+iframe {
+  width: 100%;
+  height: 400px;
+}
+.bottom {
+  width: 100%;
+}
+.bottom .slogan-container {
+  width: 40%;
+  height: 100%;
+}
+.bottom .first-title {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  font-size: 40px;
+  text-indent: 40px;
+  letter-spacing: 40px;
+  text-align: center;
+  color: #f39d2f;
+}
+.bottom .second-title {
+  font-size: 26px;
+  text-align: center;
+}
+
+.bottom .qrcode-container {
+  width: 60%;
+  height: 100%;
+  margin: 30px auto;
+}
+
+.bottom .qrcode-container .qrcode-img-cell {
+  float: right;
+  margin-right: 100px;
+  text-align: center;
+}
+.bottom .qrcode-container .qrcode-img {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #dde4ec;
+  border-radius: 12px;
+}
+.bottom .qrcode-container .img-info {
+  margin-top: 10px;
+  font-size: 20px;
+}

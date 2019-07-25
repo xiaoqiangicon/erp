@@ -1,0 +1,43 @@
+{
+  "msg": "获取成功",
+  "data": [
+    {
+      "id": 1,
+      "title": "sscqcqv",
+      "sceneId": 1,
+      "sceneName": "ancvjqev",
+      "url": "https://baidu.com"
+    },
+    {
+      "id": 2,
+      "title": "sscqcqv",
+      "sceneId": 2,
+      "sceneName": "ancvjqev",
+      "url": "https://baidu.com"
+    },
+    {
+      "id": 3,
+      "title": "sscqcqv",
+      "sceneId": 3,
+      "sceneName": "ancvjqev",
+      "url": "https://baidu.com"
+    },
+    {
+      "id": 4,
+      "title": "sscqcqv",
+      "sceneId": 4,
+      "sceneName": "ancvjqev",
+      "url": "https://baidu.com"
+    },
+    {
+      "id": 5,
+      "title": "sscqcqv",
+      "sceneId": 5,
+      "sceneName": "ancvjqev",
+      "url": "https://baidu.com"
+    }
+  ],
+  "total": 100,
+  "pageNum": -1,
+  "result": 1
+}

@@ -1,0 +1,33 @@
+.com-house-cell .inner-1 {
+  overflow: hidden;
+}
+
+.com-house-cell .row-1 {
+  border-top: none;
+  float: left;
+  width: 33.3%;
+  padding: 0 3px;
+  margin: 9px 0;
+}
+
+.com-house-cell .cover-1 {
+  float: none;
+  display: block;
+  width: 100%;
+}
+
+.com-house-cell .inner-2 {
+  float: none;
+  width: 100%;
+  text-align: center;
+}
+
+.com-house-cell .name-1 {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.com-house-cell .desc-1 {
+  display: none;
+}

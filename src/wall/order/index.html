@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>订单管理 - 线上订单</title>
+  </head>
+  <body data-menu-id="wall-order">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <ul class="nav nav-tabs">
+          <li class="active"><a>线上订单</a></li>
+          <li><a href="/zzhadmin/buddhaOfflineOrderManage/">自录订单</a></li>
+        </ul>
+        <div class="filter-section">
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">选择大殿：</div>
+            <div class="filter-section-row-content">
+              <select class="form-control" id="filter-house">
+                <option value="0">全部</option>
+              </select>
+            </div>
+            <div class="filter-section-row-title mgl40">选择区域：</div>
+            <div class="filter-section-row-content">
+              <select class="form-control" id="filter-region">
+                <option value="0">全部</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">下单时间：</div>
+            <div class="filter-section-row-content">
+              <input
+                class="form-control"
+                data-time-input="1"
+                id="filter-start-date"
+              />
+            </div>
+            <div class="filter-section-row-divider">至</div>
+            <div class="filter-section-row-content">
+              <input
+                class="form-control"
+                data-time-input="1"
+                id="filter-end-date"
+              />
+            </div>
+          </div>
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">搜索：</div>
+            <div class="filter-section-row-content">
+              <select class="form-control" id="filter-search-type">
+                <option value="1">电话号码</option>
+                <option value="2">联系人</option>
+                <option value="3">功德芳名</option>
+              </select>
+            </div>
+            <div class="filter-section-row-content mgl20">
+              <input class="form-control" id="filter-search" />
+            </div>
+          </div>
+          <div class="filter-section-row filter-section-action clearfix">
+            <button class="btn btn-green left" id="action-filter">查询</button>
+            <button class="btn btn-default left mgl20" id="action-reset">
+              重置
+            </button>
+            <button class="btn btn-default left mgl20" id="action-export">
+              导出Excel
+            </button>
+          </div>
+        </div>
+        <ul class="nav nav-tabs nav-tabs-custom mgt40">
+          <li class="active" data-tab-type="1">
+            <a
+              ><span class="mgr10">未处理</span
+              ><span class="badge hide" id="unhandled-count">0</span></a
+            >
+          </li>
+          <li data-tab-type="2"><a>已处理</a></li>
+        </ul>
+        <div class="print-section">
+          <div class="text-1">已选择<span id="selected-count">0</span>项</div>
+          <button
+            class="btn btn-default btn-sm left mgl20 hide"
+            id="action-handle"
+          >
+            设为已处理
+          </button>
+          <button class="btn btn-default btn-sm right" id="action-print">
+            小票打印
+          </button>
+        </div>
+        <div class="content-section">
+          <div class="content-section-head">
+            <div class="content-row">
+              <div class="content-row-cell">
+                <button class="clean-button content-row-select" id="select-all">
+                  <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <span>全选</span>
+              </div>
+              <div class="content-row-cell content-row-name">名称</div>
+              <div class="content-row-cell">供奉类型</div>
+              <div class="content-row-cell content-row-name">联系人</div>
+              <div class="content-row-cell content-row-place">位置信息</div>
+              <div class="content-row-cell">支付</div>
+              <div class="content-row-cell">下单时间</div>
+              <div class="content-row-cell">打印</div>
+              <div class="content-row-cell">操作</div>
+            </div>
+          </div>
+          <div class="content-section-body" id="content-body"></div>
+        </div>
+        <div class="pagination-section">
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade in overflow-auto" id="detail-popup">
+      <div class="modal-dialog detail-popup-dialog">
+        <div class="modal-content detail-popup-content">
+          <p><span class="fwb" id="detail-popup-title"></span></p>
+          <p>
+            <span class="fwb">位置编号：</span
+            ><span id="detail-popup-sequence"></span>
+          </p>
+          <p>
+            <span class="fwb">下单时间：</span
+            ><span id="detail-popup-time"></span>
+          </p>
+          <p>
+            <span class="fwb">支付：</span><span id="detail-popup-money"></span>
+          </p>
+          <p>
+            <span class="fwb">供奉类型：</span
+            ><span id="detail-popup-type"></span>
+          </p>
+          <p>
+            <span class="fwb">支付订单号：</span
+            ><span id="detail-popup-order-number"></span>
+          </p>
+          <p>
+            <span class="fwb">支付流水号：</span
+            ><span id="detail-popup-flow-number"></span>
+          </p>
+          <p>
+            <span class="fwb">订单二维码：</span
+            ><span class="inline-block" id="detail-popup-qr-code"></span>
+          </p>
+          <hr />
+          <p><span class="fwb">供奉信息</span></p>
+          <p class="hide">
+            <span>功德芳名：</span><span id="detail-popup-write-name"></span>
+          </p>
+          <p class="hide">
+            <span>阳上人：</span><span id="detail-popup-yang-shang-ren"></span>
+          </p>
+          <p class="hide">
+            <span>往生者：</span><span id="detail-popup-wang-sheng-zhe"></span>
+          </p>
+          <p class="hide">
+            <span>心愿：</span><span id="detail-popup-wish"></span>
+          </p>
+          <div id="detail-popup-contact"></div>
+          <hr />
+          <p><span class="fwb">反馈图片</span></p>
+          <div class="clearfix" id="detail-popup-feed-images"></div>
+          <p>
+            <button class="btn btn-success" id="detail-popup-feed-upload">
+              点击上传
+            </button>
+          </p>
+          <hr />
+          <p><span class="fwb">备注</span></p>
+          <textarea
+            class="form-control"
+            rows="3"
+            id="detail-popup-memo"
+          ></textarea>
+          <p class="mgt10">
+            <button class="clean-button green" id="detail-popup-save-memo">
+              保存备注
+            </button>
+          </p>
+          <hr />
+          <p class="text-center">
+            <button class="btn btn-green" id="detail-popup-save">
+              设为已处理
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in" id="printer-popup">
+      <div class="modal-dialog" style="width:500px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">小票打印</h4>
+          </div>
+          <div class="pd20">
+            <div class="form-group clearfix">
+              <div class="col-sm-3 fwb">选择打印机：</div>
+              <div class="col-sm-9" id="printer-popup-printers"></div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-sm-3 fwb">二维码：</div>
+              <div class="col-sm-9">
+                <label class="radio-inline">
+                  <input
+                    type="radio"
+                    name="printer-popup-print-type"
+                    value="2"
+                    checked
+                  />
+                  隔联打印
+                </label>
+                <label class="radio-inline">
+                  <input
+                    type="radio"
+                    name="printer-popup-print-type"
+                    value="1"
+                  />
+                  全部打印
+                </label>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="col-sm-3 fwb">打印联数：</div>
+              <div class="col-sm-6">
+                <select class="form-control" id="printer-popup-pages">
+                  <option value="1">1联</option>
+                  <option value="2" selected>2联</option>
+                  <option value="3">3联</option>
+                  <option value="4">4联</option>
+                  <option value="5">5联</option>
+                </select>
+              </div>
+            </div>
+            <p class="mgt30">
+              二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
+            </p>
+          </div>
+          <div class="modal-footer pdt0 bdtn">
+            <div class="form-group text-center">
+              <button class="btn btn-green" id="printer-popup-ok">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/html" id="tpl-row">
+      <div class="content-row" data-row="${id}">
+          <div class="content-row-cell">
+              <button class="clean-button content-row-select" data-row-select="${id}"><i class="glyphicon glyphicon-ok"></i></button>
+          </div>
+          <div class="content-row-cell content-row-name">${name}</div>
+          <div class="content-row-cell">${type}</div>
+          <div class="content-row-cell content-row-name">$${contactNames}</div>
+          <div class="content-row-cell content-row-place">${place}</div>
+          <div class="content-row-cell">￥${money}</div>
+          <div class="content-row-cell">${time}</div>
+          <div class="content-row-cell">${printText}</div>
+          <div class="content-row-cell content-row-actions">
+              <button class="clean-button" data-row-detail="${id}">详情</button>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-pagination">
+      {@if totalPages > 1 && currentPage != 1}
+      <button class="clean-button pagination-cell special" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-1">上一页</button>
+      {@/if}
+      {@if totalPages <= 7}
+      {@each pages as page}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}">${page}</button>
+      {@/each}
+      {@else}
+      {@each pages as page}
+      {@if page == 1 || page == totalPages || currentPage <= 4 && page <= 4 || currentPage >= totalPages - 3 && page >= totalPages - 3 || currentPage - page == 1 || currentPage - page == 0 || currentPage - page == -1}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}">${page}</button>
+      {@else if currentPage >4 && page == 2 || currentPage < totalPages - 3 && page == totalPages - 1}
+      <button class="clean-button pagination-cell disabled">...</button>
+      {@/if}
+      {@/each}
+      {@/if}
+      {@if totalPages > 1 && currentPage != totalPages}
+      <button class="clean-button pagination-cell special" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-2">下一页</button>
+      {@/if}
+    </script>
+    <script type="text/html" id="tpl-region-cell">
+      <option value="${id}" class="hide" data-name="${name}">${buddhaName} - ${shortedName}</option>
+    </script>
+    <script type="text/html" id="tpl-contact-cell">
+      <div class="clearfix">
+          <p><span>联系人：</span><span>${name}</span></p>
+          <p><span>联系电话：</span><span>${phone}</span></p>
+          {@if birth}<p><span>出生日期：</span><span>${birth}{@if !!lunar}（农历）{@/if}</span></p>{@/if}
+      </div>
+    </script>
+    <script type="text/html" id="tpl-image-cell">
+      <div class="detail-popup-feed-item" data-feed-image-item="1" data-image="${image}">
+          <img src="${image}">
+          <button class="clean-button detail-popup-feed-item-delete" data-feed-image-item-delete="1">X</button>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-printer-cell">
+      <div class="checkbox mgt0" data-printer-cell="${id}">
+          <label><input type="checkbox" data-printer-cell-input="${id}" value="${id}" checked>${name}</label>
+      </div>
+      <p class="pdl20 hide" data-printer-cell-status="${id}"></p>
+    </script>
+    <script type="text/html" id="tpl-option">
+      <option value="${id}">${name}</option>
+    </script>
+  </body>
+</html>

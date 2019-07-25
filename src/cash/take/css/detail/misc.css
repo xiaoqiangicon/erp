@@ -1,0 +1,25 @@
+.detail-interact-unit {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  padding-left: 35px;
+  padding-right: 80px;
+}
+.detail-interact-unit .detail-common-unit {
+  margin-top: 0;
+}
+.detail-interact-circle {
+  display: block;
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #ffffff;
+  text-align: center;
+  background-color: #71ba31;
+}
+.detail-interact-circle-2 {
+  background-color: #497cff;
+}

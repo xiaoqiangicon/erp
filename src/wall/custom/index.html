@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>订单管理 - 自录订单</title>
+  </head>
+  <body data-menu-id="wall-order">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <ul class="nav nav-tabs">
+          <li><a href="/zzhadmin/buddhaOrderManage/">线上订单</a></li>
+          <li class="active"><a>自录订单</a></li>
+        </ul>
+        <div class="filter-section">
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">选择大殿：</div>
+            <div class="filter-section-row-content">
+              <select class="form-control" id="filter-house">
+                <option value="0">全部</option>
+              </select>
+            </div>
+            <div class="filter-section-row-title mgl40">选择区域：</div>
+            <div class="filter-section-row-content">
+              <select class="form-control" id="filter-region">
+                <option value="0">全部</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">搜索：</div>
+            <div class="filter-section-row-content">
+              <input
+                class="form-control"
+                placeholder="手机号码或名称关键字"
+                id="filter-search"
+              />
+            </div>
+          </div>
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">剩余天数：</div>
+            <div class="filter-section-row-content">
+              <input
+                class="form-control"
+                type="number"
+                id="filter-remain-days"
+              />
+            </div>
+            <div class="filter-section-row-desc">天</div>
+          </div>
+          <div class="filter-section-row filter-section-action">
+            <button class="btn btn-green" id="action-filter">查询</button>
+          </div>
+        </div>
+        <div class="content-section">
+          <div class="content-section-head">
+            <div class="content-row">
+              <div class="content-row-cell">位置信息</div>
+              <div class="content-row-cell">名称</div>
+              <div class="content-row-cell">联系人</div>
+              <div class="content-row-cell">到期时间</div>
+              <div class="content-row-cell">录入时间</div>
+              <div class="content-row-cell">操作</div>
+            </div>
+          </div>
+          <div class="content-section-body" id="content-body"></div>
+        </div>
+        <div class="pagination-section">
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade in overflow-auto" id="detail-popup">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <p class="fwb fs16" id="detail-popup-title"></p>
+          <p><span>位置编号：</span><span id="detail-popup-sequence"></span></p>
+          <hr />
+          <p><span>到期时间：</span><span id="detail-popup-end-time"></span></p>
+          <p id="detail-popup-row-name">
+            <span>功德芳名：</span><span id="detail-popup-name"></span>
+          </p>
+          <p id="detail-popup-row-yang-shang-ren" style="display: none;">
+            <span>阳上人：</span><span id="detail-popup-yang-shang-ren"></span>
+          </p>
+          <p id="detail-popup-row-wang-sheng-zhe" style="display: none;">
+            <span>往生者：</span><span id="detail-popup-wang-sheng-zhe"></span>
+          </p>
+          <hr />
+          <div id="detail-popup-contact"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/html" id="tpl-row">
+      <div class="content-row" data-row="${id}">
+          <div class="content-row-cell">${place}</div>
+          <div class="content-row-cell">${name}</div>
+          <div class="content-row-cell">$${contactNames}</div>
+          <div class="content-row-cell">${endTime}</div>
+          <div class="content-row-cell">${recordTime}</div>
+          <div class="content-row-cell content-row-actions">
+              <button class="clean-button mgr5" data-row-detail="${id}">详情</button>
+              <span>-</span>
+              <button class="clean-button mgl5" data-row-delete="${id}">删除</button>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-pagination">
+      {@if totalPages > 1 && currentPage != 1}
+      <button class="clean-button pagination-cell special" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-1">上一页</button>
+      {@/if}
+      {@if totalPages <= 7}
+      {@each pages as page}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}">${page}</button>
+      {@/each}
+      {@else}
+      {@each pages as page}
+      {@if page == 1 || page == totalPages || currentPage <= 4 && page <= 4 || currentPage >= totalPages - 3 && page >= totalPages - 3 || currentPage - page == 1 || currentPage - page == 0 || currentPage - page == -1}
+      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}">${page}</button>
+      {@else if currentPage >4 && page == 2 || currentPage < totalPages - 3 && page == totalPages - 1}
+      <button class="clean-button pagination-cell disabled">...</button>
+      {@/if}
+      {@/each}
+      {@/if}
+      {@if totalPages > 1 && currentPage != totalPages}
+      <button class="clean-button pagination-cell special" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-2">下一页</button>
+      {@/if}
+    </script>
+    <script type="text/html" id="tpl-region-cell">
+      <option value="${id}" class="hide" data-name="${name}">${buddhaName} - ${shortedName}</option>
+    </script>
+    <script type="text/html" id="tpl-contact-cell">
+      <p><span>联系人：</span><span>${name}</span></p>
+      <p><span>联系电话：</span><span>${phone}</span></p>
+      {@if birth}<p><span>出生日期：</span><span>${birth}{@if !!lunar}（农历）{@/if}</span></p>{@/if}
+    </script>
+    <script type="text/html" id="tpl-option">
+      <option value="${id}">${name}</option>
+    </script>
+  </body>
+</html>

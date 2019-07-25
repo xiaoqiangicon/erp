@@ -1,0 +1,112 @@
+main div {
+  margin: 0 auto;
+  text-align: center;
+}
+main .icon1 {
+  width: 100px;
+  height: 100px;
+  margin-top: 131px;
+  background-image: url('../../../images/register/ic-check-blue.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .icon2 {
+  width: 100px;
+  height: 100px;
+  margin-top: 131px;
+  background-image: url('../../../images/register/ic-check-yellow.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .icon3 {
+  width: 100px;
+  height: 100px;
+  margin-top: 131px;
+  background-image: url('../../../images/register/ic-check-green.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .tip {
+  margin-top: 22px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  font-family: 'Microsoft YaHei';
+}
+main .tip2 {
+  margin-top: 23px;
+  font-size: 16px;
+  line-height: 1.38;
+  color: #333;
+}
+main .zizaihom {
+  width: 338px;
+  height: 56px;
+  margin-top: 34px;
+  background-color: #0d7652;
+  border-radius: 2px;
+  border: solid 1px #979797;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Microsoft YaHei';
+}
+main .supplement {
+  width: 338px;
+  height: 56px;
+  margin-top: 34px;
+  background-color: #fff;
+  border-radius: 2px;
+  border: solid 1px #979797;
+}
+main .supplement a {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Microsoft YaHei';
+}
+main .previous {
+  width: 338px;
+  height: 56px;
+  margin-top: 34px;
+  background-color: #fff;
+  border-radius: 2px;
+  border: solid 1px #0d7652;
+  color: #0d7652;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Microsoft YaHei';
+}
+main .login {
+  width: 338px;
+  height: 56px;
+  margin-top: 34px;
+  background-color: #fff;
+  border-radius: 2px;
+  border: solid 1px #0d7652;
+  color: #0d7652;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Microsoft YaHei';
+}
+main .question {
+  margin-top: 62px;
+  font-size: 20px;
+  color: #333;
+  font-family: 'Microsoft YaHei';
+}
+main .public {
+  margin-top: 63px;
+  margin-bottom: 32px;
+}
+main .public h3 {
+  font-size: 20px;
+  color: #333;
+  font-family: 'Microsoft YaHei';
+  margin: 0px auto;
+}
+main .public p {
+  font-size: 20px;
+  color: #0d7652;
+  margin-top: 10px;
+}

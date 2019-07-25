@@ -1,0 +1,221 @@
+{% load i18n admin_static suit_tags %} {% load url from suit_compat %}
+
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../../../images/favicon.ico"
+    />
+
+    <title>自在家 - 国内首家服务于寺院的正规互联网 + 项目 - 登录</title>
+    <meta
+      name="keywords"
+      content="自在家,修行,寺庙管理软件,寺院系统,听经,佛经大全,佛乐,经书,经咒,经咒大全,佛,佛经,心经"
+    />
+    <meta
+      name="description"
+      content="自在家以新兴科技手段传承与复兴中华传统文化，为各地寺院提供全方位的技术解决方案，同时推出多元化佛学项目，为修行者量身打造智能设备、APP等修行辅助工具，提供便捷的在线服务。"
+    />
+  </head>
+  <body class="brand-type-2">
+    <div class="nav show-bg" id="nav">
+      <div class="bg"></div>
+      <a class="nav-logo" href="/">
+        <img
+          src="https://pic.zizaihome.com/95e6dfc0-0d7d-11e8-8feb-00163e0c001e.png"
+        />
+      </a>
+      <div class="nav-right">
+        <a class="nav-btn-1" href="/accounts/login/">寺院登录</a>
+        <a class="nav-btn-2 mgl20" href="/zzhadmin/templeApplyIndex/"
+          >免费入驻</a
+        >
+      </div>
+      <div class="nav-menu">
+        <a class="nav-item" href="/"> <span class="inner">首页</span> </a>
+        <a class="nav-item" href="/static/build/index/service.html">
+          <span class="inner">寺院服务</span>
+        </a>
+        <a class="nav-item" href="/static/build/index/app.html">
+          <span class="inner"
+            ><i class="nav-item-fire"></i><span>APP下载</span></span
+          >
+          <div class="nav-item-qrcode">
+            <img
+              src="https://pic.zizaihome.com/183ecaa6-07d8-11e8-b0b1-00163e0c001e.png"
+            />
+          </div>
+        </a>
+        <a class="nav-item" href="/static/build/index/mini.html">
+          <span class="inner">小程序</span>
+        </a>
+        <a class="nav-item" href="/static/build/index/prod.html">
+          <span class="inner">文创产品</span>
+        </a>
+      </div>
+    </div>
+    <div class="detail clearfix">
+      <div class="detail-left">
+        <div class="text-1">登录寺院服务系统</div>
+        <div class="divider"></div>
+        <div class="content">
+          <form action="" method="post">
+            <div class="hide">{% csrf_token %}</div>
+            <input
+              class="input-account"
+              name="username"
+              type="text"
+              placeholder="登录账户或者手机号码"
+            />
+            <input
+              class="input-pwd"
+              name="password"
+              type="password"
+              placeholder="密码"
+            />
+            <div class="container-1">
+              <a target="_blank" href="/zzhadmin/findpwd/">忘记密码？</a>
+            </div>
+            <button class="clean-button ok" type="submit">登 录</button>
+            <p class="hint" id="hint" style="display: none;">
+              请输入正确的用户名和密码。
+            </p>
+          </form>
+        </div>
+        <div class="divider"></div>
+        <div class="text-2">
+          <span>您还没有入驻？</span>
+          <a target="_blank" href="/zzhadmin/templeApplyIndex/">免费申请开通</a>
+        </div>
+      </div>
+      <div class="detail-right">
+        <div class="text-3">国内首家服务于寺院的<br />正规互联网 + 项目</div>
+        <img
+          src="https://pic.zizaihome.com/96e99f10-06fd-11e8-8a9e-00163e0c001e.png"
+        />
+      </div>
+    </div>
+    <div class="brand">
+      <div class="wrapper clearfix">
+        <div class="brand-left">
+          <div class="menu-1 clearfix">
+            <div class="menu-1-item">
+              <div class="menu-1-item-title">提现透明</div>
+              <div class="menu-1-item-desc">
+                善款系统全自动化计算与统计，<br />可实时查看详细记录，快捷提现。
+              </div>
+            </div>
+            <div class="menu-1-item">
+              <div class="menu-1-item-title">零服务费</div>
+              <div class="menu-1-item-desc">自在家不收取服务费</div>
+            </div>
+            <div class="menu-1-item">
+              <div class="menu-1-item-title">1对1指导</div>
+              <div class="menu-1-item-desc">使用遇到问题全程贴心解答</div>
+            </div>
+          </div>
+          <div class="menu-4 clearfix">
+            <img
+              class="menu-4-item"
+              src="https://pic.zizaihome.com/86a6065e-04d0-11e8-a46b-00163e0c001e.png"
+            />
+            <img
+              class="menu-4-item"
+              src="https://pic.zizaihome.com/a699aa24-04d0-11e8-a46b-00163e0c001e.png"
+            />
+          </div>
+          <div class="menu-2 clearfix" id="brand-menu-2">
+            <a target="_blank" class="menu-2-item" href="/zzhadmin/protocol/"
+              >服务协议</a
+            >
+            <a
+              target="_blank"
+              class="menu-2-item hide"
+              href="https://miaoyan.net/join/"
+              >加入自在家</a
+            >
+            <a
+              target="_blank"
+              class="menu-2-item hide"
+              href="https://miaoyan.net/about/"
+              >关于我们</a
+            >
+          </div>
+          <div class="text-1" id="brand-copyright">
+            © 2018 深圳市妙严科技有限公司
+            <a target="_blank" href="http://www.beian.miit.gov.cn"
+              >粤ICP备16042349号-<span id="brand-copyright-number">3</span></a
+            >
+          </div>
+        </div>
+        <div class="brand-right" id="brand-right">
+          <div class="menu-3 clearfix">
+            <div class="menu-3-item">
+              <img
+                src="https://pic.zizaihome.com/d381049c-07d7-11e8-ab5c-00163e0c001e.png"
+              />
+              <div class="text">微信公众号</div>
+            </div>
+            <div class="menu-3-item">
+              <img
+                src="https://pic.zizaihome.com/183ecaa6-07d8-11e8-b0b1-00163e0c001e.png"
+              />
+              <div class="text">下载APP</div>
+            </div>
+          </div>
+          <a target="_blank" class="text-2" href="tel: 400-8816-318"
+            >400-8816-318</a
+          >
+          <div class="text-3">客服电话（周一至周五 9:00-18:00）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 以下内容是什么鬼我也不知道，来自最初的登录页，不知道谁写的 -->
+
+    <script>
+      function error() {
+        document.getElementById('hint').style.display = 'block';
+      }
+    </script>
+    {% if form.errors and not form.non_field_errors and not
+    form.this_is_the_login_form.errors %}
+    <script>
+      error();
+    </script>
+    {% endif %} {% if form.non_field_errors or
+    form.this_is_the_login_form.errors %} {% if
+    form.this_is_the_login_form.errors %} {% for error in
+    form.non_field_errors|add:form.this_is_the_login_form.errors %}
+    <script>
+      error();
+    </script>
+    {% endfor %} {% else %} {% for error in form.non_field_errors %}
+    <script>
+      error();
+    </script>
+    {% endfor %} {% endif %} {% endif %} {% if not
+    form.this_is_the_login_form.errors and form.username.errors %}
+    <script>
+      error();
+    </script>
+    {% endif %} {% if not form.this_is_the_login_form.errors and
+    form.password.errors %}
+    <script>
+      error();
+    </script>
+    {% endif %}
+
+    <!-- 什么鬼内容：end -->
+  </body>
+</html>

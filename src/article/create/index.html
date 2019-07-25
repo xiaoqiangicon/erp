@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>新建文章</title>
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section" id="title-section">
+          <span class="title-section-item">微文章</span>
+          <span class="title-section-item">></span>
+          <a class="title-section-item green" href="/zzhadmin/articleIndex/"
+            >文章管理</a
+          >
+          <span class="title-section-item">></span>
+          <span class="title-section-item" id="page-title">新建文章</span>
+        </div>
+        <div class="tip-section" id="tip-section" style="display: none;">
+          <button class="clean-button tip-section-close" id="tip-section-close">
+            X
+          </button>
+          <p class="color999">
+            使用微文章功能，可以帮助您创建寺院介绍、新闻公告、佛言教法等各种图文并茂的丰富内容。
+          </p>
+          <p class="color999">
+            文章内容需严格遵守国家的法律法规及微信公众平台的管理规定，如发布不合规合法的内容，将根据影响的严重程度，作出屏蔽文章、封禁账号、甚至冻结账款等处罚。
+          </p>
+        </div>
+        <div class="content-section">
+          <div class="content-section-item title">
+            <div class="name">
+              <span>标题：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content">
+              <input class="form-control" id="input-title" />
+            </div>
+          </div>
+          <div class="content-section-item category">
+            <div class="name"><span>分类：</span></div>
+            <div class="content clearfix">
+              <select class="form-control" id="input-category">
+                <option value="0" data-category-cell="0">未分类</option>
+              </select>
+              <button class="clean-button button" id="edit-category">
+                编辑
+              </button>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name">
+              <span>封面：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content">
+              <ul class="upload-container clearfix">
+                <li id="upload-cover-show" style="display: none">
+                  <img src="" id="upload-cover-image" />
+                  <button class="clean-button upload-remove" id="remove-cover">
+                    ×
+                  </button>
+                </li>
+                <li id="upload-cover-container">
+                  <button
+                    class="clean-button upload-button"
+                    id="upload-cover"
+                  ></button>
+                </li>
+              </ul>
+              <p class="mgt10 color999">建议尺寸：900 x 500 px</p>
+            </div>
+          </div>
+          <div class="content-section-item content-t">
+            <div class="name">
+              <span>内容：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content" id="input-content"></div>
+          </div>
+          <div class="content-section-item">
+            <div class="name">
+              <span>简介：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content">
+              <textarea
+                class="form-control"
+                rows="3"
+                id="input-introduction"
+                maxlength="36"
+              ></textarea>
+              <p class="mgt10 color999">
+                此处内容用于微信转发时显示预览，36个字以内。
+              </p>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>随喜功能：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input type="radio" name="use-pay" value="1" checked /> 启用
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="use-pay" value="0" /> 禁用
+              </label>
+            </div>
+          </div>
+          <div class="content-section-item" data-pay-select-section="1">
+            <div class="name">
+              <span>随喜按钮：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content clearfix">
+              <input
+                class="form-control fixed-width left"
+                value="随喜"
+                id="input-pay-display"
+                maxlength="4"
+              />
+              <p class="left mgl15 line-height-34 color999">
+                提示：最多可填写4字。
+              </p>
+            </div>
+          </div>
+          <div class="content-section-item" data-pay-select-section="1">
+            <div class="name">
+              <span>随喜默认金额：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content clearfix">
+              <input
+                class="form-control fixed-width inline-block"
+                id="input-pay-default"
+                type="text"
+                value="5,5,5,5.55,5.88,6,6,6.66,6.68,6.88,7.77,8,8.88,9.66,9.99,10,10,10,10,10.01,10.88,11.11,13.14,13.88,15.68,16,16.66,16.88,18,18.18,18.88,19.19,19.88,20,20,20,20.66,20.66,22,22.22,25.55,26.66,26.88,28,28.88,68,88"
+              />
+              <button class="btn btn-green mgl20" id="input-pay-default-random">
+                自动生成随喜金额
+              </button>
+            </div>
+          </div>
+          <div class="content-section-item" data-pay-select-section="1">
+            <div class="name">
+              <span>随喜引导文字：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content clearfix">
+              <input
+                class="form-control fixed-width left"
+                value="随缘布施，广种福田。"
+                id="input-pay-guide"
+                maxlength="12"
+              />
+              <p class="left mgl15 line-height-34 color999">
+                提示：最多可填写12字。
+              </p>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>标题头部：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input type="radio" name="show-title" value="1" checked /> 显示
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="show-title" value="0" /> 不显示
+              </label>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>封面图片：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input
+                  type="radio"
+                  name="show-cover-in-detail"
+                  value="1"
+                  checked
+                />
+                显示在详情页
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="show-cover-in-detail" value="0" />
+                不显示在详情页
+              </label>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>微站推荐：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input
+                  type="radio"
+                  name="show-temple-website"
+                  value="1"
+                  checked
+                />
+                显示
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="show-temple-website" value="0" />
+                不显示
+              </label>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span> 点赞互动：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input type="radio" name="show-support" value="1" checked />
+                开启
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="show-support" value="0" /> 关闭
+              </label>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>发布时间：</span></div>
+            <div class="content clearfix">
+              <input
+                class="form-control fixed-width left"
+                value=""
+                id="input-publish-time"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="actions-section">
+          <button class="btn btn-default mgr20" data-save="1" data-handling="0">
+            存为草稿
+          </button>
+          <button class="btn btn-green" data-save="2" data-handling="0">
+            正式发布
+          </button>
+          <button
+            class="btn btn-default mgl20 hide"
+            data-cancel="1"
+            data-handling="0"
+          >
+            取消
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img class="loading-toast-image" src="../../../images/loading.gif" />
+    </div>
+  </body>
+</html>

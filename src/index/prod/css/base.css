@@ -1,0 +1,23 @@
+body {
+  padding-top: 88px;
+  background-image: url('https://pic.zizaihome.com/f2c1319a-067b-11e8-83c7-00163e0c001e.jpg');
+}
+.nav .bg {
+  background-color: #3c0e68;
+  background-image: none;
+}
+.nav .decorate {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: -13px;
+  height: 23px;
+  background-image: url('https://pic.zizaihome.com/44d4dc80-0707-11e8-8a9e-00163e0c001e.png');
+  background-size: 100% 100%;
+}
+
+@media (max-width: 500px) {
+  body {
+    padding-top: 58px;
+  }
+}

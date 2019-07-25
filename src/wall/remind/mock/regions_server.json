@@ -1,0 +1,66 @@
+{
+  "msg": "\u83b7\u53d6\u6210\u529f",
+  "data": [
+    {
+      "sort": 0,
+      "status": 1,
+      "name": "\u5927\u96c4\u5b9d\u6bbf-123",
+      "buddhaName": "\u5982\u6765\u4f5b\u7956",
+      "col": 5,
+      "total": 21,
+      "id": 124,
+      "row": 5
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "name": "\u5f25\u52d2\u4f5b\u5927\u6bbf-\u5f25\u52d2\u4f5b\u4f5b\u5899\u4e00\u53f7",
+      "buddhaName": "\u5f25\u52d2\u4f5b",
+      "col": 10,
+      "total": 110,
+      "id": 127,
+      "row": 11
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "name": "\u73c8\u84dd\u6bbf-\u610f\u4e49",
+      "buddhaName": "\u5143\u59cb\u5929\u5c0a\u4e00",
+      "col": 3,
+      "total": 9,
+      "id": 128,
+      "row": 3
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "name": "\u5927\u96c4\u5b9d\u6bbf-\u5982\u6765\u4f5b\u7956\u4f5b\u5899\u4e8c\u53f7",
+      "buddhaName": "\u5982\u6765\u4f5b\u7956",
+      "col": 10,
+      "total": 101,
+      "id": 129,
+      "row": 11
+    },
+    {
+      "sort": 0,
+      "status": 0,
+      "name": "\u5927\u6bbf-A\u533a",
+      "buddhaName": "\u5c0f\u6613\u6d4b\u8bd5",
+      "col": 2,
+      "total": 4,
+      "id": 130,
+      "row": 2
+    },
+    {
+      "sort": 1,
+      "status": 0,
+      "name": "\u5927\u96c4\u5b9d\u6bbf-\u5982\u6765\u4f5b\u7956\u4f5b\u5899\u4e00\u53f7",
+      "buddhaName": "\u5982\u6765\u4f5b\u7956",
+      "col": 6,
+      "total": 28,
+      "id": 125,
+      "row": 5
+    }
+  ],
+  "result": 0
+}

@@ -1,0 +1,68 @@
+/* yi-gong 义工 */
+.yg {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px 0;
+}
+.yg .item {
+  float: left;
+  width: 50%;
+  border-left: 1px solid #e3e3e6;
+  padding: 45px 0;
+  overflow: hidden;
+}
+.yg .item:first-child {
+  border-left: 0;
+}
+.yg .item img {
+  float: left;
+  width: 29%;
+  margin-left: 12%;
+}
+.yg .item-content {
+  float: left;
+  width: 54%;
+}
+.yg .item-content .text-1 {
+  font-size: 24px;
+
+  line-height: 33px;
+  color: #333;
+  padding-left: 25%;
+}
+.yg .item-content .text-2 {
+  font-size: 18px;
+  line-height: 28px;
+  color: #989898;
+  padding-left: 25%;
+  margin-top: 13px;
+}
+
+@media (max-width: 500px) {
+  .yg .item {
+    width: 100%;
+    padding: 15px 0;
+  }
+  .yg .item img {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .yg .item-content {
+    width: 100%;
+  }
+  .yg .item-content .text-1,
+  .yg .item-content .text-2 {
+    padding-left: 0;
+    text-align: center;
+  }
+  .yg .item-content .text-1 {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .yg .item-content .text-2 {
+    padding: 0 10%;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}

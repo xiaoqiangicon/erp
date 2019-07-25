@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "data": [
+    {
+      "url": "http://wx.zizaihome.com/website/calendar",
+      "subTypes": [],
+      "name": "佛事日历",
+      "type": 1
+    },
+    {
+      "url": "",
+      "subTypes": [
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=1",
+          "id": 1,
+          "name": "供奉长生禄位"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=12",
+          "id": 12,
+          "name": "测试12"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=13",
+          "id": 13,
+          "name": "测试13"
+        }
+      ],
+      "name": "佛事",
+      "type": 2
+    },
+    {
+      "url": "",
+      "subTypes": [
+        {
+          "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=11",
+          "id": 1,
+          "name": "课堂"
+        },
+        {
+          "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=12",
+          "id": 2,
+          "name": "ceshi"
+        }
+      ],
+      "name": "义工",
+      "type": 3
+    }
+  ]
+}

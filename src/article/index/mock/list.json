@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "totalPages": 10,
+  "data": [
+    {
+      "id": 1,
+      "title": "标题1",
+      "cover": "/static/images/common/example-avatar.jpg",
+      "readCount": 111,
+      "support": 111,
+      "payAmount": 111,
+      "status": "审核中"
+    },
+    {
+      "id": 2,
+      "title": "标题2",
+      "cover": "/static/images/common/example-avatar.jpg",
+      "readCount": 222,
+      "support": 222,
+      "payAmount": 222,
+      "status": "已删除"
+    },
+    {
+      "id": 3,
+      "title": "标题3",
+      "cover": "/static/images/common/example-avatar.jpg",
+      "readCount": 333,
+      "support": 333,
+      "payAmount": 333,
+      "status": "草稿"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+.detail-popup-dialog {
+  width: 400px;
+}
+.detail-popup-content {
+  padding: 35px;
+}
+
+.detail-popup-feed-item {
+  float: left;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.detail-popup-feed-item img {
+  width: 100%;
+  height: 100%;
+}
+.detail-popup-feed-item-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  display: none;
+}
+.detail-popup-feed-item:hover .detail-popup-feed-item-delete {
+  display: block;
+}

@@ -1,0 +1,79 @@
+.app {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+.app .inner {
+  width: 80%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.app-left {
+  float: left;
+  width: 43%;
+}
+.app-left img {
+  width: 100%;
+}
+.app-right {
+  float: right;
+  width: 57%;
+  padding-top: 40px;
+  padding-left: 100px;
+}
+.app-right .common-title,
+.app-right .common-desc {
+  padding-left: 0;
+}
+.app .link {
+  display: block;
+  width: 104px;
+  height: 34px;
+  line-height: 32px;
+  border-radius: 17px;
+  border: 1px solid #6490c7;
+  color: #6490c7;
+  font-size: 16px;
+
+  margin-top: 16px;
+  text-align: center;
+}
+.app .link,
+.app .link:hover,
+.app .link:active,
+.app .link:focus {
+  text-decoration: none;
+}
+.app .common-title,
+.app .common-desc {
+  padding-left: 0;
+}
+
+@media (max-width: 500px) {
+  .app {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .app .inner {
+    width: 64%;
+  }
+  .app-left,
+  .app-right {
+    width: 100%;
+  }
+  .app-right {
+    padding-left: 0;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .app .link {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .app > .common-title,
+  .app > .common-desc {
+    padding: 0 10%;
+  }
+  .app > .common-title {
+    margin-top: 40px;
+  }
+}

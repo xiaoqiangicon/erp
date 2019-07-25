@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "totalPages": 10,
+  "data": [
+    {
+      "nickname": "哈哈1",
+      "source": "功德箱",
+      "avatar": "/images/common/example-avatar.jpg",
+      "amount": 1111,
+      "time": "2016-07-01 09:09",
+      "wish": "心愿1"
+    },
+    {
+      "nickname": "哈哈2",
+      "source": "供养",
+      "avatar": "/images/common/example-avatar.jpg",
+      "amount": 2222,
+      "time": "2016-07-01 09:09",
+      "wish": "心愿2"
+    },
+    {
+      "nickname": "哈哈3",
+      "source": "功德箱/供养",
+      "avatar": "/images/common/example-avatar.jpg",
+      "amount": 3333,
+      "time": "2016-07-01 09:09",
+      "wish": "心愿3"
+    }
+  ]
+}

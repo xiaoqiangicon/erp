@@ -1,0 +1,89 @@
+/* donate chart */
+.component-donate-chart {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.component-donate-chart-top-bar {
+  width: 100%;
+  height: 40px;
+  padding: 0 15px;
+}
+
+.component-donate-chart-title {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+.component-donate-chart-title .inline-icon {
+  width: 22px;
+  height: 24px;
+  margin-bottom: -5px;
+  background-image: url(../../../../images/temple/index/ic-gongdebang@2x.png);
+}
+
+.component-donate-chart-switch {
+  float: right;
+  height: 40px;
+  line-height: 40px;
+  color: #666666;
+}
+
+.component-donate-chart-switch-button {
+  color: #666666;
+}
+
+.component-donate-chart-switch-button.active {
+  color: #0d7652;
+}
+
+.component-donate-chart-body {
+  padding: 0 15px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.component-donate-chart-row {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 12px 0;
+  display: table;
+  width: 100%;
+}
+
+.component-donate-chart-row:last-child {
+  border-bottom: none;
+}
+
+.component-donate-chart-cell {
+  height: 22px;
+  line-height: 22px;
+  display: table-cell;
+  color: #666666;
+  text-align: center;
+}
+
+.component-donate-chart-row.active .component-donate-chart-cell {
+  color: #17337c;
+}
+
+.component-donate-chart-cell-sequence,
+.component-donate-chart-cell-avatar {
+  width: 10%;
+}
+
+.component-donate-chart-cell-avatar-image {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.component-donate-chart-cell-nickname {
+  width: 60%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.component-donate-chart-cell-amount {
+  width: 20%;
+}

@@ -1,0 +1,46 @@
+.content-section {
+  width: 100%;
+  margin-top: 10px;
+}
+.content-row {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.content-section-head .content-row {
+  background: #eaf4ff;
+  height: 40px;
+  line-height: 40px;
+}
+.content-section-body .content-row {
+  border-bottom: 1px solid #d0e8ff;
+  padding: 15px 0;
+}
+.content-row-cell {
+  float: left;
+  width: 9%;
+  padding: 0 5px;
+  /* 防止某个字段为空时，错位 */
+  min-height: 10px;
+}
+.content-row-actions button {
+  color: #6fba2c;
+}
+.content-row-name,
+.content-row-place {
+  width: 15.3%;
+}
+.content-row-select {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  background: #a6b4c0;
+  color: #ffffff;
+  font-size: 12px;
+}
+.content-row-select.active {
+  background: green;
+}

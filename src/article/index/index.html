@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>文章管理</title>
+  </head>
+  <body data-menu-id="article-index">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="filter-section clearfix">
+          <div class="filter-section-query">
+            <div class="btn-group btn-group-dropdown left">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-toggle="dropdown"
+              >
+                <span class="text" id="category" data-category="0"
+                  >全部分类</span
+                >
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="category-dropdown-menu">
+                <li><a class="item" data-select-category="0">全部分类</a></li>
+              </ul>
+            </div>
+            <div class="btn-group btn-group-dropdown left mgl20">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-toggle="dropdown"
+              >
+                <span class="text" id="status" data-status="0">全部状态</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="item" data-select-status="0">全部状态</a></li>
+                <li><a class="item" data-select-status="1">草稿</a></li>
+                <li><a class="item" data-select-status="2">正式发布</a></li>
+                <li><a class="item" data-select-status="3">系统屏蔽</a></li>
+              </ul>
+            </div>
+            <div class="form-group left form-group-search">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="搜索"
+                id="search-input"
+              />
+              <button
+                class="clean-button glyphicon glyphicon-search icon-search"
+                id="search-submit"
+              ></button>
+            </div>
+          </div>
+          <div class="filter-section-button">
+            <a href="/zzhadmin/createArticleIndex/" class="btn btn-green button"
+              >新建文章</a
+            >
+          </div>
+        </div>
+        <div class="content-section">
+          <div class="content-section-head">
+            <div class="article-cell">
+              <span class="article-title">标题</span>
+              <span class="article-visit-count">访问量</span>
+              <span class="article-support">点赞</span>
+              <span class="article-pay-amount">随喜金额</span>
+              <span class="article-status">状态</span>
+              <span class="article-actions">操作</span>
+            </div>
+          </div>
+          <div class="condition-content-containers" id="list-container">
+            <div class="content-placeholder">
+              <img src="../../../images/loading.gif" />
+            </div>
+          </div>
+        </div>
+        <div class="pagination-section" id="pagination-container"></div>
+      </div>
+    </div>
+  </body>
+</html>

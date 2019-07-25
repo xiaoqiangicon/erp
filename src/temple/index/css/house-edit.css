@@ -1,0 +1,45 @@
+.house-edit-tip {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #a5e285;
+  background-color: #f6ffed;
+  color: #565a52;
+}
+
+.edit-com-house-row {
+  position: relative;
+  width: 100%;
+  padding: 10px 0 10px 150px;
+  min-height: 96px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.edit-com-house-row:first-child {
+  border-top: 1px solid #dddddd;
+}
+
+.edit-com-house-row .cover-1 {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 140px;
+  height: 76px;
+  border-radius: 8px;
+}
+
+.edit-com-house-row .name-1 {
+  display: inline-block;
+  line-height: 76px;
+}
+
+.edit-com-house-row .del-1 {
+  float: right;
+  margin-top: 25px;
+}
+
+.edit-com-house-row .edit-1 {
+  float: right;
+  margin-top: 25px;
+  margin-right: 10px;
+}

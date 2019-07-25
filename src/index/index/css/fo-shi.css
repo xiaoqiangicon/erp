@@ -1,0 +1,147 @@
+.fo-shi {
+  margin-top: 10px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  background-color: #ffffff;
+}
+.fo-shi-left {
+  float: left;
+  width: 37%;
+  text-align: center;
+}
+.fo-shi-left img {
+  width: 67px;
+  margin-top: 10px;
+}
+.fo-shi-left .text-1 {
+  font-size: 20px;
+  color: #333333;
+
+  margin-top: 18px;
+}
+.fo-shi-left .text-2 {
+  font-size: 16px;
+  color: #989898;
+  margin-top: 8px;
+}
+.fo-shi-right {
+  float: right;
+  width: 63%;
+  text-align: center;
+  border-left: 1px solid #e3e3e6;
+}
+.fo-shi-row {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #e3e3e6;
+}
+.fo-shi-row:last-child {
+  border-bottom: none;
+}
+.fo-shi-item {
+  width: 50%;
+  float: left;
+  border-left: 1px solid #e3e3e6;
+  padding: 15px 0 15px 27px;
+  height: 83px;
+}
+.fo-shi-item:first-child {
+  border-left: none;
+}
+.fo-shi-item-image {
+  height: 40px;
+  float: left;
+}
+.fo-shi-item-content {
+  float: left;
+  margin-left: 18px;
+}
+.fo-shi-item-content .title {
+  font-size: 16px;
+
+  color: #333;
+  text-align: left;
+}
+.fo-shi-item-content .desc {
+  font-size: 16px;
+  color: #989898;
+  margin-top: 10px;
+}
+.fo-shi-link {
+  margin-top: 49px;
+  text-align: center;
+  font-size: 16px;
+
+  color: #6490c7;
+}
+.fo-shi-link a,
+.fo-shi-link a:hover,
+.fo-shi-link a:active,
+.fo-shi-link a:focus {
+  color: #6490c7;
+  text-decoration: none;
+}
+
+@media (max-width: 500px) {
+  .fo-shi {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .fo-shi-left,
+  .fo-shi-right,
+  .fo-shi-item {
+    width: 100%;
+  }
+  .fo-shi-item {
+    position: relative;
+  }
+  .fo-shi-item-image {
+    position: absolute;
+    left: 27px;
+    top: 15px;
+  }
+  .fo-shi-item-content {
+    margin-left: 58px;
+  }
+  .fo-shi-right {
+    border-left: none;
+    margin-top: 15px;
+  }
+  .fo-shi-row {
+    border-bottom: none;
+  }
+  .fo-shi-left img {
+    width: 40px;
+    position: absolute;
+    left: 27px;
+    top: 0;
+  }
+  .fo-shi-left {
+    padding-left: 27px;
+  }
+  .fo-shi-left-content {
+    float: left;
+    margin-left: 58px;
+  }
+  .fo-shi-left .text-1 {
+    font-size: 16px;
+    text-align: left;
+    margin-top: 0;
+  }
+  .fo-shi-left .text-2 {
+    font-size: 16px;
+    color: #989898;
+    margin-top: 10px;
+    text-align: left;
+  }
+  .fo-shi-link {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .fo-shi-left .text-2,
+  .fo-shi-item-content .desc {
+    font-size: 14px;
+  }
+}

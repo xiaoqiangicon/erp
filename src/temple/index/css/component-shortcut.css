@@ -1,0 +1,40 @@
+/* 快捷入口组件 */
+.component-shortcut {
+  width: 100%;
+  padding: 10px 0;
+}
+.component-shortcut-title {
+  width: 100%;
+  padding: 0 20px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+.component-shortcut-body {
+  width: 100%;
+  padding: 0 8px;
+  overflow: hidden;
+}
+.component-shortcut-item {
+  float: left;
+  display: block;
+  width: 33.333333%;
+  padding: 8px 16px;
+}
+.component-shortcut-item-image {
+  width: 100%;
+}
+.component-shortcut-item-title {
+  width: 100%;
+  line-height: 20px;
+  margin-top: 8px;
+  color: #323232;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}

@@ -1,0 +1,32 @@
+.tip-section {
+  width: 100%;
+  border-radius: 5px;
+  background: #ffffff;
+  margin-top: 20px;
+  padding: 20px;
+}
+.tip-section-left {
+  width: 60%;
+  float: left;
+  padding-right: 20px;
+  border-right: 1px solid #979797;
+}
+.tip-section-left .title {
+  line-height: 28px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+}
+.tip-section-left .title-mark {
+  display: inline-block;
+  float: left;
+  width: 6px;
+  height: 28px;
+  background-color: #71ba31;
+  margin-right: 10px;
+}
+.tip-section-right {
+  width: 40%;
+  float: right;
+  padding-left: 20px;
+}

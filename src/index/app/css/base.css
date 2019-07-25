@@ -1,0 +1,5 @@
+body {
+  background-color: #e9f2f9;
+  /* firefox 兼容 */
+  overflow-x: hidden;
+}

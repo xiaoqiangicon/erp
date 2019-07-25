@@ -1,0 +1,65 @@
+.component-pagination-container {
+  width: 100%;
+  text-align: center;
+}
+
+.component-pagination-cell {
+  min-width: 34px;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 5px;
+  display: inline-block;
+  margin-right: 2px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #535351;
+  background-color: #fff;
+  border: 1px solid #6fba2c;
+  text-decoration: none;
+}
+.component-pagination-cell,
+.component-pagination-cell:hover,
+.component-pagination-cell:active,
+.component-pagination-cell:focus {
+  text-decoration: none;
+}
+
+.component-pagination-cell.active,
+.component-pagination-cell:hover {
+  background-color: #6fba2c;
+  color: #fff;
+}
+
+.component-pagination-cell.active {
+  cursor: default;
+}
+
+.component-pagination-cell.disabled {
+  cursor: default;
+  color: #535351;
+  background-color: #fff;
+}
+
+.component-pagination-cell-input {
+  border: 1px solid #6fba2c;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  padding: 0 3px;
+  text-align: center;
+  background-color: #fff;
+}
+.component-pagination-cell-input:active,
+.component-pagination-cell-input:focus {
+  outline: none;
+}
+
+.component-pagination-description {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 28px;
+  margin-right: 10px;
+}

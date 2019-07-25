@@ -1,0 +1,38 @@
+.nav > li > a:focus,
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover {
+  background-color: transparent;
+  border-color: #337ab7;
+}
+
+.nav-tabs {
+  border-color: #e0e0e0;
+}
+
+.nav-tabs > li {
+  width: 18%;
+  text-align: center;
+  cursor: pointer !important;
+}
+
+.nav-tabs > li > a {
+  background-color: #fff;
+  color: #000;
+}
+
+.nav-tabs > li + li {
+  margin-left: 0;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: #fff;
+  background-color: #70b931;
+}

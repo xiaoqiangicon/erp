@@ -1,0 +1,6 @@
+.hover-popup {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+}

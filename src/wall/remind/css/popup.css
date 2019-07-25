@@ -1,0 +1,8 @@
+.send-popup-phones {
+  width: 100%;
+  padding-top: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  max-height: 160px;
+  overflow: auto;
+}

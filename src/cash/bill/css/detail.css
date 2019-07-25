@@ -1,0 +1,114 @@
+.detail-section {
+  margin-top: 20px;
+}
+.detail-section .title {
+  /*padding-left: 44px;*/
+}
+.detail-section .title-text {
+  width: 100%;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  background-color: #70b931;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 4px;
+}
+.detail-section .content {
+  margin-top: 20px;
+}
+.detail-section .unit-container {
+  margin-bottom: 20px;
+  border: 1px solid #979797;
+}
+.detail-section .unit-container:last-child {
+  margin-bottom: 0;
+}
+.detail-section .unit {
+  position: relative;
+  width: 100%;
+  padding: 20px 0 20px 44px;
+}
+.detail-section .unit:nth-child(2n) {
+  background-color: #f8faf9;
+}
+.detail-section .unit:nth-child(2n + 1) {
+  background-color: #ffffff;
+}
+.detail-section .unit-inner {
+  width: 100%;
+  overflow: hidden;
+}
+.detail-section .unit .cell {
+  width: 15%;
+  float: left;
+  padding: 0 10px;
+  min-height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: #333333;
+}
+.detail-section .unit .cell.active {
+  color: #70b931;
+  font-weight: bold;
+}
+.detail-section .unit .cell-name {
+  width: 40%;
+  text-align: left;
+}
+.detail-section .unit .cell-name p {
+  margin-bottom: 0;
+}
+.detail-section .unit-head {
+  background-color: #f8faf9 !important;
+}
+.detail-section .unit-head .cell {
+  color: #000;
+  font-size: 20px;
+}
+.detail-section .unit-head .cell-name {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.detail-section .unit-select {
+  position: absolute;
+  left: 10px;
+  top: 21px;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 50%;
+  background: #a6b4c0;
+  color: #ffffff;
+}
+.detail-section .unit-select.active {
+  background-color: #70b931;
+}
+.detail-section .total {
+  margin-top: 20px;
+}
+.detail-section .foot {
+  margin-top: 20px;
+  position: relative;
+  padding-left: 44px;
+  height: 46px;
+}
+.detail-section .foot-inner {
+  width: 100%;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  font-size: 16px;
+  padding: 0 20px;
+  color: #ffffff;
+  background-color: #70b931;
+  border-radius: 4px;
+}
+.detail-section .foot .unit-select {
+  top: 8px;
+}
+.detail-section .title-text {
+  display: inline-block;
+}

@@ -1,0 +1,46 @@
+.prod-7 {
+  position: relative;
+  width: 100%;
+  padding-left: 62px;
+  padding-right: 24px;
+}
+.prod-7 .image-1 {
+  width: 100%;
+}
+.prod-7 .image-2 {
+  position: absolute;
+  top: 26px;
+  right: 76px;
+  height: 43px;
+}
+.prod-7 .image-3 {
+  position: absolute;
+  top: 234px;
+  left: 0;
+  width: 151px;
+  z-index: -1;
+}
+.prod-7 .common-btn-1 {
+  position: absolute;
+  top: 117px;
+  right: 39px;
+}
+
+@media (max-width: 500px) {
+  .prod-7 {
+    width: 80%;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+  .prod-7 .image-2 {
+    position: relative;
+    top: 0;
+    right: 0;
+    height: 43px;
+    margin-top: 40px;
+  }
+  .prod-7 .image-3 {
+    display: none;
+  }
+}

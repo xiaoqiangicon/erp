@@ -1,0 +1,69 @@
+.banner {
+  position: relative;
+  width: 100%;
+}
+.banner > img {
+  width: 100%;
+}
+.banner .button {
+  position: absolute;
+  bottom: 8%;
+  height: 12%;
+  cursor: pointer;
+}
+.banner .button img {
+  height: 100%;
+}
+.banner .btn-1 {
+  left: 50%;
+  /* Firefox兼容：一定要给宽度 */
+  width: 14.77%;
+}
+.banner .btn-2 {
+  right: 18%;
+  /* Firefox兼容：一定要给宽度 */
+  width: 14.77%;
+}
+.banner .btn-3 {
+  right: 9%;
+  /* Firefox兼容：一定要给宽度 */
+  width: 5.46%;
+}
+.banner .container-1 {
+  position: absolute;
+  right: 0;
+  bottom: 123%;
+  width: 230%;
+  padding: 7px 32px 15px 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  display: none;
+}
+.banner .btn-3:hover .container-1 {
+  display: block;
+}
+.banner .container-1 .text {
+  font-size: 24px;
+  line-height: 33px;
+
+  text-align: center;
+  color: #ffffff;
+}
+.banner .container-1 img {
+  width: 100%;
+  margin-top: 7px;
+}
+.banner .container-1 .marker {
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  border-right: 12px solid transparent;
+  border-top: 12px solid rgba(0, 0, 0, 0.5);
+  border-left: 12px solid transparent;
+}
+
+@media (max-width: 500px) {
+  .banner .button {
+    display: none;
+  }
+}

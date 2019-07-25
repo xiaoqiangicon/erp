@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>基础设置</title>
+  </head>
+  <body data-menu-id="base-set">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="panel promotion-panel">
+          <div class="panel-header"><p class="panel-title">访问方式</p></div>
+          <div class="panel-content clearfix">
+            <div class="content-cell br98 left">
+              <div class="content-title">微信二维码</div>
+              <div class="content-main main-qrcode" id="qrcode-container"></div>
+              <div class="content-action">
+                <a class="switch-qrcode" data-switch-qrcode="1">小图</a>
+                <a class="switch-qrcode active" data-switch-qrcode="2">中图</a>
+                <a class="switch-qrcode" data-switch-qrcode="3">大图</a>
+              </div>
+              <div class="content-usage">
+                <p>用法：</p>
+                <p>1.印于传单，海报上，现场推广。</p>
+                <p>2.嵌于微信文章内，长按识别进入。</p>
+              </div>
+            </div>
+            <div class="content-cell right">
+              <div class="content-title">微信链接</div>
+              <div class="content-main main-input">
+                <input class="pdl10" type="text" value="" id="wx-link" />
+              </div>
+              <div class="content-action">
+                <button
+                  class="btn btn-green copy-link"
+                  data-clipboard-target="#wx-link"
+                >
+                  复制链接
+                </button>
+              </div>
+              <div class="content-usage">
+                <p>用法:</p>
+                <p>1.设置为微信公众号菜单项。</p>
+                <p>2.放在微信“阅读原文”入口里。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel temple-set-panel" id="temple-set-panel">
+          <div class="award-set">
+            <div class="panel-header"><p class="panel-title">奖励设置</p></div>
+            <div class="panel-content fs16 clearfix">
+              <div class="content-cell mgb10">
+                <label class="label-day" for="day-49-input"
+                  >连续礼佛49天：</label
+                >
+                <input
+                  class="award-set-input"
+                  type="text"
+                  id="day-49-input"
+                  data-input-day-type="1"
+                />
+                <label class="label-type" for="day-49-select">类型：</label>
+                <select
+                  class="select-picker award-set-type"
+                  name=""
+                  id="day-49-select"
+                  data-select-day-type="1"
+                >
+                  <option value="1">快递类</option>
+                  <option value="2">祈福供奉类</option>
+                  <option value="3">往生供奉类</option>
+                  <option value="4">其它</option>
+                </select>
+              </div>
+              <div class="content-cell mgb10">
+                <label class="label-day" for="day-90-input"
+                  >连续礼佛90天：</label
+                >
+                <input
+                  class="award-set-input"
+                  type="text"
+                  id="day-90-input"
+                  data-input-day-type="2"
+                />
+                <label class="label-type" for="day-90-select">类型：</label>
+                <select
+                  class="select-picker award-set-type"
+                  name=""
+                  id="day-90-select"
+                  data-select-day-type="2"
+                >
+                  <option value="1">快递类</option>
+                  <option value="2">祈福供奉类</option>
+                  <option value="3">往生供奉类</option>
+                  <option value="4">其它</option>
+                </select>
+              </div>
+              <div class="content-cell mgb10">
+                <label class="label-day" for="day-180-input"
+                  >连续礼佛180天：</label
+                >
+                <input
+                  class="award-set-input"
+                  type="text"
+                  id="day-180-input"
+                  data-input-day-type="3"
+                />
+                <label class="label-type" for="day-180-select">类型：</label>
+                <select
+                  class="select-picker award-set-type"
+                  name=""
+                  id="day-180-select"
+                  data-select-day-type="3"
+                >
+                  <option value="1">快递类</option>
+                  <option value="2">祈福供奉类</option>
+                  <option value="3">往生供奉类</option>
+                  <option value="4">其它</option>
+                </select>
+              </div>
+              <div class="content-cell mgb10">
+                <label class="label-day" for="day-365-input"
+                  >连续礼佛365天：</label
+                >
+                <input
+                  class="award-set-input"
+                  type="text"
+                  id="day-365-input"
+                  data-input-day-type="4"
+                />
+                <label class="label-type" for="day-365-select">类型：</label>
+                <select
+                  class="select-picker award-set-type"
+                  name=""
+                  id="day-365-select"
+                  data-select-day-type="4"
+                >
+                  <option value="1">快递类</option>
+                  <option value="2">祈福供奉类</option>
+                  <option value="3">往生供奉类</option>
+                  <option value="4">其它</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="free-incense-set">
+            <div class="panel-header">
+              <p class="panel-title">免费灯每日限额</p>
+            </div>
+            <div class="panel-content clearfix">
+              <div class="content-cell fs16">
+                <input
+                  class="mgr10"
+                  id="free-incense-limit"
+                  name="freeIncenseLimit"
+                  type="radio"
+                />
+                <label class="mgr20" for="free-incense-limit">设置限额</label>
+                每天 <input id="limit-num" type="text" /> 支
+                <input
+                  style="margin-left: 120px;"
+                  id="free-incense-not-limit"
+                  name="freeIncenseLimit"
+                  type="radio"
+                  checked
+                />
+                <label for="free-incense-not-limit">不设限额</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="music-set">
+            <div class="panel-header"><p class="panel-title">背景音乐</p></div>
+            <div class="panel-content clearfix" id="music-list-container"></div>
+            <audio src="" loop="loop"></audio>
+          </div>
+          <div class="mgb20" style="text-align: center">
+            <button class="btn btn-green save-award-set" id="save-temple-set">
+              保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 载入等待图片 开始 -->
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+    <!--载入等待图片 结束-->
+  </body>
+</html>

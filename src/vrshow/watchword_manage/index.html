@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>字幕管理</title>
+  </head>
+  <body data-menu-id="watchword-manage">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="main-header clearfix">
+          <div
+            class="btn btn-default right mgt40 mgr60 add-watchword"
+            id="add-watchword-btn"
+          >
+            添加字幕
+          </div>
+        </div>
+        <table class="main-table">
+          <thead>
+            <tr>
+              <th style="width: 20%">标题</th>
+              <th style="width: 60%">字幕</th>
+              <th style="width: 20%">操作</th>
+            </tr>
+          </thead>
+          <tbody id="watchword-list-container"></tbody>
+        </table>
+        <!--分页器-->
+        <div class="main-footer" id="pagination-container"></div>
+      </div>
+    </div>
+    <!-- 添加字幕Modal star -->
+    <div
+      class="modal add-watchword-modal"
+      id="add-watchword-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="add-watchword-modal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              &times;
+            </button>
+            <h4 class="modal-title">添加字幕</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group clearfix">
+              <label for="buddhist-name" class="col-sm-2">标题：</label>
+              <input
+                class="buddhist-name"
+                id="buddhist-name"
+                type="text"
+                style="width: 303px"
+                maxlength="10"
+              />
+            </div>
+            <div class="form-group clearfix">
+              <label
+                style="vertical-align: top"
+                for="watchword"
+                class="col-sm-2"
+                >字幕：</label
+              >
+              <textarea
+                class="watchword-textarea"
+                name=""
+                id="watchword"
+                cols="40"
+                rows="10"
+                maxlength="70"
+                style="resize: none"
+              ></textarea>
+              <br />
+              <span class="textarea-num">0/70</span>
+            </div>
+          </div>
+          <div class="modal-footer" style="text-align: center">
+            <button type="button" id="submit-watchword" class="btn btn-success">
+              保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 添加字幕Modal end -->
+    <!-- 载入等待图片 开始 -->
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+    <!--载入等待图片 结束-->
+  </body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>文章管理</title>
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="filter-section clearfix">
+          <div class="filter-section-query">
+            <div class="btn-group btn-group-dropdown left">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-toggle="dropdown"
+              >
+                <span class="text" id="category" data-category="0"
+                  >全部分类</span
+                >
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="item" data-select-category="0">全部分类</a></li>
+                <li><a class="item" data-select-category="1">分类1</a></li>
+                <li><a class="item" data-select-category="2">分类2</a></li>
+                <li><a class="item" data-select-category="3">分类3</a></li>
+              </ul>
+            </div>
+            <div class="btn-group btn-group-dropdown left mgl20">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-toggle="dropdown"
+              >
+                <span class="text" id="status" data-status="0">全部状态</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="item" data-select-category="0">全部状态</a></li>
+                <li><a class="item" data-select-category="1">状态1</a></li>
+                <li><a class="item" data-select-category="2">状态2</a></li>
+                <li><a class="item" data-select-category="3">状态3</a></li>
+              </ul>
+            </div>
+            <div class="form-group left form-group-search">
+              <input
+                type="email"
+                class="form-control"
+                id=""
+                placeholder="搜索"
+              />
+              <button
+                class="clean-button glyphicon glyphicon-search icon-search"
+              ></button>
+            </div>
+          </div>
+          <div class="filter-section-button">
+            <button class="btn btn-green button">新建文章</button>
+          </div>
+        </div>
+        <div class="content-section">
+          <div class="content-section-head">
+            <div class="article-cell">
+              <span class="article-title">标题</span>
+              <span class="article-visit-count">访问量</span>
+              <span class="article-support">点赞</span>
+              <span class="article-pay-amount">随喜金额</span>
+              <span class="article-status">状态</span>
+              <span class="article-actions">操作</span>
+            </div>
+          </div>
+          <div class="date-content-containers">
+            <div class="date-content-container">
+              <div class="pagination-content-container">
+                <div class="article-cell">
+                  <div class="article-title">
+                    <img
+                      src="/static/images/common/example-avatar.jpg"
+                      class="article-cover"
+                    />
+                    <p class="article-title-text">
+                      标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+                    </p>
+                  </div>
+                  <div class="article-visit-count">
+                    <p>UV：1333</p>
+                    <p>PV：2838</p>
+                  </div>
+                  <div class="article-support">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>998</p>
+                  </div>
+                  <div class="article-pay-amount">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>19411.2</p>
+                  </div>
+                  <div class="article-status">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>正式发布</p>
+                  </div>
+                  <div class="article-actions">
+                    <p>
+                      <button class="clean-button mgr5">编辑</button>
+                      <span>-</span>
+                      <button class="clean-button mgl5">删除</button>
+                    </p>
+                    <p>
+                      <button class="clean-button mgr5">复制</button>
+                      <span>-</span>
+                      <button class="clean-button mgl5">预览</button>
+                    </p>
+                  </div>
+                </div>
+                <div class="article-cell">
+                  <div class="article-title">
+                    <img
+                      src="/static/images/common/example-avatar.jpg"
+                      class="article-cover"
+                    />
+                    <p class="article-title-text">
+                      标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+                    </p>
+                  </div>
+                  <div class="article-visit-count">
+                    <p>UV：1333</p>
+                    <p>PV：2838</p>
+                  </div>
+                  <div class="article-support">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>998</p>
+                  </div>
+                  <div class="article-pay-amount">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>19411.2</p>
+                  </div>
+                  <div class="article-status">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>正式发布</p>
+                  </div>
+                  <div class="article-actions">
+                    <p>
+                      <button class="clean-button mgr5">编辑</button>
+                      <span>-</span>
+                      <button class="clean-button mgl5">删除</button>
+                    </p>
+                    <p>
+                      <button class="clean-button mgr5">复制</button>
+                      <span>-</span>
+                      <button class="clean-button mgl5">预览</button>
+                    </p>
+                  </div>
+                </div>
+                <div class="article-cell">
+                  <div class="article-title">
+                    <img
+                      src="/static/images/common/example-avatar.jpg"
+                      class="article-cover"
+                    />
+                    <p class="article-title-text">
+                      标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+                    </p>
+                  </div>
+                  <div class="article-visit-count">
+                    <p>UV：1333</p>
+                    <p>PV：2838</p>
+                  </div>
+                  <div class="article-support">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>998</p>
+                  </div>
+                  <div class="article-pay-amount">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>19411.2</p>
+                  </div>
+                  <div class="article-status">
+                    <p class="article-placeholder">&nbsp;</p>
+                    <p>正式发布</p>
+                  </div>
+                  <div class="article-actions">
+                    <p>
+                      <button class="clean-button mgr5">编辑</button>
+                      <span>-</span>
+                      <button class="clean-button mgl5">删除</button>
+                    </p>
+                    <p>
+                      <button class="clean-button mgr5">复制</button>
+                      <span>-</span>
+                      <button class="clean-button mgl5">预览</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-section">
+          <div class="pagination-container">
+            <button class="btn btn-default button mgr20">上一页</button>
+            <button class="btn btn-default button">下一页</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 图文组件选择佛事列表 -->
+    <div class="promotion" style="display: block">
+      <div class="promotion-background"></div>
+      <div class="promotion-pane">
+        <div class="promotion-top">
+          <div class="promotion-title">预览</div>
+          <div
+            class="promotion-close"
+            data-action="close"
+            data-type="promotion"
+            data-id="447"
+          >
+            X
+          </div>
+        </div>
+        <div class="promotion-content">
+          <div class="promotion-content-container">
+            <div class="promotion-content-cell left pdr20 bdr-eeeeee">
+              <div class="promotion-content-title">佛事微信二维码</div>
+              <div class="promotion-content-content">
+                <img src="" style="display: block;" />
+              </div>
+              <div class="promotion-content-action">
+                <a data-action="switch-qrcode" data-id="447" data-src=""
+                  >小图</a
+                >
+                <span>|</span>
+                <a data-action="switch-qrcode" data-id="447" data-src=""
+                  >中图</a
+                >
+                <span>|</span>
+                <a
+                  class="active"
+                  data-action="switch-qrcode"
+                  data-id="447"
+                  data-src=""
+                  >大图</a
+                >
+              </div>
+              <div class="mgt20">
+                <p class="mgb0">用法：</p>
+                <p class="mgb0 pdl20">1、印于传单、海报上，现场推广。</p>
+                <p class="mgb0 pdl20">2、嵌于微信文章内，长按识别进入。</p>
+              </div>
+            </div>
+            <div class="promotion-content-cell right pdl20">
+              <div class="promotion-content-title">佛事微信链接</div>
+              <div class="promotion-content-content">
+                <input
+                  class="form-control mgt60"
+                  data-role="copy-link-container"
+                  data-id="447"
+                  value="https://wx.zizaihome.com/commodity/commodityInfo?commodityId=447"
+                />
+              </div>
+
+              <div class="promotion-content-action">
+                <a
+                  class="btn btn-green btn-xs white-force pdl10 pdr10"
+                  data-action="copy-link"
+                  data-clipboard-target="[data-role='copy-link-container'][data-id='447']"
+                  >复制链接</a
+                >
+              </div>
+              <div class="mgt20">
+                <p class="mgb0">用法：</p>
+                <p class="mgb0 pdl20">1、设置为微信公众号菜单项。</p>
+                <p class="mgb0 pdl20">2、放在微信“阅读原文”入口里。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

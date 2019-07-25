@@ -13,6 +13,7 @@ module.exports = (req, res) => {
           totalMoney: id * 2,
           totalPromotionMoney: id * 3,
           isPromotion: [-1, 1][Math.floor(Math.random() * 2)],
+          senilitySale: Math.floor(Math.random() * 2),
           isEnd: Math.floor(Math.random() * 2),
         })),
       },

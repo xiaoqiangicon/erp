@@ -1,0 +1,114 @@
+.component-edit-shortcut-items-container {
+  width: 100%;
+  padding: 0;
+}
+.component-edit-shortcut-items-container li {
+  float: left;
+  position: relative;
+  width: 80px;
+  margin: 5px;
+  list-style: none;
+  overflow: hidden;
+}
+
+.component-edit-shortcut-items-container .item-image {
+  width: 100%;
+}
+.component-edit-shortcut-items-container .item-title {
+  width: 100%;
+  line-height: 30px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.component-edit-shortcut-items-container .item-edit {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  display: none;
+}
+.component-edit-shortcut-items-container .component-upload-btn {
+  width: 80px;
+  height: 80px;
+}
+.component-edit-shortcut-items-container li:hover .upload-remove,
+.component-edit-shortcut-items-container li:hover .item-edit {
+  display: block;
+}
+.popup-shortcut {
+  display: block;
+  z-index: 1049;
+}
+.popup-shortcut .dropdown-menu {
+  max-height: 140px;
+  overflow: auto;
+}
+.popup-shortcut .modal-body {
+  padding: 20px;
+}
+.popup-shortcut .modal-footer {
+  text-align: center;
+}
+.popup-shortcut-item {
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  min-height: 34px;
+}
+.popup-shortcut-item-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 18px;
+}
+.popup-shortcut-item-body {
+  padding-left: 80px;
+}
+.popup-shortcut-title-input {
+  width: 200px;
+  display: inline-block;
+}
+.popup-shortcut-radios .radio-inline {
+  font-size: 16px;
+  line-height: 34px;
+}
+.popup-shortcut-radios .radio-inline input {
+  margin-top: 10px;
+}
+.popup-shortcut-radios-content {
+  width: 100%;
+  margin-top: 10px;
+}
+.popup-shortcut-radios-content input {
+  width: 400px;
+}
+.popup-shortcut-select-container {
+  width: 100%;
+  padding: 0;
+}
+.popup-shortcut-select-container li {
+  float: left;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  list-style: none;
+  overflow: hidden;
+}
+.popup-shortcut-select-container li img {
+  width: 100%;
+  height: 100%;
+}
+.popup-shortcut-select-container li:hover .upload-remove {
+  display: block;
+}

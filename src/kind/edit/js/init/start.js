@@ -21,7 +21,10 @@ const $body = $('body');
 module.exports = _ => {
   $body.append(mainTpl(data.info));
 
-  data.editor = window.UE.getEditor('editor');
+  data.editor = window.UE.getEditor('editor', {
+    initialFrameWidth: 700,
+    initialFrameHeight: 400,
+  });
 
   data.editor.ready(() => {
     data.info.intro && data.editor.setContent(data.info.intro);

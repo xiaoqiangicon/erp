@@ -1,0 +1,13 @@
+.act-1 {
+  width: 100%;
+  padding: 59px 6% 0 6%;
+}
+.act-1-left {
+  float: left;
+  width: 50%;
+  padding-top: 64px;
+}
+.act-1-right {
+  float: right;
+  width: 44%;
+}

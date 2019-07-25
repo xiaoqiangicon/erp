@@ -8,6 +8,7 @@ import share from './share';
 // import toastr from 'toastr';
 import dialog from '../../util/dialog';
 import alert from '../../util/alert';
+import { defaultDetail, defaultTitle } from './util';
 
 seeView({
   events: {
@@ -38,18 +39,8 @@ seeView({
       $('[data-radio="verify"].active').attr('data-value'),
       10
     );
-    const title = $('#title').val();
-    const intro = share.editor.getContent();
-
-    if (!title) {
-      dialog('页面标题不能为空');
-      return;
-    }
-
-    if (!intro) {
-      dialog('详情描述不能为空');
-      return;
-    }
+    const title = $('#title').val() || defaultTitle;
+    const intro = share.editor.getContent() || defaultDetail;
 
     handling.show();
 
@@ -63,7 +54,9 @@ seeView({
           return;
         }
 
-        alert('保存成功');
+        alert('保存成功', () => {
+          window.location.reload();
+        });
       });
     });
   },

@@ -1,0 +1,45 @@
+.common-btn-1,
+.common-btn-2 {
+  display: inline-block;
+  width: 122px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+}
+.common-btn-1 {
+  line-height: 38px;
+  border: 1px solid #ffffff;
+}
+.common-btn-2 {
+  line-height: 40px;
+  background-color: #ffc966;
+}
+.common-btn-1,
+.common-btn-1:hover,
+.common-btn-1:focus,
+.common-btn-1:active,
+.common-btn-2,
+.common-btn-2:hover,
+.common-btn-2:focus,
+.common-btn-2:active {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+@media (max-width: 500px) {
+  .common-btn-1,
+  .common-btn-2 {
+    width: 70px;
+    height: 24px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+  .common-btn-1 {
+    line-height: 22px;
+  }
+  .common-btn-2 {
+    line-height: 24px;
+  }
+}

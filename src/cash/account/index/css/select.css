@@ -1,0 +1,84 @@
+.select-section {
+  width: 732px;
+  margin: 0 auto;
+  padding: 25px 0;
+  overflow: hidden;
+}
+.select-unit {
+  position: relative;
+  display: block;
+  float: left;
+  width: 45%;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+}
+.select-unit,
+.select-unit:hover,
+.select-unit:active,
+.select-unit:focus {
+  text-decoration: none;
+}
+.select-unit:last-child {
+  float: right;
+}
+.select-unit-title {
+  width: 100%;
+  line-height: 84px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #333333;
+  border-bottom: solid 1px #e0e0e0;
+}
+.select-unit-title-icon {
+  display: inline-block;
+  position: relative;
+  top: 7px;
+  width: 31px;
+  height: 28px;
+  background-size: 100% 100%;
+}
+.select-unit-title-icon-home {
+  background-image: url('../../../../../images/cash/account/index/home@3x.png');
+}
+.select-unit-title-icon-person {
+  width: 21px;
+  height: 26px;
+  background-image: url('../../../../../images/cash/account/index/person@3x.png');
+}
+.select-unit-content {
+  height: 200px;
+  padding: 37px 23px 0 23px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #989898;
+}
+.select-unit-foot {
+  line-height: 42px;
+  text-align: right;
+  border-top: solid 2px #e0e0e0;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #333333;
+}
+.select-unit-foot-icon {
+  display: inline-block;
+  width: 9px;
+  height: 17px;
+  background-image: url('../../../../../images/cash/account/index/arrow.png');
+  background-size: 100% 100%;
+  position: relative;
+  top: 3px;
+  margin-right: 10px;
+}
+
+.select-unit-recommend {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55px;
+  height: 55px;
+  background-image: url('../../../../../images/cash/account/index/recommend@3x.png');
+  background-size: 100% 100%;
+}

@@ -1,0 +1,174 @@
+{
+  "freeNumber": 100,
+  "url": "http://test.zizaihome.com/vr/devoteIndex?templeId=1",
+  "musicList": [
+    {
+      "url": "https://pic.zizaihome.com/1510025431963.mp3",
+      "isSelect": 0,
+      "id": 1,
+      "name": "白玛多吉-阿弥陀佛"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025466619.mp3",
+      "isSelect": 0,
+      "id": 2,
+      "name": "白玛多吉-观世音菩萨发愿偈"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025501697.mp3",
+      "isSelect": 0,
+      "id": 3,
+      "name": "白玛多吉-观音菩萨偈"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025548494.mp3",
+      "isSelect": 0,
+      "id": 4,
+      "name": "陈慧阑-般若波罗蜜多心经"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025647406.mp3",
+      "isSelect": 0,
+      "id": 5,
+      "name": "风潮唱片 - 光之礼"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025768040.mp3",
+      "isSelect": 0,
+      "id": 6,
+      "name": "风潮唱片 - 海之记忆"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025799842.mp3",
+      "isSelect": 1,
+      "id": 7,
+      "name": "风潮唱片 - 灵气"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025832330.mp3",
+      "isSelect": 0,
+      "id": 8,
+      "name": "风潮唱片 - 探触寂静"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025863385.mp3",
+      "isSelect": 0,
+      "id": 9,
+      "name": "风潮唱片 - 无邪新生"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025897022.mp3",
+      "isSelect": 0,
+      "id": 10,
+      "name": "龚玥-阿弥陀佛在心间"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025933976.mp3",
+      "isSelect": 0,
+      "id": 11,
+      "name": "龚玥-观音菩萨偈"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510025968229.mp3",
+      "isSelect": 0,
+      "id": 12,
+      "name": "海涛法师-忏悔歌"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026034815.mp3",
+      "isSelect": 0,
+      "id": 13,
+      "name": "慧普法师 - 回向偈"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026064207.mp3",
+      "isSelect": 0,
+      "id": 14,
+      "name": "慧普法师 - 三宝歌"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026095219.mp3",
+      "isSelect": 0,
+      "id": 15,
+      "name": "群星 - 佛教法严"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026116905.mp3",
+      "isSelect": 0,
+      "id": 16,
+      "name": "群星 - 寒山钟声"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026156743.mp3",
+      "isSelect": 0,
+      "id": 17,
+      "name": "群星-阿弥陀佛在心间"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026192877.mp3",
+      "isSelect": 0,
+      "id": 18,
+      "name": "群星-慈悲"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026217464.mp3",
+      "isSelect": 0,
+      "id": 19,
+      "name": "群星-慈云忏主净土文"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026252986.mp3",
+      "isSelect": 0,
+      "id": 20,
+      "name": "群星-佛陀的爱"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026281274.mp3",
+      "isSelect": 0,
+      "id": 21,
+      "name": "群星-极乐世界"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026313709.mp3",
+      "isSelect": 0,
+      "id": 22,
+      "name": "群星-赞佛偈"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026359144.mp3",
+      "isSelect": 0,
+      "id": 23,
+      "name": "王菲 - 心经"
+    },
+    {
+      "url": "https://pic.zizaihome.com/1510026380686.mp3",
+      "isSelect": 0,
+      "id": 24,
+      "name": "王菲 - 心经2"
+    }
+  ],
+  "result": 1,
+  "msg": "获取数据成功",
+  "giftList": [
+    {
+      "content": "焰口法会牌位",
+      "formType": 1,
+      "type": 1
+    },
+    {
+      "content": "与师父交谈开示",
+      "formType": 2,
+      "type": 2
+    },
+    {
+      "content": "精美挂历与春联",
+      "formType": 3,
+      "type": 3
+    },
+    {
+      "content": "精致珍藏结缘品",
+      "formType": 3,
+      "type": 4
+    }
+  ]
+}

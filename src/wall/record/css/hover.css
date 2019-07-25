@@ -1,0 +1,19 @@
+.hover-popup {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+}
+.hover-popup-actions {
+  margin-top: 30px;
+  text-align: center;
+}
+.btn-hover-popup,
+.btn-hover-popup:hover,
+.btn-hover-popup:focus,
+.btn-hover-popup.focus,
+.btn-hover-popup:active {
+  color: #ffffff;
+  background-color: #689998;
+  border-color: #797979;
+}

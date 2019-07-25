@@ -1,0 +1,47 @@
+.seat-row {
+  overflow: hidden;
+  margin-top: 10px;
+}
+.seat-cell {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  margin: 3px;
+  background-color: #ffffff;
+  float: left;
+  text-align: center;
+}
+.seat-cell.available {
+  background-color: #71b838;
+}
+.seat-cell.available:hover,
+.seat-cell.available:focus,
+.seat-cell.available:active {
+  background-color: #548929;
+}
+
+.seat-cell.recorded {
+  background-color: #6699ff;
+}
+.seat-cell.recorded:hover,
+.seat-cell.recorded:focus,
+.seat-cell.recorded:active {
+  background-color: #adc8fb;
+}
+
+.seat-cell.online {
+  background-color: #f2693d;
+}
+
+.seat-cell.available,
+.seat-cell.recorded,
+.seat-cell.online {
+  background-image: url('../../../../images/wall/record/buddha.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.seat-cell.active {
+  border: 3px solid #0f62ff;
+}

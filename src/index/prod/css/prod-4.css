@@ -1,0 +1,44 @@
+.prod-4 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.prod-4 .image-1 {
+  float: left;
+  width: 516px;
+  margin-left: 40px;
+}
+.prod-4 .content {
+  float: right;
+  margin-right: 45px;
+  width: 207px;
+}
+.prod-4 .image-2 {
+  height: 43px;
+  margin-top: 57px;
+}
+.prod-4 .image-3 {
+  position: absolute;
+  left: 525px;
+  bottom: 0;
+  height: 117px;
+}
+.prod-4 .container-1 {
+  text-align: right;
+  margin-top: 48px;
+}
+
+@media (max-width: 500px) {
+  .prod-4 {
+    padding-top: 70px;
+  }
+  .prod-4 .image-1 {
+    display: block;
+    float: none;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .prod-4 .container-1 {
+    margin-top: 20px;
+  }
+}

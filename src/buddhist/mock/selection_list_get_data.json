@@ -1,0 +1,18 @@
+{
+  "msg": "成功",
+  "result": 1,
+  "data": [
+    {
+      "subid": 100,
+      "name": "选择项1"
+    },
+    {
+      "commodityId": 2,
+      "name": "选择项2"
+    },
+    {
+      "commodityId": 3,
+      "name": "选择项3"
+    }
+  ]
+}

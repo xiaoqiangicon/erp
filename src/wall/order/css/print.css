@@ -1,0 +1,16 @@
+.print-section {
+  margin-top: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+.print-section .text-1 {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  color: #989898;
+}
+.print-section .text-1 span {
+  display: inline-block;
+  width: 25px;
+  text-align: center;
+}

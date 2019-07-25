@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "ceremonyTypeId": 67,
+      "name": "供奉法事"
+    },
+    {
+      "ceremonyTypeId": 82,
+      "name": "长生法事"
+    },
+    {
+      "ceremonyTypeId": 83,
+      "name": "正月法事"
+    },
+    {
+      "ceremonyTypeId": 94,
+      "name": "天朝法事"
+    },
+    {
+      "ceremonyTypeId": 111,
+      "name": "火供法事"
+    }
+  ],
+  "msg": "",
+  "result": 0
+}

@@ -1,0 +1,201 @@
+main .tip {
+  margin-left: 56px;
+  margin-top: 20px;
+}
+main .tip h3 {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 8px;
+  margin-right: 56px;
+  margin-bottom: 0px;
+  color: #333;
+  font-family: 'Microsoft YaHei';
+  border-bottom: solid 1px #ccc;
+}
+.nav3 span {
+  color: #fff;
+}
+main nav .nav1 {
+  background: url('../../../images/register/right-arrow.png') no-repeat right;
+}
+main nav .nav3:before {
+  content: ' ';
+  width: 0;
+  position: absolute;
+  left: 0px;
+  border-width: 21px;
+  border-style: solid;
+  border-color: transparent transparent transparent #fff;
+  z-index: 9999;
+}
+main nav .nav3 {
+  width: 33.8%;
+  background-color: #007551;
+  position: relative;
+}
+main nav {
+  border-right: none;
+}
+main .form {
+  margin: 16px 51px 40px 51px;
+}
+main .form .templeForm {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+main .form .control-label {
+  width: 12%;
+  text-align: left;
+  padding-top: 5px;
+  padding-left: 4px;
+  padding-right: 0px;
+}
+main .uploadBox {
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 87%;
+}
+.uploadBox .uploadHead {
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #eee;
+}
+.uploadBox .uploadHead h3 {
+  display: inline-block;
+  margin: 0;
+  width: 30%;
+  font-family: 'Microsoft YaHei';
+}
+.uploadBox .uploadHead p {
+  display: inline-block;
+  margin: 0;
+  width: 68%;
+  font-size: 16px;
+  color: #666;
+}
+.uploadData {
+  margin-top: 12px;
+}
+.uploadData .uploadButton {
+  position: relative;
+  width: 31.9%;
+  height: 260px;
+  display: inline-block;
+}
+.uploadData button {
+  position: absolute;
+  top: 36%;
+  left: 36%;
+  padding: 12px 18px;
+  border: none;
+  background-color: #72cdbf;
+  color: #fff;
+}
+.uploadData .uploadImg {
+  width: 32%;
+  height: 260px;
+  display: inline-block;
+  background-color: #f0f0f0;
+  margin-right: 30px;
+  overflow: hidden;
+}
+.uploadData .uploadImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.uploadData .uploadExample {
+  width: 32%;
+  height: 260px;
+  display: inline-block;
+}
+.uploadData .uploadExample1 {
+  width: 32%;
+  height: 260px;
+  display: inline-block;
+  background-image: url('../../../images/register/sample-1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.uploadData .uploadExample2 {
+  width: 32%;
+  height: 260px;
+  display: inline-block;
+  background-image: url('../../../images/register/group2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.uploadData .uploadExample3 {
+  width: 32%;
+  height: 260px;
+  display: inline-block;
+  background-image: url('../../../images/register/group3.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.uploadData .uploadExample4 {
+  width: 32%;
+  height: 260px;
+  display: inline-block;
+  background-image: url('../../../images/register/group4.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.uploadButton input {
+  display: none;
+}
+
+.uploadOthersData {
+  margin-top: 12px;
+}
+.uploadOthersData .uploadButton {
+  position: relative;
+  width: 31.9%;
+  height: 260px;
+  margin-right: 10px;
+  display: inline-block;
+}
+.uploadOthersData button {
+  position: absolute;
+  top: 36%;
+  left: 36%;
+  padding: 12px 18px;
+  border: none;
+  background-color: #72cdbf;
+  color: #fff;
+}
+.uploadOthersData .uploadImg {
+  width: 32%;
+  height: 260px;
+  display: inline-block;
+  background-color: #f0f0f0;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.uploadOthersData .uploadImg:hover > .deleteOthersImg {
+  opacity: 1;
+}
+.uploadOthersData .uploadImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.deleteOthersImg {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
+  cursor: pointer;
+  background-image: url(../../../images/common/big_delete.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
