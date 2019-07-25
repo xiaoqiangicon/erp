@@ -21,14 +21,29 @@ import '@zzh/choose-icon/dist/choose-icon.css';
 
 import '../../css/base.css';
 import './index.css';
+import './styles/index.less';
 
 import '../../component/upload_config';
 import '../../component/choose_image_config';
 import '../../component/choose_icon_config';
 
+import $ from 'jquery';
+import seeAjax from 'see-ajax';
+
 import './old';
+import './see-ajax';
 
 // import './old-extra';
+
+window.$ = $;
+
+seeAjax('settings', {}, res => {
+  if (!res.data) return;
+
+  $('#show-home-sui-xi').prop({ checked: !!res.data.showHomeSuiXi });
+  $('#show-monk-sui-xi').prop({ checked: !!res.data.showMonkSuiXi });
+  $('#show-scene-sui-xi').prop({ checked: !!res.data.showSceneSuiXi });
+});
 
 require.ensure([], function(require) {
   require('./old-extra');

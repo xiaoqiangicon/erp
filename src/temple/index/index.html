@@ -25,6 +25,12 @@
                 class="clearfix component-add-container"
                 id="components-container"
               ></ul>
+              <h4>寺院设置</h4>
+              <div class="clearfix component-add-container">
+                <button class="btn btn-default" id="donate-box-settings">
+                  功德箱设置
+                </button>
+              </div>
             </div>
           </div>
           <div
@@ -187,6 +193,49 @@
               保存
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="donate-box-settings-popup"
+      id="donate-box-settings-popup"
+      style="display: none;"
+    >
+      <div class="body-1">
+        <div class="f-s-18">功德箱组件</div>
+        <div class="gray mg-t-5">可勾选控制功德箱在指定页面是否展示</div>
+        <div class="mg-t-30 clearfix">
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-home-sui-xi"
+              data-donate-box-setting="1"
+              checked=""
+            />
+            微站首页
+          </label>
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-monk-sui-xi"
+              data-donate-box-setting="1"
+              checked=""
+            />
+            高僧法师
+          </label>
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-scene-sui-xi"
+              data-donate-box-setting="1"
+              checked=""
+            />
+            殿堂场景
+          </label>
+        </div>
+        <div class="f-s-18 mg-t-40">订单列表</div>
+        <div class="mg-t-10">
+          <a href="/zzhadmin/meritBoxIndex/">查看功德箱订单 ></a>
         </div>
       </div>
     </div>

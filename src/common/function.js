@@ -159,6 +159,8 @@ define(['jquery', 'jquery-confirm'], function($) {
   };
 
   data.addCloseWindowHint = function() {
+    if (window.location.href.indexOf('localhost') > -1) return;
+
     window.onbeforeunload = function() {
       return '确定离开页面吗？';
     };
