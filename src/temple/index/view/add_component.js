@@ -137,7 +137,7 @@ define([
         editComponentData.buddhistTypes = indexData.misc.buddhistTypes;
         editComponentData.articleTypes = indexData.misc.articleTypes;
       } else if (type === 7) {
-        editComponentData.title = '寺院殿堂';
+        editComponentData.title = '殿堂场景';
       }
 
       $editComponent = $(tpls[type - 1].edit.render(editComponentData));
@@ -167,7 +167,7 @@ define([
         '功德榜组件最多只能添加一个',
         '佛历组件最多只能添加一个',
         '',
-        '寺院殿堂组件最多只能添加一个',
+        '殿堂场景组件最多只能添加一个',
       ];
 
       switch (type) {
@@ -179,7 +179,7 @@ define([
         case 4:
         // 佛历
         case 5:
-        // 寺院殿堂
+        // 殿堂场景
         case 7:
           if (
             !!$(
@@ -223,7 +223,7 @@ define([
         case 6:
           self.postHandleAfterComponentAddedForShortcut($editContainer, id);
           break;
-        // 寺院殿堂
+        // 殿堂场景
         case 7:
           self.postHandleAfterComponentAddedForHouse($editContainer, id);
           break;
@@ -422,7 +422,7 @@ define([
         },
       });
     },
-    // 添加寺院殿堂组件后事件添加
+    // 添加殿堂场景组件后事件添加
     postHandleAfterComponentAddedForHouse: function($editContainer, id) {
       $editContainer.find('[data-edit-com-house-body]').sortable({
         stop: function(e) {

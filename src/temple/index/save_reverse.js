@@ -63,7 +63,7 @@ define(function() {
         },
       ],
     },
-    // 寺院殿堂
+    // 殿堂场景
     {
       list: 'houses',
       _list: [

@@ -208,7 +208,7 @@ define([
             sortId
           );
           break;
-        // 寺院殿堂
+        // 殿堂场景
         case 7:
           return self.checkComponentCompletenessForHouse(
             id,
@@ -680,7 +680,7 @@ define([
 
       return !0;
     },
-    // 检查寺院殿堂组件的完整性
+    // 检查殿堂场景组件的完整性
     checkComponentCompletenessForHouse: function(id, index, isUpdate, sortId) {
       var $componentContainer = $(
         '[data-container="component-display"][data-type="7"][data-id="' +
@@ -691,7 +691,7 @@ define([
       if (!share.houseComponent.houses || !share.houseComponent.houses.length) {
         $.alert({
           title: false,
-          content: '请至少添加一个寺院殿堂',
+          content: '请至少添加一个殿堂场景',
           buttons: { ok: { text: '确定' } },
           theme: 'white',
         });
@@ -785,7 +785,7 @@ define([
           // 删除原有的data字段
           delete componentData.data;
         }
-        // 寺院殿堂
+        // 殿堂场景
         else if (componentData.type === 7) {
           componentData.list.forEach(function(com) {
             com.showType = componentData.subType;

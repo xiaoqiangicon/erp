@@ -45,7 +45,7 @@ define(['jquery', 'see-ajax', './ajax_handle', 'lib/jquery.seeAjax'], function(
       updateSort: 'updateSort',
       // 删除高僧法师子组件
       delGaoSeng: 'delGaoSeng',
-      // 删除寺院殿堂子组件
+      // 删除殿堂场景子组件
       delDianTang: 'delDianTang',
     },
     //url请求地址

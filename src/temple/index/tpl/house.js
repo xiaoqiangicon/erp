@@ -18,7 +18,7 @@ const displayComponents = `
 {@if (index + 1) % 3 === 0}<div style="height: 1px; width: 100%; clear: both;"></div>{@/if}
 {@/each}
 {@else}
-<div style="text-align: center; height: 80px; line-height: 80px;">请在右边添加寺院殿堂</div>
+<div style="text-align: center; height: 80px; line-height: 80px;">请在右边添加殿堂场景</div>
 {@/if}
 `;
 

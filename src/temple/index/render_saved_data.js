@@ -155,7 +155,7 @@ define([
         case 6:
           postHandleForShortcut($displayComponent, $editContainer, data);
           break;
-        // 寺院殿堂
+        // 殿堂场景
         case 7:
           postHandleForHouse($displayComponent, $editContainer, data);
           break;
@@ -252,15 +252,15 @@ define([
           });
         }
 
-        // 寺院殿堂组件
+        // 殿堂场景组件
         else if (item.type === 7) {
           // subType 是写在 message.list item 里边的
           item.subType = 1;
-          item.title = '寺院殿堂';
+          item.title = '殿堂场景';
 
           if (item.houses && item.houses.length) {
             item.subType = item.houses[0].showType || 1;
-            item.title = item.houses[0].moduleName || '寺院殿堂';
+            item.title = item.houses[0].moduleName || '殿堂场景';
 
             item.houses.forEach(function(house) {
               house.covers = house.covers.split(',').map(function(cover) {

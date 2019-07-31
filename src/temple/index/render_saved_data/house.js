@@ -5,7 +5,7 @@ define([
   '../view/house/util',
   'jquery-confirm',
 ], function($, indexData, commonTpl, util) {
-  // 添加寺院殿堂组件后事件添加
+  // 添加殿堂场景组件后事件添加
   function postHandleForHouse($displayComponent, $editContainer, data) {
     if (data.houses)
       data.houses.forEach(function(house) {

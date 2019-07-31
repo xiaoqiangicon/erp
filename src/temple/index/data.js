@@ -31,7 +31,7 @@ define(['lunar-calendar', 'js-cookie', 'common/env_data'], function(
         '感恩功德',
         '佛历',
         '',
-        '寺院殿堂',
+        '殿堂场景',
       ],
       // 组件计数，因为后台给出的每个组件都是存放在单独的表中的，所以不同组件之间可能有相同的id，所以颠覆以前的做法，从新做
       componentCount: {

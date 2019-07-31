@@ -11,6 +11,7 @@ const req = {
 };
 
 seeAjax.config('updateSettings', {
+  method: ['post'],
   url: ['/zzhadmin/suixiShow/', '/updateSettings1', '/updateSettings'],
   req: [req, req],
 });

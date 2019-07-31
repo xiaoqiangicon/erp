@@ -38,7 +38,7 @@ define(['./images'], function(images) {
       {
         type: 7,
         name: 'house',
-        displayName: '寺院殿堂',
+        displayName: '殿堂场景',
       },
     ],
     componentDisplaySample: {
@@ -298,7 +298,7 @@ define(['./images'], function(images) {
         sortId: 0,
         isUpdate: 0,
         type: 7,
-        title: '寺院殿堂',
+        title: '殿堂场景',
       },
     },
   };

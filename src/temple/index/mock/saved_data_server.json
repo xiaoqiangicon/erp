@@ -429,7 +429,7 @@
             "name": "殿堂1",
             "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
             "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
-            "moduleName": "寺院殿堂标题",
+            "moduleName": "殿堂场景标题",
             "showType": 2
           },
           {
@@ -437,7 +437,7 @@
             "name": "殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2",
             "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
             "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法<br>释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
-            "moduleName": "寺院殿堂标题",
+            "moduleName": "殿堂场景标题",
             "showType": 2
           },
           {
@@ -445,7 +445,7 @@
             "name": "殿堂3",
             "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
             "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
-            "moduleName": "寺院殿堂标题",
+            "moduleName": "殿堂场景标题",
             "showType": 2
           },
           {
@@ -453,7 +453,7 @@
             "name": "殿堂4",
             "pic": "/images/common/example-avatar.jpg,/images/common/example-avatar.jpg",
             "detail": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法",
-            "moduleName": "寺院殿堂标题",
+            "moduleName": "殿堂场景标题",
             "showType": 2
           }
         ]

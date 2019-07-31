@@ -89,7 +89,7 @@ define(function() {
         },
       ],
     },
-    // 寺院殿堂
+    // 殿堂场景
     {
       sortId: 'id',
       id: 'message_id',
