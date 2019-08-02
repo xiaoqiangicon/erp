@@ -718,6 +718,11 @@ define([
       .find('[data-ele="schedule-img"]')
       .parents('[data-ele="img-cell"]');
     $scheduleImgCell.remove();
+    // 视频
+    var $scheduleVideoCell = $modalBody
+      .find('[data-ele="schedule-video"]')
+      .parents('[data-ele="video-cell"]');
+    $scheduleVideoCell.remove();
     // 推送
     $.seeAjax.get('getPushTimes', {}, res => {
       let todayNum = 0;
