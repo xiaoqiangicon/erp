@@ -10,10 +10,10 @@ define(['jquery', 'orchids', 'tippy', '../data', '../tpl', '../util'], function(
   tpl,
   util
 ) {
-  orchids.registerDialog(
+  orchids.registerPage(
     'detail',
     {
-      onCreate: function(param) {
+      created: function(param) {
         var self = this;
 
         self.$el = $(self.el);
@@ -31,12 +31,14 @@ define(['jquery', 'orchids', 'tippy', '../data', '../tpl', '../util'], function(
         // 使用了绝对定位，会错位
         // new Tippy('[data-tip]');
       },
-      onDestroy: function() {
+      destroyed: function() {
         util.enableBodyScroll();
       },
     },
     {
       backgroundColor: '#f5f5f5',
+      direction: 'b2t',
+      route: !1,
     }
   );
 });

@@ -75,7 +75,7 @@ define([
     onClickDialogClose: function(e) {
       var $this = $(e.target);
       $this.parents('.dialog').hide();
-      if (!orchids.getCurrentDialog()) util.enableBodyScroll();
+      if (!orchids.getCurrentPage()) util.enableBodyScroll();
     },
     // 点击申请提现按钮
     onClickActionTake: function() {

@@ -119,7 +119,7 @@
     "lunar-calendar": "^0.1.4",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.0",
-    "orchids": "^0.2.1",
+    "orchids": "^1.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "reqwest": "^2.0.5",

@@ -64,7 +64,7 @@ define([
       var $this = $(e.target),
         id = parseInt($this.attr('data-unit-scan'));
 
-      orchids.startDialog('detail', { id: id });
+      orchids.startPage('detail', { id: id }, { beforeAppInitialized: !0 });
     },
     // 点击查看回复
     onClickUnitShowAnswer: function(e) {
