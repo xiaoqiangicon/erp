@@ -10,7 +10,7 @@ const promotion = require('@zzh/promotion');
 
 const dialog = require('util/dialog');
 const confirm = require('util/confirm');
-const env = require('util/env');
+const env = require('../../../util/env');
 
 seeView({
   events: {

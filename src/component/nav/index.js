@@ -14,6 +14,8 @@ const data = require('./js/data');
 const init = require('./js/init');
 require('./js/view');
 
+require('../../com/report');
+
 // disable cache
 $.ajaxSetup({ cache: !1 });
 

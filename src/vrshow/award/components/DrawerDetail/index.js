@@ -7,7 +7,7 @@ import { Spin, Drawer, notification } from 'antd';
 import ChooseImage from '@zzh/choose-image';
 import seeAjax from 'see-ajax';
 import QRCode from '@zzh/qrcode';
-import env from 'util/env';
+import { serverEnv } from '../../../../util/env';
 
 import $ from 'jquery';
 import styles from './index.less';
@@ -154,7 +154,6 @@ export default class extends Component {
     const { type } = this.state;
     if (type === 'handle') {
       const { id } = this.state;
-      const { serverEnv } = env;
       let src = '';
       if (serverEnv === 1) {
         src = `http://test.zizaihome.com/vr/devoteDealGiftHtml?id=${id}&isTest=1`;
