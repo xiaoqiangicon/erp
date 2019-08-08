@@ -7,7 +7,7 @@ define([
   'common/function',
   './tpl',
   './data',
-  '@zzh/pagination',
+  '../../../old-com/pagination/src',
   './ajax',
 ], function($, commonFunc, tpl, data, Pagination) {
   var func = {};

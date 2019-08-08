@@ -220,7 +220,7 @@ import VideoPlayer from './VideoPlayer';
 
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
-import QRCode from '@zzh/qrcode';
+import QRCode from '../../../old-com/qrcode';
 import ChooseImage from '@zzh/choose-image';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
 

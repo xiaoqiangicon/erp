@@ -1,8 +1,8 @@
 import '../../component/nav';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
-import '@zzh/handling/dist/handling.css';
-import '@zzh/promotion/dist/promotion.css';
+import '../../../old-com/handling/src/css/index.css';
+import '../../../old-com/promotion/less/index.less';
 import '../../less/common.less';
 import '../../less/bootstrap.less';
 import './index.less';

@@ -1,8 +1,8 @@
 const $ = require('jquery');
 const seeAjax = require('see-ajax').default;
-require('@zzh/pagination/dist/pagination.css');
+require('../../../old-com/pagination/src/index.less');
 require('less/pagination.less');
-const Pagination = require('@zzh/pagination');
+const Pagination = require('../../../old-com/pagination/src');
 
 const commonTpl = require('common/tpl');
 

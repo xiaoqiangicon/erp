@@ -7,7 +7,7 @@ define([
   '../data',
   '../tpl/common',
   '../tpl/introduction',
-  '@zzh/distpicker',
+  '../../../../../old-com/distpicker/src',
   'jquery-confirm',
 ], function($, indexData, commonTpl, introTpl) {
   // 添加寺院介绍组件后事件添加

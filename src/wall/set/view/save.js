@@ -11,7 +11,7 @@ define([
   '../tpl',
   '../function',
   '@zzh/store-image',
-  '@zzh/handling',
+  '../../../../old-com/handling/src',
   '../ajax',
   'lib/jquery.seeView',
 ], function(

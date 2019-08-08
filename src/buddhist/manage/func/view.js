@@ -11,7 +11,7 @@ define([
   './tpl',
   './function',
   'clipboard',
-  '@zzh/promotion',
+  '../../../../old-com/promotion/src',
   '@zzh/choose-image',
   './api',
   '@zzh/jquery-qrcode',

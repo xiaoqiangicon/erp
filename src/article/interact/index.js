@@ -8,7 +8,7 @@ import '@senntyou/shortcut.css';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
 import 'bootstrap-datepicker';
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js';
-import '@zzh/pagination/dist/pagination.css';
+import '../../../old-com/pagination/src/index.less';
 import '../../less/pagination.less';
 import './index.css';
 

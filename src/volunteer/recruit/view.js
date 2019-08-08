@@ -10,7 +10,7 @@ define([
   './tpl',
   './function',
   'clipboard',
-  '@zzh/promotion',
+  '../../../old-com/promotion/src',
   './ajax',
   'lib/jquery.seeView',
 ], function($, commonFunc, commonVars, data, tpl, func, Clipboard, Promotion) {

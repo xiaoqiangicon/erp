@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import seeView from 'see-view';
 import seeAjax from 'see-ajax';
-import handling from '@zzh/handling';
-import promotion from '@zzh/promotion';
+import handling from '../../../old-com/handling/src';
+import promotion from '../../../old-com/promotion/src';
 import StoreImage from '@zzh/store-image';
 import share from './share';
 // import toastr from 'toastr';

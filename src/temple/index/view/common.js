@@ -5,7 +5,7 @@ define([
   'jquery',
   'toastr',
   'common/function',
-  '@zzh/promotion',
+  '../../../../old-com/promotion/src',
   'util/confirm',
   'util/dialog',
   '../function',

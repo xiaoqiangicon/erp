@@ -8,7 +8,7 @@ define([
   'old/toast',
   './template',
   'old/utils',
-  '@zzh/distpicker',
+  '../../../old-com/distpicker/src',
   'old/backbone',
   'old/ajaxFileUpload',
   'old/uploadSize',

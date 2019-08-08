@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import Pagination from '@zzh/pagination';
+import Pagination from '../../../old-com/pagination/src';
 import commonTpl from '../../common/tpl';
 import { rowsTpl, searchTpl } from './tpl';
 import share from './share';

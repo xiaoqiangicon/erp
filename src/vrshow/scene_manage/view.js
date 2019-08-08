@@ -8,7 +8,7 @@ define([
   './data',
   './tpl',
   './function',
-  '@zzh/promotion',
+  '../../../old-com/promotion/src',
   './ajax',
   'jquery-confirm',
   'lib/jquery.seeView',

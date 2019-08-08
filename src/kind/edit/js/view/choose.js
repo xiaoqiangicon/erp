@@ -3,8 +3,8 @@ const seeView = require('see-view').default;
 
 require('component/upload_config');
 
-require('@zzh/upload/dist/upload.css');
-require('@zzh/pagination/dist/pagination.css');
+require('../../../../../old-com/upload/src/css/index.css');
+require('../../../../../old-com/pagination/src/index.less');
 require('less/pagination.less');
 require('@fancyapps/fancybox/dist/jquery.fancybox.css');
 require('@zzh/choose-image/dist/choose-image.css');

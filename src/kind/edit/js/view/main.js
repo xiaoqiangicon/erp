@@ -2,8 +2,8 @@ const $ = require('jquery');
 const seeView = require('see-view').default;
 const seeAjax = require('see-ajax').default;
 const StoreImage = require('@zzh/store-image');
-require('@zzh/handling/dist/handling.css');
-const zzhHandling = require('@zzh/handling');
+require('../../../../../old-com/handling/src/css/index.css');
+const zzhHandling = require('../../../../../old-com/handling/src');
 
 const dialog = require('../../../../util/dialog');
 

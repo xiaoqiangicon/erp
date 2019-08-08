@@ -1,7 +1,7 @@
 import 'component/nav';
 import '@senntyou/shortcut.css';
-import '@zzh/pagination/dist/pagination.css';
-import '@zzh/promotion/dist/promotion.css';
+import '../../../old-com/pagination/src/index.less';
+import '../../../old-com/promotion/less/index.less';
 import 'tippy.js/dist/tippy.css';
 import 'toastr/build/toastr.css';
 import 'less/common.less';

@@ -95,7 +95,7 @@ const splitJs = {
     lib: ['jquery', 'react-dom'],
   },
   'temple/index': {
-    lib: ['jquery', 'handlebars', '@zzh/distpicker', 'moment'],
+    lib: ['jquery', 'handlebars', 'moment'],
   },
 };
 

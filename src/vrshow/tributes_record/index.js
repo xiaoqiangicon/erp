@@ -7,7 +7,7 @@ import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
 
-import '@zzh/pagination/dist/pagination.css';
+import '../../../old-com/pagination/src/index.less';
 import '../../less/pagination.less';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
 

@@ -3,7 +3,7 @@
  */
 
 const seeAjax = require('see-ajax');
-const zzhUtil = require('@zzh/util');
+const zzhUtil = require('../../../../../old-com/util/src');
 
 const responseRefactor = {
   todayTotalMoney: 'data.todayPrice',

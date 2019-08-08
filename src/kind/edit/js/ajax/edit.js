@@ -3,7 +3,7 @@
  */
 
 const seeAjax = require('see-ajax').default;
-const zzhUtil = require('@zzh/util');
+const zzhUtil = require('../../../../../old-com/util/src');
 
 const preHandleAdd = require('./pre_handle_add');
 

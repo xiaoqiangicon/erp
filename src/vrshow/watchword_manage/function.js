@@ -7,7 +7,7 @@ define([
   'common/function',
   './data',
   './tpl',
-  '@zzh/pagination',
+  '../../../old-com/pagination/src',
   './ajax',
   'bootstrap-select',
 ], function($, commonFunc, data, tpl, Pagination) {

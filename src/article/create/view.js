@@ -11,7 +11,7 @@ define([
   'clipboard',
   '@zzh/choose-image',
   '@zzh/store-image',
-  '@zzh/handling',
+  '../../../old-com/handling/src',
   'util/purify_a_target',
   '../../lib/jquery.qrcode.min',
   './ajax',

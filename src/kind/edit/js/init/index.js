@@ -1,4 +1,4 @@
-const zzhUtil = require('@zzh/util');
+const zzhUtil = require('../../../../../old-com/util/src');
 const seeAjax = require('see-ajax').default;
 
 require('../ajax');

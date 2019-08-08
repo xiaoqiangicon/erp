@@ -7,7 +7,7 @@ import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
 
-import '@zzh/handling/dist/handling.css';
+import '../../../old-com/handling/src/css/index.css';
 
 import './index.css';
 

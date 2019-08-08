@@ -4,7 +4,7 @@
 
 define([
   'jquery',
-  '@zzh/pagination',
+  '../../../old-com/pagination/src',
   'common/function',
   'common/tpl',
   './data',

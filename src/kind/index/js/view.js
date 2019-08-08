@@ -5,8 +5,8 @@
 const $ = require('jquery');
 const seeView = require('see-view').default;
 const seeAjax = require('see-ajax').default;
-require('@zzh/promotion/dist/promotion.css');
-const promotion = require('@zzh/promotion');
+require('../../../../old-com/promotion/less/index.less');
+const promotion = require('../../../../old-com/promotion/src');
 
 const dialog = require('util/dialog');
 const confirm = require('util/confirm');

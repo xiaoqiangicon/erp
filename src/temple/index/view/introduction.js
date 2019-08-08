@@ -9,7 +9,7 @@ define([
   '../tpl/common',
   '../tpl/introduction',
   'swiper',
-  '@zzh/distpicker',
+  '../../../../old-com/distpicker/src',
   'lib/jquery.seeView',
   'component/choose_image_config/index',
 ], function($, ChooseImage, indexData, commonTpl, introTpl) {

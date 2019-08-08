@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { Spin, Drawer, notification } from 'antd';
 import ChooseImage from '@zzh/choose-image';
 import seeAjax from 'see-ajax';
-import QRCode from '@zzh/qrcode';
+import QRCode from '../../../../../old-com/qrcode';
 import { serverEnv } from '../../../../util/env';
 
 import $ from 'jquery';

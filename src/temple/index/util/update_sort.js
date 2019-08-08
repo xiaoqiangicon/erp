@@ -1,4 +1,4 @@
-define(['jquery', 'toastr', '@zzh/handling', '../ajax'], function(
+define(['jquery', 'toastr', '../../../../old-com/handling/src', '../ajax'], function(
   $,
   toastr,
   zzhHandling

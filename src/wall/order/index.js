@@ -7,8 +7,8 @@ import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
 
-import '@zzh/upload/dist/upload.css';
-import '@zzh/pagination/dist/pagination.css';
+import '../../../old-com/upload/src/css/index.css';
+import '../../../old-com/pagination/src/index.less';
 import '../../less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
 import '@zzh/choose-image/dist/choose-image.css';

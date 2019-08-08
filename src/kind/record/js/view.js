@@ -4,7 +4,7 @@
 
 const $ = require('jquery');
 const seeView = require('see-view');
-const zzhUtil = require('@zzh/util');
+const zzhUtil = require('../../../../old-com/util/src');
 
 const checkStartEndDate = require('util/check_start_end_date');
 const dialog = require('util/dialog');

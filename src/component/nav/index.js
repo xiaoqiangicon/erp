@@ -1,11 +1,11 @@
 // ie-tip css
 require('bootstrap/dist/css/bootstrap.css');
-require('@zzh/ie-tip/dist/ie-tip.css');
+require('../../../old-com/ie-tip/src/css/index.css');
 require('../../less/base.less');
 require('./index.css');
 
 // ie-tip js
-require('@zzh/ie-tip');
+require('../../../old-com/ie-tip/src');
 require('bootstrap');
 
 const $ = require('jquery');

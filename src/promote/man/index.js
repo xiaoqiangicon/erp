@@ -1,6 +1,6 @@
 import 'component/nav';
 import '@senntyou/shortcut.css';
-import '@zzh/pagination/dist/pagination.css';
+import '../../../old-com/pagination/src/index.less';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
 import 'tippy.js/dist/tippy.css';
 import 'toastr/build/toastr.css';

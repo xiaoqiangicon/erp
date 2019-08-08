@@ -5,7 +5,7 @@
 define([
   'jquery',
   'toastr',
-  '@zzh/qrcode',
+  '../../../../old-com/qrcode',
   'common/function',
   'common/variables',
   '../data',

@@ -8,7 +8,7 @@ define([
   './data',
   './api',
   './tpl',
-  '@zzh/pagination',
+  '../../../old-com/pagination/src',
   'common/variables',
   './ajax',
   'bootstrap-select',

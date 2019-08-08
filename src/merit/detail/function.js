@@ -4,12 +4,12 @@
 
 define([
   'jquery',
-  '@zzh/qrcode',
+  '../../../old-com/qrcode',
   'common/function',
   './data',
   './api',
   './tpl',
-  '@zzh/pagination',
+  '../../../old-com/pagination/src',
   'common/variables',
   './ajax',
   'bootstrap-select',
