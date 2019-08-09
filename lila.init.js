@@ -1,7 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import path from 'path';
 import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack';
-import webpackConfigPlugin from 'lila-webpack-config';
+import { forReactVue as reactVueWebpackConfigPlugin } from 'lila-webpack-config';
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
 import accounts from '../accounts';
 
@@ -76,24 +77,6 @@ const cssModulesExclude = {
   ],
 };
 
-const splitJs = {
-  'buddhist/template': {
-    lib: ['jquery', 'react-dom'],
-  },
-  'vrshow/award': {
-    lib: ['jquery', 'react-dom'],
-  },
-  'kind/edit': {
-    lib: ['jquery', 'handlebars'],
-  },
-  'component/ueditor_plugins/music': {
-    lib: ['jquery', 'react-dom'],
-  },
-  'temple/index': {
-    lib: ['jquery', 'handlebars', 'moment'],
-  },
-};
-
 export default lila => {
   const { addCmdOption, setSetting } = lila;
 
@@ -126,7 +109,7 @@ export default lila => {
 
   tasksPlugin(lila);
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);
+  reactVueWebpackConfigPlugin(lila);
 
   return ({ entry, argv, cmd }) => {
     const isDev = cmd === 'dev' || cmd === 'serve';
@@ -235,14 +218,25 @@ export default lila => {
       cssModules: cssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
       cssModulesExclude: cssModulesExclude[entry] || undefined,
-      babelImport: [{ libraryName: 'antd', style: 'css' }],
-      splitJs: splitJs[entry] || undefined,
-      babelPlugins: ['@babel/plugin-proposal-class-properties'],
+      babelPlugins: [
+        ['import', { libraryName: 'antd', style: 'css' }],
+        ['component', { "libraryName": "element-ui",
+          "styleLibraryName": "theme-chalk" }],
+      ],
       plugins: [
         new MomentLocalesPlugin({
           localesToKeep: ['es-us', 'zh-cn'],
         }),
       ],
+      rebuildWebpackConfig({ webpackConfig }) {
+        /* eslint-disable no-param-reassign */
+        const cwd = process.cwd();
+        webpackConfig.resolve.modules = [
+          path.join(cwd, 'src'),
+          path.join(cwd, 'node_modules'),
+        ];
+        return webpackConfig;
+      },
     };
   };
 };
