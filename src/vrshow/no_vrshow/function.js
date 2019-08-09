@@ -2,7 +2,7 @@
  * Created by kang on 2017/10/23.
  */
 
-define(['jquery', 'common/function', './ajax', '@zzh/jquery-qrcode'], function(
+define(['jquery', 'common/function', './ajax', '../../../old-com/jquery-qrcode'], function(
   $,
   commonFunc
 ) {

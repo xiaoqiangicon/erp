@@ -10,7 +10,7 @@ define([
   '../data',
   '../tpl',
   '../function',
-  '@zzh/store-image',
+  '../../../../old-com/store-image/src',
   '../../../../old-com/handling/src',
   '../ajax',
   'lib/jquery.seeView',

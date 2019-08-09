@@ -7,7 +7,7 @@ define([
   'toastr',
   'common/function',
   'common/variables',
-  '@zzh/choose-image',
+  '../../../../old-com/choose-image/src',
   '../data',
   '../tpl',
   './util',

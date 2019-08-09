@@ -12,7 +12,7 @@ define([
   './ajax',
   'jquery-confirm',
   'lib/jquery.seeView',
-  '@zzh/jquery-qrcode',
+  '../../../old-com/jquery-qrcode',
 ], function($, Toast, data, tpl, func, Promotion) {
   $.seeView({
     events: {

@@ -1,8 +1,8 @@
 const $ = require('jquery');
 
 require('component/ueditor_config');
-require('@zzh/ueditor/src/ueditor.config');
-require('@zzh/ueditor');
+import '../../../../../pro-com/src/ueditor/ueditor.config';
+import '../../../../../pro-com/src/ueditor/ueditor.all';
 
 require('component/ueditor_plugins/xiu_mi');
 require('component/ueditor_plugins/import_wx_article');

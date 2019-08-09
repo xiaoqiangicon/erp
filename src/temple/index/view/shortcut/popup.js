@@ -3,7 +3,7 @@
  */
 define([
   'jquery',
-  '@zzh/choose-icon',
+  '../../../../../old-com/choose-icon/src',
   'common/function',
   '../../data',
   '../../tpl/common',

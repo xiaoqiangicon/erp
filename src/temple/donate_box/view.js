@@ -10,7 +10,7 @@ define([
   './tpl',
   './function',
   'clipboard',
-  '@zzh/jquery-qrcode',
+  '../../../old-com/jquery-qrcode',
   './ajax',
   'lib/jquery.seeView',
 ], function($, commonFunc, commonVars, data, tpl, func, Clipboard) {

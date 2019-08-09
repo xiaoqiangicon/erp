@@ -8,7 +8,7 @@ define([
   './data',
   './tpl',
   './function',
-  '@zzh/jquery-qrcode',
+  '../../../old-com/jquery-qrcode',
   './ajax',
   'lib/jquery.seeView',
 ], function($, Toast, data, tpl, func) {

@@ -221,7 +221,7 @@ import VideoPlayer from './VideoPlayer';
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
 import QRCode from '../../../old-com/qrcode';
-import ChooseImage from '@zzh/choose-image';
+import ChooseImage from '../../../old-com/choose-image/src';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
 
 let qrCodeImg;

@@ -12,13 +12,13 @@ import '../../../old-com/upload/src/css/index.css'; //
 import '../../../old-com/pagination/src/index.less'; // ../../../old-com/pagination/src css
 import 'less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css'; // @fancyapps/fancybox css
-import '@zzh/choose-image/dist/choose-image.css';
+import '../../../old-com/choose-image/src/css/index.css';
 import 'component/choose_image_config';
 
 // ueditor
 import '../../component/ueditor_config';
-import '@zzh/ueditor/src/ueditor.config';
-import '@zzh/ueditor';
+import '../../../pro-com/src/ueditor/ueditor.config';
+import '../../../pro-com/src/ueditor/ueditor.all';
 import '../../component/ueditor_plugins/xiu_mi';
 
 // upload

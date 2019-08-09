@@ -11,7 +11,7 @@ define([
   './tpl',
   './function',
   'toastr',
-  '@zzh/jquery-qrcode',
+  '../../../old-com/jquery-qrcode',
   'jquery-confirm',
   './ajax',
   'lib/jquery.seeView',

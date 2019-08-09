@@ -85,11 +85,6 @@ const splitJs = {
   },
   'kind/edit': {
     lib: ['jquery', 'handlebars'],
-    ueditor: [
-      'component/ueditor_config',
-      '@zzh/ueditor/src/ueditor.config',
-      '@zzh/ueditor',
-    ],
   },
   'component/ueditor_plugins/music': {
     lib: ['jquery', 'react-dom'],

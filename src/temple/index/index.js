@@ -16,8 +16,8 @@ import '../../../old-com/upload/src/css/index.css';
 import '../../../old-com/pagination/src/index.less';
 import '../../less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
-import '@zzh/choose-image/dist/choose-image.css';
-import '@zzh/choose-icon/dist/choose-icon.css';
+import '../../../old-com/choose-image/src/css/index.css';
+import '../../../old-com/choose-icon/src/css/index.css';
 
 import '../../css/base.css';
 import './index.css';

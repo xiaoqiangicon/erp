@@ -4,8 +4,8 @@ require('../../../old-com/upload/src/css/index.css');
 require('../../../old-com/pagination/src/index.less');
 require('less/pagination.less');
 require('@fancyapps/fancybox/dist/jquery.fancybox.css');
-require('@zzh/choose-image/dist/choose-image.css');
-const ChooseImage = require('@zzh/choose-image');
+require('../../../old-com/choose-image/src/css/index.css');
+const ChooseImage = require('../../../old-com/choose-image/src');
 
 require('component/choose_image_config');
 

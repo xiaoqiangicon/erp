@@ -10,7 +10,7 @@ define([
   '../data',
   '../tpl',
   '../function',
-  '@zzh/choose-image',
+  '../../../../old-com/choose-image/src',
   '../ajax',
   'lib/jquery.seeView',
 ], function($, toastr, commonFunc, commonVars, data, tpl, func, ChooseImage) {

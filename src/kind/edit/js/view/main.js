@@ -1,7 +1,7 @@
 const $ = require('jquery');
 const seeView = require('see-view').default;
 const seeAjax = require('see-ajax').default;
-const StoreImage = require('@zzh/store-image');
+const StoreImage = require('../../../../../old-com/store-image/src');
 require('../../../../../old-com/handling/src/css/index.css');
 const zzhHandling = require('../../../../../old-com/handling/src');
 

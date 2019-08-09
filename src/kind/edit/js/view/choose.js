@@ -7,10 +7,10 @@ require('../../../../../old-com/upload/src/css/index.css');
 require('../../../../../old-com/pagination/src/index.less');
 require('less/pagination.less');
 require('@fancyapps/fancybox/dist/jquery.fancybox.css');
-require('@zzh/choose-image/dist/choose-image.css');
-require('@zzh/choose-icon/dist/choose-icon.css');
-const ChooseImage = require('@zzh/choose-image');
-const ChooseIcon = require('@zzh/choose-icon');
+require('../../../../../old-com/choose-image/src/css/index.css');
+require('../../../../../old-com/choose-icon/src/css/index.css');
+const ChooseImage = require('../../../../../old-com/choose-image/src');
+const ChooseIcon = require('../../../../../old-com/choose-icon/src');
 
 require('component/choose_image_config');
 require('component/choose_icon_config');

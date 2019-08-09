@@ -10,7 +10,7 @@ define([
   './data',
   './tpl',
   './function',
-  '@zzh/choose-image',
+  '../../../old-com/choose-image/src',
   './ajax',
   'jquery-confirm',
   'lib/jquery.seeView',

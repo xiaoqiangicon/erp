@@ -1,5 +1,5 @@
-require('@zzh/import-wx-article/dist/import-wx-article.css');
-const ImportWxArticle = require('@zzh/import-wx-article');
+require('../../../../old-com/import-wx-article/src/css/index.css');
+const ImportWxArticle = require('../../../../old-com/import-wx-article/src');
 
 require('./index.less');
 require('./config');

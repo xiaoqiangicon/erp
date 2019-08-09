@@ -3,7 +3,7 @@
  */
 define([
   'jquery',
-  '@zzh/choose-image',
+  '../../../../../old-com/choose-image/src',
   'common/function',
   '../../data',
   '../../tpl/common',

@@ -10,8 +10,8 @@ import '../../../old-com/handling/src/css/index.css';
 import './index.css';
 
 import 'component/ueditor_config';
-import '@zzh/ueditor/src/ueditor.config';
-import '@zzh/ueditor';
+import '../../../pro-com/src/ueditor/ueditor.config';
+import '../../../pro-com/src/ueditor/ueditor.all';
 
 import 'component/ueditor_plugins/xiu_mi';
 import 'component/ueditor_plugins/import_wx_article';

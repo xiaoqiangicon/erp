@@ -21,8 +21,8 @@
 define([
   'jquery',
   './function',
-  '@zzh/jquery-file-upload/js/jquery.fileupload-image',
-  '@zzh/jquery-file-upload/js/jquery.fileupload-validate',
+  '../../old-com/jquery-file-upload/js/jquery.fileupload-image',
+  '../../old-com/jquery-file-upload/js/jquery.fileupload-validate',
   'lib/jquery.seeAjax',
 ], function($, commonFunc) {
   var env;
