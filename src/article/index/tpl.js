@@ -1,6 +1,5 @@
-require('juicer');
-const loading = require('../../../images/loading.gif');
-
+import "juicer";
+import loading from "../../../images/loading.gif";
 var tpl = {
   articleCell: `
         <div class="article-cell" data-article-cell="\${id}">
@@ -94,13 +93,10 @@ var tpl = {
     `,
   categoryCell: `
         <li><a class="item" data-select-category="\${id}">\${name}</a></li>
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

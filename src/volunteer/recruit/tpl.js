@@ -1,8 +1,4 @@
-/**
- * Created by root on 2017/9/13.
- */
-require('juicer');
-
+import "juicer";
 var tpl = {
   articleCell: `
         <div class="recruit-cell" data-article-cell="\${id}">
@@ -62,13 +58,10 @@ var tpl = {
     `,
   categoryCell: `
         <li><a class="item" data-select-category="\${id}">\${name}</a></li>
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

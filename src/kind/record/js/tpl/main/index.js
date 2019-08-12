@@ -1,4 +1,6 @@
-const handlebars = require('handlebars');
+import handlebars from 'handlebars';
+import banner from './banner';
+import filter from './filter';
 
 const tpl = `
 <div class="content-container" id="content-container">
@@ -9,8 +11,8 @@ const tpl = `
         <i class="icon-1"></i>
         <span>善行记录</span>
     </div>
-    ${require('./banner')}
-    ${require('./filter')}
+    ${banner}
+    ${filter}
     <div class="main-detail">
         <div class="container-1">
             <div class="item-1 item-1-1 text-1">行善人</div>
@@ -24,4 +26,4 @@ const tpl = `
 </div>
 `;
 
-module.exports = handlebars.compile(tpl);
+export default handlebars.compile(tpl);

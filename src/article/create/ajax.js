@@ -2,7 +2,7 @@ import $ from "jquery";
 import seeAjax from "see-ajax";
 import "lib/jquery.seeAjax";
 var env = __SEE_ENV__;
-seeAjax.default.setEnv(env);
+seeAjax.setEnv(env);
 var requestKeysOuter = {
   addCategory: {
     name: "name"

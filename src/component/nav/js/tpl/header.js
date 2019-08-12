@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <a class="component-nav-logo-container" href="/zzhadmin/"><span class="component-nav-logo pull-left"></span></a>
 <div class="component-nav-top-nav">
     <ul class="component-nav-top-nav-right pull-right">

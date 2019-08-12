@@ -44,7 +44,7 @@ var postHandleOuter = {
   }
 };
 var env = __SEE_ENV__;
-seeAjax.default.setEnv(env);
+seeAjax.setEnv(env);
 $.seeAjax.config({
   environment: env,
   name: {

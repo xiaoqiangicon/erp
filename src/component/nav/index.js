@@ -1,24 +1,17 @@
-// ie-tip css
-require('bootstrap/dist/css/bootstrap.css');
-require('../../../old-com/ie-tip/src/css/index.css');
-require('../../less/base.less');
-require('./index.css');
-
-// ie-tip js
-require('../../../old-com/ie-tip/src');
-require('bootstrap');
-
-const $ = require('jquery');
-
-const data = require('./js/data');
-const init = require('./js/init');
-require('./js/view');
-
-require('../../com/report');
-
-// disable cache
-$.ajaxSetup({ cache: !1 });
-
+import "bootstrap/dist/css/bootstrap.css";
+import "../../../old-com/ie-tip/src/css/index.css";
+import "../../less/base.less";
+import "./index.css";
+import "../../../old-com/ie-tip/src";
+import "bootstrap";
+import $ from "jquery";
+import data from "./js/data";
+import init from "./js/init";
+import "./js/view";
+import "../../com/report";
+$.ajaxSetup({
+  cache: !1
+});
 $.getJSON(data.url, {}, res => {
   init(res);
 });

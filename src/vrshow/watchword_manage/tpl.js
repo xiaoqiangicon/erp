@@ -1,8 +1,4 @@
-/**
- * Created by kang on 2017/10/23.
- */
-require('juicer');
-
+import "juicer";
 var tpl = {
   cellContainerEmpty: `
         <tr class="cell-content-empty"><td style="text-align: center; padding-left: 0;" colspan="3">暂无数据</td></tr>
@@ -30,13 +26,10 @@ var tpl = {
             <img class="head-icon" src="\${pic}" data-id="\${id}"> 
             <!--<button class="clean-button image-cell-delete">X</button>-->
         </div>
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

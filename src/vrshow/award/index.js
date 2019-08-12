@@ -10,7 +10,6 @@ import 'less/common.less';
 import './index.less';
 
 // choose-image
-// require('bootstrap/dist/css/bootstrap.css'); // bootstrap css
 import '../../../old-com/upload/src/css/index.css';
 import '../../../old-com/pagination/src/index.less';
 import 'less/pagination.less';

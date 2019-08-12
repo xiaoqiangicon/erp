@@ -1,5 +1,4 @@
-require('juicer');
-
+import "juicer";
 var tpl = {
   display: `
         <div class="component-container component-shortcut"  data-container="component-display" data-type="6" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
@@ -183,12 +182,10 @@ var tpl = {
                 {@/each}
             </ul>
         </div>
-    `,
+    `
 };
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

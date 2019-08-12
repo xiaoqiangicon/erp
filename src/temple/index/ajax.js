@@ -3,7 +3,7 @@ import seeAjax from "see-ajax";
 import handle from "./ajax_handle";
 import "lib/jquery.seeAjax";
 var env = __SEE_ENV__;
-seeAjax.default.setEnv(env);
+seeAjax.setEnv(env);
 $.seeAjax.config({
   environment: env,
   name: {

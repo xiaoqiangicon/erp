@@ -1,5 +1,5 @@
-require('component/nav');
-require('@senntyou/shortcut.css');
-require('less/common.less');
-require('less/bootstrap.less');
-require('../index.less');
+import "component/nav";
+import "@senntyou/shortcut.css";
+import "less/common.less";
+import "less/bootstrap.less";
+import "../index.less";

@@ -1,4 +1,5 @@
-const handlebars = require('handlebars');
+import handlebars from 'handlebars';
+import detail from './detail';
 
 const tpl = `
 <div class="content-container" id="content-container">
@@ -9,8 +10,8 @@ const tpl = `
         <i class="icon-1"></i>
         <span>{{#if isEdit}}编辑{{else}}创建{{/if}}</span>
     </div>
-    ${require('./detail')}
+    ${detail}
 </div>
 `;
 
-module.exports = handlebars.compile(tpl);
+export default handlebars.compile(tpl);

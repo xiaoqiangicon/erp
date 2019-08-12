@@ -1,11 +1,13 @@
-const $ = require('jquery');
+import $ from 'jquery';
 
-const commonTpl = require('common/tpl');
+import commonTpl from 'common/tpl';
 
-const mainTpl = require('./tpl/main');
+import requestList from './util/request_list';
+
+import mainTpl from './tpl/main';
 
 $('body').append(mainTpl);
 
 $('#list-container').html(commonTpl.loading);
 
-require('./util/request_list')();
+requestList();

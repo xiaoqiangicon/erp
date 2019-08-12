@@ -1,11 +1,5 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax');
-
+import seeAjax from "see-ajax";
 seeAjax.setEnv(__SEE_ENV__);
-
-require('./common');
-require('./main');
-require('./list');
+import "./common";
+import "./main";
+import "./list";

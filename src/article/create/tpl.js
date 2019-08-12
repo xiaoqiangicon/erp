@@ -1,11 +1,8 @@
-require('juicer');
-
+import "juicer";
 var tpl = {
-  // 分类cell
   categoryCell: `
         <option value="\${id}" data-category-cell="\${id}">\${name}</option>
     `,
-  // 分类弹出框
   categoryPopup: `
         <div class="popup" data-popup="category">
             <div class="popup-background" data-popup-overlay="category"></div>
@@ -28,7 +25,6 @@ var tpl = {
             </div>
         </div>
     `,
-  // 分类弹出框cell
   categoryPopupCell: `
         <div class="popup-category-cell" data-popup-category-cell="\${id}">
             <input class="form-control input" value="\${name}" data-popup-category-cell-input="\${id}">
@@ -89,13 +85,10 @@ var tpl = {
                 </div>
             </div>
         </div>
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

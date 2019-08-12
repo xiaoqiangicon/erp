@@ -1,5 +1,4 @@
-const handlebars = require('handlebars');
-
+import handlebars from "handlebars";
 const tpl = `
 {{#each data}}
 <div class="row-1" data-row="{{this.id}}">
@@ -16,5 +15,4 @@ const tpl = `
 </div>
 {{/each}}
 `;
-
-module.exports = handlebars.compile(tpl);
+export default handlebars.compile(tpl);

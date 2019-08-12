@@ -1,8 +1,6 @@
-require('juicer');
-const cookie = require('js-cookie');
-
-const openShiJingTanSi = !!parseInt(cookie.get('pw_vr_devote'));
-
+import "juicer";
+import cookie from "js-cookie";
+const openShiJingTanSi = !!parseInt(cookie.get("pw_vr_devote"));
 const displayComponents = `
 {@if houses && houses.length}
 {@each houses as house, index}
@@ -21,7 +19,6 @@ const displayComponents = `
 <div style="text-align: center; height: 80px; line-height: 80px;">请在右边添加殿堂场景</div>
 {@/if}
 `;
-
 const editComponents = `
 {@each houses as house, index}
 <div class="edit-com-house-row" data-edit-com-house-row="\${house.id}">
@@ -32,7 +29,6 @@ const editComponents = `
 </div>
 {@/each}
 `;
-
 const tip = `
 <div class="house-edit-tip">
   <span>开通实景探寺能全方位展示寺院场景，给信众带来惊艳震撼的新式礼佛体验</span>
@@ -41,7 +37,6 @@ const tip = `
   </div>
 </div>
 `;
-
 var tpl = {
   display: `
   <div class="component-container com-house {@if subType === 2}com-house-cell{@/if}" data-container="component-display" data-type="7" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
@@ -69,7 +64,7 @@ var tpl = {
   displayComponents,
   edit: `
   <div class="component-edit"  data-container="component-edit" data-type="7" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
-    ${openShiJingTanSi ? '' : tip}
+    ${openShiJingTanSi ? "" : tip}
     <div class="component-edit-cell">
       <p class="component-edit-cell-title">展示样式</p>
       <div class="component-edit-cell-body clearfix">
@@ -103,12 +98,10 @@ var tpl = {
     <img class="item-image" src="\${image}" data-edit-pop-house-cover-row-image="0">
     <button class="clean-button upload-remove" data-edit-pop-house-cover-row-del="0">×</button>
   </li>
-  `,
+  `
 };
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

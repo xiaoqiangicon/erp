@@ -1,8 +1,4 @@
-/**
- * Created by root on 2017/9/13.
- */
-require('juicer');
-
+import "juicer";
 var tpl = {
   cellContainerEmpty: `
         <tr class="cell-content-empty"><td style="text-align: center; padding-left: 0;" colspan="5">暂无数据</td></tr>
@@ -20,13 +16,10 @@ var tpl = {
                 \${payTime}
             </td>
         </tr>
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

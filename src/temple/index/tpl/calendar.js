@@ -1,6 +1,5 @@
-const images = require('../images');
-require('juicer');
-
+import images from "../images";
+import "juicer";
 var tpl = {
   display: `
         <div class="component-container component-calendar"  data-container="component-display" data-type="5" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
@@ -120,15 +119,12 @@ var tpl = {
         <input class="pagination-cell-input" type="text" data-calendar-pagination-input="\${id}">
         <a class="pagination-cell" data-current-page="\${currentPage}" data-total-pages="\${totalPages}" data-calendar-page-index="-3" data-id="\${id}">跳到</a>
     `,
-  // 佛历编辑区域内容容器
   editPaginationContent: `
         <div class="component-edit-calendar-selected-content" data-edit-calendar-selected-content="\${id}" data-date="\${date}"></div>
     `,
-  // 佛历编辑区域内容分页容器（date置为0，因为只有日期为零的时候才会用到这个）
   editPaginationContentOnePage: `
         <div data-edit-calendar-selected-content-inner="\${id}" data-date="0" data-page="\${page}"></div>
     `,
-  // 佛历组件已选取的内容分页活动内容
   editPaginationContentActivities: `
         {@each dayItems as dayItem}
         <div class="component-edit-calendar-selected-cell" data-edit-calendar-selected-cell="\${id}" data-year="\${dayItem.year}" data-month="\${dayItem.month}" data-day="\${dayItem.day}">
@@ -146,7 +142,6 @@ var tpl = {
         </div>
         {@/each}
     `,
-  // 佛历弹出框选择时间和佛事或新建标题
   editPopup: `
         <div class="modal fade in popup-calendar-select-date" data-calendar-popup="\${id}">
             <div class="modal-backdrop fade in" data-popup-backdrop="1"></div>
@@ -181,12 +176,9 @@ var tpl = {
             </div>
         </div>
     `,
-  // 佛历弹出框时间单元格
   editPopupDateCell: `
         <li data-year="\${year}" data-month="\${month}" data-day="\${day}" data-calendar-popup-date-cell="\${id}"><span>\${year}-\${month}-\${day}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="clean-button" data-calendar-popup-date-cell-delete="\${id}">X</button></li>
     `,
-  // 佛历弹出框活动单元格
-  // type: 1->佛事, 2->新建的标题
   editPopupActivityCell: `
         <li data-type="\${type}" data-activity-id="\${activityId}" data-calendar-popup-activity-cell="\${id}" data-title="\${title}" data-image="\${image}">\${title}</li>
     `,
@@ -206,9 +198,7 @@ var tpl = {
                         <div class="mgt10 mgb10 bdb-eeeeee"></div>
                         <div class="modal-tab-content" data-tab-container="1" data-type="calendar-buddhist-popup-\${id}">
                             <div data-calendar-buddhist-popup-content="\${id}" data-tab-index="1">
-                                <div class="popup-swipe-list-placeholder"><img src="${
-                                  images.loadingGif
-                                }"></div>
+                                <div class="popup-swipe-list-placeholder"><img src="${images.loadingGif}"></div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-green btn-sm left" data-calendar-buddhist-reserve-selected="\${id}" data-tab-index="1">保存选择</button>
@@ -217,9 +207,7 @@ var tpl = {
                         </div>
                         <div class="modal-tab-content" data-tab-container="2" data-type="calendar-buddhist-popup-\${id}" style="display: none;">
                             <div data-calendar-buddhist-popup-content="\${id}" data-tab-index="2">
-                                <div class="popup-swipe-list-placeholder"><img src="${
-                                  images.loadingGif
-                                }"></div>
+                                <div class="popup-swipe-list-placeholder"><img src="${images.loadingGif}"></div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-green btn-sm left" data-calendar-buddhist-reserve-selected="\${id}" data-tab-index="2">保存选择</button>
@@ -233,9 +221,7 @@ var tpl = {
     `,
   editBuddhistPopupPaginationContent: `
         <div data-calendar-buddhist-pagination-content="\${id}" data-tab-index="\${tabIndex}" data-calendar-buddhist-pagination-index="\${pageIndex}" class="popup-swipe-list-page-cell">
-            <div class="popup-swipe-list-placeholder"><img src="${
-              images.loadingGif
-            }"></div>
+            <div class="popup-swipe-list-placeholder"><img src="${images.loadingGif}"></div>
         </div>
     `,
   editBuddhistPopupPaginationContentCell: `
@@ -265,7 +251,6 @@ var tpl = {
         <input class="pagination-cell-input" type="text" data-calendar-buddhist-pagination-input="\${id}" data-tab-index="\${tabIndex}">
         <a class="pagination-cell" data-total-count="\${totalCount}" data-current-page="\${currentPage}" data-per-page="\${perPage}" data-total-pages="\${totalPages}" data-calendar-buddhist-page-index="-3" data-id="\${id}" data-tab-index="\${tabIndex}">跳到</a>
     `,
-  // 佛历组件新增条目弹出框
   editNewTitlePopup: `
         <div class="modal fade in popup-calendar-add-title" data-calendar-new-title-popup="\${id}">
             <div class="modal-backdrop fade in" data-popup-backdrop="1"></div>
@@ -292,14 +277,12 @@ var tpl = {
             </div>
         </div>
     `,
-  // 佛历组件新增条目弹出框内容单元
   editNewTitleContentCell: `
         <li class="added-title-cell" data-calendar-new-title-content-cell="\${id}" data-id="\${contentId}" data-text="\${text}">
             <span class="added-title-text">\${text}</span>
             <button class="btn btn-warning btn-xs mgl5" data-calendar-new-title-content-cell-delete="\${id}" data-id="\${contentId}">删除</button>
         </li>
     `,
-  // 佛历组件新添加的项目单元
   editNewAddUnit: `
         <div class="component-edit-calendar-selected-cell" data-edit-calendar-new-add-cell="\${id}" data-year="\${year}" data-month="\${month}" data-day="\${day}">
             <div class="title">
@@ -315,11 +298,9 @@ var tpl = {
             </div>
         </div>
     `,
-  // 佛历组件新添加的项目单元的活动单元
   editNewAddActivityCell: `
         <li class="content-cell" data-edit-calendar-new-add-activity-cell="\${id}" data-year="\${year}" data-month="\${month}" data-day="\${day}" data-type="\${activity.type}" data-id="\${activity.id}" data-image="\${activity.image}"  data-title="\${activity.title}">\${activity.title}</li>
     `,
-  // 佛历编辑新建的条目的弹出框
   editModifyNewAddActivitiesPopup: `
         <div class="modal fade in popup-calendar-modify-activity" data-calendar-modify-new-add-activities-popup="\${id}">
             <div class="modal-backdrop fade in" data-popup-backdrop="1"></div>
@@ -338,7 +319,6 @@ var tpl = {
             </div>
         </div>
     `,
-  // 佛历编辑新建的条目的弹出框的活动项目
   editModifyNewAddActivityCells: `
         {@each activities as activity}
         <tr class="popup-activity-cell" data-calendar-modify-new-add-activity-cell="\${id}">
@@ -349,7 +329,6 @@ var tpl = {
         </tr>
         {@/each}
     `,
-  // 佛历编辑已有的条目的弹出框
   editModifySelectedActivitiesPopup: `
         <div class="modal fade in popup-calendar-modify-activity" data-calendar-modify-selected-activities-popup="\${id}">
             <div class="modal-backdrop fade in" data-popup-backdrop="1"></div>
@@ -368,7 +347,6 @@ var tpl = {
             </div>
         </div>
     `,
-  // 佛历编辑已有的条目的弹出框的活动项目
   editModifySelectedActivityCells: `
         {@each activities as activity}
         <tr class="popup-activity-cell" data-calendar-modify-selected-activity-cell="\${id}">
@@ -378,13 +356,10 @@ var tpl = {
             <td class="action"><button class="btn btn-warning btn-sm" data-calendar-modify-selected-activity-delete="\${id}" data-year="\${year}" data-month="\${month}" data-day="\${day}" data-id="\${activity.id}" data-type="\${activity.type}">删除</button></td>
         </tr>
         {@/each}
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

@@ -1,6 +1,5 @@
-const images = require('../images');
-require('juicer');
-
+import images from "../images";
+import "juicer";
 var tpl = {
   display: `
         <div class="component-container component-swipe-list" data-container="component-display" data-type="3" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
@@ -82,10 +81,6 @@ var tpl = {
             <div class="component-swipe-list-cell-description">\${content}</div>
         </a>
     `,
-  /**
-   * 由于测试给出的新需求，故添加了下面这个命名比较怪异的东西
-   */
-  // 选择分类用的
   displayImageCellIndex1: `
         <a class="swiper-slide component-swipe-list-cell" data-swipe-list-cell="\${componentId}" data-index="1" data-type="\${type}">
             <div class="component-swipe-list-cell-image">
@@ -263,9 +258,7 @@ var tpl = {
                         <div class="modal-tab-container">{@if type == 1}佛事{@else}文章{@/if}</div>
                         <div class="mgt10 mgb10 bdb-eeeeee"></div>
                         <div data-swipe-list-popup-content="\${id}" data-type="\${type}">
-                            <div class="popup-swipe-list-placeholder"><img src="${
-                              images.loadingGif
-                            }"></div>
+                            <div class="popup-swipe-list-placeholder"><img src="${images.loadingGif}"></div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-green btn-sm left" data-swipe-list-reserve-selected="\${id}" data-type="\${type}">保存选择</button>
@@ -278,9 +271,7 @@ var tpl = {
     `,
   editPopupPaginationContent: `
         <div data-swipe-list-pagination-content="\${id}" data-type="\${type}" data-pagination-index="\${pageIndex}" class="popup-swipe-list-page-cell">
-            <div class="popup-swipe-list-placeholder"><img src="${
-              images.loadingGif
-            }"></div>
+            <div class="popup-swipe-list-placeholder"><img src="${images.loadingGif}"></div>
         </div>
     `,
   editPopupPaginationContentCell: `
@@ -317,12 +308,10 @@ var tpl = {
             <img src="\${image}" data-upload-image="\${imageId}">
             <button class="clean-button upload-remove" data-upload-image-delete="\${componentId}" data-image-id="\${imageId}" data-component-type="3" data-source-type="\${sourceType}">×</button>
         </li>
-    `,
+    `
 };
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

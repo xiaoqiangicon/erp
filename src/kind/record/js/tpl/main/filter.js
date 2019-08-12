@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <div class="main-filter">
     <div class="text-1">时间：</div>
     <div class="container-1">

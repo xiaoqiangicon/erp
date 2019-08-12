@@ -1,12 +1,10 @@
-require('juicer');
-
+import "juicer";
 var tpl = {
   addComponent: `
         {@each components as component}
         <li><a class="component-add" data-action="component-add" data-type="\${component.type}" data-insert="0">\${component.displayName}</a></li>
         {@/each}
     `,
-  // 创建微站成功后返回的连接，复制分享到其他地方
   websiteUrlDisplay: `
         <p>下面的地址是您的寺院微站官方地址，你可以将它分享给好友，或者通过邮件的方式发送出去。</p>
         <div class="clearfix mgt20">
@@ -44,12 +42,10 @@ var tpl = {
                 <div class="progress-bar progress-bar-success" data-upload-progress-bar="\${id}" data-type="\${type}"></div>
             </div>
         </li>
-    `,
+    `
 };
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

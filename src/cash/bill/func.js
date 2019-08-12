@@ -17,7 +17,7 @@ func.requestBillData = function (year, status) {
       year: year,
       status: status
     });
-    tippy.default("[data-tippy-content]");
+    tippy("[data-tippy-content]");
   });
 };
 func.resetStatusData = function (status) {

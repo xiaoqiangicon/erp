@@ -1,8 +1,4 @@
-/**
- * Created by kang on 2017/11/8.
- */
-require('juicer');
-
+import "juicer";
 var tpl = {
   selectOption: `
         <option value="\${id}">\${name}</option>  
@@ -64,7 +60,6 @@ var tpl = {
   tagCell: `
         <div class="tag-cell">\${name}</div>    
     `,
-  // 供佛墙订单联系人
   contactCell: `
         <div class="clearfix">
             <p><span>联系人：</span><span>\${name}</span></p>
@@ -72,13 +67,11 @@ var tpl = {
             {@if birth}<p><span>出生日期：</span><span>\${birth}{@if !!lunar}（农历）{@/if}</span></p>{@/if}
         </div>
     `,
-  // 供佛墙订单图片
   imgCell: `
         <div class="detail-popup-feed-item" data-feed-image-item="1" data-image="\${image}">
             <img src="\${image}">
         </div>
     `,
-  // 佛事订单详情
   BuddhistOrderDetl: `
         <p class="fwb">\${productName}</p>
         <hr>
@@ -124,13 +117,10 @@ var tpl = {
         <hr>
         <p><span class="fwb">备注</span></p>
         <div id="buddhist-popup-memo"></div>
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

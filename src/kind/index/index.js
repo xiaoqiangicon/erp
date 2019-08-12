@@ -1,7 +1,6 @@
-require('component/nav');
-require('@senntyou/shortcut.css');
-require('less/common.less');
-require('./index.less');
-
-require('./js/init');
-require('./js/view');
+import "component/nav";
+import "@senntyou/shortcut.css";
+import "less/common.less";
+import "./index.less";
+import "./js/init";
+import "./js/view";

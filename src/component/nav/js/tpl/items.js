@@ -1,5 +1,4 @@
-const handlebars = require('handlebars');
-
+import handlebars from "handlebars";
 const tpl = `
 {{#each items}}
 <li class="component-nav-menu-item hide" data-menu-item-id="{{this.id}}">
@@ -16,5 +15,4 @@ const tpl = `
 </li>
 {{/each}}
 `;
-
-module.exports = handlebars.compile(tpl);
+export default handlebars.compile(tpl);

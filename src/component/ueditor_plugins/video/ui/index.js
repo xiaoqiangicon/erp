@@ -1,4 +1,3 @@
-require('bootstrap/dist/css/bootstrap.css');
-require('@senntyou/shortcut.css');
-
-require('../index.less');
+import "bootstrap/dist/css/bootstrap.css";
+import "@senntyou/shortcut.css";
+import "../index.less";

@@ -1,5 +1,4 @@
-require('juicer');
-
+import "juicer";
 const displayComponents = `
 {@if components && components.length}
 {@each components as com, index}
@@ -19,7 +18,6 @@ const displayComponents = `
 <div style="text-align: center; height: 80px; line-height: 80px;">请在右边添加高僧法师</div>
 {@/if}
 `;
-
 const editComponents = `
 {@each components as com, index}
 <div class="edit-com-figure-row" data-edit-com-figure-row="\${com.id}">
@@ -31,7 +29,6 @@ const editComponents = `
 </div>
 {@/each}
 `;
-
 var tpl = {
   display: `
   <div class="component-container com-figure {@if subType === 2}com-figure-cell{@/if}" data-container="component-display" data-type="2" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
@@ -82,12 +79,10 @@ var tpl = {
     <img class="item-image" src="\${image}" data-edit-pop-figure-avatar-row-image="0">
     <button class="clean-button upload-remove" data-edit-pop-figure-avatar-row-del="0">×</button>
   </li>
-  `,
+  `
 };
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

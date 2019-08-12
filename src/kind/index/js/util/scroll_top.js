@@ -1,5 +1,4 @@
-const $ = require('jquery');
-
-module.exports = _ => {
+import $ from "jquery";
+export default _ => {
   $(window).scrollTop(0);
 };

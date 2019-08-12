@@ -1,29 +1,22 @@
-require('../../../../old-com/import-wx-article/src/css/index.css');
-const ImportWxArticle = require('../../../../old-com/import-wx-article/src');
-
-require('./index.less');
-require('./config');
-
-// 导入微信文章
-window.UE.registerUI('zzh-import-wx-article', (editor, uiName) => {
-  // 创建一个button
+import "../../../../old-com/import-wx-article/src/css/index.css";
+import ImportWxArticle from "../../../../old-com/import-wx-article/src";
+import "./index.less";
+import "./config";
+window.UE.registerUI("zzh-import-wx-article", (editor, uiName) => {
   const btn = new UE.ui.Button({
-    // 按钮的名字
     name: uiName,
-    // 提示
-    title: '导入微信文章',
-    // 点击时执行的命令
+    title: "导入微信文章",
     onclick: () => {
       if (!editor.zzhImportWxArticle) {
         editor.zzhImportWxArticle = new ImportWxArticle({
           onSubmit: content => {
-            editor.execCommand('cleardoc');
-            editor.execCommand('inserthtml', content);
-          },
+            editor.execCommand("cleardoc");
+            editor.execCommand("inserthtml", content);
+          }
         });
       }
       editor.zzhImportWxArticle.show();
-    },
+    }
   });
   return btn;
 });

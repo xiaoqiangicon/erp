@@ -1,10 +1,4 @@
-/**
- * Created by kang on 2017/11/21.
- * 添加/编辑简介
- */
-
-require('juicer');
-
+import "juicer";
 var tpl = {
   imgCell: `
         <div class="img-cell">
@@ -14,13 +8,10 @@ var tpl = {
     `,
   sceneSelect: `
         <option value="\${sceneId}">\${sceneName}</option>
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

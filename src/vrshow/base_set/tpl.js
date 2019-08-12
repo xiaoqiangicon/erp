@@ -1,8 +1,4 @@
-/**
- * Created by root on 2017/9/13.
- */
-require('juicer');
-
+import "juicer";
 var tpl = {
   musicCell: `
     <div class="content-cell">
@@ -10,12 +6,10 @@ var tpl = {
         <label for="music-\${id}">\${name}</label>
         <span class="play-music music-play" data-music-play="0" data-src="\${url}"></span>
     </div>
-    `,
+    `
 };
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

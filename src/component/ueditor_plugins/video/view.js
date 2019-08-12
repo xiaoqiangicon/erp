@@ -1,9 +1,9 @@
-const $ = require('jquery');
-const seeView = require('see-view').default;
+import $ from 'jquery';
+import seeView from 'see-view';
 
-const dialog = require('../../../util/dialog');
+import dialog from '../../../util/dialog';
 
-const data = require('./data');
+import data from './data';
 
 const regExp = /^<iframe .*<\/iframe>$/i;
 

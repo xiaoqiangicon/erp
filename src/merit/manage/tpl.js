@@ -1,8 +1,4 @@
-/**
- * Created by kang on 2017/11/8.
- */
-require('juicer');
-
+import "juicer";
 var tpl = {
   cellContainerEmpty: `
         <tr class="cell-content-empty"><td colspan="5">暂无数据</td></tr>
@@ -115,13 +111,10 @@ var tpl = {
             </div>
         </div>
         
-    `,
+    `
 };
-
 var compiledTpl = {};
-
-Object.keys(tpl).map(function(key) {
+Object.keys(tpl).map(function (key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
-module.exports = compiledTpl;
+export default compiledTpl;

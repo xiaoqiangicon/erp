@@ -1,5 +1,4 @@
-const handlebars = require('handlebars');
-
+import handlebars from "handlebars";
 const tpl = `
 <div class="ue-pl-video" data-ue-pl-video="{{id}}">
     <div class="inner-1">
@@ -12,5 +11,4 @@ const tpl = `
     </div>
 </div>
 `;
-
-module.exports = handlebars.compile(tpl);
+export default handlebars.compile(tpl);

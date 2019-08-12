@@ -1,26 +1,9 @@
-const $ = require('jquery');
-const seeAjax = require('see-ajax');
-require('bootstrap-datepicker/dist/css/bootstrap-datepicker.css');
-require('bootstrap-datepicker');
-require('bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js');
-
-const commonTpl = require('common/tpl');
-
-const mainTpl = require('./tpl/main');
-require('./ajax');
-
-seeAjax('main', {}, res => {
-  $('body').append(mainTpl(res));
-
-  $('#list-container').html(commonTpl.loading);
-
-  require('./util/request_list')();
-
-  // 初始化日期选择器
-  $('[data-date-input]').datepicker({
-    format: 'yyyy-mm-dd',
-    language: 'zh-CN',
-    autoclose: true,
-    forceParse: !1,
-  });
-});
+import $ from "jquery";
+import seeAjax from "see-ajax";
+import "bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+import "bootstrap-datepicker";
+import "bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js";
+import commonTpl from "common/tpl";
+import mainTpl from "./tpl/main";
+import "./ajax";
+import "main";
