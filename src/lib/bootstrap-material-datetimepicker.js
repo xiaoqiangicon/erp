@@ -1,28 +1,9 @@
-/**
- * modified by: senntyou
- *
- * 1. 选择日期的时候，可以点击添加多个日期
- *     option: multiple: true,
- *     return: array
- * 2. 可以添加回调函数，点击确定后返回相应的值，用于选择多个日期（string/array）
- *     callback(date)
- * 3. 对requirejs友好，原本是需要moment的支持的，但moment是and规范的，而此组件不是amd规范的，修改为amd规范,
- * 4. 选择日期的时候可以默认不选中日期，用于多选
- *     defaultSelected（bool, 默认为true，如果为false, 只对多选才有效）
- * 5. 选中日期可以设定需不需要显示农历
- *     withLunar(bool，默认false)
- */
-(function(factory) {
 
-	if (typeof define === 'function' && define.amd) {
-		define(['jquery', 'moment', 'lunar-calendar'], function($, moment, LunarCalendar) {
-			factory($, moment, LunarCalendar);
-		});
-	} else {
-		factory(window.jQuery, moment, LunarCalendar);
-	}
+  import $ from 'jquery';
+  import moment from 'moment';
+  import LunarCalendar from 'lunar-calendar';
 
-})(function($, moment, LunarCalendar) {
+
 	//(function ($, moment) {
 		var pluginName = "bootstrapMaterialDatePicker";
 		var pluginDataName = "plugin_" + pluginName;
@@ -1217,5 +1198,3 @@
 				this.$dtpElement.find('.dtp-content').css('top', h + 'px');
 			}
 		};
-	//})(window.jQuery, moment);
-});
