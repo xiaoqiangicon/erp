@@ -1,5 +1,4 @@
-define([], function() {
-  const tpl = `
+const tpl = `
     <div class="promotion" data-role="submit-container" style="display: none">
       <div class="promotion-background"></div>
       <div class="promotion-pane-submit">
@@ -14,6 +13,4 @@ define([], function() {
       </div>
     </div>
   `;
-
-  return tpl;
-});
+export default tpl;

@@ -1,17 +1,14 @@
-define([
-  'toastr',
-  './view/add_component',
-  './view/common',
-  './view/introduction',
-  './view/figure',
-  './view/swipe_list',
-  './view/donate_chart',
-  './view/calendar',
-  './view/shortcut',
-  './view/house',
-  './view/save_components',
-  './view/donate-box-settings',
-], function(toastr) {
-  toastr.options.positionClass = 'toast-bottom-full-width';
-  toastr.options.timeOut = 2000;
-});
+import toastr from "toastr";
+import "./view/add_component";
+import "./view/common";
+import "./view/introduction";
+import "./view/figure";
+import "./view/swipe_list";
+import "./view/donate_chart";
+import "./view/calendar";
+import "./view/shortcut";
+import "./view/house";
+import "./view/save_components";
+import "./view/donate-box-settings";
+toastr.options.positionClass = "toast-bottom-full-width";
+toastr.options.timeOut = 2000;

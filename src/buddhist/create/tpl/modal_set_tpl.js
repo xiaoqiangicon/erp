@@ -1,5 +1,4 @@
-define([], function() {
-  const tpl = `
+const tpl = `
     <div class="my_modal" data-role="my_modal" style="display: none">
     <div class="my_modal-background"></div>
     <div class="my_modal-pane">
@@ -13,6 +12,4 @@ define([], function() {
     </div>
     </div>
   `;
-
-  return tpl;
-});
+export default tpl;

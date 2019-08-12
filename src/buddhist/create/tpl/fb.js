@@ -1,5 +1,4 @@
-define([], function() {
-  const tpl = `
+const tpl = `
     <section>
       <section style="margin: 10px auto;">
         <section style="border-style: solid;-webkit-border-image: url(http://mpt.135editor.com/mmbiz_png/yqVAqoZvDibGpfYS2cC4YzbozH31oekibOFPBxA1CDIwaGogibNAnYBrrLIvt9q2U2RhpJruHxyI9YyMStIK84ibgw/0?wx_fmt=png) 65 fill;border-width: 20px;padding: 5px;color:#feda8c;">
@@ -11,6 +10,4 @@ define([], function() {
       </section>
     </section>
   `;
-
-  return tpl;
-});
+export default tpl;

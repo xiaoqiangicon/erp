@@ -1,7 +1,6 @@
-define(['jquery', 'juicer'], function($) {
-  var tpl = {
-    unit: juicer($('#tpl-unit').html()),
-  };
-
-  return tpl;
-});
+import $ from "jquery";
+import "juicer";
+var tpl = {
+  unit: juicer($("#tpl-unit").html())
+};
+export default tpl;

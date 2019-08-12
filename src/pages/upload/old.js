@@ -2,7 +2,9 @@
  * Created by senntyou on 2017/8/3.
  */
 
-define(['jquery', 'common/upload', 'juicer'], ($, commonUpload) => {
+import $ from  'jquery';
+import commonUpload from 'common/upload';
+import  juicer from 'juicer'
   // 设置AJAX的全局默认选项
   $.ajaxSetup({
     cache: !1, // 禁用缓存
@@ -28,4 +30,3 @@ define(['jquery', 'common/upload', 'juicer'], ($, commonUpload) => {
       $contentBody.prepend(tplRow.render({ url }));
     }
   );
-});

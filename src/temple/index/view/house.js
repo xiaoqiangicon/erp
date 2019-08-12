@@ -1,1 +1,2 @@
-define(['./house/edit', './house/popup'], function() {});
+import './house/edit';
+import './house/popup';

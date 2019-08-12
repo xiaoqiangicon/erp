@@ -1,9 +1,4 @@
-/**
- * Created by senntyou on 2017/8/19.
- */
-
-define(() => {
-  const data = {
+export default {
     // 默认配置
     defaultOption: {
       onChange(pageToChange) {}, // 切换页码回调函数，页面以 1 开始索引
@@ -19,6 +14,3 @@ define(() => {
     // 组件的配置集合
     componentsOptions: {},
   };
-
-  return data;
-});

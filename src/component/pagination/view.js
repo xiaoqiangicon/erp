@@ -1,8 +1,7 @@
-/**
- * Created by senntyou on 2017/8/3.
- */
+import $ from 'jquery';
+import data from './data';
+import 'lib/jquery.seeView';
 
-define(['jquery', './data', 'lib/jquery.seeView'], ($, data) => {
   $.seeView({
     events: {
       // 点击分页
@@ -59,4 +58,3 @@ define(['jquery', './data', 'lib/jquery.seeView'], ($, data) => {
       componentOption.onChange(page);
     },
   });
-});

@@ -1,12 +1,7 @@
-/**
- * Created by senntyou on 2017/8/3.
- */
 
-define([
-  './view/common',
-  './view/main',
-  './view/tag',
-  './view/tag_popup_input',
-  './view/printer',
-  './view/save',
-], function() {});
+import   './view/common';
+import './view/main';
+import './view/tag';
+import './view/tag_popup_input';
+import './view/printer';
+import './view/save';

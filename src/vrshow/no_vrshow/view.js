@@ -1,12 +1,7 @@
-/**
- * Created by kang on 2017/10/23.
- */
-
-define(['jquery', './function', './ajax', 'lib/jquery.seeView'], function(
-  $,
-  func
-) {
-  $.seeView({
-    events: {},
-  });
+import $ from "jquery";
+import func from "./function";
+import "./ajax";
+import "lib/jquery.seeView";
+$.seeView({
+  events: {}
 });

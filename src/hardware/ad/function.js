@@ -1,34 +1,21 @@
-/**
- * Created by senntyou on 2017/7/18.
- */
-
-define([
-  'jquery',
-  'toastr',
-  'common/tpl',
-  'common/function',
-  './data',
-  './tpl',
-  './ajax',
-], function($, toastr, commonTpl, commonFunc, data, tpl) {
-  var $contentBody = $('#content-body');
-
-  var func = {};
-
-  // 请求当前所有的广告
-  func.requestAds = function() {
-    $contentBody.html(commonTpl.placeholder);
-    $.seeAjax.get('detail', {}, function(res) {
-      if (!res.success || !res.data || !res.data.length) return;
-
-      // 内容
-      var htmlStr = '';
-      res.data.map(function(item) {
-        htmlStr += tpl.row.render(item);
-      });
-      $contentBody.html(htmlStr);
+import $ from "jquery";
+import toastr from "toastr";
+import commonTpl from "common/tpl";
+import commonFunc from "common/function";
+import data from "./data";
+import tpl from "./tpl";
+import "./ajax";
+var $contentBody = $("#content-body");
+var func = {};
+func.requestAds = function () {
+  $contentBody.html(commonTpl.placeholder);
+  $.seeAjax.get("detail", {}, function (res) {
+    if (!res.success || !res.data || !res.data.length) return;
+    var htmlStr = "";
+    res.data.map(function (item) {
+      htmlStr += tpl.row.render(item);
     });
-  };
-
-  return func;
-});
+    $contentBody.html(htmlStr);
+  });
+};
+export default func;

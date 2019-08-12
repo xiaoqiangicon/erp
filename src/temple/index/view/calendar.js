@@ -1,10 +1,6 @@
-/**
- * Created by senntyou on 2017/2/27.
- */
-define([
-  './calendar/edit',
-  './calendar/edit_2',
-  './calendar/popup_main',
-  './calendar/popup_main_2',
-  './calendar/popup_add_title',
-], function() {});
+
+  import './calendar/edit';
+import './calendar/edit_2';
+import './calendar/popup_main';
+import './calendar/popup_main_2';
+import './calendar/popup_add_title';

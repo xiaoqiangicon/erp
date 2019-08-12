@@ -1,1 +1,2 @@
-define(['./figure/edit', './figure/popup'], function() {});
+import './figure/edit';
+import  './figure/popup';

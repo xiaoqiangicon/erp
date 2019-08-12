@@ -1,18 +1,11 @@
-/**
- * Created by senntyou on 2017/8/3.
- */
-
-define([
-  'jquery',
-  'common/function',
-  'common/variables',
-  './data',
-  './tpl',
-  './function',
-  './ajax',
-  'lib/jquery.seeView',
-], function($, commonFunc, commonVars, data, tpl, func) {
-  $.seeView({
-    events: {},
-  });
+import $ from "jquery";
+import commonFunc from "common/function";
+import commonVars from "common/variables";
+import data from "./data";
+import tpl from "./tpl";
+import func from "./function";
+import "./ajax";
+import "lib/jquery.seeView";
+$.seeView({
+  events: {}
 });

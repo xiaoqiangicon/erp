@@ -1,5 +1,4 @@
-define([], function() {
-  const tpl = `
+const tpl = `
   <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center">
     <img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置">
   </td>
@@ -82,6 +81,4 @@ define([], function() {
     {@/if}
   </td>
   `;
-
-  return tpl;
-});
+export default tpl;

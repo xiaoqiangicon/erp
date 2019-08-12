@@ -1,12 +1,4 @@
-define([], function() {
-  // 选择项附言模板
-  // type 1 普通选择项
-  // type 2 往生选择项 inputType 10 阳上人 11 往生者
-  // type 3 祈福选择项 inputType 12 功德芳名 15 心愿
-  // type 4 快递选择项 inputType 4 联系人 5 手机号码 6 地址
-
-  // 前两列
-  const td12 = `
+const td12 = `
     {@if subType == 3}
       {@if inputType == 12}
         <td style="line-height: 36px;text-align: center">可视化项</td>
@@ -107,9 +99,7 @@ define([], function() {
       </td>
     {@/if}
   `;
-
-  // 第三列
-  const td3 = `
+const td3 = `
     <td class="tac">
       {@if 
         ((subType == 2) && (inputType == 10 || inputType == 11)) || 
@@ -124,9 +114,7 @@ define([], function() {
       {@/if}
     </td>
   `;
-
-  // 第四列
-  const td4 = `
+const td4 = `
     <td>
       {@if inputType == 2 || inputType == 9}
         <div class="col-sm-12" style="width: 100%;padding: 0">
@@ -151,9 +139,7 @@ define([], function() {
       {@/if}
     </td>
   `;
-
-  // 第五列
-  const td5 = `
+const td5 = `
   <td style="line-height: 34px;text-align: center">
     {@if 
       (subType == 3 && (inputType == 12 || inputType == 15)) || 
@@ -190,8 +176,5 @@ define([], function() {
     {@/if}
     </td>
   `;
-
-  const tpl = td12 + td3 + td4 + td5;
-
-  return tpl;
-});
+const tpl = td12 + td3 + td4 + td5;
+export default tpl;
