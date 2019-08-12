@@ -5,7 +5,7 @@ import "../../../../old-com/promotion/less/index.less";
 import promotion from "../../../../old-com/promotion/src";
 import dialog from "util/dialog";
 import confirm from "util/confirm";
-import env from "../../../util/env";
+import * as env from "../../../util/env";
 seeView({
   events: {
     "click [data-row-edit]": "onClickRowEdit",

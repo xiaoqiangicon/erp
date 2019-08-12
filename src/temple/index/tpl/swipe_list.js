@@ -1,4 +1,4 @@
-import images from "../images";
+import * as images from "../images";
 import "juicer";
 var tpl = {
   display: `

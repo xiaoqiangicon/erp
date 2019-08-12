@@ -1,4 +1,4 @@
-import images from "./images";
+import * as images from "./images";
 var sample = {
   components: [{
     type: 1,

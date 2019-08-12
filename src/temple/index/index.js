@@ -26,7 +26,8 @@ import $ from "jquery";
 import seeAjax from "see-ajax";
 import "./old";
 import "./see-ajax";
-window.$ = $;
+import "./old-extra";
+
 seeAjax("settings", {}, res => {
   if (!res.data) return;
   $("#show-home-sui-xi").prop({
@@ -39,4 +40,3 @@ seeAjax("settings", {}, res => {
     checked: !!res.data.showSceneSuiXi
   });
 });
-import undefined;
