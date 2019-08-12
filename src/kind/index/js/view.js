@@ -22,6 +22,8 @@ seeView({
     'click [data-row-promo]': 'onClickRowPromo',
     // 点击推广
     'click [data-row-delete]': 'onClickRowDelete',
+    // 点击显示更多
+    'click [data-row-more]': 'onClickRowMore',
   },
   // 点击编辑一行数据
   onClickRowEdit: e => {
@@ -72,5 +74,25 @@ seeView({
         $(`[data-row="${id}"]`).remove();
       });
     });
+  },
+
+  // 点击显示更多
+  onClickRowMore: e => {
+    const $this = $(e.target);
+    const id = parseInt($this.attr('data-row-more'), 10);
+
+    $('[data-more-operate]').each(i => {
+      let $this = $('[data-more-operate]').eq(i);
+
+      if ($this.attr('data-more-operate') == id) {
+        if ($this.hasClass('more-hide')) {
+          $('[data-more-operate]').addClass('more-hide');
+          $this.removeClass('more-hide');
+        } else {
+          $('[data-more-operate]').addClass('more-hide');
+        }
+      }
+    });
+    e.stopPropagation();
   },
 });
