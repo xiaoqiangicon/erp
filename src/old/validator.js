@@ -1,4 +1,5 @@
-define(['jquery', './backbone'], function($) {
+import $ from 'jquery';
+import './backbone';
 
 	var Validator = Backbone.Model.extend({
 
@@ -152,5 +153,4 @@ define(['jquery', './backbone'], function($) {
 		}
 	});
 
-	return Validator;
-});
+	export default Validator;

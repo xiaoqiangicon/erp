@@ -1,27 +1,6 @@
-/*!
- * CityPicker v1.0.2
- * https://github.com/tshi0912/citypicker
- *
- * Copyright (c) 2015-2016 Tao Shi
- * Released under the MIT license
- *
- * Date: 2016-03-17T07:47:48.063Z
- */
 
-(function (factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as anonymous module.
-        define(['jquery', './city-picker.data'], factory);
-    } else if (typeof exports === 'object') {
-        // Node / CommonJS
-        factory(require('jquery'), require('./city-picker.data'));
-    } else {
-        // Browser globals.
-        factory(jQuery, ChineseDistricts);
-    }
-})(function ($, ChineseDistricts) {
-
-    'use strict';
+    import $ from 'jquery';
+    import ChineseDistricts from './city-picker.data';
 
     if (typeof ChineseDistricts === 'undefined') {
         throw new Error('The file "city-picker.data.js" must be included first!');
@@ -580,4 +559,3 @@
     $(function () {
         $('[data-toggle="city-picker"]').citypicker();
     });
-});
