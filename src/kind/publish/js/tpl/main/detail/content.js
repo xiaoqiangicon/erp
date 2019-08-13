@@ -1,4 +1,4 @@
-module.exports = `
+export default `
     <div class="main-content">
         <div class="publish-content">
             <span class="content-tips">内容</span>

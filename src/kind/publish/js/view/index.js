@@ -1,1 +1,2 @@
-require('./main');
+import './content';
+import './record';
