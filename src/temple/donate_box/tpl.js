@@ -1,5 +1,5 @@
-import images from "./images";
-import "juicer";
+import images from './images';
+import 'juicer';
 var tpl = {
   payCell: `
         <div class="pay-cell">
@@ -57,10 +57,10 @@ var tpl = {
                 </div>
             </div>
         </div>
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

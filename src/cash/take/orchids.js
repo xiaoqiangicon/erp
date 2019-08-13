@@ -1,1 +1,1 @@
-import './orchids/detail'
+import './orchids/detail';

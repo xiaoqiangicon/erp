@@ -1,4 +1,4 @@
-import "juicer";
+import 'juicer';
 var tpl = {
   articleCell: `
         <div class="recruit-cell" data-article-cell="\${id}">
@@ -58,10 +58,10 @@ var tpl = {
     `,
   categoryCell: `
         <li><a class="item" data-select-category="\${id}">\${name}</a></li>
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

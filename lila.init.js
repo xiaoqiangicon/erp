@@ -215,16 +215,20 @@ export default lila => {
       alias: {
         handlebars: 'handlebars/dist/handlebars.js',
       },
-      babelExclude: [/node_modules/,
-        /pro-com\/src\/ueditor/, /pro-com\\src\\ueditor/
+      babelExclude: [
+        /node_modules/,
+        /pro-com\/src\/ueditor/,
+        /pro-com\\src\\ueditor/,
       ],
       cssModules: cssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
       cssModulesExclude: cssModulesExclude[entry] || undefined,
       babelPlugins: [
         ['import', { libraryName: 'antd', style: 'css' }],
-        ['component', { "libraryName": "element-ui",
-          "styleLibraryName": "theme-chalk" }],
+        [
+          'component',
+          { libraryName: 'element-ui', styleLibraryName: 'theme-chalk' },
+        ],
       ],
       plugins: [
         new MomentLocalesPlugin({

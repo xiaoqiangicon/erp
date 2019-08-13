@@ -1,2 +1,2 @@
 import './figure/edit';
-import  './figure/popup';
+import './figure/popup';

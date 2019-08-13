@@ -1,12 +1,12 @@
-import $ from "jquery";
-import func from "./func";
-import "./view";
-import "bootstrap-select";
+import $ from 'jquery';
+import func from './func';
+import './view';
+import 'bootstrap-select';
 $.ajaxSetup({
-  cache: !1
+  cache: !1,
 });
 func.init();
-$("#input-bank").selectpicker({
-  width: "264px",
-  liveSearch: !0
+$('#input-bank').selectpicker({
+  width: '264px',
+  liveSearch: !0,
 });

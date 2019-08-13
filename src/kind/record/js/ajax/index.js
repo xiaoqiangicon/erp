@@ -1,5 +1,5 @@
-import seeAjax from "see-ajax";
+import seeAjax from 'see-ajax';
 seeAjax.setEnv(__SEE_ENV__);
-import "./common";
-import "./main";
-import "./list";
+import './common';
+import './main';
+import './list';

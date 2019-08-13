@@ -1,4 +1,4 @@
-import handlebars from "handlebars";
+import handlebars from 'handlebars';
 const tpl = `
 {{#each items}}
 <li class="component-nav-menu-item hide" data-menu-item-id="{{this.id}}">

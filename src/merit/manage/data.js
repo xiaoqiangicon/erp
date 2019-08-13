@@ -5,11 +5,11 @@ var data = {
   getListParams: {
     page: 0,
     pageSize: 25,
-    type: 1
+    type: 1,
   },
   getListRes: {},
   getTagRes: {},
   getTagHandleData: {},
-  lockBlur: false
+  lockBlur: false,
 };
 export default data;

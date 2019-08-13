@@ -1,4 +1,4 @@
-import handlebars from "handlebars";
+import handlebars from 'handlebars';
 const tpl = `
 <div class="item-0-1" data-cover-item="1">
     <img src="{{image}}" data-cover-item-image="1">

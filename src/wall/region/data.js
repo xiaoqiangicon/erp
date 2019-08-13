@@ -1,4 +1,4 @@
-import $ from "jquery";
+import $ from 'jquery';
 var data = {
   currentSortId: 0,
   currentCopyId: 0,
@@ -6,8 +6,8 @@ var data = {
   detailData: {},
   placeData: {},
   filter: {
-    place: "",
-    buddha: 0
-  }
+    place: '',
+    buddha: 0,
+  },
 };
 export default data;

@@ -2,14 +2,14 @@ var data = {
   getListParams: {
     page: 0,
     pageSize: 25,
-    id: ""
+    id: '',
   },
   getUserInfoParams: {
-    id: ""
+    id: '',
   },
   getListRes: {},
   getUserInfoRes: {},
   getTagRes: {},
-  getTagHandleData: {}
+  getTagHandleData: {},
 };
 export default data;

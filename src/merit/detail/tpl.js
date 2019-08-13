@@ -1,4 +1,4 @@
-import "juicer";
+import 'juicer';
 var tpl = {
   selectOption: `
         <option value="\${id}">\${name}</option>  
@@ -117,10 +117,10 @@ var tpl = {
         <hr>
         <p><span class="fwb">备注</span></p>
         <div id="buddhist-popup-memo"></div>
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

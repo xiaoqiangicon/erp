@@ -1,4 +1,4 @@
 export default {
   info: {},
-  editor: void 0
+  editor: void 0,
 };

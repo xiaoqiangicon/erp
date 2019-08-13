@@ -1,19 +1,19 @@
-import $ from "jquery";
-import commonFunc from "common/function";
-import data from "./data";
-import tpl from "./tpl";
-import Pagination from "../../../old-com/pagination/src";
-import "./ajax";
-import "bootstrap-select";
+import $ from 'jquery';
+import commonFunc from 'common/function';
+import data from './data';
+import tpl from './tpl';
+import Pagination from '../../../old-com/pagination/src';
+import './ajax';
+import 'bootstrap-select';
 var func = {};
-func.init = function () {
-  $("#loading-toast").addClass("hide");
-  func.getList(data.getListParams, function (res) {
+func.init = function() {
+  $('#loading-toast').addClass('hide');
+  func.getList(data.getListParams, function(res) {
     func.renderList(res);
   });
 };
-func.getList = function (params, callback) {
-  $.seeAjax.get("getList", params, function (res) {
+func.getList = function(params, callback) {
+  $.seeAjax.get('getList', params, function(res) {
     if (res.success) {
       data.getListRes = res;
       callback && callback(res);
@@ -22,9 +22,10 @@ func.getList = function (params, callback) {
     }
   });
 };
-func.renderList = function (res) {
-  var $container = $("#watchword-list-container"), htmlStr = "";
-  res.data.map(function (item) {
+func.renderList = function(res) {
+  var $container = $('#watchword-list-container'),
+    htmlStr = '';
+  res.data.map(function(item) {
     htmlStr += tpl.tableCell.render(item);
   });
   !htmlStr && (htmlStr = tpl.cellContainerEmpty.render({}));
@@ -32,42 +33,53 @@ func.renderList = function (res) {
   if (res.total) {
     func.createPagination(res.total, data.getListParams.pageNum);
   } else {
-    $("#pagination-container").html("");
+    $('#pagination-container').html('');
   }
 };
-func.createPagination = function (totalCount, currentPage) {
-  var totalPages = Math.ceil(totalCount / data.getListParams.pageSize), pagination = new Pagination($("#pagination-container"), {
-    onChange: function (pageToChange) {
-      data.getListParams.pageNum = pageToChange - 1;
-      func.getList(data.getListParams, function (res) {
-        func.renderList(res);
-      });
-    },
-    showDesc: !1,
-    showGoTo: !1,
-    currentPage: currentPage + 1,
-    totalPages: totalPages,
-    totalCount: totalCount,
-    perPage: data.getListParams.pageSize
-  });
+func.createPagination = function(totalCount, currentPage) {
+  var totalPages = Math.ceil(totalCount / data.getListParams.pageSize),
+    pagination = new Pagination($('#pagination-container'), {
+      onChange: function(pageToChange) {
+        data.getListParams.pageNum = pageToChange - 1;
+        func.getList(data.getListParams, function(res) {
+          func.renderList(res);
+        });
+      },
+      showDesc: !1,
+      showGoTo: !1,
+      currentPage: currentPage + 1,
+      totalPages: totalPages,
+      totalCount: totalCount,
+      perPage: data.getListParams.pageSize,
+    });
   pagination.render();
 };
-func.updateWatchword = function (params, callback) {
-  $.seeAjax.post("updateWatchword", params, function (res) {
-    if (res.success) {
-      callback && callback(res);
-    } else {
-      res.message && commonFunc.alert(res.message);
-    }
-  }, true);
+func.updateWatchword = function(params, callback) {
+  $.seeAjax.post(
+    'updateWatchword',
+    params,
+    function(res) {
+      if (res.success) {
+        callback && callback(res);
+      } else {
+        res.message && commonFunc.alert(res.message);
+      }
+    },
+    true
+  );
 };
-func.operateWatchword = function (params, callback) {
-  $.seeAjax.post("operateWatchword", params, function (res) {
-    if (res.success) {
-      callback && callback(res);
-    } else {
-      res.message && commonFunc.alert(res.message);
-    }
-  }, true);
+func.operateWatchword = function(params, callback) {
+  $.seeAjax.post(
+    'operateWatchword',
+    params,
+    function(res) {
+      if (res.success) {
+        callback && callback(res);
+      } else {
+        res.message && commonFunc.alert(res.message);
+      }
+    },
+    true
+  );
 };
 export default func;

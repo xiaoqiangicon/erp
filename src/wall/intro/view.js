@@ -1,14 +1,16 @@
-import $ from "jquery";
-import "lib/jquery.seeView";
+import $ from 'jquery';
+import 'lib/jquery.seeView';
 $.seeView({
   events: {
-    "!click [data-show-promotion]": "onClickShowPromotion",
-    "click [data-promotion-close]": "onClickPromotionClose"
+    '!click [data-show-promotion]': 'onClickShowPromotion',
+    'click [data-promotion-close]': 'onClickPromotionClose',
   },
-  onClickShowPromotion: function (e) {
-    $("#promotion").show();
+  onClickShowPromotion: function(e) {
+    $('#promotion').show();
   },
-  onClickPromotionClose: function (e) {
-    $(e.target).parents(".promotion").hide();
-  }
+  onClickPromotionClose: function(e) {
+    $(e.target)
+      .parents('.promotion')
+      .hide();
+  },
 });

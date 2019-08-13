@@ -16,5 +16,5 @@ function deepCopy(obj) {
   }
 }
 export default {
-  deepCopy: deepCopy
+  deepCopy: deepCopy,
 };

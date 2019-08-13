@@ -1,90 +1,111 @@
-import $ from "jquery";
-import "lib/jquery.seeAjax";
+import $ from 'jquery';
+import 'lib/jquery.seeAjax';
 var requestKeysOuter = {
   list: {
-    year: "year",
-    page: "pageNumber"
-  }
+    year: 'year',
+    page: 'pageNumber',
+  },
 };
 var responseRefactorOuter = {
   list: {
-    data: [{
-      money: "price",
-      count: "order_num",
-      available: "surplusPickUpMoney",
-      taken: "pickUpMoney"
-    }]
+    data: [
+      {
+        money: 'price',
+        count: 'order_num',
+        available: 'surplusPickUpMoney',
+        taken: 'pickUpMoney',
+      },
+    ],
   },
   accountInfo: {
-    status: "authBankType",
+    status: 'authBankType',
     data: {
-      bank: "bankName",
-      subBank: "bankBranchName",
-      bankCard: "bankCardNumber",
-      account: "bankCardUserName",
-      licenceImage: "certificatePicUrl",
-      idCardImage1: "identityCardPic",
-      idCardImage2: "identityCardPic2",
-      reason: "examineMessage"
-    }
-  }
+      bank: 'bankName',
+      subBank: 'bankBranchName',
+      bankCard: 'bankCardNumber',
+      account: 'bankCardUserName',
+      licenceImage: 'certificatePicUrl',
+      idCardImage1: 'identityCardPic',
+      idCardImage2: 'identityCardPic2',
+      reason: 'examineMessage',
+    },
+  },
 };
 var preHandleOuter = {
-  list: function (data) {
+  list: function(data) {
     delete data.pageNumber;
-  }
+  },
 };
 var postHandleOuter = {
-  common: function (res) {
+  common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
   },
-  stat: function (res) {
+  stat: function(res) {
     res.data = {};
     res.data.total = res.sumPrice;
     res.data.available = res.canPickUpMoney;
     res.data.taken = res.pickUpMoney;
     res.data.chanzai = res.chanzaiOrderMoney;
   },
-  list: function (res) {
+  list: function(res) {
     res.currentPage = 1;
     res.totalPages = 1;
-    res.data.map(function (item) {
-      var monthArray = item.month.split("-");
+    res.data.map(function(item) {
+      var monthArray = item.month.split('-');
       item.year = parseInt(monthArray[0]);
       item.month = parseInt(monthArray[1]);
       item.remain = item.available - item.taken;
     });
-  }
+  },
 };
 $.seeAjax.config({
   environment: __SEE_ENV__,
   name: {
-    stat: "stat",
-    list: "list",
-    accountInfo: "accountInfo"
+    stat: 'stat',
+    list: 'list',
+    accountInfo: 'accountInfo',
   },
   url: {
-    stat: ["/zzhadmin/getSumMoney/", "/src/cash/index/mock/stat_server.json", "/src/cash/index/mock/stat.json"],
-    list: ["/zzhadmin/moneyCntList/", "/src/cash/index/mock/list_server.json", "/src/cash/index/mock/list.json"],
-    accountInfo: ["/zzhadmin/getTempleBank/", "/src/cash/account/edit/mock/info_server.json", "/src/cash/account/edit/mock/info.json"]
+    stat: [
+      '/zzhadmin/getSumMoney/',
+      '/src/cash/index/mock/stat_server.json',
+      '/src/cash/index/mock/stat.json',
+    ],
+    list: [
+      '/zzhadmin/moneyCntList/',
+      '/src/cash/index/mock/list_server.json',
+      '/src/cash/index/mock/list.json',
+    ],
+    accountInfo: [
+      '/zzhadmin/getTempleBank/',
+      '/src/cash/account/edit/mock/info_server.json',
+      '/src/cash/account/edit/mock/info.json',
+    ],
   },
   requestKeys: {
-    list: [requestKeysOuter.list, requestKeysOuter.list, {
-      year: "year",
-      page: "page"
-    }]
+    list: [
+      requestKeysOuter.list,
+      requestKeysOuter.list,
+      {
+        year: 'year',
+        page: 'page',
+      },
+    ],
   },
   responseRefactor: {
     list: [responseRefactorOuter.list, responseRefactorOuter.list],
-    accountInfo: [responseRefactorOuter.accountInfo, responseRefactorOuter.accountInfo]
+    accountInfo: [
+      responseRefactorOuter.accountInfo,
+      responseRefactorOuter.accountInfo,
+    ],
   },
   preHandle: {
-    list: [preHandleOuter.list, preHandleOuter.list]
+    list: [preHandleOuter.list, preHandleOuter.list],
   },
   postHandle: {
     common: [postHandleOuter.common, postHandleOuter.common],
     stat: [postHandleOuter.stat, postHandleOuter.stat],
-    list: [postHandleOuter.list, postHandleOuter.list]
-  }
+    list: [postHandleOuter.list, postHandleOuter.list],
+  },
 });

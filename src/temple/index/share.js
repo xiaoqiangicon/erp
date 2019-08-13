@@ -1,10 +1,10 @@
 export default {
   figureComponent: {
-    components: []
+    components: [],
   },
   editFigureId: 0,
   houseComponent: {
-    houses: []
+    houses: [],
   },
-  editHouseId: 0
+  editHouseId: 0,
 };

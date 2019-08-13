@@ -1,9 +1,9 @@
 var data = {
   ordersFilter: {
     regionId: 0,
-    search: "",
-    remainDays: ""
+    search: '',
+    remainDays: '',
   },
-  listData: {}
+  listData: {},
 };
 export default data;

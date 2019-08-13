@@ -1,13 +1,15 @@
-import seeAjax from "see-ajax";
+import seeAjax from 'see-ajax';
 const requestKeys = {
-  page: "pageNum"
+  page: 'pageNum',
 };
 const responseRefactor = {
-  data: [{
-    title: "name",
-    totalMoney: "totalPrice",
-    totalPeople: "joinNum"
-  }]
+  data: [
+    {
+      title: 'name',
+      totalMoney: 'totalPrice',
+      totalPeople: 'joinNum',
+    },
+  ],
 };
 const preHandle = req => {
   req.pageNum -= 1;
@@ -16,10 +18,14 @@ const preHandle = req => {
 const postHandle = res => {
   res.totalPages = Math.ceil((res.total || 0) / 20);
 };
-seeAjax.config("list", {
-  url: ["/zzhadmin/charityList", "/src/kind/index/data/list_server.json", "/src/kind/index/data/list.json"],
+seeAjax.config('list', {
+  url: [
+    '/zzhadmin/charityList',
+    '/src/kind/index/data/list_server.json',
+    '/src/kind/index/data/list.json',
+  ],
   requestKeys: [requestKeys, requestKeys],
   responseRefactor: [responseRefactor, responseRefactor],
   preHandle: [preHandle, preHandle],
-  postHandle: [postHandle, postHandle]
+  postHandle: [postHandle, postHandle],
 });

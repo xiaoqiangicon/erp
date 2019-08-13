@@ -1,4 +1,3 @@
-
 import './view/common';
 import './view/main';
 import './view/unit';

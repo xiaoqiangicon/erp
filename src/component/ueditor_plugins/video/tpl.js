@@ -1,4 +1,4 @@
-import handlebars from "handlebars";
+import handlebars from 'handlebars';
 const tpl = `
 <div class="ue-pl-video" data-ue-pl-video="{{id}}">
     <div class="inner-1">

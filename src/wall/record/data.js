@@ -1,11 +1,11 @@
-import $ from "jquery";
+import $ from 'jquery';
 var data = {
   winWidth: $(window).width(),
   regions: {},
   detailData: {},
   cellData: {},
   currentRegionId: 0,
-  currentSequence: "",
+  currentSequence: '',
   currentRow: 0,
   currentColumn: 0,
   lastOnlineRow: 0,
@@ -15,6 +15,6 @@ var data = {
   hoverPopupFreezing: !1,
   seatsArray: {},
   rowsArray: {},
-  columnsArray: {}
+  columnsArray: {},
 };
 export default data;

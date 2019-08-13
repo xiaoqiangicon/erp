@@ -1,14 +1,16 @@
-import jsonRefactor from "json-refactor";
+import jsonRefactor from 'json-refactor';
 export default req => {
   req.img = [];
   req.covers.forEach(url => {
     req.img.push({
-      url
+      url,
     });
   });
   delete req.covers;
-  jsonRefactor(req.specs, [{
-    benison: "desc",
-    indexImg: "icon"
-  }]);
+  jsonRefactor(req.specs, [
+    {
+      benison: 'desc',
+      indexImg: 'icon',
+    },
+  ]);
 };

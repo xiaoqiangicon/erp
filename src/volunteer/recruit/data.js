@@ -1,5 +1,5 @@
-import envData from "common/env_data";
+import envData from 'common/env_data';
 var data = {
-  totalPagesRecord: {}
+  totalPagesRecord: {},
 };
 export default data;

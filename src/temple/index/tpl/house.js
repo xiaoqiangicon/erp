@@ -1,6 +1,6 @@
-import "juicer";
-import cookie from "js-cookie";
-const openShiJingTanSi = !!parseInt(cookie.get("pw_vr_devote"));
+import 'juicer';
+import cookie from 'js-cookie';
+const openShiJingTanSi = !!parseInt(cookie.get('pw_vr_devote'));
 const displayComponents = `
 {@if houses && houses.length}
 {@each houses as house, index}
@@ -64,7 +64,7 @@ var tpl = {
   displayComponents,
   edit: `
   <div class="component-edit"  data-container="component-edit" data-type="7" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
-    ${openShiJingTanSi ? "" : tip}
+    ${openShiJingTanSi ? '' : tip}
     <div class="component-edit-cell">
       <p class="component-edit-cell-title">展示样式</p>
       <div class="component-edit-cell-body clearfix">
@@ -98,10 +98,10 @@ var tpl = {
     <img class="item-image" src="\${image}" data-edit-pop-house-cover-row-image="0">
     <button class="clean-button upload-remove" data-edit-pop-house-cover-row-del="0">×</button>
   </li>
-  `
+  `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

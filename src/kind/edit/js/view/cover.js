@@ -1,11 +1,13 @@
-import $ from "jquery";
-import seeView from "see-view";
+import $ from 'jquery';
+import seeView from 'see-view';
 seeView({
   events: {
-    "click [data-cover-item-delete]": "onClickCoverItemDelete"
+    'click [data-cover-item-delete]': 'onClickCoverItemDelete',
   },
   onClickCoverItemDelete: e => {
-    $(e.target).parent().remove();
-    $("#cover-add").removeClass("hide");
-  }
+    $(e.target)
+      .parent()
+      .remove();
+    $('#cover-add').removeClass('hide');
+  },
 });

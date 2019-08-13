@@ -31,14 +31,13 @@ var tpl = {
         <input class="component-pagination-cell-input" data-component-pagination-input="1" data-component-pagination-id="\${id}">
         <a class="component-pagination-cell" data-component-pagination-cell="-3" data-component-pagination-id="\${id}">跳到</a>
         {@/if}
-    `
+    `,
 };
 
 var compiledTpl = {};
 
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
-
 
 export default compiledTpl;

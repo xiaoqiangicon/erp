@@ -1,4 +1,4 @@
-import handlebars from "handlebars";
+import handlebars from 'handlebars';
 const tpl = `
 <div class="row-0-1" data-pay-item="{{id}}">
     <div class="item-0-1 item-0-1-1">

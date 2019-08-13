@@ -1,4 +1,4 @@
-import handlebars from "handlebars";
+import handlebars from 'handlebars';
 const tpl = `
 {{#each data}}
 <div class="row-1" data-row="{{this.id}}">

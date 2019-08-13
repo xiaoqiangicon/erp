@@ -1,4 +1,4 @@
-import "juicer";
+import 'juicer';
 var tpl = {
   imgCell: `
         <div class="img-cell">
@@ -8,10 +8,10 @@ var tpl = {
     `,
   sceneSelect: `
         <option value="\${sceneId}">\${sceneName}</option>
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

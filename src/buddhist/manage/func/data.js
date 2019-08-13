@@ -5,9 +5,9 @@ var data = {
     pageSize: 25,
     typeId: -1,
     filterType: 0,
-    searchText: "",
-    orderByJoinNum: "",
-    orderByCollectMoney: ""
+    searchText: '',
+    orderByJoinNum: '',
+    orderByCollectMoney: '',
   },
   getListRes: {},
   handleListData: {},
@@ -19,7 +19,7 @@ var data = {
   curBuddhistId: 0,
   buddhistScheduleListHandleData: {},
   isSubmit: 0,
-  videoPlayer: "",
-  curUploadJqXHR: ""
+  videoPlayer: '',
+  curUploadJqXHR: '',
 };
 export default data;

@@ -1,11 +1,13 @@
-import $ from "jquery";
-import seeView from "see-view";
+import $ from 'jquery';
+import seeView from 'see-view';
 seeView({
   events: {
-    "click [data-share-item-delete]": "onClickShareItemDelete"
+    'click [data-share-item-delete]': 'onClickShareItemDelete',
   },
   onClickShareItemDelete: e => {
-    $(e.target).parent().remove();
-    $("#share-icon-add").removeClass("hide");
-  }
+    $(e.target)
+      .parent()
+      .remove();
+    $('#share-icon-add').removeClass('hide');
+  },
 });

@@ -1,4 +1,4 @@
-import "juicer";
+import 'juicer';
 var tpl = {
   display: `
         <div class="component-container component-introduction" data-container="component-display" data-type="1" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
@@ -82,10 +82,10 @@ var tpl = {
                 <button class="btn btn-success" data-action="save-component" data-id="\${id}" data-type="1">保存</button>
             </div>
         </div>
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

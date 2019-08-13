@@ -1,5 +1,5 @@
-import * as images from "../images";
-import "juicer";
+import * as images from '../images';
+import 'juicer';
 var tpl = {
   display: `
         <div class="component-container component-calendar"  data-container="component-display" data-type="5" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
@@ -356,10 +356,10 @@ var tpl = {
             <td class="action"><button class="btn btn-warning btn-sm" data-calendar-modify-selected-activity-delete="\${id}" data-year="\${year}" data-month="\${month}" data-day="\${day}" data-id="\${activity.id}" data-type="\${activity.type}">删除</button></td>
         </tr>
         {@/each}
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

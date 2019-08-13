@@ -1,4 +1,4 @@
-import "juicer";
+import 'juicer';
 const displayComponents = `
 {@if components && components.length}
 {@each components as com, index}
@@ -79,10 +79,10 @@ var tpl = {
     <img class="item-image" src="\${image}" data-edit-pop-figure-avatar-row-image="0">
     <button class="clean-button upload-remove" data-edit-pop-figure-avatar-row-del="0">×</button>
   </li>
-  `
+  `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

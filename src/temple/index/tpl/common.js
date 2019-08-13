@@ -1,4 +1,4 @@
-import "juicer";
+import 'juicer';
 var tpl = {
   addComponent: `
         {@each components as component}
@@ -42,10 +42,10 @@ var tpl = {
                 <div class="progress-bar progress-bar-success" data-upload-progress-bar="\${id}" data-type="\${type}"></div>
             </div>
         </li>
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

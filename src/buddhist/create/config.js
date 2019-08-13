@@ -1,17 +1,37 @@
-import sub from "./tpl/sub";
-import ps from "./tpl/ps";
-import subPs from "./tpl/sub_ps";
-import fb from "./tpl/fb";
-import modalSaving from "./tpl/modal_saving";
-import modalSetTpl from "./tpl/modal_set_tpl";
+import sub from './tpl/sub';
+import ps from './tpl/ps';
+import subPs from './tpl/sub_ps';
+import fb from './tpl/fb';
+import modalSaving from './tpl/modal_saving';
+import modalSetTpl from './tpl/modal_set_tpl';
 var appConfig = {
-  environment: __SEE_ENV__
+  environment: __SEE_ENV__,
 };
 appConfig.argument = {};
-appConfig.argument.addition_list = ["", "自定义-单行文本框", "自定义-日期选择", "自定义-下拉列表", "联系人", "手机号码", "地址", "自定义-多行文本框", "性别", "出生日期", "阳上人", "往生者", "功德芳名", "自定义-提示框", "自定义-图片上传", "心愿"];
-appConfig.template = appConfig.template || ({});
-appConfig.urls = appConfig.urls || ({});
-var buddistTypeList = ["/zzhadmin/createCeremonyTypeList", "/src/buddhist/mock/type_list.json"];
+appConfig.argument.addition_list = [
+  '',
+  '自定义-单行文本框',
+  '自定义-日期选择',
+  '自定义-下拉列表',
+  '联系人',
+  '手机号码',
+  '地址',
+  '自定义-多行文本框',
+  '性别',
+  '出生日期',
+  '阳上人',
+  '往生者',
+  '功德芳名',
+  '自定义-提示框',
+  '自定义-图片上传',
+  '心愿',
+];
+appConfig.template = appConfig.template || {};
+appConfig.urls = appConfig.urls || {};
+var buddistTypeList = [
+  '/zzhadmin/createCeremonyTypeList',
+  '/src/buddhist/mock/type_list.json',
+];
 appConfig.urls.buddhist = {};
 appConfig.urls.buddhist.typeList = buddistTypeList[appConfig.environment];
 appConfig.template.component = {};

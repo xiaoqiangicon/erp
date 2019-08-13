@@ -1,116 +1,174 @@
-import $ from "jquery";
-import "lib/jquery.seeAjax";
+import $ from 'jquery';
+import 'lib/jquery.seeAjax';
 var requestKeysOuter = {
   list: {
-    place: "hallName",
-    buddha: "buddhaId"
+    place: 'hallName',
+    buddha: 'buddhaId',
   },
   delete: {
-    id: "wallId"
+    id: 'wallId',
   },
   sort: {
-    id: "id",
-    sort: "sort"
+    id: 'id',
+    sort: 'sort',
   },
   freeze: {
-    id: "wallId",
-    status: "status"
+    id: 'wallId',
+    status: 'status',
   },
   create: {
-    name: "name",
-    rows: "row",
-    columns: "col",
-    code: "numberText",
-    buddhaId: "buddhaId",
-    nonSeatCode: "noSeatList"
+    name: 'name',
+    rows: 'row',
+    columns: 'col',
+    code: 'numberText',
+    buddhaId: 'buddhaId',
+    nonSeatCode: 'noSeatList',
   },
   detail: {
-    id: "wallId"
-  }
+    id: 'wallId',
+  },
 };
 var responseRefactorOuter = {
   list: {
-    data: [{
-      sequence: "sort",
-      place: "name",
-      name: "buddhaName",
-      remain: "total",
-      rows: "row",
-      columns: "col"
-    }]
+    data: [
+      {
+        sequence: 'sort',
+        place: 'name',
+        name: 'buddhaName',
+        remain: 'total',
+        rows: 'row',
+        columns: 'col',
+      },
+    ],
   },
   detail: {
     data: {
-      nonSeatCode: "noSeatList",
-      seats: "numberText",
-      rows: "row",
-      columns: "col"
-    }
-  }
+      nonSeatCode: 'noSeatList',
+      seats: 'numberText',
+      rows: 'row',
+      columns: 'col',
+    },
+  },
 };
 var preHandleOuter = {};
 var postHandleOuter = {
-  common: function (res) {
+  common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
-  }
+  },
 };
 $.seeAjax.config({
   environment: __SEE_ENV__,
   name: {
-    list: "list",
-    delete: "delete",
-    sort: "sort",
-    buddhaList: "buddhaList",
-    freeze: "freeze",
-    create: "create",
-    detail: "detail",
-    shortBuddhaList: "shortBuddhaList"
+    list: 'list',
+    delete: 'delete',
+    sort: 'sort',
+    buddhaList: 'buddhaList',
+    freeze: 'freeze',
+    create: 'create',
+    detail: 'detail',
+    shortBuddhaList: 'shortBuddhaList',
   },
   url: {
-    list: ["/zzhadmin/buddhaWallWallList/", "/src/wall/region/mock/list_server.json", "/src/wall/region/mock/list.json"],
-    delete: ["/zzhadmin/buddhaWall_delWall/", "/src/wall/region/mock/delete_server.json", "/src/wall/region/mock/delete.json"],
-    sort: ["/zzhadmin/buddhaWall_wallSort/", "/src/wall/region/mock/sort_server.json", "/src/wall/region/mock/sort.json"],
-    buddhaList: ["/zzhadmin/buddhaWallBuddhaList/", "/src/wall/index/mock/list_server.json", "/src/wall/index/mock/list.json"],
-    freeze: ["/zzhadmin/buddhaWall_activateWall/", "/src/wall/region/mock/freeze_server.json", "/src/wall/region/mock/freeze.json"],
-    create: ["/zzhadmin/buddhaWall_createWall/", "/src/wall/region/mock/create_server.json", "/src/wall/region/mock/create.json"],
-    detail: ["/zzhadmin/buddhaWall_getWall/", "/src/wall/region/mock/detail_server.json", "/src/wall/region/mock/detail.json"],
-    shortBuddhaList: ["/zzhadmin/buddhaWall_buddhaNameList/", "/src/wall/region/mock/short_buddha_list_server.json", "/src/wall/region/mock/short_buddha_list.json"]
+    list: [
+      '/zzhadmin/buddhaWallWallList/',
+      '/src/wall/region/mock/list_server.json',
+      '/src/wall/region/mock/list.json',
+    ],
+    delete: [
+      '/zzhadmin/buddhaWall_delWall/',
+      '/src/wall/region/mock/delete_server.json',
+      '/src/wall/region/mock/delete.json',
+    ],
+    sort: [
+      '/zzhadmin/buddhaWall_wallSort/',
+      '/src/wall/region/mock/sort_server.json',
+      '/src/wall/region/mock/sort.json',
+    ],
+    buddhaList: [
+      '/zzhadmin/buddhaWallBuddhaList/',
+      '/src/wall/index/mock/list_server.json',
+      '/src/wall/index/mock/list.json',
+    ],
+    freeze: [
+      '/zzhadmin/buddhaWall_activateWall/',
+      '/src/wall/region/mock/freeze_server.json',
+      '/src/wall/region/mock/freeze.json',
+    ],
+    create: [
+      '/zzhadmin/buddhaWall_createWall/',
+      '/src/wall/region/mock/create_server.json',
+      '/src/wall/region/mock/create.json',
+    ],
+    detail: [
+      '/zzhadmin/buddhaWall_getWall/',
+      '/src/wall/region/mock/detail_server.json',
+      '/src/wall/region/mock/detail.json',
+    ],
+    shortBuddhaList: [
+      '/zzhadmin/buddhaWall_buddhaNameList/',
+      '/src/wall/region/mock/short_buddha_list_server.json',
+      '/src/wall/region/mock/short_buddha_list.json',
+    ],
   },
   requestKeys: {
-    list: [requestKeysOuter.list, requestKeysOuter.list, {
-      place: "place",
-      buddha: "buddha"
-    }],
-    delete: [requestKeysOuter.delete, requestKeysOuter.delete, {
-      id: "id"
-    }],
-    sort: [requestKeysOuter.sort, requestKeysOuter.sort, {
-      id: "id",
-      sort: "sort"
-    }],
-    freeze: [requestKeysOuter.freeze, requestKeysOuter.freeze, {
-      id: "id",
-      status: "status"
-    }],
-    create: [requestKeysOuter.create, requestKeysOuter.create, {
-      name: "name",
-      rows: "rows",
-      columns: "columns",
-      code: "code",
-      buddhaId: "buddhaId",
-      nonSeatCode: "nonSeatCode"
-    }],
-    detail: [requestKeysOuter.detail, requestKeysOuter.detail, {
-      id: "id"
-    }]
+    list: [
+      requestKeysOuter.list,
+      requestKeysOuter.list,
+      {
+        place: 'place',
+        buddha: 'buddha',
+      },
+    ],
+    delete: [
+      requestKeysOuter.delete,
+      requestKeysOuter.delete,
+      {
+        id: 'id',
+      },
+    ],
+    sort: [
+      requestKeysOuter.sort,
+      requestKeysOuter.sort,
+      {
+        id: 'id',
+        sort: 'sort',
+      },
+    ],
+    freeze: [
+      requestKeysOuter.freeze,
+      requestKeysOuter.freeze,
+      {
+        id: 'id',
+        status: 'status',
+      },
+    ],
+    create: [
+      requestKeysOuter.create,
+      requestKeysOuter.create,
+      {
+        name: 'name',
+        rows: 'rows',
+        columns: 'columns',
+        code: 'code',
+        buddhaId: 'buddhaId',
+        nonSeatCode: 'nonSeatCode',
+      },
+    ],
+    detail: [
+      requestKeysOuter.detail,
+      requestKeysOuter.detail,
+      {
+        id: 'id',
+      },
+    ],
   },
   responseRefactor: {
     list: [responseRefactorOuter.list, responseRefactorOuter.list],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail]
+    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
   },
   preHandle: {},
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common]
-  }
+    common: [postHandleOuter.common, postHandleOuter.common],
+  },
 });

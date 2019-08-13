@@ -1,40 +1,40 @@
-import $ from "jquery";
-import "lib/jquery.seeAjax";
+import $ from 'jquery';
+import 'lib/jquery.seeAjax';
 var requestKeysOuter = {
-  getList: {}
+  getList: {},
 };
 var responseRefactorOuter = {
-  getList: {}
+  getList: {},
 };
 var preHandleOuter = {
-  getList: function (data) {}
+  getList: function(data) {},
 };
 var postHandleOuter = {
-  common: function (res) {
+  common: function(res) {
     res.success = res.result >= 0;
-    typeof res.msg != "undefined" && (res.message = res.msg);
+    typeof res.msg != 'undefined' && (res.message = res.msg);
   },
-  getList: function (res) {}
+  getList: function(res) {},
 };
 $.seeAjax.config({
   environment: __SEE_ENV__,
   name: {
-    getList: "getList"
+    getList: 'getList',
   },
   url: {
-    getList: []
+    getList: [],
   },
   requestKeys: {
-    getList: [requestKeysOuter.getList, requestKeysOuter.getList]
+    getList: [requestKeysOuter.getList, requestKeysOuter.getList],
   },
   responseRefactor: {
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList]
+    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList]
+    getList: [preHandleOuter.getList, preHandleOuter.getList],
   },
   postHandle: {
     common: [postHandleOuter.common, postHandleOuter.common],
-    getList: [postHandleOuter.getList, postHandleOuter.getList]
-  }
+    getList: [postHandleOuter.getList, postHandleOuter.getList],
+  },
 });

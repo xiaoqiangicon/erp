@@ -1,3 +1,3 @@
 export default {
-  pagination: void 0
+  pagination: void 0,
 };

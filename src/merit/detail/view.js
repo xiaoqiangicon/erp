@@ -1,3 +1,2 @@
-
 import './view/base';
-import  './view/main';
+import './view/main';

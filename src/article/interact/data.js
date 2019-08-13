@@ -1,9 +1,9 @@
 var data = {
   totalPagesRecord: {},
   filter: {
-    startDate: "",
-    endDate: ""
+    startDate: '',
+    endDate: '',
   },
-  pagination: undefined
+  pagination: undefined,
 };
 export default data;

@@ -1,4 +1,4 @@
-import "juicer";
+import 'juicer';
 var tpl = {
   summaryTbodyEmpty: `
         <tr class="cell-content-empty"><td style="text-align: center; padding-left: 0;" colspan="4">暂无数据</td></tr>
@@ -45,10 +45,10 @@ var tpl = {
     `,
   sceneSelect: `
         <option value="\${sceneId}">\${sceneName}</option>
-    `
+    `,
 };
 var compiledTpl = {};
-Object.keys(tpl).map(function (key) {
+Object.keys(tpl).map(function(key) {
   compiledTpl[key] = juicer(tpl[key]);
 });
 export default compiledTpl;

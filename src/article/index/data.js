@@ -1,17 +1,21 @@
-import envData from "common/env_data";
+import envData from 'common/env_data';
 var data = {
   totalPagesRecord: {},
-  templeId: window.localStorage["templeid"],
-  shareLink: "https://wx.zizaihome.com/article/articleIndex?templeId=" + window.localStorage["templeid"] + (!!envData.envParamMark ? "&" + envData.envParamMark : "") + "&articleId=",
-  createLink: "/zzhadmin/createArticleIndex/",
-  updateLink: "/zzhadmin/createArticleIndex/?action=update&id=",
-  copyLink: "/zzhadmin/createArticleIndex/?action=copy&id=",
+  templeId: window.localStorage['templeid'],
+  shareLink:
+    'https://wx.zizaihome.com/article/articleIndex?templeId=' +
+    window.localStorage['templeid'] +
+    (!!envData.envParamMark ? '&' + envData.envParamMark : '') +
+    '&articleId=',
+  createLink: '/zzhadmin/createArticleIndex/',
+  updateLink: '/zzhadmin/createArticleIndex/?action=update&id=',
+  copyLink: '/zzhadmin/createArticleIndex/?action=copy&id=',
   qrcodeSizes: [300, 500, 1000],
   filter: {
     category: 0,
     status: 0,
-    searchKey: ""
+    searchKey: '',
   },
-  pagination: undefined
+  pagination: undefined,
 };
 export default data;

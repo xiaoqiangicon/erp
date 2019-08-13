@@ -1,9 +1,9 @@
-import "./index.less";
-import $ from "jquery";
-import data from "./data";
-import tpl from "./tpl";
-import "./view";
-const $body = $("body");
+import './index.less';
+import $ from 'jquery';
+import data from './data';
+import tpl from './tpl';
+import './view';
+const $body = $('body');
 export default class {
   constructor(options = {}) {
     this.options = options;
@@ -12,9 +12,11 @@ export default class {
   }
   show() {
     if (!this.$el) {
-      this.$el = $(tpl({
-        id: this.id
-      }));
+      this.$el = $(
+        tpl({
+          id: this.id,
+        })
+      );
       $body.append(this.$el);
     }
     this.$el.show();
@@ -22,4 +24,4 @@ export default class {
   hide() {
     this.$el && this.$el.hide();
   }
-};
+}
