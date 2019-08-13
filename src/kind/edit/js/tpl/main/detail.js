@@ -1,5 +1,5 @@
-import cover from './detail/cover';
-import pay from './detail/pay';
+// import cover from './detail/cover';
+// import pay from './detail/pay';
 import share from './detail/share';
 
 export default `
@@ -15,17 +15,13 @@ export default `
             <div class="text-3"><span data-text-count-show="1">{{#if title}}{{title.length}}{{else}}0{{/if}}</span>/20</div>
         </div>
     </div>
-    ${cover}
-    <div class="container-1">
+   <div class="container-1">
         <div class="text-2">
             <span>详情内容：</span>
             <span class="mark-1">*</span>
         </div>
         <div class="container-2" id="editor"></div>
     </div>
-    <hr>
-    <div class="text-1">支付类型设置</div>
-    ${pay}
     <hr>
     <div class="text-1">分享信息设置</div>
     ${share}
