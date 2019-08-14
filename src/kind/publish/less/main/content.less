@@ -41,7 +41,85 @@
 }
 .upload-block-btn {
   display: flex;
+  align-items: center;
 }
+
+// 视频
+.item-video-1 {
+  position: relative;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  video {
+    width: 100px;
+    height: 100px;
+  }
+}
+.item-video-1 .common-delete {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  z-index: 5;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  color: white;
+  outline: none;
+  display: none;
+}
+
+.video-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2)
+    url('https://pic.zizaihome.com/576972e8-be5d-11e9-a5c6-00163e0c001e.png')
+    center no-repeat;
+}
+// 上传的图片/视频
+.media {
+  display: flex;
+  max-width: 800px;
+  flex-wrap: wrap;
+}
+.item-0-1 {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.item-0-1 .common-delete {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  border: none;
+  background: black;
+  border-radius: 50%;
+  color: white;
+  outline: none;
+  display: none;
+}
+.item-0-1:hover .common-delete {
+  display: block;
+}
+.item-video-1:hover .common-delete {
+  display: block;
+}
+
+// 结束
+
 .upload-btn {
   width: 100px;
   height: 40px;
@@ -56,7 +134,21 @@
   background: rgb(24, 144, 255);
 }
 .upload-video {
+  position: relative;
   border: 1px solid #ccc;
+}
+.upload-fails {
+  height: 24px;
+  padding: 0 10px;
+  line-height: 24px;
+  box-shadow: 0 0 5px #999;
+  border-radius: 4px;
+  margin-left: 20px;
+  .fail-warn {
+    color: orange;
+    font-weight: bold;
+    margin-right: 14px;
+  }
 }
 .upload-tips {
   width: 400px;

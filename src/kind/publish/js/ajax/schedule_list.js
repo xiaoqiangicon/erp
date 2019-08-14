@@ -2,10 +2,12 @@ import seeAjax from 'see-ajax';
 
 const postHandle = res => {
   res.data.list.forEach((item, i) => {
-    item.img = item.img.split(',');
+    if (!item.img) item.img = [];
+    else item.img = item.img.split(',');
   });
   res.data.list.forEach((item, i) => {
-    item.video = item.video.split(',');
+    if (!item.video) item.video = [];
+    else item.video = item.video.split(',');
   });
 };
 

@@ -1,16 +1,55 @@
 import $ from 'jquery';
 import '../ajax';
-import commonTpl from 'common/tpl';
 import seeAjax from 'see-ajax';
 import data from '../data';
 import listTpl from '../tpl/main/detail/record';
 
-import mainTpl from '../tpl/main';
+import upload from '../../../../../../pro-com/src/upload';
 
+import mainTpl from '../tpl/main';
+import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
+import coverPicTpl from '../tpl/main/detail/cover_pic_item';
+
+import '../../../../../old-com/choose-image/src/css/index.css';
+import ChooseImage from '../../../../../old-com/choose-image/src';
+import zzhHandling from '../../../../../old-com/handling/src';
+import 'component/choose_image_config';
+
+import recordCheckBeforeSave from '../util/record_check_before_save';
+
+let coverChoose;
 $('body').append(mainTpl);
 
-$('.main-content').hide();
+// 一开始不显示发布记录
+// $('.main-content').hide();
+$('.record-content').hide();
+// 发布进展
+$('.upload-fails').hide();
+// 发布进展上传视频
+upload({
+  el: '.upload-video',
+  done: (url, e, data) => {
+    const $coverContainer = $('#cover-container');
+    $coverContainer.append(
+      coverVideoItemTpl({
+        video: url,
+      })
+    );
+  },
+  progress: (e, data) => {
+    const $coverContainer = $('#cover-container');
+    $coverContainer.append(
+      coverVideoItemTpl({
+        video:
+          'https://pic.zizaihome.com/5753c6b2-be5a-11e9-b208-00163e0c001e.mp4',
+      })
+    );
+  },
+  uploadHandle: res => {},
+  type: 'file',
+});
 
+// 渲染发布记录
 seeAjax('scheduleList', {}, res => {
   data.scheduleList = res.data;
   data.list = data.scheduleList.list;
@@ -19,39 +58,78 @@ seeAjax('scheduleList', {}, res => {
   $('.record-content').html(listTpl(data.scheduleList));
 
   // 初始化
+  $('.upload-fails').hide();
+  // 首页切换发布进展/发布记录
+  $('.header-item').each((i, item) => {
+    $(item).click(() => {
+      $(item)
+        .addClass('header-item-active')
+        .siblings()
+        .removeClass('header-item-active');
+      $('.content').hide();
+      $('.content')
+        .eq(i)
+        .show();
+    });
+  });
+
+  // 初始化内容字数
+  $('[record-data-text-count-show]').text(
+    $('.record-type-content').val().length
+  );
+  // 初始化未编辑状态
+  $('.record-operate').hide();
+  $('.record-item-edit').hide();
 
   // 监听输入事件，实时显示字数
-  $('.type-content').on('input', () => {
-    if ($('.type-content').val().length >= 300) {
-      $('.type-content').val(
+  $('.type-content').each((i, item) => {
+    $(item).on('input', () => {
+      if (
         $('.type-content')
-          .val()
-          .slice(0, 300)
-      );
-    }
+          .eq(i)
+          .val().length >= 300
+      ) {
+        $('.type-content')
+          .eq(i)
+          .val(
+            $('.type-content')
+              .eq(i)
+              .val()
+              .slice(0, 300)
+          );
+      }
 
-    $('[data-text-count-show]').text($('.type-content').val().length);
+      $('[data-text-count-show]').text($('.type-content').val().length);
+    });
   });
 
   // 发布记录的实时显示字数
-  $('.record-type-content').on('input', () => {
-    if ($('.record-type-content').val().length >= 300) {
-      $('.record-type-content').val(
+  $('.record-type-content').each((i, item) => {
+    $(item).on('input', () => {
+      if (
         $('.record-type-content')
-          .val()
-          .slice(0, 300)
-      );
-    }
+          .eq(i)
+          .val().length >= 300
+      ) {
+        $('.record-type-content')
+          .eq(i)
+          .val(
+            $('.record-type-content')
+              .eq(i)
+              .val()
+              .slice(0, 300)
+          );
+      }
 
-    $('[record-data-text-count-show]').text(
-      $('.record-type-content').val().length
-    );
+      $('[record-data-text-count-show]')
+        .eq(i)
+        .text(
+          $('.record-type-content')
+            .eq(i)
+            .val().length
+        );
+    });
   });
-
-  // 初始化未编辑状态
-  $('.record-operate').hide();
-  // $('.record-item-main').hide();
-  $('.record-item-edit').hide();
 
   // 点击编辑
   $('.record-edit').each(i => {
@@ -65,11 +143,18 @@ seeAjax('scheduleList', {}, res => {
           .eq(i)
           .show();
 
+        let index = i;
+        $('.record-cancel').each((i, item) => {
+          if (index != i) {
+            $(item).click();
+          }
+        });
+
         $('.record-item-main').show();
         $('.record-item-main')
           .eq(i)
           .hide();
-        $('.record-item-edit').hide();
+
         $('.record-item-edit')
           .eq(i)
           .show();
@@ -78,16 +163,156 @@ seeAjax('scheduleList', {}, res => {
           .eq(i)
           .focus();
       });
+
+    let index = i;
+    // 当前编辑的上传视频
+    upload({
+      el: $('.record-upload-video').eq(i),
+      done: (url, e, data) => {
+        const $recordItemVideo = $('.record-media');
+        $recordItemVideo.append(
+          coverVideoItemTpl({
+            video: url,
+          })
+        );
+      },
+      progress: (e, data) => {
+        const $recordItemVideo = $('.record-media').eq(index);
+        $recordItemVideo.append(
+          coverVideoItemTpl({
+            video:
+              'https://pic.zizaihome.com/5753c6b2-be5a-11e9-b208-00163e0c001e.mp4',
+          })
+        );
+      },
+      uploadHandle: res => {},
+      type: 'file',
+    });
   });
 
   // 取消编辑
-  $('.record-cancel').click(() => {
-    $('.record-edit').show();
-    $('.record-operate').hide();
+  // 未编辑前的数据
+  // data.list
+  $('.record-cancel').each((i, item) => {
+    $(item).click(() => {
+      $('.record-edit')
+        .eq(i)
+        .show();
+      $('.record-operate')
+        .eq(i)
+        .hide();
 
-    $('.record-item-main').show();
-    $('.record-item-edit').hide();
+      $('.record-item-main')
+        .eq(i)
+        .show();
+      $('.record-item-edit')
+        .eq(i)
+        .hide();
+
+      $('.record-type-content')
+        .eq(i)
+        .val(
+          $('.record-item-content')
+            .eq(i)
+            .text()
+            .trim()
+        );
+      $('[record-data-text-count-show]')
+        .eq(i)
+        .text(
+          $('.record-type-content')
+            .eq(i)
+            .val().length
+        );
+
+      // 取消编辑时数据恢复
+      let index = i;
+      $('.record-media')
+        .eq(i)
+        .html('');
+
+      console.log(data.list[i].img);
+      data.list[i].img.forEach((url, i) => {
+        $('.record-media')
+          .eq(index)
+          .append(
+            coverPicTpl({
+              image: url,
+            })
+          );
+      });
+      data.list[i].video.forEach((url, i) => {
+        $('.record-media')
+          .eq(index)
+          .append(
+            coverVideoItemTpl({
+              video: url,
+            })
+          );
+      });
+    });
+  });
+
+  // 上传图片
+  $('.record-upload-pic').each((i, item) => {
+    $(item).click(e => {
+      let index = i;
+
+      if (!coverChoose) {
+        coverChoose = new ChooseImage({
+          onSubmit: items => {
+            const $recordItemPic = $('.record-media').eq(index);
+            items.forEach((item, index) => {
+              $recordItemPic.append(
+                coverPicTpl({
+                  image: item.src,
+                })
+              );
+            });
+          },
+        });
+      }
+      const $recordItemPic = $('.record-media').eq(index);
+      $recordItemPic.append(
+        coverPicTpl({
+          image:
+            'https://pic.zizaihome.com/ad6f04c4-aead-11e9-b39a-00163e0c001e.png',
+        })
+      );
+      coverChoose.show();
+    });
+  });
+
+  // 保存
+  $('.record-save').each((i, item) => {
+    let index = i;
+    $(item).click(e => {
+      const result = recordCheckBeforeSave(i);
+
+      if (result.success) return;
+      $(item).text(`正在${0 ? '更新' : '保存'}中...`);
+      zzhHandling.show();
+
+      seeAjax(
+        'updateList',
+        {
+          id: data.list[index].id,
+          content: result.data.content,
+          img: result.data.img,
+          video: result.data.video,
+          isPush: result.data.isPush,
+        },
+        res => {
+          if (!res.success) return;
+          zzhHandling.hide();
+          window.location.reload();
+        }
+      );
+    });
   });
 });
 
-// requestList();
+// 设置隐藏播放视频
+$('.video-show').click(() => {
+  $('.video-show').hide();
+});
