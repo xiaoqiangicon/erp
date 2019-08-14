@@ -2,7 +2,7 @@ import $ from 'jquery';
 import indexData from '../data';
 import commonTpl from '../tpl/common';
 import introTpl from '../tpl/introduction';
-import '../../../../../old-com/distpicker/src';
+import '../../../../../pro-com/src/distpicker';
 import 'jquery-confirm';
 function postHandleForIntroduction($displayComponent, $editContainer, data) {
   var id = data.id,

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import toastr from 'toastr';
-import QRCode from '../../../../old-com/qrcode';
+import QRCode from '../../../../pro-com/src/qrcode';
 import commonFunc from 'common/function';
 import commonVars from 'common/variables';
 import data from '../data';

@@ -4,7 +4,7 @@ import indexData from '../data';
 import commonTpl from '../tpl/common';
 import introTpl from '../tpl/introduction';
 import 'swiper';
-import '../../../../old-com/distpicker/src';
+import '../../../../pro-com/src/distpicker';
 import 'lib/jquery.seeView';
 import 'component/choose_image_config/index';
 var chooseImageInstances = {};

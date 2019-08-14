@@ -7,7 +7,7 @@ import Promotion from '../../../old-com/promotion/src';
 import './ajax';
 import 'jquery-confirm';
 import 'lib/jquery.seeView';
-import '../../../old-com/jquery-qrcode';
+import '../../../pro-com/src/jquery-qrcode';
 $.seeView({
   events: {
     'click [data-ele="summary-tab"]': 'onClickSummaryTab',

@@ -5,7 +5,7 @@ import data from './data';
 import tpl from './tpl';
 import func from './function';
 import Clipboard from 'clipboard';
-import '../../../old-com/jquery-qrcode';
+import '../../../pro-com/src/jquery-qrcode';
 import './ajax';
 import 'lib/jquery.seeView';
 $.seeView({

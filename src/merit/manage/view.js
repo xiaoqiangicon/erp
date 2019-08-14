@@ -6,7 +6,7 @@ import api from './api';
 import tpl from './tpl';
 import func from './function';
 import toastr from 'toastr';
-import '../../../old-com/jquery-qrcode';
+import '../../../pro-com/src/jquery-qrcode';
 import 'jquery-confirm';
 import './ajax';
 import 'lib/jquery.seeView';

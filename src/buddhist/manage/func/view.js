@@ -9,7 +9,7 @@ import Clipboard from 'clipboard';
 import Promotion from '../../../../old-com/promotion/src';
 import ChooseImage from '../../../../old-com/choose-image/src';
 import api from './api';
-import '../../../../old-com/jquery-qrcode';
+import '../../../../pro-com/src/jquery-qrcode';
 import 'jquery-confirm';
 import './ajax';
 import 'lib/jquery.seeView';
