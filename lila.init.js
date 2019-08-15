@@ -171,8 +171,8 @@ export default lila => {
           [
             '@lila/sync-source-map',
             {
-              server: isProd ? servers[2] : servers[1],
-              remotePath: '/data/h5/static/erp-source-map',
+              server: servers[0],
+              remotePath: '/data/h5/static/source-map',
             },
           ],
           [
