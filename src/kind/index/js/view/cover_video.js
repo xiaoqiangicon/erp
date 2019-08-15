@@ -9,7 +9,6 @@ seeView({
     $(e.target)
       .parent()
       .remove();
-    e.stopPropagation();
   },
   onClickItemVideo: e => {
     $('.video-show').show();

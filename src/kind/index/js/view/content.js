@@ -2,16 +2,13 @@ const $ = require('jquery');
 const seeView = require('see-view').default;
 const seeAjax = require('see-ajax').default;
 
-import StoreImage from '../../../../../old-com/store-image/src';
 import '../../../../../old-com/choose-image/src/css/index.css';
 import '../../../../../old-com/choose-icon/src/css/index.css';
 import ChooseImage from '../../../../../old-com/choose-image/src';
 import zzhHandling from '../../../../../old-com/handling/src';
-import ChooseIcon from '../../../../../old-com/choose-icon/src';
 import 'component/choose_image_config';
-import 'component/choose_icon_config';
 
-import upload from '../../../../../../pro-com/src/upload';
+import zzhUtil from '../../../../../old-com/util/src';
 
 import coverPicItemTpl from '../tpl/main/detail/cover_pic_item';
 
@@ -24,6 +21,8 @@ seeView({
     'click .push-select': 'onClickSelect',
     'click .upload-pic': 'onClickUploadPic',
     'click .save': 'onClickSave',
+    // 首页切换发布进展/发布记录
+    'click .header-item': 'onClickHeaderItem',
   },
 
   // 选择推送还是不推送
@@ -50,13 +49,6 @@ seeView({
         },
       });
     }
-    const $coverContainer = $('#cover-container');
-    $coverContainer.append(
-      coverPicItemTpl({
-        image:
-          'https://pic.zizaihome.com/ad6f04c4-aead-11e9-b39a-00163e0c001e.png',
-      })
-    );
     coverChoose.show();
   },
 
@@ -64,7 +56,7 @@ seeView({
   onClickSave(e) {
     const self = this;
     const $this = $(e.target);
-
+    console.log(zzhUtil.urlParams.charityId);
     const result = checkBeforeSave();
 
     if (result.success) return;
@@ -78,9 +70,10 @@ seeView({
     seeAjax(
       'updateList',
       {
+        charityId: zzhUtil.urlParams.id,
         content: result.data.content,
-        img: result.data.img,
-        video: result.data.video,
+        img: result.data.img.join(','),
+        video: result.data.video.join(','),
         isPush: result.data.isPush,
       },
       res => {

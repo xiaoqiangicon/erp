@@ -8,7 +8,7 @@ const tpl = `
     <div class="item-1 item-1-3">{{this.totalMoney}}</div>
     <div class="item-1 item-1-4">{{this.totalPeople}}</div>
     <div class="item-1 item-1-5">
-        <div class="clean btn-1" data-row-publish="{{this.id}}">发布进展</div>
+        <div class="clean btn-1 publish-schedule" data-row-publish="{{this.id}}">发布进展</div>
         <div class="clean btn-1" data-row-edit="{{this.id}}">编辑</div>
         <div class="clean btn-1 more" data-row-more="{{this.id}}">
             更多

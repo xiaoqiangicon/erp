@@ -37,6 +37,9 @@ const requestList = (page, init) => {
         data.pagination.render();
       }
       scrollTop();
+      $('.publish-schedule').click(() => {
+        $('.publish-mask').show();
+      });
     }
   );
 };

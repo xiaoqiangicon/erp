@@ -6,7 +6,6 @@ import listTpl from '../tpl/main/detail/record';
 
 import upload from '../../../../../../pro-com/src/upload';
 
-import mainTpl from '../tpl/main';
 import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
 import coverPicTpl from '../tpl/main/detail/cover_pic_item';
 
@@ -17,40 +16,18 @@ import 'component/choose_image_config';
 
 import recordCheckBeforeSave from '../util/record_check_before_save';
 
+import zzhUtil from '../../../../../old-com/util/src';
+
 let coverChoose;
-$('body').append(mainTpl);
 
 // 一开始不显示发布记录
-// $('.main-content').hide();
-$('.record-content').hide();
+$('.update-content').hide();
+// $('.record-content').hide();
 // 发布进展
-$('.upload-fails').hide();
-// 发布进展上传视频
-upload({
-  el: '.upload-video',
-  done: (url, e, data) => {
-    const $coverContainer = $('#cover-container');
-    $coverContainer.append(
-      coverVideoItemTpl({
-        video: url,
-      })
-    );
-  },
-  progress: (e, data) => {
-    const $coverContainer = $('#cover-container');
-    $coverContainer.append(
-      coverVideoItemTpl({
-        video:
-          'https://pic.zizaihome.com/5753c6b2-be5a-11e9-b208-00163e0c001e.mp4',
-      })
-    );
-  },
-  uploadHandle: res => {},
-  type: 'file',
-});
+$('.record-content').hide();
 
 // 渲染发布记录
-seeAjax('scheduleList', {}, res => {
+seeAjax('scheduleList', { charityId: zzhUtil.urlParams.id }, res => {
   data.scheduleList = res.data;
   data.list = data.scheduleList.list;
 
@@ -61,7 +38,7 @@ seeAjax('scheduleList', {}, res => {
   $('.upload-fails').hide();
   // 首页切换发布进展/发布记录
   $('.header-item').each((i, item) => {
-    $(item).click(() => {
+    $(item).click(e => {
       $(item)
         .addClass('header-item-active')
         .siblings()
@@ -70,6 +47,14 @@ seeAjax('scheduleList', {}, res => {
       $('.content')
         .eq(i)
         .show();
+      if (i == 0) {
+        $('.record-cancel').click();
+      } else {
+        $('.type-content').val(' ');
+        $('.media').html(' ');
+        $('.push-select').removeClass('push-select-active');
+        $('.no-push').addClass('push-select-active');
+      }
     });
   });
 
@@ -135,7 +120,7 @@ seeAjax('scheduleList', {}, res => {
   $('.record-edit').each(i => {
     $('.record-edit')
       .eq(i)
-      .click(() => {
+      .click(e => {
         $('.record-edit')
           .eq(i)
           .hide();
@@ -177,13 +162,10 @@ seeAjax('scheduleList', {}, res => {
         );
       },
       progress: (e, data) => {
-        const $recordItemVideo = $('.record-media').eq(index);
-        $recordItemVideo.append(
-          coverVideoItemTpl({
-            video:
-              'https://pic.zizaihome.com/5753c6b2-be5a-11e9-b208-00163e0c001e.mp4',
-          })
-        );
+        if (data.total >= 10485676 * 50) {
+          $('.fail-big').show();
+          return false;
+        }
       },
       uploadHandle: res => {},
       type: 'file',
@@ -194,7 +176,7 @@ seeAjax('scheduleList', {}, res => {
   // 未编辑前的数据
   // data.list
   $('.record-cancel').each((i, item) => {
-    $(item).click(() => {
+    $(item).click(e => {
       $('.record-edit')
         .eq(i)
         .show();
@@ -231,7 +213,6 @@ seeAjax('scheduleList', {}, res => {
         .eq(i)
         .html('');
 
-      console.log(data.list[i].img);
       data.list[i].img.forEach((url, i) => {
         $('.record-media')
           .eq(index)
@@ -272,13 +253,6 @@ seeAjax('scheduleList', {}, res => {
           },
         });
       }
-      const $recordItemPic = $('.record-media').eq(index);
-      $recordItemPic.append(
-        coverPicTpl({
-          image:
-            'https://pic.zizaihome.com/ad6f04c4-aead-11e9-b39a-00163e0c001e.png',
-        })
-      );
       coverChoose.show();
     });
   });
@@ -292,14 +266,14 @@ seeAjax('scheduleList', {}, res => {
       if (result.success) return;
       $(item).text(`正在${0 ? '更新' : '保存'}中...`);
       zzhHandling.show();
-
       seeAjax(
         'updateList',
         {
+          charityId: zzhUtil.urlParams.id,
           id: data.list[index].id,
           content: result.data.content,
-          img: result.data.img,
-          video: result.data.video,
+          img: result.data.img.join(','),
+          video: result.data.video.join(','),
           isPush: result.data.isPush,
         },
         res => {
@@ -310,9 +284,4 @@ seeAjax('scheduleList', {}, res => {
       );
     });
   });
-});
-
-// 设置隐藏播放视频
-$('.video-show').click(() => {
-  $('.video-show').hide();
 });

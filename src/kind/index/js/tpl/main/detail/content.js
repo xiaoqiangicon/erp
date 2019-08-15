@@ -2,8 +2,10 @@ export default `
     <div class="main-content">
         <div class="publish-content">
             <span class="content-tips">内容</span>
-            <textarea class="type-content" placeholder="请填写进展动态的内容"></textarea>
-            <div class="text-3"><span data-text-count-show="1">0</span>/300</div>
+            <div class="content-block">
+                <textarea class="type-content" placeholder="请填写进展动态的内容"></textarea>
+                <div class="text-3"><span data-text-count-show="1">0</span>/300</div>
+            </div>
         </div>
         <div class="publish-media">
             <span class="publish-media-tips">图片视频</span>
@@ -21,8 +23,10 @@ export default `
         <div class="set-push">
             <span class="set-push-tips">推送</span>
             <span class="push-select push-candidate" data-push="1">推送给参与者</span>
-            <span class="push-select no-push push-select-active" data-push="0">不推送</span>
-        </div>
+            <span class="push-select no-push push-select-active" data-push="0">不推送</span>` +
+  // <span class="remain-time-content">剩余次数<span class="remain-time">{{count}}</span></span>
+  // <div class="push-tips">为了保证良好的体验避免对用户造成过多的打扰，已限制推送次数（每日0:00刷新次数）</div>
+  `</div>
         <div class="save">保存</div>
     </div>
 `;

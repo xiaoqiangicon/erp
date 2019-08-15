@@ -14,8 +14,8 @@ const postHandle = res => {
 seeAjax.config('scheduleList', {
   url: [
     '/zzhadmin/charityScheduleList/',
-    '/src/kind/publish/data/schedule_list_server.json',
-    '/src/kind/edit/data/schedule_list.json',
+    '/src/kind/index/data/schedule_list_server.json',
+    '/src/kind/index/data/schedule_list.json',
   ],
   postHandle: [postHandle, postHandle],
 });
