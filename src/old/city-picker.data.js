@@ -1,22 +1,3 @@
-/*!
- * Distpicker v1.0.2
- * https://github.com/tshi0912/city-picker
- *
- * Copyright (c) 2014-2016 Tao Shi
- * Released under the MIT license
- *
- * Date: 2016-03-17T07:47:48.060Z
- */
-
-(function (factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as anonymous module.
-        define(factory);
-    } else {
-        // Browser globals.
-        factory();
-    }
-})(function () {
 
     var ChineseDistricts = {
             //86: {
@@ -4064,6 +4045,6 @@
         window.ChineseDistricts = ChineseDistricts;
     }
 
-    return ChineseDistricts;
+    export default ChineseDistricts;
 
-});
+

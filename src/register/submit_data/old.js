@@ -3,7 +3,7 @@ import config from './config';
 import Toast from 'old/toast';
 import app from '../protocol/template';
 import doRequest from 'old/utils';
-import '../../../old-com/distpicker/src';
+import '../../../pro-com/src/distpicker';
 import 'old/backbone';
 import 'old/ajaxFileUpload';
 import 'old/uploadSize';

@@ -1,7 +1,4 @@
-/**
- * Created by Administrator on 2015/11/25.
- */
-define(["./toast"],function (Toast) {
+import Toast from './toast';
 
     Date.prototype.format = function(fmt){
         var o = {
@@ -196,6 +193,5 @@ define(["./toast"],function (Toast) {
             }
         })
     }
-    return doRequest;
-})
+    export default doRequest;
 

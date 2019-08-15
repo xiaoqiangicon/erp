@@ -8,7 +8,7 @@ import ChooseImage from '../../../old-com/choose-image/src';
 import StoreImage from '../../../old-com/store-image/src';
 import zzhHandling from '../../../old-com/handling/src';
 import purifyATarget from 'util/purify_a_target';
-import '../../lib/jquery.qrcode.min';
+import '../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
 import 'lib/jquery.seeView';
 zzhHandling.setOnClickCloseCallback(function() {

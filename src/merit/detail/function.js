@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import QRCode from '../../../old-com/qrcode';
+import QRCode from '../../../pro-com/src/libs-es5/qrcode';
 import commonFunc from 'common/function';
 import Data from './data';
 import api from './api';

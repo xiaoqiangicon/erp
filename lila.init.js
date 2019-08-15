@@ -171,8 +171,8 @@ export default lila => {
           [
             '@lila/sync-source-map',
             {
-              server: isProd ? servers[2] : servers[1],
-              remotePath: '/data/h5/static/erp-source-map',
+              server: servers[0],
+              remotePath: '/data/h5/static/source-map',
             },
           ],
           [
@@ -217,8 +217,8 @@ export default lila => {
       },
       babelExclude: [
         /node_modules/,
-        /pro-com\/src\/ueditor/,
-        /pro-com\\src\\ueditor/,
+        /pro-com\/src\/(ueditor|libs-es5)/,
+        /pro-com\\src\\(ueditor|libs-es5)/,
       ],
       cssModules: cssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,

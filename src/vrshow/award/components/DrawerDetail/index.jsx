@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { Spin, Drawer, notification } from 'antd';
 import ChooseImage from '../../../../../old-com/choose-image/src';
 import seeAjax from 'see-ajax';
-import QRCode from '../../../../../old-com/qrcode';
+import QRCode from '../../../../../pro-com/src/libs-es5/qrcode';
 import { serverEnv } from '../../../../util/env';
 
 import $ from 'jquery';
