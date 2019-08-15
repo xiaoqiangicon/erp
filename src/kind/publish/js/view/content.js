@@ -11,23 +11,19 @@ import ChooseIcon from '../../../../../old-com/choose-icon/src';
 import 'component/choose_image_config';
 import 'component/choose_icon_config';
 
+import upload from '../../../../../../pro-com/src/upload';
+
+import coverPicItemTpl from '../tpl/main/detail/cover_pic_item';
+
 import checkBeforeSave from '../util/check_before_save';
 
 let coverChoose;
 
 seeView({
   events: {
-    'click .header-item': 'onClickHeaderItem',
     'click .push-select': 'onClickSelect',
     'click .upload-pic': 'onClickUploadPic',
     'click .save': 'onClickSave',
-  },
-  // 发布进展/发布动态
-  onClickHeaderItem: e => {
-    $(e.target)
-      .addClass('header-item-active')
-      .siblings()
-      .removeClass('header-item-active');
   },
 
   // 选择推送还是不推送
@@ -43,49 +39,58 @@ seeView({
     if (!coverChoose) {
       coverChoose = new ChooseImage({
         onSubmit: items => {
-          const existLength = $('[data-cover-item]').length;
-          const remainLength = 3 - existLength;
           const $coverContainer = $('#cover-container');
-          const $coverAdd = $('#cover-add');
           items.forEach((item, index) => {
-            index < remainLength &&
-              $coverContainer.append(
-                coverItemTpl({
-                  image: item.src,
-                })
-              );
+            $coverContainer.append(
+              coverPicItemTpl({
+                image: item.src,
+              })
+            );
           });
-          items.length + existLength >= 3 && $coverAdd.addClass('hide');
         },
       });
     }
+    const $coverContainer = $('#cover-container');
+    $coverContainer.append(
+      coverPicItemTpl({
+        image:
+          'https://pic.zizaihome.com/ad6f04c4-aead-11e9-b39a-00163e0c001e.png',
+      })
+    );
     coverChoose.show();
   },
+
   // 保存
   onClickSave(e) {
     const self = this;
     const $this = $(e.target);
 
     const result = checkBeforeSave();
-    if (!result.success) return;
+
+    if (result.success) return;
     $this.text(`正在${0 ? '更新' : '保存'}中...`);
     zzhHandling.show();
-    new StoreImage(
-      'result.data.intro',
-      newContent => {
-        zzhHandling.setText('保存数据');
-        self.save();
+
+    self.save(result);
+  },
+  save(result) {
+    const self = this;
+    seeAjax(
+      'updateList',
+      {
+        content: result.data.content,
+        img: result.data.img,
+        video: result.data.video,
+        isPush: result.data.isPush,
       },
-      (uploaded, total) => {
-        zzhHandling.setText(`上传 ${uploaded}/${total}`);
+      res => {
+        if (!res.success) return;
+        self.afterSave();
       }
     );
   },
-  save(dataToSave) {
-    const self = this;
-    self.afterSave();
-  },
   afterSave() {
     zzhHandling.hide();
+    window.location.reload();
   },
 });

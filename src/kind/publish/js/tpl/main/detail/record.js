@@ -39,15 +39,25 @@ const tpl = `
                     <span class="record-publish-media-tips">图片视频</span>
                     <div class="record-upload-block">
                         <div class="record-media">
-                            <div class="record-item-pic">
-                                {{#each img}}
-                                <img class="record-single-pic" src="{{this}}" />
-                                {{/each}}
+                            {{#each img}}
+                            <div class="item-0-1" data-cover-item="1">
+                                <img src="{{this}}" data-cover-item-image="1">
+                                <button class="clean common-delete" data-cover-item-delete="1">X</button>
                             </div>
+                            {{/each}}
+                            {{#each video}}
+                            <div class="item-video-1" data-cover-video-item="1">
+                                <video src="{{this}}" data-cover-item-video="1"></video>
+                                <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
+                                <div class="video-mask"></div>
+                            </div>
+                            {{/each}}
                         </div>
                         <div class="record-upload-block-btn">
                             <div class="record-upload-btn record-upload-pic">上传图片</div>
                             <div class="record-upload-btn record-upload-video">上传小视频</div>
+                            <div class="upload-fails record-fail-big"><span class="fail-warn">!</span>上传失败，文件过大</div>
+                            <div class="upload-fails record-fail-format"><span class="fail-warn">!</span>上传失败，不支持当前格式</div>
                         </div>
                         <p class="record-upload-tips">图片格式支持JPG、PNG等，视频格式支持MP4、WMV、MOV等，文件大小不超过50M</p>
                     </div>
