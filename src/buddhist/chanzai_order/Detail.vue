@@ -220,7 +220,7 @@ import VideoPlayer from './VideoPlayer';
 
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
-import QRCode from '../../../pro-com/src/qrcode';
+import QRCode from '../../../pro-com/src/libs-es5/qrcode';
 import ChooseImage from '../../../old-com/choose-image/src';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
 

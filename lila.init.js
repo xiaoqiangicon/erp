@@ -217,8 +217,8 @@ export default lila => {
       },
       babelExclude: [
         /node_modules/,
-        /pro-com\/src\/(ueditor|qrcode)/,
-        /pro-com\\src\\(ueditor|qrcode)/,
+        /pro-com\/src\/(ueditor|libs-es5)/,
+        /pro-com\\src\\(ueditor|libs-es5)/,
       ],
       cssModules: cssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
