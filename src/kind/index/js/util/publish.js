@@ -263,7 +263,7 @@ seeAjax('scheduleList', { charityId: zzhUtil.urlParams.id }, res => {
     $(item).click(e => {
       const result = recordCheckBeforeSave(i);
 
-      if (result.success) return;
+      if (!result.success) return;
       $(item).text(`正在${0 ? '更新' : '保存'}中...`);
       zzhHandling.show();
       seeAjax(

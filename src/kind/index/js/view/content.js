@@ -23,6 +23,12 @@ seeView({
     'click .save': 'onClickSave',
     // 首页切换发布进展/发布记录
     'click .header-item': 'onClickHeaderItem',
+    // 点击关闭发布弹窗
+    'click #close-publish': 'onClickPublish',
+  },
+
+  onClickPublish: e => {
+    $('.publish-mask').hide();
   },
 
   // 选择推送还是不推送
@@ -56,10 +62,9 @@ seeView({
   onClickSave(e) {
     const self = this;
     const $this = $(e.target);
-    console.log(zzhUtil.urlParams.charityId);
     const result = checkBeforeSave();
 
-    if (result.success) return;
+    if (!result.success) return;
     $this.text(`正在${0 ? '更新' : '保存'}中...`);
     zzhHandling.show();
 
@@ -77,7 +82,10 @@ seeView({
         isPush: result.data.isPush,
       },
       res => {
-        if (!res.success) return;
+        if (!res.success) {
+          alert('操作失败');
+          return;
+        }
         self.afterSave();
       }
     );

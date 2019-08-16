@@ -8,6 +8,7 @@ const tpl = `
         <div class="main-header" id="main-header">
             <div class="header-item publish header-item-active">发布进展</div>
             <div class="header-item record">发布记录</div>
+            <div class="close-publish" id="close-publish">✖</div>
         </div>
         <div class="content update-content">${updateContent}</div>
         <div class="content record-content">${recordContent}</div>

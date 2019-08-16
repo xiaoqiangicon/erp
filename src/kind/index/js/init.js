@@ -16,6 +16,7 @@ const $body = $('body');
 $body.append(mainTpl);
 $body.append(publishTpl);
 
+$('.publish-mask').hide();
 $('.record-content').hide();
 
 $('#list-container').html(commonTpl.loading);
