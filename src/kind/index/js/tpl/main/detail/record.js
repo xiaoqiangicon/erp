@@ -24,6 +24,9 @@ const tpl = `
                         {{#each img}}
                         <img class="record-single-pic" src="{{this}}" />
                         {{/each}}
+                        {{#each video}}
+                        <video class="record-single-video" src="{{this}}"></video>
+                        {{/each}}
                     </div>
                 </div>
             </div>

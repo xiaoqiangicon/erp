@@ -12,6 +12,7 @@ import '../ajax';
 import listTpl from '../tpl/main/detail/record';
 
 import upload from '../../../../../../pro-com/src/upload';
+import { makeUploadFileOptions } from '../../../../configs/upload';
 
 import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
 import coverPicTpl from '../tpl/main/detail/cover_pic_item';
@@ -221,25 +222,27 @@ const requestList = (page, init) => {
 
               let index = i;
               // 当前编辑的上传视频
-              upload({
-                el: $('.record-upload-video').eq(i),
-                done: (url, e, data) => {
-                  const $recordItemVideo = $('.record-media');
-                  $recordItemVideo.append(
-                    coverVideoItemTpl({
-                      video: url,
-                    })
-                  );
-                },
-                progress: (e, data) => {
-                  if (data.total >= 10485676 * 50) {
-                    $('.fail-big').show();
-                    return false;
-                  }
-                },
-                uploadHandle: res => {},
-                type: 'file',
-              });
+              upload(
+                makeUploadFileOptions({
+                  el: $('.record-upload-video').eq(i),
+                  done: (url, e, data) => {
+                    const $recordItemVideo = $('.record-media');
+                    $recordItemVideo.append(
+                      coverVideoItemTpl({
+                        video: url,
+                      })
+                    );
+                  },
+                  progress: (e, data) => {
+                    if (data.total >= 10485676 * 50) {
+                      $('.fail-big').show();
+                      return false;
+                    }
+                  },
+                  uploadHandle: res => {},
+                  type: 'file',
+                })
+              );
             });
 
             // 取消编辑
@@ -293,6 +296,7 @@ const requestList = (page, init) => {
                     );
                 });
                 data.list[i].video.forEach((url, i) => {
+                  console.log(url);
                   $('.record-media')
                     .eq(index)
                     .append(

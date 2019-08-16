@@ -10,6 +10,7 @@ import publish from './util/publish';
 
 import upload from '../../../../../pro-com/src/upload';
 import coverVideoItemTpl from './tpl/main/detail/cover_video_item';
+import { makeUploadFileOptions } from '../../../configs/upload';
 
 const $body = $('body');
 
@@ -24,31 +25,19 @@ $(document).click(() => {
   $('[data-more-operate]').addClass('more-hide');
 });
 // 发布进展上传视频
-upload({
-  el: '.upload-video',
-  done: (url, e, data) => {
-    console.log(111);
-    const $coverContainer = $('#cover-container');
-    $coverContainer.append(
-      coverVideoItemTpl({
-        video: url,
-      })
-    );
-  },
-  uploadHandle: res => {
-    console.log(res);
-  },
-  progress: (e, data) => {
-    console.log(data);
-    if (data.total >= 10485676 * 50) {
-      $('.fail-big').show();
-      return false;
-    }
-  },
-  uploadFail: res => {
-    alert('upload failed');
-  },
-  type: 'file',
-});
+upload(
+  makeUploadFileOptions({
+    el: '.upload-video',
+    done: (url, e, data) => {
+      console.log(url, e, data);
+      const $coverContainer = $('#cover-container');
+      $coverContainer.append(
+        coverVideoItemTpl({
+          video: url,
+        })
+      );
+    },
+  })
+);
 
 requestList();
