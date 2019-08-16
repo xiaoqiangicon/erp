@@ -125,7 +125,7 @@ const requestList = (page, init) => {
             });
 
             // 初始化内容字数
-            if ($('[record-data-text-count-show').length) {
+            if ($('.record-type-content').val()) {
               $('[record-data-text-count-show]').text(
                 $('.record-type-content').val().length
               );
