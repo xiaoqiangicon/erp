@@ -10,7 +10,17 @@ export default `
         <div class="publish-media">
             <span class="publish-media-tips">图片视频</span>
             <div class="upload-block">
-                <div class="media" id="cover-container"></div>
+                <div class="media" id="cover-container">
+                    <div class="schedule-video-upload-loading" data-ele="video-upload-loading">
+                        <div class="progress-container">
+                            <div class="progress" data-ele="progress"></div>
+                        </div>
+                        <div class="progress-text" data-ele="progress-text"></div>
+                        <img data-ele="del-video-upload" class="schedule-video-del"
+                            src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png"
+                            alt="">
+                    </div>
+                </div>
                 <div class="upload-block-btn">
                     <div class="upload-btn upload-pic">上传图片</div>
                     <div class="upload-btn upload-video">上传小视频</div>

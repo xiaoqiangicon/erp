@@ -82,6 +82,61 @@
     url('https://pic.zizaihome.com/576972e8-be5d-11e9-a5c6-00163e0c001e.png')
     center no-repeat;
 }
+// 视频上传进度条
+.schedule-video-upload-loading {
+  float: left;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background: #ddd;
+}
+
+.schedule-video-upload-loading .progress-container {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+.schedule-video-upload-loading .progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+.schedule-video-upload-loading .progress {
+  width: 0;
+  height: 100%;
+  background: #5cb85c;
+}
+
+.schedule-video {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.schedule-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: -20px 0 0 -20px;
+  cursor: pointer;
+}
+.schedule-video-del {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
 // 上传的图片/视频
 .media {
   display: flex;

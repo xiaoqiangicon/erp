@@ -126,10 +126,11 @@ const requestList = (page, init) => {
 
             // 初始化内容字数
             if ($('[record-data-text-count-show').length) {
-              $('[record-data-text-count-show]')
-                .text
-                // $('.record-type-content').val().length
-                ();
+              $('[record-data-text-count-show]').text(
+                $('.record-type-content').val().length
+              );
+              // $('.record-type-content').val().length
+              // ();
             }
             // 初始化未编辑状态
             $('.record-operate').hide();
@@ -218,31 +219,61 @@ const requestList = (page, init) => {
                   $('.record-type-content')
                     .eq(i)
                     .focus();
-                });
+                  console.log(i);
+                  // 当前编辑的上传视频
+                  const $uploadRecordLoading = $(`
+                  <div class="schedule-video-upload-loading" data-record-ele="video-upload-loading">
+                      <div class="progress-container">
+                          <div class="progress" data-record-ele="progress"></div>
+                      </div>
+                      <div class="progress-text" data-record-ele="progress-text"></div>
+                      <img data-record-ele="del-video-upload" class="schedule-video-del"
+                          src="https://pic.zizaihome.com/b36bbb7c-a12c-11e8-9f56-00163e0c001e.png"
+                          alt="">
+                  </div>`);
+                  // $uploadRecordLoading.hide();
+                  upload(
+                    makeUploadFileOptions({
+                      el: $('.record-upload-video').eq(i),
+                      done: (url, e, data) => {
+                        $uploadRecordLoading.remove();
+                        const $recordItemVideo = $('.record-media').eq(i);
+                        $recordItemVideo.append(
+                          coverVideoItemTpl({
+                            video: url,
+                          })
+                        );
+                      },
+                      progress: (e, data) => {
+                        if (data.total >= 10485676 * 50) {
+                          $('.fail-big').show();
+                          return false;
+                        }
 
-              let index = i;
-              // 当前编辑的上传视频
-              upload(
-                makeUploadFileOptions({
-                  el: $('.record-upload-video').eq(i),
-                  done: (url, e, data) => {
-                    const $recordItemVideo = $('.record-media');
-                    $recordItemVideo.append(
-                      coverVideoItemTpl({
-                        video: url,
-                      })
-                    );
-                  },
-                  progress: (e, data) => {
-                    if (data.total >= 10485676 * 50) {
-                      $('.fail-big').show();
-                      return false;
-                    }
-                  },
-                  uploadHandle: res => {},
-                  type: 'file',
-                })
-              );
+                        const $recordItemVideo = $('.record-media').eq(i);
+                        $recordItemVideo.append($uploadRecordLoading);
+                        $uploadRecordLoading.show();
+                        const $progress = $('[data-record-ele="progress"]');
+                        const $progressText = $(
+                          '[data-record-ele="progress-text"]'
+                        );
+                        let progress = parseInt(
+                          (data.loaded / data.total) * 100,
+                          10
+                        );
+                        if (progress > 95) {
+                          progress = 95;
+                        }
+                        $progress.css({
+                          width: `${progress}%`,
+                        });
+                        $progressText.text(`${progress}%`);
+                        console.log(progress);
+                      },
+                    })
+                  );
+                  // 上传结束
+                });
             });
 
             // 取消编辑
