@@ -27,7 +27,7 @@ $.seeAjax.config({
   url: {
     upload: [
       '/zzhadmin/uploadPic/',
-      '/src/temple/index/mock/upload_server.json',
+      '/src/temple/index/mock/upload.json',
       '//localhost/server/',
     ],
     buddhist: [
