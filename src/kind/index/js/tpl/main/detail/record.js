@@ -70,6 +70,7 @@ const tpl = `
             </div>
         </div>
         {{/each}}
+        <div class="no-more-list" data-no-list="1">此佛事还没有发布过进展动态哦，现在就去发布吧。</div>
     </div>
 `;
 

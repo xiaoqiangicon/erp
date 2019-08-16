@@ -17,5 +17,7 @@ seeAjax.config('scheduleList', {
     '/src/kind/index/data/schedule_list_server.json',
     '/src/kind/index/data/schedule_list.json',
   ],
+  method: 'post',
+  stringify: true,
   postHandle: [postHandle, postHandle],
 });

@@ -65,11 +65,16 @@ const requestList = (page, init) => {
             console.log(data.scheduleList);
             $('.record-content').html(listTpl(data.scheduleList));
 
+            if (!data.scheduleList.list.length) {
+              $('[data-no-list]').show();
+            }
+
             // 新增
             // 保存
             $('.save').click(e => {
               const $this = $(e.target);
               const result = checkBeforeSave();
+              result.data.charityId = charityId;
 
               if (!result.success) return;
               $this.text(`正在${0 ? '更新' : '保存'}中...`);
@@ -119,9 +124,12 @@ const requestList = (page, init) => {
             });
 
             // 初始化内容字数
-            $('[record-data-text-count-show]').text(
-              $('.record-type-content').val().length
-            );
+            if ($('[record-data-text-count-show').length) {
+              $('[record-data-text-count-show]')
+                .text
+                // $('.record-type-content').val().length
+                ();
+            }
             // 初始化未编辑状态
             $('.record-operate').hide();
             $('.record-item-edit').hide();
@@ -324,7 +332,6 @@ const requestList = (page, init) => {
               let index = i;
               $(item).click(e => {
                 const result = recordCheckBeforeSave(i);
-
                 if (!result.success) return;
                 $(item).text(`正在${0 ? '更新' : '保存'}中...`);
                 zzhHandling.show();
