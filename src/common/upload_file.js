@@ -26,7 +26,7 @@ var upload = function(el, option, done, progress) {
     );
   if (typeof env == 'undefined') {
     env = $.seeAjax.getEnv();
-    url = env === 0 ? '/zzhadmin/uploadPic/' : '/mock/upload_server.json';
+    url = env === 0 ? '/zzhadmin/uploadPic/' : '/mock/upload.json';
   }
   var defaultOption = {
     url: url,
