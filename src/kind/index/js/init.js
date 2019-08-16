@@ -27,6 +27,7 @@ $(document).click(() => {
 upload({
   el: '.upload-video',
   done: (url, e, data) => {
+    console.log(111);
     const $coverContainer = $('#cover-container');
     $coverContainer.append(
       coverVideoItemTpl({
@@ -38,6 +39,7 @@ upload({
     console.log(res);
   },
   progress: (e, data) => {
+    console.log(data);
     if (data.total >= 10485676 * 50) {
       $('.fail-big').show();
       return false;
