@@ -57,41 +57,4 @@ seeView({
     }
     coverChoose.show();
   },
-
-  // 保存
-  onClickSave(e) {
-    const self = this;
-    const $this = $(e.target);
-    const result = checkBeforeSave();
-
-    if (!result.success) return;
-    $this.text(`正在${0 ? '更新' : '保存'}中...`);
-    zzhHandling.show();
-
-    self.save(result);
-  },
-  save(result) {
-    const self = this;
-    seeAjax(
-      'updateList',
-      {
-        charityId: zzhUtil.urlParams.id,
-        content: result.data.content,
-        img: result.data.img.join(','),
-        video: result.data.video.join(','),
-        isPush: result.data.isPush,
-      },
-      res => {
-        if (!res.success) {
-          alert('操作失败');
-          return;
-        }
-        self.afterSave();
-      }
-    );
-  },
-  afterSave() {
-    zzhHandling.hide();
-    window.location.reload();
-  },
 });
