@@ -18,7 +18,7 @@ seeView({
     if (handling) return;
     const result = checkBeforeSave();
     console.log(result.data);
-    if (result.success) return;
+    if (!result.success) return;
     $this
       .attr({
         'data-handling': 1,
