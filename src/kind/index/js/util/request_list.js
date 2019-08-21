@@ -64,9 +64,9 @@ const requestList = (page, init) => {
             data.list = data.scheduleList.list;
 
             console.log(data.scheduleList);
-            $('#remain-time').text(data.scheduleList.count);
+            $('#remain-time').text(data.scheduleList.todayNum);
             $('.record-content').html(listTpl(data.scheduleList));
-            $('[data-remain-time]').text(data.scheduleList.count);
+            $('[data-remain-time]').text(data.scheduleList.todayNum);
 
             if (!data.scheduleList.list.length) {
               $('[data-no-list]').show();
