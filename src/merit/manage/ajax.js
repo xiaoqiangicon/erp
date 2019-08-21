@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Data from './data';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   getList: {
     page: 'pageNum',
@@ -69,16 +69,7 @@ var postHandle = {
     });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getList: 'getList',
-    getTag: 'getTag',
-    updateTag: 'updateTag',
-    delTag: 'delTag',
-    addMeritToGroup: 'addMeritToGroup',
-    delMeritFromGroup: 'delMeritFromGroup',
-  },
+const configs = {
   url: {
     getList: [
       '/zzhadmin/getMeritRank/',
@@ -113,4 +104,70 @@ $.seeAjax.config({
     common: [postHandle.common, postHandle.common],
     getList: [postHandle.getList, postHandle.getList],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getList', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getList,
+  requestKeys: configs.requestKeys.getList,
+  preHandle: configs.preHandle.getList,
+  responseRefactor: configs.responseRefactor.getList,
+  postHandle: configs.postHandle.getList,
+});
+
+seeAjax.config('getTag', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getTag,
+  requestKeys: configs.requestKeys.getTag,
+  preHandle: configs.preHandle.getTag,
+  responseRefactor: configs.responseRefactor.getTag,
+  postHandle: configs.postHandle.getTag,
+});
+
+seeAjax.config('updateTag', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.updateTag,
+  requestKeys: configs.requestKeys.updateTag,
+  preHandle: configs.preHandle.updateTag,
+  responseRefactor: configs.responseRefactor.updateTag,
+  postHandle: configs.postHandle.updateTag,
+});
+
+seeAjax.config('delTag', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.delTag,
+  requestKeys: configs.requestKeys.delTag,
+  preHandle: configs.preHandle.delTag,
+  responseRefactor: configs.responseRefactor.delTag,
+  postHandle: configs.postHandle.delTag,
+});
+
+seeAjax.config('addMeritToGroup', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.addMeritToGroup,
+  requestKeys: configs.requestKeys.addMeritToGroup,
+  preHandle: configs.preHandle.addMeritToGroup,
+  responseRefactor: configs.responseRefactor.addMeritToGroup,
+  postHandle: configs.postHandle.addMeritToGroup,
+});
+
+seeAjax.config('delMeritFromGroup', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.delMeritFromGroup,
+  requestKeys: configs.requestKeys.delMeritFromGroup,
+  preHandle: configs.preHandle.delMeritFromGroup,
+  responseRefactor: configs.responseRefactor.delMeritFromGroup,
+  postHandle: configs.postHandle.delMeritFromGroup,
 });

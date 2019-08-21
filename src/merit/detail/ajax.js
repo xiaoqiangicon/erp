@@ -1,25 +1,16 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   getList: {
     page: 'pageNum',
-    pageSize: 'pageSize',
-    id: 'id',
   },
-  getUserInfo: {
-    id: 'id',
-  },
-  getTag: {
-    userId: 'userId',
-  },
+  getUserInfo: {},
+  getTag: {},
   addMeritToGroup: {
     tagIds: 'groupId',
-    userIds: 'userIds',
   },
-  getWallOrderDetl: {
-    id: 'id',
-  },
+  getWallOrderDetl: {},
   getBuddhistOrderDetl: {
     id: 'orderId',
   },
@@ -91,16 +82,7 @@ var postHandle = {
       });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getList: 'getList',
-    getUserInfo: 'getUserInfo',
-    getTag: 'getTag',
-    addMeritToGroup: 'addMeritToGroup',
-    getWallOrderDetl: 'getWallOrderDetl',
-    getBuddhistOrderDetl: 'getBuddhistOrderDetl',
-  },
+const configs = {
   url: {
     getList: [
       '/zzhadmin/getMerit/',
@@ -146,4 +128,66 @@ $.seeAjax.config({
     common: [postHandle.common, postHandle.common],
     getList: [postHandle.getList, postHandle.getList],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getList', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getList,
+  requestKeys: configs.requestKeys.getList,
+  preHandle: configs.preHandle.getList,
+  responseRefactor: configs.responseRefactor.getList,
+  postHandle: configs.postHandle.getList,
+});
+
+seeAjax.config('getUserInfo', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getUserInfo,
+  requestKeys: configs.requestKeys.getUserInfo,
+  preHandle: configs.preHandle.getUserInfo,
+  responseRefactor: configs.responseRefactor.getUserInfo,
+  postHandle: configs.postHandle.getUserInfo,
+});
+
+seeAjax.config('getTag', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getTag,
+  requestKeys: configs.requestKeys.getTag,
+  preHandle: configs.preHandle.getTag,
+  responseRefactor: configs.responseRefactor.getTag,
+  postHandle: configs.postHandle.getTag,
+});
+
+seeAjax.config('addMeritToGroup', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.addMeritToGroup,
+  requestKeys: configs.requestKeys.addMeritToGroup,
+  preHandle: configs.preHandle.addMeritToGroup,
+  responseRefactor: configs.responseRefactor.addMeritToGroup,
+  postHandle: configs.postHandle.addMeritToGroup,
+});
+
+seeAjax.config('getWallOrderDetl', {
+  url: configs.url.getWallOrderDetl,
+  requestKeys: configs.requestKeys.getWallOrderDetl,
+  preHandle: configs.preHandle.getWallOrderDetl,
+  responseRefactor: configs.responseRefactor.getWallOrderDetl,
+  postHandle: configs.postHandle.getWallOrderDetl,
+});
+
+seeAjax.config('getBuddhistOrderDetl', {
+  url: configs.url.getBuddhistOrderDetl,
+  requestKeys: configs.requestKeys.getBuddhistOrderDetl,
+  preHandle: configs.preHandle.getBuddhistOrderDetl,
+  responseRefactor: configs.responseRefactor.getBuddhistOrderDetl,
+  postHandle: configs.postHandle.getBuddhistOrderDetl,
 });

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {};
 var responseRefactor = {};
 var preHandle = {};
@@ -9,11 +9,7 @@ var postHandle = {
     res.msg && (res.message = res.msg);
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    list: 'list',
-  },
+const configs = {
   url: {
     list: [
       '/zzhadmin/merit_machine_list/',
@@ -27,4 +23,18 @@ $.seeAjax.config({
   postHandle: {
     common: [postHandle.common, postHandle.common],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
 });

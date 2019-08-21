@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import commonVars from 'common/variables';
 import data from './data';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var typeTexts = ['自在家', '自定义', '佛事', '文章'];
 var requestKeys = {
   switch: {
@@ -38,12 +38,7 @@ var postHandle = {
       });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    detail: 'detail',
-    switch: 'switch',
-  },
+const configs = {
   url: {
     detail: [
       '/zzhadmin/merit_machine_ad_list/',
@@ -76,4 +71,27 @@ $.seeAjax.config({
     common: [postHandle.common, postHandle.common],
     detail: [postHandle.detail, postHandle.detail],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('detail', {
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('switch', {
+  method: ['post'],
+  url: configs.url.switch,
+  requestKeys: configs.requestKeys.switch,
+  preHandle: configs.preHandle.switch,
+  responseRefactor: configs.responseRefactor.switch,
+  postHandle: configs.postHandle.switch,
 });

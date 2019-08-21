@@ -1,73 +1,54 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import Data from './data';
 import commonFunc from 'common/function';
 var api = {};
 api.getList = function(params, callback) {
-  $.seeAjax.post(
-    'getList',
-    params,
-    function(res) {
-      res.success
-        ? (function() {
-            Data.getListRes = res;
-            Data.getUserInfoParams.id = res.data.userId;
-            callback && callback(res);
-          })()
-        : res.message && commonFunc.alert(res.message);
-    },
-    true
-  );
+  seeAjax('getList', params, function(res) {
+    res.success
+      ? (function() {
+          Data.getListRes = res;
+          Data.getUserInfoParams.id = res.data.userId;
+          callback && callback(res);
+        })()
+      : res.message && commonFunc.alert(res.message);
+  });
 };
 api.getUserInfo = function(params, callback) {
-  $.seeAjax.post(
-    'getUserInfo',
-    params,
-    function(res) {
-      res.success
-        ? (function() {
-            Data.getUserInfoRes = res;
-            callback && callback(res);
-          })()
-        : res.message && commonFunc.alert(res.message);
-    },
-    true
-  );
+  seeAjax('getUserInfo', params, function(res) {
+    res.success
+      ? (function() {
+          Data.getUserInfoRes = res;
+          callback && callback(res);
+        })()
+      : res.message && commonFunc.alert(res.message);
+  });
 };
 api.getTag = function(params, callback) {
-  $.seeAjax.post(
-    'getTag',
-    params,
-    function(res) {
-      res.success
-        ? (function() {
-            Data.getTagRes = res;
-            Data.getTagHandleData = {};
-            res.data.map(function(item) {
-              Data.getTagHandleData[item.id] = item;
-            });
-            callback && callback(res);
-          })()
-        : res.message && commonFunc.alert(res.message);
-    },
-    true
-  );
+  seeAjax('getTag', params, function(res) {
+    res.success
+      ? (function() {
+          Data.getTagRes = res;
+          Data.getTagHandleData = {};
+          res.data.map(function(item) {
+            Data.getTagHandleData[item.id] = item;
+          });
+          callback && callback(res);
+        })()
+      : res.message && commonFunc.alert(res.message);
+  });
 };
 api.addMeritToGroup = function(params, callback) {
-  $.seeAjax.post(
-    'addMeritToGroup',
-    params,
-    function(res) {
-      res.success
-        ? (function() {
-            callback && callback(res);
-          })()
-        : res.message && commonFunc.alert(res.message);
-    },
-    true
-  );
+  seeAjax('addMeritToGroup', params, function(res) {
+    res.success
+      ? (function() {
+          callback && callback(res);
+        })()
+      : res.message && commonFunc.alert(res.message);
+  });
 };
 api.getBuddhistOrderDetl = function(params, callback) {
-  $.seeAjax.get('getBuddhistOrderDetl', params, function(res) {
+  seeAjax('getBuddhistOrderDetl', params, function(res) {
     res.success
       ? (function() {
           callback && callback(res);
@@ -76,7 +57,7 @@ api.getBuddhistOrderDetl = function(params, callback) {
   });
 };
 api.getWallOrderDetl = function(params, callback) {
-  $.seeAjax.get('getWallOrderDetl', params, function(res) {
+  seeAjax('getWallOrderDetl', params, function(res) {
     res.success
       ? (function() {
           callback && callback(res);

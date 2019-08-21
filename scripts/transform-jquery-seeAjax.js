@@ -1,8 +1,10 @@
 const names = {
-  list: 'list',
-  cancel: 'cancel',
-  addReceipts: 'addReceipts',
-  accountInfo: 'accountInfo',
+  getList: 'getList',
+  getTag: 'getTag',
+  updateTag: 'updateTag',
+  delTag: 'delTag',
+  addMeritToGroup: 'addMeritToGroup',
+  delMeritFromGroup: 'delMeritFromGroup',
 };
 let tpl = `
 seeAjax.setEnv(__SEE_ENV__);

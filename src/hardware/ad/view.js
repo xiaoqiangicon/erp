@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -16,7 +17,7 @@ seeView({
       id = parseInt($this.attr('data-row-switch')),
       hide = parseInt($this.attr('data-hide')) || 0,
       targetHide = 1 - hide;
-    $.seeAjax.post(
+    seeAjax(
       'switch',
       {
         id: id,
