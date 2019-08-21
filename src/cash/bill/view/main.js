@@ -6,6 +6,7 @@ import data from '../data';
 import func from '../func';
 import tpl from '../tpl';
 import showPrizeDialog from '../util/show_prize_dialog';
+import seeAjax from 'see-ajax';
 import seeView from 'see-view';
 var $body = $('body'),
   $questionDialog = $('#dialog-question'),
@@ -282,7 +283,7 @@ seeView({
         'data-handling': 1,
       })
       .text('正在处理...');
-    $.seeAjax.get(
+    seeAjax(
       'questionBills',
       {
         ids: JSON.stringify(data.saveBillIds),
@@ -308,7 +309,7 @@ seeView({
         'data-handling': 1,
       })
       .text('正在处理...');
-    $.seeAjax.get(
+    seeAjax(
       'confirmBills',
       {
         ids: JSON.stringify(data.saveBillIds),
@@ -336,7 +337,7 @@ seeView({
         'data-handling': 1,
       })
       .text('正在处理...');
-    $.seeAjax.get(
+    seeAjax(
       'cancelBills',
       {
         ids: JSON.stringify(data.saveBillIds),

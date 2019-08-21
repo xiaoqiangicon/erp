@@ -1,8 +1,7 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   list: {
-    year: 'year',
     page: 'pageNumber',
   },
 };
@@ -59,13 +58,7 @@ var postHandle = {
     });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    stat: 'stat',
-    list: 'list',
-    accountInfo: 'accountInfo',
-  },
+const configs = {
   url: {
     stat: [
       '/zzhadmin/getSumMoney/',
@@ -105,4 +98,34 @@ $.seeAjax.config({
     stat: [postHandle.stat, postHandle.stat],
     list: [postHandle.list, postHandle.list],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('stat', {
+  url: configs.url.stat,
+  requestKeys: configs.requestKeys.stat,
+  preHandle: configs.preHandle.stat,
+  responseRefactor: configs.responseRefactor.stat,
+  postHandle: configs.postHandle.stat,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('accountInfo', {
+  url: configs.url.accountInfo,
+  requestKeys: configs.requestKeys.accountInfo,
+  preHandle: configs.preHandle.accountInfo,
+  responseRefactor: configs.responseRefactor.accountInfo,
+  postHandle: configs.postHandle.accountInfo,
 });

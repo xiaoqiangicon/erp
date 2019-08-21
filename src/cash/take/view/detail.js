@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import util from '../util';
 import seeView from 'see-view';
 seeView({

@@ -1,5 +1,6 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import toastr from 'toastr';
 import fn from 'common/function';
 import tpl from '../tpl';
@@ -34,7 +35,7 @@ seeView({
     fn.confirm(
       '请确认您上传的收据照片是否正确，确认之后则不能更改',
       function() {
-        $.seeAjax.post(
+        seeAjax(
           'addReceipts',
           {
             id: data.currentHandleId,

@@ -5,6 +5,7 @@ import ChooseImage from '../../../../old-com/choose-image/src';
 import data from './data';
 import func from './func';
 import './ajax';
+import seeAjax from 'see-ajax';
 import seeView from 'see-view';
 var templateUpload;
 var idCard1Upload;
@@ -114,7 +115,7 @@ seeView({
         'data-handling': 1,
       })
       .text('保存中...');
-    $.seeAjax.post(data.isEdit ? 'update' : 'add', result, function(res) {
+    seeAjax(data.isEdit ? 'update' : 'add', result, function(res) {
       $this
         .attr({
           'data-handling': 0,

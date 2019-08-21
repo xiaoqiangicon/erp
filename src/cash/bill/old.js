@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import Slider from 'bootstrap-slider';
 import Tippy from 'tippy';
@@ -52,7 +53,7 @@ $.ajaxSetup({
     })
   );
   func.requestBillData();
-  $.seeAjax.get('accountInfo', {}, function(res) {
+  seeAjax('accountInfo', {}, function(res) {
     if (res.success) {
       if (res.data && res.data.account) {
         $('#account-info-bank').text(res.data.bank);
@@ -63,7 +64,7 @@ $.ajaxSetup({
       }
     }
   });
-  $.seeAjax.get('receiptsInfo', {}, function(res) {
+  seeAjax('receiptsInfo', {}, function(res) {
     data.maxWaitingReceipts = res.maxWaitingReceipts;
     data.currentWaitingReceipts = res.currentWaitingReceipts;
     data.haveOrderInHandling = res.haveOrderInHandling;
@@ -71,7 +72,7 @@ $.ajaxSetup({
     $('[data-max-waiting-receipts]').text(data.maxWaitingReceipts);
     $('[data-current-waiting-receipts]').text(data.currentWaitingReceipts);
   });
-  $.seeAjax.get('stat', {}, function(res) {
+  seeAjax('stat', {}, function(res) {
     if (res.success) {
       data.stat = res.data;
     }

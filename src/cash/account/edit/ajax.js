@@ -1,9 +1,8 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import 'lib/jquery.seeAjax';
+
 var requestKeys = {
   add: {
-    type: 'type',
     bank: 'bankName',
     subBank: 'bankBranchName',
     bankCard: 'bankCardNumber',
@@ -13,7 +12,6 @@ var requestKeys = {
     idCardImage2: 'identityCardPic2',
   },
   update: {
-    type: 'type',
     bank: 'bankName',
     subBank: 'bankBranchName',
     bankCard: 'bankCardNumber',
@@ -43,15 +41,8 @@ var postHandle = {
     res.message = res.msg || '';
   },
 };
-var env = __SEE_ENV__;
-seeAjax.setEnv(env);
-$.seeAjax.config({
-  environment: env,
-  name: {
-    add: 'add',
-    update: 'update',
-    info: 'info',
-  },
+
+const configs = {
   url: {
     add: [
       '/zzhadmin/addTempleBank/',
@@ -70,34 +61,8 @@ $.seeAjax.config({
     ],
   },
   requestKeys: {
-    add: [
-      requestKeys.add,
-      requestKeys.add,
-      {
-        type: 'type',
-        bank: 'bank',
-        subBank: 'subBank',
-        bankCard: 'bankCard',
-        account: 'account',
-        licenceImage: 'licenceImage',
-        idCardImage1: 'idCardImage1',
-        idCardImage2: 'idCardImage2',
-      },
-    ],
-    update: [
-      requestKeys.update,
-      requestKeys.update,
-      {
-        type: 'type',
-        bank: 'bank',
-        subBank: 'subBank',
-        bankCard: 'bankCard',
-        account: 'account',
-        licenceImage: 'licenceImage',
-        idCardImage1: 'idCardImage1',
-        idCardImage2: 'idCardImage2',
-      },
-    ],
+    add: [requestKeys.add, requestKeys.add],
+    update: [requestKeys.update, requestKeys.update],
   },
   responseRefactor: {
     info: [responseRefactor.info, responseRefactor.info],
@@ -106,4 +71,36 @@ $.seeAjax.config({
   postHandle: {
     common: [postHandle.common, postHandle.common],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('add', {
+  method: ['post'],
+  url: configs.url.add,
+  requestKeys: configs.requestKeys.add,
+  preHandle: configs.preHandle.add,
+  responseRefactor: configs.responseRefactor.add,
+  postHandle: configs.postHandle.add,
+});
+
+seeAjax.config('update', {
+  method: ['post'],
+  url: configs.url.update,
+  requestKeys: configs.requestKeys.update,
+  preHandle: configs.preHandle.update,
+  responseRefactor: configs.responseRefactor.update,
+  postHandle: configs.postHandle.update,
+});
+
+seeAjax.config('info', {
+  url: configs.url.info,
+  requestKeys: configs.requestKeys.info,
+  preHandle: configs.preHandle.info,
+  responseRefactor: configs.responseRefactor.info,
+  postHandle: configs.postHandle.info,
 });

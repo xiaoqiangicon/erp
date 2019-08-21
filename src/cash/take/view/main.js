@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import commonVars from 'common/variables';
 import fn from 'common/function';
 import data from '../data';

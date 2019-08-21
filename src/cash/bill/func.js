@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import tippy from 'tippy.js';
 import commonVars from 'common/variables';
@@ -8,7 +9,7 @@ var func = {};
 func.requestBillData = function(year, status) {
   !year && (year = commonVars.today.year);
   !status && (status = 1);
-  $.seeAjax.get(
+  seeAjax(
     'billData',
     {
       year: year,

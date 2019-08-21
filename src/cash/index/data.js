@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'juicer';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
+import juicer from 'juicer';
 var data = {
   monthsData: {},
   monthDataForChart: {},
@@ -30,7 +30,7 @@ data.tpl = {
 data.requestList = function(year, page) {
   !year && (year = data.today.year);
   !page && (page = 1);
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       year: year,

@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonTpl from 'common/tpl';
@@ -19,7 +20,7 @@ func.requestList = function(page, init) {
   init && $paginationContainer.html('');
   var params = _.clone(data.filter);
   params.page = page;
-  $.seeAjax.get('list', params, function(res) {
+  seeAjax('list', params, function(res) {
     if (res.success && res.data.length) {
       func.renderList(res.data);
       init && func.initPagination(res.totalPages);

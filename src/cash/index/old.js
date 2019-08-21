@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonData from './data';
 import './ajax';
@@ -14,7 +15,7 @@ $.ajaxSetup({
     $selectYearContainer = $('[data-select-year-container]'),
     $paginationContainers = $('#pagination-containers'),
     $paginationContentContainers = $('#pagination-content-containers');
-  $.seeAjax.get('stat', {}, function(res) {
+  seeAjax('stat', {}, function(res) {
     res.success &&
       ($.seeBind.setData('total-donate', res.data.total),
       $.seeBind.setData('available-donate', res.data.available),
@@ -48,7 +49,7 @@ $.ajaxSetup({
       })
     );
   commonData.requestList();
-  $.seeAjax.get('accountInfo', {}, function(res) {
+  seeAjax('accountInfo', {}, function(res) {
     if (res.success) {
       commonData.accountData = res.data;
       if (commonData.accountStatus === 2 && res.data.reason) {

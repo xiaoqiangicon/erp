@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import data from './data';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var listPerPage = 20;
 var requestKeys = {
   list: {
@@ -22,12 +22,12 @@ var responseRefactor = {
     data: [
       {
         specialCharge: 'specialPickUpMoney',
-        time: 'add_time^',
+        time: 'add_time',
         money: 'price',
         isQuestion: 'is_question',
         feedBackImages: 'picList',
         receipts: 'feedBackPicList',
-        createdAt: 'add_time^',
+        createdAt: 'add_time',
         updatedAt: 'update_time',
         details: [
           {
@@ -136,14 +136,7 @@ var postHandle = {
     });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    list: 'list',
-    cancel: 'cancel',
-    addReceipts: 'addReceipts',
-    accountInfo: 'accountInfo',
-  },
+const configs = {
   url: {
     list: [
       '/zzhadmin/pickUpMoneyList/',
@@ -204,4 +197,43 @@ $.seeAjax.config({
     common: [postHandle.common, postHandle.common],
     list: [postHandle.list, postHandle.list],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('cancel', {
+  url: configs.url.cancel,
+  requestKeys: configs.requestKeys.cancel,
+  preHandle: configs.preHandle.cancel,
+  responseRefactor: configs.responseRefactor.cancel,
+  postHandle: configs.postHandle.cancel,
+});
+
+seeAjax.config('addReceipts', {
+  method: ['post'],
+  url: configs.url.addReceipts,
+  requestKeys: configs.requestKeys.addReceipts,
+  preHandle: configs.preHandle.addReceipts,
+  responseRefactor: configs.responseRefactor.addReceipts,
+  postHandle: configs.postHandle.addReceipts,
+});
+
+seeAjax.config('accountInfo', {
+  url: configs.url.accountInfo,
+  requestKeys: configs.requestKeys.accountInfo,
+  preHandle: configs.preHandle.accountInfo,
+  responseRefactor: configs.responseRefactor.accountInfo,
+  postHandle: configs.postHandle.accountInfo,
 });

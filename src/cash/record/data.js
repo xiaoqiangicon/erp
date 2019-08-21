@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'juicer';
-import 'lib/jquery.seeAjax';
+import juicer from 'juicer';
+import seeAjax from 'see-ajax';
 var data = {};
 data.today = (function() {
   var currentDateObj = new Date(),
@@ -48,7 +48,7 @@ data.requestList = function(startDate, endDate, page) {
   !startDate && (startDate = '');
   !endDate && (endDate = '');
   !page && (page = 1);
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       startDate: startDate,

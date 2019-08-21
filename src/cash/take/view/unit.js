@@ -1,5 +1,6 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import fn from 'common/function';
 import data from '../data';
 import func from '../func';
@@ -31,7 +32,7 @@ seeView({
       id = $this.attr('data-unit-cancel');
     setTimeout(function() {
       fn.confirm('确定撤回这次提现吗？', function() {
-        $.seeAjax.get(
+        seeAjax(
           'cancel',
           {
             id: id,

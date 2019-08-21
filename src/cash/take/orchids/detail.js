@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import Tippy from 'tippy';
 import data from '../data';
 import tpl from '../tpl';
