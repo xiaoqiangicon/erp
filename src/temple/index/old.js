@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import indexData from './data';
 import renderSavedData from './render_saved_data';
@@ -39,17 +40,17 @@ $('#components-display-container').sortable({
     updateSort();
   },
 });
-$.seeAjax.get('buddhistTypes', {}, function(res) {
+seeAjax('buddhistTypes', {}, function(res) {
   res.success
     ? ((indexData.misc.buddhistTypes = res.data), handleAfterLoadTypes())
     : !!res.message && console.error('获取佛事列表失败：' + res.message);
 });
-$.seeAjax.get('articleTypes', {}, function(res) {
+seeAjax('articleTypes', {}, function(res) {
   res.success
     ? ((indexData.misc.articleTypes = res.data), handleAfterLoadTypes())
     : !!res.message && console.error('获取文章列表失败：' + res.message);
 });
-$.seeAjax.get('appTypes', {}, function(res) {
+seeAjax('appTypes', {}, function(res) {
   res.success
     ? (indexData.misc.appTypes = res.data)
     : !!res.message && console.error('获取应用列表失败：' + res.message);
@@ -57,7 +58,7 @@ $.seeAjax.get('appTypes', {}, function(res) {
 function handleAfterLoadTypes() {
   typesLoadedCount += 1;
   if (typesLoadedCount < 2) return;
-  $.seeAjax.get('savedData', {}, function(res) {
+  seeAjax('savedData', {}, function(res) {
     res.success &&
       (renderSavedData(res),
       !!res.data && !!res.data.length && $('#fixed-bottom').show());

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   list: {
     page: 'pageNumber',
@@ -39,13 +39,7 @@ var postHandle = {
     res.totalPages = Math.ceil((res.total || 1) / 20);
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    state: 'state',
-    list: 'list',
-    download: 'download',
-  },
+const configs = {
   url: {
     state: [
       '/zzhadmin/meritBoxSumGet/',
@@ -80,4 +74,34 @@ $.seeAjax.config({
     common: [postHandle.common, postHandle.common],
     list: [postHandle.list, postHandle.list],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('state', {
+  url: configs.url.state,
+  requestKeys: configs.requestKeys.state,
+  preHandle: configs.preHandle.state,
+  responseRefactor: configs.responseRefactor.state,
+  postHandle: configs.postHandle.state,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('download', {
+  url: configs.url.download,
+  requestKeys: configs.requestKeys.download,
+  preHandle: configs.preHandle.download,
+  responseRefactor: configs.responseRefactor.download,
+  postHandle: configs.postHandle.download,
 });

@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -69,7 +70,7 @@ seeView({
   },
   save: function() {
     zzhHandling.show();
-    $.seeAjax.post(
+    seeAjax(
       'save',
       {
         data: JSON.stringify(componentData),
@@ -639,7 +640,7 @@ seeView({
     return !0;
   },
   preHandleComponentsData: function() {
-    if ($.seeAjax.getEnv() !== 2) {
+    if (seeAjax.getEnv() !== 2) {
       JSON.refactor(componentData, saveReverse[componentData.type - 1] || {});
       if (componentData.type === 2) {
         componentData.list.forEach(function(com) {

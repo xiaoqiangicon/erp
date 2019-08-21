@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import indexData from '../../data';
 import commonTpl from '../../tpl/common';
@@ -88,7 +89,7 @@ seeView({
         pageIndex: 1,
       })
     );
-    $.seeAjax.get(
+    seeAjax(
       'calendarBuddhist',
       {
         page: 1,

@@ -1,10 +1,20 @@
 const names = {
-  getList: 'getList',
-  getTag: 'getTag',
-  updateTag: 'updateTag',
-  delTag: 'delTag',
-  addMeritToGroup: 'addMeritToGroup',
-  delMeritFromGroup: 'delMeritFromGroup',
+  upload: 'upload',
+  buddhist: 'buddhist',
+  article: 'article',
+  buddhistTypes: 'buddhistTypes',
+  savedData: 'savedData',
+  save: 'save',
+  calendarBuddhist: 'calendarBuddhist',
+  calendarNewTitle: 'calendarNewTitle',
+  deleteActivityOfCalendar: 'deleteActivityOfCalendar',
+  activitiesOfCalendar: 'activitiesOfCalendar',
+  articleTypes: 'articleTypes',
+  appTypes: 'appTypes',
+  deleteComponent: 'deleteComponent',
+  updateSort: 'updateSort',
+  delGaoSeng: 'delGaoSeng',
+  delDianTang: 'delDianTang',
 };
 let tpl = `
 seeAjax.setEnv(__SEE_ENV__);

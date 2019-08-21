@@ -1,29 +1,8 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import handle from './ajax_handle';
-import 'lib/jquery.seeAjax';
-var env = __SEE_ENV__;
-seeAjax.setEnv(env);
-$.seeAjax.config({
-  environment: env,
-  name: {
-    upload: 'upload',
-    buddhist: 'buddhist',
-    article: 'article',
-    buddhistTypes: 'buddhistTypes',
-    savedData: 'savedData',
-    save: 'save',
-    calendarBuddhist: 'calendarBuddhist',
-    calendarNewTitle: 'calendarNewTitle',
-    deleteActivityOfCalendar: 'deleteActivityOfCalendar',
-    activitiesOfCalendar: 'activitiesOfCalendar',
-    articleTypes: 'articleTypes',
-    appTypes: 'appTypes',
-    deleteComponent: 'deleteComponent',
-    updateSort: 'updateSort',
-    delGaoSeng: 'delGaoSeng',
-    delDianTang: 'delDianTang',
-  },
+
+const configs = {
   url: {
     upload: [
       '/zzhadmin/uploadPic/',
@@ -282,4 +261,141 @@ $.seeAjax.config({
       handle.outerPostHandle.appTypes,
     ],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('upload', {
+  url: configs.url.upload,
+  requestKeys: configs.requestKeys.upload,
+  preHandle: configs.preHandle.upload,
+  responseRefactor: configs.responseRefactor.upload,
+  postHandle: configs.postHandle.upload,
+});
+
+seeAjax.config('buddhist', {
+  url: configs.url.buddhist,
+  requestKeys: configs.requestKeys.buddhist,
+  preHandle: configs.preHandle.buddhist,
+  responseRefactor: configs.responseRefactor.buddhist,
+  postHandle: configs.postHandle.buddhist,
+});
+
+seeAjax.config('article', {
+  url: configs.url.article,
+  requestKeys: configs.requestKeys.article,
+  preHandle: configs.preHandle.article,
+  responseRefactor: configs.responseRefactor.article,
+  postHandle: configs.postHandle.article,
+});
+
+seeAjax.config('buddhistTypes', {
+  url: configs.url.buddhistTypes,
+  requestKeys: configs.requestKeys.buddhistTypes,
+  preHandle: configs.preHandle.buddhistTypes,
+  responseRefactor: configs.responseRefactor.buddhistTypes,
+  postHandle: configs.postHandle.buddhistTypes,
+});
+
+seeAjax.config('savedData', {
+  url: configs.url.savedData,
+  requestKeys: configs.requestKeys.savedData,
+  preHandle: configs.preHandle.savedData,
+  responseRefactor: configs.responseRefactor.savedData,
+  postHandle: configs.postHandle.savedData,
+});
+
+seeAjax.config('save', {
+  method: ['post'],
+  url: configs.url.save,
+  requestKeys: configs.requestKeys.save,
+  preHandle: configs.preHandle.save,
+  responseRefactor: configs.responseRefactor.save,
+  postHandle: configs.postHandle.save,
+});
+
+seeAjax.config('calendarBuddhist', {
+  url: configs.url.calendarBuddhist,
+  requestKeys: configs.requestKeys.calendarBuddhist,
+  preHandle: configs.preHandle.calendarBuddhist,
+  responseRefactor: configs.responseRefactor.calendarBuddhist,
+  postHandle: configs.postHandle.calendarBuddhist,
+});
+
+seeAjax.config('calendarNewTitle', {
+  url: configs.url.calendarNewTitle,
+  requestKeys: configs.requestKeys.calendarNewTitle,
+  preHandle: configs.preHandle.calendarNewTitle,
+  responseRefactor: configs.responseRefactor.calendarNewTitle,
+  postHandle: configs.postHandle.calendarNewTitle,
+});
+
+seeAjax.config('deleteActivityOfCalendar', {
+  method: ['post'],
+  url: configs.url.deleteActivityOfCalendar,
+  requestKeys: configs.requestKeys.deleteActivityOfCalendar,
+  preHandle: configs.preHandle.deleteActivityOfCalendar,
+  responseRefactor: configs.responseRefactor.deleteActivityOfCalendar,
+  postHandle: configs.postHandle.deleteActivityOfCalendar,
+});
+
+seeAjax.config('activitiesOfCalendar', {
+  url: configs.url.activitiesOfCalendar,
+  requestKeys: configs.requestKeys.activitiesOfCalendar,
+  preHandle: configs.preHandle.activitiesOfCalendar,
+  responseRefactor: configs.responseRefactor.activitiesOfCalendar,
+  postHandle: configs.postHandle.activitiesOfCalendar,
+});
+
+seeAjax.config('articleTypes', {
+  url: configs.url.articleTypes,
+  requestKeys: configs.requestKeys.articleTypes,
+  preHandle: configs.preHandle.articleTypes,
+  responseRefactor: configs.responseRefactor.articleTypes,
+  postHandle: configs.postHandle.articleTypes,
+});
+
+seeAjax.config('appTypes', {
+  url: configs.url.appTypes,
+  requestKeys: configs.requestKeys.appTypes,
+  preHandle: configs.preHandle.appTypes,
+  responseRefactor: configs.responseRefactor.appTypes,
+  postHandle: configs.postHandle.appTypes,
+});
+
+seeAjax.config('deleteComponent', {
+  url: configs.url.deleteComponent,
+  requestKeys: configs.requestKeys.deleteComponent,
+  preHandle: configs.preHandle.deleteComponent,
+  responseRefactor: configs.responseRefactor.deleteComponent,
+  postHandle: configs.postHandle.deleteComponent,
+});
+
+seeAjax.config('updateSort', {
+  method: ['post'],
+  url: configs.url.updateSort,
+  requestKeys: configs.requestKeys.updateSort,
+  preHandle: configs.preHandle.updateSort,
+  responseRefactor: configs.responseRefactor.updateSort,
+  postHandle: configs.postHandle.updateSort,
+});
+
+seeAjax.config('delGaoSeng', {
+  url: configs.url.delGaoSeng,
+  requestKeys: configs.requestKeys.delGaoSeng,
+  preHandle: configs.preHandle.delGaoSeng,
+  responseRefactor: configs.responseRefactor.delGaoSeng,
+  postHandle: configs.postHandle.delGaoSeng,
+});
+
+seeAjax.config('delDianTang', {
+  url: configs.url.delDianTang,
+  requestKeys: configs.requestKeys.delDianTang,
+  preHandle: configs.preHandle.delDianTang,
+  responseRefactor: configs.responseRefactor.delDianTang,
+  postHandle: configs.postHandle.delDianTang,
 });

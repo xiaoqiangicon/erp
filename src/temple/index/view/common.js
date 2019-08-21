@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -147,7 +148,7 @@ seeView({
         $this.attr({
           'data-handling': 1,
         });
-        $.seeAjax.get(
+        seeAjax(
           'deleteComponent',
           {
             id: id,

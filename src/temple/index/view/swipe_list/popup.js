@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import indexData from '../../data';
 import commonTpl from '../../tpl/common';
@@ -167,7 +168,7 @@ seeView({
       );
       $contentContainer.appendTo($contentParentContainer);
       urlMark = type == 1 ? 'buddhist' : 'article';
-      $.seeAjax.get(
+      seeAjax(
         urlMark,
         {
           page: page,

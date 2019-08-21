@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import clone from 'clone';
 import indexData from '../data';
@@ -92,7 +93,7 @@ seeView({
         $displayComponent.siblings().removeClass('active'));
     var editComponentData = {
       id: currentComponentId,
-      fileMark: $.seeAjax.getEnv() === 2 ? 'files[]' : 'file',
+      fileMark: seeAjax.getEnv() === 2 ? 'files[]' : 'file',
       isUpdate: 0,
       sortId: 0,
     };

@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import indexData from '../../data';
 import commonTpl from '../../tpl/common';
@@ -43,7 +44,7 @@ seeView({
   },
   deleteActivityOfCalendar: function($this, year, month, day, id, type) {
     $this.text('正在删除...');
-    $.seeAjax.post(
+    seeAjax(
       'deleteActivityOfCalendar',
       {
         date:
@@ -181,7 +182,7 @@ seeView({
         })
       );
       $contentContainer.appendTo($contentParentContainer);
-      $.seeAjax.get(
+      seeAjax(
         'activitiesOfCalendar',
         {
           page: page,
@@ -258,7 +259,7 @@ seeView({
         })
       );
       $contentContainer.appendTo($contentParentContainer);
-      $.seeAjax.get(
+      seeAjax(
         'activitiesOfCalendar',
         {
           page: 1,
