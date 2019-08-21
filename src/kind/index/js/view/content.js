@@ -33,6 +33,7 @@ seeView({
 
   // 选择推送还是不推送
   onClickSelect: e => {
+    if ($('#remain-time').text() <= 0) return;
     $(e.target)
       .addClass('push-select-active')
       .siblings()

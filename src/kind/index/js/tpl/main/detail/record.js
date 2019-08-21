@@ -69,6 +69,8 @@ const tpl = `
                     <span class="record-set-push-tips">推送</span>
                     <span class="record-push-select record-push-candidate" record-data-push="1">推送给参与者</span>
                     <span class="record-push-select record-no-push record-push-select-active" record-data-push="0">不推送</span>
+                    <span class="remain-time-content">剩余次数:&nbsp&nbsp<span class="remain-time" data-remain-time="0"></span></span>
+                    <div class="push-tips">为了保证良好的体验避免对用户造成过多的打扰，已限制推送次数（每日0:00刷新次数）</div>
                 </div>
             </div>
         </div>
