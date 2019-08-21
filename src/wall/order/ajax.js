@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var printTexts = ['未打印', '已打印'];
 var requestKeys = {
   unhandledOrders: {

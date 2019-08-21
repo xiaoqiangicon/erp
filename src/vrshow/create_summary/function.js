@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import Toast from 'old/toast';
 import commonFunc from 'common/function';
@@ -60,7 +61,7 @@ func.init = function() {
   }
 };
 func.getScene = function(params, callback) {
-  $.seeAjax.get('getScene', params, function(res) {
+  seeAjax('getScene', params, function(res) {
     if (res.success) {
       res.data.map(function(item) {
         data.getSceneData[item.sceneId] = item;
@@ -95,7 +96,7 @@ func.renderOneSceneSelect = function(d) {
   $container.selectpicker('refresh');
 };
 func.getSceneSet = function(params, callback) {
-  $.seeAjax.get('getSceneSet', params, function(res) {
+  seeAjax('getSceneSet', params, function(res) {
     if (res.success) {
       callback && callback(res);
     } else {
@@ -145,7 +146,7 @@ func.renderSet = function(d) {
   }
 };
 func.updateSet = function(params, callback) {
-  $.seeAjax.post('updateSet', params, function(res) {
+  seeAjax('updateSet', params, function(res) {
     if (res.success) {
       callback && callback(res);
     } else {

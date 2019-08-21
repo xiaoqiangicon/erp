@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   onlineOrders: {
     regionId: 'wallId',

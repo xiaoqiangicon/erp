@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonFunc from 'common/function';
 import data from './data';
@@ -12,7 +13,7 @@ func.init = function() {
   });
 };
 func.getSceneList = function(params, callback) {
-  $.seeAjax.get('getSceneList', params, function(res) {
+  seeAjax('getSceneList', params, function(res) {
     if (res.success) {
       data.getSceneListRes = res;
       callback && callback(res);
@@ -32,7 +33,7 @@ func.renderSceneList = function(res) {
   $container.html(htmlStr);
 };
 func.getLinkList = function(params, callback) {
-  $.seeAjax.get('getLinkList', params, function(res) {
+  seeAjax('getLinkList', params, function(res) {
     if (res.success) {
       data.getLinkListRes = res;
       res.data.map(function(item) {
@@ -62,7 +63,7 @@ func.renderSceneSelect = function(res, $container) {
   $container.selectpicker('refresh');
 };
 func.deleteScene = function(params, callback) {
-  $.seeAjax.get('deleteScene', params, function(res) {
+  seeAjax('deleteScene', params, function(res) {
     if (res.success) {
       callback && callback(res);
     } else {
@@ -71,21 +72,16 @@ func.deleteScene = function(params, callback) {
   });
 };
 func.updateLink = function(params, callback) {
-  $.seeAjax.post(
-    'updateLink',
-    params,
-    function(res) {
-      if (res.success) {
-        callback && callback(res);
-      } else {
-        res.message && commonFunc.alert(res.message);
-      }
-    },
-    true
-  );
+  seeAjax('updateLink', params, function(res) {
+    if (res.success) {
+      callback && callback(res);
+    } else {
+      res.message && commonFunc.alert(res.message);
+    }
+  });
 };
 func.deleteLink = function(params, callback) {
-  $.seeAjax.get('deleteLink', params, function(res) {
+  seeAjax('deleteLink', params, function(res) {
     if (res.success) {
       callback && callback(res);
     } else {

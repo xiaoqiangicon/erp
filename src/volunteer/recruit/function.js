@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonFunc from 'common/function';
 import data from './data';
@@ -10,7 +11,7 @@ func.init = function() {
 };
 func.requestList = function(currentPage) {
   typeof currentPage == 'undefined' && (currentPage = 1);
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       page: currentPage,

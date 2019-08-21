@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonFunc from 'common/function';
 import data from './data';
@@ -13,7 +14,7 @@ func.init = function() {
   });
 };
 func.getList = function(params, callback) {
-  $.seeAjax.get('getList', params, function(res) {
+  seeAjax('getList', params, function(res) {
     if (res.success) {
       data.getListRes = res;
       callback && callback(res);
@@ -55,31 +56,21 @@ func.createPagination = function(totalCount, currentPage) {
   pagination.render();
 };
 func.updateWatchword = function(params, callback) {
-  $.seeAjax.post(
-    'updateWatchword',
-    params,
-    function(res) {
-      if (res.success) {
-        callback && callback(res);
-      } else {
-        res.message && commonFunc.alert(res.message);
-      }
-    },
-    true
-  );
+  seeAjax('updateWatchword', params, function(res) {
+    if (res.success) {
+      callback && callback(res);
+    } else {
+      res.message && commonFunc.alert(res.message);
+    }
+  });
 };
 func.operateWatchword = function(params, callback) {
-  $.seeAjax.post(
-    'operateWatchword',
-    params,
-    function(res) {
-      if (res.success) {
-        callback && callback(res);
-      } else {
-        res.message && commonFunc.alert(res.message);
-      }
-    },
-    true
-  );
+  seeAjax('operateWatchword', params, function(res) {
+    if (res.success) {
+      callback && callback(res);
+    } else {
+      res.message && commonFunc.alert(res.message);
+    }
+  });
 };
 export default func;

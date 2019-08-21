@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonFunc from 'common/function';
 import data from './data';
@@ -15,7 +16,7 @@ func.init = function() {
   });
 };
 func.getTempleSet = function(params, callback) {
-  $.seeAjax.get('getTempleSet', params, function(res) {
+  seeAjax('getTempleSet', params, function(res) {
     if (res.success) {
       data.templeSetRes = res;
       callback && callback(res);
@@ -54,19 +55,14 @@ func.renderMusicList = function(data) {
   $container.html(htmlStr);
 };
 func.updateTempleSet = function(params, callback) {
-  $.seeAjax.post(
-    'updateTempleSet',
-    params,
-    function(res) {
-      params.giftList = JSON.stringify(params.giftList);
-      if (res.success) {
-        params.giftList = JSON.parse(params.giftList);
-        callback && callback(res);
-      } else {
-        res.message && commonFunc.alert(res.message);
-      }
-    },
-    true
-  );
+  seeAjax('updateTempleSet', params, function(res) {
+    params.giftList = JSON.stringify(params.giftList);
+    if (res.success) {
+      params.giftList = JSON.parse(params.giftList);
+      callback && callback(res);
+    } else {
+      res.message && commonFunc.alert(res.message);
+    }
+  });
 };
 export default func;

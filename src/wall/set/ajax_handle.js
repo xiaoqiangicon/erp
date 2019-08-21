@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import data from './data';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var ajaxHandle = {
   requestKeys: {
     template: {

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   getList: {},
 };
@@ -16,11 +16,7 @@ var postHandle = {
   },
   getList: function(res) {},
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getList: 'getList',
-  },
+const configs = {
   url: {
     getList: [],
   },
@@ -37,4 +33,18 @@ $.seeAjax.config({
     common: [postHandle.common, postHandle.common],
     getList: [postHandle.getList, postHandle.getList],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getList', {
+  url: configs.url.getList,
+  requestKeys: configs.requestKeys.getList,
+  preHandle: configs.preHandle.getList,
+  responseRefactor: configs.responseRefactor.getList,
+  postHandle: configs.postHandle.getList,
 });

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   getScene: {
     type: 'type',
@@ -43,13 +43,7 @@ var postHandle = {
     typeof res.msg !== 'undefined' && (res.message = res.msg);
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getScene: 'getScene',
-    getSceneSet: 'getSceneSet',
-    updateSet: 'updateSet',
-  },
+const configs = {
   url: {
     getScene: [
       '/zzhadmin/vr_sceneList/',
@@ -76,4 +70,35 @@ $.seeAjax.config({
   postHandle: {
     common: [postHandle.common, postHandle.common],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getScene', {
+  url: configs.url.getScene,
+  requestKeys: configs.requestKeys.getScene,
+  preHandle: configs.preHandle.getScene,
+  responseRefactor: configs.responseRefactor.getScene,
+  postHandle: configs.postHandle.getScene,
+});
+
+seeAjax.config('getSceneSet', {
+  url: configs.url.getSceneSet,
+  requestKeys: configs.requestKeys.getSceneSet,
+  preHandle: configs.preHandle.getSceneSet,
+  responseRefactor: configs.responseRefactor.getSceneSet,
+  postHandle: configs.postHandle.getSceneSet,
+});
+
+seeAjax.config('updateSet', {
+  method: ['post'],
+  url: configs.url.updateSet,
+  requestKeys: configs.requestKeys.updateSet,
+  preHandle: configs.preHandle.updateSet,
+  responseRefactor: configs.responseRefactor.updateSet,
+  postHandle: configs.postHandle.updateSet,
 });

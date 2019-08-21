@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   getList: {},
   getTempleSet: {},
@@ -29,13 +29,7 @@ var postHandle = {
   },
   getList: function(res) {},
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getList: 'getList',
-    getTempleSet: 'getTempleSet',
-    updateTempleSet: 'updateTempleSet',
-  },
+const configs = {
   url: {
     getList: [],
     getTempleSet: [
@@ -60,4 +54,36 @@ $.seeAjax.config({
     common: [postHandle.common, postHandle.common],
     getList: [postHandle.getList, postHandle.getList],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getList', {
+  url: configs.url.getList,
+  requestKeys: configs.requestKeys.getList,
+  preHandle: configs.preHandle.getList,
+  responseRefactor: configs.responseRefactor.getList,
+  postHandle: configs.postHandle.getList,
+});
+
+seeAjax.config('getTempleSet', {
+  url: configs.url.getTempleSet,
+  requestKeys: configs.requestKeys.getTempleSet,
+  preHandle: configs.preHandle.getTempleSet,
+  responseRefactor: configs.responseRefactor.getTempleSet,
+  postHandle: configs.postHandle.getTempleSet,
+});
+
+seeAjax.config('updateTempleSet', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.updateTempleSet,
+  requestKeys: configs.requestKeys.updateTempleSet,
+  preHandle: configs.preHandle.updateTempleSet,
+  responseRefactor: configs.responseRefactor.updateTempleSet,
+  postHandle: configs.postHandle.updateTempleSet,
 });

@@ -1,20 +1,7 @@
 const names = {
-  upload: 'upload',
-  buddhist: 'buddhist',
-  article: 'article',
-  buddhistTypes: 'buddhistTypes',
-  savedData: 'savedData',
-  save: 'save',
-  calendarBuddhist: 'calendarBuddhist',
-  calendarNewTitle: 'calendarNewTitle',
-  deleteActivityOfCalendar: 'deleteActivityOfCalendar',
-  activitiesOfCalendar: 'activitiesOfCalendar',
-  articleTypes: 'articleTypes',
-  appTypes: 'appTypes',
-  deleteComponent: 'deleteComponent',
-  updateSort: 'updateSort',
-  delGaoSeng: 'delGaoSeng',
-  delDianTang: 'delDianTang',
+  getList: 'getList',
+  updateWatchword: 'updateWatchword',
+  operateWatchword: 'operateWatchword',
 };
 let tpl = `
 seeAjax.setEnv(__SEE_ENV__);

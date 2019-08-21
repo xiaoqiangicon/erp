@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonFunc from 'common/function';
 import tpl from './tpl';
@@ -28,7 +29,7 @@ func.init = function() {
   });
 };
 func.getCash = function(params, callback) {
-  $.seeAjax.get('getCash', params, function(res) {
+  seeAjax('getCash', params, function(res) {
     if (res.success) {
       data.getCashRes = res;
       callback && callback(res);
@@ -43,7 +44,7 @@ func.renderCash = function(res) {
   $('#day-cash').html(res.day);
 };
 func.getList = function(params, callback) {
-  $.seeAjax.get('getList', params, function(res) {
+  seeAjax('getList', params, function(res) {
     if (res.success) {
       data.getListRes = res;
       callback && callback(res);

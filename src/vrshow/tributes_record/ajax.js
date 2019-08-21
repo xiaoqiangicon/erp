@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var requestKeys = {
   getList: {
     pageNum: 'pageNumber',
@@ -41,12 +41,7 @@ var postHandle = {
     typeof res.msg != 'undefined' && (res.message = res.msg);
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getList: 'getList',
-    getCash: 'getCash',
-  },
+const configs = {
   url: {
     getList: [
       '/zzhadmin/vr_recordList/',
@@ -73,4 +68,26 @@ $.seeAjax.config({
   postHandle: {
     common: [postHandle.common, postHandle.common],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getList', {
+  url: configs.url.getList,
+  requestKeys: configs.requestKeys.getList,
+  preHandle: configs.preHandle.getList,
+  responseRefactor: configs.responseRefactor.getList,
+  postHandle: configs.postHandle.getList,
+});
+
+seeAjax.config('getCash', {
+  url: configs.url.getCash,
+  requestKeys: configs.requestKeys.getCash,
+  preHandle: configs.preHandle.getCash,
+  responseRefactor: configs.responseRefactor.getCash,
+  postHandle: configs.postHandle.getCash,
 });
