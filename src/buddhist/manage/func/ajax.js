@@ -1,61 +1,26 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
+
 var requestKeys = {
   getBuddhistType: {},
   getList: {
-    typeId: 'typeId',
-    filterType: 'filterType',
-    searchText: 'searchText',
-    orderByJoinNum: 'orderByJoinNum',
-    orderByCollectMoney: 'orderByCollectMoney',
     page: 'pageIndex',
-    pageSize: 'pageSize',
   },
-  deleteItem: {
-    id: 'id',
-  },
-  addTemplate: {
-    commodityId: 'commodityId',
-    name: 'name',
-  },
-  endItem: {
-    commodityId: 'commodityId',
-  },
+  deleteItem: {},
+  addTemplate: {},
+  endItem: {},
   printerList: {},
-  printerStatus: {
-    printerId: 'printerId',
-  },
-  CommoditySubdivide: {
-    commodityId: 'commodityId',
-  },
-  CommodityPrinter: {
-    commodityId: 'commodityId',
-  },
-  addAndUpdateCommodity2Printer: {
-    commodityId: 'commodityId',
-    continuousPrintNum: 'continuousPrintNum',
-    isOpenPrinter: 'isOpenPrinter',
-    isPrintMobile: 'isPrintMobile',
-    printerId: 'printerId',
-    qrcodePrint: 'qrcodePrint',
-    subdividePrinter: 'subdividePrinter',
-  },
-  getBuddhistPoster: {
-    commodityId: 'commodityId',
-    title: 'title',
-  },
+  printerStatus: {},
+  CommoditySubdivide: {},
+  CommodityPrinter: {},
+  addAndUpdateCommodity2Printer: {},
+  getBuddhistPoster: {},
   getBuddhistSchedule: {
     buddhistId: 'commodityId',
     page: 'pageIndex',
-    pageSize: 'pageSize',
   },
   updateBuddhistSchedule: {
     buddhistId: 'commodityId',
-    scheduleId: 'scheduleId',
-    content: 'content',
-    img: 'img',
-    video: 'video',
-    isShow: 'isShow',
   },
 };
 var responseRefactor = {
@@ -129,24 +94,8 @@ var postHandle = {
     });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getBuddhistType: 'getBuddhistType',
-    getList: 'getList',
-    deleteItem: 'deleteItem',
-    addTemplate: 'addTemplate',
-    endItem: 'endItem',
-    printerList: 'printerList',
-    printerStatus: 'printerStatus',
-    CommoditySubdivide: 'CommoditySubdivide',
-    CommodityPrinter: 'CommodityPrinter',
-    addAndUpdateCommodity2Printer: 'addAndUpdateCommodity2Printer',
-    getBuddhistPoster: 'getBuddhistPoster',
-    getBuddhistSchedule: 'getBuddhistSchedule',
-    updateBuddhistSchedule: 'updateBuddhistSchedule',
-    getPushTimes: 'getPushTimes',
-  },
+
+const configs = {
   url: {
     getBuddhistType: [
       '/zzhadmin/createCeremonyTypeList/',
@@ -270,4 +219,128 @@ $.seeAjax.config({
       postHandle.getBuddhistSchedule,
     ],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getBuddhistType', {
+  url: configs.url.getBuddhistType,
+  requestKeys: configs.requestKeys.getBuddhistType,
+  preHandle: configs.preHandle.getBuddhistType,
+  responseRefactor: configs.responseRefactor.getBuddhistType,
+  postHandle: configs.postHandle.getBuddhistType,
+});
+seeAjax.config('getList', {
+  url: configs.url.getList,
+  requestKeys: configs.requestKeys.getList,
+  preHandle: configs.preHandle.getList,
+  responseRefactor: configs.responseRefactor.getList,
+  postHandle: configs.postHandle.getList,
+});
+seeAjax.config('deleteItem', {
+  method: ['post'],
+  url: configs.url.deleteItem,
+  requestKeys: configs.requestKeys.deleteItem,
+  preHandle: configs.preHandle.deleteItem,
+  responseRefactor: configs.responseRefactor.deleteItem,
+  postHandle: configs.postHandle.deleteItem,
+});
+seeAjax.config('addTemplate', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.addTemplate,
+  requestKeys: configs.requestKeys.addTemplate,
+  preHandle: configs.preHandle.addTemplate,
+  responseRefactor: configs.responseRefactor.addTemplate,
+  postHandle: configs.postHandle.addTemplate,
+});
+seeAjax.config('endItem', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.endItem,
+  requestKeys: configs.requestKeys.endItem,
+  preHandle: configs.preHandle.endItem,
+  responseRefactor: configs.responseRefactor.endItem,
+  postHandle: configs.postHandle.endItem,
+});
+seeAjax.config('printerList', {
+  url: configs.url.printerList,
+  requestKeys: configs.requestKeys.printerList,
+  preHandle: configs.preHandle.printerList,
+  responseRefactor: configs.responseRefactor.printerList,
+  postHandle: configs.postHandle.printerList,
+});
+seeAjax.config('printerStatus', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.printerStatus,
+  requestKeys: configs.requestKeys.printerStatus,
+  preHandle: configs.preHandle.printerStatus,
+  responseRefactor: configs.responseRefactor.printerStatus,
+  postHandle: configs.postHandle.printerStatus,
+});
+seeAjax.config('CommoditySubdivide', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.CommoditySubdivide,
+  requestKeys: configs.requestKeys.CommoditySubdivide,
+  preHandle: configs.preHandle.CommoditySubdivide,
+  responseRefactor: configs.responseRefactor.CommoditySubdivide,
+  postHandle: configs.postHandle.CommoditySubdivide,
+});
+seeAjax.config('CommodityPrinter', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.CommodityPrinter,
+  requestKeys: configs.requestKeys.CommodityPrinter,
+  preHandle: configs.preHandle.CommodityPrinter,
+  responseRefactor: configs.responseRefactor.CommodityPrinter,
+  postHandle: configs.postHandle.CommodityPrinter,
+});
+seeAjax.config('addAndUpdateCommodity2Printer', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.addAndUpdateCommodity2Printer,
+  requestKeys: configs.requestKeys.addAndUpdateCommodity2Printer,
+  preHandle: configs.preHandle.addAndUpdateCommodity2Printer,
+  responseRefactor: configs.responseRefactor.addAndUpdateCommodity2Printer,
+  postHandle: configs.postHandle.addAndUpdateCommodity2Printer,
+});
+seeAjax.config('getBuddhistPoster', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getBuddhistPoster,
+  requestKeys: configs.requestKeys.getBuddhistPoster,
+  preHandle: configs.preHandle.getBuddhistPoster,
+  responseRefactor: configs.responseRefactor.getBuddhistPoster,
+  postHandle: configs.postHandle.getBuddhistPoster,
+});
+seeAjax.config('getBuddhistSchedule', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getBuddhistSchedule,
+  requestKeys: configs.requestKeys.getBuddhistSchedule,
+  preHandle: configs.preHandle.getBuddhistSchedule,
+  responseRefactor: configs.responseRefactor.getBuddhistSchedule,
+  postHandle: configs.postHandle.getBuddhistSchedule,
+});
+seeAjax.config('updateBuddhistSchedule', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.updateBuddhistSchedule,
+  requestKeys: configs.requestKeys.updateBuddhistSchedule,
+  preHandle: configs.preHandle.updateBuddhistSchedule,
+  responseRefactor: configs.responseRefactor.updateBuddhistSchedule,
+  postHandle: configs.postHandle.updateBuddhistSchedule,
+});
+seeAjax.config('getPushTimes', {
+  url: configs.url.getPushTimes,
+  requestKeys: configs.requestKeys.getPushTimes,
+  preHandle: configs.preHandle.getPushTimes,
+  responseRefactor: configs.responseRefactor.getPushTimes,
+  postHandle: configs.postHandle.getPushTimes,
 });

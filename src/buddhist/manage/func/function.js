@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import seeAjax from 'see-ajax';
 import commonFunc from 'common/function';
 import Data from './data';
 import tpl from './tpl';
@@ -127,7 +128,7 @@ func.initVideoUpload = function($btn) {
   );
 };
 func.getBuddhistType = function(params, callback) {
-  $.seeAjax.get('getBuddhistType', params, function(res) {
+  seeAjax('getBuddhistType', params, function(res) {
     if (res.success) {
       callback && callback(res);
     } else {
@@ -152,7 +153,7 @@ func.renderBuddhistStatus = function() {
   $select.selectpicker('refresh');
 };
 func.getList = function(params, callback) {
-  $.seeAjax.get('getList', params, function(res) {
+  seeAjax('getList', params, function(res) {
     if (res.success) {
       Data.getListRes = res;
       callback && callback(res);
@@ -342,7 +343,7 @@ func.createPagination = function(totalCount, pageSize, currentPage, callback) {
   pagination.render();
 };
 func.deleteItem = function(params, callback) {
-  $.seeAjax.post('deleteItem', params, function(res) {
+  seeAjax('deleteItem', params, function(res) {
     if (res.success) {
       callback && callback(res);
     } else {
@@ -351,18 +352,13 @@ func.deleteItem = function(params, callback) {
   });
 };
 func.endItem = function(params, callback) {
-  $.seeAjax.post(
-    'endItem',
-    params,
-    function(res) {
-      if (res.success) {
-        callback && callback(res);
-      } else {
-        res.message && commonFunc.alert(res.message);
-      }
-    },
-    true
-  );
+  seeAjax('endItem', params, function(res) {
+    if (res.success) {
+      callback && callback(res);
+    } else {
+      res.message && commonFunc.alert(res.message);
+    }
+  });
 };
 func.initSetPrtModal = function(ifHasSub, prtListData, subListData) {
   var $noSubPrtSwitchFormGroup = $('#no-sub-prt-switch-form-group'),
@@ -464,7 +460,7 @@ func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
       qrcodePrint = cfg[curPrtId].qrcodePrint;
       isPrintMobile = cfg[curPrtId].isPrintMobile;
       $subPrtSelect.val(curPrtId).selectpicker('refresh');
-      $.seeAjax.post(
+      seeAjax(
         'printerStatus',
         {
           printerId: curPrtId,
@@ -480,8 +476,7 @@ func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
           } else {
             res.message && commonFunc.alert(res.message);
           }
-        },
-        true
+        }
       );
       cfg[curPrtId].subList.map(function(subId) {
         $('[data-ele="sub-checkbox"][data-id="' + subId + '"]').prop(
@@ -523,7 +518,7 @@ func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
   );
 };
 func.getAndRenderPrtCfg = function(buddhistId) {
-  $.seeAjax.post(
+  seeAjax(
     'CommodityPrinter',
     {
       commodityId: buddhistId,
@@ -539,8 +534,7 @@ func.getAndRenderPrtCfg = function(buddhistId) {
       } else {
         res.message && commonFunc.alert(res.message);
       }
-    },
-    true
+    }
   );
 };
 func.createUpdatePrtParams = function(
@@ -625,7 +619,7 @@ func.initCreateScheduleModalBody = function() {
     .find('[data-ele="schedule-video"]')
     .parents('[data-ele="video-cell"]');
   $scheduleVideoCell.remove();
-  $.seeAjax.get('getPushTimes', {}, res => {
+  seeAjax('getPushTimes', {}, res => {
     let todayNum = 0;
     if (res.success) {
       todayNum = res.todayNum;
@@ -645,7 +639,7 @@ func.initScheduleListModalBody = function() {
     params = {
       buddhistId: Data.curBuddhistId,
     };
-  $.seeAjax.get('getPushTimes', {}, res => {
+  seeAjax('getPushTimes', {}, res => {
     let todayNum = 0;
     if (res.success) todayNum = res.todayNum;
     api.getBuddhistSchedule(params, function(res) {
