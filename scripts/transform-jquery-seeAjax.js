@@ -1,7 +1,7 @@
 const names = {
-  getList: 'getList',
-  updateWatchword: 'updateWatchword',
-  operateWatchword: 'operateWatchword',
+  detail: 'detail',
+  save: 'save',
+  editSeats: 'editSeats',
 };
 let tpl = `
 seeAjax.setEnv(__SEE_ENV__);

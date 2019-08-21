@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -18,7 +19,7 @@ var $body = $('body');
 var $createPopup = $('#create-modal');
 util.requestCellData = function(row, column, online, callback) {
   if (online) {
-    $.seeAjax.get(
+    seeAjax(
       'onlineCellInfo',
       {
         id: data.currentRegionId,
@@ -37,7 +38,7 @@ util.requestCellData = function(row, column, online, callback) {
       }
     );
   } else {
-    $.seeAjax.post(
+    seeAjax(
       'cellInfo',
       {
         id: data.currentRegionId,
@@ -53,8 +54,7 @@ util.requestCellData = function(row, column, online, callback) {
         } else {
           toastr.error('获取详细信息失败，请稍后再试');
         }
-      },
-      !0
+      }
     );
   }
 };

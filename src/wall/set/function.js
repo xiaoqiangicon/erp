@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -11,7 +12,7 @@ toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
 var func = {};
 func.init = function() {
-  $.seeAjax.get('tags', {}, function(res) {
+  seeAjax('tags', {}, function(res) {
     if (res.success) {
       var $tagPopupMy = $('#tag-popup-my'),
         $tagPopupSystem = $('#tag-popup-system');
@@ -32,7 +33,7 @@ func.init = function() {
     }
     func.initPage();
   });
-  $.seeAjax.get('buddhas', {}, function(res) {
+  seeAjax('buddhas', {}, function(res) {
     if (res.success) {
       var $inputBuddha = $('#input-buddha');
       var $inputPaiWei = $('#input-pai-wei');
@@ -49,7 +50,7 @@ func.init = function() {
       toastr.error('获取佛像列表失败，请稍后再试');
     }
   });
-  $.seeAjax.get('printers', {}, function(res) {
+  seeAjax('printers', {}, function(res) {
     if (res.success) {
       var $container = $('#printer-popup-printers');
       res.data &&
@@ -67,7 +68,7 @@ func.initPage = function() {
   initPageCount += 1;
   if (initPageCount < 3) return;
   if (commonVars.params.templateId) {
-    $.seeAjax.post(
+    seeAjax(
       'template',
       {
         id: parseInt(commonVars.params.templateId),
@@ -79,12 +80,11 @@ func.initPage = function() {
         } else {
           toastr.error('获取模板数据失败，请稍后再试');
         }
-      },
-      !0
+      }
     );
   } else if (typeof commonVars.params.edit != 'undefined') {
     data.editAction = !!parseInt(commonVars.params.edit);
-    $.seeAjax.post(
+    seeAjax(
       'detail',
       {
         id: parseInt(commonVars.params.id),
@@ -96,8 +96,7 @@ func.initPage = function() {
         } else {
           toastr.error('获取数据失败，请稍后再试');
         }
-      },
-      !0
+      }
     );
   } else {
     func.fillDefaultShare();
@@ -233,7 +232,7 @@ func.hideLoading = function() {
 };
 func.requestPrinterStatus = function(items) {
   items.map(function(item) {
-    $.seeAjax.post(
+    seeAjax(
       'printerStatus',
       {
         id: item.id,
@@ -243,8 +242,7 @@ func.requestPrinterStatus = function(items) {
         $status.text(res.message);
         $status.addClass(res.success ? 'green' : 'red');
         $status.removeClass('hide');
-      },
-      !0
+      }
     );
   });
 };

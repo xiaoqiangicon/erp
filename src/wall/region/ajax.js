@@ -57,18 +57,7 @@ var postHandle = {
     res.msg && (res.message = res.msg);
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    list: 'list',
-    delete: 'delete',
-    sort: 'sort',
-    buddhaList: 'buddhaList',
-    freeze: 'freeze',
-    create: 'create',
-    detail: 'detail',
-    shortBuddhaList: 'shortBuddhaList',
-  },
+const configs = {
   url: {
     list: [
       '/zzhadmin/buddhaWallWallList/',
@@ -171,4 +160,84 @@ $.seeAjax.config({
   postHandle: {
     common: [postHandle.common, postHandle.common],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('delete', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.delete,
+  requestKeys: configs.requestKeys.delete,
+  preHandle: configs.preHandle.delete,
+  responseRefactor: configs.responseRefactor.delete,
+  postHandle: configs.postHandle.delete,
+});
+
+seeAjax.config('sort', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.sort,
+  requestKeys: configs.requestKeys.sort,
+  preHandle: configs.preHandle.sort,
+  responseRefactor: configs.responseRefactor.sort,
+  postHandle: configs.postHandle.sort,
+});
+
+seeAjax.config('buddhaList', {
+  url: configs.url.buddhaList,
+  requestKeys: configs.requestKeys.buddhaList,
+  preHandle: configs.preHandle.buddhaList,
+  responseRefactor: configs.responseRefactor.buddhaList,
+  postHandle: configs.postHandle.buddhaList,
+});
+
+seeAjax.config('freeze', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.freeze,
+  requestKeys: configs.requestKeys.freeze,
+  preHandle: configs.preHandle.freeze,
+  responseRefactor: configs.responseRefactor.freeze,
+  postHandle: configs.postHandle.freeze,
+});
+
+seeAjax.config('create', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.create,
+  requestKeys: configs.requestKeys.create,
+  preHandle: configs.preHandle.create,
+  responseRefactor: configs.responseRefactor.create,
+  postHandle: configs.postHandle.create,
+});
+
+seeAjax.config('detail', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('shortBuddhaList', {
+  url: configs.url.shortBuddhaList,
+  requestKeys: configs.requestKeys.shortBuddhaList,
+  preHandle: configs.preHandle.shortBuddhaList,
+  responseRefactor: configs.responseRefactor.shortBuddhaList,
+  postHandle: configs.postHandle.shortBuddhaList,
 });

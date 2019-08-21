@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonFunc from 'common/function';
@@ -10,7 +11,7 @@ var func = {};
 var $contentBody = $('#content-body');
 var $pagination = $('#pagination');
 func.init = function() {
-  $.seeAjax.get('houses', {}, function(res) {
+  seeAjax('houses', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $select = $('#filter-house');
       res.data.map(function(item) {
@@ -19,7 +20,7 @@ func.init = function() {
       });
     }
   });
-  $.seeAjax.get('regions', {}, function(res) {
+  seeAjax('regions', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $select = $('#filter-region');
       res.data.map(function(item) {
@@ -34,7 +35,7 @@ func.init = function() {
     forceParse: !1,
   });
   func.requestUnhandledOrdersList();
-  $.seeAjax.get('printers', {}, function(res) {
+  seeAjax('printers', {}, function(res) {
     if (res.success) {
       var $container = $('#printer-popup-printers');
       res.data &&
@@ -53,7 +54,7 @@ func.requestUnhandledOrdersList = function(page) {
   var params = _.clone(data.unhandledOrdersFilter);
   params.page = page;
   data.currentPage = page;
-  $.seeAjax.get('unhandledOrders', params, function(res) {
+  seeAjax('unhandledOrders', params, function(res) {
     if (res.success) {
       var $unhandledCount = $('#unhandled-count');
       if (res.totalCount) {
@@ -75,7 +76,7 @@ func.requestHandledOrdersList = function(page) {
   var params = _.clone(data.handledOrdersFilter);
   params.page = page;
   data.currentPage = page;
-  $.seeAjax.get('handledOrders', params, function(res) {
+  seeAjax('handledOrders', params, function(res) {
     if (res.success) {
       $contentBody.html('');
       func.renderList(res, page);
@@ -108,7 +109,7 @@ func.renderList = function(res, page) {
 };
 func.requestPrinterStatus = function(items) {
   items.map(function(item) {
-    $.seeAjax.post(
+    seeAjax(
       'printerStatus',
       {
         id: item.id,
@@ -118,8 +119,7 @@ func.requestPrinterStatus = function(items) {
         $status.text(res.message);
         $status.addClass(res.success ? 'green' : 'red');
         $status.removeClass('hide');
-      },
-      !0
+      }
     );
   });
 };

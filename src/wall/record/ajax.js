@@ -262,18 +262,7 @@ var postHandle = {
     }
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    houses: 'houses',
-    regions: 'regions',
-    detail: 'detail',
-    cellInfo: 'cellInfo',
-    onlineCellInfo: 'onlineCellInfo',
-    add: 'add',
-    edit: 'edit',
-    editOnline: 'editOnline',
-  },
+const configs = {
   url: {
     houses: [
       '/zzhadmin/buddhaWall_hallList/',
@@ -410,4 +399,84 @@ $.seeAjax.config({
     cellInfo: [postHandle.cellInfo, postHandle.cellInfo],
     onlineCellInfo: [postHandle.onlineCellInfo, postHandle.onlineCellInfo],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('houses', {
+  url: configs.url.houses,
+  requestKeys: configs.requestKeys.houses,
+  preHandle: configs.preHandle.houses,
+  responseRefactor: configs.responseRefactor.houses,
+  postHandle: configs.postHandle.houses,
+});
+
+seeAjax.config('regions', {
+  url: configs.url.regions,
+  requestKeys: configs.requestKeys.regions,
+  preHandle: configs.preHandle.regions,
+  responseRefactor: configs.responseRefactor.regions,
+  postHandle: configs.postHandle.regions,
+});
+
+seeAjax.config('detail', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('cellInfo', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.cellInfo,
+  requestKeys: configs.requestKeys.cellInfo,
+  preHandle: configs.preHandle.cellInfo,
+  responseRefactor: configs.responseRefactor.cellInfo,
+  postHandle: configs.postHandle.cellInfo,
+});
+
+seeAjax.config('onlineCellInfo', {
+  url: configs.url.onlineCellInfo,
+  requestKeys: configs.requestKeys.onlineCellInfo,
+  preHandle: configs.preHandle.onlineCellInfo,
+  responseRefactor: configs.responseRefactor.onlineCellInfo,
+  postHandle: configs.postHandle.onlineCellInfo,
+});
+
+seeAjax.config('add', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.add,
+  requestKeys: configs.requestKeys.add,
+  preHandle: configs.preHandle.add,
+  responseRefactor: configs.responseRefactor.add,
+  postHandle: configs.postHandle.add,
+});
+
+seeAjax.config('edit', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.edit,
+  requestKeys: configs.requestKeys.edit,
+  preHandle: configs.preHandle.edit,
+  responseRefactor: configs.responseRefactor.edit,
+  postHandle: configs.postHandle.edit,
+});
+
+seeAjax.config('editOnline', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.editOnline,
+  requestKeys: configs.requestKeys.editOnline,
+  preHandle: configs.preHandle.editOnline,
+  responseRefactor: configs.responseRefactor.editOnline,
+  postHandle: configs.postHandle.editOnline,
 });

@@ -74,16 +74,7 @@ var postHandle = {
     res.totalPages = res.total ? Math.ceil(res.total / 20) : 1;
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    messageInfo: 'messageInfo',
-    regions: 'regions',
-    onlineOrders: 'onlineOrders',
-    customOrders: 'customOrders',
-    send: 'send',
-    getSendInfo: 'getSendInfo',
-  },
+const configs = {
   url: {
     messageInfo: [
       '/zzhadmin/volunteer_getSmsCount/',
@@ -174,4 +165,62 @@ $.seeAjax.config({
     onlineOrders: [postHandle.onlineOrders, postHandle.onlineOrders],
     customOrders: [postHandle.customOrders, postHandle.customOrders],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('messageInfo', {
+  url: configs.url.messageInfo,
+  requestKeys: configs.requestKeys.messageInfo,
+  preHandle: configs.preHandle.messageInfo,
+  responseRefactor: configs.responseRefactor.messageInfo,
+  postHandle: configs.postHandle.messageInfo,
+});
+
+seeAjax.config('regions', {
+  url: configs.url.regions,
+  requestKeys: configs.requestKeys.regions,
+  preHandle: configs.preHandle.regions,
+  responseRefactor: configs.responseRefactor.regions,
+  postHandle: configs.postHandle.regions,
+});
+
+seeAjax.config('onlineOrders', {
+  url: configs.url.onlineOrders,
+  requestKeys: configs.requestKeys.onlineOrders,
+  preHandle: configs.preHandle.onlineOrders,
+  responseRefactor: configs.responseRefactor.onlineOrders,
+  postHandle: configs.postHandle.onlineOrders,
+});
+
+seeAjax.config('customOrders', {
+  url: configs.url.customOrders,
+  requestKeys: configs.requestKeys.customOrders,
+  preHandle: configs.preHandle.customOrders,
+  responseRefactor: configs.responseRefactor.customOrders,
+  postHandle: configs.postHandle.customOrders,
+});
+
+seeAjax.config('send', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.send,
+  requestKeys: configs.requestKeys.send,
+  preHandle: configs.preHandle.send,
+  responseRefactor: configs.responseRefactor.send,
+  postHandle: configs.postHandle.send,
+});
+
+seeAjax.config('getSendInfo', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.getSendInfo,
+  requestKeys: configs.requestKeys.getSendInfo,
+  preHandle: configs.preHandle.getSendInfo,
+  responseRefactor: configs.responseRefactor.getSendInfo,
+  postHandle: configs.postHandle.getSendInfo,
 });

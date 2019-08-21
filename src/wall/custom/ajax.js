@@ -123,15 +123,7 @@ var postHandle = {
     }
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    houses: 'houses',
-    regions: 'regions',
-    orders: 'orders',
-    detail: 'detail',
-    delete: 'delete',
-  },
+const configs = {
   url: {
     houses: [
       '/zzhadmin/buddhaWall_hallList/',
@@ -199,4 +191,54 @@ $.seeAjax.config({
     orders: [postHandle.orders, postHandle.orders],
     detail: [postHandle.detail, postHandle.detail],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('houses', {
+  url: configs.url.houses,
+  requestKeys: configs.requestKeys.houses,
+  preHandle: configs.preHandle.houses,
+  responseRefactor: configs.responseRefactor.houses,
+  postHandle: configs.postHandle.houses,
+});
+
+seeAjax.config('regions', {
+  url: configs.url.regions,
+  requestKeys: configs.requestKeys.regions,
+  preHandle: configs.preHandle.regions,
+  responseRefactor: configs.responseRefactor.regions,
+  postHandle: configs.postHandle.regions,
+});
+
+seeAjax.config('orders', {
+  url: configs.url.orders,
+  requestKeys: configs.requestKeys.orders,
+  preHandle: configs.preHandle.orders,
+  responseRefactor: configs.responseRefactor.orders,
+  postHandle: configs.postHandle.orders,
+});
+
+seeAjax.config('detail', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('delete', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.delete,
+  requestKeys: configs.requestKeys.delete,
+  preHandle: configs.preHandle.delete,
+  responseRefactor: configs.responseRefactor.delete,
+  postHandle: configs.postHandle.delete,
 });

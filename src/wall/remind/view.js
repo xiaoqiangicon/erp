@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -105,7 +106,7 @@ seeView({
     $selected.map(function() {
       ids.push(parseInt($(this).attr('data-row-select')));
     });
-    $.seeAjax.post(
+    seeAjax(
       'getSendInfo',
       {
         type: data.currentTabType,
@@ -114,7 +115,7 @@ seeView({
       function(res) {
         if (res.success) {
           func.showSendPopup(res, function(content) {
-            $.seeAjax.post(
+            seeAjax(
               'send',
               {
                 type: data.currentTabType,
@@ -133,20 +134,18 @@ seeView({
                 } else {
                   toastr.error(res.message || '短信发送失败，请稍后再试');
                 }
-              },
-              !0
+              }
             );
           });
         }
-      },
-      !0
+      }
     );
   },
   onClickRowSend: function(e) {
     var $this = $(e.target),
       id = parseInt($this.attr('data-row-send')),
       ids = [id];
-    $.seeAjax.post(
+    seeAjax(
       'getSendInfo',
       {
         type: data.currentTabType,
@@ -155,7 +154,7 @@ seeView({
       function(res) {
         if (res.success) {
           func.showSendPopup(res, function(content) {
-            $.seeAjax.post(
+            seeAjax(
               'send',
               {
                 type: data.currentTabType,
@@ -172,13 +171,11 @@ seeView({
                 } else {
                   toastr.error(res.message || '短信发送失败，请稍后再试');
                 }
-              },
-              !0
+              }
             );
           });
         }
-      },
-      !0
+      }
     );
   },
   onClickGoToChange: function(e) {

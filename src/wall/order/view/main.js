@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -138,7 +139,7 @@ seeView({
       toastr.warning('请至少选择一个打印机');
       return;
     }
-    $.seeAjax.post(
+    seeAjax(
       'savePrinter',
       {
         ids: JSON.stringify(ids),

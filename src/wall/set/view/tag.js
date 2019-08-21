@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -64,7 +65,7 @@ seeView({
       tagsArray = input.split(' '),
       index = tagsArray.indexOf(name);
     commonFunc.confirm('确定删除这个标签吗', function() {
-      $.seeAjax.post(
+      seeAjax(
         'deleteTag',
         {
           id: id,
@@ -81,8 +82,7 @@ seeView({
           } else {
             toastr.error('标签删除失败，请稍后重试');
           }
-        },
-        !0
+        }
       );
     });
   },
@@ -138,7 +138,7 @@ seeView({
       var $tagsContainer = $('#tag-popup-my');
       var createdTagsCount = 0;
       notExistTags.map(function(item) {
-        $.seeAjax.post(
+        seeAjax(
           'createTag',
           {
             name: item.name,
@@ -162,8 +162,7 @@ seeView({
                   .text('确定');
               }
             }
-          },
-          !0
+          }
         );
       });
     } else {

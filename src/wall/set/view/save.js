@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -37,42 +38,32 @@ seeView({
   saveOtherSiteAllImagesSuccess: function() {
     if (data.editAction) {
       window.contentData.id = parseInt(commonVars.params.id);
-      $.seeAjax.post(
-        'edit',
-        window.contentData,
-        function(res) {
-          $('#action-save')
-            .attr({
-              'data-handling': 0,
-            })
-            .text('保存');
-          zzhHandling.hide();
-          if (res.success) {
-            location.href = '/zzhadmin/buddhaManage/';
-          } else {
-            commonFunc.alert(res.message || '更新失败，请稍后重试');
-          }
-        },
-        !0
-      );
+      seeAjax('edit', window.contentData, function(res) {
+        $('#action-save')
+          .attr({
+            'data-handling': 0,
+          })
+          .text('保存');
+        zzhHandling.hide();
+        if (res.success) {
+          location.href = '/zzhadmin/buddhaManage/';
+        } else {
+          commonFunc.alert(res.message || '更新失败，请稍后重试');
+        }
+      });
     } else {
-      $.seeAjax.post(
-        'create',
-        window.contentData,
-        function(res) {
-          $('#action-save')
-            .attr({
-              'data-handling': 0,
-            })
-            .text('保存');
-          if (res.success) {
-            location.href = '/zzhadmin/buddhaManage/';
-          } else {
-            commonFunc.alert(res.message || '创建失败，请稍后重试');
-          }
-        },
-        !0
-      );
+      seeAjax('create', window.contentData, function(res) {
+        $('#action-save')
+          .attr({
+            'data-handling': 0,
+          })
+          .text('保存');
+        if (res.success) {
+          location.href = '/zzhadmin/buddhaManage/';
+        } else {
+          commonFunc.alert(res.message || '创建失败，请稍后重试');
+        }
+      });
     }
   },
   onKeepData: function() {

@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonFunc from 'common/function';
@@ -9,7 +10,7 @@ var func = {};
 var $contentBody = $('#content-body');
 var $pagination = $('#pagination');
 func.init = function() {
-  $.seeAjax.get('houses', {}, function(res) {
+  seeAjax('houses', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $select = $('#filter-house');
       res.data.map(function(item) {
@@ -18,7 +19,7 @@ func.init = function() {
       });
     }
   });
-  $.seeAjax.get('regions', {}, function(res) {
+  seeAjax('regions', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $select = $('#filter-region');
       res.data.map(function(item) {
@@ -34,7 +35,7 @@ func.requestOrdersList = function(page) {
   !page && (page = 1);
   var params = _.clone(data.ordersFilter);
   params.page = page;
-  $.seeAjax.get('orders', params, function(res) {
+  seeAjax('orders', params, function(res) {
     if (res.success) {
       res.data &&
         res.data.length &&

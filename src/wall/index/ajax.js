@@ -53,7 +53,7 @@ var postHandle = {
       });
   },
 };
-$.seeAjax.config({
+const configs = {
   environment: __SEE_ENV__,
   name: {
     list: 'list',
@@ -120,4 +120,54 @@ $.seeAjax.config({
     list: [postHandle.list, postHandle.list],
     templates: [postHandle.templates, postHandle.templates],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('promotionUrl', {
+  url: configs.url.promotionUrl,
+  requestKeys: configs.requestKeys.promotionUrl,
+  preHandle: configs.preHandle.promotionUrl,
+  responseRefactor: configs.responseRefactor.promotionUrl,
+  postHandle: configs.postHandle.promotionUrl,
+});
+
+seeAjax.config('templates', {
+  url: configs.url.templates,
+  requestKeys: configs.requestKeys.templates,
+  preHandle: configs.preHandle.templates,
+  responseRefactor: configs.responseRefactor.templates,
+  postHandle: configs.postHandle.templates,
+});
+
+seeAjax.config('delete', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.delete,
+  requestKeys: configs.requestKeys.delete,
+  preHandle: configs.preHandle.delete,
+  responseRefactor: configs.responseRefactor.delete,
+  postHandle: configs.postHandle.delete,
+});
+
+seeAjax.config('sort', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.sort,
+  requestKeys: configs.requestKeys.sort,
+  preHandle: configs.preHandle.sort,
+  responseRefactor: configs.responseRefactor.sort,
+  postHandle: configs.postHandle.sort,
 });

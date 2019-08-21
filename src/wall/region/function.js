@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonFunc from 'common/function';
@@ -8,7 +9,7 @@ import './ajax';
 var func = {};
 var $contentBody = $('#content-body');
 func.init = function() {
-  $.seeAjax.get('shortBuddhaList', {}, function(res) {
+  seeAjax('shortBuddhaList', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $containerPlace = $('[data-filter="place"]');
       var $containerBuddha = $('[data-filter="buddha"]');
@@ -24,7 +25,7 @@ func.init = function() {
       $('[data-filter-container="1"]').removeClass('hide');
     }
   });
-  $.seeAjax.get('buddhaList', {}, function(res) {
+  seeAjax('buddhaList', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $createPopupType = $('#create-popup-type');
       res.data.map(function(item) {
@@ -35,7 +36,7 @@ func.init = function() {
   func.requestList();
 };
 func.requestList = function() {
-  $.seeAjax.get('list', data.filter, function(res) {
+  seeAjax('list', data.filter, function(res) {
     if (res.success) {
       func.renderList(res);
     } else {
