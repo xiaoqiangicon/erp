@@ -7,8 +7,8 @@ import dialog from 'util/dialog';
 import func from '../function';
 import indexData from '../data';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-container="component-display"]': 'onClickComponentDisplay',
     'click [data-action="edit-component"]': 'onClickEditComponent',

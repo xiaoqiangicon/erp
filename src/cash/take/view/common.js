@@ -1,7 +1,7 @@
 import $ from 'jquery';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '@fancyapps/fancybox';
-$.seeView({
+seeView({
   events: {
     'click [data-show-images]': 'onClickShowImages',
   },

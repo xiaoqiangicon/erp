@@ -9,8 +9,8 @@ import func from '../function';
 import util from './util';
 import refreshSelectedCount from '../util/refresh_selected_count';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-row-select]': 'onClickRowSelect',
     'click [data-page-index]': 'onClickPageIndex',

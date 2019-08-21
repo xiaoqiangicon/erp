@@ -7,10 +7,10 @@ import data from '../data';
 import tpl from '../tpl';
 import func from '../function';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var $contentPrices = $('#content-prices');
 var $contentPricesBody = $('#content-prices-body');
-$.seeView({
+seeView({
   events: {
     '!click #add-price': 'onClickAddPrice',
     '!click #base-price-popup-ok': 'onClickBasePricePopupOk',

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getBuddhistType: {},
   getList: {
     typeId: 'typeId',
@@ -58,7 +58,7 @@ var requestKeysOuter = {
     isShow: 'isShow',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getBuddhistType: {
     data: [
       {
@@ -99,14 +99,14 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   getList: function(reqData) {},
   updateBuddhistSchedule: function(reqData) {
     reqData.img = reqData.img.join(',');
     reqData.video = reqData.video.join(',');
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -208,69 +208,66 @@ $.seeAjax.config({
   },
   requestKeys: {
     getList: [
-      requestKeysOuter.getList,
-      requestKeysOuter.getList,
+      requestKeys.getList,
+      requestKeys.getList,
       {
         page: 'page',
       },
     ],
-    deleteItem: [requestKeysOuter.deleteItem, requestKeysOuter.deleteItem],
-    addTemplate: [requestKeysOuter.addTemplate, requestKeysOuter.addTemplate],
-    endItem: [requestKeysOuter.endItem, requestKeysOuter.endItem],
-    printerList: [requestKeysOuter.printerList, requestKeysOuter.printerList],
-    printerStatus: [
-      requestKeysOuter.printerStatus,
-      requestKeysOuter.printerStatus,
-    ],
+    deleteItem: [requestKeys.deleteItem, requestKeys.deleteItem],
+    addTemplate: [requestKeys.addTemplate, requestKeys.addTemplate],
+    endItem: [requestKeys.endItem, requestKeys.endItem],
+    printerList: [requestKeys.printerList, requestKeys.printerList],
+    printerStatus: [requestKeys.printerStatus, requestKeys.printerStatus],
     CommoditySubdivide: [
-      requestKeysOuter.CommoditySubdivide,
-      requestKeysOuter.CommoditySubdivide,
+      requestKeys.CommoditySubdivide,
+      requestKeys.CommoditySubdivide,
     ],
     CommodityPrinter: [
-      requestKeysOuter.CommodityPrinter,
-      requestKeysOuter.CommodityPrinter,
+      requestKeys.CommodityPrinter,
+      requestKeys.CommodityPrinter,
     ],
     addAndUpdateCommodity2Printer: [
-      requestKeysOuter.addAndUpdateCommodity2Printer,
-      requestKeysOuter.addAndUpdateCommodity2Printer,
+      requestKeys.addAndUpdateCommodity2Printer,
+      requestKeys.addAndUpdateCommodity2Printer,
     ],
     getBuddhistPoster: [
-      requestKeysOuter.getBuddhistPoster,
-      requestKeysOuter.getBuddhistPoster,
+      requestKeys.getBuddhistPoster,
+      requestKeys.getBuddhistPoster,
     ],
     getBuddhistSchedule: [
-      requestKeysOuter.getBuddhistSchedule,
-      requestKeysOuter.getBuddhistSchedule,
+      requestKeys.getBuddhistSchedule,
+      requestKeys.getBuddhistSchedule,
     ],
     updateBuddhistSchedule: [
-      requestKeysOuter.updateBuddhistSchedule,
-      requestKeysOuter.updateBuddhistSchedule,
+      requestKeys.updateBuddhistSchedule,
+      requestKeys.updateBuddhistSchedule,
     ],
   },
   responseRefactor: {
     getBuddhistType: [
-      responseRefactorOuter.getBuddhistType,
-      responseRefactorOuter.getBuddhistType,
+      responseRefactor.getBuddhistType,
+      responseRefactor.getBuddhistType,
     ],
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
+    getList: [responseRefactor.getList, responseRefactor.getList],
     getBuddhistSchedule: [
-      responseRefactorOuter.getBuddhistSchedule,
-      responseRefactorOuter.getBuddhistSchedule,
+      responseRefactor.getBuddhistSchedule,
+      responseRefactor.getBuddhistSchedule,
     ],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList],
+    getList: [preHandle.getList, preHandle.getList],
     updateBuddhistSchedule: [
-      preHandleOuter.updateBuddhistSchedule,
-      preHandleOuter.updateBuddhistSchedule,
+      preHandle.updateBuddhistSchedule,
+      preHandle.updateBuddhistSchedule,
     ],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getList: [postHandleOuter.getList, postHandleOuter.getList],
+    common: [postHandle.common, postHandle.common],
+    getList: [postHandle.getList, postHandle.getList],
     getBuddhistSchedule: [
-      postHandleOuter.getBuddhistSchedule,
-      postHandleOuter.getBuddhistSchedule,
+      postHandle.getBuddhistSchedule,
+      postHandle.getBuddhistSchedule,
     ],
   },
 });

@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import fn from 'common/function';
 import commonData from './data';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-select-year]': 'onClickSelectYear',
     'click [data-page-index]': 'onClickPageIndex',

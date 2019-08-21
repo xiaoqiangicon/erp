@@ -8,8 +8,8 @@ import tpl from '../tpl';
 import func from '../function';
 import util from './util';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!click #hover-popup-no': 'onClickHoverPopupNo',
     '!click #hover-popup-ok': 'onClickHoverPopupOk',

@@ -10,7 +10,7 @@ import yearHtml from '../html/year';
 import monthHtml from '../html/month';
 import dayHtml from '../html/day';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var util = {};
 var $hoverPopup = $('#hover-popup');
 var $hoverPopupActions = $('#hover-popup-actions');

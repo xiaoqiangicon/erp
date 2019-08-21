@@ -8,8 +8,8 @@ import tpl from '../tpl';
 import func from '../function';
 import util from './util';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!change #select-house': 'onChangeSelectHouse',
     '!change #select-region': 'onChangeSelectRegion',

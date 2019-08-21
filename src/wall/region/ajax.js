@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   list: {
     place: 'hallName',
     buddha: 'buddhaId',
@@ -28,7 +28,7 @@ var requestKeysOuter = {
     id: 'wallId',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -50,8 +50,8 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {};
-var postHandleOuter = {
+var preHandle = {};
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -113,39 +113,39 @@ $.seeAjax.config({
   },
   requestKeys: {
     list: [
-      requestKeysOuter.list,
-      requestKeysOuter.list,
+      requestKeys.list,
+      requestKeys.list,
       {
         place: 'place',
         buddha: 'buddha',
       },
     ],
     delete: [
-      requestKeysOuter.delete,
-      requestKeysOuter.delete,
+      requestKeys.delete,
+      requestKeys.delete,
       {
         id: 'id',
       },
     ],
     sort: [
-      requestKeysOuter.sort,
-      requestKeysOuter.sort,
+      requestKeys.sort,
+      requestKeys.sort,
       {
         id: 'id',
         sort: 'sort',
       },
     ],
     freeze: [
-      requestKeysOuter.freeze,
-      requestKeysOuter.freeze,
+      requestKeys.freeze,
+      requestKeys.freeze,
       {
         id: 'id',
         status: 'status',
       },
     ],
     create: [
-      requestKeysOuter.create,
-      requestKeysOuter.create,
+      requestKeys.create,
+      requestKeys.create,
       {
         name: 'name',
         rows: 'rows',
@@ -156,19 +156,19 @@ $.seeAjax.config({
       },
     ],
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
   },
   responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
+    list: [responseRefactor.list, responseRefactor.list],
+    detail: [responseRefactor.detail, responseRefactor.detail],
   },
   preHandle: {},
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
+    common: [postHandle.common, postHandle.common],
   },
 });

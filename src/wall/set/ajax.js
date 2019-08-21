@@ -72,43 +72,43 @@ $.seeAjax.config({
   },
   requestKeys: {
     template: [
-      ajaxHandle.requestKeysOuter.template,
-      ajaxHandle.requestKeysOuter.template,
+      ajaxHandle.requestKeys.template,
+      ajaxHandle.requestKeys.template,
       {
         id: 'id',
       },
     ],
     detail: [
-      ajaxHandle.requestKeysOuter.detail,
-      ajaxHandle.requestKeysOuter.detail,
+      ajaxHandle.requestKeys.detail,
+      ajaxHandle.requestKeys.detail,
       {
         id: 'id',
       },
     ],
     deleteTag: [
-      ajaxHandle.requestKeysOuter.deleteTag,
-      ajaxHandle.requestKeysOuter.deleteTag,
+      ajaxHandle.requestKeys.deleteTag,
+      ajaxHandle.requestKeys.deleteTag,
       {
         id: 'id',
       },
     ],
     createTag: [
-      ajaxHandle.requestKeysOuter.createTag,
-      ajaxHandle.requestKeysOuter.createTag,
+      ajaxHandle.requestKeys.createTag,
+      ajaxHandle.requestKeys.createTag,
       {
         name: 'name',
       },
     ],
     printerStatus: [
-      ajaxHandle.requestKeysOuter.printerStatus,
-      ajaxHandle.requestKeysOuter.printerStatus,
+      ajaxHandle.requestKeys.printerStatus,
+      ajaxHandle.requestKeys.printerStatus,
       {
         id: 'id',
       },
     ],
     create: [
-      ajaxHandle.requestKeysOuter.create,
-      ajaxHandle.requestKeysOuter.create,
+      ajaxHandle.requestKeys.create,
+      ajaxHandle.requestKeys.create,
       {
         name: 'name',
         category: 'category',
@@ -130,8 +130,8 @@ $.seeAjax.config({
       },
     ],
     edit: [
-      ajaxHandle.requestKeysOuter.edit,
-      ajaxHandle.requestKeysOuter.edit,
+      ajaxHandle.requestKeys.edit,
+      ajaxHandle.requestKeys.edit,
       {
         id: 'id',
         name: 'name',
@@ -155,38 +155,29 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    tags: [
-      ajaxHandle.responseRefactorOuter.tags,
-      ajaxHandle.responseRefactorOuter.tags,
-    ],
+    tags: [ajaxHandle.responseRefactor.tags, ajaxHandle.responseRefactor.tags],
     printers: [
-      ajaxHandle.responseRefactorOuter.printers,
-      ajaxHandle.responseRefactorOuter.printers,
+      ajaxHandle.responseRefactor.printers,
+      ajaxHandle.responseRefactor.printers,
     ],
     template: [
-      ajaxHandle.responseRefactorOuter.template,
-      ajaxHandle.responseRefactorOuter.template,
+      ajaxHandle.responseRefactor.template,
+      ajaxHandle.responseRefactor.template,
     ],
     detail: [
-      ajaxHandle.responseRefactorOuter.detail,
-      ajaxHandle.responseRefactorOuter.detail,
+      ajaxHandle.responseRefactor.detail,
+      ajaxHandle.responseRefactor.detail,
     ],
     createTag: [
-      ajaxHandle.responseRefactorOuter.createTag,
-      ajaxHandle.responseRefactorOuter.createTag,
+      ajaxHandle.responseRefactor.createTag,
+      ajaxHandle.responseRefactor.createTag,
     ],
   },
   preHandle: {
-    create: [
-      ajaxHandle.preHandleOuter.create,
-      ajaxHandle.preHandleOuter.create,
-    ],
-    edit: [ajaxHandle.preHandleOuter.edit, ajaxHandle.preHandleOuter.edit],
+    create: [ajaxHandle.preHandle.create, ajaxHandle.preHandle.create],
+    edit: [ajaxHandle.preHandle.edit, ajaxHandle.preHandle.edit],
   },
   postHandle: {
-    common: [
-      ajaxHandle.postHandleOuter.common,
-      ajaxHandle.postHandleOuter.common,
-    ],
+    common: [ajaxHandle.postHandle.common, ajaxHandle.postHandle.common],
   },
 });

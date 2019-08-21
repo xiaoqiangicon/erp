@@ -6,7 +6,7 @@ import data from '../data';
 import func from '../func';
 import tpl from '../tpl';
 import showPrizeDialog from '../util/show_prize_dialog';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var $body = $('body'),
   $questionDialog = $('#dialog-question'),
   $confirmDialog = $('#dialog-confirm'),
@@ -19,7 +19,7 @@ toastr.options.timeOut = 1000;
 toastr.options.onHidden = function() {
   location.href = '/zzhadmin/cashTake/';
 };
-$.seeView({
+seeView({
   events: {
     'click [data-status-menu]': 'onClickStatusMenu',
     'click [data-select-year]': 'onClickSelectYear',

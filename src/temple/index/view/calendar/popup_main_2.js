@@ -4,8 +4,8 @@ import commonTpl from '../../tpl/common';
 import calendarTpl from '../../tpl/calendar';
 import 'lib/bootstrap-material-datetimepicker';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-calendar-popup]': 'onClickCalendarPopup',
     'click [data-calendar-popup-ok]': 'onClickCalendarPopupOk',

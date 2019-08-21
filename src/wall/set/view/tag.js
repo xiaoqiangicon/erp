@@ -7,8 +7,8 @@ import data from '../data';
 import tpl from '../tpl';
 import func from '../function';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!click #content-edit-tag': 'onClickContentEditTag',
     'click [data-tag-popup-cell]': 'onClickTagPopupCell',

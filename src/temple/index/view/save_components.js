@@ -10,7 +10,7 @@ import zzhHandling from '../../../../old-com/handling/src';
 import confirm from 'util/confirm';
 import share from '../share';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '../ajax';
 import 'clone';
 zzhHandling.setOnClickCloseCallback(function() {
@@ -20,7 +20,7 @@ var componentData;
 var currentSaveId;
 var currentSaveType;
 var currentSaveIsUpdate;
-$.seeView({
+seeView({
   events: {
     'click [data-action="save-component"]': 'onClickSaveComponent',
   },

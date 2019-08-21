@@ -5,10 +5,10 @@ import commonTpl from '../tpl/common';
 import introTpl from '../tpl/introduction';
 import 'swiper';
 import '../../../../pro-com/src/distpicker';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import 'component/choose_image_config/index';
 var chooseImageInstances = {};
-$.seeView({
+seeView({
   events: {
     'keyup [data-introduction-introduction]':
       'onKeyUpInIntroductionIntroduction',

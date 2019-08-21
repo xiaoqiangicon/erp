@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import seeAjax from 'see-ajax';
 import Pagination from '../../../old-com/pagination/src';
 import commonFunc from 'common/function';
 import commonTpl from 'common/tpl';
@@ -20,7 +21,7 @@ const $paginationContainer = $('#pagination-container');
 const requestList = (page = 1, init = !0) => {
   $listContainer.html(commonTpl.loading);
   init && $paginationContainer.html('');
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       ...data.filter,

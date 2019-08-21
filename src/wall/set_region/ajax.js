@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   detail: {
     id: 'wallId',
   },
@@ -13,7 +13,7 @@ var requestKeysOuter = {
     seats: 'numberText',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   detail: {
     data: {
       rows: 'row',
@@ -34,7 +34,7 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   save: function(req) {
     JSON.refactor(req.wallList, [
       {
@@ -48,7 +48,7 @@ var preHandleOuter = {
     ]);
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -80,23 +80,23 @@ $.seeAjax.config({
   },
   requestKeys: {
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     save: [
-      requestKeysOuter.save,
-      requestKeysOuter.save,
+      requestKeys.save,
+      requestKeys.save,
       {
         id: 'id',
         priceList: 'priceList',
       },
     ],
     editSeats: [
-      requestKeysOuter.editSeats,
-      requestKeysOuter.editSeats,
+      requestKeys.editSeats,
+      requestKeys.editSeats,
       {
         id: 'id',
         seats: 'seats',
@@ -104,12 +104,12 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
+    detail: [responseRefactor.detail, responseRefactor.detail],
   },
   preHandle: {
-    save: [preHandleOuter.save, preHandleOuter.save],
+    save: [preHandle.save, preHandle.save],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
+    common: [postHandle.common, postHandle.common],
   },
 });

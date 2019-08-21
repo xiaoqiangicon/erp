@@ -7,8 +7,9 @@ import func from './function';
 import Clipboard from 'clipboard';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeAjax from 'see-ajax';
+import seeView from 'see-view';
+seeView({
   events: {
     'click #search-submit': 'onClickSearchSubmit',
     'keydown #search-input': 'onKeydownSearchInput',
@@ -124,7 +125,7 @@ $.seeView({
       $this = $(e.target),
       id = parseInt($this.attr('data-article-delete'));
     commonFunc.confirm('确定删除这篇文章吗？', function() {
-      $.seeAjax.get(
+      seeAjax(
         'deleteArticle',
         {
           id: id,

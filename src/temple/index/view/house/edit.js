@@ -7,8 +7,8 @@ import commonTpl from '../../tpl/common';
 import houseTpl from '../../tpl/house';
 import util from './util';
 import dialog from 'util/dialog';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'change [data-edit-com-house-display-type]': 'changeDisplayType',
     'input [data-edit-com-house-title]': 'changeTitle',

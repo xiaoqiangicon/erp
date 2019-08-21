@@ -5,10 +5,10 @@ import fn from 'common/function';
 import data from '../data';
 import func from '../func';
 import util from '../util';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '@fancyapps/fancybox';
 var specialDateIntervals = [0, 1, 3, 12];
-$.seeView({
+seeView({
   events: {
     'change [data-select-date]': 'onChangeSelectDate',
     'click [data-special-date]': 'onClickSpecialDate',

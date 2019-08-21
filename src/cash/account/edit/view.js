@@ -5,12 +5,12 @@ import ChooseImage from '../../../../old-com/choose-image/src';
 import data from './data';
 import func from './func';
 import './ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var templateUpload;
 var idCard1Upload;
 var idCard2Upload;
 var licenceUpload;
-$.seeView({
+seeView({
   events: {
     'click [data-show-dialog]': 'onClickShowDialog',
     'click [data-dialog-close]': 'onClickDialogClose',

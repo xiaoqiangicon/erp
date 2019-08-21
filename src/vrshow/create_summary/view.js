@@ -7,8 +7,8 @@ import func from './function';
 import ChooseImage from '../../../old-com/choose-image/src';
 import './ajax';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click #back-nav': 'onClickBackNav',
     'beforeunload window': 'beforeUnLoad',

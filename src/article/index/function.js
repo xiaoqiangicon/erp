@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import seeAjax from 'see-ajax';
 import Pagination from '../../../old-com/pagination/src';
 import commonFunc from 'common/function';
 import commonTpl from 'common/tpl';
@@ -7,7 +8,7 @@ import tpl from './tpl';
 import './ajax';
 var func = {};
 func.init = function() {
-  $.seeAjax.get('categories', {}, function(res) {
+  seeAjax('categories', {}, function(res) {
     var $container = $('#category-dropdown-menu');
     if (res.success) {
       res.data.map(function(item) {
@@ -22,7 +23,7 @@ const $paginationContainer = $('#pagination-container');
 const requestList = (page = 1, init = !0) => {
   $listContainer.html(commonTpl.loading);
   init && $paginationContainer.html('');
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       ...data.filter,

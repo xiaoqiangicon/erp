@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getList: {
     page: 'pageNum',
     pageSize: 'pageSize',
@@ -24,7 +24,7 @@ var requestKeysOuter = {
     id: 'orderId',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getList: {},
   getTag: {
     data: [
@@ -58,10 +58,10 @@ var responseRefactorOuter = {
   },
   getBuddhistOrderDetl: {},
 };
-var preHandleOuter = {
+var preHandle = {
   getList: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -118,35 +118,32 @@ $.seeAjax.config({
     getBuddhistOrderDetl: ['/zzhadmin/getCeremonyOrder/'],
   },
   requestKeys: {
-    getList: [requestKeysOuter.getList, requestKeysOuter.getList],
-    getUserInfo: [requestKeysOuter.getUserInfo, requestKeysOuter.getUserInfo],
-    getTag: [requestKeysOuter.getTag, requestKeysOuter.getTag],
-    addMeritToGroup: [
-      requestKeysOuter.addMeritToGroup,
-      requestKeysOuter.addMeritToGroup,
-    ],
+    getList: [requestKeys.getList, requestKeys.getList],
+    getUserInfo: [requestKeys.getUserInfo, requestKeys.getUserInfo],
+    getTag: [requestKeys.getTag, requestKeys.getTag],
+    addMeritToGroup: [requestKeys.addMeritToGroup, requestKeys.addMeritToGroup],
     getWallOrderDetl: [
-      requestKeysOuter.getWallOrderDetl,
-      requestKeysOuter.getWallOrderDetl,
+      requestKeys.getWallOrderDetl,
+      requestKeys.getWallOrderDetl,
     ],
     getBuddhistOrderDetl: [
-      requestKeysOuter.getBuddhistOrderDetl,
-      requestKeysOuter.getBuddhistOrderDetl,
+      requestKeys.getBuddhistOrderDetl,
+      requestKeys.getBuddhistOrderDetl,
     ],
   },
   responseRefactor: {
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
-    getTag: [responseRefactorOuter.getTag, responseRefactorOuter.getTag],
+    getList: [responseRefactor.getList, responseRefactor.getList],
+    getTag: [responseRefactor.getTag, responseRefactor.getTag],
     getWallOrderDetl: [
-      responseRefactorOuter.getWallOrderDetl,
-      responseRefactorOuter.getWallOrderDetl,
+      responseRefactor.getWallOrderDetl,
+      responseRefactor.getWallOrderDetl,
     ],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList],
+    getList: [preHandle.getList, preHandle.getList],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getList: [postHandleOuter.getList, postHandleOuter.getList],
+    common: [postHandle.common, postHandle.common],
+    getList: [postHandle.getList, postHandle.getList],
   },
 });

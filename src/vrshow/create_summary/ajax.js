@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getScene: {
     type: 'type',
   },
@@ -14,7 +14,7 @@ var requestKeysOuter = {
     pic: 'introducePic',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getScene: {
     data: [
       {
@@ -36,8 +36,8 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {};
-var postHandleOuter = {
+var preHandle = {};
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg !== 'undefined' && (res.message = res.msg);
@@ -64,19 +64,16 @@ $.seeAjax.config({
     ],
   },
   requestKeys: {
-    getScene: [requestKeysOuter.getScene, requestKeysOuter.getScene],
-    getSceneSet: [requestKeysOuter.getSceneSet, requestKeysOuter.getSceneSet],
-    updateSet: [requestKeysOuter.updateSet, requestKeysOuter.updateSet],
+    getScene: [requestKeys.getScene, requestKeys.getScene],
+    getSceneSet: [requestKeys.getSceneSet, requestKeys.getSceneSet],
+    updateSet: [requestKeys.updateSet, requestKeys.updateSet],
   },
   responseRefactor: {
-    getScene: [responseRefactorOuter.getScene, responseRefactorOuter.getScene],
-    getSceneSet: [
-      responseRefactorOuter.getSceneSet,
-      responseRefactorOuter.getSceneSet,
-    ],
+    getScene: [responseRefactor.getScene, responseRefactor.getScene],
+    getSceneSet: [responseRefactor.getSceneSet, responseRefactor.getSceneSet],
   },
   preHandle: {},
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
+    common: [postHandle.common, postHandle.common],
   },
 });

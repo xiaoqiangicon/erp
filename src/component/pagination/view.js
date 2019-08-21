@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import data from './data';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 
-$.seeView({
+seeView({
   events: {
     // 点击分页
     'click [data-component-pagination-cell]': 'onClickComponentPaginationCell',

@@ -5,8 +5,8 @@ import calendarTpl from '../../tpl/calendar';
 import calendarViewUtil from './util';
 import 'lib/bootstrap-material-datetimepicker';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-edit-calendar-add]': 'onClickEditCalendarAdd',
     'click [data-calendar-popup-add-huddhist]':

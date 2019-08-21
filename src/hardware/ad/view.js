@@ -4,10 +4,10 @@ import commonFunc from 'common/function';
 import data from './data';
 import tpl from './tpl';
 import func from './function';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
-$.seeView({
+seeView({
   events: {
     'click [data-row-switch]': 'onClickRowSwitch',
   },

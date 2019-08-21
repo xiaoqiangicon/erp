@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getSceneList: {
     type: 'type',
   },
@@ -19,7 +19,7 @@ var requestKeysOuter = {
     status: 'status',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getSceneList: {
     data: [
       {
@@ -42,10 +42,10 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   getSceneList: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -89,30 +89,24 @@ $.seeAjax.config({
     ],
   },
   requestKeys: {
-    getSceneList: [
-      requestKeysOuter.getSceneList,
-      requestKeysOuter.getSceneList,
-    ],
-    deleteScene: [requestKeysOuter.deleteScene, requestKeysOuter.deleteScene],
-    getLinkList: [requestKeysOuter.getLinkList, requestKeysOuter.getLinkList],
-    updateLink: [requestKeysOuter.updateLink, requestKeysOuter.updateLink],
-    deleteLink: [requestKeysOuter.deleteLink, requestKeysOuter.deleteLink],
+    getSceneList: [requestKeys.getSceneList, requestKeys.getSceneList],
+    deleteScene: [requestKeys.deleteScene, requestKeys.deleteScene],
+    getLinkList: [requestKeys.getLinkList, requestKeys.getLinkList],
+    updateLink: [requestKeys.updateLink, requestKeys.updateLink],
+    deleteLink: [requestKeys.deleteLink, requestKeys.deleteLink],
   },
   responseRefactor: {
     getSceneList: [
-      responseRefactorOuter.getSceneList,
-      responseRefactorOuter.getSceneList,
+      responseRefactor.getSceneList,
+      responseRefactor.getSceneList,
     ],
-    getLinkList: [
-      responseRefactorOuter.getLinkList,
-      responseRefactorOuter.getLinkList,
-    ],
+    getLinkList: [responseRefactor.getLinkList, responseRefactor.getLinkList],
   },
   preHandle: {
-    getSceneList: [preHandleOuter.getSceneList, preHandleOuter.getSceneList],
+    getSceneList: [preHandle.getSceneList, preHandle.getSceneList],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getSceneList: [postHandleOuter.getSceneList, postHandleOuter.getSceneList],
+    common: [postHandle.common, postHandle.common],
+    getSceneList: [postHandle.getSceneList, postHandle.getSceneList],
   },
 });

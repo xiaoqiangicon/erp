@@ -6,9 +6,9 @@ import func from '../../function';
 import swipeListViewUtil from './util';
 import 'swiper';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '../../ajax';
-$.seeView({
+seeView({
   events: {
     'click [data-tab]': 'onClickTab',
     'click [data-swipe-list-popup]': 'onClickSwipeListPopup',

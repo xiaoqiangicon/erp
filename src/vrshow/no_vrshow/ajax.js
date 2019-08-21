@@ -1,15 +1,15 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getList: {},
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getList: {},
 };
-var preHandleOuter = {
+var preHandle = {
   getList: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -25,16 +25,16 @@ $.seeAjax.config({
     getList: [],
   },
   requestKeys: {
-    getList: [requestKeysOuter.getList, requestKeysOuter.getList],
+    getList: [requestKeys.getList, requestKeys.getList],
   },
   responseRefactor: {
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
+    getList: [responseRefactor.getList, responseRefactor.getList],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList],
+    getList: [preHandle.getList, preHandle.getList],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getList: [postHandleOuter.getList, postHandleOuter.getList],
+    common: [postHandle.common, postHandle.common],
+    getList: [postHandle.getList, postHandle.getList],
   },
 });

@@ -5,8 +5,8 @@ import tpl from './tpl';
 import func from './function';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-switch-qrcode]': 'changeQrcode',
     'click [data-music-play]': 'playMusic',

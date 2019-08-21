@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {};
-var responseRefactorOuter = {};
-var preHandleOuter = {};
-var postHandleOuter = {
+var requestKeys = {};
+var responseRefactor = {};
+var preHandle = {};
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -25,6 +25,6 @@ $.seeAjax.config({
   responseRefactor: {},
   preHandle: {},
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
+    common: [postHandle.common, postHandle.common],
   },
 });

@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'keyup [data-donate-chart-title]': 'onKeyUpInDonateChartTitle',
     'change [data-donate-chart-items-count]': 'onChangeInDonateChartItemsCount',

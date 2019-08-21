@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   onlineOrders: {
     regionId: 'wallId',
     remainDays: 'endDays',
@@ -21,7 +21,7 @@ var requestKeysOuter = {
     ids: 'orderIds',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   messageInfo: {
     remainCount: 'data.msgCnt',
   },
@@ -49,7 +49,7 @@ var responseRefactorOuter = {
     phones: 'mobiles',
   },
 };
-var preHandleOuter = {
+var preHandle = {
   onlineOrders: function(req) {
     req.pageSize = 20;
     req.pageIndex -= 1;
@@ -62,7 +62,7 @@ var preHandleOuter = {
     !req.endDays && req.endDays !== 0 && (req.endDays = 99999);
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -118,8 +118,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     onlineOrders: [
-      requestKeysOuter.onlineOrders,
-      requestKeysOuter.onlineOrders,
+      requestKeys.onlineOrders,
+      requestKeys.onlineOrders,
       {
         regionId: 'regionId',
         remainDays: 'remainDays',
@@ -127,8 +127,8 @@ $.seeAjax.config({
       },
     ],
     customOrders: [
-      requestKeysOuter.customOrders,
-      requestKeysOuter.customOrders,
+      requestKeys.customOrders,
+      requestKeys.customOrders,
       {
         regionId: 'regionId',
         remainDays: 'remainDays',
@@ -136,8 +136,8 @@ $.seeAjax.config({
       },
     ],
     send: [
-      requestKeysOuter.send,
-      requestKeysOuter.send,
+      requestKeys.send,
+      requestKeys.send,
       {
         type: 'type',
         ids: 'ids',
@@ -145,8 +145,8 @@ $.seeAjax.config({
       },
     ],
     getSendInfo: [
-      requestKeysOuter.getSendInfo,
-      requestKeysOuter.getSendInfo,
+      requestKeys.getSendInfo,
+      requestKeys.getSendInfo,
       {
         type: 'type',
         ids: 'ids',
@@ -154,30 +154,24 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    messageInfo: [
-      responseRefactorOuter.messageInfo,
-      responseRefactorOuter.messageInfo,
-    ],
+    messageInfo: [responseRefactor.messageInfo, responseRefactor.messageInfo],
     onlineOrders: [
-      responseRefactorOuter.onlineOrders,
-      responseRefactorOuter.onlineOrders,
+      responseRefactor.onlineOrders,
+      responseRefactor.onlineOrders,
     ],
     customOrders: [
-      responseRefactorOuter.customOrders,
-      responseRefactorOuter.customOrders,
+      responseRefactor.customOrders,
+      responseRefactor.customOrders,
     ],
-    getSendInfo: [
-      responseRefactorOuter.getSendInfo,
-      responseRefactorOuter.getSendInfo,
-    ],
+    getSendInfo: [responseRefactor.getSendInfo, responseRefactor.getSendInfo],
   },
   preHandle: {
-    onlineOrders: [preHandleOuter.onlineOrders, preHandleOuter.onlineOrders],
-    customOrders: [preHandleOuter.customOrders, preHandleOuter.customOrders],
+    onlineOrders: [preHandle.onlineOrders, preHandle.onlineOrders],
+    customOrders: [preHandle.customOrders, preHandle.customOrders],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    onlineOrders: [postHandleOuter.onlineOrders, postHandleOuter.onlineOrders],
-    customOrders: [postHandleOuter.customOrders, postHandleOuter.customOrders],
+    common: [postHandle.common, postHandle.common],
+    onlineOrders: [postHandle.onlineOrders, postHandle.onlineOrders],
+    customOrders: [postHandle.customOrders, postHandle.customOrders],
   },
 });

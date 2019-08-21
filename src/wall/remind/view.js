@@ -6,10 +6,10 @@ import data from './data';
 import tpl from './tpl';
 import func from './function';
 import './ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
-$.seeView({
+seeView({
   events: {
     '!click #action-filter': 'onClickActionFilter',
     '!click #action-reset': 'onClickActionReset',

@@ -12,8 +12,8 @@ import api from './api';
 import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 import 'jquery-confirm';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'keyup [data-ele="s-textarea"]': 'onKeyupSTextarea',
     'changed.bs.select #buddhist-type-select': 'onChangeBuddhistTypeSelect',

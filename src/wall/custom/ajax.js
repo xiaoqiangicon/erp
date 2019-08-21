@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   orders: {
     regionId: 'wallId',
     remainDays: 'endDays',
@@ -15,7 +15,7 @@ var requestKeysOuter = {
     id: 'id',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   regions: {
     data: [
       {
@@ -47,14 +47,14 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   orders: function(req) {
     req.pageSize = 20;
     req.pageIndex -= 1;
     !req.endDays && (req.endDays = 0);
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -161,8 +161,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     orders: [
-      requestKeysOuter.orders,
-      requestKeysOuter.orders,
+      requestKeys.orders,
+      requestKeys.orders,
       {
         regionId: 'regionId',
         remainDays: 'remainDays',
@@ -171,32 +171,32 @@ $.seeAjax.config({
       },
     ],
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     delete: [
-      requestKeysOuter.delete,
-      requestKeysOuter.delete,
+      requestKeys.delete,
+      requestKeys.delete,
       {
         id: 'id',
       },
     ],
   },
   responseRefactor: {
-    regions: [responseRefactorOuter.regions, responseRefactorOuter.regions],
-    orders: [responseRefactorOuter.orders, responseRefactorOuter.orders],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
+    regions: [responseRefactor.regions, responseRefactor.regions],
+    orders: [responseRefactor.orders, responseRefactor.orders],
+    detail: [responseRefactor.detail, responseRefactor.detail],
   },
   preHandle: {
-    orders: [preHandleOuter.orders, preHandleOuter.orders],
+    orders: [preHandle.orders, preHandle.orders],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    regions: [postHandleOuter.regions, postHandleOuter.regions],
-    orders: [postHandleOuter.orders, postHandleOuter.orders],
-    detail: [postHandleOuter.detail, postHandleOuter.detail],
+    common: [postHandle.common, postHandle.common],
+    regions: [postHandle.regions, postHandle.regions],
+    orders: [postHandle.orders, postHandle.orders],
+    detail: [postHandle.detail, postHandle.detail],
   },
 });

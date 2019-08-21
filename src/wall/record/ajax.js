@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   detail: {
     id: 'wallId',
   },
@@ -39,7 +39,7 @@ var requestKeysOuter = {
     wish: 'wish',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   regions: {
     data: [
       {
@@ -83,7 +83,7 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   add: function(req) {
     var contactList = req.contacts || [];
     var pureContactList = [];
@@ -153,7 +153,7 @@ var preHandleOuter = {
     req.contacts = pureContactList.join(',');
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -318,15 +318,15 @@ $.seeAjax.config({
   },
   requestKeys: {
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     cellInfo: [
-      requestKeysOuter.cellInfo,
-      requestKeysOuter.cellInfo,
+      requestKeys.cellInfo,
+      requestKeys.cellInfo,
       {
         id: 'id',
         row: 'row',
@@ -334,8 +334,8 @@ $.seeAjax.config({
       },
     ],
     onlineCellInfo: [
-      requestKeysOuter.onlineCellInfo,
-      requestKeysOuter.onlineCellInfo,
+      requestKeys.onlineCellInfo,
+      requestKeys.onlineCellInfo,
       {
         id: 'id',
         row: 'row',
@@ -343,8 +343,8 @@ $.seeAjax.config({
       },
     ],
     add: [
-      requestKeysOuter.add,
-      requestKeysOuter.add,
+      requestKeys.add,
+      requestKeys.add,
       {
         regionId: 'regionId',
         row: 'row',
@@ -358,8 +358,8 @@ $.seeAjax.config({
       },
     ],
     edit: [
-      requestKeysOuter.edit,
-      requestKeysOuter.edit,
+      requestKeys.edit,
+      requestKeys.edit,
       {
         id: 'id',
         regionId: 'regionId',
@@ -374,8 +374,8 @@ $.seeAjax.config({
       },
     ],
     editOnline: [
-      requestKeysOuter.edit,
-      requestKeysOuter.edit,
+      requestKeys.edit,
+      requestKeys.edit,
       {
         id: 'id',
         regionId: 'regionId',
@@ -391,26 +391,23 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    regions: [responseRefactorOuter.regions, responseRefactorOuter.regions],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
-    cellInfo: [responseRefactorOuter.cellInfo, responseRefactorOuter.cellInfo],
+    regions: [responseRefactor.regions, responseRefactor.regions],
+    detail: [responseRefactor.detail, responseRefactor.detail],
+    cellInfo: [responseRefactor.cellInfo, responseRefactor.cellInfo],
     onlineCellInfo: [
-      responseRefactorOuter.onlineCellInfo,
-      responseRefactorOuter.onlineCellInfo,
+      responseRefactor.onlineCellInfo,
+      responseRefactor.onlineCellInfo,
     ],
   },
   preHandle: {
-    add: [preHandleOuter.add, preHandleOuter.add],
-    edit: [preHandleOuter.edit, preHandleOuter.edit],
-    editOnline: [preHandleOuter.edit, preHandleOuter.edit],
+    add: [preHandle.add, preHandle.add],
+    edit: [preHandle.edit, preHandle.edit],
+    editOnline: [preHandle.edit, preHandle.edit],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    regions: [postHandleOuter.regions, postHandleOuter.regions],
-    cellInfo: [postHandleOuter.cellInfo, postHandleOuter.cellInfo],
-    onlineCellInfo: [
-      postHandleOuter.onlineCellInfo,
-      postHandleOuter.onlineCellInfo,
-    ],
+    common: [postHandle.common, postHandle.common],
+    regions: [postHandle.regions, postHandle.regions],
+    cellInfo: [postHandle.cellInfo, postHandle.cellInfo],
+    onlineCellInfo: [postHandle.onlineCellInfo, postHandle.onlineCellInfo],
   },
 });

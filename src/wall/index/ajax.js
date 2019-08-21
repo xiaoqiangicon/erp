@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   delete: {
     id: 'id',
   },
@@ -9,7 +9,7 @@ var requestKeysOuter = {
     sort: 'sort',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -32,8 +32,8 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {};
-var postHandleOuter = {
+var preHandle = {};
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -91,15 +91,15 @@ $.seeAjax.config({
   },
   requestKeys: {
     delete: [
-      requestKeysOuter.delete,
-      requestKeysOuter.delete,
+      requestKeys.delete,
+      requestKeys.delete,
       {
         id: 'id',
       },
     ],
     sort: [
-      requestKeysOuter.sort,
-      requestKeysOuter.sort,
+      requestKeys.sort,
+      requestKeys.sort,
       {
         id: 'id',
         sort: 'sort',
@@ -107,20 +107,17 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
+    list: [responseRefactor.list, responseRefactor.list],
     promotionUrl: [
-      responseRefactorOuter.promotionUrl,
-      responseRefactorOuter.promotionUrl,
+      responseRefactor.promotionUrl,
+      responseRefactor.promotionUrl,
     ],
-    templates: [
-      responseRefactorOuter.templates,
-      responseRefactorOuter.templates,
-    ],
+    templates: [responseRefactor.templates, responseRefactor.templates],
   },
   preHandle: {},
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    list: [postHandleOuter.list, postHandleOuter.list],
-    templates: [postHandleOuter.templates, postHandleOuter.templates],
+    common: [postHandle.common, postHandle.common],
+    list: [postHandle.list, postHandle.list],
+    templates: [postHandle.templates, postHandle.templates],
   },
 });

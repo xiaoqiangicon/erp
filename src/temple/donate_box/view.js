@@ -7,8 +7,8 @@ import func from './function';
 import Clipboard from 'clipboard';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click #filter-submit': 'onClickFilterSubmit',
     'click #promotion': 'onClickPromotion',

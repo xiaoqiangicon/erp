@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   add: {
     type: 'type',
     bank: 'bankName',
@@ -23,7 +23,7 @@ var requestKeysOuter = {
     idCardImage2: 'identityCardPic2',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   info: {
     data: {
       bank: 'bankName',
@@ -36,8 +36,8 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {};
-var postHandleOuter = {
+var preHandle = {};
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.message = res.msg || '';
@@ -71,8 +71,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     add: [
-      requestKeysOuter.add,
-      requestKeysOuter.add,
+      requestKeys.add,
+      requestKeys.add,
       {
         type: 'type',
         bank: 'bank',
@@ -85,8 +85,8 @@ $.seeAjax.config({
       },
     ],
     update: [
-      requestKeysOuter.update,
-      requestKeysOuter.update,
+      requestKeys.update,
+      requestKeys.update,
       {
         type: 'type',
         bank: 'bank',
@@ -100,10 +100,10 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    info: [responseRefactorOuter.info, responseRefactorOuter.info],
+    info: [responseRefactor.info, responseRefactor.info],
   },
   preHandle: {},
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
+    common: [postHandle.common, postHandle.common],
   },
 });

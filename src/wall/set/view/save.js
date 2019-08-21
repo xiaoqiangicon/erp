@@ -8,11 +8,11 @@ import func from '../function';
 import StoreImage from '../../../../old-com/store-image/src';
 import zzhHandling from '../../../../old-com/handling/src';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 zzhHandling.setOnClickCloseCallback(function() {
   commonFunc.alert('正在保存供奉信息，请勿操作或关闭页面。');
 });
-$.seeView({
+seeView({
   events: {
     '!click #action-save': 'onClickActionSave',
   },

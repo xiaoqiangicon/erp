@@ -2,7 +2,7 @@ import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
 import 'lib/jquery.seeAjax';
 var printTexts = ['未打印', '已打印'];
-var requestKeysOuter = {
+var requestKeys = {
   unhandledOrders: {
     regionId: 'wallId',
     startDate: 'beginDate',
@@ -46,7 +46,7 @@ var requestKeysOuter = {
     printPages: 'printNum',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   unhandledOrders: {
     data: [
       {
@@ -98,7 +98,7 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   unhandledOrders: function(req) {
     req.pageSize = 20;
     req.pageIndex -= 1;
@@ -124,7 +124,7 @@ var preHandleOuter = {
     delete req.searchType;
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -268,8 +268,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     unhandledOrders: [
-      requestKeysOuter.unhandledOrders,
-      requestKeysOuter.unhandledOrders,
+      requestKeys.unhandledOrders,
+      requestKeys.unhandledOrders,
       {
         regionId: 'regionId',
         startDate: 'startDate',
@@ -280,8 +280,8 @@ $.seeAjax.config({
       },
     ],
     handledOrders: [
-      requestKeysOuter.handledOrders,
-      requestKeysOuter.handledOrders,
+      requestKeys.handledOrders,
+      requestKeys.handledOrders,
       {
         regionId: 'regionId',
         startDate: 'startDate',
@@ -292,8 +292,8 @@ $.seeAjax.config({
       },
     ],
     handle: [
-      requestKeysOuter.handle,
-      requestKeysOuter.handle,
+      requestKeys.handle,
+      requestKeys.handle,
       {
         id: 'id',
         type: 'type',
@@ -301,23 +301,23 @@ $.seeAjax.config({
       },
     ],
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     saveMemo: [
-      requestKeysOuter.saveMemo,
-      requestKeysOuter.saveMemo,
+      requestKeys.saveMemo,
+      requestKeys.saveMemo,
       {
         id: 'id',
         memo: 'memo',
       },
     ],
     updateFeedImage: [
-      requestKeysOuter.updateFeedImage,
-      requestKeysOuter.updateFeedImage,
+      requestKeys.updateFeedImage,
+      requestKeys.updateFeedImage,
       {
         id: 'id',
         type: 'status',
@@ -325,15 +325,15 @@ $.seeAjax.config({
       },
     ],
     printerStatus: [
-      requestKeysOuter.printerStatus,
-      requestKeysOuter.printerStatus,
+      requestKeys.printerStatus,
+      requestKeys.printerStatus,
       {
         id: 'id',
       },
     ],
     savePrinter: [
-      requestKeysOuter.savePrinter,
-      requestKeysOuter.savePrinter,
+      requestKeys.savePrinter,
+      requestKeys.savePrinter,
       {
         ids: 'ids',
         printers: 'printers',
@@ -344,34 +344,25 @@ $.seeAjax.config({
   },
   responseRefactor: {
     unhandledOrders: [
-      responseRefactorOuter.unhandledOrders,
-      responseRefactorOuter.unhandledOrders,
+      responseRefactor.unhandledOrders,
+      responseRefactor.unhandledOrders,
     ],
     handledOrders: [
-      responseRefactorOuter.handledOrders,
-      responseRefactorOuter.handledOrders,
+      responseRefactor.handledOrders,
+      responseRefactor.handledOrders,
     ],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
-    printers: [responseRefactorOuter.printers, responseRefactorOuter.printers],
+    detail: [responseRefactor.detail, responseRefactor.detail],
+    printers: [responseRefactor.printers, responseRefactor.printers],
   },
   preHandle: {
-    unhandledOrders: [
-      preHandleOuter.unhandledOrders,
-      preHandleOuter.unhandledOrders,
-    ],
-    handledOrders: [preHandleOuter.handledOrders, preHandleOuter.handledOrders],
+    unhandledOrders: [preHandle.unhandledOrders, preHandle.unhandledOrders],
+    handledOrders: [preHandle.handledOrders, preHandle.handledOrders],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    regions: [postHandleOuter.regions, postHandleOuter.regions],
-    unhandledOrders: [
-      postHandleOuter.unhandledOrders,
-      postHandleOuter.unhandledOrders,
-    ],
-    handledOrders: [
-      postHandleOuter.handledOrders,
-      postHandleOuter.handledOrders,
-    ],
-    detail: [postHandleOuter.detail, postHandleOuter.detail],
+    common: [postHandle.common, postHandle.common],
+    regions: [postHandle.regions, postHandle.regions],
+    unhandledOrders: [postHandle.unhandledOrders, postHandle.unhandledOrders],
+    handledOrders: [postHandle.handledOrders, postHandle.handledOrders],
+    detail: [postHandle.detail, postHandle.detail],
   },
 });

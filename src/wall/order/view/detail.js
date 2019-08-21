@@ -7,10 +7,10 @@ import data from '../data';
 import tpl from '../tpl';
 import util from './util';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import 'component/choose_image_config/index';
 var upload;
-$.seeView({
+seeView({
   events: {
     '!click #detail-popup-save-memo': 'onClickDetailPopupSaveMemo',
     '!click #detail-popup-save': 'onClickDetailPopupSave',

@@ -2,7 +2,7 @@ import $ from 'jquery';
 import data from './data';
 import 'lib/jquery.seeAjax';
 var listPerPage = 20;
-var requestKeysOuter = {
+var requestKeys = {
   list: {
     startDate: 'startTime',
     endDate: 'endTime',
@@ -17,7 +17,7 @@ var requestKeysOuter = {
     images: 'pics',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -63,13 +63,13 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   list: function(data) {
     data.pageNumber -= 1;
     data.pageSize = listPerPage;
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
@@ -168,8 +168,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     list: [
-      requestKeysOuter.list,
-      requestKeysOuter.list,
+      requestKeys.list,
+      requestKeys.list,
       {
         startDate: 'startDate',
         endDate: 'endDate',
@@ -178,15 +178,15 @@ $.seeAjax.config({
       },
     ],
     cancel: [
-      requestKeysOuter.cancel,
-      requestKeysOuter.cancel,
+      requestKeys.cancel,
+      requestKeys.cancel,
       {
         id: 'id',
       },
     ],
     addReceipts: [
-      requestKeysOuter.addReceipts,
-      requestKeysOuter.addReceipts,
+      requestKeys.addReceipts,
+      requestKeys.addReceipts,
       {
         id: 'id',
         images: 'images',
@@ -194,17 +194,14 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
-    accountInfo: [
-      responseRefactorOuter.accountInfo,
-      responseRefactorOuter.accountInfo,
-    ],
+    list: [responseRefactor.list, responseRefactor.list],
+    accountInfo: [responseRefactor.accountInfo, responseRefactor.accountInfo],
   },
   preHandle: {
-    list: [preHandleOuter.list, preHandleOuter.list],
+    list: [preHandle.list, preHandle.list],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    list: [postHandleOuter.list, postHandleOuter.list],
+    common: [postHandle.common, postHandle.common],
+    list: [postHandle.list, postHandle.list],
   },
 });

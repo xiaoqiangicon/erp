@@ -7,8 +7,8 @@ import tpl from '../tpl';
 import func from '../function';
 import refreshSelectedCount from '../util/refresh_selected_count';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!click #action-filter': 'onClickActionFilter',
     '!click #action-reset': 'onClickActionReset',

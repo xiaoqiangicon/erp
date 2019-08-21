@@ -5,10 +5,10 @@ import data from '../data';
 import func from '../func';
 import util from '../util';
 import tpl from '../tpl';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '@fancyapps/fancybox';
 var $receiptsContent = $('#dialog-receipts-content');
-$.seeView({
+seeView({
   events: {
     'click [data-select-status]': 'onClickSelectStatus',
     'click [data-unit-cancel]': 'onClickUnitCancel',

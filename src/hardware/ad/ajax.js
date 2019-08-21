@@ -3,13 +3,13 @@ import commonVars from 'common/variables';
 import data from './data';
 import 'lib/jquery.seeAjax';
 var typeTexts = ['自在家', '自定义', '佛事', '文章'];
-var requestKeysOuter = {
+var requestKeys = {
   switch: {
     id: 'adId',
     hide: 'status',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   detail: {
     data: [
       {
@@ -20,12 +20,12 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   detail: function(req) {
     req.machineId = parseInt(commonVars.params.id);
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -58,8 +58,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     switch: [
-      requestKeysOuter.switch,
-      requestKeysOuter.switch,
+      requestKeys.switch,
+      requestKeys.switch,
       {
         id: 'id',
         hide: 'hide',
@@ -67,13 +67,13 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
+    detail: [responseRefactor.detail, responseRefactor.detail],
   },
   preHandle: {
-    detail: [preHandleOuter.detail, preHandleOuter.detail],
+    detail: [preHandle.detail, preHandle.detail],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    detail: [postHandleOuter.detail, postHandleOuter.detail],
+    common: [postHandle.common, postHandle.common],
+    detail: [postHandle.detail, postHandle.detail],
   },
 });

@@ -5,7 +5,7 @@ import indexData from '../../data';
 import commonTpl from '../../tpl/common';
 import shortcutTpl from '../../tpl/shortcut';
 import shortcutViewUtil from './util';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import 'component/choose_icon_config/index';
 var chooseIconInstances = {};
 var defaultMatches = {
@@ -26,7 +26,7 @@ var defaultMatches = {
     image: 'https://pic.zizaihome.com/3c2f5f8c-8f80-465d-9d57-9ec023e061a4.png',
   },
 };
-$.seeView({
+seeView({
   events: {
     'click [data-shortcut-popup]': 'onClickShortcutPopup',
     'click [data-edit-shortcut-popup-add-btn]': 'onClickPopupAddBtn',

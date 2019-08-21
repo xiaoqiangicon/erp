@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getList: {
     pageNum: 'pageNum',
     pageSize: 'pageSize',
@@ -15,7 +15,7 @@ var requestKeysOuter = {
     status: 'status',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getList: {
     data: [
       {
@@ -24,10 +24,10 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   getList: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -59,24 +59,21 @@ $.seeAjax.config({
     ],
   },
   requestKeys: {
-    getList: [requestKeysOuter.getList, requestKeysOuter.getList],
-    updateWatchword: [
-      requestKeysOuter.updateWatchword,
-      requestKeysOuter.updateWatchword,
-    ],
+    getList: [requestKeys.getList, requestKeys.getList],
+    updateWatchword: [requestKeys.updateWatchword, requestKeys.updateWatchword],
     operateWatchword: [
-      requestKeysOuter.operateWatchword,
-      requestKeysOuter.operateWatchword,
+      requestKeys.operateWatchword,
+      requestKeys.operateWatchword,
     ],
   },
   responseRefactor: {
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
+    getList: [responseRefactor.getList, responseRefactor.getList],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList],
+    getList: [preHandle.getList, preHandle.getList],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getList: [postHandleOuter.getList, postHandleOuter.getList],
+    common: [postHandle.common, postHandle.common],
+    getList: [postHandle.getList, postHandle.getList],
   },
 });

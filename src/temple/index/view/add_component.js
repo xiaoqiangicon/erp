@@ -16,7 +16,7 @@ import figureUtil from './figure/util';
 import houseUtil from './house/util';
 import 'lib/bootstrap-material-datetimepicker';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '../ajax';
 var tpls = [
   introTpl,
@@ -27,7 +27,7 @@ var tpls = [
   shortcutTpl,
   houseTpl,
 ];
-$.seeView({
+seeView({
   events: {
     'click [data-action="component-add"]': 'onClickComponentAdd',
   },

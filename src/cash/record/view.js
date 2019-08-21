@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import fn from 'common/function';
 import commonData from './data';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var specialDateIntervals = [0, 1, 3, 12];
-$.seeView({
+seeView({
   events: {
     'change [data-select-date]': 'onChangeSelectDate',
     'click [data-page-index]': 'onClickPageIndex',

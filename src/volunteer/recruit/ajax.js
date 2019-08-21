@@ -1,12 +1,12 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   list: {
     page: 'pageNumber',
     pageSize: 'pageSize',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -22,13 +22,13 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   list: function(data) {
     data.pageNumber -= 1;
     data.pageSize = 25;
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -48,21 +48,21 @@ $.seeAjax.config({
   },
   requestKeys: {
     list: [
-      requestKeysOuter.list,
-      requestKeysOuter.list,
+      requestKeys.list,
+      requestKeys.list,
       {
         page: 'page',
       },
     ],
   },
   responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
+    list: [responseRefactor.list, responseRefactor.list],
   },
   preHandle: {
-    list: [preHandleOuter.list, preHandleOuter.list],
+    list: [preHandle.list, preHandle.list],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    list: [postHandleOuter.list, postHandleOuter.list],
+    common: [postHandle.common, postHandle.common],
+    list: [postHandle.list, postHandle.list],
   },
 });

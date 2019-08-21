@@ -10,11 +10,12 @@ import zzhHandling from '../../../old-com/handling/src';
 import purifyATarget from 'util/purify_a_target';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
-import 'lib/jquery.seeView';
+import seeAjax from 'see-ajax';
+import seeView from 'see-view';
 zzhHandling.setOnClickCloseCallback(function() {
   commonFunc.alert('正在保存文章数据，请勿操作或关闭页面。');
 });
-$.seeView({
+seeView({
   events: {
     'click #edit-category': 'onClickEditCategory',
     'click [data-popup]': 'onClickPopup',
@@ -78,7 +79,7 @@ $.seeView({
     $this.attr({
       'data-handling': 1,
     });
-    $.seeAjax.get(
+    seeAjax(
       'addCategory',
       {
         name: value,
@@ -113,7 +114,7 @@ $.seeView({
     $this.attr({
       'data-handling': 1,
     });
-    $.seeAjax.get(
+    seeAjax(
       'modifyCategory',
       {
         id: id,
@@ -148,7 +149,7 @@ $.seeView({
       $this.attr({
         'data-handling': 1,
       });
-      $.seeAjax.get(
+      seeAjax(
         'deleteCategory',
         {
           id: id,
@@ -246,7 +247,7 @@ $.seeView({
       ? ((window.contentData.id = data.formatedParams.articleId),
         (urlName = 'updateArticle'))
       : (urlName = 'addArticle');
-    $.seeAjax.post(urlName, window.contentData, function(res) {
+    seeAjax(urlName, window.contentData, function(res) {
       $('[data-save="' + data.saveType + '"]').text(
         data.saveTypeOriginText[data.saveType - 1]
       );

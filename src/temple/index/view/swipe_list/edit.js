@@ -5,9 +5,9 @@ import swipeTpl from '../../tpl/swipe_list';
 import swipeListViewUtil from './util';
 import 'swiper';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '../../ajax';
-$.seeView({
+seeView({
   events: {
     'keyup [data-swipe-list-title]': 'onKeyUpInSwipeListTitle',
     'change [data-swipe-list-show-title]': 'onChangeSwipeListShowTitle',

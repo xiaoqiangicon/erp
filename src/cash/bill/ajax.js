@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import commonVars from 'common/variables';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   billData: {
     year: 'year',
     status: 'status',
@@ -16,13 +16,13 @@ var requestKeysOuter = {
     extra: 'remarks',
   },
 };
-var preHandleOuter = {
+var preHandle = {
   billData: function(data) {
     delete data.year;
     delete data.status;
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   billData: {
     monthsData: 'data',
     _monthsData: [
@@ -63,7 +63,7 @@ var responseRefactorOuter = {
     haveOrderInHandling: 'isHavePickUp',
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
@@ -175,16 +175,16 @@ $.seeAjax.config({
   },
   requestKeys: {
     billData: [
-      requestKeysOuter.billData,
-      requestKeysOuter.billData,
+      requestKeys.billData,
+      requestKeys.billData,
       {
         year: 'year',
         status: 'status',
       },
     ],
     confirmBills: [
-      requestKeysOuter.confirmBills,
-      requestKeysOuter.confirmBills,
+      requestKeys.confirmBills,
+      requestKeys.confirmBills,
       {
         ids: 'ids',
         extra: 'extra',
@@ -199,8 +199,8 @@ $.seeAjax.config({
       },
     ],
     questionBills: [
-      requestKeysOuter.questionBills,
-      requestKeysOuter.questionBills,
+      requestKeys.questionBills,
+      requestKeys.questionBills,
       {
         ids: 'ids',
         extra: 'extra',
@@ -208,22 +208,19 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    billData: [responseRefactorOuter.billData, responseRefactorOuter.billData],
-    accountInfo: [
-      responseRefactorOuter.accountInfo,
-      responseRefactorOuter.accountInfo,
-    ],
+    billData: [responseRefactor.billData, responseRefactor.billData],
+    accountInfo: [responseRefactor.accountInfo, responseRefactor.accountInfo],
     receiptsInfo: [
-      responseRefactorOuter.receiptsInfo,
-      responseRefactorOuter.receiptsInfo,
+      responseRefactor.receiptsInfo,
+      responseRefactor.receiptsInfo,
     ],
   },
   preHandle: {
-    billData: [preHandleOuter.billData, preHandleOuter.billData],
+    billData: [preHandle.billData, preHandle.billData],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    billData: [postHandleOuter.billData, postHandleOuter.billData],
-    stat: [postHandleOuter.stat, postHandleOuter.stat],
+    common: [postHandle.common, postHandle.common],
+    billData: [postHandle.billData, postHandle.billData],
+    stat: [postHandle.stat, postHandle.stat],
   },
 });

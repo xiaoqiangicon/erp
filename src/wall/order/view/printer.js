@@ -3,8 +3,8 @@ import toastr from 'toastr';
 import commonFunc from 'common/function';
 import commonVars from 'common/variables';
 import data from '../data';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!change #printer-popup-pages': 'onChangePrinterPages',
     '!change [name="printer-popup-print-type"]': 'onChangePrintType',

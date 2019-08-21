@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Data from './data';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getList: {
     page: 'pageNum',
     pageSize: 'pageSize',
@@ -27,7 +27,7 @@ var requestKeysOuter = {
     userIds: 'userIds',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getList: {
     data: [
       {
@@ -54,10 +54,10 @@ var responseRefactorOuter = {
   updateTag: {},
   delTag: {},
 };
-var preHandleOuter = {
+var preHandle = {
   getList: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -92,28 +92,25 @@ $.seeAjax.config({
     delMeritFromGroup: ['/zzhadmin/delMeritFromGroup/'],
   },
   requestKeys: {
-    getList: [requestKeysOuter.getList, requestKeysOuter.getList],
-    getTag: [requestKeysOuter.getTag, requestKeysOuter.getTag],
-    updateTag: [requestKeysOuter.updateTag, requestKeysOuter.updateTag],
-    delTag: [requestKeysOuter.delTag, requestKeysOuter.delTag],
-    addMeritToGroup: [
-      requestKeysOuter.addMeritToGroup,
-      requestKeysOuter.addMeritToGroup,
-    ],
+    getList: [requestKeys.getList, requestKeys.getList],
+    getTag: [requestKeys.getTag, requestKeys.getTag],
+    updateTag: [requestKeys.updateTag, requestKeys.updateTag],
+    delTag: [requestKeys.delTag, requestKeys.delTag],
+    addMeritToGroup: [requestKeys.addMeritToGroup, requestKeys.addMeritToGroup],
     delMeritFromGroup: [
-      requestKeysOuter.delMeritFromGroup,
-      requestKeysOuter.delMeritFromGroup,
+      requestKeys.delMeritFromGroup,
+      requestKeys.delMeritFromGroup,
     ],
   },
   responseRefactor: {
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
-    getTag: [responseRefactorOuter.getTag, responseRefactorOuter.getTag],
+    getList: [responseRefactor.getList, responseRefactor.getList],
+    getTag: [responseRefactor.getTag, responseRefactor.getTag],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList],
+    getList: [preHandle.getList, preHandle.getList],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getList: [postHandleOuter.getList, postHandleOuter.getList],
+    common: [postHandle.common, postHandle.common],
+    getList: [postHandle.getList, postHandle.getList],
   },
 });

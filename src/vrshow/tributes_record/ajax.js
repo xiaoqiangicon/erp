@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   getList: {
     pageNum: 'pageNumber',
     pageSize: 'pageSize',
@@ -9,7 +9,7 @@ var requestKeysOuter = {
   },
   getCash: {},
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getList: {
     data: [
       {
@@ -29,13 +29,13 @@ var responseRefactorOuter = {
     day: 'priceDaySum',
   },
 };
-var preHandleOuter = {
+var preHandle = {
   getList: function(data) {
     data.pageSize = 20;
   },
   getCash: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -60,21 +60,17 @@ $.seeAjax.config({
     ],
   },
   requestKeys: {
-    getList: [
-      requestKeysOuter.getList,
-      requestKeysOuter.getList,
-      requestKeysOuter.getList,
-    ],
+    getList: [requestKeys.getList, requestKeys.getList, requestKeys.getList],
   },
   responseRefactor: {
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
-    getCash: [responseRefactorOuter.getCash, responseRefactorOuter.getCash],
+    getList: [responseRefactor.getList, responseRefactor.getList],
+    getCash: [responseRefactor.getCash, responseRefactor.getCash],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList],
-    getCash: [preHandleOuter.getCash, preHandleOuter.getCash],
+    getList: [preHandle.getList, preHandle.getList],
+    getCash: [preHandle.getCash, preHandle.getCash],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
+    common: [postHandle.common, postHandle.common],
   },
 });

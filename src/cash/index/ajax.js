@@ -1,12 +1,12 @@
 import $ from 'jquery';
 import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+var requestKeys = {
   list: {
     year: 'year',
     page: 'pageNumber',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -31,12 +31,12 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   list: function(data) {
     delete data.pageNumber;
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
@@ -85,8 +85,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     list: [
-      requestKeysOuter.list,
-      requestKeysOuter.list,
+      requestKeys.list,
+      requestKeys.list,
       {
         year: 'year',
         page: 'page',
@@ -94,18 +94,15 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
-    accountInfo: [
-      responseRefactorOuter.accountInfo,
-      responseRefactorOuter.accountInfo,
-    ],
+    list: [responseRefactor.list, responseRefactor.list],
+    accountInfo: [responseRefactor.accountInfo, responseRefactor.accountInfo],
   },
   preHandle: {
-    list: [preHandleOuter.list, preHandleOuter.list],
+    list: [preHandle.list, preHandle.list],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    stat: [postHandleOuter.stat, postHandleOuter.stat],
-    list: [postHandleOuter.list, postHandleOuter.list],
+    common: [postHandle.common, postHandle.common],
+    stat: [postHandle.stat, postHandle.stat],
+    list: [postHandle.list, postHandle.list],
   },
 });

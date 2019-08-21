@@ -13,12 +13,12 @@ import yearHtml from '../html/year';
 import monthHtml from '../html/month';
 import dayHtml from '../html/day';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var sequenceBeforeFocus;
 var $sequence = $('#create-modal-sequence');
 var $actionRecord = $('#action-record');
 var saveWithOutOfDate = !1;
-$.seeView({
+seeView({
   events: {
     'click [data-create-contact-delete]': 'onClickCreateContactDelete',
     '!click #create-modal-add-contact': 'onClickCreateModalAddContact',
