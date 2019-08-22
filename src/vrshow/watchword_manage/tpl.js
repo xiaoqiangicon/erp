@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   cellContainerEmpty: `
         <tr class="cell-content-empty"><td style="text-align: center; padding-left: 0;" colspan="3">暂无数据</td></tr>

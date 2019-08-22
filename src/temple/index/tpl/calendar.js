@@ -1,5 +1,5 @@
 import * as images from '../images';
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   display: `
         <div class="component-container component-calendar"  data-container="component-display" data-type="5" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">

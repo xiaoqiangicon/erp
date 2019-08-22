@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   display: `
          <div class="component-container component-donate-chart" data-container="component-display" data-type="4" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">

@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 import cookie from 'js-cookie';
 const openShiJingTanSi = !!parseInt(cookie.get('pw_vr_devote'));
 const displayComponents = `

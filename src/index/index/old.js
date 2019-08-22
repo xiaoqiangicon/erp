@@ -5,7 +5,7 @@ import temples from '../common/temples';
 import review from '../common/review';
 import '../common/nav';
 import '../common/brand';
-import 'juicer';
+import juicer from 'juicer';
 if (browser.isMobile) {
   $('#banner-item-cover-1').attr({
     src: 'https://pic.zizaihome.com/0e8b7400-1c5f-11e8-93fd-00163e0c001e.png',

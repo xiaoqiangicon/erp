@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   row: juicer($('#tpl-row').html()),
   pagination: juicer($('#tpl-pagination').html()),

@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   articleCell: `
         <div class="recruit-cell" data-article-cell="\${id}">

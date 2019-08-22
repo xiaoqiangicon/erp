@@ -6,7 +6,7 @@ import foShi from '../common/fo_shi';
 import '../common/nav';
 import '../common/resize';
 import '../common/brand';
-import 'juicer';
+import juicer from 'juicer';
 var $templeWrapper = $('#temple-wrapper');
 var templeItemTpl = juicer($('#tpl-temple-item').html());
 temples.map(function(item) {

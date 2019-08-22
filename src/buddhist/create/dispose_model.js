@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var app_model_dispose = {};
 app_model_dispose.method = {};
 app_model_dispose.method.add_default_title_prompt_text = function(

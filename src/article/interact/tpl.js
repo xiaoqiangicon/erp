@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 import loading from '../../../images/loading.gif';
 var tpl = {
   payCell: `
