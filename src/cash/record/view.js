@@ -2,7 +2,8 @@ import $ from 'jquery';
 import fn from 'common/function';
 import commonData from './data';
 import seeView from 'see-view';
-import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
+import { renderPagination } from './render';
+
 var specialDateIntervals = [0, 1, 3, 12];
 seeView({
   events: {
@@ -36,12 +37,8 @@ seeView({
       startDate = commonData.getDateStartFromToday(
         specialDateIntervals[type - 1]
       );
-    seeBind.setData('data-select-date', startDate, {
-      index: 1,
-    });
-    seeBind.setData('data-select-date', endDate, {
-      index: 2,
-    });
+    $('[data-select-date="1"]').val(startDate);
+    $('[data-select-date="2"]').val(endDate);
     self.switchDate(startDate, endDate);
   },
   switchDate: function(startDate, endDate) {
@@ -150,8 +147,7 @@ seeView({
       $currentDateContent.append($targetPaginationContent);
       commonData.requestList(startDate, endDate, page);
     } else {
-      seeBind.setData(
-        'pagination',
+      renderPagination(
         {
           currentPage: page,
           totalPages: totalPages,

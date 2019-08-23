@@ -7,9 +7,9 @@ import func from './func';
 import data from './data';
 import tpl from './tpl';
 import refreshPrizeBtn from './util/refresh_prize_btn';
-import './bind';
 import './view';
-import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
+import { renderSelectedYear } from './render';
+
 $.ajaxSetup({
   cache: !1,
 });
@@ -35,12 +35,8 @@ $.ajaxSetup({
         })
       );
   }
-  seeBind.setData('data-selected-year', currentYear, {
-    status: 1,
-  });
-  seeBind.setData('data-selected-year', currentYear, {
-    status: 2,
-  });
+  renderSelectedYear(currentYear, { status: 1 });
+  renderSelectedYear(currentYear, { status: 2 });
   $statusContainer1.append(
     tpl.yearContentContainer.render({
       year: currentYear,

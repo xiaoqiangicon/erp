@@ -3,7 +3,7 @@ import _ from 'underscore';
 import Chart from 'chart.js';
 import commonTpl from 'common/tpl';
 import commonData from './data';
-import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
+
 var chart;
 var chartConfig;
 var chartColors = {
@@ -29,7 +29,10 @@ var chartMonths = [
   '11月',
   '12月',
 ];
-seeBind.bind('chart', '#chart-section-canvas', function($el, data) {
+
+export const renderChart = data => {
+  const $el = $('#chart-section-canvas');
+
   for (var i = 0, il = 12; i < il; i++) {
     typeof data.months[i] == 'undefined' && (data.months[i] = 0);
   }
@@ -105,33 +108,50 @@ seeBind.bind('chart', '#chart-section-canvas', function($el, data) {
     chart.data.datasets[0].data = data.months;
     chart.update();
   }
-});
-seeBind.bind('total-donate', '#total-donate', 'text');
-seeBind.bind('available-donate', '#available-donate', 'text');
-seeBind.bind('taken-donate', '#taken-donate', 'text');
-seeBind.bind('chanzai-donate', '#chanzai-donate', 'text');
-seeBind.bind('data-selected-year', '[data-selected-year]', function($el, year) {
-  $el
+};
+
+export const renderTotalDonate = data => {
+  $('#total-donate').text(data);
+};
+
+export const renderAvailableDonate = data => {
+  $('#available-donate').text(data);
+};
+
+export const renderTakenDonate = data => {
+  $('#taken-donate').text(data);
+};
+
+export const renderChanzaiDonate = data => {
+  $('#chanzai-donate').text(data);
+};
+
+export const renderSelectedYear = data => {
+  $('[data-selected-year]')
     .attr({
-      'data-selected-year': year,
+      'data-selected-year': data,
     })
-    .text(year + '年');
-});
-seeBind.bind(
-  'pagination-content',
-  '[data-pagination-content="{{page}}"][data-year="{{year}}"]',
-  function($el, data) {
-    var htmlString = '';
-    data.map(function(item) {
-      htmlString += commonData.tpl.detailUnit.render(item);
-    });
-    $el.html(htmlString || commonTpl.noData);
-  }
-);
-seeBind.bind('pagination', '[data-pagination="{{year}}"]', function($el, data) {
+    .text(data + '年');
+};
+
+export const renderPaginationContent = (data, options) => {
+  const $el = $(
+    `[data-pagination-content="${options.page}"][data-year="${options.year}"]`
+  );
+
+  var htmlString = '';
+  data.map(function(item) {
+    htmlString += commonData.tpl.detailUnit.render(item);
+  });
+  $el.html(htmlString || commonTpl.noData);
+};
+
+export const renderPagination = (data, options) => {
+  const $el = $(`[data-pagination][data-year="${options.year}"]`);
+
   var i = 1,
     il = data.totalPages;
   data.pages = [];
   for (; i <= il; i++) data.pages.push(i);
   $el.html(commonData.tpl.pagination.render(data));
-});
+};

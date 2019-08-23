@@ -2,10 +2,16 @@ import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonData from './data';
 import './ajax';
-import './bind';
 import './view';
 import 'jquery.cookie';
-import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
+import {
+  renderAvailableDonate,
+  renderChanzaiDonate,
+  renderSelectedYear,
+  renderTakenDonate,
+  renderTotalDonate,
+} from './render';
+
 $.ajaxSetup({
   cache: !1,
 });
@@ -18,10 +24,10 @@ $.ajaxSetup({
     $paginationContentContainers = $('#pagination-content-containers');
   seeAjax('stat', {}, function(res) {
     res.success &&
-      (seeBind.setData('total-donate', res.data.total),
-      seeBind.setData('available-donate', res.data.available),
-      seeBind.setData('taken-donate', res.data.taken),
-      seeBind.setData('chanzai-donate', res.data.chanzai));
+      (renderTotalDonate(res.data.total),
+      renderAvailableDonate(res.data.available),
+      renderTakenDonate(res.data.taken),
+      renderChanzaiDonate(res.data.chanzai));
   });
   for (i = currentYear, il = 2016; i >= il; i--) {
     $selectYearContainer.append(
@@ -30,7 +36,7 @@ $.ajaxSetup({
       })
     );
   }
-  seeBind.setData('data-selected-year', currentYear);
+  renderSelectedYear(currentYear);
   $paginationContainers.append(
     commonData.tpl.paginationContainer.render({
       year: currentYear,
