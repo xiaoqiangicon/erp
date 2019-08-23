@@ -9,6 +9,7 @@ import tpl from './tpl';
 import refreshPrizeBtn from './util/refresh_prize_btn';
 import './bind';
 import './view';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 $.ajaxSetup({
   cache: !1,
 });
@@ -34,10 +35,10 @@ $.ajaxSetup({
         })
       );
   }
-  $.seeBind.setData('data-selected-year', currentYear, {
+  seeBind.setData('data-selected-year', currentYear, {
     status: 1,
   });
-  $.seeBind.setData('data-selected-year', currentYear, {
+  seeBind.setData('data-selected-year', currentYear, {
     status: 2,
   });
   $statusContainer1.append(

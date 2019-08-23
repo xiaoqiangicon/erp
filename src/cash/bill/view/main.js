@@ -8,6 +8,7 @@ import tpl from '../tpl';
 import showPrizeDialog from '../util/show_prize_dialog';
 import seeAjax from 'see-ajax';
 import seeView from 'see-view';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 var $body = $('body'),
   $questionDialog = $('#dialog-question'),
   $confirmDialog = $('#dialog-confirm'),
@@ -61,7 +62,7 @@ seeView({
         '[data-year-content="' + year + '"][data-status="' + status + '"]'
       );
     if (year == currentYear) return;
-    $.seeBind.setData('data-selected-year', year, {
+    seeBind.setData('data-selected-year', year, {
       status: status,
     });
     $yearContainers.hide();

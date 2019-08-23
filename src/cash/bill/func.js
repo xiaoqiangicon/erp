@@ -5,6 +5,7 @@ import commonVars from 'common/variables';
 import data from './data';
 import tpl from './tpl';
 import './ajax';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 var func = {};
 func.requestBillData = function(year, status) {
   !year && (year = commonVars.today.year);
@@ -17,7 +18,7 @@ func.requestBillData = function(year, status) {
     },
     function(res) {
       if (!res.success) return;
-      $.seeBind.setData('year-content', res, {
+      seeBind.setData('year-content', res, {
         year: year,
         status: status,
       });
@@ -28,7 +29,7 @@ func.requestBillData = function(year, status) {
 func.resetStatusData = function(status) {
   var currentYear = commonVars.today.year,
     $statusContainer = $('[data-status-container="' + status + '"]');
-  $.seeBind.setData('data-selected-year', currentYear, {
+  seeBind.setData('data-selected-year', currentYear, {
     status: status,
   });
   data.statusRequested[status] = !1;

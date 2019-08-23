@@ -2,9 +2,9 @@ import $ from 'jquery';
 import _ from 'underscore';
 import commonTpl from 'common/tpl';
 import commonData from './data';
-import 'lib/jquery.seeBind';
-$.seeBind.bind('data-select-date', '[data-select-date="{{index}}"]', 'val');
-$.seeBind.bind(
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
+seeBind.bind('data-select-date', '[data-select-date="{{index}}"]', 'val');
+seeBind.bind(
   'pagination-content',
   '[data-pagination-content="{{page}}"]' +
     '[data-start-date="{{startDate}}"][data-end-date="{{endDate}}"]',
@@ -16,7 +16,7 @@ $.seeBind.bind(
     $el.html(htmlString || commonTpl.noData);
   }
 );
-$.seeBind.bind(
+seeBind.bind(
   'pagination',
   '[data-pagination]' +
     '[data-start-date="{{startDate}}"][data-end-date="{{endDate}}"]',

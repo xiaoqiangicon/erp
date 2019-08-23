@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import juicer from 'juicer';
 import seeAjax from 'see-ajax';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 var data = {};
 data.today = (function() {
   var currentDateObj = new Date(),
@@ -57,12 +58,12 @@ data.requestList = function(startDate, endDate, page) {
     },
     function(res) {
       res.success &&
-        ($.seeBind.setData('pagination-content', res.data, {
+        (seeBind.setData('pagination-content', res.data, {
           startDate: startDate,
           endDate: endDate,
           page: page,
         }),
-        $.seeBind.setData(
+        seeBind.setData(
           'pagination',
           {
             currentPage: page,

@@ -3,7 +3,7 @@ import _ from 'underscore';
 import Chart from 'chart.js';
 import commonTpl from 'common/tpl';
 import commonData from './data';
-import 'lib/jquery.seeBind';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 var chart;
 var chartConfig;
 var chartColors = {
@@ -29,7 +29,7 @@ var chartMonths = [
   '11月',
   '12月',
 ];
-$.seeBind.bind('chart', '#chart-section-canvas', function($el, data) {
+seeBind.bind('chart', '#chart-section-canvas', function($el, data) {
   for (var i = 0, il = 12; i < il; i++) {
     typeof data.months[i] == 'undefined' && (data.months[i] = 0);
   }
@@ -106,21 +106,18 @@ $.seeBind.bind('chart', '#chart-section-canvas', function($el, data) {
     chart.update();
   }
 });
-$.seeBind.bind('total-donate', '#total-donate', 'text');
-$.seeBind.bind('available-donate', '#available-donate', 'text');
-$.seeBind.bind('taken-donate', '#taken-donate', 'text');
-$.seeBind.bind('chanzai-donate', '#chanzai-donate', 'text');
-$.seeBind.bind('data-selected-year', '[data-selected-year]', function(
-  $el,
-  year
-) {
+seeBind.bind('total-donate', '#total-donate', 'text');
+seeBind.bind('available-donate', '#available-donate', 'text');
+seeBind.bind('taken-donate', '#taken-donate', 'text');
+seeBind.bind('chanzai-donate', '#chanzai-donate', 'text');
+seeBind.bind('data-selected-year', '[data-selected-year]', function($el, year) {
   $el
     .attr({
       'data-selected-year': year,
     })
     .text(year + '年');
 });
-$.seeBind.bind(
+seeBind.bind(
   'pagination-content',
   '[data-pagination-content="{{page}}"][data-year="{{year}}"]',
   function($el, data) {
@@ -131,10 +128,7 @@ $.seeBind.bind(
     $el.html(htmlString || commonTpl.noData);
   }
 );
-$.seeBind.bind('pagination', '[data-pagination="{{year}}"]', function(
-  $el,
-  data
-) {
+seeBind.bind('pagination', '[data-pagination="{{year}}"]', function($el, data) {
   var i = 1,
     il = data.totalPages;
   data.pages = [];

@@ -2,6 +2,7 @@ import $ from 'jquery';
 import fn from 'common/function';
 import commonData from './data';
 import seeView from 'see-view';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 seeView({
   events: {
     'click [data-select-year]': 'onClickSelectYear',
@@ -26,7 +27,7 @@ seeView({
       $paginationContainers = $('#pagination-containers');
     var currentPage;
     if (year == currentYear) return;
-    $.seeBind.setData('data-selected-year', year);
+    seeBind.setData('data-selected-year', year);
     $yearContainers.hide();
     $paginations.hide();
     if (!$targetYearContainer.length) {
@@ -55,7 +56,7 @@ seeView({
           'data-page-index'
         )
       );
-      $.seeBind.setData('chart', {
+      seeBind.setData('chart', {
         year: year,
         months: commonData.monthDataForChart[year][currentPage],
       });
@@ -91,11 +92,11 @@ seeView({
       $currentYearContent.append($targetPaginationContent);
       commonData.requestList(year, page);
     } else {
-      $.seeBind.setData('chart', {
+      seeBind.setData('chart', {
         year: year,
         months: commonData.monthDataForChart[year][page],
       }),
-        $.seeBind.setData(
+        seeBind.setData(
           'pagination',
           {
             currentPage: page,

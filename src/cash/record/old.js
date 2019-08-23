@@ -4,6 +4,7 @@ import './ajax';
 import './bind';
 import './view';
 import 'lib/bootstrap-material-datetimepicker';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 $.ajaxSetup({
   cache: !1,
 });
@@ -25,10 +26,10 @@ $.ajaxSetup({
       commonData.params.year,
       commonData.params.month
     )),
-    $.seeBind.setData('data-select-date', defaultExtremeDate.start, {
+    seeBind.setData('data-select-date', defaultExtremeDate.start, {
       index: 1,
     }),
-    $.seeBind.setData('data-select-date', defaultExtremeDate.end, {
+    seeBind.setData('data-select-date', defaultExtremeDate.end, {
       index: 2,
     }));
   $paginationContainers.append(

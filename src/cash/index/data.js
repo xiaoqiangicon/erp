@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import juicer from 'juicer';
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
 var data = {
   monthsData: {},
   monthDataForChart: {},
@@ -38,11 +39,11 @@ data.requestList = function(year, page) {
     },
     function(res) {
       res.success &&
-        ($.seeBind.setData('pagination-content', res.data, {
+        (seeBind.setData('pagination-content', res.data, {
           year: year,
           page: page,
         }),
-        $.seeBind.setData(
+        seeBind.setData(
           'pagination',
           {
             currentPage: page,
@@ -60,7 +61,7 @@ data.requestList = function(year, page) {
         res.data.map(function(item) {
           data.monthDataForChart[year][page][item.month - 1] = item.money;
         }),
-        $.seeBind.setData('chart', {
+        seeBind.setData('chart', {
           year: year,
           months: data.monthDataForChart[year][page],
         }));

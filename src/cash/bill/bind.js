@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import tpl from './tpl';
-import 'lib/jquery.seeBind';
-$.seeBind.bind(
+import * as seeBind from '../../../../pro-com/src/libs-es5/see-bind';
+seeBind.bind(
   'data-selected-year',
   '[data-selected-year][data-status="{{status}}"]',
   function($el, year) {
@@ -13,7 +13,7 @@ $.seeBind.bind(
       .text(year + '年');
   }
 );
-$.seeBind.bind(
+seeBind.bind(
   'year-content',
   '[data-year-content="{{year}}"][data-status="{{status}}"]',
   function($el, data) {
