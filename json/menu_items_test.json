@@ -121,6 +121,31 @@
           "controlMark": "pw_money_center"
         }
       ]
+    },
+    {
+      "id": "insurance",
+      "name": "医保管理",
+      "icon": "",
+      "subItems": [
+        {
+          "id": "insurance-index",
+          "name": "待办事项",
+          "link": "/zzhadmin/insuranceIndex/",
+          "controlMark": "pw_money_center"
+        },
+        {
+          "id": "insurance-person",
+          "name": "人员管理",
+          "link": "/zzhadmin/insuranceIndex/",
+          "controlMark": "pw_money_center"
+        },
+        {
+          "id": "insurance-insured",
+          "name": "投保管理",
+          "link": "/zzhadmin/insuranceIndex/",
+          "controlMark": "pw_money_center"
+        }
+      ]
     }
   ],
   "superItems": [
