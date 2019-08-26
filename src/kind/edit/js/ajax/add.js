@@ -1,5 +1,5 @@
 import seeAjax from 'see-ajax';
-import preHandle from './pre_handle_add';
+// import preHandle from './pre_handle_add';
 const requestKeys = {
   title: 'name',
   intro: 'details',
@@ -18,5 +18,5 @@ seeAjax.config('add', {
     '/src/kind/edit/data/add.json',
   ],
   requestKeys: [requestKeys, requestKeys],
-  preHandle: [preHandle, preHandle],
+  // preHandle: [preHandle, preHandle],
 });

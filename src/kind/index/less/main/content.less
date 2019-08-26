@@ -1,0 +1,265 @@
+.main-content {
+  padding-left: 30px;
+}
+.publish-content {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  padding-left: 16px;
+}
+.content-tips {
+  font-size: 14px;
+  font-weight: normal;
+  margin-right: 30px;
+}
+.content-block {
+  position: relative;
+}
+.type-content {
+  width: 600px;
+  height: 140px;
+  resize: none;
+  border: 1px dashed #ccc;
+  border-radius: 12px;
+  padding: 10px 10px;
+  line-height: 14px;
+  outline: none;
+}
+
+.text-3 {
+  position: absolute;
+  left: 540px;
+  top: 120px;
+}
+
+// 上传模块
+.publish-media {
+  display: flex;
+  margin-top: 40px;
+}
+
+.publish-media-tips {
+  line-height: 40px;
+  margin-right: 24px;
+}
+.upload-block-btn {
+  display: flex;
+  align-items: center;
+}
+
+// 视频
+.item-video-1 {
+  position: relative;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  video {
+    width: 100px;
+    height: 100px;
+  }
+}
+.item-video-1 .common-delete {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  z-index: 5;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  color: white;
+  outline: none;
+  display: none;
+}
+
+.video-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.2)
+    url('https://pic.zizaihome.com/576972e8-be5d-11e9-a5c6-00163e0c001e.png')
+    center no-repeat;
+}
+// 视频上传进度条
+.schedule-video-upload-loading {
+  overflow: hidden;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  background: #ddd;
+}
+
+.schedule-video-upload-loading .progress-container {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+.schedule-video-upload-loading .progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+.schedule-video-upload-loading .progress {
+  width: 0;
+  height: 100%;
+  background: #5cb85c;
+}
+
+.schedule-video {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.schedule-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: -20px 0 0 -20px;
+  cursor: pointer;
+}
+.schedule-video-del {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+// 上传的图片/视频
+.media {
+  display: flex;
+  max-width: 600px;
+  flex-wrap: wrap;
+}
+.item-0-1 {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+.item-0-1 .common-delete {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: black;
+  border-radius: 50%;
+  color: white;
+  outline: none;
+  display: none;
+  z-index: 6;
+}
+.item-0-1:hover .common-delete {
+  display: block;
+}
+.item-video-1:hover .common-delete {
+  display: block;
+}
+
+// 结束
+
+.upload-btn {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.upload-pic {
+  margin-right: 30px;
+  color: white;
+  background: rgb(24, 144, 255);
+}
+.upload-video {
+  position: relative;
+  border: 1px solid #ccc;
+}
+.upload-fails {
+  height: 24px;
+  padding: 0 10px;
+  line-height: 24px;
+  box-shadow: 0 0 5px #999;
+  border-radius: 4px;
+  margin-left: 20px;
+  .fail-warn {
+    color: orange;
+    font-weight: bold;
+    margin-right: 14px;
+  }
+}
+.upload-tips {
+  width: 400px;
+  margin-top: 20px;
+  color: #999;
+}
+
+// 设置推送
+.set-push {
+  margin-top: 20px;
+  padding-left: 16px;
+}
+.set-push-tips {
+  margin-right: 30px;
+}
+.push-select {
+  padding-left: 20px;
+  background: url('https://pic.zizaihome.com/990d545a-bcdf-11e9-931c-00163e0c001e.png')
+    no-repeat;
+  background-size: 16px 16px;
+  cursor: pointer;
+}
+.push-select-active {
+  background: url('https://pic.zizaihome.com/990d54be-bcdf-11e9-a063-00163e0c001e.png')
+    no-repeat;
+  background-size: 16px 16px;
+}
+.remain-time-content {
+  display: inline-block;
+  border: 1px solid rgb(111, 184, 44);
+  background: rgb(220, 248, 194);
+  color: rgb(111, 184, 44);
+  border-radius: 4px;
+  margin-left: 10px;
+  padding: 0 4px;
+}
+.no-push {
+  margin-left: 40px;
+}
+
+// 保存
+.save {
+  width: 160px;
+  height: 40px;
+  margin: 20px auto 0;
+  line-height: 40px;
+  text-align: center;
+  background: rgb(24, 144, 255);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -17,6 +17,7 @@ seeView({
     const handling = !!parseInt($this.attr('data-handling'), 10);
     if (handling) return;
     const result = checkBeforeSave();
+    console.log(result.data);
     if (!result.success) return;
     $this
       .attr({

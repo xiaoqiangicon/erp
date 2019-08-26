@@ -14,6 +14,10 @@ seeView({
     'click [data-row-delete]': 'onClickRowDelete',
     // 点击显示更多
     'click [data-row-more]': 'onClickRowMore',
+    // 显示隐藏视频
+    'click .video-show': 'onClickVideoShow',
+    // 显示隐藏发布进展
+    'click .publish-mask': 'onClickPublishMask',
   },
   onClickRowEdit: e => {
     const $this = $(e.target);
@@ -83,5 +87,19 @@ seeView({
       }
     });
     e.stopPropagation();
+  },
+
+  // 点击隐藏发布进展
+  onClickPublishMask: e => {
+    if (e.target === e.currentTarget) {
+      $('.publish-mask').hide();
+    }
+  },
+
+  // 点击隐藏播放视频
+  onClickVideoShow: e => {
+    if (e.target === e.currentTarget) {
+      $(e.target).hide();
+    }
   },
 });

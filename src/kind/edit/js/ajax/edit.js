@@ -1,6 +1,6 @@
 import seeAjax from 'see-ajax';
 import zzhUtil from '../../../../../old-com/util/src';
-import preHandleAdd from './pre_handle_add';
+// import preHandleAdd from './pre_handle_add';
 const requestKeys = {
   title: 'name',
   intro: 'details',
@@ -12,7 +12,7 @@ const requestKeys = {
 };
 const preHandle = req => {
   req.charityId = zzhUtil.urlParams.id;
-  preHandleAdd(req);
+  // preHandleAdd(req);
 };
 seeAjax.config('edit', {
   method: ['post'],
