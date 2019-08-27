@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="search-row">
-        <el-input style="width: 150px;" size="medium" />
+        <el-input style="width: 200px;" size="medium" />
         <el-button type="primary">
           搜索
         </el-button>
@@ -121,7 +121,7 @@
               <a
                 class="s-a"
                 href="javascript:void(0);"
-                @click="onClickDelete(scope.row)"
+                @click="onClickWithdraw(scope.row)"
                 >撤回</a
               >
             </div>
@@ -153,16 +153,27 @@
         :total="totalCount"
       />
     </div>
+    <SetValid />
+    <Delete />
+    <Withdraw />
   </main>
 </template>
 
 <script>
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
+import SetValid from './components/SetValid';
+import Delete from './components/Delete';
+import Withdraw from './components/Withdraw';
 
 export default {
   name: 'App',
   components: {},
+  components: {
+    SetValid,
+    Delete,
+    Withdraw,
+  },
   data() {
     return {
       nameId: '', // 搜索请求参数
@@ -213,9 +224,16 @@ export default {
     },
     onClickSetTime() {},
     onClickSetInsuranceId() {},
-    onClickSetValid() {},
+    onClickSetValid() {
+      this.$store.commit({ type: 'updateSetValidVisible', state: true });
+    },
     onClickManage() {},
-    onClickDelete() {},
+    onClickDelete() {
+      this.$store.commit({ type: 'updateSetDeleteVisible', state: true });
+    },
+    onClickWithdraw() {
+      this.$store.commit({ type: 'updateSetWithdrawVisible', state: true });
+    },
   },
 };
 </script>
@@ -252,6 +270,10 @@ main {
 .search-row {
   display: flex;
   align-items: center;
+  margin: 20px 0 20px 20px;
+  button {
+    margin-left: 20px;
+  }
 }
 
 .not-set {
