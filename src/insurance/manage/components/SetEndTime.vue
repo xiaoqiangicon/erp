@@ -1,9 +1,9 @@
 <template>
   <transition name="slide-fade">
     <div v-show="visible" class="s-mask" @click.self="onClickMask">
-      <el-card class="box-card delete">
+      <el-card class="box-card end-time">
         <div slot="header" class="clearfix">
-          <span>撤回生效</span>
+          <span>到期时间</span>
           <el-button
             style="float: right; padding: 3px 0"
             type="text"
@@ -13,14 +13,23 @@
           </el-button>
         </div>
         <div class="text item">
-          <p class="info">
-            如核查人员或信息有问题，可撤回“生效中”状态后修改再设为“生效中”
-          </p>
+          <div class="text-content">
+            <p class="info">
+              保险到期时间
+            </p>
+            <el-date-picker
+              v-model="setEndTime"
+              align="right"
+              type="date"
+              placeholder="选择日期"
+            >
+            </el-date-picker>
+          </div>
           <div class="operate">
             <el-button type="primary" class="cancel" @click="onClickMask">
               取消
             </el-button>
-            <el-button type="primary" class="confirm">
+            <el-button type="primary" class="confirm" @click="onClickConfirm">
               确认
             </el-button>
           </div>
@@ -33,19 +42,28 @@
 <script>
 export default {
   name: 'Detail',
+  props: {
+    endTime: ,
+  },
   components: {},
   data() {
-    return {};
+    return {
+      setEndTime: ''
+    };
   },
   computed: {
     visible() {
-      return this.$store.state.setWithdrawDialogVisible;
+      return this.$store.state.setEndTimeDialogVisible;
     },
   },
   methods: {
     onClickMask() {
-      this.$store.commit({ type: 'updateSetWithdrawVisible', state: false });
+      this.$store.commit({ type: 'updateSetEndTimeVisible', state: false });
     },
+    onClickConfirm() {
+      this.$emit('update:endTime', this.setEndTime);
+      // this.$store.commit({ type: 'updateSetEndTimeVisible', state: false });
+    }
   },
 };
 </script>
@@ -93,17 +111,15 @@ export default {
   width: 380px;
 }
 
-.delete {
+.end-time {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.info {
-  height: 100px;
-  padding-top: 24px;
-  text-align: center;
+.text-content {
+  padding-left: 20px;
 }
 
 .operate {

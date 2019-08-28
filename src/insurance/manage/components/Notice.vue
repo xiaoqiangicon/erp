@@ -1,9 +1,9 @@
 <template>
   <transition name="slide-fade">
     <div v-show="visible" class="s-mask" @click.self="onClickMask">
-      <el-card class="box-card delete">
+      <el-card class="box-card notice">
         <div slot="header" class="clearfix">
-          <span>撤回生效</span>
+          <span>续保提醒</span>
           <el-button
             style="float: right; padding: 3px 0"
             type="text"
@@ -14,7 +14,7 @@
         </div>
         <div class="text item">
           <p class="info">
-            如核查人员或信息有问题，可撤回“生效中”状态后修改再设为“生效中”
+            点击后将会通过APP提醒知这批用户中“未续保”的人员,进行续保操作
           </p>
           <div class="operate">
             <el-button type="primary" class="cancel" @click="onClickMask">
@@ -39,12 +39,12 @@ export default {
   },
   computed: {
     visible() {
-      return this.$store.state.setWithdrawDialogVisible;
+      return this.$store.state.noticeDialogVisible;
     },
   },
   methods: {
     onClickMask() {
-      this.$store.commit({ type: 'updateSetWithdrawVisible', state: false });
+      this.$store.commit({ type: 'updateNoticeVisible', state: false });
     },
   },
 };
@@ -93,7 +93,7 @@ export default {
   width: 380px;
 }
 
-.delete {
+.notice {
   position: absolute;
   left: 50%;
   top: 50%;

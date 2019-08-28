@@ -102,7 +102,7 @@ export default {
 
 .info {
   height: 100px;
-  line-height: 100px;
+  padding-top: 24px;
   text-align: center;
 }
 

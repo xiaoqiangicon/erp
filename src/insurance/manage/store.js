@@ -8,6 +8,9 @@ const store = new Vuex.Store({
     setValidDialogVisible: false,
     setDeleteDialogVisible: false,
     setWithdrawDialogVisible: false,
+    setEndTimeDialogVisible: false,
+    setInsuranceIdDialogVisible: false,
+    noticeDialogVisible: false,
   },
   mutations: {
     updateSetValidVisible(state, payload) {
@@ -18,6 +21,15 @@ const store = new Vuex.Store({
     },
     updateSetWithdrawVisible(state, payload) {
       state.setWithdrawDialogVisible = payload.state;
+    },
+    updateSetEndTimeVisible(state, payload) {
+      state.setEndTimeDialogVisible = payload.state;
+    },
+    updateSetInsranceIdVisible(state, payload) {
+      state.setInsuranceIdDialogVisible = payload.state;
+    },
+    updateNoticeVisible(state, payload) {
+      state.noticeDialogVisible = payload.state;
     },
   },
 });

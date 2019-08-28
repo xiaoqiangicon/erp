@@ -48,19 +48,19 @@
               <div v-if="scope.row.end_time">
                 {{ scope.row.end_time }}
               </div>
-              <div v-else class="not-set" @click="onClickSetTime">
+              <div v-else class="not-set" @click="onClickSetTime(scope.row)">
                 <span>未设置</span>
                 <i class="el-icon-edit-outline" style="color: #409eff" />
               </div>
             </div>
             <div v-if="type == 2">
-              <div class="" @click="onClickSetTime">
+              <div class="" @click="onClickSetTime(scope.row)">
                 <span>{{ scope.row.end_time }}</span>
                 <i class="el-icon-edit-outline" style="color: #409eff" />
               </div>
             </div>
             <div v-if="type == 3">
-              <div class="" @click="onClickSetTime">
+              <div class="">
                 <span>{{ scope.row.end_time }}</span>
                 <span class="expire-sign">过期</span>
               </div>
@@ -70,15 +70,19 @@
         <el-table-column width="100" label="保险单号" show-overflow-tooltip>
           <template slot-scope="scope">
             <div v-if="type == 1">
-              <div v-if="scope.row.insurance_id">
-                {{ scope.row.insurance_id }}
+              <div v-if="scope.row.insurance_id | insuranceId">
+                {{ insuranceId ? insuranceId : scope.row.insurance_id }}
               </div>
-              <div v-else class="not-set" @click="onClickSetInsuranceId">
+              <div
+                v-else
+                class="not-set"
+                @click="onClickSetInsuranceId(scope.row)"
+              >
                 <span>未设置</span>
                 <i class="el-icon-edit-outline" style="color: #409eff" />
               </div>
             </div>
-            <div v-else>
+            <div v-else @click="onClickSetInsuranceId(scope.row)">
               <div>
                 {{ scope.row.insurance_id }}
                 <i class="el-icon-edit-outline" style="color: #409eff" />
@@ -135,7 +139,7 @@
               <a
                 class="s-a"
                 href="javascript:void(0);"
-                @click="onClickDelete(scope.row)"
+                @click="onClickNotice(scope.row)"
                 >通知续保</a
               >
             </div>
@@ -153,18 +157,23 @@
         :total="totalCount"
       />
     </div>
-    <SetValid />
-    <Delete />
-    <Withdraw />
+    <SetValid :set-valid-id="setValidId" />
+    <Delete :delete-id="deleteId" />
+    <Withdraw :withdraw-id="withdrawId" />
+    <SetEndTime :end-time.sync="endTime" />
+    <SetInsuranceId :insurance-id.sync="insuranceId" />
+    <Notice />
   </main>
 </template>
 
 <script>
-import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
 import SetValid from './components/SetValid';
 import Delete from './components/Delete';
 import Withdraw from './components/Withdraw';
+import SetEndTime from './components/SetEndTime';
+import SetInsuranceId from './components/SetInsuranceId';
+import Notice from './components/Notice';
 
 export default {
   name: 'App',
@@ -173,23 +182,33 @@ export default {
     SetValid,
     Delete,
     Withdraw,
+    SetEndTime,
+    SetInsuranceId,
+    Notice,
   },
   data() {
     return {
       nameId: '', // 搜索请求参数
       distributeId: '', // 分配编号
-      list: [],
-      type: 1,
-      input: '',
-      currentPage: 1,
-      currentSize: 25,
-      totalCount: 0,
+      list: [], // 列表信息
+      type: 1, // 生效状态
+      endTime: '', // 需要修改的截至时间
+      setValidId: '',
+      deleteId: '',
+      withdrawId: '',
+      insuranceId: '', // 需要修改的保险单号
+      currentPage: 1, // 当前页数
+      currentSize: 25, // 一页的数据量
+      totalCount: 0, // 总数量
     };
   },
   computed: {
     selected() {
       return this.$store.state.selected;
     },
+  },
+  watch: {
+    endTime() {},
   },
   created() {
     this.requestList();
@@ -222,17 +241,28 @@ export default {
 
       this.type = type;
     },
-    onClickSetTime() {},
-    onClickSetInsuranceId() {},
+    onClickSetTime(data) {
+      this.endTime = data.end_time;
+      this.$store.commit({ type: 'updateSetEndTimeVisible', state: true });
+    },
+    onClickSetInsuranceId(data) {
+      this.insuranceId = data.insurance_id;
+      this.$store.commit({ type: 'updateSetInsranceIdVisible', state: true });
+    },
     onClickSetValid() {
       this.$store.commit({ type: 'updateSetValidVisible', state: true });
     },
-    onClickManage() {},
+    onClickManage(data) {
+      console.log(data.id);
+    },
     onClickDelete() {
       this.$store.commit({ type: 'updateSetDeleteVisible', state: true });
     },
     onClickWithdraw() {
       this.$store.commit({ type: 'updateSetWithdrawVisible', state: true });
+    },
+    onClickNotice() {
+      this.$store.commit({ type: 'updateNoticeVisible', state: true });
     },
   },
 };

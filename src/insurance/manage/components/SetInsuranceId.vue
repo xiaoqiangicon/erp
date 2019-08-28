@@ -1,9 +1,9 @@
 <template>
   <transition name="slide-fade">
     <div v-show="visible" class="s-mask" @click.self="onClickMask">
-      <el-card class="box-card delete">
+      <el-card class="box-card end-time">
         <div slot="header" class="clearfix">
-          <span>撤回生效</span>
+          <span>保险单号</span>
           <el-button
             style="float: right; padding: 3px 0"
             type="text"
@@ -13,14 +13,14 @@
           </el-button>
         </div>
         <div class="text item">
-          <p class="info">
-            如核查人员或信息有问题，可撤回“生效中”状态后修改再设为“生效中”
-          </p>
+          <div class="text-content">
+            <el-input v-model="newInsuranceId" placeholder="请填写保险单号" />
+          </div>
           <div class="operate">
             <el-button type="primary" class="cancel" @click="onClickMask">
               取消
             </el-button>
-            <el-button type="primary" class="confirm">
+            <el-button type="primary" class="confirm" @click="onClickConfirm">
               确认
             </el-button>
           </div>
@@ -33,19 +33,30 @@
 <script>
 export default {
   name: 'Detail',
-  components: {},
+  props: {
+    insuranceId: ,
+  },
   data() {
-    return {};
+    return {
+      newInsuranceId: ''
+    };
+  },
+  created() {
+    this.newInsuranceId = this.insuranceId;
   },
   computed: {
     visible() {
-      return this.$store.state.setWithdrawDialogVisible;
+      return this.$store.state.setInsuranceIdDialogVisible;
     },
   },
   methods: {
     onClickMask() {
-      this.$store.commit({ type: 'updateSetWithdrawVisible', state: false });
+      this.$store.commit({ type: 'updateSetInsranceIdVisible', state: false });
     },
+    onClickConfirm() {
+      this.$emit('update:insuranceId', this.newInsuranceId);
+      // this.$store.commit({ type: 'updateSetInsranceIdVisible', state: false });
+    }
   },
 };
 </script>
@@ -93,17 +104,15 @@ export default {
   width: 380px;
 }
 
-.delete {
+.end-time {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.info {
-  height: 100px;
-  padding-top: 24px;
-  text-align: center;
+.text-content {
+  padding-left: 20px;
 }
 
 .operate {
