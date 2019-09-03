@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import seeAjax from 'see-ajax';
 import commonVars from 'common/variables';
 import commonFunc from 'common/function';
 import data from './data';
@@ -6,7 +7,7 @@ import './ajax';
 var func = {};
 func.init = function() {
   if (data.isEdit) {
-    $.seeAjax.get('info', {}, function(res) {
+    seeAjax('info', {}, function(res) {
       if (res.success) {
         if (data.type == 2) {
           res.data.templateImage = res.data.licenceImage;

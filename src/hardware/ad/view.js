@@ -1,13 +1,14 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
 import data from './data';
 import tpl from './tpl';
 import func from './function';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
-$.seeView({
+seeView({
   events: {
     'click [data-row-switch]': 'onClickRowSwitch',
   },
@@ -16,7 +17,7 @@ $.seeView({
       id = parseInt($this.attr('data-row-switch')),
       hide = parseInt($this.attr('data-hide')) || 0,
       targetHide = 1 - hide;
-    $.seeAjax.post(
+    seeAjax(
       'switch',
       {
         id: id,

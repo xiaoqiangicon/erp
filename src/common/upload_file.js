@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import commonFunc from './function';
 import '../../pro-com/src/jquery-file-upload/js/jquery.fileupload';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var env;
 var url;
 var upload = function(el, option, done, progress) {
@@ -25,7 +25,7 @@ var upload = function(el, option, done, progress) {
       'common/upload_file: 未知父容器；父容器必须是：selector选择器, dom对象, jquery对象'
     );
   if (typeof env == 'undefined') {
-    env = $.seeAjax.getEnv();
+    env = seeAjax.getEnv();
     url = env === 0 ? '/zzhadmin/uploadPic/' : '/mock/upload.json';
   }
   var defaultOption = {

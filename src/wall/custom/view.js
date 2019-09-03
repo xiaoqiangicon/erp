@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -6,10 +7,10 @@ import data from './data';
 import tpl from './tpl';
 import func from './function';
 import './ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
-$.seeView({
+seeView({
   events: {
     '!click #action-filter': 'onClickActionFilter',
     'click [data-page-index]': 'onClickPageIndex',
@@ -40,7 +41,7 @@ $.seeView({
   onClickRowDetail: function(e) {
     var $this = $(e.target),
       id = parseInt($this.attr('data-row-detail'));
-    $.seeAjax.post(
+    seeAjax(
       'detail',
       {
         id: id,
@@ -77,8 +78,7 @@ $.seeView({
         } else {
           toastr.error(res.message || '获取订单信息失败，请稍后再试');
         }
-      },
-      !0
+      }
     );
   },
   onClickModal: function(e) {
@@ -92,7 +92,7 @@ $.seeView({
       $this = $(e.target),
       id = parseInt($this.attr('data-row-delete'));
     commonFunc.confirm('确定删除这条订单吗', function() {
-      $.seeAjax.post(
+      seeAjax(
         'delete',
         {
           id: id,
@@ -104,8 +104,7 @@ $.seeView({
           } else {
             toastr.error(res.message || '删除失败，请稍后再试');
           }
-        },
-        !0
+        }
       );
     });
   },

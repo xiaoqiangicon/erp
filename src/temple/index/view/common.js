@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -7,8 +8,8 @@ import dialog from 'util/dialog';
 import func from '../function';
 import indexData from '../data';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-container="component-display"]': 'onClickComponentDisplay',
     'click [data-action="edit-component"]': 'onClickEditComponent',
@@ -147,7 +148,7 @@ $.seeView({
         $this.attr({
           'data-handling': 1,
         });
-        $.seeAjax.get(
+        seeAjax(
           'deleteComponent',
           {
             id: id,

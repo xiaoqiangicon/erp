@@ -7,9 +7,9 @@ import tpl from '../tpl';
 import func from '../function';
 import ChooseImage from '../../../../old-com/choose-image/src';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var coverUpload, previewUpload, shareUpload;
-$.seeView({
+seeView({
   events: {
     'click [data-cover-image-cell-delete]': 'onClickCoverImageCellDelete',
     'click [data-preview-image-cell-delete]': 'onClickPreviewImageCellDelete',

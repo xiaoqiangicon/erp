@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   categoryCell: `
         <option value="\${id}" data-category-cell="\${id}">\${name}</option>

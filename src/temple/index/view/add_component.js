@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import clone from 'clone';
 import indexData from '../data';
@@ -16,7 +17,7 @@ import figureUtil from './figure/util';
 import houseUtil from './house/util';
 import 'lib/bootstrap-material-datetimepicker';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '../ajax';
 var tpls = [
   introTpl,
@@ -27,7 +28,7 @@ var tpls = [
   shortcutTpl,
   houseTpl,
 ];
-$.seeView({
+seeView({
   events: {
     'click [data-action="component-add"]': 'onClickComponentAdd',
   },
@@ -92,7 +93,7 @@ $.seeView({
         $displayComponent.siblings().removeClass('active'));
     var editComponentData = {
       id: currentComponentId,
-      fileMark: $.seeAjax.getEnv() === 2 ? 'files[]' : 'file',
+      fileMark: seeAjax.getEnv() === 2 ? 'files[]' : 'file',
       isUpdate: 0,
       sortId: 0,
     };

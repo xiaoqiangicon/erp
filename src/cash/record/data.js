@@ -1,6 +1,8 @@
 import $ from 'jquery';
-import 'juicer';
-import 'lib/jquery.seeAjax';
+import juicer from 'juicer';
+import seeAjax from 'see-ajax';
+import { renderPagination, renderPaginationContent } from './render';
+
 var data = {};
 data.today = (function() {
   var currentDateObj = new Date(),
@@ -48,7 +50,7 @@ data.requestList = function(startDate, endDate, page) {
   !startDate && (startDate = '');
   !endDate && (endDate = '');
   !page && (page = 1);
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       startDate: startDate,
@@ -57,13 +59,12 @@ data.requestList = function(startDate, endDate, page) {
     },
     function(res) {
       res.success &&
-        ($.seeBind.setData('pagination-content', res.data, {
+        (renderPaginationContent(res.data, {
           startDate: startDate,
           endDate: endDate,
           page: page,
         }),
-        $.seeBind.setData(
-          'pagination',
+        renderPagination(
           {
             currentPage: page,
             totalPages: res.totalPages,

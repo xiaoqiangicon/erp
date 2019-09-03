@@ -1,8 +1,10 @@
 import $ from 'jquery';
 import fn from 'common/function';
 import commonData from './data';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+import { renderChart, renderPagination, renderSelectedYear } from './render';
+
+seeView({
   events: {
     'click [data-select-year]': 'onClickSelectYear',
     'click [data-page-index]': 'onClickPageIndex',
@@ -26,7 +28,7 @@ $.seeView({
       $paginationContainers = $('#pagination-containers');
     var currentPage;
     if (year == currentYear) return;
-    $.seeBind.setData('data-selected-year', year);
+    renderSelectedYear(year);
     $yearContainers.hide();
     $paginations.hide();
     if (!$targetYearContainer.length) {
@@ -55,7 +57,7 @@ $.seeView({
           'data-page-index'
         )
       );
-      $.seeBind.setData('chart', {
+      renderChart({
         year: year,
         months: commonData.monthDataForChart[year][currentPage],
       });
@@ -91,21 +93,20 @@ $.seeView({
       $currentYearContent.append($targetPaginationContent);
       commonData.requestList(year, page);
     } else {
-      $.seeBind.setData('chart', {
+      renderChart({
         year: year,
         months: commonData.monthDataForChart[year][page],
-      }),
-        $.seeBind.setData(
-          'pagination',
-          {
-            currentPage: page,
-            totalPages: totalPages,
-            year: year,
-          },
-          {
-            year: year,
-          }
-        );
+      });
+      renderPagination(
+        {
+          currentPage: page,
+          totalPages: totalPages,
+          year: year,
+        },
+        {
+          year: year,
+        }
+      );
     }
     $targetPaginationContent.show();
   },

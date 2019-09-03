@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var appConfig = {
   environment: 0,
 };

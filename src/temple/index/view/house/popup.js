@@ -7,10 +7,10 @@ import houseTpl from '../../tpl/house';
 import dialog from '../../../../util/dialog';
 import share from '../../share';
 import util from './util';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import 'component/choose_icon_config/index';
 var choose;
-$.seeView({
+seeView({
   events: {
     'click [data-edit-pop-house-cover-row-del]': 'clickCoverRowDel',
     'click #edit-pop-house-add-cover': 'clickAddCover',

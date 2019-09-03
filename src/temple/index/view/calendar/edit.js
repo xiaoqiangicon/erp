@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import indexData from '../../data';
 import commonTpl from '../../tpl/common';
@@ -5,8 +6,8 @@ import calendarTpl from '../../tpl/calendar';
 import calendarViewUtil from './util';
 import 'lib/bootstrap-material-datetimepicker';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-edit-calendar-add]': 'onClickEditCalendarAdd',
     'click [data-calendar-popup-add-huddhist]':
@@ -88,7 +89,7 @@ $.seeView({
         pageIndex: 1,
       })
     );
-    $.seeAjax.get(
+    seeAjax(
       'calendarBuddhist',
       {
         page: 1,

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   buddhaCell: juicer($('#tpl-buddha-cell').html()),
   tagCell: juicer($('#tpl-tag-cell').html()),

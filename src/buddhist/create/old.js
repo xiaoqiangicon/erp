@@ -12,7 +12,7 @@ import StoreImage from '../../../old-com/store-image/src';
 import purifyATarget from 'util/purify_a_target';
 import doRequest from 'old/utils';
 import 'old/backbone';
-import 'juicer';
+import juicer from 'juicer';
 import 'jquery-confirm';
 import 'bootstrap-select';
 import 'bootstrap-switch';

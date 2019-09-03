@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 const displayComponents = `
 {@if components && components.length}
 {@each components as com, index}

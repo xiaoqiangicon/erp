@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+import seeAjax from 'see-ajax';
+var requestKeys = {
   orders: {
     regionId: 'wallId',
     remainDays: 'endDays',
@@ -15,7 +15,7 @@ var requestKeysOuter = {
     id: 'id',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   regions: {
     data: [
       {
@@ -47,14 +47,14 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   orders: function(req) {
     req.pageSize = 20;
     req.pageIndex -= 1;
     !req.endDays && (req.endDays = 0);
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -123,15 +123,7 @@ var postHandleOuter = {
     }
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    houses: 'houses',
-    regions: 'regions',
-    orders: 'orders',
-    detail: 'detail',
-    delete: 'delete',
-  },
+const configs = {
   url: {
     houses: [
       '/zzhadmin/buddhaWall_hallList/',
@@ -161,8 +153,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     orders: [
-      requestKeysOuter.orders,
-      requestKeysOuter.orders,
+      requestKeys.orders,
+      requestKeys.orders,
       {
         regionId: 'regionId',
         remainDays: 'remainDays',
@@ -171,32 +163,82 @@ $.seeAjax.config({
       },
     ],
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     delete: [
-      requestKeysOuter.delete,
-      requestKeysOuter.delete,
+      requestKeys.delete,
+      requestKeys.delete,
       {
         id: 'id',
       },
     ],
   },
   responseRefactor: {
-    regions: [responseRefactorOuter.regions, responseRefactorOuter.regions],
-    orders: [responseRefactorOuter.orders, responseRefactorOuter.orders],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
+    regions: [responseRefactor.regions, responseRefactor.regions],
+    orders: [responseRefactor.orders, responseRefactor.orders],
+    detail: [responseRefactor.detail, responseRefactor.detail],
   },
   preHandle: {
-    orders: [preHandleOuter.orders, preHandleOuter.orders],
+    orders: [preHandle.orders, preHandle.orders],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    regions: [postHandleOuter.regions, postHandleOuter.regions],
-    orders: [postHandleOuter.orders, postHandleOuter.orders],
-    detail: [postHandleOuter.detail, postHandleOuter.detail],
+    common: [postHandle.common, postHandle.common],
+    regions: [postHandle.regions, postHandle.regions],
+    orders: [postHandle.orders, postHandle.orders],
+    detail: [postHandle.detail, postHandle.detail],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('houses', {
+  url: configs.url.houses,
+  requestKeys: configs.requestKeys.houses,
+  preHandle: configs.preHandle.houses,
+  responseRefactor: configs.responseRefactor.houses,
+  postHandle: configs.postHandle.houses,
+});
+
+seeAjax.config('regions', {
+  url: configs.url.regions,
+  requestKeys: configs.requestKeys.regions,
+  preHandle: configs.preHandle.regions,
+  responseRefactor: configs.responseRefactor.regions,
+  postHandle: configs.postHandle.regions,
+});
+
+seeAjax.config('orders', {
+  url: configs.url.orders,
+  requestKeys: configs.requestKeys.orders,
+  preHandle: configs.preHandle.orders,
+  responseRefactor: configs.responseRefactor.orders,
+  postHandle: configs.postHandle.orders,
+});
+
+seeAjax.config('detail', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('delete', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.delete,
+  requestKeys: configs.requestKeys.delete,
+  preHandle: configs.preHandle.delete,
+  responseRefactor: configs.responseRefactor.delete,
+  postHandle: configs.postHandle.delete,
 });

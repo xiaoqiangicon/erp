@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonTpl from 'common/tpl';
@@ -9,7 +10,7 @@ var $contentBody = $('#content-body');
 var func = {};
 func.requestAds = function() {
   $contentBody.html(commonTpl.placeholder);
-  $.seeAjax.get('detail', {}, function(res) {
+  seeAjax('detail', {}, function(res) {
     if (!res.success || !res.data || !res.data.length) return;
     var htmlStr = '';
     res.data.map(function(item) {

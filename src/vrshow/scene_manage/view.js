@@ -6,9 +6,9 @@ import func from './function';
 import Promotion from '../../../old-com/promotion/src';
 import './ajax';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';
-$.seeView({
+seeView({
   events: {
     'click [data-ele="summary-tab"]': 'onClickSummaryTab',
     'click [data-ele="link-tab"]': 'onClickLinkTab',

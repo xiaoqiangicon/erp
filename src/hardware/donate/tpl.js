@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   unit: juicer($('#tpl-unit').html()),
 };

@@ -1,9 +1,17 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonData from './data';
 import './ajax';
-import './bind';
 import './view';
 import 'jquery.cookie';
+import {
+  renderAvailableDonate,
+  renderChanzaiDonate,
+  renderSelectedYear,
+  renderTakenDonate,
+  renderTotalDonate,
+} from './render';
+
 $.ajaxSetup({
   cache: !1,
 });
@@ -14,12 +22,12 @@ $.ajaxSetup({
     $selectYearContainer = $('[data-select-year-container]'),
     $paginationContainers = $('#pagination-containers'),
     $paginationContentContainers = $('#pagination-content-containers');
-  $.seeAjax.get('stat', {}, function(res) {
+  seeAjax('stat', {}, function(res) {
     res.success &&
-      ($.seeBind.setData('total-donate', res.data.total),
-      $.seeBind.setData('available-donate', res.data.available),
-      $.seeBind.setData('taken-donate', res.data.taken),
-      $.seeBind.setData('chanzai-donate', res.data.chanzai));
+      (renderTotalDonate(res.data.total),
+      renderAvailableDonate(res.data.available),
+      renderTakenDonate(res.data.taken),
+      renderChanzaiDonate(res.data.chanzai));
   });
   for (i = currentYear, il = 2016; i >= il; i--) {
     $selectYearContainer.append(
@@ -28,7 +36,7 @@ $.ajaxSetup({
       })
     );
   }
-  $.seeBind.setData('data-selected-year', currentYear);
+  renderSelectedYear(currentYear);
   $paginationContainers.append(
     commonData.tpl.paginationContainer.render({
       year: currentYear,
@@ -48,7 +56,7 @@ $.ajaxSetup({
       })
     );
   commonData.requestList();
-  $.seeAjax.get('accountInfo', {}, function(res) {
+  seeAjax('accountInfo', {}, function(res) {
     if (res.success) {
       commonData.accountData = res.data;
       if (commonData.accountStatus === 2 && res.data.reason) {

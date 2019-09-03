@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonFunc from 'common/function';
@@ -9,12 +10,12 @@ var func = {};
 var $contentBody = $('#content-body');
 var $pagination = $('#pagination');
 func.init = function() {
-  $.seeAjax.get('messageInfo', {}, function(res) {
+  seeAjax('messageInfo', {}, function(res) {
     if (res.success) {
       $('#remain-message-count').text(res.remainCount);
     }
   });
-  $.seeAjax.get('regions', {}, function(res) {
+  seeAjax('regions', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $select = $('#filter-region');
       res.data.map(function(item) {
@@ -30,7 +31,7 @@ func.requestOnlineOrdersList = function(page) {
   !page && (page = 1);
   var params = _.clone(data.onlineOrdersFilter);
   params.page = page;
-  $.seeAjax.get('onlineOrders', params, function(res) {
+  seeAjax('onlineOrders', params, function(res) {
     if (res.success) {
       $contentBody.html('');
       func.renderList(res, page);
@@ -45,7 +46,7 @@ func.requestCustomOrdersList = function(page) {
   !page && (page = 1);
   var params = _.clone(data.customOrdersFilter);
   params.page = page;
-  $.seeAjax.get('customOrders', params, function(res) {
+  seeAjax('customOrders', params, function(res) {
     if (res.success) {
       $contentBody.html('');
       func.renderList(res, page);

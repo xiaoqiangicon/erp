@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+import seeAjax from 'see-ajax';
+var requestKeys = {
   detail: {
     id: 'wallId',
   },
@@ -13,7 +13,7 @@ var requestKeysOuter = {
     seats: 'numberText',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   detail: {
     data: {
       rows: 'row',
@@ -34,7 +34,7 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   save: function(req) {
     JSON.refactor(req.wallList, [
       {
@@ -48,19 +48,13 @@ var preHandleOuter = {
     ]);
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    detail: 'detail',
-    save: 'save',
-    editSeats: 'editSeats',
-  },
+const configs = {
   url: {
     detail: [
       '/zzhadmin/buddhaWall_getWall/',
@@ -80,23 +74,23 @@ $.seeAjax.config({
   },
   requestKeys: {
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     save: [
-      requestKeysOuter.save,
-      requestKeysOuter.save,
+      requestKeys.save,
+      requestKeys.save,
       {
         id: 'id',
         priceList: 'priceList',
       },
     ],
     editSeats: [
-      requestKeysOuter.editSeats,
-      requestKeysOuter.editSeats,
+      requestKeys.editSeats,
+      requestKeys.editSeats,
       {
         id: 'id',
         seats: 'seats',
@@ -104,12 +98,48 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
+    detail: [responseRefactor.detail, responseRefactor.detail],
   },
   preHandle: {
-    save: [preHandleOuter.save, preHandleOuter.save],
+    save: [preHandle.save, preHandle.save],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
+    common: [postHandle.common, postHandle.common],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('detail', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('save', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.save,
+  requestKeys: configs.requestKeys.save,
+  preHandle: configs.preHandle.save,
+  responseRefactor: configs.responseRefactor.save,
+  postHandle: configs.postHandle.save,
+});
+
+seeAjax.config('editSeats', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.editSeats,
+  requestKeys: configs.requestKeys.editSeats,
+  preHandle: configs.preHandle.editSeats,
+  responseRefactor: configs.responseRefactor.editSeats,
+  postHandle: configs.postHandle.editSeats,
 });

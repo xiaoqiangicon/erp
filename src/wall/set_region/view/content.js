@@ -7,10 +7,10 @@ import data from '../data';
 import tpl from '../tpl';
 import func from '../function';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var $contentPrices = $('#content-prices');
 var $contentPricesBody = $('#content-prices-body');
-$.seeView({
+seeView({
   events: {
     'click [data-detail-cell]': 'onClickDetailCell',
     'click [data-price-row-delete]': 'onClickPriceRowDelete',

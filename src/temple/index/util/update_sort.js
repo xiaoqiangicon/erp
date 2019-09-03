@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import zzhHandling from '../../../../old-com/handling/src';
@@ -21,7 +22,7 @@ export default function() {
   });
   if (update.length < 2) return;
   zzhHandling.show();
-  $.seeAjax.post(
+  seeAjax(
     'updateSort',
     {
       data: JSON.stringify(update),

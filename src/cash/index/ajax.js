@@ -1,12 +1,11 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+import seeAjax from 'see-ajax';
+var requestKeys = {
   list: {
-    year: 'year',
     page: 'pageNumber',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -31,12 +30,12 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   list: function(data) {
     delete data.pageNumber;
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
@@ -59,13 +58,7 @@ var postHandleOuter = {
     });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    stat: 'stat',
-    list: 'list',
-    accountInfo: 'accountInfo',
-  },
+const configs = {
   url: {
     stat: [
       '/zzhadmin/getSumMoney/',
@@ -85,8 +78,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     list: [
-      requestKeysOuter.list,
-      requestKeysOuter.list,
+      requestKeys.list,
+      requestKeys.list,
       {
         year: 'year',
         page: 'page',
@@ -94,18 +87,45 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
-    accountInfo: [
-      responseRefactorOuter.accountInfo,
-      responseRefactorOuter.accountInfo,
-    ],
+    list: [responseRefactor.list, responseRefactor.list],
+    accountInfo: [responseRefactor.accountInfo, responseRefactor.accountInfo],
   },
   preHandle: {
-    list: [preHandleOuter.list, preHandleOuter.list],
+    list: [preHandle.list, preHandle.list],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    stat: [postHandleOuter.stat, postHandleOuter.stat],
-    list: [postHandleOuter.list, postHandleOuter.list],
+    common: [postHandle.common, postHandle.common],
+    stat: [postHandle.stat, postHandle.stat],
+    list: [postHandle.list, postHandle.list],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('stat', {
+  url: configs.url.stat,
+  requestKeys: configs.requestKeys.stat,
+  preHandle: configs.preHandle.stat,
+  responseRefactor: configs.responseRefactor.stat,
+  postHandle: configs.postHandle.stat,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('accountInfo', {
+  url: configs.url.accountInfo,
+  requestKeys: configs.requestKeys.accountInfo,
+  preHandle: configs.preHandle.accountInfo,
+  responseRefactor: configs.responseRefactor.accountInfo,
+  postHandle: configs.postHandle.accountInfo,
 });

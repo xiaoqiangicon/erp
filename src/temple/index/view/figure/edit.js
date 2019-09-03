@@ -7,8 +7,8 @@ import commonTpl from '../../tpl/common';
 import figureTpl from '../../tpl/person_saying';
 import util from './util';
 import dialog from 'util/dialog';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'change [data-edit-com-figure-display-type]': 'changeDisplayType',
     'click [data-edit-com-figure-row-del]': 'clickRowDel',

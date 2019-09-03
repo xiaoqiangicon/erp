@@ -9,8 +9,8 @@ import toastr from 'toastr';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';
 import 'jquery-confirm';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click #all-tab': 'onClickAllTab',
     'click #tag-tab': 'onClickTagTab',

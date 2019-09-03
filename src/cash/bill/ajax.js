@@ -1,28 +1,25 @@
 import $ from 'jquery';
+import seeAjax from 'see-ajax';
 import commonVars from 'common/variables';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
-  billData: {
-    year: 'year',
-    status: 'status',
-  },
+
+var requestKeys = {
+  billData: {},
   confirmBills: {
     ids: 'billIdList',
     extra: 'remarks',
-    reward: 'reward',
   },
   questionBills: {
     ids: 'billIdList',
     extra: 'remarks',
   },
 };
-var preHandleOuter = {
+var preHandle = {
   billData: function(data) {
     delete data.year;
     delete data.status;
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   billData: {
     monthsData: 'data',
     _monthsData: [
@@ -63,7 +60,7 @@ var responseRefactorOuter = {
     haveOrderInHandling: 'isHavePickUp',
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
@@ -129,17 +126,7 @@ var postHandleOuter = {
     res.data.chanzai = res.chanzaiOrderMoney;
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    billData: 'billData',
-    confirmBills: 'confirmBills',
-    cancelBills: 'cancelBills',
-    questionBills: 'questionBills',
-    accountInfo: 'accountInfo',
-    receiptsInfo: 'receiptsInfo',
-    stat: 'stat',
-  },
+const configs = {
   url: {
     billData: [
       '/zzhadmin/getBillList/',
@@ -175,16 +162,16 @@ $.seeAjax.config({
   },
   requestKeys: {
     billData: [
-      requestKeysOuter.billData,
-      requestKeysOuter.billData,
+      requestKeys.billData,
+      requestKeys.billData,
       {
         year: 'year',
         status: 'status',
       },
     ],
     confirmBills: [
-      requestKeysOuter.confirmBills,
-      requestKeysOuter.confirmBills,
+      requestKeys.confirmBills,
+      requestKeys.confirmBills,
       {
         ids: 'ids',
         extra: 'extra',
@@ -199,8 +186,8 @@ $.seeAjax.config({
       },
     ],
     questionBills: [
-      requestKeysOuter.questionBills,
-      requestKeysOuter.questionBills,
+      requestKeys.questionBills,
+      requestKeys.questionBills,
       {
         ids: 'ids',
         extra: 'extra',
@@ -208,22 +195,81 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    billData: [responseRefactorOuter.billData, responseRefactorOuter.billData],
-    accountInfo: [
-      responseRefactorOuter.accountInfo,
-      responseRefactorOuter.accountInfo,
-    ],
+    billData: [responseRefactor.billData, responseRefactor.billData],
+    accountInfo: [responseRefactor.accountInfo, responseRefactor.accountInfo],
     receiptsInfo: [
-      responseRefactorOuter.receiptsInfo,
-      responseRefactorOuter.receiptsInfo,
+      responseRefactor.receiptsInfo,
+      responseRefactor.receiptsInfo,
     ],
   },
   preHandle: {
-    billData: [preHandleOuter.billData, preHandleOuter.billData],
+    billData: [preHandle.billData, preHandle.billData],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    billData: [postHandleOuter.billData, postHandleOuter.billData],
-    stat: [postHandleOuter.stat, postHandleOuter.stat],
+    common: [postHandle.common, postHandle.common],
+    billData: [postHandle.billData, postHandle.billData],
+    stat: [postHandle.stat, postHandle.stat],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('billData', {
+  url: configs.url.billData,
+  requestKeys: configs.requestKeys.billData,
+  preHandle: configs.preHandle.billData,
+  responseRefactor: configs.responseRefactor.billData,
+  postHandle: configs.postHandle.billData,
+});
+
+seeAjax.config('confirmBills', {
+  url: configs.url.confirmBills,
+  requestKeys: configs.requestKeys.confirmBills,
+  preHandle: configs.preHandle.confirmBills,
+  responseRefactor: configs.responseRefactor.confirmBills,
+  postHandle: configs.postHandle.confirmBills,
+});
+
+seeAjax.config('cancelBills', {
+  url: configs.url.cancelBills,
+  requestKeys: configs.requestKeys.cancelBills,
+  preHandle: configs.preHandle.cancelBills,
+  responseRefactor: configs.responseRefactor.cancelBills,
+  postHandle: configs.postHandle.cancelBills,
+});
+
+seeAjax.config('questionBills', {
+  url: configs.url.questionBills,
+  requestKeys: configs.requestKeys.questionBills,
+  preHandle: configs.preHandle.questionBills,
+  responseRefactor: configs.responseRefactor.questionBills,
+  postHandle: configs.postHandle.questionBills,
+});
+
+seeAjax.config('accountInfo', {
+  url: configs.url.accountInfo,
+  requestKeys: configs.requestKeys.accountInfo,
+  preHandle: configs.preHandle.accountInfo,
+  responseRefactor: configs.responseRefactor.accountInfo,
+  postHandle: configs.postHandle.accountInfo,
+});
+
+seeAjax.config('receiptsInfo', {
+  url: configs.url.receiptsInfo,
+  requestKeys: configs.requestKeys.receiptsInfo,
+  preHandle: configs.preHandle.receiptsInfo,
+  responseRefactor: configs.responseRefactor.receiptsInfo,
+  postHandle: configs.postHandle.receiptsInfo,
+});
+
+seeAjax.config('stat', {
+  url: configs.url.stat,
+  requestKeys: configs.requestKeys.stat,
+  preHandle: configs.preHandle.stat,
+  responseRefactor: configs.responseRefactor.stat,
+  postHandle: configs.postHandle.stat,
 });

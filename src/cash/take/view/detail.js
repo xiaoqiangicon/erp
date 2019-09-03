@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import util from '../util';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click #detail-close': 'onClickDetailClose',
     'click #upload-receipt-tip': 'onClickUploadReceiptTip',

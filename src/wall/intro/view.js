@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!click [data-show-promotion]': 'onClickShowPromotion',
     'click [data-promotion-close]': 'onClickPromotionClose',

@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+import seeAjax from 'see-ajax';
+var requestKeys = {
   getSceneList: {
     type: 'type',
   },
@@ -19,7 +19,7 @@ var requestKeysOuter = {
     status: 'status',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getSceneList: {
     data: [
       {
@@ -42,25 +42,17 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   getSceneList: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
   },
   getSceneList: function(res) {},
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getSceneList: 'getSceneList',
-    deleteScene: 'deleteScene',
-    getLinkList: 'getLinkList',
-    updateLink: 'updateLink',
-    deleteLink: 'deleteLink',
-  },
+const configs = {
   url: {
     getSceneList: [
       '/zzhadmin/vr_sceneList/',
@@ -89,30 +81,72 @@ $.seeAjax.config({
     ],
   },
   requestKeys: {
-    getSceneList: [
-      requestKeysOuter.getSceneList,
-      requestKeysOuter.getSceneList,
-    ],
-    deleteScene: [requestKeysOuter.deleteScene, requestKeysOuter.deleteScene],
-    getLinkList: [requestKeysOuter.getLinkList, requestKeysOuter.getLinkList],
-    updateLink: [requestKeysOuter.updateLink, requestKeysOuter.updateLink],
-    deleteLink: [requestKeysOuter.deleteLink, requestKeysOuter.deleteLink],
+    getSceneList: [requestKeys.getSceneList, requestKeys.getSceneList],
+    deleteScene: [requestKeys.deleteScene, requestKeys.deleteScene],
+    getLinkList: [requestKeys.getLinkList, requestKeys.getLinkList],
+    updateLink: [requestKeys.updateLink, requestKeys.updateLink],
+    deleteLink: [requestKeys.deleteLink, requestKeys.deleteLink],
   },
   responseRefactor: {
     getSceneList: [
-      responseRefactorOuter.getSceneList,
-      responseRefactorOuter.getSceneList,
+      responseRefactor.getSceneList,
+      responseRefactor.getSceneList,
     ],
-    getLinkList: [
-      responseRefactorOuter.getLinkList,
-      responseRefactorOuter.getLinkList,
-    ],
+    getLinkList: [responseRefactor.getLinkList, responseRefactor.getLinkList],
   },
   preHandle: {
-    getSceneList: [preHandleOuter.getSceneList, preHandleOuter.getSceneList],
+    getSceneList: [preHandle.getSceneList, preHandle.getSceneList],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getSceneList: [postHandleOuter.getSceneList, postHandleOuter.getSceneList],
+    common: [postHandle.common, postHandle.common],
+    getSceneList: [postHandle.getSceneList, postHandle.getSceneList],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getSceneList', {
+  url: configs.url.getSceneList,
+  requestKeys: configs.requestKeys.getSceneList,
+  preHandle: configs.preHandle.getSceneList,
+  responseRefactor: configs.responseRefactor.getSceneList,
+  postHandle: configs.postHandle.getSceneList,
+});
+
+seeAjax.config('deleteScene', {
+  url: configs.url.deleteScene,
+  requestKeys: configs.requestKeys.deleteScene,
+  preHandle: configs.preHandle.deleteScene,
+  responseRefactor: configs.responseRefactor.deleteScene,
+  postHandle: configs.postHandle.deleteScene,
+});
+
+seeAjax.config('getLinkList', {
+  url: configs.url.getLinkList,
+  requestKeys: configs.requestKeys.getLinkList,
+  preHandle: configs.preHandle.getLinkList,
+  responseRefactor: configs.responseRefactor.getLinkList,
+  postHandle: configs.postHandle.getLinkList,
+});
+
+seeAjax.config('updateLink', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.updateLink,
+  requestKeys: configs.requestKeys.updateLink,
+  preHandle: configs.preHandle.updateLink,
+  responseRefactor: configs.responseRefactor.updateLink,
+  postHandle: configs.postHandle.updateLink,
+});
+
+seeAjax.config('deleteLink', {
+  url: configs.url.deleteLink,
+  requestKeys: configs.requestKeys.deleteLink,
+  preHandle: configs.preHandle.deleteLink,
+  responseRefactor: configs.responseRefactor.deleteLink,
+  postHandle: configs.postHandle.deleteLink,
 });

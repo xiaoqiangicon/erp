@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -7,10 +8,10 @@ import data from '../data';
 import tpl from '../tpl';
 import func from '../function';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var $contentPrices = $('#content-prices');
 var $contentPricesBody = $('#content-prices-body');
-$.seeView({
+seeView({
   events: {
     '!click #add-price': 'onClickAddPrice',
     '!click #base-price-popup-ok': 'onClickBasePricePopupOk',
@@ -161,7 +162,7 @@ $.seeView({
         'data-handling': 1,
       })
       .text('保存中...');
-    $.seeAjax.post(
+    seeAjax(
       'save',
       {
         id: parseInt(commonVars.params.id),
@@ -178,8 +179,7 @@ $.seeView({
         } else {
           toastr.error('保存设置失败，请稍后再试');
         }
-      },
-      !0
+      }
     );
   },
   onClickPopupClose: function(e) {
@@ -208,7 +208,7 @@ $.seeView({
         'data-handling': 1,
       })
       .text('保存中...');
-    $.seeAjax.post(
+    seeAjax(
       'editSeats',
       {
         id: parseInt(commonVars.params.id),
@@ -227,8 +227,7 @@ $.seeView({
         } else {
           toastr.error('保存失败，请稍后重试');
         }
-      },
-      !0
+      }
     );
   },
   checkCreateCode: function(rows, columns) {

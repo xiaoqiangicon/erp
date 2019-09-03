@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+import seeAjax from 'see-ajax';
+var requestKeys = {
   delete: {
     id: 'id',
   },
@@ -9,7 +9,7 @@ var requestKeysOuter = {
     sort: 'sort',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -32,8 +32,8 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {};
-var postHandleOuter = {
+var preHandle = {};
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -53,7 +53,7 @@ var postHandleOuter = {
       });
   },
 };
-$.seeAjax.config({
+const configs = {
   environment: __SEE_ENV__,
   name: {
     list: 'list',
@@ -91,15 +91,15 @@ $.seeAjax.config({
   },
   requestKeys: {
     delete: [
-      requestKeysOuter.delete,
-      requestKeysOuter.delete,
+      requestKeys.delete,
+      requestKeys.delete,
       {
         id: 'id',
       },
     ],
     sort: [
-      requestKeysOuter.sort,
-      requestKeysOuter.sort,
+      requestKeys.sort,
+      requestKeys.sort,
       {
         id: 'id',
         sort: 'sort',
@@ -107,20 +107,67 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
+    list: [responseRefactor.list, responseRefactor.list],
     promotionUrl: [
-      responseRefactorOuter.promotionUrl,
-      responseRefactorOuter.promotionUrl,
+      responseRefactor.promotionUrl,
+      responseRefactor.promotionUrl,
     ],
-    templates: [
-      responseRefactorOuter.templates,
-      responseRefactorOuter.templates,
-    ],
+    templates: [responseRefactor.templates, responseRefactor.templates],
   },
   preHandle: {},
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    list: [postHandleOuter.list, postHandleOuter.list],
-    templates: [postHandleOuter.templates, postHandleOuter.templates],
+    common: [postHandle.common, postHandle.common],
+    list: [postHandle.list, postHandle.list],
+    templates: [postHandle.templates, postHandle.templates],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('list', {
+  url: configs.url.list,
+  requestKeys: configs.requestKeys.list,
+  preHandle: configs.preHandle.list,
+  responseRefactor: configs.responseRefactor.list,
+  postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('promotionUrl', {
+  url: configs.url.promotionUrl,
+  requestKeys: configs.requestKeys.promotionUrl,
+  preHandle: configs.preHandle.promotionUrl,
+  responseRefactor: configs.responseRefactor.promotionUrl,
+  postHandle: configs.postHandle.promotionUrl,
+});
+
+seeAjax.config('templates', {
+  url: configs.url.templates,
+  requestKeys: configs.requestKeys.templates,
+  preHandle: configs.preHandle.templates,
+  responseRefactor: configs.responseRefactor.templates,
+  postHandle: configs.postHandle.templates,
+});
+
+seeAjax.config('delete', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.delete,
+  requestKeys: configs.requestKeys.delete,
+  preHandle: configs.preHandle.delete,
+  responseRefactor: configs.responseRefactor.delete,
+  postHandle: configs.postHandle.delete,
+});
+
+seeAjax.config('sort', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.sort,
+  requestKeys: configs.requestKeys.sort,
+  preHandle: configs.preHandle.sort,
+  responseRefactor: configs.responseRefactor.sort,
+  postHandle: configs.postHandle.sort,
 });

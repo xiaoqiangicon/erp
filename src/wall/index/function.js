@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonFunc from 'common/function';
@@ -11,7 +12,7 @@ func.init = function() {
   func.requestList();
 };
 func.requestList = function() {
-  $.seeAjax.get('list', {}, function(res) {
+  seeAjax('list', {}, function(res) {
     if (res.success) {
       func.renderList(res);
     } else {

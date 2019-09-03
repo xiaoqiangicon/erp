@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var $body = $('body');
 var $prizeAgree = $('#prize-agree');
-$.seeView({
+seeView({
   events: {
     'click #licence-ok': 'onClickLicenceOk',
   },

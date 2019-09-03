@@ -1,14 +1,13 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var statuses = {
   1: '草稿',
   2: '正式发布',
   3: '系统屏蔽',
 };
-var requestKeysOuter = {
+var requestKeys = {
   list: {
     category: 'typeId',
-    status: 'status',
     searchKey: 'title',
     page: 'pageNumber',
   },
@@ -16,7 +15,7 @@ var requestKeysOuter = {
     id: 'articleId',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   list: {
     data: [
       {
@@ -28,13 +27,13 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   list: function(data) {
     data.pageNumber -= 1;
     data.pageSize = 20;
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
@@ -47,57 +46,36 @@ var postHandleOuter = {
     });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    categories: 'categories',
-    list: 'list',
-    deleteArticle: 'deleteArticle',
-  },
-  url: {
-    categories: [
-      '/zzhadmin/articleGetArticleTypeList/',
-      '/src/article/index/mock/categories_server.json',
-      '/src/article/index/mock/categories.json',
-    ],
-    list: [
-      '/zzhadmin/articleGetArticleList/',
-      '/src/article/index/mock/list_server.json',
-      '/src/article/index/mock/list.json',
-    ],
-    deleteArticle: [
-      '/zzhadmin/delArticle/',
-      '/src/article/index/mock/delete_article_server.json',
-      '/src/article/index/mock/delete_article.json',
-    ],
-  },
-  requestKeys: {
-    list: [
-      requestKeysOuter.list,
-      requestKeysOuter.list,
-      {
-        category: 'category',
-        status: 'status',
-        searchKey: 'searchKey',
-        page: 'page',
-      },
-    ],
-    deleteArticle: [
-      requestKeysOuter.deleteArticle,
-      requestKeysOuter.deleteArticle,
-      {
-        id: 'id',
-      },
-    ],
-  },
-  responseRefactor: {
-    list: [responseRefactorOuter.list, responseRefactorOuter.list],
-  },
-  preHandle: {
-    list: [preHandleOuter.list, preHandleOuter.list],
-  },
-  postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    list: [postHandleOuter.list, postHandleOuter.list],
-  },
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: [postHandle.common, postHandle.common],
+});
+
+seeAjax.config('categories', {
+  url: [
+    '/zzhadmin/articleGetArticleTypeList/',
+    '/src/article/index/mock/categories_server.json',
+    '/src/article/index/mock/categories.json',
+  ],
+});
+seeAjax.config('list', {
+  url: [
+    '/zzhadmin/articleGetArticleList/',
+    '/src/article/index/mock/list_server.json',
+    '/src/article/index/mock/list.json',
+  ],
+  requestKeys: [requestKeys.list, requestKeys.list],
+  responseRefactor: [responseRefactor.list, responseRefactor.list],
+  preHandle: [preHandle.list, preHandle.list],
+  postHandle: [postHandle.list, postHandle.list],
+});
+seeAjax.config('deleteArticle', {
+  url: [
+    '/zzhadmin/delArticle/',
+    '/src/article/index/mock/delete_article_server.json',
+    '/src/article/index/mock/delete_article.json',
+  ],
+  requestKeys: [requestKeys.deleteArticle, requestKeys.deleteArticle],
 });

@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import data from './data';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var ajaxHandle = {
-  requestKeysOuter: {
+  requestKeys: {
     template: {
       id: 'templateId',
     },
@@ -58,7 +58,7 @@ var ajaxHandle = {
       shareImage: 'sharePic',
     },
   },
-  responseRefactorOuter: {
+  responseRefactor: {
     tags: {
       data: {
         system: 'systemTag',
@@ -119,7 +119,7 @@ var ajaxHandle = {
       id: 'data.id',
     },
   },
-  preHandleOuter: {
+  preHandle: {
     create: function(req) {
       req.name =
         (data.buddhas[req.buddhaModelId] &&
@@ -147,7 +147,7 @@ var ajaxHandle = {
       ]);
     },
   },
-  postHandleOuter: {
+  postHandle: {
     common: function(res) {
       res.success = res.result >= 0;
       res.msg && (res.message = res.msg);

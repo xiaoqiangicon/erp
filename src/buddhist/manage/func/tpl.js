@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   buddhistTypeOption: `
         <option value="\${ceremonyTypeId}">\${name}</option>

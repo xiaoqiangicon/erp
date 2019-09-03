@@ -7,10 +7,10 @@ import figureTpl from '../../tpl/person_saying';
 import dialog from '../../../../util/dialog';
 import share from '../../share';
 import util from './util';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import 'component/choose_icon_config/index';
 var choose;
-$.seeView({
+seeView({
   events: {
     'click [data-edit-pop-figure-avatar-row-del]': 'clickAvatarRowDel',
     'click #edit-pop-figure-add-avatar': 'clickAddAvatar',

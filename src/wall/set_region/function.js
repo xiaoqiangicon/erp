@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -19,7 +20,7 @@ func.init = function() {
       index: 0,
     })
   );
-  $.seeAjax.post(
+  seeAjax(
     'detail',
     {
       id: parseInt(commonVars.params.id),
@@ -36,8 +37,7 @@ func.init = function() {
       } else {
         toastr.error('获取信息失败，请稍后重试');
       }
-    },
-    !0
+    }
   );
 };
 func.renderRegion = function(res) {

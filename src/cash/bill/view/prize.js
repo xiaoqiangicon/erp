@@ -5,14 +5,14 @@ import fn from 'common/function';
 import dialog from 'util/dialog';
 import data from '../data';
 import confirmBill from '../util/confirm_bill';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var $body = $('body');
 var $confirmDialog = $('#dialog-confirm');
 var $prizeDialog = $('#dialog-prize');
 var $licenceDialog = $('#dialog-licence');
 var $prizeAgree = $('#prize-agree');
 var $prizeInput = $('#prize-input');
-$.seeView({
+seeView({
   events: {
     'click #prize-agree': 'onClickPrizeAgree',
     'click #prize-licence': 'onClickPrizeLicence',

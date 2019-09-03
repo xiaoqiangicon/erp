@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+import seeAjax from 'see-ajax';
+var requestKeys = {
   getList: {
     pageNum: 'pageNum',
     pageSize: 'pageSize',
@@ -15,7 +15,7 @@ var requestKeysOuter = {
     status: 'status',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   getList: {
     data: [
       {
@@ -24,23 +24,17 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   getList: function(data) {},
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
   },
   getList: function(res) {},
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    getList: 'getList',
-    updateWatchword: 'updateWatchword',
-    operateWatchword: 'operateWatchword',
-  },
+const configs = {
   url: {
     getList: [
       '/zzhadmin/vr_speakerContentList/',
@@ -59,24 +53,55 @@ $.seeAjax.config({
     ],
   },
   requestKeys: {
-    getList: [requestKeysOuter.getList, requestKeysOuter.getList],
-    updateWatchword: [
-      requestKeysOuter.updateWatchword,
-      requestKeysOuter.updateWatchword,
-    ],
+    getList: [requestKeys.getList, requestKeys.getList],
+    updateWatchword: [requestKeys.updateWatchword, requestKeys.updateWatchword],
     operateWatchword: [
-      requestKeysOuter.operateWatchword,
-      requestKeysOuter.operateWatchword,
+      requestKeys.operateWatchword,
+      requestKeys.operateWatchword,
     ],
   },
   responseRefactor: {
-    getList: [responseRefactorOuter.getList, responseRefactorOuter.getList],
+    getList: [responseRefactor.getList, responseRefactor.getList],
   },
   preHandle: {
-    getList: [preHandleOuter.getList, preHandleOuter.getList],
+    getList: [preHandle.getList, preHandle.getList],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    getList: [postHandleOuter.getList, postHandleOuter.getList],
+    common: [postHandle.common, postHandle.common],
+    getList: [postHandle.getList, postHandle.getList],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('getList', {
+  url: configs.url.getList,
+  requestKeys: configs.requestKeys.getList,
+  preHandle: configs.preHandle.getList,
+  responseRefactor: configs.responseRefactor.getList,
+  postHandle: configs.postHandle.getList,
+});
+
+seeAjax.config('updateWatchword', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.updateWatchword,
+  requestKeys: configs.requestKeys.updateWatchword,
+  preHandle: configs.preHandle.updateWatchword,
+  responseRefactor: configs.responseRefactor.updateWatchword,
+  postHandle: configs.postHandle.updateWatchword,
+});
+
+seeAjax.config('operateWatchword', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.operateWatchword,
+  requestKeys: configs.requestKeys.operateWatchword,
+  preHandle: configs.preHandle.operateWatchword,
+  responseRefactor: configs.responseRefactor.operateWatchword,
+  postHandle: configs.postHandle.operateWatchword,
 });

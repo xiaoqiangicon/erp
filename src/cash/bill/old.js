@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import Slider from 'bootstrap-slider';
 import Tippy from 'tippy';
@@ -6,8 +7,9 @@ import func from './func';
 import data from './data';
 import tpl from './tpl';
 import refreshPrizeBtn from './util/refresh_prize_btn';
-import './bind';
 import './view';
+import { renderSelectedYear } from './render';
+
 $.ajaxSetup({
   cache: !1,
 });
@@ -33,12 +35,8 @@ $.ajaxSetup({
         })
       );
   }
-  $.seeBind.setData('data-selected-year', currentYear, {
-    status: 1,
-  });
-  $.seeBind.setData('data-selected-year', currentYear, {
-    status: 2,
-  });
+  renderSelectedYear(currentYear, { status: 1 });
+  renderSelectedYear(currentYear, { status: 2 });
   $statusContainer1.append(
     tpl.yearContentContainer.render({
       year: currentYear,
@@ -52,7 +50,7 @@ $.ajaxSetup({
     })
   );
   func.requestBillData();
-  $.seeAjax.get('accountInfo', {}, function(res) {
+  seeAjax('accountInfo', {}, function(res) {
     if (res.success) {
       if (res.data && res.data.account) {
         $('#account-info-bank').text(res.data.bank);
@@ -63,7 +61,7 @@ $.ajaxSetup({
       }
     }
   });
-  $.seeAjax.get('receiptsInfo', {}, function(res) {
+  seeAjax('receiptsInfo', {}, function(res) {
     data.maxWaitingReceipts = res.maxWaitingReceipts;
     data.currentWaitingReceipts = res.currentWaitingReceipts;
     data.haveOrderInHandling = res.haveOrderInHandling;
@@ -71,7 +69,7 @@ $.ajaxSetup({
     $('[data-max-waiting-receipts]').text(data.maxWaitingReceipts);
     $('[data-current-waiting-receipts]').text(data.currentWaitingReceipts);
   });
-  $.seeAjax.get('stat', {}, function(res) {
+  seeAjax('stat', {}, function(res) {
     if (res.success) {
       data.stat = res.data;
     }

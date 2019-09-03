@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import Pagination from '../../../old-com/pagination/src';
 import commonFunc from 'common/function';
@@ -21,7 +22,7 @@ func.init = function() {
   func.requestList();
 };
 func.requestState = function() {
-  $.seeAjax.get('state', {}, function(res) {
+  seeAjax('state', {}, function(res) {
     res.success
       ? ($('#total-donate').text(res.totalDonate || 0),
         $('#month-donate').text(res.monthDonate || 0),
@@ -44,7 +45,7 @@ const $paginationContainer = $('#pagination-container');
 const requestList = (page = 1, init = !0) => {
   $listContainer.html(commonTpl.loading);
   init && $paginationContainer.html('');
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       ...data.filter,

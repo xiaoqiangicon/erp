@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -7,8 +8,8 @@ import tpl from '../tpl';
 import func from '../function';
 import refreshSelectedCount from '../util/refresh_selected_count';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!click #action-filter': 'onClickActionFilter',
     '!click #action-reset': 'onClickActionReset',
@@ -138,7 +139,7 @@ $.seeView({
       toastr.warning('请至少选择一个打印机');
       return;
     }
-    $.seeAjax.post(
+    seeAjax(
       'savePrinter',
       {
         ids: JSON.stringify(ids),

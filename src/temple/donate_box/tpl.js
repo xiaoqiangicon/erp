@@ -1,5 +1,5 @@
 import images from './images';
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   payCell: `
         <div class="pay-cell">

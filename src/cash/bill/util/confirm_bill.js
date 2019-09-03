@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import seeAjax from 'see-ajax';
 import toastr from 'toastr';
 import data from '../data';
 import dialog from 'util/dialog';
@@ -11,7 +12,7 @@ export default function($this) {
       'data-handling': 1,
     })
     .text('正在处理');
-  $.seeAjax.get(
+  seeAjax(
     'confirmBills',
     {
       ids: JSON.stringify(data.saveBillIds),

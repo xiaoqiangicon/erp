@@ -6,8 +6,8 @@ import data from '../data';
 import tpl from '../tpl';
 import func from '../function';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     '!change #printer-popup-pages': 'onChangePrinterPages',
     '!change [name="printer-popup-print-type"]': 'onChangePrintType',

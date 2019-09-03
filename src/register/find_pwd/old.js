@@ -7,7 +7,7 @@ import '../../../pro-com/src/distpicker';
 import 'old/backbone';
 import 'old/ajaxFileUpload';
 import 'old/uploadSize';
-import 'juicer';
+import juicer from 'juicer';
 import 'bootstrap';
 import 'jquery-confirm';
 pace.start({

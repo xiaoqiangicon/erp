@@ -1,6 +1,12 @@
 import $ from 'jquery';
-import 'juicer';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
+import juicer from 'juicer';
+import {
+  renderChart,
+  renderPagination,
+  renderPaginationContent,
+} from './render';
+
 var data = {
   monthsData: {},
   monthDataForChart: {},
@@ -30,7 +36,7 @@ data.tpl = {
 data.requestList = function(year, page) {
   !year && (year = data.today.year);
   !page && (page = 1);
-  $.seeAjax.get(
+  seeAjax(
     'list',
     {
       year: year,
@@ -38,12 +44,11 @@ data.requestList = function(year, page) {
     },
     function(res) {
       res.success &&
-        ($.seeBind.setData('pagination-content', res.data, {
+        (renderPaginationContent(res.data, {
           year: year,
           page: page,
         }),
-        $.seeBind.setData(
-          'pagination',
+        renderPagination(
           {
             currentPage: page,
             totalPages: res.totalPages,
@@ -60,7 +65,7 @@ data.requestList = function(year, page) {
         res.data.map(function(item) {
           data.monthDataForChart[year][page][item.month - 1] = item.money;
         }),
-        $.seeBind.setData('chart', {
+        renderChart({
           year: year,
           months: data.monthDataForChart[year][page],
         }));

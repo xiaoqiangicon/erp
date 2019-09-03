@@ -1,16 +1,17 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import toastr from 'toastr';
 import fn from 'common/function';
 import tpl from '../tpl';
 import data from '../data';
 import util from '../util';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
 var upload;
 var $receiptsContent = $('#dialog-receipts-content');
-$.seeView({
+seeView({
   events: {
     'click [data-popup-receipts-row-delete]': 'onClickPopupReceiptsRowDelete',
     '!click #dialog-receipts-ok': 'onClickDialogReceiptsOk',
@@ -34,7 +35,7 @@ $.seeView({
     fn.confirm(
       '请确认您上传的收据照片是否正确，确认之后则不能更改',
       function() {
-        $.seeAjax.post(
+        seeAjax(
           'addReceipts',
           {
             id: data.currentHandleId,

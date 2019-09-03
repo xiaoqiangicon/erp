@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -10,7 +11,7 @@ import yearHtml from '../html/year';
 import monthHtml from '../html/month';
 import dayHtml from '../html/day';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var util = {};
 var $hoverPopup = $('#hover-popup');
 var $hoverPopupActions = $('#hover-popup-actions');
@@ -18,7 +19,7 @@ var $body = $('body');
 var $createPopup = $('#create-modal');
 util.requestCellData = function(row, column, online, callback) {
   if (online) {
-    $.seeAjax.get(
+    seeAjax(
       'onlineCellInfo',
       {
         id: data.currentRegionId,
@@ -37,7 +38,7 @@ util.requestCellData = function(row, column, online, callback) {
       }
     );
   } else {
-    $.seeAjax.post(
+    seeAjax(
       'cellInfo',
       {
         id: data.currentRegionId,
@@ -53,8 +54,7 @@ util.requestCellData = function(row, column, online, callback) {
         } else {
           toastr.error('获取详细信息失败，请稍后再试');
         }
-      },
-      !0
+      }
     );
   }
 };

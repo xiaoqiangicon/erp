@@ -7,8 +7,8 @@ import func from './function';
 import Clipboard from 'clipboard';
 import Promotion from '../../../old-com/promotion/src';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-id="recruitView"]': 'onClickRecruitView',
     'click .recruit-title-text': 'onClickRecruitView',

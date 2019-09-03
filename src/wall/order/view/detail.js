@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -7,10 +8,10 @@ import data from '../data';
 import tpl from '../tpl';
 import util from './util';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import 'component/choose_image_config/index';
 var upload;
-$.seeView({
+seeView({
   events: {
     '!click #detail-popup-save-memo': 'onClickDetailPopupSaveMemo',
     '!click #detail-popup-save': 'onClickDetailPopupSave',
@@ -19,7 +20,7 @@ $.seeView({
   },
   onClickDetailPopupSaveMemo: function(e) {
     var memo = $('#detail-popup-memo').val();
-    $.seeAjax.get(
+    seeAjax(
       'saveMemo',
       {
         id: data.currentDetailPopupId,
@@ -41,7 +42,7 @@ $.seeView({
     $items.map(function() {
       images.push($(this).attr('data-image'));
     });
-    $.seeAjax.post(
+    seeAjax(
       'handle',
       {
         id: data.currentDetailPopupId,
@@ -87,7 +88,7 @@ $.seeView({
   },
   saveFeedImages: function(images) {
     var self = this;
-    $.seeAjax.post(
+    seeAjax(
       'updateFeedImage',
       {
         id: data.currentDetailPopupId,

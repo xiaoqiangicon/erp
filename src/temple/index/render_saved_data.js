@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import clone from 'clone';
 import indexData from './data';
@@ -59,7 +60,7 @@ function renderSavedData(res) {
     $displayContainer.append($displayComponent);
     var editRenderData = {
       id: currentComponentId,
-      fileMark: $.seeAjax.getEnv() === 2 ? 'files[]' : 'file',
+      fileMark: seeAjax.getEnv() === 2 ? 'files[]' : 'file',
       isUpdate: 1,
       sortId: data.sortId,
     };
@@ -110,7 +111,7 @@ function renderSavedData(res) {
   }
   res.data.map(function(item) {
     var i, il;
-    if ($.seeAjax.getEnv() !== 2) {
+    if (seeAjax.getEnv() !== 2) {
       JSON.refactor(item, savedDataRefactorMap[item.type - 1] || {});
       if (item.type === 1) {
         !!item.images &&

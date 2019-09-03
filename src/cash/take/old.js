@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import commonUpload from 'common/upload';
 import data from './data';
@@ -18,7 +19,7 @@ $('[data-select-date]').bootstrapMaterialDatePicker({
   nowText: '现在',
   clearButton: true,
 });
-$.seeAjax.get('accountInfo', {}, function(res) {
+seeAjax('accountInfo', {}, function(res) {
   if (res.success) {
     data.accountData = res.data;
     if (res.data && res.data.account) {

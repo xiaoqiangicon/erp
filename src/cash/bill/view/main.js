@@ -6,7 +6,10 @@ import data from '../data';
 import func from '../func';
 import tpl from '../tpl';
 import showPrizeDialog from '../util/show_prize_dialog';
-import 'lib/jquery.seeView';
+import seeAjax from 'see-ajax';
+import seeView from 'see-view';
+import { renderSelectedYear } from '../render';
+
 var $body = $('body'),
   $questionDialog = $('#dialog-question'),
   $confirmDialog = $('#dialog-confirm'),
@@ -19,7 +22,7 @@ toastr.options.timeOut = 1000;
 toastr.options.onHidden = function() {
   location.href = '/zzhadmin/cashTake/';
 };
-$.seeView({
+seeView({
   events: {
     'click [data-status-menu]': 'onClickStatusMenu',
     'click [data-select-year]': 'onClickSelectYear',
@@ -60,7 +63,7 @@ $.seeView({
         '[data-year-content="' + year + '"][data-status="' + status + '"]'
       );
     if (year == currentYear) return;
-    $.seeBind.setData('data-selected-year', year, {
+    renderSelectedYear(year, {
       status: status,
     });
     $yearContainers.hide();
@@ -282,7 +285,7 @@ $.seeView({
         'data-handling': 1,
       })
       .text('正在处理...');
-    $.seeAjax.get(
+    seeAjax(
       'questionBills',
       {
         ids: JSON.stringify(data.saveBillIds),
@@ -308,7 +311,7 @@ $.seeView({
         'data-handling': 1,
       })
       .text('正在处理...');
-    $.seeAjax.get(
+    seeAjax(
       'confirmBills',
       {
         ids: JSON.stringify(data.saveBillIds),
@@ -336,7 +339,7 @@ $.seeView({
         'data-handling': 1,
       })
       .text('正在处理...');
-    $.seeAjax.get(
+    seeAjax(
       'cancelBills',
       {
         ids: JSON.stringify(data.saveBillIds),

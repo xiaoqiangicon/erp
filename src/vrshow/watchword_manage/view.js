@@ -5,8 +5,8 @@ import tpl from './tpl';
 import func from './function';
 import './ajax';
 import 'jquery-confirm';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click #add-watchword-btn': 'onClickAddWatchwordBtn',
     'keyup #watchword': 'textNumTip',

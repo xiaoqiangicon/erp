@@ -5,7 +5,7 @@ import temples from '../common/temples';
 import foShi from '../common/fo_shi';
 import '../common/nav';
 import '../common/brand';
-import 'juicer';
+import juicer from 'juicer';
 if (browser.isMobile) {
   $('#nav-register')
     .text('下载APP')

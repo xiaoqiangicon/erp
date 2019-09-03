@@ -1,5 +1,5 @@
 import images from './images';
-import 'juicer';
+import juicer from 'juicer';
 var appConfig = {
   environment: 0,
 };

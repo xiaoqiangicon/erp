@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   selectYearItem: juicer($('#tpl-select-year-item').html()),
   yearContentContainer: juicer($('#tpl-year-content-container').html()),

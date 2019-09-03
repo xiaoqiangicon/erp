@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   detail: juicer($('#tpl-detail').html()),
   priceRow: juicer($('#tpl-price-row').html()),

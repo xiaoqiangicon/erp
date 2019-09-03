@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import indexData from './data';
 import envData from 'common/env_data';
-import 'lib/jquery.seeAjax';
+
 var handle = {};
 var urlReplacement = [
   {

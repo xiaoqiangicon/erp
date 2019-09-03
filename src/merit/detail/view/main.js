@@ -9,8 +9,8 @@ import func from './../function';
 import toastr from 'toastr';
 import 'jquery-confirm';
 import './../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click #add-to-follow': 'onClickAddToFollow',
     'click #save-add-to-follow': 'onClickSaveAddToFollow',

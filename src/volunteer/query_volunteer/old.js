@@ -3,7 +3,7 @@ import Toast from 'old/toast';
 import config from './config';
 import 'old/bootstrap-select.min';
 import 'old/backbone';
-import 'juicer';
+import juicer from 'juicer';
 $.ajaxSetup({
   cache: false,
 });

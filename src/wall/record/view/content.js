@@ -8,12 +8,12 @@ import tpl from '../tpl';
 import func from '../function';
 import util from './util';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var $hoverPopupActions = $('#hover-popup-actions');
 var $actionRecord = $('#action-record');
 var $hoverPopupOk = $('#hover-popup-ok');
 var lastMouseEnterDetailCellEvent;
-$.seeView({
+seeView({
   events: {
     'mouseenter [data-detail-cell]': 'onMouseEnterDetailCell',
     'mouseout [data-detail-cell]': 'onMouseOutDetailCell',

@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -13,12 +14,12 @@ import yearHtml from '../html/year';
 import monthHtml from '../html/month';
 import dayHtml from '../html/day';
 import '../ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 var sequenceBeforeFocus;
 var $sequence = $('#create-modal-sequence');
 var $actionRecord = $('#action-record');
 var saveWithOutOfDate = !1;
-$.seeView({
+seeView({
   events: {
     'click [data-create-contact-delete]': 'onClickCreateContactDelete',
     '!click #create-modal-add-contact': 'onClickCreateModalAddContact',
@@ -181,30 +182,23 @@ $.seeView({
   onSaveData: function(params) {
     var self = this;
     if (data.currentActionIsAdd) {
-      $.seeAjax.post(
-        'add',
-        params,
-        function(res) {
-          if (res.success) {
-            $(
-              '[data-detail-cell][data-sequence="' + data.currentSequence + '"]'
-            )
-              .attr({
-                'data-recorded': 1,
-                'data-available': 0,
-              })
-              .removeClass('available')
-              .addClass('recorded');
-            data.currentActionIsAdd = !1;
-            $actionRecord.text('修改数据');
-            self.onSaveDataSuccess();
-            toastr.success('添加信息成功');
-          } else {
-            toastr.error('添加信息失败，请稍后再试');
-          }
-        },
-        !0
-      );
+      seeAjax('add', params, function(res) {
+        if (res.success) {
+          $('[data-detail-cell][data-sequence="' + data.currentSequence + '"]')
+            .attr({
+              'data-recorded': 1,
+              'data-available': 0,
+            })
+            .removeClass('available')
+            .addClass('recorded');
+          data.currentActionIsAdd = !1;
+          $actionRecord.text('修改数据');
+          self.onSaveDataSuccess();
+          toastr.success('添加信息成功');
+        } else {
+          toastr.error('添加信息失败，请稍后再试');
+        }
+      });
     } else {
       if (!data.currentEditIsOnline)
         params.id =
@@ -216,7 +210,7 @@ $.seeView({
           data.cellData[data.currentRegionId][
             func.getRowColumnKey(data.lastOnlineRow, data.lastOnlineColumn)
           ].id;
-      $.seeAjax.post(
+      seeAjax(
         data.currentEditIsOnline ? 'editOnline' : 'edit',
         params,
         function(res) {
@@ -229,8 +223,7 @@ $.seeView({
           } else {
             toastr.error('更新信息失败，请稍后再试');
           }
-        },
-        !0
+        }
       );
     }
   },

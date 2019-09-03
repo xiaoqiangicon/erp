@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
-import 'lib/jquery.seeAjax';
-var requestKeysOuter = {
+import seeAjax from 'see-ajax';
+var requestKeys = {
   detail: {
     id: 'wallId',
   },
@@ -39,7 +39,7 @@ var requestKeysOuter = {
     wish: 'wish',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   regions: {
     data: [
       {
@@ -83,7 +83,7 @@ var responseRefactorOuter = {
     },
   },
 };
-var preHandleOuter = {
+var preHandle = {
   add: function(req) {
     var contactList = req.contacts || [];
     var pureContactList = [];
@@ -153,7 +153,7 @@ var preHandleOuter = {
     req.contacts = pureContactList.join(',');
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -262,18 +262,7 @@ var postHandleOuter = {
     }
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    houses: 'houses',
-    regions: 'regions',
-    detail: 'detail',
-    cellInfo: 'cellInfo',
-    onlineCellInfo: 'onlineCellInfo',
-    add: 'add',
-    edit: 'edit',
-    editOnline: 'editOnline',
-  },
+const configs = {
   url: {
     houses: [
       '/zzhadmin/buddhaWall_hallList/',
@@ -318,15 +307,15 @@ $.seeAjax.config({
   },
   requestKeys: {
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     cellInfo: [
-      requestKeysOuter.cellInfo,
-      requestKeysOuter.cellInfo,
+      requestKeys.cellInfo,
+      requestKeys.cellInfo,
       {
         id: 'id',
         row: 'row',
@@ -334,8 +323,8 @@ $.seeAjax.config({
       },
     ],
     onlineCellInfo: [
-      requestKeysOuter.onlineCellInfo,
-      requestKeysOuter.onlineCellInfo,
+      requestKeys.onlineCellInfo,
+      requestKeys.onlineCellInfo,
       {
         id: 'id',
         row: 'row',
@@ -343,8 +332,8 @@ $.seeAjax.config({
       },
     ],
     add: [
-      requestKeysOuter.add,
-      requestKeysOuter.add,
+      requestKeys.add,
+      requestKeys.add,
       {
         regionId: 'regionId',
         row: 'row',
@@ -358,8 +347,8 @@ $.seeAjax.config({
       },
     ],
     edit: [
-      requestKeysOuter.edit,
-      requestKeysOuter.edit,
+      requestKeys.edit,
+      requestKeys.edit,
       {
         id: 'id',
         regionId: 'regionId',
@@ -374,8 +363,8 @@ $.seeAjax.config({
       },
     ],
     editOnline: [
-      requestKeysOuter.edit,
-      requestKeysOuter.edit,
+      requestKeys.edit,
+      requestKeys.edit,
       {
         id: 'id',
         regionId: 'regionId',
@@ -391,26 +380,103 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    regions: [responseRefactorOuter.regions, responseRefactorOuter.regions],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
-    cellInfo: [responseRefactorOuter.cellInfo, responseRefactorOuter.cellInfo],
+    regions: [responseRefactor.regions, responseRefactor.regions],
+    detail: [responseRefactor.detail, responseRefactor.detail],
+    cellInfo: [responseRefactor.cellInfo, responseRefactor.cellInfo],
     onlineCellInfo: [
-      responseRefactorOuter.onlineCellInfo,
-      responseRefactorOuter.onlineCellInfo,
+      responseRefactor.onlineCellInfo,
+      responseRefactor.onlineCellInfo,
     ],
   },
   preHandle: {
-    add: [preHandleOuter.add, preHandleOuter.add],
-    edit: [preHandleOuter.edit, preHandleOuter.edit],
-    editOnline: [preHandleOuter.edit, preHandleOuter.edit],
+    add: [preHandle.add, preHandle.add],
+    edit: [preHandle.edit, preHandle.edit],
+    editOnline: [preHandle.edit, preHandle.edit],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    regions: [postHandleOuter.regions, postHandleOuter.regions],
-    cellInfo: [postHandleOuter.cellInfo, postHandleOuter.cellInfo],
-    onlineCellInfo: [
-      postHandleOuter.onlineCellInfo,
-      postHandleOuter.onlineCellInfo,
-    ],
+    common: [postHandle.common, postHandle.common],
+    regions: [postHandle.regions, postHandle.regions],
+    cellInfo: [postHandle.cellInfo, postHandle.cellInfo],
+    onlineCellInfo: [postHandle.onlineCellInfo, postHandle.onlineCellInfo],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('houses', {
+  url: configs.url.houses,
+  requestKeys: configs.requestKeys.houses,
+  preHandle: configs.preHandle.houses,
+  responseRefactor: configs.responseRefactor.houses,
+  postHandle: configs.postHandle.houses,
+});
+
+seeAjax.config('regions', {
+  url: configs.url.regions,
+  requestKeys: configs.requestKeys.regions,
+  preHandle: configs.preHandle.regions,
+  responseRefactor: configs.responseRefactor.regions,
+  postHandle: configs.postHandle.regions,
+});
+
+seeAjax.config('detail', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('cellInfo', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.cellInfo,
+  requestKeys: configs.requestKeys.cellInfo,
+  preHandle: configs.preHandle.cellInfo,
+  responseRefactor: configs.responseRefactor.cellInfo,
+  postHandle: configs.postHandle.cellInfo,
+});
+
+seeAjax.config('onlineCellInfo', {
+  url: configs.url.onlineCellInfo,
+  requestKeys: configs.requestKeys.onlineCellInfo,
+  preHandle: configs.preHandle.onlineCellInfo,
+  responseRefactor: configs.responseRefactor.onlineCellInfo,
+  postHandle: configs.postHandle.onlineCellInfo,
+});
+
+seeAjax.config('add', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.add,
+  requestKeys: configs.requestKeys.add,
+  preHandle: configs.preHandle.add,
+  responseRefactor: configs.responseRefactor.add,
+  postHandle: configs.postHandle.add,
+});
+
+seeAjax.config('edit', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.edit,
+  requestKeys: configs.requestKeys.edit,
+  preHandle: configs.preHandle.edit,
+  responseRefactor: configs.responseRefactor.edit,
+  postHandle: configs.postHandle.edit,
+});
+
+seeAjax.config('editOnline', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.editOnline,
+  requestKeys: configs.requestKeys.editOnline,
+  preHandle: configs.preHandle.editOnline,
+  responseRefactor: configs.responseRefactor.editOnline,
+  postHandle: configs.postHandle.editOnline,
 });

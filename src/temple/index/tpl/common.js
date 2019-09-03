@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   addComponent: `
         {@each components as component}

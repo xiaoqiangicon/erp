@@ -2,7 +2,7 @@ import $ from 'jquery';
 import config from './config';
 import Toast from 'old/toast';
 import 'old/backbone';
-import 'juicer';
+import juicer from 'juicer';
 import 'old/bootstrap-select.min';
 import 'old/jquery.pagination';
 import 'old/jquery.watermark.min';

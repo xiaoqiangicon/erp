@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import func from './function';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {},
 });

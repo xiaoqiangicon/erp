@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import LunarCalendar from 'lunar-calendar';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var printTexts = ['未打印', '已打印'];
-var requestKeysOuter = {
+var requestKeys = {
   unhandledOrders: {
     regionId: 'wallId',
     startDate: 'beginDate',
@@ -46,7 +46,7 @@ var requestKeysOuter = {
     printPages: 'printNum',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   unhandledOrders: {
     data: [
       {
@@ -98,7 +98,7 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   unhandledOrders: function(req) {
     req.pageSize = 20;
     req.pageIndex -= 1;
@@ -124,7 +124,7 @@ var preHandleOuter = {
     delete req.searchType;
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -194,21 +194,7 @@ var postHandleOuter = {
       });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    houses: 'houses',
-    regions: 'regions',
-    unhandledOrders: 'unhandledOrders',
-    handledOrders: 'handledOrders',
-    handle: 'handle',
-    detail: 'detail',
-    saveMemo: 'saveMemo',
-    updateFeedImage: 'updateFeedImage',
-    printers: 'printers',
-    printerStatus: 'printerStatus',
-    savePrinter: 'savePrinter',
-  },
+const configs = {
   url: {
     houses: [
       '/zzhadmin/buddhaWall_hallList/',
@@ -268,8 +254,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     unhandledOrders: [
-      requestKeysOuter.unhandledOrders,
-      requestKeysOuter.unhandledOrders,
+      requestKeys.unhandledOrders,
+      requestKeys.unhandledOrders,
       {
         regionId: 'regionId',
         startDate: 'startDate',
@@ -280,8 +266,8 @@ $.seeAjax.config({
       },
     ],
     handledOrders: [
-      requestKeysOuter.handledOrders,
-      requestKeysOuter.handledOrders,
+      requestKeys.handledOrders,
+      requestKeys.handledOrders,
       {
         regionId: 'regionId',
         startDate: 'startDate',
@@ -292,8 +278,8 @@ $.seeAjax.config({
       },
     ],
     handle: [
-      requestKeysOuter.handle,
-      requestKeysOuter.handle,
+      requestKeys.handle,
+      requestKeys.handle,
       {
         id: 'id',
         type: 'type',
@@ -301,23 +287,23 @@ $.seeAjax.config({
       },
     ],
     detail: [
-      requestKeysOuter.detail,
-      requestKeysOuter.detail,
+      requestKeys.detail,
+      requestKeys.detail,
       {
         id: 'id',
       },
     ],
     saveMemo: [
-      requestKeysOuter.saveMemo,
-      requestKeysOuter.saveMemo,
+      requestKeys.saveMemo,
+      requestKeys.saveMemo,
       {
         id: 'id',
         memo: 'memo',
       },
     ],
     updateFeedImage: [
-      requestKeysOuter.updateFeedImage,
-      requestKeysOuter.updateFeedImage,
+      requestKeys.updateFeedImage,
+      requestKeys.updateFeedImage,
       {
         id: 'id',
         type: 'status',
@@ -325,15 +311,15 @@ $.seeAjax.config({
       },
     ],
     printerStatus: [
-      requestKeysOuter.printerStatus,
-      requestKeysOuter.printerStatus,
+      requestKeys.printerStatus,
+      requestKeys.printerStatus,
       {
         id: 'id',
       },
     ],
     savePrinter: [
-      requestKeysOuter.savePrinter,
-      requestKeysOuter.savePrinter,
+      requestKeys.savePrinter,
+      requestKeys.savePrinter,
       {
         ids: 'ids',
         printers: 'printers',
@@ -344,34 +330,124 @@ $.seeAjax.config({
   },
   responseRefactor: {
     unhandledOrders: [
-      responseRefactorOuter.unhandledOrders,
-      responseRefactorOuter.unhandledOrders,
+      responseRefactor.unhandledOrders,
+      responseRefactor.unhandledOrders,
     ],
     handledOrders: [
-      responseRefactorOuter.handledOrders,
-      responseRefactorOuter.handledOrders,
+      responseRefactor.handledOrders,
+      responseRefactor.handledOrders,
     ],
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
-    printers: [responseRefactorOuter.printers, responseRefactorOuter.printers],
+    detail: [responseRefactor.detail, responseRefactor.detail],
+    printers: [responseRefactor.printers, responseRefactor.printers],
   },
   preHandle: {
-    unhandledOrders: [
-      preHandleOuter.unhandledOrders,
-      preHandleOuter.unhandledOrders,
-    ],
-    handledOrders: [preHandleOuter.handledOrders, preHandleOuter.handledOrders],
+    unhandledOrders: [preHandle.unhandledOrders, preHandle.unhandledOrders],
+    handledOrders: [preHandle.handledOrders, preHandle.handledOrders],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    regions: [postHandleOuter.regions, postHandleOuter.regions],
-    unhandledOrders: [
-      postHandleOuter.unhandledOrders,
-      postHandleOuter.unhandledOrders,
-    ],
-    handledOrders: [
-      postHandleOuter.handledOrders,
-      postHandleOuter.handledOrders,
-    ],
-    detail: [postHandleOuter.detail, postHandleOuter.detail],
+    common: [postHandle.common, postHandle.common],
+    regions: [postHandle.regions, postHandle.regions],
+    unhandledOrders: [postHandle.unhandledOrders, postHandle.unhandledOrders],
+    handledOrders: [postHandle.handledOrders, postHandle.handledOrders],
+    detail: [postHandle.detail, postHandle.detail],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('houses', {
+  url: configs.url.houses,
+  requestKeys: configs.requestKeys.houses,
+  preHandle: configs.preHandle.houses,
+  responseRefactor: configs.responseRefactor.houses,
+  postHandle: configs.postHandle.houses,
+});
+
+seeAjax.config('regions', {
+  url: configs.url.regions,
+  requestKeys: configs.requestKeys.regions,
+  preHandle: configs.preHandle.regions,
+  responseRefactor: configs.responseRefactor.regions,
+  postHandle: configs.postHandle.regions,
+});
+
+seeAjax.config('unhandledOrders', {
+  url: configs.url.unhandledOrders,
+  requestKeys: configs.requestKeys.unhandledOrders,
+  preHandle: configs.preHandle.unhandledOrders,
+  responseRefactor: configs.responseRefactor.unhandledOrders,
+  postHandle: configs.postHandle.unhandledOrders,
+});
+
+seeAjax.config('handledOrders', {
+  url: configs.url.handledOrders,
+  requestKeys: configs.requestKeys.handledOrders,
+  preHandle: configs.preHandle.handledOrders,
+  responseRefactor: configs.responseRefactor.handledOrders,
+  postHandle: configs.postHandle.handledOrders,
+});
+
+seeAjax.config('handle', {
+  method: ['post'],
+  url: configs.url.handle,
+  requestKeys: configs.requestKeys.handle,
+  preHandle: configs.preHandle.handle,
+  responseRefactor: configs.responseRefactor.handle,
+  postHandle: configs.postHandle.handle,
+});
+
+seeAjax.config('detail', {
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('saveMemo', {
+  url: configs.url.saveMemo,
+  requestKeys: configs.requestKeys.saveMemo,
+  preHandle: configs.preHandle.saveMemo,
+  responseRefactor: configs.responseRefactor.saveMemo,
+  postHandle: configs.postHandle.saveMemo,
+});
+
+seeAjax.config('updateFeedImage', {
+  method: ['post'],
+  url: configs.url.updateFeedImage,
+  requestKeys: configs.requestKeys.updateFeedImage,
+  preHandle: configs.preHandle.updateFeedImage,
+  responseRefactor: configs.responseRefactor.updateFeedImage,
+  postHandle: configs.postHandle.updateFeedImage,
+});
+
+seeAjax.config('printers', {
+  url: configs.url.printers,
+  requestKeys: configs.requestKeys.printers,
+  preHandle: configs.preHandle.printers,
+  responseRefactor: configs.responseRefactor.printers,
+  postHandle: configs.postHandle.printers,
+});
+
+seeAjax.config('printerStatus', {
+  method: ['post'],
+  stringify: [!0],
+  url: configs.url.printerStatus,
+  requestKeys: configs.requestKeys.printerStatus,
+  preHandle: configs.preHandle.printerStatus,
+  responseRefactor: configs.responseRefactor.printerStatus,
+  postHandle: configs.postHandle.printerStatus,
+});
+
+seeAjax.config('savePrinter', {
+  method: ['post'],
+  url: configs.url.savePrinter,
+  requestKeys: configs.requestKeys.savePrinter,
+  preHandle: configs.preHandle.savePrinter,
+  responseRefactor: configs.responseRefactor.savePrinter,
+  postHandle: configs.postHandle.savePrinter,
 });

@@ -12,8 +12,9 @@ import api from './api';
 import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 import 'jquery-confirm';
 import './ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeAjax from 'see-ajax';
+import seeView from 'see-view';
+seeView({
   events: {
     'keyup [data-ele="s-textarea"]': 'onKeyupSTextarea',
     'changed.bs.select #buddhist-type-select': 'onChangeBuddhistTypeSelect',
@@ -135,7 +136,7 @@ $.seeView({
           }
         });
         titleStr = titleList.join('|$|');
-        $.seeAjax.post(
+        seeAjax(
           'getBuddhistPoster',
           {
             commodityId: id,
@@ -150,8 +151,7 @@ $.seeView({
             } else {
               res.message && commonFunc.alert(res.message);
             }
-          },
-          true
+          }
         );
       },
     });
@@ -289,18 +289,13 @@ $.seeView({
       params = {};
     params.commodityId = id;
     params.name = name;
-    $.seeAjax.post(
-      'addTemplate',
-      params,
-      function(res) {
-        if (res.success) {
-          window.location.href = '/zzhadmin/selectCeremonyTemplate/';
-        } else {
-          res.message && commonFunc.alert(res.message);
-        }
-      },
-      true
-    );
+    seeAjax('addTemplate', params, function(res) {
+      if (res.success) {
+        window.location.href = '/zzhadmin/selectCeremonyTemplate/';
+      } else {
+        res.message && commonFunc.alert(res.message);
+      }
+    });
   },
   onClickCancelSetTmpl: function(e) {
     var $myModal = $('#set-tmpl-modal'),
@@ -316,7 +311,7 @@ $.seeView({
     (Data.ifHasSub =
       $relatedTar.attr('data-ifHasSub') === 'true' ? true : false),
       $modal.attr('data-id', curId);
-    $.seeAjax.get('printerList', {}, function(res) {
+    seeAjax('printerList', {}, function(res) {
       if (res.success) {
         Data.getPrinterListRes = res;
         if (res.data.length === 0) {
@@ -325,7 +320,7 @@ $.seeView({
           return false;
         } else {
           if (Data.ifHasSub) {
-            $.seeAjax.post(
+            seeAjax(
               'CommoditySubdivide',
               {
                 commodityId: curId,
@@ -338,8 +333,7 @@ $.seeView({
                   Data.getSubListRes
                 );
                 func.getAndRenderPrtCfg(curId);
-              },
-              true
+              }
             );
           } else {
             func.initSetPrtModal(Data.ifHasSub, Data.getPrinterListRes);
@@ -494,7 +488,7 @@ $.seeView({
       curId = parseInt($modal.attr('data-id')),
       data = Data.localPrtCfg;
     if (ifChecked) {
-      $.seeAjax.post(
+      seeAjax(
         'printerStatus',
         {
           printerId: prtId,
@@ -517,8 +511,7 @@ $.seeView({
           } else {
             res.message && commonFunc.alert(res.message);
           }
-        },
-        true
+        }
       );
     } else {
       $exceptionTip.text('').hide();
@@ -559,26 +552,20 @@ $.seeView({
       Data.localPrtCfg,
       Data.getSubListRes.data
     );
-    $.seeAjax.post(
-      'addAndUpdateCommodity2Printer',
-      params,
-      function(res) {
-        if (res.success) {
-          var printerDataResult = func.handleGetListPrinterData(
-            Data.handleListData[curId]
-          );
-          Data.handleListData[curId].ifHasAddPrt =
-            printerDataResult.ifHasAddPrt;
-          Data.handleListData[curId].ifHasSub = printerDataResult.ifHasSub;
-          Data.handleListData[curId].prtText = printerDataResult.prtText;
-          func.renderTr(curId);
-          $('#set-prt-modal').modal('hide');
-        } else {
-          res.message && commonFunc.alert(res.message);
-        }
-      },
-      true
-    );
+    seeAjax('addAndUpdateCommodity2Printer', params, function(res) {
+      if (res.success) {
+        var printerDataResult = func.handleGetListPrinterData(
+          Data.handleListData[curId]
+        );
+        Data.handleListData[curId].ifHasAddPrt = printerDataResult.ifHasAddPrt;
+        Data.handleListData[curId].ifHasSub = printerDataResult.ifHasSub;
+        Data.handleListData[curId].prtText = printerDataResult.prtText;
+        func.renderTr(curId);
+        $('#set-prt-modal').modal('hide');
+      } else {
+        res.message && commonFunc.alert(res.message);
+      }
+    });
   },
   onClickModalHeadNav: function(e) {
     var $curTar = $(e.currentTarget),
@@ -745,7 +732,7 @@ $.seeView({
       var htmlStr = tpl.scheduleItem.render(data);
       $curScheduleItem.replaceWith(htmlStr);
       Toast('修改成功', 1);
-      $.seeAjax.get('getPushTimes', {}, function(res) {
+      seeAjax('getPushTimes', {}, function(res) {
         let todayNum = 0;
         if (res.success) todayNum = res.todayNum;
         $('[data-ele="push-times"]').html(todayNum);

@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import toastr from 'toastr';
@@ -7,10 +8,10 @@ import data from './data';
 import tpl from './tpl';
 import func from './function';
 import './ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
-$.seeView({
+seeView({
   events: {
     '!change [data-filter]': 'onChangeFilter',
     '!click #action-add': 'onClickActionAdd',
@@ -76,7 +77,7 @@ $.seeView({
     var $this = $(e.target),
       id = parseInt($this.attr('data-unit-delete'));
     commonFunc.confirm('确定删除这个项目吗', function() {
-      $.seeAjax.post(
+      seeAjax(
         'delete',
         {
           id: id,
@@ -88,8 +89,7 @@ $.seeView({
           } else {
             toastr.error('删除失败，请稍后再试');
           }
-        },
-        !0
+        }
       );
     });
   },
@@ -100,7 +100,7 @@ $.seeView({
     if (data.detailData[id]) {
       self.showCreatePopupForCopy(id);
     } else {
-      $.seeAjax.post(
+      seeAjax(
         'detail',
         {
           id: id,
@@ -112,8 +112,7 @@ $.seeView({
           } else {
             commonFunc.dialog('获取区域详细信息失败，请稍后再试');
           }
-        },
-        !0
+        }
       );
     }
   },
@@ -143,7 +142,7 @@ $.seeView({
     var $this = $(e.target),
       id = parseInt($this.attr('data-unit-freeze')),
       status = parseInt($this.attr('data-status'));
-    $.seeAjax.post(
+    seeAjax(
       'freeze',
       {
         id: id,
@@ -174,8 +173,7 @@ $.seeView({
         } else {
           toastr.error('操作失败，请稍后重新尝试');
         }
-      },
-      !0
+      }
     );
   },
   onClickUnitSort: function(e) {
@@ -188,7 +186,7 @@ $.seeView({
   },
   onClickSortPopupOk: function(e) {
     var sort = parseInt($('#sort-popup-input').val()) || 0;
-    $.seeAjax.post(
+    seeAjax(
       'sort',
       {
         id: data.currentSortId,
@@ -202,8 +200,7 @@ $.seeView({
         } else {
           toastr.error('更新排序失败，请稍后重试');
         }
-      },
-      !0
+      }
     );
   },
   onClickCreatePopupOk: function(e) {
@@ -228,7 +225,7 @@ $.seeView({
       return;
     }
     var buddhaId = parseInt($('#create-popup-type').val());
-    $.seeAjax.post(
+    seeAjax(
       'create',
       {
         name: name,
@@ -250,8 +247,7 @@ $.seeView({
         } else {
           toastr.error('保存失败，请稍后重试');
         }
-      },
-      !0
+      }
     );
   },
   checkCreateCode: function(rows, columns) {

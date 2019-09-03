@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import QRCode from '../../../../pro-com/src/libs-es5/qrcode';
@@ -9,8 +10,8 @@ import func from '../function';
 import util from './util';
 import refreshSelectedCount from '../util/refresh_selected_count';
 import '../ajax';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'click [data-row-select]': 'onClickRowSelect',
     'click [data-page-index]': 'onClickPageIndex',
@@ -58,7 +59,7 @@ $.seeView({
     $selected.map(function() {
       ids.push(parseInt($(this).attr('data-row-select')));
     });
-    $.seeAjax.post(
+    seeAjax(
       'handle',
       {
         id: ids.join(','),
@@ -94,7 +95,7 @@ $.seeView({
   onClickRowDetail: function(e) {
     var $this = $(e.target),
       id = parseInt($this.attr('data-row-detail'));
-    $.seeAjax.get(
+    seeAjax(
       'detail',
       {
         id: id,

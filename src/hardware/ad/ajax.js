@@ -1,15 +1,15 @@
 import $ from 'jquery';
 import commonVars from 'common/variables';
 import data from './data';
-import 'lib/jquery.seeAjax';
+import seeAjax from 'see-ajax';
 var typeTexts = ['自在家', '自定义', '佛事', '文章'];
-var requestKeysOuter = {
+var requestKeys = {
   switch: {
     id: 'adId',
     hide: 'status',
   },
 };
-var responseRefactorOuter = {
+var responseRefactor = {
   detail: {
     data: [
       {
@@ -20,12 +20,12 @@ var responseRefactorOuter = {
     ],
   },
 };
-var preHandleOuter = {
+var preHandle = {
   detail: function(req) {
     req.machineId = parseInt(commonVars.params.id);
   },
 };
-var postHandleOuter = {
+var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.msg && (res.message = res.msg);
@@ -38,12 +38,7 @@ var postHandleOuter = {
       });
   },
 };
-$.seeAjax.config({
-  environment: __SEE_ENV__,
-  name: {
-    detail: 'detail',
-    switch: 'switch',
-  },
+const configs = {
   url: {
     detail: [
       '/zzhadmin/merit_machine_ad_list/',
@@ -58,8 +53,8 @@ $.seeAjax.config({
   },
   requestKeys: {
     switch: [
-      requestKeysOuter.switch,
-      requestKeysOuter.switch,
+      requestKeys.switch,
+      requestKeys.switch,
       {
         id: 'id',
         hide: 'hide',
@@ -67,13 +62,36 @@ $.seeAjax.config({
     ],
   },
   responseRefactor: {
-    detail: [responseRefactorOuter.detail, responseRefactorOuter.detail],
+    detail: [responseRefactor.detail, responseRefactor.detail],
   },
   preHandle: {
-    detail: [preHandleOuter.detail, preHandleOuter.detail],
+    detail: [preHandle.detail, preHandle.detail],
   },
   postHandle: {
-    common: [postHandleOuter.common, postHandleOuter.common],
-    detail: [postHandleOuter.detail, postHandleOuter.detail],
+    common: [postHandle.common, postHandle.common],
+    detail: [postHandle.detail, postHandle.detail],
   },
+};
+
+seeAjax.setEnv(__SEE_ENV__);
+
+seeAjax.config('common', {
+  postHandle: configs.postHandle.common,
+});
+
+seeAjax.config('detail', {
+  url: configs.url.detail,
+  requestKeys: configs.requestKeys.detail,
+  preHandle: configs.preHandle.detail,
+  responseRefactor: configs.responseRefactor.detail,
+  postHandle: configs.postHandle.detail,
+});
+
+seeAjax.config('switch', {
+  method: ['post'],
+  url: configs.url.switch,
+  requestKeys: configs.requestKeys.switch,
+  preHandle: configs.preHandle.switch,
+  responseRefactor: configs.responseRefactor.switch,
+  postHandle: configs.postHandle.switch,
 });

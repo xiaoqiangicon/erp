@@ -1,14 +1,15 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
-import orchids from 'orchids';
+import * as orchids from 'orchids';
 import fn from 'common/function';
 import data from '../data';
 import func from '../func';
 import util from '../util';
 import tpl from '../tpl';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 import '@fancyapps/fancybox';
 var $receiptsContent = $('#dialog-receipts-content');
-$.seeView({
+seeView({
   events: {
     'click [data-select-status]': 'onClickSelectStatus',
     'click [data-unit-cancel]': 'onClickUnitCancel',
@@ -31,7 +32,7 @@ $.seeView({
       id = $this.attr('data-unit-cancel');
     setTimeout(function() {
       fn.confirm('确定撤回这次提现吗？', function() {
-        $.seeAjax.get(
+        seeAjax(
           'cancel',
           {
             id: id,

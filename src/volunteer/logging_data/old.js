@@ -7,7 +7,7 @@ import 'old/backbone';
 import 'old/tags';
 import 'old/bootstrap-select.min';
 import 'old/city-picker';
-import 'juicer';
+import juicer from 'juicer';
 $.ajaxSetup({
   cache: false,
 });

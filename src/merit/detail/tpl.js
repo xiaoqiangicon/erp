@@ -1,4 +1,4 @@
-import 'juicer';
+import juicer from 'juicer';
 var tpl = {
   selectOption: `
         <option value="\${id}">\${name}</option>  

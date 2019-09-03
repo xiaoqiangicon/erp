@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import seeAjax from 'see-ajax';
 import data from './data';
 import tpl from './tpl';
 import './ajax';
@@ -21,7 +22,7 @@ func.init = function() {
   func.getCategories();
 };
 func.getCategories = function() {
-  $.seeAjax.get('categories', {}, function(res) {
+  seeAjax('categories', {}, function(res) {
     var $inputCategory = $('#input-category');
     if (res.success) {
       data.categories = res.data;
@@ -34,7 +35,7 @@ func.getCategories = function() {
 };
 func.afterGetCategories = function() {
   if (data.formatedParams.action != 'add') {
-    $.seeAjax.get(
+    seeAjax(
       'getArticle',
       {
         id: data.formatedParams.articleId,

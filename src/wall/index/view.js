@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -7,10 +8,10 @@ import tpl from './tpl';
 import func from './function';
 import promotion from '../../../old-com/promotion/src';
 import './ajax';
-import 'lib/jquery.seeView';
+import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
-$.seeView({
+seeView({
   events: {
     '!click #action-promotion': 'onClickActionPromotion',
     '!click #action-add': 'onClickActionAdd',
@@ -27,7 +28,7 @@ $.seeView({
     '!click #sort-popup-ok': 'onClickSortPopupOk',
   },
   onClickActionPromotion: function(e) {
-    $.seeAjax.get('promotionUrl', {}, function(res) {
+    seeAjax('promotionUrl', {}, function(res) {
       if (res.success) {
         promotion.show({
           title: '预览',
@@ -46,7 +47,7 @@ $.seeView({
       $modal.show();
       $body.addClass('overflow-hidden');
     } else {
-      $.seeAjax.get('templates', {}, function(res) {
+      seeAjax('templates', {}, function(res) {
         if (res.success) {
           $modalContent.append(
             tpl.templateCell.render(data.customTemplateData)
@@ -129,7 +130,7 @@ $.seeView({
     var $this = $(e.target),
       id = parseInt($this.attr('data-unit-delete'));
     commonFunc.confirm('确定删除这个项目吗', function() {
-      $.seeAjax.post(
+      seeAjax(
         'delete',
         {
           id: id,
@@ -141,8 +142,7 @@ $.seeView({
           } else {
             toastr.error('删除失败，请稍后再试');
           }
-        },
-        !0
+        }
       );
     });
   },
@@ -172,7 +172,7 @@ $.seeView({
   },
   onClickSortPopupOk: function(e) {
     var sort = parseInt($('#sort-popup-input').val()) || 0;
-    $.seeAjax.post(
+    seeAjax(
       'sort',
       {
         id: data.currentSortId,
@@ -186,8 +186,7 @@ $.seeView({
         } else {
           toastr.error('更新排序失败，请稍后重试');
         }
-      },
-      !0
+      }
     );
   },
 });

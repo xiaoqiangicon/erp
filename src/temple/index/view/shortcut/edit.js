@@ -4,8 +4,8 @@ import indexData from '../../data';
 import commonTpl from '../../tpl/common';
 import shortcutTpl from '../../tpl/shortcut';
 import shortcutViewUtil from './util';
-import 'lib/jquery.seeView';
-$.seeView({
+import seeView from 'see-view';
+seeView({
   events: {
     'keyup [data-edit-shortcut-title]': 'onKeyupEditShortcutTitle',
     'click [data-edit-shortcut-add-btn]': 'onClickEditShortcutAddBtn',

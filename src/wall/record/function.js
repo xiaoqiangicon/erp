@@ -1,3 +1,4 @@
+import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonFunc from 'common/function';
@@ -11,7 +12,7 @@ import './ajax';
 var func = {};
 var $contentBody = $('#content-body');
 func.init = function() {
-  $.seeAjax.get('houses', {}, function(res) {
+  seeAjax('houses', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $select = $('#select-house');
       res.data.map(function(item) {
@@ -20,7 +21,7 @@ func.init = function() {
       });
     }
   });
-  $.seeAjax.get('regions', {}, function(res) {
+  seeAjax('regions', {}, function(res) {
     if (res.success && res.data && res.data.length) {
       var $select = $('#select-region');
       res.data.map(function(item) {
@@ -56,7 +57,7 @@ func.requestRegion = function(id) {
     func.renderRegion(data.detailData[id]);
   } else {
     data.cellData[id] = {};
-    $.seeAjax.post(
+    seeAjax(
       'detail',
       {
         id: id,
@@ -69,8 +70,7 @@ func.requestRegion = function(id) {
         } else {
           res.message && commonFunc.alert(res.message);
         }
-      },
-      !0
+      }
     );
   }
 };
