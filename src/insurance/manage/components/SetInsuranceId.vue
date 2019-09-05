@@ -34,20 +34,22 @@
 export default {
   name: 'Detail',
   props: {
-    insuranceId: ,
+    insuranceId: {
+      required: false,
+    },
   },
   data() {
     return {
-      newInsuranceId: ''
+      newInsuranceId: '',
     };
-  },
-  created() {
-    this.newInsuranceId = this.insuranceId;
   },
   computed: {
     visible() {
       return this.$store.state.setInsuranceIdDialogVisible;
     },
+  },
+  created() {
+    this.newInsuranceId = this.insuranceId;
   },
   methods: {
     onClickMask() {
@@ -56,7 +58,7 @@ export default {
     onClickConfirm() {
       this.$emit('update:insuranceId', this.newInsuranceId);
       // this.$store.commit({ type: 'updateSetInsranceIdVisible', state: false });
-    }
+    },
   },
 };
 </script>

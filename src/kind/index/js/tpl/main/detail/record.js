@@ -7,7 +7,7 @@ const tpl = `
             <div class="record-item-header">
                 <div class="record-item-header-left">
                     <p class="record-item-time">发布时间： {{addTime}}</p>
-                    {{#if isShow}}<div class="ispush">已推送</div>{{/if}}
+                    {{#if isShow}}<div class="ispush" record-data-ispush="1">已推送</div>{{/if}}
                 </div>
                 <div class="record-edit">编辑</div>
                 <div class="record-operate">

@@ -1,4 +1,6 @@
-export default `
+import handlebars from 'handlebars';
+
+const tpl = `
     <div class="main-content">
         <div class="publish-content">
             <span class="content-tips">内容</span>
@@ -37,6 +39,8 @@ export default `
             <span class="remain-time-content">剩余次数:&nbsp&nbsp<span class="remain-time" id="remain-time"></span></span>
             <div class="push-tips">为了保证良好的体验避免对用户造成过多的打扰，已限制推送次数（每日0:00刷新次数）</div>
         </div>
-        <div class="save">保存</div>
+        <div class="save" id="save">保存</div>
     </div>
 `;
+
+export default handlebars.compile(tpl);

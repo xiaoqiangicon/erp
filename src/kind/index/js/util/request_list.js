@@ -10,6 +10,7 @@ import rowsTpl from '../tpl/main/rows';
 import '../ajax';
 
 import listTpl from '../tpl/main/detail/record';
+import contentTpl from '../tpl/main/detail/content';
 
 import upload from '../../../../../../pro-com/src/upload';
 import { makeUploadFileOptions } from '../../../../configs/upload';
@@ -65,16 +66,52 @@ const requestList = (page, init) => {
 
             console.log(data.scheduleList);
             $('#remain-time').text(data.scheduleList.todayNum);
+            $('.update-content').html(contentTpl(data.scheduleList));
+            const $uploadLoading = $('[data-ele="video-upload-loading"]');
+            $uploadLoading.hide();
             $('.record-content').html(listTpl(data.scheduleList));
             $('[data-remain-time]').text(data.scheduleList.todayNum);
+            $('.publish-mask').show();
 
             if (!data.scheduleList.list.length) {
               $('[data-no-list]').show();
             }
 
+            // 发布进展上传视频
+            upload(
+              makeUploadFileOptions({
+                el: '.upload-video',
+                done: (url, e, data) => {
+                  $('[data-ele="video-upload-loading"]').remove();
+                  const $coverContainer = $('#cover-container');
+                  $coverContainer.append(
+                    coverVideoItemTpl({
+                      video: url,
+                    })
+                  );
+                },
+                progress: (e, data) => {
+                  const $coverContainer = $('#cover-container');
+                  $coverContainer.append($uploadLoading);
+                  $uploadLoading.show();
+                  const $progress = $('[data-ele="progress"]');
+                  const $progressText = $('[data-ele="progress-text"]');
+                  let progress = parseInt((data.loaded / data.total) * 100, 10);
+                  if (progress > 95) {
+                    progress = 95;
+                  }
+                  $progress.css({
+                    width: `${progress}%`,
+                  });
+                  $progressText.text(`${progress}%`);
+                  console.log(progress);
+                },
+              })
+            );
+
             // 新增
             // 保存
-            $('.save').click(e => {
+            $('#save').click(e => {
               const $this = $(e.target);
               const result = checkBeforeSave();
               result.data.charityId = charityId;
@@ -118,8 +155,9 @@ const requestList = (page, init) => {
                 if (i == 0) {
                   $('.record-cancel').click();
                 } else {
-                  $('.type-content').val(' ');
-                  $('.media').html(' ');
+                  $('.type-content').val('');
+                  $('[data-text-count-show="1"]').text('0');
+                  $('.media').html('');
                   $('.push-select').removeClass('push-select-active');
                   $('.no-push').addClass('push-select-active');
                 }
@@ -390,7 +428,6 @@ const requestList = (page, init) => {
                 );
               });
             });
-            $('.publish-mask').show();
           });
         });
       });

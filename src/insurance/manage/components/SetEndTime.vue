@@ -22,8 +22,7 @@
               align="right"
               type="date"
               placeholder="选择日期"
-            >
-            </el-date-picker>
+            />
           </div>
           <div class="operate">
             <el-button type="primary" class="cancel" @click="onClickMask">
@@ -42,13 +41,15 @@
 <script>
 export default {
   name: 'Detail',
-  props: {
-    endTime: ,
-  },
   components: {},
+  props: {
+    endTime: {
+      required: false,
+    },
+  },
   data() {
     return {
-      setEndTime: ''
+      setEndTime: '',
     };
   },
   computed: {
@@ -63,7 +64,7 @@ export default {
     onClickConfirm() {
       this.$emit('update:endTime', this.setEndTime);
       // this.$store.commit({ type: 'updateSetEndTimeVisible', state: false });
-    }
+    },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
-    <div v-show="visible" class="s-mask" @click.self="onClickMask">
-      <el-card class="box-card distribute">
+    <div v-show="visible | true" class="s-mask" @click.self="onClickMask">
+      <el-card v-show="false" class="box-card distribute">
         <div slot="header" class="clearfix">
           <span>设为生效</span>
           <el-button
@@ -40,6 +40,43 @@
           </div>
         </div>
       </el-card>
+      <div v-show="true" class="valid-success valid-status-box">
+        <div class="valid-info success-info">
+          <img
+            class="valid-status-img"
+            src="https://pic.zizaihome.com/66cf50f4-cef7-11e9-8c8c-00163e0c001e.png"
+            alt=""
+          />
+          <p class="valid-status-info">
+            保存成功
+          </p>
+          <p>当前保单变更为 "生效中" 的状态</p>
+        </div>
+        <div class="">
+          我知道了
+        </div>
+      </div>
+      <div v-show="false" class="valid-failed valid-status-box">
+        <div class="valid-info failed-info">
+          <img
+            class="valid-status-img"
+            src="https://pic.zizaihome.com/65c60ad6-cef7-11e9-a166-00163e0c001e.png"
+            alt=""
+          />
+          <p class="valid-status-info">
+            保存失败
+          </p>
+          <p>请核对并修改以下信息后，再重新提交</p>
+          <div class="failed-tips">
+            <p>表格中用户的"自在家号"与系统不一致，请核查</p>
+            <p>"承保标示"项：不能为空</p>
+            <p>"承保方案"项：不能为空</p>
+          </div>
+        </div>
+        <div class="">
+          我知道了
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -121,5 +158,21 @@ export default {
 .operate {
   margin-top: 10px;
   text-align: center;
+}
+.valid-status-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: 260px;
+  border-radius: 20px;
+  background: white;
+}
+.valid-info {
+  margin: 0 auto;
+  .valid-status-img {
+    width: 60px;
+  }
 }
 </style>

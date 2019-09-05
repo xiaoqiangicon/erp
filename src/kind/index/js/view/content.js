@@ -1,18 +1,12 @@
 const $ = require('jquery');
 const seeView = require('see-view').default;
-const seeAjax = require('see-ajax').default;
 
 import '../../../../../old-com/choose-image/src/css/index.css';
 import '../../../../../old-com/choose-icon/src/css/index.css';
 import ChooseImage from '../../../../../old-com/choose-image/src';
-import zzhHandling from '../../../../../old-com/handling/src';
 import 'component/choose_image_config';
 
-import zzhUtil from '../../../../../old-com/util/src';
-
 import coverPicItemTpl from '../tpl/main/detail/cover_pic_item';
-
-import checkBeforeSave from '../util/check_before_save';
 
 let coverChoose;
 
@@ -20,14 +14,30 @@ seeView({
   events: {
     'click .push-select': 'onClickSelect',
     'click .upload-pic': 'onClickUploadPic',
-    'click .save': 'onClickSave',
     // 首页切换发布进展/发布记录
     'click .header-item': 'onClickHeaderItem',
     // 点击关闭发布弹窗
-    'click #close-publish': 'onClickPublish',
+    'click #close-publish': 'onClickClosePublish',
   },
 
-  onClickPublish: e => {
+  onClickClosePublish: e => {
+    // 切换选项卡为发布进展
+    $('.header-item')
+      .eq(0)
+      .addClass('header-item-active')
+      .siblings()
+      .removeClass('header-item-active');
+    $('.content').hide();
+    $('.content')
+      .eq(0)
+      .show();
+
+    // 将已输入的发布进展的内容清空
+    $('.type-content').val('');
+    $('[data-text-count-show="1"]').text('0');
+    $('.media').html('');
+    $('.push-select').removeClass('push-select-active');
+    $('.no-push').addClass('push-select-active');
     $('.publish-mask').hide();
   },
 
