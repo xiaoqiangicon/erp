@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'Detail',
+  name: 'Withdraw',
   components: {},
   data() {
     return {};

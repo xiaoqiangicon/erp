@@ -40,7 +40,7 @@
           </div>
         </div>
       </el-card>
-      <div v-show="true" class="valid-success valid-status-box">
+      <div v-show="false" class="valid-success valid-status-box">
         <div class="valid-info success-info">
           <img
             class="valid-status-img"
@@ -50,13 +50,15 @@
           <p class="valid-status-info">
             保存成功
           </p>
-          <p>当前保单变更为 "生效中" 的状态</p>
+          <p class="valid-status-tips">
+            当前保单变更为 "生效中" 的状态
+          </p>
         </div>
-        <div class="">
+        <div class="confirm-valid">
           我知道了
         </div>
       </div>
-      <div v-show="false" class="valid-failed valid-status-box">
+      <div v-show="true" class="valid-failed valid-status-box">
         <div class="valid-info failed-info">
           <img
             class="valid-status-img"
@@ -73,8 +75,13 @@
             <p>"承保方案"项：不能为空</p>
           </div>
         </div>
-        <div class="">
-          我知道了
+        <div class="upload-btn">
+          <div class="upload-btn-1 upload-cancel">
+            取消
+          </div>
+          <div class="upload-btn-1 reupload">
+            重新上传
+          </div>
         </div>
       </div>
     </div>
@@ -83,7 +90,7 @@
 
 <script>
 export default {
-  name: 'Detail',
+  name: 'SetValid',
   components: {},
   data() {
     return {};
@@ -159,6 +166,8 @@ export default {
   margin-top: 10px;
   text-align: center;
 }
+
+// 邀请成功，失败
 .valid-status-box {
   position: absolute;
   left: 50%;
@@ -170,9 +179,51 @@ export default {
   background: white;
 }
 .valid-info {
+  padding-top: 40px;
   margin: 0 auto;
+  text-align: center;
   .valid-status-img {
-    width: 60px;
+    width: 50px;
+    margin: 0 auto 16px;
   }
+}
+.valid-status-info {
+  width: 70px;
+  text-align: center;
+  font-size: 16px;
+  color: #272727;
+  margin: 0 auto 10px;
+}
+.valid-status-tips {
+  color: #8d8d8d;
+}
+.confirm-valid {
+  width: 100px;
+  margin: 40px auto 0;
+  border-radius: 8px;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  background: #1890ff;
+}
+
+// 失败框
+.upload-btn {
+  display: flex;
+}
+.upload-btn-1 {
+  width: 60px;
+  line-height: 30px;
+}
+.upload-cancel {
+  border: 1px solid #ccc;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+}
+.reupload {
+  color: white;
+  background: #1890ff;
 }
 </style>

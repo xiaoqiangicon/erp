@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'Detail',
+  name: 'SetEndTime',
   components: {},
   props: {
     endTime: {

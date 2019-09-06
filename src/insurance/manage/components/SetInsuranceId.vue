@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'Detail',
+  name: 'SetInsuranceId',
   props: {
     insuranceId: {
       required: false,

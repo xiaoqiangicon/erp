@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'Detail',
+  name: 'Delete',
   components: {},
   data() {
     return {};
