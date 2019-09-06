@@ -64,7 +64,6 @@ const requestList = (page, init) => {
             data.scheduleList = res.data;
             data.list = data.scheduleList.list;
 
-            console.log(data.scheduleList);
             $('#remain-time').text(data.scheduleList.todayNum);
             $('.update-content').html(contentTpl(data.scheduleList));
             const $uploadLoading = $('[data-ele="video-upload-loading"]');
@@ -104,7 +103,6 @@ const requestList = (page, init) => {
                     width: `${progress}%`,
                   });
                   $progressText.text(`${progress}%`);
-                  console.log(progress);
                 },
               })
             );
@@ -125,7 +123,7 @@ const requestList = (page, init) => {
                   charityId: charityId,
                   content: result.data.content,
                   img: result.data.img.join(','),
-                  video: result.data.video.join(','),
+                  video: '',
                   isPush: result.data.isPush,
                 },
                 res => {
@@ -259,7 +257,7 @@ const requestList = (page, init) => {
                   $('.record-type-content')
                     .eq(i)
                     .focus();
-                  console.log(i);
+
                   // 当前编辑的上传视频
                   const $uploadRecordLoading = $(`
                   <div class="schedule-video-upload-loading" data-record-ele="video-upload-loading">
@@ -308,7 +306,6 @@ const requestList = (page, init) => {
                           width: `${progress}%`,
                         });
                         $progressText.text(`${progress}%`);
-                        console.log(progress);
                       },
                     })
                   );
@@ -356,25 +353,24 @@ const requestList = (page, init) => {
                 $('.record-media')
                   .eq(i)
                   .html('');
-
-                data.list[i].img.forEach((url, i) => {
-                  $('.record-media')
-                    .eq(index)
-                    .append(
-                      coverPicTpl({
-                        image: url,
-                      })
-                    );
-                });
-                data.list[i].video.forEach((url, i) => {
-                  console.log(url);
-                  $('.record-media')
-                    .eq(index)
-                    .append(
-                      coverVideoItemTpl({
-                        video: url,
-                      })
-                    );
+                // 填充图片和视频
+                data.list[i].img.forEach((item, i) => {
+                  if (item.type === 0)
+                    $('.record-media')
+                      .eq(index)
+                      .append(
+                        coverPicTpl({
+                          image: item.src,
+                        })
+                      );
+                  else
+                    $('.record-media')
+                      .eq(index)
+                      .append(
+                        coverVideoItemTpl({
+                          video: item.src,
+                        })
+                      );
                 });
               });
             });
@@ -417,7 +413,7 @@ const requestList = (page, init) => {
                     id: data.list[index].id,
                     content: result.data.content,
                     img: result.data.img.join(','),
-                    video: result.data.video.join(','),
+                    video: '',
                     isPush: result.data.isPush,
                   },
                   res => {

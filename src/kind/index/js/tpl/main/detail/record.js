@@ -22,10 +22,12 @@ const tpl = `
                 <div class="record-item-media">
                     <div class="record-item-pic">
                         {{#each img}}
-                        <img class="record-single-pic" src="{{this}}" />
-                        {{/each}}
-                        {{#each video}}
-                        <video class="record-single-video" src="{{this}}"></video>
+                            {{#unless type}}
+                                <img class="record-single-pic" src="{{src}}" />
+                            {{/unless}}
+                            {{#if type}}
+                                <video class="record-single-video" src="{{src}}"></video>
+                            {{/if}}
                         {{/each}}
                     </div>
                 </div>
@@ -43,17 +45,19 @@ const tpl = `
                     <div class="record-upload-block">
                         <div class="record-media">
                             {{#each img}}
-                            <div class="item-0-1" data-cover-item="1">
-                                <img src="{{this}}" data-cover-item-image="1">
-                                <button class="clean common-delete" data-cover-item-delete="1">X</button>
-                            </div>
-                            {{/each}}
-                            {{#each video}}
-                            <div class="item-video-1" data-cover-video-item="1">
-                                <video src="{{this}}" data-cover-item-video="1"></video>
-                                <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
-                                <div class="video-mask"></div>
-                            </div>
+                                {{#unless type}}
+                                    <div class="item-0-1" data-cover-item="1">
+                                        <img src="{{src}}" data-cover-item-image="1">
+                                        <button class="clean common-delete" data-cover-item-delete="1">X</button>
+                                    </div>
+                                {{/unless}}
+                                {{#if type}}
+                                    <div class="item-video-1" data-cover-video-item="1">
+                                        <video src="{{src}}" data-cover-item-image="0" data-cover-item-video="1"></video>
+                                        <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
+                                        <div class="video-mask"></div>
+                                    </div>
+                                {{/if}}
                             {{/each}}
                         </div>
                         <div class="record-upload-block-btn">
