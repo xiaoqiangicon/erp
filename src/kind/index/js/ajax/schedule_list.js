@@ -40,6 +40,7 @@ const postHandle = res => {
         }
       });
       item.img = result;
+      console.log(result);
     }
   });
   res.data.list.forEach((item, i) => {
