@@ -57,7 +57,14 @@ const tpl = `
                                         <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
                                         <div class="video-mask"></div>
                                     </div>
-                                {{/if}}
+                                {{/if}} 
+                            {{/each}}
+                            {{#each video}}
+                                <div class="item-video-1" data-cover-video-item="1">
+                                    <video src="{{this}}" data-cover-item-image="0" data-cover-item-video="1"></video>
+                                    <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
+                                    <div class="video-mask"></div>
+                                </div>
                             {{/each}}
                         </div>
                         <div class="record-upload-block-btn">

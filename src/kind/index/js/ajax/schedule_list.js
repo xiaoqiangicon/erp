@@ -40,12 +40,13 @@ const postHandle = res => {
         }
       });
       item.img = result;
-      console.log(result);
     }
-  });
-  res.data.list.forEach((item, i) => {
-    if (!item.video) item.video = [];
-    else item.video = item.video.split(',');
+
+    res.data.list.forEach((item, i) => {
+      console.log(item.video);
+      // if (!item.video) item.video = [];
+      // else item.video = item.video.split(',');
+    });
   });
 };
 
