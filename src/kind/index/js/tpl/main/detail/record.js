@@ -69,6 +69,7 @@ const tpl = `
                         <p class="record-upload-tips">图片格式支持JPG、PNG等，视频格式支持MP4、WMV、MOV等，文件大小不超过50M</p>
                     </div>
                 </div>
+                {{#unless isShow}}
                 <div class="record-set-push">
                     <span class="record-set-push-tips">推送</span>
                     <span class="record-push-select record-push-candidate" record-data-push="1">推送给参与者</span>
@@ -76,6 +77,7 @@ const tpl = `
                     <span class="remain-time-content">剩余次数:&nbsp&nbsp<span class="remain-time" data-remain-time="0"></span></span>
                     <div class="push-tips">为了保证良好的体验避免对用户造成过多的打扰，已限制推送次数（每日0:00刷新次数）</div>
                 </div>
+                {{/unless}}
             </div>
         </div>
         {{/each}}

@@ -2,26 +2,41 @@ import seeAjax from 'see-ajax';
 
 const postHandle = res => {
   let temp = [];
-  let str = `img:https://pic.zizaihome.com/e199ad38-acd0-11e8-9f77-00163e022fdd.jpg,
-  video:https://pic.zizaihome.com/ea39b926-d054-11e9-8073-00163e0c1e1c.jpg,
-  img:https://pic.zizaihome.com/e199ad38-acd0-11e8-9f77-00163e022fdd.jpg`;
-  // console.log(res.data.list)
+
   res.data.list.forEach((item, i) => {
     let result = [];
+    var _item = item;
+
     if (!item.img) item.img = [];
     else {
       temp = item.img.split(',');
-      temp.forEach((item, i) => {
-        if (item.indexOf('img:') !== -1) {
+      temp.forEach((imgItem, i) => {
+        if (
+          imgItem.indexOf('img:') === -1 &&
+          imgItem.indexOf('video:') === -1
+        ) {
+          if (_item.video && i < _item.video.split(',').length) {
+            result.push({
+              type: 1,
+              src: _item.video.split(',')[i],
+            });
+          }
           result.push({
             type: 0,
-            src: item.slice(4),
+            src: imgItem,
           });
         } else {
-          result.push({
-            type: 1,
-            src: item.slice(6),
-          });
+          if (imgItem.indexOf('img:') !== -1) {
+            result.push({
+              type: 0,
+              src: imgItem.slice(4),
+            });
+          } else {
+            result.push({
+              type: 1,
+              src: imgItem.slice(6),
+            });
+          }
         }
       });
       item.img = result;
