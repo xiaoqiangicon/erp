@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     detailDialogVisible: false,
     distributeDialogVisible: false,
     repulseDialogVisible: false,
+    setBatchDialogVisible: false,
   },
   mutations: {
     updateSelected(state, payload) {
@@ -23,6 +24,9 @@ const store = new Vuex.Store({
     },
     updateRepulseVisible(state, payload) {
       state.repulseDialogVisible = payload.state;
+    },
+    updateBatchVisible(state, payload) {
+      state.setBatchDialogVisible = payload.state;
     },
   },
 });

@@ -52,7 +52,7 @@
         <el-button class="distribution" type="primary" @click="distribution">
           分配表单
         </el-button>
-        <el-button type="warning">
+        <el-button type="warning" @click="setBatch">
           批量不通过
         </el-button>
       </div>
@@ -170,6 +170,7 @@
     <Detail />
     <Destribute />
     <Repulse />
+    <Batch />
   </main>
 </template>
 
@@ -179,6 +180,7 @@ import seeAjax from 'see-ajax';
 import Detail from './components/Detail';
 import Destribute from './components/Destribute';
 import Repulse from './components/Repulse';
+import Batch from './components/Batch';
 
 export default {
   name: 'App',
@@ -186,6 +188,7 @@ export default {
     Detail,
     Destribute,
     Repulse,
+    Batch,
   },
   data() {
     return {
@@ -234,6 +237,10 @@ export default {
       if (this.type === type) return;
 
       this.type = type;
+    },
+    setBatch() {
+      console.log(111);
+      this.$store.commit({ type: 'updateBatchVisible', state: true });
     },
     distribution() {
       this.$store.commit({ type: 'updateDistributeVisible', state: true });

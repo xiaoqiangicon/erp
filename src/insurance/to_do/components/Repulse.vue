@@ -44,7 +44,7 @@
 
 <script>
 export default {
-  name: 'Detail',
+  name: 'Repulse',
   components: {},
   data() {
     return {

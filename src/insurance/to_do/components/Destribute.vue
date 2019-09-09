@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: 'Detail',
+  name: 'Destribute',
   components: {},
   data() {
     return {
