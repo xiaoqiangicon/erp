@@ -33,7 +33,7 @@
               placeholder="请输入内容"
             />
           </div>
-          <el-button type="primary" class="confirm">
+          <el-button type="primary" class="confirm" @click="confirmRepulse">
             确认
           </el-button>
         </div>
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import seeAjax from 'see-ajax';
+
 export default {
   name: 'Repulse',
   components: {},
@@ -60,6 +62,7 @@ export default {
     onClickMask() {
       this.$store.commit({ type: 'updateRepulseVisible', state: false });
     },
+    confirmRepulse() {},
   },
 };
 </script>

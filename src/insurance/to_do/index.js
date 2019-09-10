@@ -29,6 +29,7 @@ import {
   Tabs,
   TabPane,
   Upload,
+  Tooltip,
 } from 'element-ui';
 
 import Vue from 'vue';
@@ -66,6 +67,7 @@ Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Upload);
 Vue.use(gallery);
+Vue.use(Tooltip);
 
 // eslint-disable-next-line no-new
 new Vue({

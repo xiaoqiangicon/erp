@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <div v-show="visible | true" class="s-mask" @click.self="onClickMask">
+    <div v-show="visible" class="s-mask" @click.self="onClickMask">
       <el-card v-show="false" class="box-card batch">
         <div slot="header" class="clearfix">
           <span>设为生效</span>
@@ -17,7 +17,7 @@
             <p class="info">
               1. 下载当前保单表格并设置；
             </p>
-            <el-button type="primary" class="download">
+            <el-button type="primary" class="download" @click="download">
               下载
             </el-button>
             <p class="info">
@@ -54,7 +54,7 @@
             当前保单变更为 "生效中" 的状态
           </p>
         </div>
-        <div class="confirm-valid">
+        <div class="confirm-valid" @click="onClickMask">
           我知道了
         </div>
       </div>
@@ -75,7 +75,7 @@
           </div>
         </div>
         <div class="upload-btn">
-          <div class="upload-btn-1 upload-cancel">
+          <div class="upload-btn-1 upload-cancel" @click="onClickMask">
             取消
           </div>
           <div class="upload-btn-1 reupload">
@@ -88,6 +88,8 @@
 </template>
 
 <script>
+import seeAjax from 'see-ajax';
+
 export default {
   name: 'Batch',
   components: {},
@@ -102,6 +104,14 @@ export default {
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateBatchVisible', state: false });
+    },
+    download() {
+      // const { type, buddhistId, formatDate, tel } = this;
+      // const excelUrl =
+      //   `/zzhadmin/getConversionOrderExcel/?type=${type}` +
+      //   `&startTime=${formatDate[0]}&endTime=${formatDate[1]}` +
+      //   `&mobile=${tel}&commodityId=${buddhistId ? buddhistId : 0}`;
+      // window.open(excelUrl);
     },
   },
 };

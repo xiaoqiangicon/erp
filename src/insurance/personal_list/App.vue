@@ -70,24 +70,14 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column width="160" label="姓名" show-overflow-tooltip>
+        <el-table-column label="姓名" show-overflow-tooltip>
           <template slot-scope="scope">
             <div>{{ scope.row.customerName }}</div>
             <div>UID：{{ scope.row.uId }}</div>
           </template>
         </el-table-column>
-        <el-table-column
-          width="60"
-          prop="nickName"
-          label="法号"
-          show-overflow-tooltip
-        />
-        <el-table-column
-          width="200"
-          prop="temple"
-          label="所在寺院"
-          show-overflow-tooltip
-        />
+        <el-table-column prop="nickName" label="法号" show-overflow-tooltip />
+        <el-table-column prop="temple" label="所在寺院" show-overflow-tooltip />
         <el-table-column
           width="140"
           prop="customerTel"
@@ -124,14 +114,12 @@
         />
         <el-table-column
           v-if="type == 3"
-          width="180"
           prop="reason"
           label="不通过原因"
           show-overflow-tooltip
         />
         <el-table-column
           v-else
-          width="180"
           prop="orderTime"
           label="申请时间"
           show-overflow-tooltip

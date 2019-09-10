@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import seeAjax from 'see-ajax';
+
 export default {
   name: 'Destribute',
   components: {},

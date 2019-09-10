@@ -10,7 +10,7 @@ seeAjax.config('getList', {
   stringify: [!0],
   url: [
     '/zzhadmin/getConversionOrderList',
-    '/src/insurance/personal_list/mock/get_list.json',
+    '/src/insurance/personal_list/mock/get_list',
   ],
   refactor: [refactor, refactor],
 });

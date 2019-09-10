@@ -40,9 +40,9 @@
         :data="list"
       >
         <el-table-column label="分配编号" prop="id" />
-        <el-table-column width="60" label="人数" prop="num" />
+        <el-table-column width="120" label="人数" prop="num" />
         <el-table-column v-if="type == 3" label="过期" prop="id" />
-        <el-table-column width="140" label="截至时间">
+        <el-table-column label="截至时间">
           <template slot-scope="scope">
             <div v-if="type == 1">
               <div v-if="scope.row.end_time">
@@ -67,7 +67,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column width="100" label="保险单号" show-overflow-tooltip>
+        <el-table-column label="保险单号" show-overflow-tooltip>
           <template slot-scope="scope">
             <div v-if="type == 1">
               <div v-if="scope.row.insurance_id | insuranceId">
@@ -91,7 +91,6 @@
           </template>
         </el-table-column>
         <el-table-column
-          width="180"
           prop="add_time"
           label="生成时间"
           show-overflow-tooltip

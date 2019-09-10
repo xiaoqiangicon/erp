@@ -1,27 +1,20 @@
 <template>
   <main>
     <div class="head">
-      <el-row class="mg-b-10" style="line-height: 40px;text-align: right">
-        <el-col :span="5">
-          <label for="">姓名：</label>
-          <el-select
-            v-model="nameId"
-            style="width: 100px;"
-            clearable
-            size="medium"
-            filterable
-            placeholder="姓名"
-          />
-        </el-col>
-        <el-col :span="5">
-          <el-input style="width: 150px;" size="medium" />
-        </el-col>
-        <el-col :span="4">
-          <el-button type="primary" round>
-            搜索
-          </el-button>
-        </el-col>
-      </el-row>
+      <div class="head-search">
+        <el-select
+          v-model="nameId"
+          class="name-select"
+          clearable
+          size="medium"
+          filterable
+          placeholder="姓名"
+        />
+        <el-input class="name-input" size="medium" />
+        <el-button class="search-btn" type="primary" round>
+          搜索
+        </el-button>
+      </div>
     </div>
     <div class="content">
       <div class="s-tabs">
@@ -44,7 +37,14 @@
           :class="{ active: type === 3 }"
           @click="onClickType(3)"
         >
-          不通过
+          <el-tooltip
+            effect="dark"
+            content="失效是指未通过审核或不续保的用户，这类用户将记录在“待办事项 - 不通过”的列表中。"
+            placement="top"
+          >
+            <i class="el-icon-info" style="font-size: 18px" />
+          </el-tooltip>
+          失效用户
         </div>
       </div>
       <div class="info-bar">
@@ -65,7 +65,7 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" labei="全选" />
-        <el-table-column width="160" label="姓名" show-overflow-tooltip>
+        <el-table-column label="姓名" show-overflow-tooltip>
           <template slot-scope="scope">
             <div>{{ scope.row.customerName }}</div>
             <div>UID：{{ scope.row.uId }}</div>
@@ -77,12 +77,7 @@
           label="法号"
           show-overflow-tooltip
         />
-        <el-table-column
-          width="200"
-          prop="temple"
-          label="所在寺院"
-          show-overflow-tooltip
-        />
+        <el-table-column prop="temple" label="所在寺院" />
         <el-table-column
           width="140"
           prop="customerTel"
@@ -119,14 +114,12 @@
         />
         <el-table-column
           v-if="type == 3"
-          width="180"
           prop="reason"
           label="不通过原因"
           show-overflow-tooltip
         />
         <el-table-column
           v-else
-          width="180"
           prop="orderTime"
           label="申请时间"
           show-overflow-tooltip
@@ -270,6 +263,20 @@ export default {
 <style lang="less" scoped>
 main {
   padding: 15px;
+}
+
+.head-search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 40px 60px 20px 0;
+}
+.name-select {
+  width: 100px;
+}
+.name-input {
+  width: 180px;
+  margin: 0 30px;
 }
 
 .s-tabs {

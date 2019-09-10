@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
-    <div v-show="visible | true" class="s-mask" @click.self="onClickMask">
-      <el-card v-show="false" class="box-card distribute">
+    <div v-show="visible" class="s-mask" @click.self="onClickMask">
+      <el-card v-show="true" class="box-card distribute">
         <div slot="header" class="clearfix">
           <span>设为生效</span>
           <el-button
@@ -34,13 +34,13 @@
             <el-button type="primary" class="cancel" @click="onClickMask">
               取消
             </el-button>
-            <el-button type="primary" class="set-valid">
+            <el-button type="primary" class="set-valid" @click="setValid">
               设为生效
             </el-button>
           </div>
         </div>
       </el-card>
-      <div v-show="false" class="valid-success valid-status-box">
+      <div v-show="!isSuccess" class="valid-success valid-status-box">
         <div class="valid-info success-info">
           <img
             class="valid-status-img"
@@ -54,11 +54,11 @@
             当前保单变更为 "生效中" 的状态
           </p>
         </div>
-        <div class="confirm-valid">
+        <div class="confirm-valid" @click="onClickMask">
           我知道了
         </div>
       </div>
-      <div v-show="true" class="valid-failed valid-status-box">
+      <div v-show="!isSuccess" class="valid-failed valid-status-box">
         <div class="valid-info failed-info">
           <img
             class="valid-status-img"
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="upload-btn">
-          <div class="upload-btn-1 upload-cancel">
+          <div class="upload-btn-1 upload-cancel" @click="onClickMask">
             取消
           </div>
           <div class="upload-btn-1 reupload">
@@ -89,11 +89,15 @@
 </template>
 
 <script>
+import seeAjax from 'see-ajax';
+
 export default {
   name: 'SetValid',
   components: {},
   data() {
-    return {};
+    return {
+      isSuccess: true,
+    };
   },
   computed: {
     visible() {
@@ -104,6 +108,7 @@ export default {
     onClickMask() {
       this.$store.commit({ type: 'updateSetValidVisible', state: false });
     },
+    setValid() {},
   },
 };
 </script>
@@ -174,7 +179,7 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 480px;
-  height: 260px;
+  height: 320px;
   border-radius: 20px;
   background: white;
 }
@@ -211,6 +216,7 @@ export default {
 // 失败框
 .upload-btn {
   display: flex;
+  justify-content: center;
 }
 .upload-btn-1 {
   width: 60px;
@@ -221,9 +227,15 @@ export default {
   color: black;
   text-align: center;
   border-radius: 6px;
+  cursor: pointer;
 }
 .reupload {
+  width: 80px;
+  margin-left: 16px;
+  text-align: center;
+  border-radius: 6px;
   color: white;
   background: #1890ff;
+  cursor: pointer;
 }
 </style>

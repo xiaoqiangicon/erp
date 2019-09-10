@@ -204,6 +204,8 @@
 </template>
 
 <script>
+import seeAjax from 'see-ajax';
+
 export default {
   name: 'Detail',
   components: {},
@@ -217,6 +219,7 @@ export default {
       return this.$store.state.detailDialogVisible;
     },
   },
+  created() {},
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateDetailVisible', state: false });
