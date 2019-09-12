@@ -25,8 +25,8 @@
         </div>
       </div>
       <div class="search-row">
-        <el-input style="width: 200px;" size="medium" />
-        <el-button type="primary">
+        <el-input v-model="searchContent" style="width: 200px;" size="medium" />
+        <el-button type="primary" @click="search">
           搜索
         </el-button>
       </div>
@@ -40,13 +40,13 @@
         :data="list"
       >
         <el-table-column label="分配编号" prop="id" />
-        <el-table-column width="120" label="人数" prop="num" />
+        <el-table-column width="120" label="人数" prop="total" />
         <el-table-column v-if="type == 3" label="过期" prop="id" />
         <el-table-column label="截至时间">
           <template slot-scope="scope">
             <div v-if="type == 1">
-              <div v-if="scope.row.end_time">
-                {{ scope.row.end_time }}
+              <div v-if="scope.row.endTime">
+                {{ scope.row.endTime }}
               </div>
               <div v-else class="not-set" @click="onClickSetTime(scope.row)">
                 <span>未设置</span>
@@ -70,8 +70,8 @@
         <el-table-column label="保险单号" show-overflow-tooltip>
           <template slot-scope="scope">
             <div v-if="type == 1">
-              <div v-if="scope.row.insurance_id | insuranceId">
-                {{ insuranceId ? insuranceId : scope.row.insurance_id }}
+              <div v-if="scope.row.insuranceNumber | insuranceId">
+                {{ insuranceId ? insuranceId : scope.row.insuranceNumber }}
               </div>
               <div
                 v-else
@@ -84,14 +84,14 @@
             </div>
             <div v-else @click="onClickSetInsuranceId(scope.row)">
               <div>
-                {{ scope.row.insurance_id }}
+                {{ scope.row.insuranceNumber }}
                 <i class="el-icon-edit-outline" style="color: #409eff" />
               </div>
             </div>
           </template>
         </el-table-column>
         <el-table-column
-          prop="add_time"
+          prop="addTime"
           label="生成时间"
           show-overflow-tooltip
         />
@@ -191,6 +191,7 @@ export default {
       distributeId: '', // 分配编号
       list: [], // 列表信息
       type: 1, // 生效状态
+      searchContent: '',
       endTime: '', // 需要修改的截至时间
       setValidId: '',
       deleteId: '',
@@ -206,20 +207,17 @@ export default {
       return this.$store.state.selected;
     },
   },
-  watch: {
-    endTime() {},
-  },
   created() {
-    this.requestList();
+    this.requestList({});
   },
   methods: {
-    requestList() {
-      const { currentPage: page, currentSize: pageSize } = this;
-
+    requestList({ status = 1, content = '', pageNum = 0, pageSize = 25 }) {
       seeAjax(
         'getList',
         {
-          page,
+          status,
+          content,
+          pageNum,
           pageSize,
         },
         res => {
@@ -227,25 +225,46 @@ export default {
             this.totalCount = res.totalCount;
             this.list = res.data;
           } else {
-            Notification({
-              title: '提示',
-              message: '接口出错',
-            });
+            alert(res);
           }
         }
       );
     },
+    requestExpireList({ content = '', pageNum = 0, pageSize = 25 }) {
+      seeAjax('expireList', { content, pageNum, pageSize }, res => {});
+    },
     onClickType(type) {
       if (this.type === type) return;
 
+      this.searchContent = '';
       this.type = type;
+      if (this.type === 1) {
+        this.requestList({ status: 1 });
+      }
+      if (this.type === 2) {
+        this.requestList({ status: 0 });
+      }
+      if (this.type === 3) {
+        this.requestExpireList({});
+      }
+    },
+    search() {
+      if (this.type === 1) {
+        this.requestList({ status: 1, content: this.searchContent });
+      }
+      if (this.type === 2) {
+        this.requestList({ status: 0, content: this.searchContent });
+      }
+      if (this.type === 3) {
+        this.requestExpireList({ content: this.searchContent });
+      }
     },
     onClickSetTime(data) {
       this.endTime = data.end_time;
       this.$store.commit({ type: 'updateSetEndTimeVisible', state: true });
     },
     onClickSetInsuranceId(data) {
-      this.insuranceId = data.insurance_id;
+      this.insuranceId = data.insuranceNumber;
       this.$store.commit({ type: 'updateSetInsranceIdVisible', state: true });
     },
     onClickSetValid() {

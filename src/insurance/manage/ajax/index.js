@@ -1,5 +1,6 @@
 import seeAjax from 'see-ajax';
 import './get_list';
+import './expireList';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 

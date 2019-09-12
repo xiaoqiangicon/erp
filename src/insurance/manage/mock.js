@@ -5,25 +5,48 @@ export const get_list = {
   data: [
     {
       id: 2019081209,
-      num: 99,
-      end_time: 20190827,
-      insurance_id: 2328483,
-      add_time: '2019-08-12 20:12',
+      total: 99,
+      endTime: 20190827,
+      insuranceNumber: 2328483,
+      addTime: '2019-08-12 20:12',
     },
     {
       id: 2019081202,
-      num: 99,
-      end_time: '',
-      insurance_id: '',
-      add_time: '2019-08-12 20:12',
+      total: 99,
+      endTime: '',
+      insuranceNumber: '',
+      addTime: '2019-08-12 20:12',
     },
     {
       id: 2019081203,
-      num: 99,
-      end_time: 20190827,
-      insurance_id: 2328483,
-      add_time: '2019-08-12 20:12',
+      total: 99,
+      endTime: 20190827,
+      insuranceNumber: 2328483,
+      addTime: '2019-08-12 20:12',
     },
   ],
   result: 1,
+};
+
+const expireList = [];
+for (let i = 0; i < 4; i++) {
+  expireList.push({
+    id: i,
+    expireTime: '2019-09-12',
+    insuranceNumber: `1234${i}`,
+    status: 1,
+    isNotice: 0,
+    total: 23 + i,
+    agreenTotal: 22,
+    invalidTotal: 2,
+    expireNum: 2,
+  });
+}
+export const expire_list = {
+  data: {
+    list: expireList,
+    count: 1,
+    msg: '成功',
+    result: 0,
+  },
 };
