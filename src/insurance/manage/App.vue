@@ -245,7 +245,7 @@ export default {
         this.requestList({ status: 0 });
       }
       if (this.type === 3) {
-        this.requestExpireList({});
+        this.requestExpireList();
       }
     },
     search() {
