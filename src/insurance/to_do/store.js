@@ -6,6 +6,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     selected: [],
+    insuranceIdItem: [],
 
     detailDialogVisible: false,
     distributeDialogVisible: false,
@@ -15,6 +16,9 @@ const store = new Vuex.Store({
   mutations: {
     updateSelected(state, payload) {
       state.selected = payload.state;
+    },
+    updateInsuranceIdItem(state, payload) {
+      state.insuranceIdItem = payload.state;
     },
     updateDetailVisible(state, payload) {
       state.detailDialogVisible = payload.state;

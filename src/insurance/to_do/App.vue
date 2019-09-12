@@ -8,10 +8,22 @@
           clearable
           size="medium"
           filterable
-          placeholder="姓名"
-        />
-        <el-input class="name-input" size="medium" />
-        <el-button class="search-btn" type="primary" round>
+          placeholder="请选择搜索项"
+        >
+          <el-option
+            v-for="item in selectItem"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
+        <el-input v-model="searchInput" class="name-input" size="medium" />
+        <el-button
+          class="search-btn"
+          type="primary"
+          round
+          @click="onclickSearch"
+        >
           搜索
         </el-button>
       </div>
@@ -47,7 +59,7 @@
           失效用户
         </div>
       </div>
-      <div class="info-bar">
+      <div v-show="type === 1" class="info-bar">
         <span>已选择{{ selected.length }}人</span>
         <el-button class="distribution" type="primary" @click="distribution">
           分配表单
@@ -64,23 +76,23 @@
         :data="list"
         @selection-change="handleSelectionChange"
       >
-        <el-table-column type="selection" labei="全选" />
+        <el-table-column v-if="type === 1" type="selection" labei="全选" />
         <el-table-column label="姓名" show-overflow-tooltip>
           <template slot-scope="scope">
-            <div>{{ scope.row.customerName }}</div>
-            <div>UID：{{ scope.row.uId }}</div>
+            <div>{{ scope.row.realName }}</div>
+            <div>UID：{{ scope.row.userId }}</div>
           </template>
         </el-table-column>
         <el-table-column
           width="60"
-          prop="nickName"
+          prop="name"
           label="法号"
           show-overflow-tooltip
         />
-        <el-table-column prop="temple" label="所在寺院" />
+        <el-table-column prop="templeName" label="所在寺院" />
         <el-table-column
           width="140"
-          prop="customerTel"
+          prop="phone"
           label="联系电话"
           show-overflow-tooltip
         />
@@ -90,16 +102,12 @@
           label="身份证号"
           show-overflow-tooltip
         />
-        <el-table-column width="60" label="性别" show-overflow-tooltip>
-          <template slot-scope="scope">
-            <div v-if="scope.row.isMale">
-              男
-            </div>
-            <div v-else>
-              女
-            </div>
-          </template>
-        </el-table-column>
+        <el-table-column
+          width="60"
+          prop="sex"
+          label="性别"
+          show-overflow-tooltip
+        />>
         <el-table-column
           width="60"
           prop="age"
@@ -114,13 +122,13 @@
         />
         <el-table-column
           v-if="type == 3"
+          width="200"
           prop="reason"
           label="不通过原因"
-          show-overflow-tooltip
         />
         <el-table-column
           v-else
-          prop="orderTime"
+          prop="addTime"
           label="申请时间"
           show-overflow-tooltip
         />
@@ -158,11 +166,17 @@
         background=""
         layout="sizes, prev, pager, next"
         :total="totalCount"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
       />
     </div>
-    <Detail />
+    <Detail :detail-row="detailRow" />
     <Destribute />
-    <Repulse />
+    <Repulse
+      :is-repulse="isRepulse"
+      :distribute-row="distributeRow"
+      :repulse-row="repulseRow"
+    />
     <Batch />
   </main>
 </template>
@@ -186,8 +200,18 @@ export default {
   data() {
     return {
       nameId: '', // 搜索请求参数
+      selectItem: ['姓名', 'UID', '电话', '批次号码'],
+      searchInput: '',
+      nameInput: '',
+      numberAccountInput: '', //
+      phoneInput: '', // 手机号搜索
+      groupIdInput: '', // 批次搜索
       type: 1, // 1 待分配 2 已分配 3 不通过
-      list: [],
+      list: [], // 人员列表
+      isRepulse: 0,
+      detailRow: '', // 详情的信息
+      distributeRow: '', // 分配的信息
+      repulseRow: '', // 打回的信息
       currentPage: 1,
       currentSize: 25,
       totalCount: 0,
@@ -199,22 +223,44 @@ export default {
     },
   },
   created() {
-    this.requestList();
+    this.requestList({});
+    seeAjax('getInsuranceList', { status: 1 }, res => {
+      const insuranceIdItem = res.data.list;
+
+      this.$store.commit({
+        type: 'updateInsuranceIdItem',
+        state: insuranceIdItem,
+      });
+    });
   },
   methods: {
-    requestList() {
-      const { currentPage: page, currentSize: pageSize, type } = this;
+    requestList({
+      status = 1,
+      name = '',
+      numberAccount = '',
+      phone = '',
+      groupId = '',
+      pageNum = 0,
+      pageSize = 25,
+    }) {
+      let type = status;
+      if (status === 2) type = 0; // 生效中
+      if (status === 3) type = 2; // 失效
 
       seeAjax(
         'getList',
         {
-          page,
+          status: type,
+          name,
+          numberAccount,
+          phone,
+          groupId,
+          pageNum,
           pageSize,
-          type,
         },
         res => {
           if (res.success) {
-            this.totalCount = res.totalCount;
+            this.totalCount = res.total;
             this.list = res.data;
           } else {
             Notification({
@@ -226,13 +272,45 @@ export default {
         }
       );
     },
+    onclickSearch() {
+      if (this.nameId === this.selectItem[0]) {
+        this.nameInput = this.searchInput;
+        this.numberAccountInput = '';
+        this.phoneInput = '';
+        this.groupIdInput = '';
+      }
+      if (this.nameId === this.selectItem[1]) {
+        this.numberAccountInput = this.searchInput;
+        this.nameInput = '';
+        this.phoneInput = '';
+        this.groupIdInput = '';
+      }
+      if (this.nameId === this.selectItem[2]) {
+        this.phoneInput = this.searchInput;
+        this.nameInput = '';
+        this.numberAccountInput = '';
+        this.groupIdInput = '';
+      }
+      if (this.nameId === this.selectItem[3]) {
+        this.groupIdInput = this.searchInput;
+        this.nameInput = '';
+        this.numberAccountInput = '';
+        this.phoneInput = '';
+      }
+      this.requestList({
+        name: this.nameInput,
+        numberAccount: this.numberAccountInput,
+        phone: this.phoneInput,
+        groupId: this.groupIdInput,
+      });
+    },
     onClickType(type) {
       if (this.type === type) return;
 
       this.type = type;
+      this.requestList({ status: type });
     },
     setBatch() {
-      console.log(111);
       this.$store.commit({ type: 'updateBatchVisible', state: true });
     },
     distribution() {
@@ -249,12 +327,28 @@ export default {
         state: selected,
       });
     },
-    onClickDetail() {
+    onClickDetail(row) {
+      this.detailRow = row;
       this.$store.commit({ type: 'updateDetailVisible', state: true });
     },
-    onClickDistribute() {},
-    onClickRepulse() {
+    onClickDistribute(row) {
+      this.isRepulse = 2;
+      this.distributeRow = row;
       this.$store.commit({ type: 'updateRepulseVisible', state: true });
+    },
+    onClickRepulse(row) {
+      this.isRepulse = 1;
+      this.repulseRow = row;
+      this.$store.commit({ type: 'updateRepulseVisible', state: true });
+    },
+    handleSizeChange(size) {
+      this.currentSize = size;
+      this.currentPage = 1;
+      this.requestList({ pageSize: size });
+    },
+    handleCurrentChange(page) {
+      this.currentPage = page;
+      this.requestList({ pageNum: page - 1 });
     },
   },
 };

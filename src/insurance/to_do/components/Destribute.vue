@@ -32,9 +32,20 @@
             filterable
             placeholder="保单"
             :disabled="disabled"
-          />
+          >
+            <el-option
+              v-for="item in insuranceIdItem"
+              :key="item.id"
+              :label="item.id"
+              :value="item.id"
+            />
+          </el-select>
           <div>
-            <el-button type="primary" class="confirm">
+            <el-button
+              type="primary"
+              class="confirm"
+              @click="distributeConfirm"
+            >
               确认
             </el-button>
           </div>
@@ -53,13 +64,16 @@ export default {
   data() {
     return {
       radio: '1',
-      nameId: '',
+      nameId: '2019-09-12',
       disabled: true,
     };
   },
   computed: {
     selected() {
       return this.$store.state.selected;
+    },
+    insuranceIdItem() {
+      return this.$store.state.insuranceIdItem;
     },
     visible() {
       return this.$store.state.distributeDialogVisible;
@@ -69,14 +83,31 @@ export default {
     radio() {
       if (this.radio == '1') {
         this.disabled = true;
+        this.nameId = `2019-09-12`;
       } else {
         this.disabled = false;
+        this.nameId = '';
       }
     },
   },
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateDistributeVisible', state: false });
+    },
+    distributeConfirm() {
+      if (!this.selected.length) {
+        alert('请选择');
+        return;
+      }
+      const groupId = this.disabled ? 0 : this.nameId;
+      const groupNum = this.disabled ? this.nameId : '';
+      seeAjax(
+        'insuranceAddToGroup',
+        { groupId, ids: this.selected.join(','), groupNum },
+        res => {
+          this.onClickMask();
+        }
+      );
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div v-show="visible" class="s-mask" @click.self="onClickMask">
-      <el-card v-show="false" class="box-card batch">
+      <el-card v-show="type === 0" class="box-card batch">
         <div slot="header" class="clearfix">
           <span>设为生效</span>
           <el-button
@@ -40,7 +40,7 @@
           </div>
         </div>
       </el-card>
-      <div v-show="false" class="valid-success valid-status-box">
+      <div v-show="type === 1" class="valid-success valid-status-box">
         <div class="valid-info success-info">
           <img
             class="valid-status-img"
@@ -58,7 +58,7 @@
           我知道了
         </div>
       </div>
-      <div v-show="true" class="valid-failed valid-status-box">
+      <div v-show="type === 2" class="valid-failed valid-status-box">
         <div class="valid-info failed-info">
           <img
             class="valid-status-img"
@@ -94,7 +94,9 @@ export default {
   name: 'Batch',
   components: {},
   data() {
-    return {};
+    return {
+      type: 0, // 0时操作页，1保存成功， 2 保存失败
+    };
   },
   computed: {
     visible() {

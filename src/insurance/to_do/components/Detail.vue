@@ -17,7 +17,7 @@
                   姓名：
                 </div>
                 <div class="ps-content">
-                  李玉刚
+                  {{ detailRow.realName }}
                 </div>
               </div>
               <div class="ps-row">
@@ -25,7 +25,7 @@
                   法号：
                 </div>
                 <div class="ps-content">
-                  玉刚
+                  {{ detailRow.name }}
                 </div>
               </div>
               <div class="ps-row">
@@ -33,7 +33,7 @@
                   身份证号码：
                 </div>
                 <div class="ps-content">
-                  362227199412091204
+                  {{ detailRow.idCard }}
                 </div>
               </div>
               <div class="ps-row">
@@ -41,7 +41,7 @@
                   性别：
                 </div>
                 <div class="ps-content">
-                  男
+                  {{ detailRow.sex }}
                 </div>
               </div>
               <div class="ps-row">
@@ -49,7 +49,7 @@
                   身高：
                 </div>
                 <div class="ps-content">
-                  123
+                  {{ detailRow.height }}
                 </div>
               </div>
               <div class="ps-row">
@@ -57,7 +57,7 @@
                   体重：
                 </div>
                 <div class="ps-content">
-                  123
+                  {{ detailRow.weight }}
                 </div>
               </div>
               <div class="ps-row">
@@ -65,7 +65,7 @@
                   联系电话：
                 </div>
                 <div class="ps-content">
-                  0755213123124
+                  {{ detailRow.phone }}
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@
                   常驻寺院：
                 </div>
                 <div class="ps-content">
-                  本焕学院
+                  {{ detailRow.templeName }}
                 </div>
               </div>
               <div class="ps-row">
@@ -88,7 +88,7 @@
                   寺院所在：
                 </div>
                 <div class="ps-content">
-                  广东省深圳市南山区
+                  {{ detailRow.templePlace }}
                 </div>
               </div>
               <div class="ps-row">
@@ -96,7 +96,7 @@
                   详细地址：
                 </div>
                 <div class="ps-content">
-                  学院路78号C栋708
+                  {{ detailRow.templePlaceDetail }}
                 </div>
               </div>
             </div>
@@ -107,23 +107,23 @@
             </div>
             <div class="cell-body img-cell-body">
               <div class="img-cell">
-                <img
+                <!-- <img
                   v-gallery
                   class="img-gallery"
-                  src="https://pic.zizaihome.com/826f865e-d99d-11e7-8d6d-00163e0c1e1c.png"
+                  :src="detailRow.idCardImgFront"
                   alt=""
-                />
+                /> -->
                 <p class="">
                   身份证证件
                 </p>
               </div>
               <div class="img-cell">
-                <img
+                <!-- <img
                   v-gallery
                   class="img-gallery"
-                  src="https://pic.zizaihome.com/826f865e-d99d-11e7-8d6d-00163e0c1e1c.png"
+                  :src="detailRow.proveImg"
                   alt=""
-                />
+                /> -->
                 <p class="">
                   法师证明照片
                 </p>
@@ -136,7 +136,7 @@
             </div>
             <div class="cell-body">
               <p class="disease">
-                附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我
+                {{ detailRow.medicalHistory }}
               </p>
             </div>
           </div>
@@ -152,6 +152,11 @@ import seeAjax from 'see-ajax';
 export default {
   name: 'Detail',
   components: {},
+  props: {
+    detailRow: {
+      required: true,
+    },
+  },
   data() {
     return {
       handleLoading: false, // 订单处理接口等待位

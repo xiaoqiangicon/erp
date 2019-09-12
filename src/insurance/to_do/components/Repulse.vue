@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div v-show="visible" class="s-mask" @click.self="onClickMask">
-      <el-card class="box-card distribute">
+      <el-card v-show="isRepulse === 1" class="box-card distribute">
         <div slot="header" class="clearfix">
           <span>打回</span>
           <el-button
@@ -14,15 +14,9 @@
         </div>
         <div class="text item">
           <div class="info">
-            <p class="name">
-              姓名：李玉刚
-            </p>
-            <p class="nickName">
-              法号：玉刚
-            </p>
-            <p class="temple_name">
-              所在寺院：佛山本焕寺
-            </p>
+            <p class="name">姓名：{{ repulseRow.realName }}</p>
+            <p class="nickName">法号：{{ repulseRow.name }}</p>
+            <p class="temple_name">所在寺院：{{ repulseRow.templeName }}</p>
           </div>
           <div class="reason">
             <el-input
@@ -38,6 +32,44 @@
           </el-button>
         </div>
       </el-card>
+      <div v-show="isRepulse === 2" class="distribute-card">
+        <div class="distribute-head">
+          <span class="distribute-title">分配</span>
+          <span class="close-distribute" @click="onClickMask">×</span>
+        </div>
+        <div class="distribute-content">
+          <p>
+            <span>姓名：</span><span>{{ distributeRow.realName }}</span>
+          </p>
+          <p>
+            <span>法号：</span><span>{{ distributeRow.name }}</span>
+          </p>
+          <p>
+            <span>所在寺院：</span><span>{{ distributeRow.templeName }}</span>
+          </p>
+        </div>
+        <div class="insurance-item-select">
+          <span>添加至表单</span>
+          <el-select
+            v-model="insuranceId"
+            class="insurance-select"
+            clearable
+            size="medium"
+            filterable
+            placeholder="请选择搜索项"
+          >
+            <el-option
+              v-for="item in insuranceIdItem"
+              :key="item.id"
+              :label="item.id"
+              :value="item.id"
+            />
+          </el-select>
+        </div>
+        <div class="distribute-confirm" @click="confirmDistribute">
+          确认
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -48,21 +80,59 @@ import seeAjax from 'see-ajax';
 export default {
   name: 'Repulse',
   components: {},
+  props: {
+    isRepulse: {
+      required: true,
+    },
+    distributeRow: {},
+    repulseRow: {},
+  },
   data() {
     return {
       textarea: '',
+      insuranceId: '',
+      groupNum: '',
     };
   },
   computed: {
     visible() {
       return this.$store.state.repulseDialogVisible;
     },
+    insuranceIdItem() {
+      return this.$store.state.insuranceIdItem;
+    },
+  },
+  created() {
+    this.getInsuranceList();
   },
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateRepulseVisible', state: false });
     },
-    confirmRepulse() {},
+    confirmRepulse() {
+      if (!this.textarea) {
+        alert('请填写内容');
+        return;
+      }
+      seeAjax(
+        'insuranceEditUserInfo',
+        { id: this.repulseRow.id, content: this.textarea, status: 2 },
+        res => {
+          alert('打回成功');
+          this.onClickMask();
+        }
+      );
+    },
+    confirmDistribute(row) {
+      seeAjax(
+        'insuranceAddToGroup',
+        { groupId: this.insuranceId, ids: this.distributeRow.id },
+        res => {
+          alert('分配成功');
+          this.onClickMask();
+        }
+      );
+    },
   },
 };
 </script>
@@ -109,8 +179,9 @@ export default {
   clear: both;
 }
 
-.box-card {
+.el-card {
   width: 480px;
+  height: 366px;
 }
 
 .distribute {
@@ -122,5 +193,57 @@ export default {
 
 .confirm {
   margin-top: 20px;
+}
+
+// 分配开始
+.distribute-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: 280px;
+  background: white;
+  border-radius: 10px;
+}
+.distribute-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 1px solid #ccc;
+}
+.distribute-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.close-distribute {
+  font-size: 28px;
+  color: #409eff;
+  cursor: pointer;
+}
+.distribute-content {
+  width: 80%;
+  margin: 20px auto 0;
+  padding: 8px 10px;
+  background-color: #e6f7ff;
+}
+.insurance-item-select {
+  width: 80%;
+  margin: 10px auto 0;
+}
+.insurance-select {
+  width: calc(100% - 74px);
+}
+.distribute-confirm {
+  width: 80px;
+  height: 30px;
+  margin: 20px auto 0;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 30px;
+  color: white;
+  background-color: #1890ff;
+  cursor: pointer;
 }
 </style>
