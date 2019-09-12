@@ -81,3 +81,14 @@ export const insurance_edit_user_info = {
   msg: '成功',
   result: 0,
 };
+
+// 下载表格
+export const insurance_download_list = {
+  file: '不通过表单.xls',
+};
+
+// 上传表格
+export const insurance_upload_list = {
+  count: 1,
+  result: 0,
+};

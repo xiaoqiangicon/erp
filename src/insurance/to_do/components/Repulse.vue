@@ -103,7 +103,7 @@ export default {
     },
   },
   created() {
-    this.getInsuranceList();
+    // this.getInsuranceList();
   },
   methods: {
     onClickMask() {

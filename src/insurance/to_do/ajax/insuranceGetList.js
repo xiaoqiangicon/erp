@@ -6,6 +6,6 @@ seeAjax.config('insuranceGetList', {
   stringify: [!0],
   url: [
     '/zzhadmin/insuranceGetReviewListExcel/',
-    '/src/insurance/to_do/mock/insurance_group_list',
+    '/src/insurance/to_do/mock/insurance_download_list',
   ],
 });

@@ -3,6 +3,8 @@ import './get_list';
 import './insuranceAddToGroup';
 import './insuranceGroupList';
 import './insuranceEditUserInfo';
+import './insuranceGetList';
+import './insuranceUploadList';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 

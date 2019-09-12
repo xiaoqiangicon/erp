@@ -38,6 +38,7 @@
           待分配
         </div>
         <div
+          v-show="false"
           class="s-tab-panel"
           :class="{ active: type === 2 }"
           @click="onClickType(2)"

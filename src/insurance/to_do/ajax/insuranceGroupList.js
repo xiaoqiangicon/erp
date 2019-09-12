@@ -2,7 +2,7 @@
 import seeAjax from 'see-ajax';
 
 seeAjax.config('getInsuranceList', {
-  method: ['get'],
+  method: ['post'],
   stringify: [!0],
   url: [
     '/zzhadmin/insuranceGroupList/',

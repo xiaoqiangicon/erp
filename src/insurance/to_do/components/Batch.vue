@@ -18,7 +18,7 @@
               1. 下载当前保单表格并设置；
             </p>
             <el-button type="primary" class="download" @click="download">
-              下载
+              下载Excel表格
             </el-button>
             <p class="info">
               2. 填写已下载表格中的：承保标示和承保方案；
@@ -26,16 +26,16 @@
             <p class="info">
               3. 上传填写好的表格，保存后会批量同步信息到系统中。
             </p>
-            <el-button type="primary" class="upload">
-              上传表格
-            </el-button>
+            <div ref="upload" type="primary" class="upload">
+              上传Excel表格
+            </div>
           </div>
           <div class="operate">
             <el-button type="primary" class="cancel" @click="onClickMask">
               取消
             </el-button>
-            <el-button type="primary" class="set-valid">
-              设为生效
+            <el-button type="primary" class="set-valid" @click="setValid">
+              保存
             </el-button>
           </div>
         </div>
@@ -89,6 +89,8 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import uploadCom from '../../../../pro-com/src/upload';
+import { makeUploadFileOptions } from '../../../configs/upload';
 
 export default {
   name: 'Batch',
@@ -96,24 +98,46 @@ export default {
   data() {
     return {
       type: 0, // 0时操作页，1保存成功， 2 保存失败
+      file: '', // 上传的文件
     };
   },
   computed: {
     visible() {
       return this.$store.state.setBatchDialogVisible;
     },
+    insuranceIdItem() {
+      return this.$store.state.selected;
+    },
+  },
+  mounted() {
+    console.log(this.$refs.upload);
+    uploadCom(
+      makeUploadFileOptions({
+        el: this.$refs.upload,
+        done: (url, e, data) => {},
+      })
+    );
   },
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateBatchVisible', state: false });
+      this.type = 0;
     },
     download() {
-      // const { type, buddhistId, formatDate, tel } = this;
-      // const excelUrl =
-      //   `/zzhadmin/getConversionOrderExcel/?type=${type}` +
-      //   `&startTime=${formatDate[0]}&endTime=${formatDate[1]}` +
-      //   `&mobile=${tel}&commodityId=${buddhistId ? buddhistId : 0}`;
-      // window.open(excelUrl);
+      if (!this.insuranceIdItem.length) {
+        alert('请选择');
+      }
+      seeAjax(
+        'insuranceGetList',
+        { ids: this.insuranceIdItem.join(',') },
+        res => {}
+      );
+    },
+    setValid() {
+      seeAjax('insuranceUploadList', { myfile: this.file }, res => {
+        if (res.success) this.type = 1;
+        else this.type = 2;
+      });
     },
   },
 };
@@ -161,7 +185,16 @@ export default {
 .box-card {
   width: 480px;
 }
-
+.upload {
+  position: relative;
+  width: 132px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  background-color: #409eff;
+  border-radius: 4px;
+}
 .batch {
   position: absolute;
   left: 50%;
@@ -190,7 +223,7 @@ export default {
   background: white;
 }
 .valid-info {
-  padding-top: 40px;
+  padding-top: 60px;
   margin: 0 auto;
   text-align: center;
   .valid-status-img {
@@ -223,6 +256,7 @@ export default {
 .upload-btn {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
 }
 .upload-btn-1 {
   width: 60px;
