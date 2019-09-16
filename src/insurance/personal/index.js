@@ -66,7 +66,12 @@ Vue.use(Input);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Upload);
-Vue.use(gallery);
+Vue.use(gallery, {
+  swipeThreshold: 150, // default 100
+  isIndexShow: true, // show image index, default true
+  useCloseButton: true, // trigger gallery close with close button, default true
+  preload: true, // preload images in the same group, default true
+});
 Vue.use(Tooltip);
 
 // eslint-disable-next-line no-new

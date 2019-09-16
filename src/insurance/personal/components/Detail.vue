@@ -17,7 +17,7 @@
                   分配编号：
                 </div>
                 <div class="ps-content">
-                  20190827
+                  {{ detailRow.id }}
                 </div>
               </div>
               <div class="ps-row">
@@ -25,7 +25,7 @@
                   保单单号：
                 </div>
                 <div class="ps-content">
-                  20190827
+                  {{ detailRow.insuranceNumber }}
                 </div>
               </div>
               <div class="ps-row">
@@ -33,7 +33,7 @@
                   生效时间：
                 </div>
                 <div class="ps-content">
-                  20190827
+                  {{ detailRow.addTime }}
                 </div>
               </div>
               <div class="ps-row">
@@ -41,7 +41,7 @@
                   承保标示：
                 </div>
                 <div class="ps-content">
-                  123456
+                  {{ detailRow.insurancePlan }}
                 </div>
               </div>
               <div class="ps-row">
@@ -49,7 +49,7 @@
                   承保方案：
                 </div>
                 <div class="ps-content">
-                  123
+                  {{ detailRow.insuranceSign }}
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@
             </div>
             <div class="cell-body">
               <p class="remarks">
-                附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我
+                {{ detailRow.remark }}
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@
                   姓名：
                 </div>
                 <div class="ps-content">
-                  李玉刚
+                  {{ detailRow.realName }}
                 </div>
               </div>
               <div class="ps-row">
@@ -82,7 +82,7 @@
                   法号：
                 </div>
                 <div class="ps-content">
-                  玉刚
+                  {{ detailRow.name }}
                 </div>
               </div>
               <div class="ps-row">
@@ -90,7 +90,7 @@
                   身份证号码：
                 </div>
                 <div class="ps-content">
-                  362227199412091204
+                  {{ detailRow.idCard }}
                 </div>
               </div>
               <div class="ps-row">
@@ -98,7 +98,7 @@
                   性别：
                 </div>
                 <div class="ps-content">
-                  男
+                  {{ detailRow.sex }}
                 </div>
               </div>
               <div class="ps-row">
@@ -106,7 +106,7 @@
                   身高：
                 </div>
                 <div class="ps-content">
-                  123
+                  {{ detailRow.height }}
                 </div>
               </div>
               <div class="ps-row">
@@ -114,7 +114,7 @@
                   体重：
                 </div>
                 <div class="ps-content">
-                  123
+                  {{ detailRow.weight }}
                 </div>
               </div>
               <div class="ps-row">
@@ -122,7 +122,7 @@
                   联系电话：
                 </div>
                 <div class="ps-content">
-                  0755213123124
+                  {{ detailRow.phone }}
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@
                   常驻寺院：
                 </div>
                 <div class="ps-content">
-                  本焕学院
+                  {{ detailRow.templeName }}
                 </div>
               </div>
               <div class="ps-row">
@@ -145,7 +145,7 @@
                   寺院所在：
                 </div>
                 <div class="ps-content">
-                  广东省深圳市南山区
+                  {{ detailRow.templePlace }}
                 </div>
               </div>
               <div class="ps-row">
@@ -153,7 +153,7 @@
                   详细地址：
                 </div>
                 <div class="ps-content">
-                  学院路78号C栋708
+                  {{ detailRow.templePlaceDetail }}
                 </div>
               </div>
             </div>
@@ -167,7 +167,7 @@
                 <img
                   v-gallery
                   class="img-gallery"
-                  src="https://pic.zizaihome.com/826f865e-d99d-11e7-8d6d-00163e0c1e1c.png"
+                  :src="detailRow.idCardImgFront"
                   alt=""
                 />
                 <p class="">
@@ -178,7 +178,7 @@
                 <img
                   v-gallery
                   class="img-gallery"
-                  src="https://pic.zizaihome.com/826f865e-d99d-11e7-8d6d-00163e0c1e1c.png"
+                  :src="detailRow.proveImg"
                   alt=""
                 />
                 <p class="">
@@ -193,7 +193,7 @@
             </div>
             <div class="cell-body">
               <p class="disease">
-                附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我附近的是否可见拉萨大家国道经过覅我
+                {{ detailRow.medicalHistory }}
               </p>
             </div>
           </div>
@@ -208,7 +208,12 @@ import seeAjax from 'see-ajax';
 
 export default {
   name: 'Detail',
-  components: {},
+  props: {
+    detailRow: {
+      require: !0,
+      type: Object,
+    },
+  },
   data() {
     return {
       handleLoading: false, // 订单处理接口等待位
@@ -219,7 +224,9 @@ export default {
       return this.$store.state.detailDialogVisible;
     },
   },
-  created() {},
+  created() {
+    console.log(this.detailRow);
+  },
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateDetailVisible', state: false });
@@ -305,6 +312,14 @@ export default {
     .ps-content {
       /* flex: 3; */
       display: inline-block;
+    }
+
+    .remarks {
+      margin-bottom: 10px;
+      padding-left: 16px;
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
     }
 
     .img-cell-body {

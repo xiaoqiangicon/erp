@@ -154,7 +154,8 @@ export default {
   components: {},
   props: {
     detailRow: {
-      required: true,
+      require: !0,
+      type: Object,
     },
   },
   data() {

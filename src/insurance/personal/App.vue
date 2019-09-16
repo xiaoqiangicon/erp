@@ -8,27 +8,57 @@
           clearable
           size="medium"
           filterable
-          placeholder="姓名"
-        />
+          placeholder="请选择"
+        >
+          <el-option
+            v-for="item in selectSortItem"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
         <el-input
-          v-model="input"
+          v-model="searchInput"
           class="input-content"
           placeholder="请输入内容"
         />
-        <el-button type="primary">
+        <el-button type="primary" @click="onClickSearch">
           搜索
         </el-button>
       </div>
       <div class="distribute-row">
         <label for="">分配编号：</label>
         <el-select
-          v-model="distributeId"
+          v-model="selectId"
           style="width: 180px;"
           clearable
           size="medium"
           filterable
-          placeholder="全部"
-        />
+          placeholder="请选择"
+        >
+          <el-option
+            v-for="item in selectIdItem"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
+        <label for="">状态</label>
+        <el-select
+          v-model="selectStatus"
+          style="width: 180px;"
+          clearable
+          size="medium"
+          filterable
+          placeholder="请选择"
+        >
+          <el-option
+            v-for="item in selectStatusItem"
+            :key="item"
+            :label="item"
+            :value="item"
+          />
+        </el-select>
       </div>
     </div>
     <div class="content">
@@ -44,7 +74,7 @@
         style="width: 100%"
         :data="list"
       >
-        <el-table-column width="160" label="状态" show-overflow-tooltip>
+        <el-table-column label="状态" show-overflow-tooltip>
           <template slot-scope="scope">
             <div v-if="scope.row.valid_type == 1" class="status">
               <span class="invalid">未生效</span>
@@ -72,15 +102,19 @@
         </el-table-column>
         <el-table-column label="姓名" show-overflow-tooltip>
           <template slot-scope="scope">
-            <div>{{ scope.row.customerName }}</div>
-            <div>UID：{{ scope.row.uId }}</div>
+            <div>{{ scope.row.realName }}</div>
+            <div>UID：{{ scope.row.userId }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="nickName" label="法号" show-overflow-tooltip />
-        <el-table-column prop="temple" label="所在寺院" show-overflow-tooltip />
+        <el-table-column prop="name" label="法号" show-overflow-tooltip />
+        <el-table-column
+          prop="templeName"
+          label="所在寺院"
+          show-overflow-tooltip
+        />
         <el-table-column
           width="140"
-          prop="customerTel"
+          prop="phone"
           label="联系电话"
           show-overflow-tooltip
         />
@@ -90,16 +124,12 @@
           label="身份证号"
           show-overflow-tooltip
         />
-        <el-table-column width="60" label="性别" show-overflow-tooltip>
-          <template slot-scope="scope">
-            <div v-if="scope.row.isMale">
-              男
-            </div>
-            <div v-else>
-              女
-            </div>
-          </template>
-        </el-table-column>
+        <el-table-column
+          width="60"
+          prop="sex"
+          label="性别"
+          show-overflow-tooltip
+        />
         <el-table-column
           width="60"
           prop="age"
@@ -120,11 +150,11 @@
         />
         <el-table-column
           v-else
-          prop="orderTime"
+          prop="addTime"
           label="申请时间"
           show-overflow-tooltip
         />
-        <el-table-column width="180" label="操作" show-overflow-tooltip>
+        <el-table-column width="400" label="操作">
           <template slot-scope="scope">
             <a
               class="s-a"
@@ -133,24 +163,21 @@
               >详情</a
             >
             <a
-              v-if="scope.row.valid_type == 1"
               class="s-a"
               href="javascript:void(0);"
               @click="onClickDelete(scope.row)"
               >删除</a
             >
             <a
-              v-if="scope.row.valid_type == 3"
               class="s-a"
               href="javascript:void(0);"
-              @click="onClickDelete(scope.row)"
+              @click="onClickRenew(scope.row)"
               >续保</a
             >
             <a
-              v-if="(scope.row.valid_type == 2) | (scope.row.valid_type == 4)"
               class="s-a"
               href="javascript:void(0);"
-              @click="onClickDelete(scope.row)"
+              @click="onClickWithdraw(scope.row)"
               >撤回</a
             >
           </template>
@@ -165,9 +192,14 @@
         background=""
         layout="sizes, prev, pager, next"
         :total="totalCount"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
       />
     </div>
-    <Detail />
+    <Detail :detail-row="detailRow" />
+    <Delete :delete-id="deleteId" />
+    <Withdraw :withdraw-id="withdrawId" />
+    <Renew :renew-id="renewId" />
   </main>
 </template>
 
@@ -175,19 +207,37 @@
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
 import Detail from './components/Detail';
+import Delete from './components/Delete';
+import Withdraw from './components/Withdraw';
+import Renew from './components/renew';
 
 export default {
   name: 'App',
   components: {
     Detail,
+    Delete,
+    Withdraw,
+    Renew,
   },
   data() {
     return {
       nameId: '', // 搜索请求参数
       distributeId: '', // 分配编号
-      list: [],
+      selectSortItem: ['姓名', 'UID', '电话', '批次号码'],
+      list: [], // 当前列表
       type: 1,
-      input: '',
+      searchInput: '', // 搜索的内容
+      selectIdItem: [], // 分配编号筛选
+      selectId: '', // 选择的id
+      selectStatusItem: ['全部', '已过期', '生效中', '未生效', '失效用户'],
+      selectStatus: '', // 选择的状态
+      withdrawId: '', // 需要撤回的保单
+      deleteId: '', // 需要删除的保单
+      detailRow: {
+        idCardImgFront: '',
+        proveImg: '',
+      }, // 详情的信息
+      renewId: '', // 需要续保的保单
       currentPage: 1,
       currentSize: 25,
       totalCount: 0,
@@ -198,22 +248,37 @@ export default {
       return this.$store.state.selected;
     },
   },
+  watch: {
+    selectId() {},
+    selectStatus() {
+      this.requestList({});
+    },
+  },
   created() {
-    this.requestList();
+    this.requestList({});
   },
   methods: {
-    requestList() {
-      const { currentPage: page, currentSize: pageSize } = this;
-
+    requestList({
+      name = '',
+      numberAccount = '',
+      phone = '',
+      groupId = '',
+      pageNum = 0,
+      pageSize = 25,
+    }) {
       seeAjax(
         'getList',
         {
-          page,
+          name,
+          numberAccount,
+          phone,
+          groupId,
+          pageNum,
           pageSize,
         },
         res => {
           if (res.success) {
-            this.totalCount = res.totalCount;
+            this.totalCount = res.count;
             this.list = res.data;
           } else {
             Notification({
@@ -224,9 +289,68 @@ export default {
         }
       );
     },
-    exportForm() {},
-    onClickDetail() {
+    onClickSearch() {
+      if (this.nameId === this.selectSortItem[0]) {
+        this.nameInput = this.searchInput;
+        this.numberAccountInput = '';
+        this.phoneInput = '';
+        this.groupIdInput = '';
+      }
+      if (this.nameId === this.selectSortItem[1]) {
+        this.numberAccountInput = this.searchInput;
+        this.nameInput = '';
+        this.phoneInput = '';
+        this.groupIdInput = '';
+      }
+      if (this.nameId === this.selectSortItem[2]) {
+        this.phoneInput = this.searchInput;
+        this.nameInput = '';
+        this.numberAccountInput = '';
+        this.groupIdInput = '';
+      }
+      if (this.nameId === this.selectSortItem[3]) {
+        this.groupIdInput = this.searchInput;
+        this.nameInput = '';
+        this.numberAccountInput = '';
+        this.phoneInput = '';
+      }
+      this.requestList({
+        name: this.nameInput,
+        numberAccount: this.numberAccountInput,
+        phone: this.phoneInput,
+        groupId: this.groupIdInput,
+      });
+    },
+    exportForm() {
+      seeAjax('insuranceGetList', { ids: 1 }, res => {});
+    },
+    onClickDetail(row) {
+      this.detailRow = row;
       this.$store.commit({ type: 'updateDetailVisible', state: true });
+    },
+    onClickDelete(row) {
+      this.deleteId = row.id;
+      this.$store.commit({ type: 'updateSetDeleteVisible', state: true });
+    },
+    onClickRenew(row) {
+      this.renewId = row.id;
+      this.$store.commit({ type: 'updateSetRenewVisible', state: true });
+    },
+    onClickWithdraw(row) {
+      this.withdrawId = row.id;
+      this.$store.commit({ type: 'updateSetWithdrawVisible', state: true });
+    },
+    handleSizeChange(size) {
+      this.currentSize = size;
+      this.currentPage = 1;
+      this.requestList({ pageSize: size });
+    },
+    handleCurrentChange(page) {
+      this.currentPage = page;
+      this.requestList({
+        pageNum: page - 1,
+        pageSize: this.currentSize,
+      });
     },
   },
 };

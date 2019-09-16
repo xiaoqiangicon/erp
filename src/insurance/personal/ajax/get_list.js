@@ -1,8 +1,10 @@
 /* eslint-disable no-param-reassign, prefer-destructuring */
 import seeAjax from 'see-ajax';
 
-const refactor = {
-  data: [{}],
+const postHandle = (res, req) => {
+  res.data.forEach(item => {
+    item.sex = item.sex ? '女' : '男';
+  });
 };
 
 seeAjax.config('getList', {
@@ -10,7 +12,7 @@ seeAjax.config('getList', {
   stringify: [!0],
   url: [
     '/zzhadmin/getConversionOrderList',
-    '/src/insurance/personal_list/mock/get_list',
+    '/src/insurance/personal/mock/get_list',
   ],
-  refactor: [refactor, refactor],
+  postHandle: [postHandle, postHandle],
 });

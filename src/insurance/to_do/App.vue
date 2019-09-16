@@ -210,7 +210,10 @@ export default {
       type: 1, // 1 待分配 2 已分配 3 不通过
       list: [], // 人员列表
       isRepulse: 0,
-      detailRow: '', // 详情的信息
+      detailRow: {
+        idCardImgFront: '',
+        proveImg: '',
+      }, // 详情的信息,
       distributeRow: '', // 分配的信息
       repulseRow: '', // 打回的信息
       currentPage: 1,
