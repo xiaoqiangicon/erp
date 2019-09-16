@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
+import JsonRefactor from 'json-refactor';
+
 var requestKeys = {
   detail: {
     id: 'wallId',
@@ -36,7 +38,7 @@ var responseRefactor = {
 };
 var preHandle = {
   save: function(req) {
-    JSON.refactor(req.wallList, [
+    JsonRefactor(req.wallList, [
       {
         priceArray: 'prices',
         _priceArray: [

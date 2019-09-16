@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import data from './data';
 import seeAjax from 'see-ajax';
+import JsonRefactor from 'json-refactor';
+
 var ajaxHandle = {
   requestKeys: {
     template: {
@@ -125,7 +127,7 @@ var ajaxHandle = {
         (data.buddhas[req.buddhaModelId] &&
           data.buddhas[req.buddhaModelId].name) ||
         '';
-      JSON.refactor(req.postScript, [
+      JsonRefactor(req.postScript, [
         {
           input_type: 'type',
           prompt_text: 'tip',
@@ -138,7 +140,7 @@ var ajaxHandle = {
         (data.buddhas[req.buddhaModelId] &&
           data.buddhas[req.buddhaModelId].name) ||
         '';
-      JSON.refactor(req.postScript, [
+      JsonRefactor(req.postScript, [
         {
           input_type: 'type',
           prompt_text: 'tip',

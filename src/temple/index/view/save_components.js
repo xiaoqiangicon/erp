@@ -1,4 +1,5 @@
 import seeAjax from 'see-ajax';
+import JsonRefactor from 'json-refactor';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
@@ -14,6 +15,7 @@ import 'jquery-confirm';
 import seeView from 'see-view';
 import '../ajax';
 import 'clone';
+
 zzhHandling.setOnClickCloseCallback(function() {
   commonFunc.alert('正在保存微站数据，请勿操作或关闭页面。');
 });
@@ -641,7 +643,7 @@ seeView({
   },
   preHandleComponentsData: function() {
     if (seeAjax.getEnv() !== 2) {
-      JSON.refactor(componentData, saveReverse[componentData.type - 1] || {});
+      JsonRefactor(componentData, saveReverse[componentData.type - 1] || {});
       if (componentData.type === 2) {
         componentData.list.forEach(function(com) {
           com.showType = componentData.subType;
