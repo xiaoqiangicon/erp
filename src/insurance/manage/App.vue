@@ -41,7 +41,7 @@
       >
         <el-table-column label="分配编号" prop="id" />
         <el-table-column width="120" label="人数" prop="total" />
-        <el-table-column v-if="type == 3" label="过期" prop="id" />
+        <el-table-column v-if="type == 3" label="过期" prop="invalidTotal" />
         <el-table-column label="截至时间">
           <template slot-scope="scope">
             <div v-if="type == 1">
@@ -55,13 +55,13 @@
             </div>
             <div v-if="type == 2">
               <div class="" @click="onClickSetTime(scope.row)">
-                <span>{{ scope.row.end_time }}</span>
+                <span>{{ scope.row.endTime }}</span>
                 <i class="el-icon-edit-outline" style="color: #409eff" />
               </div>
             </div>
             <div v-if="type == 3">
               <div class="">
-                <span>{{ scope.row.end_time }}</span>
+                <span>{{ scope.row.expireTime }}</span>
                 <span class="expire-sign">过期</span>
               </div>
             </div>
@@ -69,7 +69,7 @@
         </el-table-column>
         <el-table-column label="保险单号" show-overflow-tooltip>
           <template slot-scope="scope">
-            <div v-if="type == 1">
+            <div v-if="type === 1">
               <div v-if="scope.row.insuranceNumber | insuranceId">
                 {{ insuranceId ? insuranceId : scope.row.insuranceNumber }}
               </div>
@@ -82,10 +82,18 @@
                 <i class="el-icon-edit-outline" style="color: #409eff" />
               </div>
             </div>
-            <div v-else @click="onClickSetInsuranceId(scope.row)">
+            <div
+              v-else-if="type === 2"
+              @click="onClickSetInsuranceId(scope.row)"
+            >
               <div>
                 {{ scope.row.insuranceNumber }}
                 <i class="el-icon-edit-outline" style="color: #409eff" />
+              </div>
+            </div>
+            <div v-else-if="type === 3">
+              <div>
+                {{ scope.row.insuranceNumber }}
               </div>
             </div>
           </template>
@@ -154,14 +162,16 @@
         background=""
         layout="sizes, prev, pager, next"
         :total="totalCount"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
       />
     </div>
     <SetValid :set-valid-id="setValidId" />
     <Delete :delete-id="deleteId" />
     <Withdraw :withdraw-id="withdrawId" />
-    <SetEndTime :end-time.sync="endTime" />
-    <SetInsuranceId :insurance-id.sync="insuranceId" />
-    <Notice />
+    <SetEndTime :end-time.sync="endTime" :set-end-time-id="setEndTimeId" />
+    <SetInsuranceId :insuranc-id.sync="insuranceId" />
+    <Notice :notice-id="noticeId" />
   </main>
 </template>
 
@@ -191,11 +201,13 @@ export default {
       distributeId: '', // 分配编号
       list: [], // 列表信息
       type: 1, // 生效状态
-      searchContent: '',
+      searchContent: '', // 搜索内容
       endTime: '', // 需要修改的截至时间
-      setValidId: '',
-      deleteId: '',
-      withdrawId: '',
+      setEndTimeId: '', // 设置截至时间得表单号
+      setValidId: '', // 需要生效得表单号
+      noticeId: '', // 需要通知续保得表单号
+      deleteId: '', // 需要删除得保单号
+      withdrawId: '', // 需要撤回得表单号
       insuranceId: '', // 需要修改的保险单号
       currentPage: 1, // 当前页数
       currentSize: 25, // 一页的数据量
@@ -211,6 +223,7 @@ export default {
     this.requestList({});
   },
   methods: {
+    // 获取未过期列表
     requestList({ status = 1, content = '', pageNum = 0, pageSize = 25 }) {
       seeAjax(
         'getList',
@@ -221,33 +234,42 @@ export default {
           pageSize,
         },
         res => {
-          if (res.success) {
-            this.totalCount = res.totalCount;
-            this.list = res.data;
-          } else {
-            alert(res);
-          }
+          if (!res.success) return;
+
+          this.totalCount = res.total;
+          this.list = res.data;
         }
       );
     },
+    // 获取过期列表
     requestExpireList({ content = '', pageNum = 0, pageSize = 25 }) {
-      seeAjax('expireList', { content, pageNum, pageSize }, res => {});
+      seeAjax('expireList', { content, pageNum, pageSize }, res => {
+        if (!res.success) return;
+
+        this.totalCount = res.count;
+        this.list = res.list;
+      });
     },
+    // 选项卡切换
     onClickType(type) {
       if (this.type === type) return;
 
       this.searchContent = '';
       this.type = type;
       if (this.type === 1) {
+        this.currentPage = 1;
         this.requestList({ status: 1 });
       }
       if (this.type === 2) {
+        this.currentPage = 1;
         this.requestList({ status: 0 });
       }
       if (this.type === 3) {
-        this.requestExpireList();
+        this.currentPage = 1;
+        this.requestExpireList({});
       }
     },
+    // 搜索
     search() {
       if (this.type === 1) {
         this.requestList({ status: 1, content: this.searchContent });
@@ -259,28 +281,77 @@ export default {
         this.requestExpireList({ content: this.searchContent });
       }
     },
+    // 设置截至时间
     onClickSetTime(data) {
       this.endTime = data.end_time;
+      this.setEndTimeId = data.id;
       this.$store.commit({ type: 'updateSetEndTimeVisible', state: true });
     },
+    // 设置保单号
     onClickSetInsuranceId(data) {
       this.insuranceId = data.insuranceNumber;
       this.$store.commit({ type: 'updateSetInsranceIdVisible', state: true });
     },
-    onClickSetValid() {
+    // 设为生效
+    onClickSetValid(row) {
+      this.setValidId = row.id;
       this.$store.commit({ type: 'updateSetValidVisible', state: true });
     },
+    // 管理人员
     onClickManage(data) {
       console.log(data.id);
     },
-    onClickDelete() {
+    // 删除
+    onClickDelete(row) {
+      this.deleteId = row.id;
       this.$store.commit({ type: 'updateSetDeleteVisible', state: true });
     },
-    onClickWithdraw() {
+    // 撤回
+    onClickWithdraw(row) {
+      this.withdrawId = row.id;
       this.$store.commit({ type: 'updateSetWithdrawVisible', state: true });
     },
-    onClickNotice() {
+    onClickNotice(row) {
+      this.noticeId = row.id;
       this.$store.commit({ type: 'updateNoticeVisible', state: true });
+    },
+    // 改变每页数据量
+    handleSizeChange(size) {
+      this.currentSize = size;
+      this.currentPage = 1;
+      if (this.type === 1) {
+        this.requestList({ status: 1, pageSize: size });
+      }
+      if (this.type === 2) {
+        this.requestList({ status: 0, pageSize: size });
+      }
+      if (this.type === 3) {
+        this.requestExpireList({ pageSize: size });
+      }
+    },
+    // 改变页数
+    handleCurrentChange(page) {
+      this.currentPage = page;
+      if (this.type === 1) {
+        this.requestList({
+          status: 1,
+          pageNum: page - 1,
+          pageSize: this.currentSize,
+        });
+      }
+      if (this.type === 2) {
+        this.requestList({
+          status: 0,
+          pageNum: page - 1,
+          pageSize: this.currentSize,
+        });
+      }
+      if (this.type === 3) {
+        this.requestExpireList({
+          pageNum: page - 1,
+          pageSize: this.currentSize,
+        });
+      }
     },
   },
 };

@@ -20,7 +20,7 @@
             <el-button type="primary" class="cancel" @click="onClickMask">
               取消
             </el-button>
-            <el-button type="primary" class="confirm">
+            <el-button type="primary" class="confirm" @click="confirmNotice">
               确认
             </el-button>
           </div>
@@ -35,7 +35,11 @@ import seeAjax from 'see-ajax';
 
 export default {
   name: 'Notice',
-  components: {},
+  props: {
+    noticeId: {
+      required: true,
+    },
+  },
   data() {
     return {};
   },
@@ -47,6 +51,12 @@ export default {
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateNoticeVisible', state: false });
+    },
+    confirmNotice() {
+      seeAjax('insuranceEdit', { id: this.noticeId, isNotice: 1 }, res => {
+        if (!res.success) return;
+        this.$store.commit({ type: 'updateNoticeVisible', state: false });
+      });
     },
   },
 };

@@ -20,7 +20,7 @@
             <el-button type="primary" class="cancel" @click="onClickMask">
               取消
             </el-button>
-            <el-button type="primary" class="confirm">
+            <el-button type="primary" class="confirm" @click="confirmWithdraw">
               确认
             </el-button>
           </div>
@@ -35,7 +35,9 @@ import seeAjax from 'see-ajax';
 
 export default {
   name: 'Withdraw',
-  components: {},
+  props: {
+    withdrawId: { required: true },
+  },
   data() {
     return {};
   },
@@ -47,6 +49,19 @@ export default {
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateSetWithdrawVisible', state: false });
+    },
+    confirmWithdraw() {
+      seeAjax(
+        'insuranceEditUserInfo',
+        { id: this.withdrawId, status: 2 },
+        res => {
+          if (!res.success) return;
+          this.$store.commit({
+            type: 'updateSetWithdrawVisible',
+            state: false,
+          });
+        }
+      );
     },
   },
 };

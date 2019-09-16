@@ -20,7 +20,7 @@
             <el-button type="primary" class="cancel" @click="onClickMask">
               取消
             </el-button>
-            <el-button type="primary" class="confirm">
+            <el-button type="primary" class="confirm" @click="confirmDelete">
               确认
             </el-button>
           </div>
@@ -36,6 +36,9 @@ import seeAjax from 'see-ajax';
 export default {
   name: 'Delete',
   components: {},
+  props: {
+    deleteId: { required: true },
+  },
   data() {
     return {};
   },
@@ -47,6 +50,20 @@ export default {
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateSetDeleteVisible', state: false });
+    },
+    confirmDelete() {
+      seeAjax(
+        'insuranceEdit',
+        { insuranceNumber: this.deleteId, status: -1 },
+        res => {
+          if (res.success) {
+            this.$store.commit({
+              type: 'updateSetDeleteVisible',
+              state: false,
+            });
+          }
+        }
+      );
     },
   },
 };

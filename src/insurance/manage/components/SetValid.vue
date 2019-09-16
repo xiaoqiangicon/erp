@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div v-show="visible" class="s-mask" @click.self="onClickMask">
-      <el-card v-show="true" class="box-card distribute">
+      <el-card v-show="isOperate" class="box-card distribute">
         <div slot="header" class="clearfix">
           <span>设为生效</span>
           <el-button
@@ -17,7 +17,7 @@
             <p class="info">
               1. 下载当前保单表格并设置；
             </p>
-            <el-button type="primary" class="download">
+            <el-button type="primary" class="download" @click="download">
               下载
             </el-button>
             <p class="info">
@@ -26,9 +26,9 @@
             <p class="info">
               3. 上传填写好的表格，保存后会批量同步信息到系统中。
             </p>
-            <el-button type="primary" class="upload">
-              上传表格
-            </el-button>
+            <div ref="upload" type="primary" class="upload">
+              上传Excel表格
+            </div>
           </div>
           <div class="operate">
             <el-button type="primary" class="cancel" @click="onClickMask">
@@ -40,7 +40,10 @@
           </div>
         </div>
       </el-card>
-      <div v-show="!isSuccess" class="valid-success valid-status-box">
+      <div
+        v-show="!isOperate & isSuccess"
+        class="valid-success valid-status-box"
+      >
         <div class="valid-info success-info">
           <img
             class="valid-status-img"
@@ -58,7 +61,10 @@
           我知道了
         </div>
       </div>
-      <div v-show="!isSuccess" class="valid-failed valid-status-box">
+      <div
+        v-show="!isOperate & !isSuccess"
+        class="valid-failed valid-status-box"
+      >
         <div class="valid-info failed-info">
           <img
             class="valid-status-img"
@@ -79,7 +85,7 @@
           <div class="upload-btn-1 upload-cancel" @click="onClickMask">
             取消
           </div>
-          <div class="upload-btn-1 reupload">
+          <div class="upload-btn-1 reupload" @click="reupload">
             重新上传
           </div>
         </div>
@@ -90,12 +96,17 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import uploadCom from '../../../../pro-com/src/upload';
+import { makeUploadFileOptions } from '../../../configs/upload';
 
 export default {
   name: 'SetValid',
-  components: {},
+  props: {
+    setValidId: { required: true },
+  },
   data() {
     return {
+      isOperate: !0,
       isSuccess: true,
     };
   },
@@ -104,11 +115,36 @@ export default {
       return this.$store.state.setValidDialogVisible;
     },
   },
+  mounted() {
+    uploadCom(
+      makeUploadFileOptions({
+        el: this.$refs.upload,
+        done: (url, e, data) => {},
+      })
+    );
+  },
   methods: {
     onClickMask() {
+      this.isOperate = !0;
       this.$store.commit({ type: 'updateSetValidVisible', state: false });
     },
-    setValid() {},
+    download() {
+      seeAjax('insuranceGetList', { ids: this.setValidId }, res => {});
+    },
+    setValid() {
+      seeAjax(
+        'insuranceEdit',
+        { insuranceNumber: this.setValidId, status: 1 },
+        res => {
+          this.isOperate = !1;
+          if (res.success) this.isSuccess = !0;
+          else this.isSuccess = !1;
+        }
+      );
+    },
+    reupload() {
+      this.isOperate = !0;
+    },
   },
 };
 </script>
@@ -163,6 +199,17 @@ export default {
   transform: translate(-50%, -50%);
 }
 
+.upload {
+  position: relative;
+  width: 132px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  background-color: #409eff;
+  border-radius: 4px;
+}
+
 .confirm {
   margin-top: 20px;
 }
@@ -191,6 +238,9 @@ export default {
     width: 50px;
     margin: 0 auto 16px;
   }
+}
+.success-info {
+  padding-top: 80px;
 }
 .valid-status-info {
   width: 70px;

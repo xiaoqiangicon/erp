@@ -34,7 +34,9 @@ for (let i = 0; i < 4; i++) {
     id: i,
     expireTime: '2019-09-12',
     insuranceNumber: `1234${i}`,
+    addTime: '2019-09-11',
     status: 1,
+    groupNumber: 1234,
     isNotice: 0,
     total: 23 + i,
     agreenTotal: 22,
@@ -43,10 +45,18 @@ for (let i = 0; i < 4; i++) {
   });
 }
 export const expire_list = {
-  data: {
-    list: expireList,
-    count: 1,
-    msg: '成功',
-    result: 0,
-  },
+  list: expireList,
+  count: 1,
+  msg: '成功',
+  result: 0,
+};
+
+export const insurance_edit = {
+  msg: '成功',
+  result: 0,
+};
+
+export const insurance_edit_user_info = {
+  msg: '成功',
+  result: 0,
 };

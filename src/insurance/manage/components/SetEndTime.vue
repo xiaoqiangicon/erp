@@ -40,14 +40,14 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import formatTime from '../../../util/format_time';
 
 export default {
   name: 'SetEndTime',
   components: {},
   props: {
-    endTime: {
-      required: false,
-    },
+    endTime: {},
+    setEndTimeId: { required: true },
   },
   data() {
     return {
@@ -64,8 +64,22 @@ export default {
       this.$store.commit({ type: 'updateSetEndTimeVisible', state: false });
     },
     onClickConfirm() {
-      this.$emit('update:endTime', this.setEndTime);
-      // this.$store.commit({ type: 'updateSetEndTimeVisible', state: false });
+      seeAjax(
+        'insuranceEdit',
+        {
+          insuranceNumber: this.setEndTimeId,
+          expireTime: formatTime(this.setEndTime),
+        },
+        res => {
+          if (res.success) {
+            this.$store.commit({
+              type: 'updateSetEndTimeVisible',
+              state: false,
+            });
+            this.setEndTime = '';
+          }
+        }
+      );
     },
   },
 };
