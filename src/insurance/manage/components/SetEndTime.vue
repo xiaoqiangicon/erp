@@ -46,8 +46,9 @@ export default {
   name: 'SetEndTime',
   components: {},
   props: {
-    endTime: {},
-    setEndTimeId: { required: true },
+    endTime: { type: String },
+    setEndTimeId: { require: true },
+    endTimeGroupId: { require: true },
   },
   data() {
     return {
@@ -67,7 +68,7 @@ export default {
       seeAjax(
         'insuranceEdit',
         {
-          insuranceNumber: this.setEndTimeId,
+          groupId: this.endTimeGroupId,
           expireTime: formatTime(this.setEndTime),
         },
         res => {

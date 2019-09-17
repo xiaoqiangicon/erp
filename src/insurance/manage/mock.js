@@ -2,29 +2,32 @@ export const get_list = {
   pageName: 1,
   msg: '成功',
   total: 128,
-  data: [
-    {
-      id: 2019081209,
-      total: 99,
-      endTime: 20190827,
-      insuranceNumber: 2328483,
-      addTime: '2019-08-12 20:12',
-    },
-    {
-      id: 2019081202,
-      total: 99,
-      endTime: '',
-      insuranceNumber: '',
-      addTime: '2019-08-12 20:12',
-    },
-    {
-      id: 2019081203,
-      total: 99,
-      endTime: 20190827,
-      insuranceNumber: 2328483,
-      addTime: '2019-08-12 20:12',
-    },
-  ],
+  data: {
+    list: [
+      {
+        id: 2019081209,
+        total: 99,
+        endTime: 20190827,
+        insuranceNumber: 2328483,
+        addTime: '2019-08-12 20:12',
+      },
+      {
+        id: 2019081202,
+        total: 99,
+        endTime: '',
+        insuranceNumber: '',
+        addTime: '2019-08-12 20:12',
+      },
+      {
+        id: 2019081203,
+        total: 99,
+        endTime: 20190827,
+        insuranceNumber: 2328483,
+        addTime: '2019-08-12 20:12',
+      },
+    ],
+    count: 3,
+  },
   result: 1,
 };
 
@@ -45,7 +48,9 @@ for (let i = 0; i < 4; i++) {
   });
 }
 export const expire_list = {
-  list: expireList,
+  data: {
+    list: expireList,
+  },
   count: 1,
   msg: '成功',
   result: 0,

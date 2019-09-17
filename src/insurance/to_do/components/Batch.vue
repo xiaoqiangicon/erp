@@ -89,6 +89,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import { Message } from 'element-ui';
 import uploadCom from '../../../../pro-com/src/upload';
 import { makeUploadFileOptions } from '../../../configs/upload';
 
@@ -110,7 +111,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$refs.upload);
     uploadCom(
       makeUploadFileOptions({
         el: this.$refs.upload,
@@ -125,7 +125,11 @@ export default {
     },
     download() {
       if (!this.insuranceIdItem.length) {
-        alert('请选择');
+        Message({
+          message: '请选择保单',
+          type: 'warning',
+        });
+        return;
       }
       seeAjax(
         'insuranceGetList',
@@ -134,6 +138,13 @@ export default {
       );
     },
     setValid() {
+      if (!this.file) {
+        Message({
+          message: '请上传文件',
+          type: 'warning',
+        });
+        return;
+      }
       seeAjax('insuranceUploadList', { myfile: this.file }, res => {
         if (res.success) this.type = 1;
         else this.type = 2;

@@ -32,6 +32,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import { Message } from 'element-ui';
 
 export default {
   name: 'Withdraw',
@@ -59,6 +60,10 @@ export default {
           this.$store.commit({
             type: 'updateSetWithdrawVisible',
             state: false,
+          });
+          Message({
+            message: '撤回成功',
+            type: 'success',
           });
         }
       );

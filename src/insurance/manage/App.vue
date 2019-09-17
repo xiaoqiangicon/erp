@@ -169,14 +169,20 @@
     <SetValid :set-valid-id="setValidId" />
     <Delete :delete-id="deleteId" />
     <Withdraw :withdraw-id="withdrawId" />
-    <SetEndTime :end-time.sync="endTime" :set-end-time-id="setEndTimeId" />
-    <SetInsuranceId :insuranc-id.sync="insuranceId" />
+    <SetEndTime
+      :end-time.sync="endTime"
+      :set-end-time-id="setEndTimeId"
+      :end-time-group-id="endTimeGroupId"
+    />
+    <SetInsuranceId :insurance-id.sync="insuranceId" />
     <Notice :notice-id="noticeId" />
   </main>
 </template>
 
 <script>
 import seeAjax from 'see-ajax';
+import * as env from '../../util/env';
+
 import SetValid from './components/SetValid';
 import Delete from './components/Delete';
 import Withdraw from './components/Withdraw';
@@ -204,6 +210,7 @@ export default {
       searchContent: '', // 搜索内容
       endTime: '', // 需要修改的截至时间
       setEndTimeId: '', // 设置截至时间得表单号
+      endTimeGroupId: '', // 设置截至时间的分组ID
       setValidId: '', // 需要生效得表单号
       noticeId: '', // 需要通知续保得表单号
       deleteId: '', // 需要删除得保单号
@@ -220,6 +227,7 @@ export default {
     },
   },
   created() {
+    console.log(111);
     this.requestList({});
   },
   methods: {
@@ -236,8 +244,9 @@ export default {
         res => {
           if (!res.success) return;
 
-          this.totalCount = res.total;
-          this.list = res.data;
+          console.log(res);
+          this.totalCount = res.data.count;
+          this.list = res.data.list;
         }
       );
     },
@@ -246,8 +255,8 @@ export default {
       seeAjax('expireList', { content, pageNum, pageSize }, res => {
         if (!res.success) return;
 
-        this.totalCount = res.count;
-        this.list = res.list;
+        this.totalCount = res.data.count;
+        this.list = res.data.list;
       });
     },
     // 选项卡切换
@@ -284,12 +293,13 @@ export default {
     // 设置截至时间
     onClickSetTime(data) {
       this.endTime = data.end_time;
-      this.setEndTimeId = data.id;
+      this.setEndTimeId = data.insuranceNumber;
+      this.endTimeGroupId = data.id;
       this.$store.commit({ type: 'updateSetEndTimeVisible', state: true });
     },
     // 设置保单号
     onClickSetInsuranceId(data) {
-      this.insuranceId = data.insuranceNumber;
+      this.insuranceId = data.id;
       this.$store.commit({ type: 'updateSetInsranceIdVisible', state: true });
     },
     // 设为生效
@@ -298,8 +308,13 @@ export default {
       this.$store.commit({ type: 'updateSetValidVisible', state: true });
     },
     // 管理人员
-    onClickManage(data) {
-      console.log(data.id);
+    onClickManage(row) {
+      const url = `${env.wxProtocol}://${
+        env.wxSubDomain
+      }.zizaihome.com/charity/getIndexHtml?groupId=${row.id}${
+        env.wxParamSuffix ? `&${env.wxParamSuffix}` : ''
+      }`;
+      // window.location.href = url;
     },
     // 删除
     onClickDelete(row) {

@@ -1,6 +1,8 @@
 import seeAjax from 'see-ajax';
 import './get_list';
 import './insuranceEditUserInfo';
+import './insuranceGetList';
+import './insuranceGroupList';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 

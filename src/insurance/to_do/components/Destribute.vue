@@ -57,6 +57,8 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import { Message } from 'element-ui';
+import { now } from '../../../../pro-com/src/utils';
 
 export default {
   name: 'Destribute',
@@ -64,7 +66,7 @@ export default {
   data() {
     return {
       radio: '1',
-      nameId: '2019-09-12',
+      nameId: '',
       disabled: true,
     };
   },
@@ -83,12 +85,19 @@ export default {
     radio() {
       if (this.radio == '1') {
         this.disabled = true;
-        this.nameId = `2019-09-12`;
+        this.nameId = `${now.year}${
+          now.month < 10 ? `0${now.month}` : now.month
+        }${now.day}-1`;
       } else {
         this.disabled = false;
         this.nameId = '';
       }
     },
+  },
+  created() {
+    this.nameId = `${now.year}${now.month < 10 ? `0${now.month}` : now.month}${
+      now.day
+    }-1`;
   },
   methods: {
     onClickMask() {
@@ -96,7 +105,10 @@ export default {
     },
     distributeConfirm() {
       if (!this.selected.length) {
-        alert('请选择');
+        Message({
+          message: '请选择保单',
+          type: 'warning',
+        });
         return;
       }
       const groupId = this.disabled ? 0 : this.nameId;

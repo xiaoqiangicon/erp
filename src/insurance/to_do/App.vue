@@ -50,6 +50,7 @@
           :class="{ active: type === 3 }"
           @click="onClickType(3)"
         >
+          失效用户
           <el-tooltip
             effect="dark"
             content="失效是指未通过审核或不续保的用户，这类用户将记录在“待办事项 - 不通过”的列表中。"
@@ -57,7 +58,6 @@
           >
             <i class="el-icon-info" style="font-size: 18px" />
           </el-tooltip>
-          失效用户
         </div>
       </div>
       <div v-show="type === 1" class="info-bar">
@@ -258,7 +258,7 @@ export default {
           name,
           numberAccount,
           phone,
-          groupId,
+          groupId: parseInt(groupId, 10) | 0,
           pageNum,
           pageSize,
         },

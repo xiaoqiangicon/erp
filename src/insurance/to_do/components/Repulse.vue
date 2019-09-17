@@ -66,7 +66,11 @@
             />
           </el-select>
         </div>
-        <div class="distribute-confirm" @click="confirmDistribute">
+        <div
+          class="distribute-confirm"
+          :plain="true"
+          @click="confirmDistribute"
+        >
           确认
         </div>
       </div>
@@ -76,6 +80,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import { Message } from 'element-ui';
 
 export default {
   name: 'Repulse',
@@ -111,15 +116,21 @@ export default {
     },
     confirmRepulse() {
       if (!this.textarea) {
-        alert('请填写内容');
+        Message({
+          message: '请输入打回原因！',
+          type: 'warning',
+        });
         return;
       }
       seeAjax(
         'insuranceEditUserInfo',
         { id: this.repulseRow.id, content: this.textarea, status: 2 },
         res => {
-          alert('打回成功');
           this.onClickMask();
+          Message({
+            message: '恭喜，修改成功！',
+            type: 'success',
+          });
         }
       );
     },
@@ -128,8 +139,11 @@ export default {
         'insuranceAddToGroup',
         { groupId: this.insuranceId, ids: this.distributeRow.id },
         res => {
-          alert('分配成功');
           this.onClickMask();
+          Message({
+            message: '恭喜，修改成功！',
+            type: 'success',
+          });
         }
       );
     },

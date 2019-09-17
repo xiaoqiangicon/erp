@@ -58,8 +58,19 @@ export default {
       this.$store.commit({ type: 'updateSetInsranceIdVisible', state: false });
     },
     onClickConfirm() {
-      this.$emit('update:insuranceId', this.newInsuranceId);
-      // this.$store.commit({ type: 'updateSetInsranceIdVisible', state: false });
+      seeAjax(
+        'insuranceEdit',
+        { groupId: this.insuranceId, insuranceNumber: this.newInsuranceId },
+        res => {
+          if (!res.success) return;
+
+          this.$store.commit({
+            type: 'updateSetInsranceIdVisible',
+            state: false,
+          });
+          this.newInsuranceId = '';
+        }
+      );
     },
   },
 };

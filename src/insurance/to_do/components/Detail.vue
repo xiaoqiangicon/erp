@@ -107,23 +107,23 @@
             </div>
             <div class="cell-body img-cell-body">
               <div class="img-cell">
-                <!-- <img
+                <img
                   v-gallery
                   class="img-gallery"
                   :src="detailRow.idCardImgFront"
                   alt=""
-                /> -->
+                />
                 <p class="">
                   身份证证件
                 </p>
               </div>
               <div class="img-cell">
-                <!-- <img
+                <img
                   v-gallery
                   class="img-gallery"
                   :src="detailRow.proveImg"
                   alt=""
-                /> -->
+                />
                 <p class="">
                   法师证明照片
                 </p>

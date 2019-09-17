@@ -8,10 +8,10 @@ const postHandle = (res, req) => {
 };
 
 seeAjax.config('getList', {
-  method: ['get'],
+  method: ['post'],
   stringify: [!0],
   url: [
-    '/zzhadmin/getConversionOrderList',
+    '/zzhadmin/insuranceGetReviewList/',
     '/src/insurance/personal/mock/get_list',
   ],
   postHandle: [postHandle, postHandle],

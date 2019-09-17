@@ -32,6 +32,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import { Message } from 'element-ui';
 
 export default {
   name: 'Notice',
@@ -55,7 +56,12 @@ export default {
     confirmNotice() {
       seeAjax('insuranceEdit', { id: this.noticeId, isNotice: 1 }, res => {
         if (!res.success) return;
+
         this.$store.commit({ type: 'updateNoticeVisible', state: false });
+        Message({
+          message: '通知续保成功',
+          type: 'success',
+        });
       });
     },
   },

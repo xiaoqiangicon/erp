@@ -71,9 +71,9 @@ export const insurance_group_list = {
   data: {
     list: insuranceList,
     count: 1,
-    msg: '成功',
-    result: 0,
   },
+  msg: '成功',
+  result: 0,
 };
 
 // 修改用户信息

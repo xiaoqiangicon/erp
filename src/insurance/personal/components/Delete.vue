@@ -32,6 +32,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import { Message } from 'element-ui';
 
 export default {
   name: 'Delete',
@@ -60,6 +61,10 @@ export default {
             this.$store.commit({
               type: 'updateSetDeleteVisible',
               state: false,
+            });
+            Message({
+              message: '删除成功',
+              type: 'success',
             });
           }
         }

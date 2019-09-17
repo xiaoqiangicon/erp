@@ -38,9 +38,9 @@
         >
           <el-option
             v-for="item in selectIdItem"
-            :key="item"
-            :label="item"
-            :value="item"
+            :key="item.id"
+            :label="item.id"
+            :value="item.id"
           />
         </el-select>
         <label for="">状态</label>
@@ -76,17 +76,41 @@
       >
         <el-table-column label="状态" show-overflow-tooltip>
           <template slot-scope="scope">
-            <div v-if="scope.row.valid_type == 1" class="status">
+            <div
+              v-if="scope.row.status == 1 && !scope.row.expireStatus"
+              class="status"
+            >
               <span class="invalid">未生效</span>
             </div>
-            <div v-else-if="scope.row.valid_type == 2" class="status">
+            <div
+              v-else-if="scope.row.status == 0 && !scope.row.expireStatus"
+              class="status"
+            >
               <span class="valid">生效中</span>
+              <span v-if="scope.row.isCarryOn == 2" class="invalid"
+                >未确认</span
+              >
+              <span v-if="scope.row.isCarryOn == 1" class="valid"
+                >同意续保</span
+              >
+              <span v-if="scope.row.isCarryOn == 0" class="expired"
+                >不续保</span
+              >
             </div>
-            <div v-else-if="scope.row.valid_type == 3" class="status">
+            <div v-else-if="scope.row.expireStatus" class="status">
               <span class="expired">已过期</span>
+              <span v-if="scope.row.isCarryOn == 2" class="invalid"
+                >未确认</span
+              >
+              <span v-if="scope.row.isCarryOn == 1" class="valid"
+                >同意续保</span
+              >
+              <span v-if="scope.row.isCarryOn == 0" class="expired"
+                >不续保</span
+              >
             </div>
             <div
-              v-else-if="scope.row.valid_type == 4"
+              v-else-if="(scope.row.status == 2) & !scope.row.expireStatus"
               class="status expire-item"
             >
               <el-tooltip
@@ -154,7 +178,7 @@
           label="申请时间"
           show-overflow-tooltip
         />
-        <el-table-column width="400" label="操作">
+        <el-table-column label="操作">
           <template slot-scope="scope">
             <a
               class="s-a"
@@ -206,6 +230,10 @@
 <script>
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
+import { parse } from 'path';
+import zzhUtil from '../../../old-com/util/src';
+import { getDate, urlParams } from '../../../pro-com/src/utils';
+
 import Detail from './components/Detail';
 import Delete from './components/Delete';
 import Withdraw from './components/Withdraw';
@@ -231,6 +259,7 @@ export default {
       selectId: '', // 选择的id
       selectStatusItem: ['全部', '已过期', '生效中', '未生效', '失效用户'],
       selectStatus: '', // 选择的状态
+      downloadList: [], // 下载列表
       withdrawId: '', // 需要撤回的保单
       deleteId: '', // 需要删除的保单
       detailRow: {
@@ -249,16 +278,31 @@ export default {
     },
   },
   watch: {
-    selectId() {},
+    selectId() {
+      const statusIndex = this.selectStatusItem.indexOf(this.selectStatus);
+      const statusArray = [-2, 3, 0, 4, 2];
+      this.requestList({
+        status: statusArray[statusIndex],
+        groupId: this.selectId,
+      });
+    },
     selectStatus() {
-      this.requestList({});
+      const statusIndex = this.selectStatusItem.indexOf(this.selectStatus);
+      const statusArray = [-2, 3, 0, 4, 2];
+      this.requestList({
+        status: statusArray[statusIndex],
+        groupId: this.selectId,
+      });
     },
   },
   created() {
-    this.requestList({});
+    const { groupId } = urlParams;
+    this.requestList({ groupId });
+    this.requestSelectList();
   },
   methods: {
     requestList({
+      status = -2,
       name = '',
       numberAccount = '',
       phone = '',
@@ -269,17 +313,31 @@ export default {
       seeAjax(
         'getList',
         {
+          status,
           name,
           numberAccount,
           phone,
-          groupId,
+          groupId: parseInt(groupId, 10) | 0,
           pageNum,
           pageSize,
         },
         res => {
           if (res.success) {
             this.totalCount = res.count;
+            const now = new Date(
+              `${zzhUtil.today.display} 23:59:59`.replace(/-/g, '\/')
+            );
+
+            res.data.forEach(item => {
+              item.expireStatus =
+                new Date(`${item.expireTime}`.replace(/-/g, '\/')) < now;
+            });
             this.list = res.data;
+            const downloadList = [];
+            this.list.forEach((item, i) => {
+              downloadList.push(item.id);
+            });
+            this.downloadList = downloadList;
           } else {
             Notification({
               title: '提示',
@@ -288,6 +346,13 @@ export default {
           }
         }
       );
+    },
+    requestSelectList() {
+      seeAjax('getInsuranceList', { status: -2 }, res => {
+        if (!res.success) return;
+
+        this.selectIdItem = res.data.list;
+      });
     },
     onClickSearch() {
       if (this.nameId === this.selectSortItem[0]) {
@@ -322,7 +387,18 @@ export default {
       });
     },
     exportForm() {
-      seeAjax('insuranceGetList', { ids: 1 }, res => {});
+      if (!this.downloadList.length) {
+        Notification({
+          title: '提示',
+          message: '接口出错',
+        });
+        return;
+      }
+      seeAjax(
+        'insuranceGetList',
+        { ids: this.downloadList.join(',') },
+        res => {}
+      );
     },
     onClickDetail(row) {
       this.detailRow = row;

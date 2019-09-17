@@ -130,20 +130,20 @@
         {
           "id": "insurance-index",
           "name": "待办事项",
-          "link": "/zzhadmin/insuranceIndex/",
-          "controlMark": "pw_money_center"
+          "link": "/zzhadmin/insuranceTodoHtml/",
+          "controlMark": "pw_insurance"
         },
         {
           "id": "insurance-person",
           "name": "人员管理",
-          "link": "/zzhadmin/insuranceIndex/",
-          "controlMark": "pw_money_center"
+          "link": "/zzhadmin/insurancePersonalHtml/",
+          "controlMark": "pw_insurance"
         },
         {
           "id": "insurance-insured",
           "name": "投保管理",
-          "link": "/zzhadmin/insuranceIndex/",
-          "controlMark": "pw_money_center"
+          "link": "/zzhadmin/insuranceManageHtml/",
+          "controlMark": "pw_insurance"
         }
       ]
     }

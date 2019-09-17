@@ -48,6 +48,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import { Message } from 'element-ui';
 
 export default {
   name: 'Renew',
@@ -90,6 +91,10 @@ export default {
           this.$store.commit({ type: 'updateSetRenewVisible', state: false });
           this.reason = '';
           this.radio = '1';
+          Message({
+            message: '操作成功',
+            type: 'success',
+          });
         }
       );
     },

@@ -224,9 +224,6 @@ export default {
       return this.$store.state.detailDialogVisible;
     },
   },
-  created() {
-    console.log(this.detailRow);
-  },
   methods: {
     onClickMask() {
       this.$store.commit({ type: 'updateDetailVisible', state: false });
