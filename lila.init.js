@@ -10,6 +10,14 @@ const rename = {
   'index/login': 'admin/registration/login',
 };
 
+const defaultCssModulesExcludeRules = [
+  /node_modules/,
+  /pro-com/,
+  /old-com/,
+  /src\/lib/,
+  /src\\lib/,
+];
+
 const cssModules = [
   'buddhist/template',
   'vrshow/award',
@@ -19,14 +27,14 @@ const cssModules = [
 
 const cssModulesExclude = {
   'buddhist/template': [
-    /node_modules/,
+    ...defaultCssModulesExcludeRules,
     /src\/component/,
     /src\\component/,
     /src\/less/,
     /src\\less/,
   ],
   'vrshow/award': [
-    /node_modules/,
+    ...defaultCssModulesExcludeRules,
     /src\/component/,
     /src\\component/,
     /src\/less/,
@@ -179,7 +187,8 @@ export default lila => {
       ],
       cssModules: cssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
-      cssModulesExclude: cssModulesExclude[entry] || undefined,
+      cssModulesExclude:
+        cssModulesExclude[entry] || defaultCssModulesExcludeRules,
       babelPlugins: [
         ['import', { libraryName: 'antd', style: 'css' }],
         [
