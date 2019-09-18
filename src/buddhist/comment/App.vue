@@ -1,0 +1,400 @@
+<template>
+  <main>
+    <div class="header">
+      <div class="select-item">
+        <div class="buddhist-name">
+          <span>佛事名称</span>
+          <el-select
+            style="width: 350px;"
+            clearable
+            @change="onChangeBuddhistId"
+            size="medium"
+            v-model="buddhistId"
+            filterable
+            placeholder="请选择或填写关键词搜索"
+          >
+            <el-option
+              v-for="item in buddhistList"
+              :key="item.commodityId"
+              :label="item.name"
+              :value="item.commodityId"
+            ></el-option>
+          </el-select>
+        </div>
+        <div class="buddhist-time">
+          <span for="">评价时间</span>
+          <el-date-picker
+            @change="onChangeDatePicker"
+            v-model="date"
+            type="daterange"
+            range-separator="-"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            format="yyyy-MM-dd"
+            :picker-options="pickerOptions"
+            unlink-panels
+          ></el-date-picker>
+        </div>
+      </div>
+      <div class="sort-item">
+        <div class="sort-comment-item">
+          <p>
+            <span>很赞</span>
+            <span>{{ evaluation.satisfactionNum }}</span>
+          </p>
+          <p>
+            <span>{{ satisfactionNumPer }}</span>
+            <span>%的人感觉很赞</span>
+          </p>
+        </div>
+        <div class="sort-comment-item">
+          <p>
+            <span>满意</span>
+            <span>{{ evaluation.praiseNum }}</span>
+          </p>
+          <p>
+            <span>{{ prasiseNumPer }}</span>
+            <span>%的人表示满意</span>
+          </p>
+        </div>
+        <div class="sort-comment-item">
+          <p>
+            <span>体验不佳</span>
+            <span>{{ evaluation.badReview }}</span>
+          </p>
+          <p>
+            <span>{{ badReviewPer }}</span>
+            <span>%的人体验不佳</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="tabs">
+        <div
+          class="tab-panel"
+          @click="onClickType(0)"
+          v-bind:class="{ active: type === 0 }"
+        >
+          全部
+        </div>
+        <div
+          class="tab-panel"
+          @click="onClickType(3)"
+          v-bind:class="{ active: type === 3 }"
+        >
+          体验不佳
+        </div>
+        <div
+          class="tab-panel"
+          @click="onClickType(2)"
+          v-bind:class="{ active: type === 2 }"
+        >
+          满意
+        </div>
+        <div
+          class="tab-panel"
+          @click="onClickType(1)"
+          v-bind:class="{ active: type === 1 }"
+        >
+          很赞
+        </div>
+      </div>
+      <el-table
+        highlight-current-row
+        v-loading="loadingList"
+        ref="multipleTable"
+        :data="list"
+        tooltip-effect="dark"
+        style="width: 100%"
+      >
+        <el-table-column label="评价内容" prop="commodityName" />
+        <el-table-column label="文字评价" prop="labelRecordList" />
+        <el-table-column label="回复内容">
+          <template slot-scope="scope">
+            <p>{{ scope.row.reply }}</p>
+            <div
+              class="modify reply"
+              v-if="scope.row.reply"
+              @click="onClickReply(scope.row)"
+            >
+              修改
+            </div>
+            <div class="reply" v-else @click="onClickReply(scope.row)">
+              回复
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column label="评价类型" prop="evaluation" />
+        <el-table-column label="参与项目" prop="subdivideName">
+        </el-table-column>
+        <el-table-column label="评价用户" prop="nickName" />
+        <el-table-column label="评价时间" prop="addTime" />
+      </el-table>
+    </div>
+    <div class="mg-t-10" style="text-align: center;">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage"
+        :page-sizes="[25, 50, 75, 100]"
+        :page-size="currentSize"
+        background=""
+        layout="sizes, prev, pager, next"
+        :total="totalCount"
+      ></el-pagination>
+    </div>
+    <Reply :replyContent="replyContent" :replyId="replyId" />
+  </main>
+</template>
+
+<script>
+import { Notification } from 'element-ui';
+import seeAjax from 'see-ajax';
+
+import formatTime from '../../util/format_time';
+
+import Reply from './Reply';
+
+export default {
+  name: 'App',
+  components: {},
+  data() {
+    return {
+      loadingBuddhistList: true,
+      loadingList: true,
+
+      // 列表请求参数
+      buddhistId: '',
+      date: ['', ''],
+      formatDate: ['', ''],
+      type: 0,
+      currentPage: 1,
+      currentSize: 25,
+      totalCount: 128,
+
+      // 数据
+      buddhistList: [],
+      list: [],
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            },
+          },
+          {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            },
+          },
+          {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            },
+          },
+        ],
+      },
+      replyContent: '',
+      replyId: 0,
+      evaluation: {},
+    };
+  },
+  components: {
+    Reply,
+  },
+  created() {
+    this.requestEvaluation();
+    this.requestList();
+  },
+  computed: {
+    badReviewPer() {
+      return (
+        parseInt(
+          this.evaluation.badReview /
+            (this.evaluation.badReview +
+              this.evaluation.satisfactionNum +
+              this.evaluation.praiseNum),
+          10
+        ) * 100
+      );
+    },
+    prasiseNumPer() {
+      return (
+        parseInt(
+          this.evaluation.praiseNum /
+            (this.evaluation.badReview +
+              this.evaluation.satisfactionNum +
+              this.evaluation.praiseNum),
+          10
+        ) * 100
+      );
+    },
+    satisfactionNumPer() {
+      return (
+        parseInt(
+          this.evaluation.satisfactionNum /
+            (this.evaluation.badReview +
+              this.evaluation.satisfactionNum +
+              this.evaluation.praiseNum),
+          10
+        ) * 100
+      );
+    },
+  },
+  methods: {
+    requestEvaluation() {
+      seeAjax('getEvaluationNum', { commodityId: this.buddhistId | 0 }, res => {
+        if (!res.success) return;
+
+        this.evaluation = res.data;
+      });
+    },
+    requestList() {
+      const { buddhistId, formatDate, currentPage, currentSize, type } = this;
+
+      seeAjax(
+        'getList',
+        {
+          buddhistId,
+          startTime: formatDate[0],
+          endTime: formatDate[1],
+          pageNum: currentPage - 1,
+          pageSize: currentSize,
+          type,
+        },
+        res => {
+          if (!res.success) return;
+
+          let commodityList = [];
+          res.data.forEach(item => {
+            let single = {};
+            single.commodityId = item.id;
+            single.name = item.subdivideName;
+            commodityList.push(single);
+          });
+          this.buddhistList = commodityList;
+          this.list = res.data;
+          this.loadingList = false;
+          this.totalCount = res.total;
+        }
+      );
+    },
+    onChangeBuddhistId() {
+      this.requestEvaluation();
+      this.onChangeFilter();
+    },
+    onChangeDatePicker() {
+      const { date } = this;
+      this.formatDate = date.map(item => formatTime(`${item}`));
+      this.onChangeFilter();
+    },
+    onChangeFilter() {
+      this.currentPage = 1;
+      this.requestList();
+    },
+    onClickType(type) {
+      if (this.type === type) return;
+
+      this.type = type;
+      this.currentPage = 1;
+      this.requestList();
+    },
+    onClickReply(row) {
+      this.replyContent = row.reply;
+      this.replyId = row.id;
+      this.$store.commit({ type: 'updateReplyVisible', state: true });
+    },
+    handleSizeChange(size) {
+      this.currentSize = size;
+      this.currentPage = 1;
+      this.requestList();
+    },
+    handleCurrentChange(page) {
+      this.currentPage = page;
+      this.requestList();
+    },
+  },
+};
+</script>
+
+<style lang="less" scoped>
+main {
+  padding: 15px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 50px;
+  padding: 0 3%;
+}
+.buddhist-time {
+  margin-top: 20px;
+}
+.sort-item {
+  display: flex;
+}
+.sort-comment-item {
+  width: 120px;
+  padding: 4px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+
+  p {
+    margin: 0;
+  }
+}
+
+.tabs {
+  height: 42px;
+  line-height: 40px;
+  border-bottom: 2px solid #6fba2c;
+  margin-bottom: 10px;
+  box-sizing: content-box;
+  .tab-panel {
+    width: 200px;
+    text-align: center;
+    float: left;
+    background-color: #fff;
+    margin-right: 20px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    &.active {
+      color: #fff;
+      background-color: #6fba2c;
+      border: 1px solid #6fba2c;
+    }
+  }
+}
+
+.reply {
+  width: 48px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  border-radius: 12px;
+  background-color: #d2e9ff;
+  cursor: pointer;
+}
+.modify {
+  background-color: #1890ff;
+  color: white;
+}
+</style>

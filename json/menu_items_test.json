@@ -68,6 +68,13 @@
           "link": "/zzhadmin/conversionOrderIndex/",
           "isHtml": true,
           "controlMark": "pw_chanzai_order"
+        },
+        {
+          "id": "order-comment",
+          "name": "佛事评价",
+          "link": "/zzhadmin/conversionOrderIndex/",
+          "isHtml": true,
+          "controlMark": "pw_chanzai_order"
         }
       ]
     },
