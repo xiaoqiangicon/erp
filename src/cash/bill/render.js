@@ -10,8 +10,8 @@ export const renderSelectedYear = (data, options) => {
     .text(data + '年');
 };
 
-export const renderYearContent = data => {
-  $(`[data-year-content="{{year}}"][data-status="${options.status}"]`).html(
-    tpl.contentUnit.render(data)
-  );
+export const renderYearContent = (data, options) => {
+  $(
+    `[data-year-content="${options.year}"][data-status="${options.status}"]`
+  ).html(tpl.contentUnit.render(data));
 };

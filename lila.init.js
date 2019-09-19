@@ -4,54 +4,19 @@ import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack';
 import { forReactVue as reactVueWebpackConfigPlugin } from 'lila-webpack-config';
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
-import accounts from '../accounts';
-
-const servers = [
-  {
-    ignoreErrors: true,
-    sshConfig: {
-      host: accounts[0].host,
-      username: accounts[0].user,
-      password: accounts[0].pass,
-    },
-  },
-  {
-    ignoreErrors: true,
-    sshConfig: {
-      host: accounts[1].host,
-      username: accounts[1].user,
-      password: accounts[1].pass,
-    },
-  },
-  {
-    ignoreErrors: true,
-    sshConfig: {
-      host: accounts[2].host,
-      username: accounts[2].user,
-      password: accounts[2].pass,
-    },
-  },
-  {
-    ignoreErrors: true,
-    sshConfig: {
-      host: accounts[3].host,
-      username: accounts[3].user,
-      password: accounts[3].pass,
-    },
-  },
-  {
-    ignoreErrors: true,
-    sshConfig: {
-      host: accounts[4].host,
-      username: accounts[4].user,
-      password: accounts[4].pass,
-    },
-  },
-];
+import servers from './servers';
 
 const rename = {
   'index/login': 'admin/registration/login',
 };
+
+const defaultCssModulesExcludeRules = [
+  /node_modules/,
+  /pro-com/,
+  /old-com/,
+  /src\/lib/,
+  /src\\lib/,
+];
 
 const cssModules = [
   'buddhist/template',
@@ -62,14 +27,14 @@ const cssModules = [
 
 const cssModulesExclude = {
   'buddhist/template': [
-    /node_modules/,
+    ...defaultCssModulesExcludeRules,
     /src\/component/,
     /src\\component/,
     /src\/less/,
     /src\\less/,
   ],
   'vrshow/award': [
-    /node_modules/,
+    ...defaultCssModulesExcludeRules,
     /src\/component/,
     /src\\component/,
     /src\/less/,
@@ -222,7 +187,8 @@ export default lila => {
       ],
       cssModules: cssModules.indexOf(entry) > -1,
       cssModulesName: isDev ? '[name]__[local]--[hash:base64]' : undefined,
-      cssModulesExclude: cssModulesExclude[entry] || undefined,
+      cssModulesExclude:
+        cssModulesExclude[entry] || defaultCssModulesExcludeRules,
       babelPlugins: [
         ['import', { libraryName: 'antd', style: 'css' }],
         [

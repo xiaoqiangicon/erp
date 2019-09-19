@@ -1,4 +1,5 @@
 import seeAjax from 'see-ajax';
+import JsonRefactor from 'json-refactor';
 import $ from 'jquery';
 import clone from 'clone';
 import indexData from './data';
@@ -112,7 +113,7 @@ function renderSavedData(res) {
   res.data.map(function(item) {
     var i, il;
     if (seeAjax.getEnv() !== 2) {
-      JSON.refactor(item, savedDataRefactorMap[item.type - 1] || {});
+      JsonRefactor(item, savedDataRefactorMap[item.type - 1] || {});
       if (item.type === 1) {
         !!item.images &&
           !!item.images.length &&
