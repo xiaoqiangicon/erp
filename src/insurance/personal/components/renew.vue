@@ -20,10 +20,10 @@
             <el-radio v-model="radio" label="1">
               同意续保
             </el-radio>
-            <el-radio v-model="radio" label="2">
+            <el-radio v-model="radio" label="0">
               不同意
             </el-radio>
-            <div v-if="radio == 2" class="reason">
+            <div v-if="radio == 0" class="reason">
               <span>原因</span>
               <el-input
                 v-model="reason"
@@ -84,7 +84,7 @@ export default {
     confirmRenew() {
       seeAjax(
         'insuranceEditUserInfo',
-        { id: this.renewId, isCarryOn: 1, content: this.reason },
+        { id: this.renewId, isCarryOn: this.radio, content: this.reason },
         res => {
           if (!res.success) return;
 

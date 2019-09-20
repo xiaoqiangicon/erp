@@ -227,37 +227,45 @@ export default {
     },
   },
   created() {
-    console.log(111);
-    this.requestList({});
+    this.requestList();
   },
   methods: {
     // 获取未过期列表
-    requestList({ status = 1, content = '', pageNum = 0, pageSize = 25 }) {
+    requestList() {
+      const { type, searchContent, currentPage, currentSize } = this;
       seeAjax(
         'getList',
         {
-          status,
-          content,
-          pageNum,
-          pageSize,
+          status: type,
+          content: searchContent,
+          pageNum: currentPage - 1,
+          pageSize: currentSize,
         },
         res => {
           if (!res.success) return;
 
-          console.log(res);
           this.totalCount = res.data.count;
           this.list = res.data.list;
         }
       );
     },
     // 获取过期列表
-    requestExpireList({ content = '', pageNum = 0, pageSize = 25 }) {
-      seeAjax('expireList', { content, pageNum, pageSize }, res => {
-        if (!res.success) return;
+    requestExpireList() {
+      const { searchContent, currentPage, currentSize } = this;
+      seeAjax(
+        'expireList',
+        {
+          content: searchContent,
+          pageNum: currentPage - 1,
+          pageSize: currentSize,
+        },
+        res => {
+          if (!res.success) return;
 
-        this.totalCount = res.data.count;
-        this.list = res.data.list;
-      });
+          this.totalCount = res.data.count;
+          this.list = res.data.list;
+        }
+      );
     },
     // 选项卡切换
     onClickType(type) {
@@ -266,29 +274,26 @@ export default {
       this.searchContent = '';
       this.type = type;
       if (this.type === 1) {
-        this.currentPage = 1;
-        this.requestList({ status: 1 });
+        this.onChangeFilter();
       }
       if (this.type === 2) {
-        this.currentPage = 1;
-        this.requestList({ status: 0 });
+        this.onChangeFilter();
       }
       if (this.type === 3) {
-        this.currentPage = 1;
-        this.requestExpireList({});
+        this.onChangeFilter();
+      }
+    },
+    onChangeFilter() {
+      this.currentPage = 1;
+      if (this.type <= 2) {
+        this.requestList();
+      } else {
+        this.requestExpireList();
       }
     },
     // 搜索
     search() {
-      if (this.type === 1) {
-        this.requestList({ status: 1, content: this.searchContent });
-      }
-      if (this.type === 2) {
-        this.requestList({ status: 0, content: this.searchContent });
-      }
-      if (this.type === 3) {
-        this.requestExpireList({ content: this.searchContent });
-      }
+      this.onChangeFilter();
     },
     // 设置截至时间
     onClickSetTime(data) {
@@ -311,7 +316,7 @@ export default {
     onClickManage(row) {
       const url = `${env.wxProtocol}://${
         env.wxSubDomain
-      }.zizaihome.com/charity/getIndexHtml?groupId=${row.id}${
+      }.zizaihome.com/zzhadmin/insurancePersonalHtml?groupId=${row.id}${
         env.wxParamSuffix ? `&${env.wxParamSuffix}` : ''
       }`;
       // window.location.href = url;
@@ -333,40 +338,12 @@ export default {
     // 改变每页数据量
     handleSizeChange(size) {
       this.currentSize = size;
-      this.currentPage = 1;
-      if (this.type === 1) {
-        this.requestList({ status: 1, pageSize: size });
-      }
-      if (this.type === 2) {
-        this.requestList({ status: 0, pageSize: size });
-      }
-      if (this.type === 3) {
-        this.requestExpireList({ pageSize: size });
-      }
+      this.onChangeFilter();
     },
     // 改变页数
     handleCurrentChange(page) {
       this.currentPage = page;
-      if (this.type === 1) {
-        this.requestList({
-          status: 1,
-          pageNum: page - 1,
-          pageSize: this.currentSize,
-        });
-      }
-      if (this.type === 2) {
-        this.requestList({
-          status: 0,
-          pageNum: page - 1,
-          pageSize: this.currentSize,
-        });
-      }
-      if (this.type === 3) {
-        this.requestExpireList({
-          pageNum: page - 1,
-          pageSize: this.currentSize,
-        });
-      }
+      this.requestList();
     },
   },
 };

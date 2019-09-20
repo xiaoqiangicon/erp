@@ -1,7 +1,6 @@
 export const get_list = {
   pageName: 1,
   msg: '成功',
-  total: 128,
   data: {
     list: [
       {
@@ -26,7 +25,7 @@ export const get_list = {
         addTime: '2019-08-12 20:12',
       },
     ],
-    count: 3,
+    count: 128,
   },
   result: 1,
 };
@@ -50,8 +49,8 @@ for (let i = 0; i < 4; i++) {
 export const expire_list = {
   data: {
     list: expireList,
+    count: 1,
   },
-  count: 1,
   msg: '成功',
   result: 0,
 };

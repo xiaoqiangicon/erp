@@ -227,7 +227,7 @@ export default {
     },
   },
   created() {
-    this.requestList({});
+    this.requestList();
     seeAjax('getInsuranceList', { status: 1 }, res => {
       const insuranceIdItem = res.data.list;
 
@@ -238,29 +238,30 @@ export default {
     });
   },
   methods: {
-    requestList({
-      status = 1,
-      name = '',
-      numberAccount = '',
-      phone = '',
-      groupId = '',
-      pageNum = 0,
-      pageSize = 25,
-    }) {
-      let type = status;
-      if (status === 2) type = 0; // 生效中
-      if (status === 3) type = 2; // 失效
+    requestList() {
+      let {
+        type,
+        nameInput,
+        numberAccountInput,
+        phoneInput,
+        groupIdInput,
+        currentPage,
+        currentSize,
+      } = this;
+      // let type = status;
+      if (type === 2) type = 0; // 生效中
+      if (type === 3) type = 2; // 失效
 
       seeAjax(
         'getList',
         {
           status: type,
-          name,
-          numberAccount,
-          phone,
-          groupId: parseInt(groupId, 10) | 0,
-          pageNum,
-          pageSize,
+          name: nameInput,
+          numberAccount: numberAccountInput,
+          phone: phoneInput,
+          groupId: parseInt(groupIdInput, 10) | 0,
+          pageNum: currentPage - 1,
+          pageSize: currentSize,
         },
         res => {
           if (res.success) {
@@ -277,6 +278,15 @@ export default {
       );
     },
     onclickSearch() {
+      if (!this.nameId) {
+        Notification.info({
+          title: '提示',
+          message: '请选择搜索内容',
+        });
+        // this.searchInput = '';
+        return;
+      }
+
       if (this.nameId === this.selectItem[0]) {
         this.nameInput = this.searchInput;
         this.numberAccountInput = '';
@@ -301,18 +311,17 @@ export default {
         this.numberAccountInput = '';
         this.phoneInput = '';
       }
-      this.requestList({
-        name: this.nameInput,
-        numberAccount: this.numberAccountInput,
-        phone: this.phoneInput,
-        groupId: this.groupIdInput,
-      });
+      this.onChangeFilter();
     },
     onClickType(type) {
       if (this.type === type) return;
 
       this.type = type;
-      this.requestList({ status: type });
+      this.onChangeFilter();
+    },
+    onChangeFilter() {
+      this.currentPage = 1;
+      this.requestList();
     },
     setBatch() {
       this.$store.commit({ type: 'updateBatchVisible', state: true });
@@ -347,12 +356,11 @@ export default {
     },
     handleSizeChange(size) {
       this.currentSize = size;
-      this.currentPage = 1;
-      this.requestList({ pageSize: size });
+      this.onChangeFilter();
     },
     handleCurrentChange(page) {
       this.currentPage = page;
-      this.requestList({ pageNum: page - 1 });
+      this.requestList();
     },
   },
 };

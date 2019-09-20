@@ -253,7 +253,7 @@ export default {
       distributeId: '', // 分配编号
       selectSortItem: ['姓名', 'UID', '电话', '批次号码'],
       list: [], // 当前列表
-      type: 1,
+      type: -2,
       searchInput: '', // 搜索的内容
       selectIdItem: [], // 分配编号筛选
       selectId: '', // 选择的id
@@ -267,6 +267,11 @@ export default {
         proveImg: '',
       }, // 详情的信息
       renewId: '', // 需要续保的保单
+      // 请求参数
+      phoneInput: '',
+      nameInput: '',
+      groupIdInput: '',
+      numberAccountInput: '',
       currentPage: 1,
       currentSize: 25,
       totalCount: 0,
@@ -279,47 +284,45 @@ export default {
   },
   watch: {
     selectId() {
-      const statusIndex = this.selectStatusItem.indexOf(this.selectStatus);
-      const statusArray = [-2, 3, 0, 4, 2];
-      this.requestList({
-        status: statusArray[statusIndex],
-        groupId: this.selectId,
-      });
+      this.groupIdInput = this.selectId;
+      this.currentPage = 1;
+      this.requestList();
     },
     selectStatus() {
       const statusIndex = this.selectStatusItem.indexOf(this.selectStatus);
       const statusArray = [-2, 3, 0, 4, 2];
-      this.requestList({
-        status: statusArray[statusIndex],
-        groupId: this.selectId,
-      });
+      this.type = statusArray[statusIndex];
+      this.currentPage = 1;
+      this.requestList();
     },
   },
   created() {
     const { groupId } = urlParams;
-    this.requestList({ groupId });
+    this.groupIdInput = groupId;
+    this.requestList();
     this.requestSelectList();
   },
   methods: {
-    requestList({
-      status = -2,
-      name = '',
-      numberAccount = '',
-      phone = '',
-      groupId = '',
-      pageNum = 0,
-      pageSize = 25,
-    }) {
+    requestList() {
+      const {
+        phoneInput,
+        nameInput,
+        groupIdInput,
+        numberAccountInput,
+        type,
+        currentPage,
+        currentSize,
+      } = this;
       seeAjax(
         'getList',
         {
-          status,
-          name,
-          numberAccount,
-          phone,
-          groupId: parseInt(groupId, 10) | 0,
-          pageNum,
-          pageSize,
+          status: type,
+          name: nameInput,
+          numberAccount: numberAccountInput,
+          phone: phoneInput,
+          groupId: parseInt(groupIdInput, 10) | 0,
+          pageNum: currentPage - 1,
+          pageSize: currentSize,
         },
         res => {
           if (res.success) {
@@ -355,6 +358,13 @@ export default {
       });
     },
     onClickSearch() {
+      if (!this.searchInput | !this.nameId) {
+        Notification.info({
+          title: '提示',
+          message: '请输入搜索内容',
+        });
+        return;
+      }
       if (this.nameId === this.selectSortItem[0]) {
         this.nameInput = this.searchInput;
         this.numberAccountInput = '';
@@ -379,12 +389,8 @@ export default {
         this.numberAccountInput = '';
         this.phoneInput = '';
       }
-      this.requestList({
-        name: this.nameInput,
-        numberAccount: this.numberAccountInput,
-        phone: this.phoneInput,
-        groupId: this.groupIdInput,
-      });
+      this.currentPage = 1;
+      this.requestList();
     },
     exportForm() {
       if (!this.downloadList.length) {
@@ -419,14 +425,11 @@ export default {
     handleSizeChange(size) {
       this.currentSize = size;
       this.currentPage = 1;
-      this.requestList({ pageSize: size });
+      this.requestList();
     },
     handleCurrentChange(page) {
       this.currentPage = page;
-      this.requestList({
-        pageNum: page - 1,
-        pageSize: this.currentSize,
-      });
+      this.requestList();
     },
   },
 };
