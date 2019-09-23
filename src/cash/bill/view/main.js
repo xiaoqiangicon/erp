@@ -243,6 +243,7 @@ seeView({
       billIds.push(parseInt($(this).attr('data-bill-id')));
     });
     data.saveBillIds = billIds;
+
     if (action == 1) $questionDialog.show();
     else if (action == 2) {
       if (data.haveOrderInHandling) $handlingDialog.show();
