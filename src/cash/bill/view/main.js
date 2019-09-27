@@ -217,6 +217,15 @@ seeView({
     $totalAssistance.text(totalAssistance.toFixed(2));
   },
   onClickStatusAction: function(e) {
+    // 2019-09 add
+    var $pre2 = $('#pre-2');
+    var $pre5 = $('#pre-5');
+    var $pre10 = $('#pre-10');
+    var $pre15 = $('#pre-15');
+    var $pre20 = $('#pre-20');
+    var $pre30 = $('#pre-30');
+    var totalMoney = parseFloat($($('[data-show-real-total-money]')[0]).text());
+
     var self = this,
       $this = $(e.target),
       disabled =
@@ -244,8 +253,18 @@ seeView({
     });
     data.saveBillIds = billIds;
 
+    // action: 1有疑问 2确认 3撤回
+
     if (action == 1) $questionDialog.show();
     else if (action == 2) {
+      // 2019-09,每个选项的金额
+      $pre2.text(parseFloat(totalMoney * 0.02).toFixed(2));
+      $pre5.text(parseFloat(totalMoney * 0.05).toFixed(2));
+      $pre10.text(parseFloat(totalMoney * 0.1).toFixed(2));
+      $pre15.text(parseFloat(totalMoney * 0.15).toFixed(2));
+      $pre20.text(parseFloat(totalMoney * 0.2).toFixed(2));
+      $pre30.text(parseFloat(totalMoney * 0.3).toFixed(2));
+
       if (data.haveOrderInHandling) $handlingDialog.show();
       else if (!data.canTakeOrder) $forbidDialog.show();
       else if (data.currentWaitingReceipts) $receiptTipDialog.show();

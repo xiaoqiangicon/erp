@@ -76,17 +76,20 @@ $.ajaxSetup({
   });
 })();
 var $sliderInput = $('#prize-input');
-data.slider = new Slider('#slider', {
-  min: 0,
-  max: 1000,
-  value: 0,
-  step: 0.01,
-  tooltip: 'hide',
-  formatter: function(value) {
-    $sliderInput.val(value);
-    refreshPrizeBtn(value);
-  },
-});
+
+//2019-09-24去除
+// data.slider = new Slider('#slider', {
+//   min: 0,
+//   max: 1000,
+//   value: 0,
+//   step: 0.01,
+//   tooltip: 'hide',
+//   formatter: function(value) {
+//     $sliderInput.val(value);
+//     refreshPrizeBtn(value);
+//   },
+// });
+
 var sameHeightRecord = {};
 var $sameHeightEls = $('[data-same-height]');
 $sameHeightEls.map(function() {

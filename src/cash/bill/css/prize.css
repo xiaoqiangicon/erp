@@ -284,11 +284,12 @@
   width: 146px;
   height: 87px;
   border: 1px solid #71ba31;
-  font-size: 39px;
+  font-size: 24px;
   color: #71ba31;
   text-align: center;
   line-height: 87px;
   border-radius: 5px;
+  white-space: nowrap;
 }
 .prize-select {
   display: flex;

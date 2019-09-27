@@ -4,6 +4,7 @@ import toastr from 'toastr';
 import data from '../data';
 import dialog from 'util/dialog';
 var $prizeDialog = $('#dialog-prize');
+
 export default function($this) {
   var handling = !!parseInt($this.attr('data-handling'));
   if (handling) return;
