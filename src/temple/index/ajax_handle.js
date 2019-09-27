@@ -216,7 +216,7 @@ handle.outerPostHandle = {
           cell.url = cell.url.replace(item.target, item.replacement);
         });
       cell.type == 1 &&
-        (cell.url += '&templeName=' + window.localStorage['templename']);
+        (cell.url += '&templeName=' + window.localStorage['templeName']);
       !!envData.envParamMark &&
         !!cell.url &&
         cell.url.indexOf('isTest') < 0 &&
