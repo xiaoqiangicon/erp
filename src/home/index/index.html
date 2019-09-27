@@ -21,8 +21,12 @@
       </div>
     </div>
     <script>
-      window.localStorage['templeid'] = parseInt('{{temple_id}}');
-      window.localStorage['templename'] = '{{temple_name}}';
+      window.localStorage['templeId'] = parseInt('{{temple_id}}');
+      window.localStorage['templeName'] = '{{temple_name}}';
+
+      // 兼容之前的数据
+      window.localStorage['templeid'] = window.localStorage['templeId'];
+      window.localStorage['templename'] = window.localStorage['templeName'];
     </script>
   </body>
 </html>

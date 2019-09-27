@@ -64,7 +64,7 @@ var data = {
   calendarNewAddedTitle: {},
   websiteUrl:
     'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=' +
-    localStorage['templeid'] +
+    localStorage['templeId'] +
     (envData.envParamMark ? '&' + envData.envParamMark : ''),
   imagesParams: {
     1: '?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',

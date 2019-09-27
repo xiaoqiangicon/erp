@@ -235,7 +235,7 @@ var View = Backbone.View.extend({
     $('.paginationFooter').css('width', length);
     $('.newModal').on('show.bs.modal', function(e) {
       $('#textCtn').val('');
-      $('.countFirstLetter').text(localStorage['templename']);
+      $('.countFirstLetter').text(localStorage['templeName']);
       var countFirstLetter = $('.countFirstLetter').text().length;
       countFirstLetter = parseInt(countFirstLetter) + 2;
       $('.countLetter').text(countFirstLetter);

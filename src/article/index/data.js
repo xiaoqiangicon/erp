@@ -1,10 +1,10 @@
 import envData from 'common/env_data';
 var data = {
   totalPagesRecord: {},
-  templeId: window.localStorage['templeid'],
+  templeId: window.localStorage['templeId'],
   shareLink:
     'https://wx.zizaihome.com/article/articleIndex?templeId=' +
-    window.localStorage['templeid'] +
+    window.localStorage['templeId'] +
     (!!envData.envParamMark ? '&' + envData.envParamMark : '') +
     '&articleId=',
   createLink: '/zzhadmin/createArticleIndex/',
