@@ -71,10 +71,10 @@
         },
         {
           "id": "order-comment",
-          "name": "佛事评价",
-          "link": "/zzhadmin/conversionOrderIndex/",
+          "name": "订单评价",
+          "link": "/zzhadmin/commentIndex/",
           "isHtml": true,
-          "controlMark": "pw_chanzai_order"
+          "controlMark": "pw_order"
         }
       ]
     },

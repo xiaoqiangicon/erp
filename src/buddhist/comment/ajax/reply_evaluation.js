@@ -2,7 +2,7 @@
 import seeAjax from 'see-ajax';
 
 seeAjax.config('replyEvaluation', {
-  method: ['post'],
+  method: ['get'],
   stringify: [!0],
   url: [
     '/zzhadmin/replyEvaluation',

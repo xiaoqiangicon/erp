@@ -90,7 +90,7 @@ export default {
 
       seeAjax(
         'replyEvaluation',
-        { content: this.newContent, id: this.replyId },
+        { content: this.newContent, id: parseInt(this.replyId, 10) },
         res => {
           if (!res.success) return;
 
@@ -100,6 +100,7 @@ export default {
           });
           this.newContent = '';
           this.$store.commit({ type: 'updateReplyVisible', state: false });
+          window.location.reload();
         }
       );
     },
@@ -152,20 +153,26 @@ export default {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.4);
+  resize: none;
+  outline: none;
+  color: #b1b1b1;
+  font-size: 16px;
 }
 .text-length {
   position: absolute;
   right: 10px;
   bottom: 8px;
+  color: #b1b1b1;
+  font-size: 16px;
 }
 
 .tips {
   display: flex;
   padding: 4px 8px;
   margin-top: 10px;
-  border: 1px solid #91d5ff;
+  border: 1px solid rgba(74, 144, 226, 1);
   border-radius: 4px;
-  background-color: #e6f7ff;
+  background: rgba(74, 144, 226, 0.11);
   .el-icon-info {
     display: inline-block;
     margin-top: 4px;
@@ -173,6 +180,8 @@ export default {
   }
   p {
     margin: 0;
+    margin-left: 10px;
+    font-size: 14px;
   }
 }
 
@@ -181,12 +190,14 @@ export default {
   display: flex;
   justify-content: flex-end;
   .btn {
-    width: 100px;
+    width: 162px;
     text-align: center;
-    line-height: 24px;
-    border-radius: 19px;
-    background-color: #1890ff;
+    line-height: 46px;
+    border-radius: 31px;
+    font-size: 20px;
+    background-color: #386ad1;
     color: white;
+    padding: 0;
   }
 }
 </style>

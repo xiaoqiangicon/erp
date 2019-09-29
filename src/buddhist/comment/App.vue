@@ -38,31 +38,31 @@
       </div>
       <div class="sort-item">
         <div class="sort-comment-item">
-          <p>
+          <p class="sort-item-title">
             <span>很赞</span>
-            <span>{{ evaluation.satisfactionNum }}</span>
+            <span>{{ evaluation.praiseNum }}</span>
           </p>
-          <p>
-            <span>{{ satisfactionNumPer }}</span>
+          <p class="sort-item-info">
+            <span>{{ prasiseNumPer }}</span>
             <span>%的人感觉很赞</span>
           </p>
         </div>
         <div class="sort-comment-item">
-          <p>
+          <p class="sort-item-title">
             <span>满意</span>
-            <span>{{ evaluation.praiseNum }}</span>
+            <span>{{ evaluation.satisfactionNum }}</span>
           </p>
-          <p>
-            <span>{{ prasiseNumPer }}</span>
+          <p class="sort-item-info">
+            <span>{{ satisfactionNumPer }}</span>
             <span>%的人表示满意</span>
           </p>
         </div>
         <div class="sort-comment-item">
-          <p>
+          <p class="sort-item-title">
             <span>体验不佳</span>
             <span>{{ evaluation.badReview }}</span>
           </p>
-          <p>
+          <p class="sort-item-info">
             <span>{{ badReviewPer }}</span>
             <span>%的人体验不佳</span>
           </p>
@@ -108,8 +108,24 @@
         tooltip-effect="dark"
         style="width: 100%"
       >
-        <el-table-column label="评价内容" prop="commodityName" />
-        <el-table-column label="文字评价" prop="labelRecordList" />
+        <el-table-column label="评价内容" prop="labelRecordList">
+          <template slot-scope="scope">
+            <div
+              class="comment-content"
+              v-for="(value, key) in scope.row.labelRecordList"
+              :key="key"
+            >
+              {{ value }}
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column label="文字评价">
+          <template slot-scope="scope">
+            <div class="text-comment">
+              {{ scope.row.content }}
+            </div>
+          </template>
+        </el-table-column>
         <el-table-column label="回复内容">
           <template slot-scope="scope">
             <p>{{ scope.row.reply }}</p>
@@ -126,7 +142,7 @@
           </template>
         </el-table-column>
         <el-table-column label="评价类型" prop="evaluation" />
-        <el-table-column label="参与项目" prop="subdivideName">
+        <el-table-column label="参与项目" prop="commodityName">
         </el-table-column>
         <el-table-column label="评价用户" prop="nickName" />
         <el-table-column label="评价时间" prop="addTime" />
@@ -218,39 +234,43 @@ export default {
   created() {
     this.requestEvaluation();
     this.requestList();
+    this.requestBuddhist();
   },
   computed: {
     badReviewPer() {
       return (
         parseInt(
-          this.evaluation.badReview /
+          (this.evaluation.badReview /
             (this.evaluation.badReview +
               this.evaluation.satisfactionNum +
-              this.evaluation.praiseNum),
+              this.evaluation.praiseNum)) *
+            100,
           10
-        ) * 100
+        ) | 0
       );
     },
     prasiseNumPer() {
       return (
         parseInt(
-          this.evaluation.praiseNum /
+          (this.evaluation.praiseNum /
             (this.evaluation.badReview +
               this.evaluation.satisfactionNum +
-              this.evaluation.praiseNum),
+              this.evaluation.praiseNum)) *
+            100,
           10
-        ) * 100
+        ) | 0
       );
     },
     satisfactionNumPer() {
       return (
         parseInt(
-          this.evaluation.satisfactionNum /
+          (this.evaluation.satisfactionNum /
             (this.evaluation.badReview +
               this.evaluation.satisfactionNum +
-              this.evaluation.praiseNum),
+              this.evaluation.praiseNum)) *
+            100,
           10
-        ) * 100
+        ) | 0
       );
     },
   },
@@ -263,17 +283,17 @@ export default {
       });
     },
     requestList() {
-      const { buddhistId, formatDate, currentPage, currentSize, type } = this;
+      let { buddhistId, formatDate, currentPage, currentSize, type } = this;
 
       seeAjax(
         'getList',
         {
-          buddhistId,
+          commodityId: parseInt(buddhistId, 10) | 0,
           startTime: formatDate[0],
           endTime: formatDate[1],
           pageNum: currentPage - 1,
           pageSize: currentSize,
-          type,
+          evaluation: parseInt(type),
         },
         res => {
           if (!res.success) return;
@@ -285,15 +305,20 @@ export default {
             single.name = item.subdivideName;
             commodityList.push(single);
           });
-          this.buddhistList = commodityList;
+          // this.buddhistList = commodityList;
           this.list = res.data;
           this.loadingList = false;
           this.totalCount = res.total;
         }
       );
     },
+    requestBuddhist() {
+      seeAjax('getBuddhistList', {}, res => {
+        this.buddhistList = res.data;
+      });
+    },
     onChangeBuddhistId() {
-      this.requestEvaluation();
+      // this.requestEvaluation();
       this.onChangeFilter();
     },
     onChangeDatePicker() {
@@ -348,16 +373,29 @@ main {
   display: flex;
 }
 .sort-comment-item {
-  width: 120px;
-  padding: 4px;
+  width: 134px;
   margin-left: 10px;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   cursor: pointer;
 
   p {
     margin: 0;
   }
+}
+.sort-item-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 14px;
+  border-bottom: 1px solid #cccccc;
+  font-size: 18px;
+  font-weight: bold;
+}
+.sort-item-info {
+  padding-left: 25px;
+  font-size: 12px;
+  line-height: 26px;
+  color: #b1b1b1;
 }
 
 .tabs {
@@ -382,19 +420,30 @@ main {
   }
 }
 
+thead {
+  background-color: #cbdbf5;
+}
+.text-comment {
+  background-color: rgba(123, 175, 239, 0.5);
+  border-radius: 4px;
+  color: #333333;
+  font-size: 12px;
+  line-height: 18px;
+}
 .reply {
   width: 48px;
   height: 24px;
   line-height: 24px;
   text-align: center;
-  color: #1890ff;
-  border: 1px solid #1890ff;
+  border: 1px solid #4a90e2;
   border-radius: 12px;
-  background-color: #d2e9ff;
+  font-size: 12px;
   cursor: pointer;
+  background-color: #386ad1;
+  color: white;
 }
 .modify {
-  background-color: #1890ff;
-  color: white;
+  color: #1890ff;
+  background-color: #d2e9ff;
 }
 </style>
