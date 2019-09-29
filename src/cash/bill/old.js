@@ -56,7 +56,9 @@ $.ajaxSetup({
         $('#account-info-bank').text(res.data.bank);
         $('#account-info-sub-bank').text(res.data.subBank);
         $('#account-info-name').text(res.data.account);
-        $('#account-info-card').text(res.data.bankCard);
+        $('#account-info-card').text(res.data.bankCard); //2019-09
+        $('#confirm-to-cash-account').text(res.data.bankCard);
+        $('#confirm-to-cash-account-2').text(res.data.bankCard);
         $('#account-info').show();
       }
     }

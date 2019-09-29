@@ -32,6 +32,8 @@ seeView({
     'click [data-popup-close]': 'onClickPopup',
     'click [data-popup-overlay]': 'onClickPopup',
     'click [data-popup-submit]': 'onClickPopupSubmit',
+    // 2019-09
+    'click #confirm-2-button': 'onClickPrizeOk2',
   },
   onClickStatusMenu: function(e) {
     var self = this,
@@ -258,12 +260,19 @@ seeView({
     if (action == 1) $questionDialog.show();
     else if (action == 2) {
       // 2019-09,每个选项的金额
-      $pre2.text(parseFloat(totalMoney * 0.02).toFixed(2));
-      $pre5.text(parseFloat(totalMoney * 0.05).toFixed(2));
-      $pre10.text(parseFloat(totalMoney * 0.1).toFixed(2));
-      $pre15.text(parseFloat(totalMoney * 0.15).toFixed(2));
-      $pre20.text(parseFloat(totalMoney * 0.2).toFixed(2));
-      $pre30.text(parseFloat(totalMoney * 0.3).toFixed(2));
+      data.donateMoney2 = parseFloat(totalMoney * 0.02).toFixed(2);
+      data.donateMoney5 = parseFloat(totalMoney * 0.05).toFixed(2);
+      data.donateMoney10 = parseFloat(totalMoney * 0.1).toFixed(2);
+      data.donateMoney15 = parseFloat(totalMoney * 0.15).toFixed(2);
+      data.donateMoney20 = parseFloat(totalMoney * 0.2).toFixed(2);
+      data.donateMoney30 = parseFloat(totalMoney * 0.3).toFixed(2);
+
+      $pre2.text(data.donateMoney2);
+      $pre5.text(data.donateMoney5);
+      $pre10.text(data.donateMoney10);
+      $pre15.text(data.donateMoney15);
+      $pre20.text(data.donateMoney20);
+      $pre30.text(data.donateMoney30);
 
       if (data.haveOrderInHandling) $handlingDialog.show();
       else if (!data.canTakeOrder) $forbidDialog.show();
@@ -384,5 +393,10 @@ seeView({
   onSubmitReceiptTip: function() {
     $receiptTipDialog.hide();
     showPrizeDialog();
+  },
+  // 2019-09
+  onClickPrizeOk2(e) {
+    var $this = $(e.target);
+    this.onSubmitConfirm($this);
   },
 });

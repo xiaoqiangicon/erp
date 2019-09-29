@@ -290,7 +290,13 @@
   line-height: 87px;
   border-radius: 5px;
   white-space: nowrap;
+  cursor: pointer;
 }
+.selection-active {
+  color: #ffff;
+  background-color: #71ba31;
+}
+
 .prize-select {
   display: flex;
   flex-direction: row;
@@ -324,4 +330,120 @@
   color: #b1b1b1;
   text-align: center;
   padding-top: 13px;
+}
+
+/* window-2 */
+.temple-name {
+  font-size: 20px;
+  display: inline;
+}
+.confirm-content-img {
+  text-align: center;
+  display: inline-block;
+  margin-left: 60px;
+  /* position: relative;
+  top: -31px; */
+  padding-top: 98px;
+  margin-right: 10px;
+}
+td {
+  height: 85px;
+  width: 74px;
+  vertical-align: bottom;
+  text-align: center;
+  font-size: 18px;
+  color: #333333;
+}
+.confirm-border-1 {
+  border-bottom: 1px solid #4a90e2;
+  width: 30px;
+}
+.confirm-border-2 {
+  border-top: 1px solid #4a90e2;
+  border-left: 1px solid #4a90e2;
+  border-bottom: 1px solid #4a90e2;
+}
+table {
+  display: inline-block;
+}
+.confirm-content-2 {
+  height: 264px;
+  margin-top: 81px;
+}
+.to-cash,
+.donate {
+  width: 315px;
+  height: 113px;
+  background-color: #e5effb;
+  border: 1px solid #4a90e2;
+  border-radius: 5px;
+}
+.content-2-show {
+  display: inline-block;
+  height: 100%;
+}
+.to-cash {
+  margin: 15px 5px;
+}
+.to-cash-top {
+  border-bottom: 1px solid #4a90e2;
+  height: 70px;
+  line-height: 70px;
+}
+.to-cash-img-1 {
+  width: 82px;
+  height: 51px;
+  margin-left: 10px;
+  margin-bottom: 14px;
+}
+.donate-img {
+  width: 51px;
+  height: 51px;
+  margin-left: 10px;
+}
+.fr {
+  float: left;
+}
+.donate {
+  margin-top: 57px;
+  margin-left: 5px;
+}
+.content-2-money {
+  font-size: 30px;
+  color: #4a90e2;
+  margin-left: 30px;
+}
+.to-cash-bottom {
+  line-height: 41px;
+  color: #9b9b9b;
+  padding-left: 10px;
+}
+
+.confirm-2-button-box {
+  margin-top: 90px;
+  text-align: center;
+}
+.confrim-2-button {
+  height: 60px;
+  width: 177px;
+  background-color: #71ba31;
+  color: #ffff;
+  font-size: 18px;
+  border-radius: 9px;
+}
+.confirm-fotter {
+  margin-top: 26px;
+}
+
+.confirm-3-show {
+  margin-top: 83px;
+}
+.confirm-3-middle-line {
+  display: inline-block;
+  width: 72px;
+  font-size: 20px;
+  color: #333333;
+  border-bottom: 1px solid #4a90e2;
+  text-align: center;
+  margin-top: 140px;
 }
