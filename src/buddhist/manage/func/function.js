@@ -30,9 +30,12 @@ func.initBuddhistVerifyModal = function() {
       '工作人员已收到通知，请耐心等待处理 <br> 周一至周五：10:00-19:30 <br> 周末节假日：10:00-17:00 （整点审核）',
       '提交成功，审核中',
       {
-        timeOut: 20000,
-        closeButton: !0,
-        escapeHtml: !1,
+        // timeOut: 20000,
+        timeOut: 0,
+        extendedTimeOut: 0,
+
+        // closeButton: !0,
+        // escapeHtml: !1,
       }
     );
     window.sessionStorage.setItem('buddhistVerify', !1);
