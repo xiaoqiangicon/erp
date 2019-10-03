@@ -11,6 +11,9 @@ import toastr from 'toastr';
 import './upload_config.js';
 import './ajax';
 import 'bootstrap-select';
+
+toastr.options.closeHtml = '<button><i class="toastr-icon-off"></i></button>';
+
 var func = {};
 func.init = function() {
   $('#loading-toast').hide();
@@ -34,7 +37,7 @@ func.initBuddhistVerifyModal = function() {
         timeOut: 0,
         extendedTimeOut: 0,
 
-        // closeButton: !0,
+        closeButton: !0,
         // escapeHtml: !1,
       }
     );

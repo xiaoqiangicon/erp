@@ -17,5 +17,11 @@ a {
   margin-bottom: 10px;
 }
 
-.toast-close-button {
+.toastr-icon-off {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('https://pic.zizaihome.com/431e21f6-e59c-11e9-a4fd-00163e060b31.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
