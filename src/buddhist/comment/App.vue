@@ -420,11 +420,8 @@ main {
   }
 }
 
-thead {
-  background-color: #cbdbf5;
-}
 .text-comment {
-  background-color: rgba(123, 175, 239, 0.5);
+  // background-color: rgba(123, 175, 239, 0.5);
   border-radius: 4px;
   color: #333333;
   font-size: 12px;
