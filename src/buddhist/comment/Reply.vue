@@ -3,8 +3,8 @@
     <div v-show="visible" class="s-mask" @click.self="onClickMask">
       <el-card class="box-card reply">
         <div slot="header" class="clearfix">
-          <span v-if="replyContent">回复评价</span>
-          <span v-else>修改评价</span>
+          <span v-if="replyContent">修改评价</span>
+          <span v-else>回复评价</span>
           <el-button
             style="float: right; padding: 3px 0"
             type="text"
@@ -19,6 +19,13 @@
               placeholder="请认真的回复评价内容，解答用户遇到的问题"
               class="text-input"
               v-model="newContent"
+              v-if="!replyContent"
+            ></textarea>
+            <textarea
+              placeholder="请认真的回复评价内容，解答用户遇到的问题"
+              class="text-input reply-input"
+              v-model="newContent"
+              v-if="replyContent"
             ></textarea>
             <div class="text-length">
               <span>{{ newContent.length }}</span
@@ -64,6 +71,12 @@ export default {
     },
   },
   watch: {
+    newContent() {
+      this.newContent =
+        this.newContent.length <= 300
+          ? this.newContent
+          : this.newContent.slice(0, 300);
+    },
     replyContent() {
       this.newContent = this.replyContent;
     },
@@ -157,6 +170,9 @@ export default {
   outline: none;
   color: #b1b1b1;
   font-size: 16px;
+}
+.reply-input {
+  color: #333333;
 }
 .text-length {
   position: absolute;

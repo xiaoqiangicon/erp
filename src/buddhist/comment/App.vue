@@ -110,19 +110,24 @@
       >
         <el-table-column label="评价内容" prop="labelRecordList">
           <template slot-scope="scope">
-            <div
-              class="comment-content"
-              v-for="(value, key) in scope.row.labelRecordList"
-              :key="key"
-            >
-              {{ value }}
+            <div v-if="scope.row.labelRecordList.length">
+              <div
+                class="comment-content"
+                v-for="(value, key) in scope.row.labelRecordList"
+                :key="key"
+              >
+                {{ value }}
+              </div>
+            </div>
+            <div v-else>
+              -
             </div>
           </template>
         </el-table-column>
         <el-table-column label="文字评价">
           <template slot-scope="scope">
             <div class="text-comment">
-              {{ scope.row.content }}
+              {{ scope.row.content ? scope.row.content : '-' }}
             </div>
           </template>
         </el-table-column>
