@@ -1,13 +1,52 @@
 import seeAjax from 'see-ajax';
 
 const postHandle = res => {
+  let temp = [];
+
   res.data.list.forEach((item, i) => {
+    let result = [];
+    var _item = item;
+
     if (!item.img) item.img = [];
-    else item.img = item.img.split(',');
-  });
-  res.data.list.forEach((item, i) => {
-    if (!item.video) item.video = [];
-    else item.video = item.video.split(',');
+    else {
+      temp = item.img.split(',');
+      temp.forEach((imgItem, i) => {
+        if (
+          imgItem.indexOf('img:') === -1 &&
+          imgItem.indexOf('video:') === -1
+        ) {
+          if (_item.video && i < _item.video.split(',').length) {
+            result.push({
+              type: 1,
+              src: _item.video.split(',')[i],
+            });
+          }
+          result.push({
+            type: 0,
+            src: imgItem,
+          });
+        } else {
+          if (imgItem.indexOf('img:') !== -1) {
+            result.push({
+              type: 0,
+              src: imgItem.slice(4),
+            });
+          } else {
+            result.push({
+              type: 1,
+              src: imgItem.slice(6),
+            });
+          }
+        }
+      });
+      item.img = result;
+    }
+
+    res.data.list.forEach((item, i) => {
+      console.log(item.video);
+      // if (!item.video) item.video = [];
+      // else item.video = item.video.split(',');
+    });
   });
 };
 

@@ -18,24 +18,19 @@ export default i => {
   }
   result.data.content = content;
 
-  // 获取图片
+  // 获取图片和视频
   const $recordEditItemPic = $('.record-media').eq(i);
   const $coverImg = $recordEditItemPic.find('[data-cover-item-image]');
   const coverImg = [];
-  $coverImg.map(function() {
-    coverImg.push($(this).attr('src'));
+  $coverImg.each(function(i, item) {
+    if (parseInt($(item).attr('data-cover-item-image'), 10)) {
+      coverImg.push(`img:${$(item).attr('src')}`);
+    } else {
+      coverImg.push(`video:${$(item).attr('src')}`);
+    }
   });
 
   result.data.img = coverImg; //.join(",");
-
-  // 获取视频
-  const $recordItemVideo = $('.record-media').eq(i);
-  const $coverVideo = $recordItemVideo.find('[data-cover-item-video]');
-  const coverVideo = [];
-  $coverVideo.map(function() {
-    coverVideo.push($(this).attr('src'));
-  });
-  result.data.video = coverVideo; // .join(",");
 
   // 获取是否推送
   result.data.isPush = $('.record-set-push')

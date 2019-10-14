@@ -21,19 +21,24 @@ export default _ => {
   const $coverContainer = $('#cover-container');
   const $coverImg = $coverContainer.find('[data-cover-item-image]');
   const coverImg = [];
-  $coverImg.map(function() {
-    coverImg.push($(this).attr('src'));
+  $coverImg.each(function(i, item) {
+    console.log($(item).attr('data-cover-item-image'));
+    if (parseInt($(item).attr('data-cover-item-image'), 10)) {
+      coverImg.push(`img:${$(item).attr('src')}`);
+    } else {
+      coverImg.push(`video:${$(item).attr('src')}`);
+    }
   });
 
   result.data.img = coverImg;
 
-  // 获取视频
-  const $coverVideo = $coverContainer.find('[data-cover-item-video]');
-  const coverVideo = [];
-  $coverVideo.map(function() {
-    coverVideo.push($(this).attr('src'));
-  });
-  result.data.video = coverVideo;
+  // 获取视频,新需求把视频链接也储存在了img字段
+  // const $coverVideo = $coverContainer.find('[data-cover-item-video]');
+  // const coverVideo = [];
+  // $coverVideo.map(function() {
+  //   coverVideo.push($(this).attr('src'));
+  // });
+  // result.data.video = coverVideo;
 
   // 获取是否推送
   result.data.isPush = $('.set-push')

@@ -47,7 +47,7 @@ seeView({
   },
   onClickShareIconAdd: e => {
     if (!shareChoose) {
-      shareChoose = new ChooseIcon({
+      shareChoose = new ChooseImage({
         multiSelect: !1,
         onSubmit: items => {
           const $shareIconContainer = $('#share-icon-container');

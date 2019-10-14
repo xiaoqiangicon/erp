@@ -6,7 +6,6 @@ import requestList from './util/request_list';
 
 import mainTpl from './tpl/main';
 import publishTpl from './tpl/main/detail';
-import publish from './util/publish';
 
 import upload from '../../../../../pro-com/src/upload';
 import coverVideoItemTpl from './tpl/main/detail/cover_video_item';

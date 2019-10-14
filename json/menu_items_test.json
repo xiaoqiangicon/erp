@@ -68,6 +68,13 @@
           "link": "/zzhadmin/conversionOrderIndex/",
           "isHtml": true,
           "controlMark": "pw_chanzai_order"
+        },
+        {
+          "id": "order-comment",
+          "name": "订单评价",
+          "link": "/zzhadmin/commentIndex/",
+          "isHtml": true,
+          "controlMark": "pw_order"
         }
       ]
     },
@@ -119,6 +126,31 @@
           "name": "提现管理",
           "link": "/zzhadmin/cashTake/",
           "controlMark": "pw_money_center"
+        }
+      ]
+    },
+    {
+      "id": "insurance",
+      "name": "医保管理",
+      "icon": "",
+      "subItems": [
+        {
+          "id": "insurance-index",
+          "name": "待办事项",
+          "link": "/zzhadmin/insuranceTodoHtml/",
+          "controlMark": "pw_insurance"
+        },
+        {
+          "id": "insurance-person",
+          "name": "人员管理",
+          "link": "/zzhadmin/insurancePersonalHtml/",
+          "controlMark": "pw_insurance"
+        },
+        {
+          "id": "insurance-insured",
+          "name": "投保管理",
+          "link": "/zzhadmin/insuranceManageHtml/",
+          "controlMark": "pw_insurance"
         }
       ]
     }
