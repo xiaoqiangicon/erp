@@ -13,7 +13,7 @@ export default function() {
   $prizeOk.removeClass('active');
   $prizeAgree.addClass('active');
   $prizeInput.val(0);
-  data.slider.setValue(0);
-  data.slider.setAttribute('max', totalMoney);
+  // data.slider.setValue(0); //2019-09remove
+  // data.slider.setAttribute('max', totalMoney);
   $prizeDialog.show();
 }

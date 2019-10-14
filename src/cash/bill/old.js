@@ -56,7 +56,9 @@ $.ajaxSetup({
         $('#account-info-bank').text(res.data.bank);
         $('#account-info-sub-bank').text(res.data.subBank);
         $('#account-info-name').text(res.data.account);
-        $('#account-info-card').text(res.data.bankCard);
+        $('#account-info-card').text(res.data.bankCard); //2019-09
+        $('#confirm-to-cash-account').text(res.data.bankCard);
+        $('#confirm-to-cash-account-2').text(res.data.bankCard);
         $('#account-info').show();
       }
     }
@@ -76,17 +78,20 @@ $.ajaxSetup({
   });
 })();
 var $sliderInput = $('#prize-input');
-data.slider = new Slider('#slider', {
-  min: 0,
-  max: 1000,
-  value: 0,
-  step: 0.01,
-  tooltip: 'hide',
-  formatter: function(value) {
-    $sliderInput.val(value);
-    refreshPrizeBtn(value);
-  },
-});
+
+//2019-09-24去除
+// data.slider = new Slider('#slider', {
+//   min: 0,
+//   max: 1000,
+//   value: 0,
+//   step: 0.01,
+//   tooltip: 'hide',
+//   formatter: function(value) {
+//     $sliderInput.val(value);
+//     refreshPrizeBtn(value);
+//   },
+// });
+
 var sameHeightRecord = {};
 var $sameHeightEls = $('[data-same-height]');
 $sameHeightEls.map(function() {

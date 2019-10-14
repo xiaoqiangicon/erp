@@ -36,4 +36,5 @@ export default res => {
   $('[data-chanzai-order-count]').text(window.localStorage.chanzai_orderNumber);
   $('[data-wall-order-count]').text(window.localStorage.buddhaWall_orderNumber);
   $('[data-vrshow-order-count]').text(window.localStorage.vrshow_orderNumber);
+  $('#confirm-temple-name').text(window.localStorage.templeName);
 };
