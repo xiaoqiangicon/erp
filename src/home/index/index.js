@@ -3,7 +3,7 @@ import '@senntyou/shortcut.css';
 import 'less/common.less';
 import './index.less';
 import $ from 'jquery';
-$('#temple-name').text(window.localStorage.templename);
+$('#temple-name').text(window.localStorage.templeName);
 $.getJSON('/zzhadmin/getTemple/', {}, res => {
   $.getJSON(
     '/zzhadmin/orderNumGet/',

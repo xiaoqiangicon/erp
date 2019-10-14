@@ -23,7 +23,7 @@ import './view';
 import share from './share';
 import { defaultDetail, defaultTitle } from './util';
 
-$('[data-temple-name]').text(window.localStorage.templename);
+$('[data-temple-name]').text(window.localStorage.templeName);
 
 seeAjax('info', {}, res => {
   if (!res.data) res.data = {};

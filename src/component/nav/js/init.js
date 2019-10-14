@@ -31,7 +31,7 @@ export default res => {
     .parents('.component-nav-menu-item')
     .find('.arrow')
     .toggleClass('active');
-  $('[data-temple-name]').text(window.localStorage.templename);
+  $('[data-temple-name]').text(window.localStorage.templeName);
   $('[data-buddhist-order-count]').text(window.localStorage.orderNumber);
   $('[data-chanzai-order-count]').text(window.localStorage.chanzai_orderNumber);
   $('[data-wall-order-count]').text(window.localStorage.buddhaWall_orderNumber);

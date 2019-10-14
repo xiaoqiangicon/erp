@@ -26,7 +26,7 @@ var data = {
   createUrl: '/zzhadmin/createArticleIndex/',
   shareLink:
     'https://wx.zizaihome.com/article/articleIndex?templeId=' +
-    window.localStorage['templeid'] +
+    window.localStorage['templeId'] +
     (!!envData.envParamMark ? '&' + envData.envParamMark : '') +
     '&articleId=',
   qrcodeSizes: [300, 500, 1000],
