@@ -47,6 +47,11 @@ var foshiId = null,
   if_set_printer = false,
   if_submiting_pic = false,
   ifSingleMoney;
+
+var details = '';
+var pay_succ_details = '';
+var picsImgsLen = 0;
+
 var View = Backbone.View.extend({
   el: 'body',
   locationBc: 0,
@@ -3209,8 +3214,8 @@ var View = Backbone.View.extend({
         initialFrameWidth: 700,
         initialFrameHeight: 400,
       }),
-      details = null,
-      pay_succ_details = '',
+      // details = null,
+      // pay_succ_details = '',
       feedback_type = '',
       suixiMoney = null,
       inventory = null,
