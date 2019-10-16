@@ -112,7 +112,6 @@ import Toast from './toast';
             timeout: 180000,
             headers:header,
             success: function(data){
-                cando =true;
                 if(data){
                     var result = data.result;
                     var msg 	= data.msg;

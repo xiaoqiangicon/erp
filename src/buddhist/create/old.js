@@ -51,6 +51,7 @@ var foshiId = null,
 var details = '';
 var pay_succ_details = '';
 var picsImgsLen = 0;
+var upload;
 
 var View = Backbone.View.extend({
   el: 'body',
