@@ -160,7 +160,7 @@ export default lila => {
           [
             '@lila/sync-build',
             {
-              server: isProd ? servers[2] : servers[1],
+              server: isProd ? servers[5] : servers[1],
               remotePath: '/data/www/myerp/static',
               sourceMap: !1,
             },
