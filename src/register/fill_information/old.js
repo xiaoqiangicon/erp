@@ -71,7 +71,7 @@ $('#templeInfor').on('blur', '#templeName', function(e) {
 $('#templeInfor').on('blur', '#templeTel', function(e) {
   var $tar = $(e.target),
     $tarValue = $tar.val();
-  var telReg = /^(((1{1}))+\d{10})$/;
+  var telReg = /^1\d{10}$/;
   if (!telReg.test($tarValue)) {
     $tar
       .addClass('redBorder')
@@ -89,7 +89,7 @@ $('#templeInfor').on('blur', '#templeTel', function(e) {
 $('#templeInfor').on('blur', '#templePhone', function(e) {
   var $tar = $(e.target),
     $tarValue = $tar.val();
-  var telReg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+  var telReg = /^1\d{10}$/;
   if (!telReg.test($tarValue)) {
     $tar
       .addClass('redBorder')
