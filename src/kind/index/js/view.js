@@ -92,6 +92,23 @@ seeView({
   // 点击隐藏发布进展
   onClickPublishMask: e => {
     if (e.target === e.currentTarget) {
+      // 切换选项卡为发布进展
+      $('.header-item')
+        .eq(0)
+        .addClass('header-item-active')
+        .siblings()
+        .removeClass('header-item-active');
+      $('.content').hide();
+      $('.content')
+        .eq(0)
+        .show();
+
+      // 将已输入的发布进展的内容清空
+      $('.type-content').val('');
+      $('[data-text-count-show="1"]').text('0');
+      $('.media').html('');
+      $('.push-select').removeClass('push-select-active');
+      $('.no-push').addClass('push-select-active');
       $('.publish-mask').hide();
     }
   },

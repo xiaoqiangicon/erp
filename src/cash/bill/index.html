@@ -276,7 +276,77 @@
         </div>
       </div>
     </div>
-    <div class="dialog" id="dialog-confirm" style="display: none">
+    <!-- 2019-09 -->
+    <div id="dialog-confirm" class="dialog" style="display: none">
+      <div class="dialog-background" data-popup-overlay="2"></div>
+      <div class="prize-box dialog-pane dialog-prize">
+        <div class="close-icon">
+          <span class="prize-close-icon" data-popup-overlay="7"></span>
+        </div>
+        <div class="confirm-content-2">
+          <div class="confirm-content-img fr">
+            <img
+              src="https://pic.zizaihome.com/a980882c-efe6-11e9-9224-00163e060b31.png"
+              class="proze-top-img"
+            />
+            <br />
+            <p class="zzh-name temple-name" data-temple-name="1">寺院</p>
+          </div>
+          <table class="confirm-table fr">
+            <tr>
+              <td style="width: 30px"></td>
+              <td>提现</td>
+            </tr>
+            <tr>
+              <td class="confirm-border-1"></td>
+              <td rowspan="2" class="confirm-border-2">赞赏</td>
+            </tr>
+            <tr>
+              <td style="width: 30px"></td>
+            </tr>
+          </table>
+
+          <div class="content-2-show fr">
+            <div class="to-cash">
+              <div class="to-cash-top">
+                <img
+                  src="https://pic.zizaihome.com/080bc2f8-e268-11e9-a2ba-00163e060b31.png"
+                  class="to-cash-img-1"
+                />
+                <span class="content-2-money" id="confirm-to-cash-2"></span>
+              </div>
+              <div class="to-cash-bottom">
+                <span>帐户</span>&nbsp;&nbsp;
+                <span id="confirm-to-cash-account"></span>
+              </div>
+            </div>
+            <div class="donate">
+              <div class="to-cash-top">
+                <img
+                  src="https://pic.zizaihome.com/080dbe1e-e268-11e9-bf99-00163e060b31.png"
+                  class="donate-img"
+                />
+                <span class="content-2-money" id="confirm-to-zzh-2"></span>
+              </div>
+              <div class="to-cash-bottom">
+                <span>自在家帐户</span>&nbsp;&nbsp;
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="confirm-2-button-box">
+          <button class="confrim-2-button clean" id="confirm-2-button">
+            确认提现
+          </button>
+        </div>
+        <div class="prize-footer confirm-fotter">
+          赞赏金额，将在本次提现的金额中扣除
+        </div>
+      </div>
+    </div>
+
+    <!-- remove: 确认打赏窗口 -->
+    <!-- <div class="dialog" id="dialog-confirm" style="display: none">
       <div class="dialog-background" data-popup-overlay="2"></div>
       <div class="dialog-pane">
         <div class="dialog-top confirm-top">
@@ -305,7 +375,53 @@
           </button>
         </div>
       </div>
+    </div> -->
+
+    <!-- add 2019-09 不打赏的窗口-->
+    <div class="dialog" id="dialog-confirm-3" style="display: none">
+      <div class="dialog-background" data-popup-overlay="8"></div>
+      <div class="confirm-3 prize-box dialog-pane dialog-prize">
+        <div class="close-icon">
+          <span class="prize-close-icon" data-popup-overlay="7"></span>
+        </div>
+        <div class="confirm-content-2">
+          <div class="confirm-content-img fr">
+            <img
+              src="https://pic.zizaihome.com/a980882c-efe6-11e9-9224-00163e060b31.png"
+              class="proze-top-img"
+            />
+            <br />
+            <p class="zzh-name temple-name" data-temple-name="1">寺院</p>
+          </div>
+          <div class="confirm-3-middle-line fr">提现</div>
+          <div class="content-2-show confirm-3-show fr">
+            <div class="to-cash">
+              <div class="to-cash-top">
+                <img
+                  src="https://pic.zizaihome.com/080bc2f8-e268-11e9-a2ba-00163e060b31.png"
+                  class="to-cash-img-1"
+                />
+                <span class="content-2-money" id="confirm-to-cash-3"></span>
+              </div>
+              <div class="to-cash-bottom">
+                <span>帐户</span>&nbsp;&nbsp;
+                <span id="confirm-to-cash-account-2"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="confirm-2-button-box">
+            <button class="confrim-2-button clean" id="confirm-3-button">
+              确认提现
+            </button>
+          </div>
+          <div class="prize-footer confirm-fotter">
+            赞赏金额，将在本次提现的金额中扣除
+          </div>
+        </div>
+      </div>
     </div>
+
     <div class="dialog" id="dialog-cancel" style="display: none">
       <div class="dialog-background" data-popup-overlay="3"></div>
       <div class="dialog-pane">
@@ -432,7 +548,80 @@
         </div>
       </div>
     </div>
-    <div class="dialog" id="dialog-prize" style="display: none">
+
+    <!-- 2019-09 -->
+    <div id="dialog-prize" class="dialog" style="display: none">
+      <div class="dialog-background" data-popup-overlay="7"></div>
+      <div class="prize-box dialog-pane dialog-prize">
+        <div class="close-icon">
+          <span class="prize-close-icon" data-popup-overlay="7"></span>
+        </div>
+        <div class="prize-padding-box">
+          <div class="prize-top">
+            <div class="top-left">
+              <img
+                class="prize-top-img"
+                src="https://pic.zizaihome.com/a9f43d8c-dddd-11e9-9194-00163e060b31.png"
+                alt=""
+              />
+              <p class="zzh-name">自在家</p>
+            </div>
+
+            <div class="prize-title-box">
+              <span class="arrow-1"></span>
+              <span class="arrow-2"></span>
+              <h1 class="prize-title">已累计筹得善款</h1>
+              <span class="rmb">￥</span
+              ><span class="prize-money" id="prize-sum">0.0</span>
+              <p class="prize-title-text">
+                为了我们能够更好的为您服务和成长，愿意给一些支持么?
+              </p>
+            </div>
+          </div>
+          <div class="prize-select">
+            <div class="selection" id="slection-1" prize-selection="2">
+              <span class="selection-rmb">￥</span>
+              <span id="pre-2"></span>
+            </div>
+            <div
+              class="selection selection-active"
+              id="slection-2"
+              prize-selection="5"
+            >
+              <span class="selection-rmb">￥</span>
+              <span id="pre-5"></span>
+            </div>
+            <div class="selection" id="slection-3" prize-selection="10">
+              <span class="selection-rmb">￥</span>
+              <span id="pre-10"></span>
+            </div>
+            <div class="selection" id="slection-4" prize-selection="15">
+              <span class="selection-rmb">￥</span>
+              <span id="pre-15"></span>
+            </div>
+            <div class="selection" id="slection-5" prize-selection="20">
+              <span class="selection-rmb">￥</span>
+              <span id="pre-20"></span>
+            </div>
+            <div class="selection" id="slection-6" prize-selection="30">
+              <span class="selection-rmb">￥</span>
+              <span id="pre-30"></span>
+            </div>
+          </div>
+          <div class="prize-button">
+            <button class="prize-button-1 clean" id="prize-cancle-1">
+              跳过，不赞赏
+            </button>
+            <button class="prize-button-2 clean" id="prize-ok">确认赞赏</button>
+          </div>
+        </div>
+
+        <div class="prize-footer">赞赏金额，将在本次提现的金额中扣除</div>
+      </div>
+    </div>
+
+    <!-- 提现打赏 -->
+    <!-- <div class="dialog" id="dialog-prize" style="display: none">
       <div class="dialog-background" data-popup-overlay="7"></div>
       <div class="dialog-pane prize-pane">
         <img
@@ -474,7 +663,8 @@
         </div>
         <button class="clean icon-2" data-popup-overlay="7"></button>
       </div>
-    </div>
+    </div> -->
+
     <div
       class="dialog"
       id="dialog-licence"

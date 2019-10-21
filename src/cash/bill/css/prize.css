@@ -1,4 +1,4 @@
-.prize-pane {
+/* .prize-pane {
   position: relative;
   width: 688px;
   height: 360px;
@@ -177,4 +177,277 @@
   height: 18px;
   background-image: url('https://pic.zizaihome.com/7c88be3c-64a2-11e8-b9b2-00163e0c001e.png');
   background-size: 100% 100%;
+} */
+
+/* 2019-09提现打赏需求 */
+.prize-box {
+  width: 655px;
+  height: 621px;
+  background-color: #ffff;
+  margin-top: -310px;
+}
+.prize-top-img {
+  width: 102px;
+  height: 102px;
+}
+.zzh-name {
+  margin-top: 10px;
+  font-size: 22px;
+  color: #333333;
+}
+.close-icon {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #eaedf2;
+  padding: 17px;
+}
+.prize-close-icon {
+  /* display: inline-block; */
+  width: 16px;
+  height: 16px;
+  background-image: url('https://pic.zizaihome.com/47547298-dde0-11e9-9334-00163e060b31.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  float: right;
+}
+.top-left {
+  text-align: center;
+  display: inline-block;
+}
+.prize-padding-box {
+  padding: 17px 39px;
+  color: #4a90e2;
+}
+.prize-title {
+  margin: 0;
+  font-size: 20px;
+  color: #333333;
+  display: inline-block;
+  margin-right: 15px;
+}
+.rmb,
+.prize-money {
+  font-size: 30px;
+}
+.prize-title-box {
+  border: 1px solid #4a90e2;
+  height: 133px;
+  width: 435px;
+  float: right;
+  background-color: #e3eefb;
+  padding: 15px;
+  border-left: 0;
+  position: relative;
+}
+.prize-title-box::before {
+  display: inline-block;
+  content: '';
+  width: 16px;
+  height: 17px;
+  background-color: #e3eefb;
+  position: absolute;
+  left: -16px;
+  top: 34px;
+}
+.prize-title-text {
+  font-size: 16px;
+  color: #989898;
+  padding-top: 10px;
+}
+.arrow-1,
+.arrow-2 {
+  display: inline-block;
+  position: absolute;
+  z-index: 2;
+  background-color: #ffff;
+}
+.arrow-1 {
+  width: 16px;
+  height: 34px;
+  left: -16px;
+  top: 4px;
+  transform: skewY(-30deg);
+  border-right: 1px solid #4a90e2;
+  border-bottom: 1px solid #4a90e2;
+}
+.arrow-2 {
+  width: 16px;
+  height: 79px;
+  left: -16px;
+  bottom: 5px;
+  transform: skewY(30deg);
+  border-right: 1px solid #4a90e2;
+  border-top: 1px solid #4a90e2;
+}
+.selection {
+  margin: 10px;
+  width: 146px;
+  height: 87px;
+  border: 1px solid #71ba31;
+  font-size: 24px;
+  color: #71ba31;
+  text-align: center;
+  line-height: 87px;
+  border-radius: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.selection-active {
+  color: #ffff;
+  background-color: #71ba31;
+}
+
+.prize-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.prize-button-1,
+.prize-button-2 {
+  width: 177px;
+  height: 60px;
+  text-align: center;
+  border: 1px solid #71ba31;
+  font-size: 18px;
+  color: #71ba31;
+  border-radius: 8px;
+}
+.prize-button-2 {
+  background-color: #71ba31;
+  color: #ffff;
+}
+.prize-button {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.prize-footer {
+  height: 50px;
+  border-top: 1px solid #eaedf2;
+  font-size: 20px;
+  color: #b1b1b1;
+  text-align: center;
+  padding-top: 13px;
+}
+
+/* window-2 */
+.temple-name {
+  font-size: 20px;
+  display: inline;
+}
+.confirm-content-img {
+  text-align: center;
+  display: inline-block;
+  margin-left: 60px;
+  /* position: relative;
+  top: -31px; */
+  padding-top: 98px;
+  margin-right: 10px;
+}
+td {
+  height: 85px;
+  width: 74px;
+  vertical-align: bottom;
+  text-align: center;
+  font-size: 18px;
+  color: #333333;
+}
+.confirm-border-1 {
+  border-bottom: 1px solid #4a90e2;
+  width: 30px;
+}
+.confirm-border-2 {
+  border-top: 1px solid #4a90e2;
+  border-left: 1px solid #4a90e2;
+  border-bottom: 1px solid #4a90e2;
+}
+table {
+  display: inline-block;
+}
+.confirm-content-2 {
+  height: 264px;
+  margin-top: 81px;
+}
+.to-cash,
+.donate {
+  width: 315px;
+  height: 113px;
+  background-color: #e5effb;
+  border: 1px solid #4a90e2;
+  border-radius: 5px;
+}
+.content-2-show {
+  display: inline-block;
+  height: 100%;
+}
+.to-cash {
+  margin: 15px 5px;
+}
+.to-cash-top {
+  border-bottom: 1px solid #4a90e2;
+  height: 70px;
+  line-height: 70px;
+}
+.to-cash-img-1 {
+  width: 82px;
+  height: 51px;
+  margin-left: 10px;
+  margin-bottom: 14px;
+}
+.donate-img {
+  width: 51px;
+  height: 51px;
+  margin-left: 10px;
+}
+.fr {
+  float: left;
+}
+.donate {
+  margin-top: 57px;
+  margin-left: 5px;
+}
+.content-2-money {
+  font-size: 30px;
+  color: #4a90e2;
+  margin-left: 30px;
+}
+.to-cash-bottom {
+  line-height: 41px;
+  color: #9b9b9b;
+  padding-left: 10px;
+}
+
+.confirm-2-button-box {
+  margin-top: 90px;
+  text-align: center;
+}
+.confrim-2-button {
+  height: 60px;
+  width: 177px;
+  background-color: #71ba31;
+  color: #ffff;
+  font-size: 18px;
+  border-radius: 9px;
+}
+.confirm-fotter {
+  margin-top: 26px;
+}
+
+.confirm-3-show {
+  margin-top: 83px;
+}
+.confirm-3-middle-line {
+  display: inline-block;
+  width: 72px;
+  font-size: 20px;
+  color: #333333;
+  border-bottom: 1px solid #4a90e2;
+  text-align: center;
+  margin-top: 140px;
+}
+
+.proze-top-img {
+  width: 102px;
 }

@@ -7,7 +7,7 @@ const tpl = `
             <div class="record-item-header">
                 <div class="record-item-header-left">
                     <p class="record-item-time">发布时间： {{addTime}}</p>
-                    {{#if isShow}}<div class="ispush">已推送</div>{{/if}}
+                    {{#if isShow}}<div class="ispush" record-data-ispush="1">已推送</div>{{/if}}
                 </div>
                 <div class="record-edit">编辑</div>
                 <div class="record-operate">
@@ -22,10 +22,12 @@ const tpl = `
                 <div class="record-item-media">
                     <div class="record-item-pic">
                         {{#each img}}
-                        <img class="record-single-pic" src="{{this}}" />
-                        {{/each}}
-                        {{#each video}}
-                        <video class="record-single-video" src="{{this}}"></video>
+                            {{#unless type}}
+                                <img class="record-single-pic" src="{{src}}" />
+                            {{/unless}}
+                            {{#if type}}
+                                <video class="record-single-video" src="{{src}}"></video>
+                            {{/if}}
                         {{/each}}
                     </div>
                 </div>
@@ -43,17 +45,26 @@ const tpl = `
                     <div class="record-upload-block">
                         <div class="record-media">
                             {{#each img}}
-                            <div class="item-0-1" data-cover-item="1">
-                                <img src="{{this}}" data-cover-item-image="1">
-                                <button class="clean common-delete" data-cover-item-delete="1">X</button>
-                            </div>
+                                {{#unless type}}
+                                    <div class="item-0-1" data-cover-item="1">
+                                        <img src="{{src}}" data-cover-item-image="1">
+                                        <button class="clean common-delete" data-cover-item-delete="1">X</button>
+                                    </div>
+                                {{/unless}}
+                                {{#if type}}
+                                    <div class="item-video-1" data-cover-video-item="1">
+                                        <video src="{{src}}" data-cover-item-image="0" data-cover-item-video="1"></video>
+                                        <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
+                                        <div class="video-mask"></div>
+                                    </div>
+                                {{/if}} 
                             {{/each}}
                             {{#each video}}
-                            <div class="item-video-1" data-cover-video-item="1">
-                                <video src="{{this}}" data-cover-item-video="1"></video>
-                                <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
-                                <div class="video-mask"></div>
-                            </div>
+                                <div class="item-video-1" data-cover-video-item="1">
+                                    <video src="{{this}}" data-cover-item-image="0" data-cover-item-video="1"></video>
+                                    <button class="clean common-delete" data-cover-item-video-delete="1">X</button>
+                                    <div class="video-mask"></div>
+                                </div>
                             {{/each}}
                         </div>
                         <div class="record-upload-block-btn">
@@ -65,6 +76,7 @@ const tpl = `
                         <p class="record-upload-tips">图片格式支持JPG、PNG等，视频格式支持MP4、WMV、MOV等，文件大小不超过50M</p>
                     </div>
                 </div>
+                {{#unless isShow}}
                 <div class="record-set-push">
                     <span class="record-set-push-tips">推送</span>
                     <span class="record-push-select record-push-candidate" record-data-push="1">推送给参与者</span>
@@ -72,6 +84,7 @@ const tpl = `
                     <span class="remain-time-content">剩余次数:&nbsp&nbsp<span class="remain-time" data-remain-time="0"></span></span>
                     <div class="push-tips">为了保证良好的体验避免对用户造成过多的打扰，已限制推送次数（每日0:00刷新次数）</div>
                 </div>
+                {{/unless}}
             </div>
         </div>
         {{/each}}
