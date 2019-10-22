@@ -168,7 +168,8 @@ export default {
   box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.4);
   resize: none;
   outline: none;
-  color: #b1b1b1;
+  // color: #b1b1b1;
+  color: #333333;
   font-size: 16px;
 }
 .reply-input {

@@ -132,7 +132,7 @@
     {
       "id": "insurance",
       "name": "医保管理",
-      "icon": "",
+      "icon": "glyphicon-gas",
       "subItems": [
         {
           "id": "insurance-index",
