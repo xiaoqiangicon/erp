@@ -57,6 +57,7 @@ export default lila => {
   ];
 
   addCmdOption('sync', ...envOption);
+  addCmdOption('sync', '--menu', '是否上传菜单文件');
 
   setSetting('excludeEntries', [/\/ui$/i, /\/draft$/i]);
 
@@ -145,16 +146,19 @@ export default lila => {
               server: servers[0],
               remotePath: '/data1/www/myerp/templates',
             },
-          ],
-          [
+          ]
+        );
+
+        if (argv.menu) {
+          tasks.push([
             '@lila/sync-dir',
             {
               server: servers[0],
               remotePath: '/data1/www/myerp/static/resources',
               dirs: 'json',
             },
-          ]
-        );
+          ]);
+        }
       } else if (isGray || isProd) {
         tasks.push(
           [
@@ -178,16 +182,19 @@ export default lila => {
               server: isProd ? servers[5] : servers[1],
               remotePath: '/data/www/myerp/templates',
             },
-          ],
-          [
+          ]
+        );
+
+        if (argv.menu) {
+          tasks.push([
             '@lila/sync-dir',
             {
               server: isProd ? servers[5] : servers[1],
               remotePath: '/data/www/myerp/static/resources',
               dirs: 'json',
             },
-          ]
-        );
+          ]);
+        }
       }
 
       tasks.push(
