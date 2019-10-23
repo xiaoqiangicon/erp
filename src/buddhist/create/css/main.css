@@ -886,8 +886,7 @@ tr > td {
   display: none !important;
 }
 /*微信一键导入、打开秀米导入*/
-#myEditor2 .edui-for-zizai_leadIn_wechat,
-#myEditor2 .edui-for-xiumi-connect {
+#myEditor2 .edui-for-zzh-import-wx-article {
   display: none !important;
 }
 /**/
