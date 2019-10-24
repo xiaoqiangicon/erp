@@ -5112,6 +5112,9 @@ var SizeView = Backbone.View.extend({
     var self = this,
       template = juicer(config.template.component.size_tmp),
       my_json = self.model.toJSON();
+
+    console.log('my_json', my_json);
+
     var html = template.render(my_json),
       sizehtml = html.replace(/sizePic0/, 'sizePic' + sizeIteration++),
       selectpicker = self.$el.html(sizehtml).find('.selectpicker');

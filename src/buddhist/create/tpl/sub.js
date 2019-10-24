@@ -15,19 +15,21 @@ const tpl = `
     </td>
     <td style="position: relative">
       <!--由switch生成dom结构-->
-      {@if isSingleMoney === 1}
-        <div class="hide" style="display: inline-block; position: absolute; top:0; right:2px; background-color: #fff; border: 1px solid #ddd; border-radius: 20px;">
-        <label class="mgb0 pdl10" data-id="autoFinishOrder" data-rid="\${cid}" style="padding:0 1px">自动处理订单：</label>
-        <input class="autoFinishSwitch" type="checkbox">
-        </div>
-      {@else}
-        <div style="display: inline-block; position: absolute; top:0; right:2px; background-color: #fff; border: 1px solid #ddd; border-radius: 20px;">
-        <label class="mgb0 pdl10" data-id="autoFinishOrder" data-rid="\${cid}" style="padding:0 1px">自动处理订单：</label>
-        <input class="autoFinishSwitch" type="checkbox">
-        </div>
-      {@/if}
+      {@if !id || typeof price === 'string'}
+        {@if isSingleMoney === 1}
+          <div class="hide" style="display: inline-block; position: absolute; top:0; right:2px; background-color: #fff; border: 1px solid #ddd; border-radius: 20px;">
+          <label class="mgb0 pdl10" data-id="autoFinishOrder" data-rid="\${cid}" style="padding:0 1px">自动处理订单：</label>
+          <input class="autoFinishSwitch" type="checkbox">
+          </div>
+        {@else}
+          <div style="display: inline-block; position: absolute; top:0; right:2px; background-color: #fff; border: 1px solid #ddd; border-radius: 20px;">
+          <label class="mgb0 pdl10" data-id="autoFinishOrder" data-rid="\${cid}" style="padding:0 1px">自动处理订单：</label>
+          <input class="autoFinishSwitch" type="checkbox">
+          </div>
+        {@/if}
         <button type="button" data-id="generateRandomPrice" data-rid="\${cid}" class="btn btn-success backgroundGreen hide" style="position: absolute; top:-10px; right:2px;padding:0 1px">自动生成随喜金额</button>
-        <input type="text" id="money\${cid}" name="money\${cid}" class="form-control proPrice" data-cid="\${cid}" data-isAutoFinish="\${isAutoFinish}" placeholder="为0或不填为无需支付" value="\${price}">
+      {@/if}
+      <input type="text" id="money\${cid}" name="money\${cid}" class="form-control proPrice" data-cid="\${cid}" data-isAutoFinish="\${isAutoFinish}" placeholder="为0或不填为无需支付" value="\${price}">
     </td>
     <td class="stock_td">
       <input type="number" name="\${cid}" class="form-control proStock" data-cid="\${cid}" value="\${stock}">
