@@ -99,7 +99,7 @@
     "bootstrap-datetimepicker": "^0.0.7",
     "bootstrap-select": "^1.13.5",
     "bootstrap-slider": "^10.3.2",
-    "bootstrap-switch": "^3.3.4",
+    "bootstrap-switch": "3.3.4",
     "chart.js": "^2.7.3",
     "clipboard": "^2.0.4",
     "clone": "^2.1.2",
