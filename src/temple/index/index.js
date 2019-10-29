@@ -39,4 +39,7 @@ seeAjax('settings', {}, res => {
   $('#show-scene-sui-xi').prop({
     checked: !!res.data.showSceneSuiXi,
   });
+  $('#show-join-list-price').prop({
+    checked: !!res.data.showJoinListPrice,
+  });
 });

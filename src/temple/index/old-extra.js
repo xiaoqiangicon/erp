@@ -9,6 +9,6 @@ import './view/calendar';
 import './view/shortcut';
 import './view/house';
 import './view/save_components';
-import './view/donate-box-settings';
+import './view/settings';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;

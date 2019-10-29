@@ -10,6 +10,8 @@ const refactor = {
     showMonkSuiXi: 'show_website_abbot_suixi',
     // 显示场景随喜
     showSceneSuiXi: 'show_website_scenes_suixi',
+    // 显示参与列表金额
+    showJoinListPrice: 'isShowGongdeBoxPrice',
   },
 };
 

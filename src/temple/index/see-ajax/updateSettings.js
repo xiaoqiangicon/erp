@@ -8,6 +8,8 @@ const req = {
   showMonkSuiXi: 'showAbbotSuixi',
   // 显示场景随喜
   showSceneSuiXi: 'showScenesSuixi',
+  // 显示参与列表金额
+  showJoinListPrice: 'isShowGongdeBoxPrice',
 };
 
 seeAjax.config('updateSettings', {

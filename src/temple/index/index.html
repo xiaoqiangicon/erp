@@ -30,6 +30,9 @@
                 <button class="btn btn-default" id="donate-box-settings">
                   功德箱设置
                 </button>
+                <button class="btn btn-default" id="join-list-settings">
+                  参与列表设置
+                </button>
               </div>
             </div>
           </div>
@@ -209,7 +212,7 @@
             <input
               type="checkbox"
               id="show-home-sui-xi"
-              data-donate-box-setting="1"
+              data-setting="1"
               checked=""
             />
             微站首页
@@ -218,7 +221,7 @@
             <input
               type="checkbox"
               id="show-monk-sui-xi"
-              data-donate-box-setting="1"
+              data-setting="1"
               checked=""
             />
             高僧法师
@@ -227,7 +230,7 @@
             <input
               type="checkbox"
               id="show-scene-sui-xi"
-              data-donate-box-setting="1"
+              data-setting="1"
               checked=""
             />
             殿堂场景
@@ -236,6 +239,26 @@
         <div class="f-s-18 mg-t-40">订单列表</div>
         <div class="mg-t-10">
           <a href="/zzhadmin/meritBoxIndex/">查看功德箱订单 ></a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="donate-box-settings-popup"
+      id="join-list-settings-popup"
+      style="display: none"
+    >
+      <div class="body-1">
+        <div class="f-s-18">参与列表设置</div>
+        <div class="mg-t-30 clearfix">
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-join-list-price"
+              data-setting="1"
+              checked=""
+            />
+            显示参与列表金额
+          </label>
         </div>
       </div>
     </div>
