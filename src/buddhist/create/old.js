@@ -3521,7 +3521,27 @@ var View = Backbone.View.extend({
         selection_list.length > 0 &&
           (subdivide['printer'] = curModel.get('printer'));
         subdivide['sort'] = index;
-        editType == 1 && specifiId != '' && (subdivide['id'] = specifiId);
+
+        // 更新
+        if (editType == 1 && specifiId != '') {
+          subdivide['id'] = specifiId;
+          const originProduct = window.ceremonyMap.subdivideStr.find(
+            i => i.id === parseInt(specifiId)
+          );
+          // 转单规格：从非随喜变成了随喜
+          if (
+            originProduct.conversionSubdivide &&
+            typeof originProduct.price !== 'string' &&
+            typeof specifiPrice === 'string'
+          ) {
+            sizebox_error = true;
+            Toast('转单的选择项支付金额不能更新为随喜', 2);
+            $('html, body').scrollTop($(ele).offset().top - 50);
+            self.addRedBorder($(ele).find('.proPrice'));
+            return false;
+          }
+        }
+
         subdivide['price'] = specifiPrice;
         if (specifiStock === '') {
           subdivide['stock'] = -1;
@@ -3782,7 +3802,7 @@ var View = Backbone.View.extend({
     opt['showStatictics'] = is_show_cnt;
     opt['targetAmount'] = targetAmount;
     opt['startTime'] = start_time;
-    opt['endTime'] = end_time;
+    opt['endTime'] = end_time || '2099-12-31 00:00:00';
     opt['showEndTime'] = is_show_time;
     opt['payDetail'] = pay_succ_details;
     opt['explain'] = '';
@@ -4499,8 +4519,10 @@ var View = Backbone.View.extend({
       }
     }
     var inputSizes = [];
+    // sort 可能不是从0开始的
+    const firstSort = inputSizesOrigin.length ? inputSizesOrigin[0].sort : 0;
     for (var k = 0; k < inputSizesOrigin.length; k++) {
-      var kid = inputSizesOrigin[k].sort;
+      var kid = inputSizesOrigin[k].sort - firstSort;
       inputSizes[kid] = inputSizesOrigin[k];
     }
     if (inputSizes == undefined || inputSizes.length == 0) return false;
@@ -5113,7 +5135,7 @@ var SizeView = Backbone.View.extend({
       template = juicer(config.template.component.size_tmp),
       my_json = self.model.toJSON();
 
-    console.log('my_json', my_json);
+    // console.log('my_json', my_json);
 
     var html = template.render(my_json),
       sizehtml = html.replace(/sizePic0/, 'sizePic' + sizeIteration++),
