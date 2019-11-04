@@ -3528,11 +3528,13 @@ var View = Backbone.View.extend({
           const originProduct = window.ceremonyMap.subdivideStr.find(
             i => i.id === parseInt(specifiId)
           );
+
           // 转单规格：从非随喜变成了随喜
           if (
             originProduct.conversionSubdivide &&
             typeof originProduct.price !== 'string' &&
-            typeof specifiPrice === 'string'
+            typeof specifiPrice === 'string' &&
+            specifiPrice[0] === '['
           ) {
             sizebox_error = true;
             Toast('转单的选择项支付金额不能更新为随喜', 2);
