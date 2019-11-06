@@ -15,6 +15,9 @@ var data = {
     category: 0,
     status: 0,
     searchKey: '',
+    orderView: 0,
+    orderLike: 0,
+    orderMoney: 0,
   },
   pagination: undefined,
 };

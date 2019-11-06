@@ -20,7 +20,7 @@ func.init = function() {
 };
 const $listContainer = $('#list-container');
 const $paginationContainer = $('#pagination-container');
-const requestList = (page = 1, init = !0) => {
+const requestList = (page = 1, init = !0, callback) => {
   $listContainer.html(commonTpl.loading);
   init && $paginationContainer.html('');
   seeAjax(
@@ -49,9 +49,85 @@ const requestList = (page = 1, init = !0) => {
         });
         data.pagination.render();
       }
+      callback && callback(res);
       $(window).scrollTop(0);
     }
   );
+};
+func.sortAndRenderList = function($ele, params) {
+  // 重置参数
+  data.filter.orderView = 0;
+  data.filter.orderLike = 0;
+  data.filter.orderMoney = 0;
+  var $icon = $ele.find('i');
+  if ($icon.hasClass('unsort')) {
+    data.filter[params] = 1;
+    func.requestList(1, !1, function(res) {
+      // 重置样式
+      $('#article-visit-count')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $('#article-support')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $('#article-pay-amount')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $icon.removeClass('unsort');
+      $icon.addClass('desc');
+    });
+  } else if ($icon.hasClass('desc')) {
+    data.filter[params] = 2;
+    func.requestList(1, !1, function(res) {
+      // 重置样式
+      $('#article-visit-count')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $('#article-support')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $('#article-pay-amount')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $icon.removeClass('desc');
+      $icon.removeClass('unsort');
+      $icon.addClass('asc');
+    });
+  } else {
+    data.filter[params] = 0;
+    func.requestList(1, !1, function(res) {
+      // 重置样式
+      $('#article-visit-count')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $('#article-support')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $('#article-pay-amount')
+        .find('i')
+        .removeClass('desc')
+        .removeClass('asc')
+        .addClass('unsort');
+      $icon.removeClass('desc');
+      $icon.addClass('unsort');
+    });
+  }
 };
 func.requestList = requestList;
 export default func;

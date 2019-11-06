@@ -21,6 +21,10 @@ seeView({
     'click [data-article-edit]': 'onClickArticleEdit',
     'click [data-article-copy]': 'onClickArticleCopy',
     'click [data-article-delete]': 'onClickArticleDelete',
+    // 排序
+    'click #article-visit-count': 'onClickVisitCount',
+    'click #article-support': 'onClickSupport',
+    'click #article-pay-amount': 'onClickAmount',
   },
   onClickSearchSubmit: function(e) {
     data.filter.searchKey = $('#search-input').val();
@@ -138,5 +142,15 @@ seeView({
   },
   refreshCurrentPage: function() {
     func.requestList(data.pagination.option.currentPage, !1);
+  },
+  // 排序
+  onClickVisitCount: function(e) {
+    func.sortAndRenderList($('#article-visit-count'), 'orderView');
+  },
+  onClickSupport: function(e) {
+    func.sortAndRenderList($('#article-support'), 'orderLike');
+  },
+  onClickAmount: function(e) {
+    func.sortAndRenderList($('#article-pay-amount'), 'orderMoney');
   },
 });
