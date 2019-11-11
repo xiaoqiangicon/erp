@@ -4522,9 +4522,14 @@ var View = Backbone.View.extend({
     }
     var inputSizes = [];
     // sort 可能不是从0开始的
-    const firstSort = inputSizesOrigin.length ? inputSizesOrigin[0].sort : 0;
+    let minSort = 10000;
+    if (inputSizesOrigin.length) {
+      inputSizesOrigin.forEach(item => {
+        if (item.sort < minSort) minSort = item.sort;
+      });
+    }
     for (var k = 0; k < inputSizesOrigin.length; k++) {
-      var kid = inputSizesOrigin[k].sort - firstSort;
+      var kid = inputSizesOrigin[k].sort - minSort;
       inputSizes[kid] = inputSizesOrigin[k];
     }
     if (inputSizes == undefined || inputSizes.length == 0) return false;
