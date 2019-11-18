@@ -34,9 +34,9 @@
           v-if="!isResetSuccess"
           :defaultMobile="defaultMobile"
           :isHasDefaultMobile="isHasDefaultMobile"
-          @resetSuccess="isResetSuccess = true"
+          @resetSuccess="resetSuccess"
         />
-        <resetPasswordSuccess v-else />
+        <resetPasswordSuccess :accountInfo="accountInfo" v-else />
       </el-card>
     </main>
   </div>
@@ -51,6 +51,7 @@ export default {
       isHasDefaultMobile: false,
       isResetSuccess: false,
       defaultMobile: '',
+      accountInfo: {},
     };
   },
   components: { resetPasswordFrom, resetPasswordSuccess },
@@ -62,6 +63,10 @@ export default {
     }
   },
   methods: {
+    resetSuccess(accountInfo) {
+      this.isResetSuccess = true;
+      this.accountInfo = accountInfo;
+    },
     jumpLoginUrl() {
       window.location.replace('/accounts/login/');
     },

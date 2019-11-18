@@ -20,10 +20,9 @@
             slot="append"
             :disabled="isDisabledGetCode"
             @click="sendMessageCode"
-            >{{
-              isDisabledGetCode ? `${currTimeCount} 秒后重发` : '获取验证码'
-            }}</el-button
           >
+            {{ isDisabledGetCode ? `${currTimeCount} 秒后重发` : '获取验证码' }}
+          </el-button>
         </el-input>
       </el-form-item>
       <el-form-item label="新密码" prop="pwd">
@@ -60,13 +59,10 @@ export default {
   data() {
     const checkPwdValidator = (rule, value, callback) => {
       if (value === '') {
-        console.log('value1');
         callback(new Error('请再次输入密码'));
       } else if (value !== this.resetFrom.pwd) {
-        console.log('value2');
         callback(new Error('两次输入密码不一致!'));
       } else {
-        console.log('value3');
         callback();
       }
     };
@@ -170,6 +166,15 @@ export default {
               pwd: that.resetFrom.pwd,
             },
             res => {
+              if (res.result == 0) {
+                let d = new Date();
+                that.$emit('resetSuccess', {
+                  templeName: res.data.templeName,
+                  mobile: that.resetFrom.mobile,
+                  creatDate: `${d.getFullYear()}年${d.getMonth() +
+                    1}月${d.getDate()}日 ${d.getHours()}:${d.getMinutes()}`,
+                });
+              }
               that.$message({
                 message: res.msg || '',
                 type: res.result == 0 ? 'success' : 'error',
