@@ -21,7 +21,7 @@
             :disabled="isDisabledGetCode"
             @click="sendMessageCode"
           >
-            {{ isDisabledGetCode ? `${currTimeCount} 秒后重发` : '获取验证码' }}
+            {{ isDisabledGetCode ? ` ${currTimeCount} s ` : '发送验证码' }}
           </el-button>
         </el-input>
       </el-form-item>

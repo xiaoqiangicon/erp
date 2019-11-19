@@ -7,7 +7,7 @@ seeAjax.config('sendMessageCode', {
   method: ['post'],
   stringify: [!0],
   url: [
-    '/zzhadmin/templeApplySendCode',
+    '/zzhadmin/templeApplySendCode/',
     '/src/register/find_pwd/utils/mock/templeApplySendCode',
   ],
 });
@@ -16,5 +16,5 @@ seeAjax.config('sendMessageCode', {
 seeAjax.config('resetPassword', {
   method: ['post'],
   stringify: [!0],
-  url: ['/zzhadmin/editPwd', '/src/register/find_pwd/utils/mock/editPwd'],
+  url: ['/zzhadmin/editPwd/', '/src/register/find_pwd/utils/mock/editPwd'],
 });
