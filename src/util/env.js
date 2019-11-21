@@ -13,10 +13,10 @@ export const subDomain = window.location.hostname.split('.')[0];
 export const serverEnv = domains[subDomain] || 0;
 
 // 协议
-export const wxProtocol = ['', 'http', 'http', 'https'][serverEnv];
+export const wxProtocol = ['', 'https', 'https', 'https'][serverEnv];
 
 // 微信端子域名
-export const wxSubDomain = ['localhost', 'test', 'test2', 'wx'][serverEnv];
+export const wxSubDomain = ['localhost', 'wxapp1', 'wxapp2', 'wx'][serverEnv];
 
 // 参数后缀
 export const wxParamSuffix = ['', 'isTest=1', 'isTest=2', ''][serverEnv];

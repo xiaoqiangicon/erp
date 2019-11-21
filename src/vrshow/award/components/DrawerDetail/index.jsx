@@ -156,9 +156,9 @@ export default class extends Component {
       const { id } = this.state;
       let src = '';
       if (serverEnv === 1) {
-        src = `http://test.zizaihome.com/vr/devoteDealGiftHtml?id=${id}&isTest=1`;
+        src = `https://wxapp1.zizaihome.com/vr/devoteDealGiftHtml?id=${id}&isTest=1`;
       } else if (serverEnv === 2) {
-        src = `http://test2.zizaihome.com/vr/devoteDealGiftHtml?id=${id}&isTest=2`;
+        src = `https://wxapp2.zizaihome.com/vr/devoteDealGiftHtml?id=${id}&isTest=2`;
       } else if (serverEnv === 3) {
         src = `https://wx.zizaihome.com/vr/devoteDealGiftHtml?id=${id}`;
       } else {
