@@ -330,6 +330,10 @@ seeView({
       commonFunc.alert('随喜引导文字不能为空');
       return !1;
     }
+    if (!publishTime) {
+      commonFunc.alert('发布时间不能为空');
+      return !1;
+    }
     window.contentData = {
       title: title,
       category: category,
