@@ -86,7 +86,10 @@ func.renderArticle = function(res) {
   ).prop({
     checked: !0,
   });
-  $('#input-publish-time').val(res.data.publishTime);
+  // 当前为复制文章时 不对发布时间进行复制
+  if (!(data.params.action && data.params.action == 'copy')) {
+    $('#input-publish-time').val(res.data.publishTime);
+  }
   typeof res.data.showTitle !== 'undefined' &&
     $('input[name="show-title"][value="' + res.data.showTitle + '"]').prop({
       checked: !0,

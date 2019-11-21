@@ -3660,7 +3660,7 @@ var View = Backbone.View.extend({
       for (var i = 0; i < inputLength; i++) {
         var postScriptInner = {};
         editType == 1 &&
-          (additionID[i] != null && additionID[i] != 0) &&
+          additionID[i] != null && additionID[i] != 0 &&
           (postScriptInner['id'] = additionID[i]);
         postScriptInner['inputType'] = inputType[i];
         postScriptInner['prompt_text'] = prompt_text[i];
@@ -4487,8 +4487,8 @@ var View = Backbone.View.extend({
       inputSizesOrigin = JSON.parse(getContent.subdivideStr) || [];
       if (
         inputSizesOrigin.length == 0 ||
-        ((inputSizesOrigin.length == 1 && inputSizesOrigin[0]['cid'] == '') ||
-          inputSizesOrigin[0]['name'] == '')
+        (inputSizesOrigin.length == 1 && inputSizesOrigin[0]['cid'] == '') ||
+          inputSizesOrigin[0]['name'] == ''
       ) {
         self.sizes = new SizeCollection({});
         self.sizesView = new SizesView({
@@ -4518,6 +4518,11 @@ var View = Backbone.View.extend({
         }
       } else {
         inputSizesOrigin[i]['printer'] = '';
+      }
+      // 当前为复制佛事时 不对规格库存和结束时间复制
+      if (editType == 0) {
+        inputSizesOrigin[i].stock = '';
+        inputSizesOrigin[i].endTime = '';
       }
     }
     var inputSizes = [];
@@ -4752,8 +4757,8 @@ var View = Backbone.View.extend({
       inputResPos = JSON.parse(getContent.postScript);
       if (
         inputResPos.length == 0 ||
-        ((inputResPos.length == 1 && inputResPos[0]['cid'] == '') ||
-          inputResPos[0]['name'] == '')
+        (inputResPos.length == 1 && inputResPos[0]['cid'] == '') ||
+          inputResPos[0]['name'] == ''
       ) {
         self.additionItems = new AdditionCollection({});
         self.additionView = new AdditionsView({
