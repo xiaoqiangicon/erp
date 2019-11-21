@@ -79,6 +79,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.content-section .article-visit-count,
+.content-section .article-support,
+.content-section .article-pay-amount {
+  cursor: pointer;
+}
 .content-section .article-title {
   width: 40%;
 }
@@ -118,4 +123,25 @@
 }
 .pagination-section {
   text-align: center;
+}
+
+/*排序按钮*/
+.default-sort {
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+}
+
+.unsort {
+  background-image: url('../../../../images/common/unsortIcon.png');
+}
+
+.asc {
+  background-image: url('../../../../images/common/ascIcon.png');
+}
+
+.desc {
+  background-image: url('../../../../images/common/descIcon.png');
 }

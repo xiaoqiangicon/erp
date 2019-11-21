@@ -5,6 +5,8 @@ import commonTpl from 'common/tpl';
 import Pagination from 'component/pagination';
 import tpl from './tpl';
 import data from './data';
+import { urlParams } from '../../../pro-com/src/utils';
+import * as orchids from 'orchids';
 import './ajax';
 var func = {};
 var pagination;
@@ -23,6 +25,17 @@ func.requestList = function(page, init) {
   seeAjax('list', params, function(res) {
     if (res.success && res.data.length) {
       func.renderList(res.data);
+      if (urlParams.cashTakeLoading) {
+        orchids.startPage(
+          'detail',
+          {
+            id: res.data[0].id,
+          },
+          {
+            beforeAppInitialized: !0,
+          }
+        );
+      }
       init && func.initPagination(res.totalPages);
     } else {
       $contentBody.html(commonTpl.noData);

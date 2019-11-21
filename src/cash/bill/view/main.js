@@ -32,6 +32,8 @@ seeView({
     'click [data-popup-close]': 'onClickPopup',
     'click [data-popup-overlay]': 'onClickPopup',
     'click [data-popup-submit]': 'onClickPopupSubmit',
+    // 提现管理按钮
+    'click #take-cash': 'onClickTakeCash',
     // 2019-09
     'click #confirm-2-button': 'onClickPrizeOk2',
   },
@@ -274,7 +276,7 @@ seeView({
       $pre20.text(data.donateMoney20);
       $pre30.text(data.donateMoney30);
 
-      if (data.haveOrderInHandling) $handlingDialog.show();
+      if (!data.haveOrderInHandling) $handlingDialog.show();
       else if (!data.canTakeOrder) $forbidDialog.show();
       else if (data.currentWaitingReceipts) $receiptTipDialog.show();
       else showPrizeDialog();
@@ -393,6 +395,9 @@ seeView({
   onSubmitReceiptTip: function() {
     $receiptTipDialog.hide();
     showPrizeDialog();
+  },
+  onClickTakeCash: function() {
+    window.location.href = `/cashTake?cashTakeLoading=1`;
   },
   // 2019-09
   onClickPrizeOk2(e) {
