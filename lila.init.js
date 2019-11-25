@@ -248,6 +248,7 @@ export default lila => {
         ];
         return webpackConfig;
       },
+      mockRoot: 'api',
     };
   };
 };
