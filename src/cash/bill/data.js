@@ -8,6 +8,8 @@ var data = {
 
   currentDonateMoney: 0, //选中的打赏金，默认为5%
 
+  pickUpId: '', // 当前正在提现的账单ID
+
   // 2019-09
   donateMoney2: 0, //2%
   donateMoney5: 0,

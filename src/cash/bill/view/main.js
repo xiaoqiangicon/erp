@@ -276,7 +276,7 @@ seeView({
       $pre20.text(data.donateMoney20);
       $pre30.text(data.donateMoney30);
 
-      if (!data.haveOrderInHandling) $handlingDialog.show();
+      if (data.haveOrderInHandling) $handlingDialog.show();
       else if (!data.canTakeOrder) $forbidDialog.show();
       else if (data.currentWaitingReceipts) $receiptTipDialog.show();
       else showPrizeDialog();
@@ -397,7 +397,7 @@ seeView({
     showPrizeDialog();
   },
   onClickTakeCash: function() {
-    window.location.href = `/cashTake?cashTakeLoading=1`;
+    window.location.href = `/cashTake?id=${data.pickUpId}`;
   },
   // 2019-09
   onClickPrizeOk2(e) {
