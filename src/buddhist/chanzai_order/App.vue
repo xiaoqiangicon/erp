@@ -302,7 +302,7 @@ export default {
         } else {
           Notification({
             title: '提示',
-            message: '接口出错',
+            message: res.message,
             type: 'error',
           });
         }
@@ -353,7 +353,7 @@ export default {
           } else {
             Notification({
               title: '提示',
-              message: '接口出错',
+              message: res.message,
               type: 'error',
             });
           }
