@@ -147,6 +147,13 @@ export default lila => {
             server: servers[0],
             remotePath: '/data1/www/myerp/templates',
           },
+        ],
+        [
+          '@lila/sync-html',
+          {
+            server: servers[0],
+            remotePath: '/data1/www/myerp/static/build',
+          },
         ]
       );
 
@@ -181,6 +188,13 @@ export default lila => {
           {
             server: isProd ? servers[5] : servers[1],
             remotePath: '/data/www/myerp/templates',
+          },
+        ],
+        [
+          '@lila/sync-html',
+          {
+            server: isProd ? servers[5] : servers[1],
+            remotePath: '/data/www/myerp/static/build',
           },
         ]
       );
