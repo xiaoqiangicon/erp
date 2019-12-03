@@ -397,7 +397,7 @@ seeView({
     showPrizeDialog();
   },
   onClickTakeCash: function() {
-    window.location.href = `/cashTake?id=${data.pickUpId}`;
+    window.location.href = `/zzhadmin/cashTake?id=${data.pickUpId}`;
   },
   // 2019-09
   onClickPrizeOk2(e) {
