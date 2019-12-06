@@ -6,6 +6,7 @@ import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack';
 import { forReactVue as reactVueWebpackConfigPlugin } from 'lila-webpack-config';
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
+import qiniuTask from './qiniu-task';
 
 const { readFileSync } = fse;
 const cwd = process.cwd();
@@ -47,7 +48,9 @@ const cssModulesExclude = {
 };
 
 export default lila => {
-  const { addCmdOption, setSetting } = lila;
+  const { addCmdOption, setSetting, registerTask } = lila;
+
+  registerTask('qiniu', qiniuTask);
 
   const envOption = [
     '-e, --env [env]',
@@ -130,85 +133,95 @@ export default lila => {
       ],
     ];
 
-    if (cmd === 'sync') {
-      if (isTest) {
-        tasks.push(
-          [
-            '@lila/sync-build',
-            {
-              server: servers[0],
-              remotePath: '/data1/www/myerp/static',
-            },
-          ],
-          [
-            '@lila/sync-html',
-            {
-              server: servers[0],
-              remotePath: '/data1/www/myerp/templates',
-            },
-          ]
-        );
-
-        if (argv.menu) {
-          tasks.push([
-            '@lila/sync-dir',
-            {
-              server: servers[0],
-              remotePath: '/data1/www/myerp/static/resources',
-              dirs: 'json',
-            },
-          ]);
-        }
-      } else if (isGray || isProd) {
-        tasks.push(
-          [
-            '@lila/sync-build',
-            {
-              server: isProd ? servers[5] : servers[1],
-              remotePath: '/data/www/myerp/static',
-              sourceMap: !1,
-            },
-          ],
-          [
-            '@lila/sync-source-map',
-            {
-              server: servers[0],
-              remotePath: '/data/h5/static/source-map',
-            },
-          ],
-          [
-            '@lila/sync-html',
-            {
-              server: isProd ? servers[5] : servers[1],
-              remotePath: '/data/www/myerp/templates',
-            },
-          ]
-        );
-
-        if (argv.menu) {
-          tasks.push([
-            '@lila/sync-dir',
-            {
-              server: isProd ? servers[5] : servers[1],
-              remotePath: '/data/www/myerp/static/resources',
-              dirs: 'json',
-            },
-          ]);
-        }
-      }
-
+    if (isTest) {
       tasks.push(
         [
-          '@lila/save-cache',
-          { dir: 'build', cacheFileName: `cache-${argv.env}` },
+          'qiniu',
+          {
+            dirs: 'build',
+          },
         ],
-        '@lila/del-build'
+        [
+          '@lila/sync-html',
+          {
+            server: servers[0],
+            remotePath: '/data1/www/myerp/templates',
+          },
+        ],
+        [
+          '@lila/sync-html',
+          {
+            server: servers[0],
+            remotePath: '/data1/www/myerp/static/build',
+          },
+        ]
       );
+
+      if (argv.menu) {
+        tasks.push([
+          '@lila/sync-dir',
+          {
+            server: servers[0],
+            remotePath: '/data1/www/myerp/static/resources',
+            dirs: 'json',
+          },
+        ]);
+      }
+    } else if (isGray || isProd) {
+      tasks.push(
+        [
+          'qiniu',
+          {
+            dirs: 'build',
+            sourceMap: !1,
+          },
+        ],
+        [
+          '@lila/sync-source-map',
+          {
+            server: servers[0],
+            remotePath: '/data/h5/static/source-map',
+          },
+        ],
+        [
+          '@lila/sync-html',
+          {
+            server: isProd ? servers[5] : servers[1],
+            remotePath: '/data/www/myerp/templates',
+          },
+        ],
+        [
+          '@lila/sync-html',
+          {
+            server: isProd ? servers[5] : servers[1],
+            remotePath: '/data/www/myerp/static/build',
+          },
+        ]
+      );
+
+      if (argv.menu) {
+        tasks.push([
+          '@lila/sync-dir',
+          {
+            server: isProd ? servers[5] : servers[1],
+            remotePath: '/data/www/myerp/static/resources',
+            dirs: 'json',
+          },
+        ]);
+      }
     }
+
+    tasks.push(
+      [
+        '@lila/save-cache',
+        { dir: 'build', cacheFileName: `cache-${argv.env}` },
+      ],
+      '@lila/del-build'
+    );
 
     return {
       tasks,
-      staticServer: '/static',
+      staticServer: 'https://pic.zizaihome.com',
       define: {
         __SEE_ENV__: isDev ? 1 : 0,
       },
@@ -244,10 +257,12 @@ export default lila => {
         /* eslint-disable no-param-reassign */
         webpackConfig.resolve.modules = [
           path.join(cwd, 'src'),
+          cwd,
           path.join(cwd, 'node_modules'),
         ];
         return webpackConfig;
       },
+      mockRoot: 'api',
     };
   };
 };
