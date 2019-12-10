@@ -12,6 +12,7 @@ orchids.registerPage(
       self.$el = $(self.el);
       util.disableBodyScroll();
       var item = data.listItems[param.id];
+      console.log(item);
       item.templeName = window.localStorage['templeName'];
       self.$el.html(tpl.detail.render(item));
       $('#detail-summary-right-unit').css({
