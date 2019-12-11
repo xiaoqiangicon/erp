@@ -1,6 +1,7 @@
 {
   "result": 1,
   "authBankType": 0,
+  "pickUpSpecialCnt": 1,
   "data": {
     "type": 2,
     "// bankName": "中国银行",

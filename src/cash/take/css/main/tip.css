@@ -30,3 +30,55 @@
   float: right;
   padding-left: 20px;
 }
+
+.special-cash {
+  display: flex;
+  margin-top: 20px;
+  line-height: 16px;
+}
+.special-cash-con {
+  margin-right: 10px;
+}
+.special-cash-tip-box {
+  position: relative;
+}
+.special-cash-tip-box .special-cash-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  text-align: center;
+  border: 1px solid #3390ff;
+  border-radius: 50%;
+  font-style: normal;
+  font-weight: bold;
+  cursor: pointer;
+  color: #3390ff;
+}
+
+.s-c-tip {
+  display: none;
+  width: 230px;
+  position: absolute;
+  right: -206px;
+  top: -19px;
+  z-index: 999;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(128, 145, 165, 0.2);
+  padding: 20px 15px;
+}
+.s-c-tip .s-c-tip-head {
+  margin-bottom: 8px;
+}
+.s-c-tip .s-c-tip-head > span {
+  margin-left: 4px;
+  font-size: 16px;
+}
+.s-c-tip .s-c-tip-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666666;
+}
+.special-cash-tip-box:hover .s-c-tip {
+  display: block;
+}
