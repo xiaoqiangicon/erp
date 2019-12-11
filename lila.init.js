@@ -119,6 +119,7 @@ export default lila => {
     }
 
     const tasks = [
+      '@lila/del-build',
       '@lila/webpack',
       [
         '@lila/move',
