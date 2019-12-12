@@ -31,6 +31,11 @@ seeAjax('accountInfo', {}, function(res) {
       $('#dialog-account-no-reason-content').text(res.data.reason);
       $('#dialog-account-no-reason').removeClass('hide');
     }
+    if (res.pickUpSpecialCnt !== undefined) {
+      let surplus = 2 - res.pickUpSpecialCnt < 0 ? 0 : 2 - res.pickUpSpecialCnt;
+      $('#special-cash-surplus').text(surplus);
+      $('#special-cash-used').text(res.pickUpSpecialCnt);
+    }
   }
 });
 var $receiptsContent = $('#dialog-receipts-content');
