@@ -25,7 +25,7 @@
     float: left;
     width: 120px;
     height: 100%;
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #ddd;
 }
 .zzh-choose-image .left-part-line {
     width: 100%;
@@ -125,7 +125,7 @@
     line-height: 24px;
     background-color: rgba(0, 0, 0, .4);
     text-align: center;
-    color: #ffffff;
+    color: #fff;
     border-radius: 4px;
     cursor: pointer;
     font-size: 13px;

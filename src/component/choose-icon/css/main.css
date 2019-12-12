@@ -35,7 +35,7 @@
     overflow: hidden;
 }
 .zzh-choose-icon .image-cell.active {
-    /*border: 3px solid #0033CC;*/
+    /* border: 3px solid #0033CC; */
 }
 .zzh-choose-icon .image-cell img {
     max-width: 100%;

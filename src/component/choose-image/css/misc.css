@@ -12,7 +12,7 @@
 .zzh-choose-image-btn-green.focus,
 .zzh-choose-image-btn-green:active,
 .zzh-choose-image-btn-green.active {
-    color: #ffffff;
+    color: #fff;
     background-color: #6FBA2C;
     border-color: #7ED82E;
 }
@@ -40,6 +40,7 @@
     padding-top: 20px;
     overflow: hidden;
 }
+
 /* 小尺寸 */
 .zzh-choose-image-tab-sm {
     padding-top: 14px;
@@ -52,13 +53,15 @@
     margin: 0 15px 2px;
     height: 30px;
     list-style: none;
-    /*overflow: hidden;*/
+
+    /* overflow: hidden; */
     text-align: center;
 }
 .zzh-choose-image-tab-sm > li {
     height: 24px;
     margin-right: 0;
 }
+
 /* 垂直导航 */
 .zzh-choose-image-tab-vertical > li {
     float: none;
@@ -81,7 +84,8 @@
 }
 .zzh-choose-image-tab li:hover a, .zzh-choose-image-tab li.active a {
     color: #333;
-    /*text-shadow: 0 0 1px #999;*/
+
+    /* text-shadow: 0 0 1px #999; */
     border-bottom: 3px solid #6FBA2C;
 }
 .zzh-choose-image-tab-sm li:hover a, .zzh-choose-image-tab-sm li.active a {

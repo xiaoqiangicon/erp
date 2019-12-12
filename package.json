@@ -4,7 +4,7 @@
   "description": "A lila project.",
   "private": true,
   "scripts": {
-    "precommit": "npm run lint-staged",
+    "//precommit": "npm run lint-staged",
     "lint-staged": "lint-staged",
     "prettier": "prettier --write \"./**/*.{js,jsx,vue,css,less,scss,sass,html,md,json}\"",
     "eslint": "eslint \"./**/*.js\"",
