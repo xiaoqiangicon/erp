@@ -20,6 +20,7 @@ func.requestBillData = function(year, status) {
     function(res) {
       if (!res.success) return;
 
+      data.pickUpId = res.pickUpId;
       renderYearContent(res, {
         year: year,
         status: status,

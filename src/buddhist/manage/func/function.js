@@ -38,6 +38,7 @@ func.initBuddhistVerifyModal = function() {
         extendedTimeOut: 0,
 
         closeButton: !0,
+        positionClass: 'toast-center-center',
         // escapeHtml: !1,
       }
     );

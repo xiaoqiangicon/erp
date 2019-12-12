@@ -25,6 +25,17 @@ func.requestList = function(page, init) {
   seeAjax('list', params, function(res) {
     if (res.success && res.data.length) {
       func.renderList(res.data);
+      if (urlParams.id) {
+        orchids.startPage(
+          'detail',
+          {
+            id: urlParams.id,
+          },
+          {
+            beforeAppInitialized: !0,
+          }
+        );
+      }
       if (urlParams.cashTakeLoading) {
         orchids.startPage(
           'detail',

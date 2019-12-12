@@ -158,6 +158,11 @@ const configs = {
       '/src/cash/account/edit/mock/info_server.json',
       '/src/cash/account/edit/mock/info.json',
     ],
+    receiptsInfo: [
+      '/zzhadmin/pickUpPrompt/',
+      '/src/cash/bill/mock/receipts_info_server.json',
+      '/src/cash/bill/mock/receipts_info.json',
+    ],
   },
   requestKeys: {
     list: [
@@ -236,4 +241,9 @@ seeAjax.config('accountInfo', {
   preHandle: configs.preHandle.accountInfo,
   responseRefactor: configs.responseRefactor.accountInfo,
   postHandle: configs.postHandle.accountInfo,
+});
+
+// 新增判断当前是否有正在提现账单
+seeAjax.config('receiptsInfo', {
+  url: configs.url.receiptsInfo,
 });
