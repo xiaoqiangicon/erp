@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>choose-image draft</title>
+  </head>
+  <body>
+    <div class="modal fade in show zzh-choose-image in-delete-mode">
+      <div class="modal-backdrop fade in"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header modal-header-article">
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+            <h4 class="modal-title">添加图片</h4>
+          </div>
+          <div class="modal-body clearfix">
+            <!-- 默认 -->
+            <div class="left-part" style="display: none;">
+              <div class="left-part-line">
+                <button class="btn zzh-choose-image-btn-green">上传图片</button>
+              </div>
+              <div class="left-part-line zzh-choose-image-mg-t-30">
+                <div class="vertical-tab active">用户素材</div>
+                <div class="vertical-tab">系统素材</div>
+              </div>
+              <div class="left-part-line left-part-foot">
+                <button class="btn btn-info">管理图片</button>
+              </div>
+            </div>
+            <!-- 管理 -->
+            <div class="left-part">
+              <div class="left-part-line">
+                <div class="checkbox">
+                  <label> <input type="checkbox" /> 全选 </label>
+                </div>
+                <p>已选择 0 项</p>
+                <p class="text-center">
+                  <button class="btn btn-warning">删除所选</button>
+                </p>
+              </div>
+              <div class="left-part-line left-part-foot">
+                <button class="btn btn-info">取消管理</button>
+              </div>
+            </div>
+            <div class="right-part">
+              <div class="pagination-container">
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell delete-active">
+                  <div class="delete-active-mark"></div>
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                  <div class="delete-cell">删除</div>
+                  <div class="see-cell">查看大图</div>
+                </div>
+                <div class="image-cell">
+                  <div class="delete-active-mark"></div>
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                  <div class="delete-cell">删除</div>
+                  <div class="see-cell">查看大图</div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+                <div class="image-cell active">
+                  <div class="image-cell-inner">
+                    <img src="/images/example-avatar.jpg" />
+                    <i class="selected-mark"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="pagination-content">
+                <div class="zzh-pagination-container">
+                  <button class="zzh-pagination-cell">上一页</button>
+                  <button class="zzh-pagination-cell">1</button>
+                  <button class="zzh-pagination-cell">2</button>
+                  <button class="zzh-pagination-cell">3</button>
+                  <button class="zzh-pagination-cell active">4</button>
+                  <button class="zzh-pagination-cell">5</button>
+                  <button class="zzh-pagination-cell disabled">...</button>
+                  <button class="zzh-pagination-cell">20</button>
+                  <button class="zzh-pagination-cell">下一页</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn zzh-choose-image-btn-green zzh-choose-image-ok">
+              确认
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in zzh-choose-image-add">
+      <div class="modal-backdrop fade in"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header modal-header-article">
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+            <h4 class="modal-title">添加图片</h4>
+          </div>
+          <div class="modal-body clearfix">
+            <div class="title-section">
+              <ul class="zzh-choose-image-tab zzh-choose-image-tab-sm">
+                <li class="active"><a>本地图片</a></li>
+                <li><a>网络图片</a></li>
+              </ul>
+            </div>
+            <div class="body-section">
+              <div class="tab-container" style="display: block">
+                <ul class="images-container-local clearfix">
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="/images/example-avatar.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img
+                      src="https://pic.zizaihome.com/2c20aa50-3229-11e8-a117-00163e0c001e.png"
+                    />
+                  </li>
+                </ul>
+                <div class="upload-hint">
+                  仅支持 jpg，png，gif 三种格式，大小不超过1M
+                </div>
+              </div>
+              <div class="tab-container" style="display: none;">
+                <div class="input-section">
+                  <input
+                    class="form-control input-element"
+                    placeholder="请添加网络图片地址"
+                  />
+                  <button
+                    class="btn zzh-choose-image-btn-green btn-sm button-element"
+                  >
+                    提取
+                  </button>
+                </div>
+                <ul class="images-container-net clearfix">
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="../images/banner.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                  <li class="image-cell">
+                    <img src="/images/example-avatar.jpg" />
+                    <button class="zzh-choose-image-clean image-cell-remove">
+                      X
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn zzh-choose-image-btn-green btn-sm zzh-choose-image-add-ok"
+            >
+              确认
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

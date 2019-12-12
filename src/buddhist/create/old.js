@@ -3,7 +3,7 @@ import _ from 'underscore';
 import Toast from 'old/toast';
 import moment from 'moment';
 import ClipBoard from 'clipboard';
-import ChooseImage from '../../../old-com/choose-image/src';
+import ChooseImage from '../../component/choose-image';
 import config from './config';
 import Const from './const';
 import modelDispose from './dispose_model';

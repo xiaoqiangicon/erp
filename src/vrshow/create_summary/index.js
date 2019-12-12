@@ -12,12 +12,10 @@ import '../../../old-com/upload/src/css/index.css';
 import '../../../old-com/pagination/src/index.less';
 import '../../less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
-import '../../../old-com/choose-image/src/css/index.css';
+import '../../component/choose-image/css/index.css';
 
 import './index.css';
 
 import '../../component/upload_config';
-import '../../component/choose_image_config';
-import '../../component/choose_icon_config';
 
 import './old';

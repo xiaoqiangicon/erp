@@ -9,7 +9,7 @@ import 'toastr/build/toastr.css';
 
 import '../../../old-com/pagination/src/index.less';
 import '../../less/pagination.less';
-import '../../../old-com/promotion/less/index.less';
+import '../../component/promotion/less/index.less';
 
 import './index.css';
 

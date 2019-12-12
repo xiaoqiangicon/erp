@@ -2,7 +2,7 @@ import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
-import promotion from '../../../../old-com/promotion/src';
+import promotion from '../../../component/promotion';
 import confirm from 'util/confirm';
 import dialog from 'util/dialog';
 import func from '../function';

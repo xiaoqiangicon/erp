@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import ChooseImage from '../../../../../old-com/choose-image/src';
+import ChooseImage from '../../../../component/choose-image';
 import commonFunc from 'common/function';
 import indexData from '../../data';
 import commonTpl from '../../tpl/common';
@@ -8,7 +8,6 @@ import dialog from '../../../../util/dialog';
 import share from '../../share';
 import util from './util';
 import seeView from 'see-view';
-import 'component/choose_icon_config/index';
 var choose;
 seeView({
   events: {

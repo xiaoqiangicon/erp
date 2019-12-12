@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import { Spin, Drawer, notification } from 'antd';
-import ChooseImage from '../../../../../old-com/choose-image/src';
+import ChooseImage from '../../../../component/choose-image';
 import seeAjax from 'see-ajax';
 import QRCode from '../../../../../pro-com/src/libs-es5/qrcode';
 import { serverEnv } from '../../../../util/env';

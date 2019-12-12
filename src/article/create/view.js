@@ -4,7 +4,7 @@ import commonVars from 'common/variables';
 import data from './data';
 import tpl from './tpl';
 import Clipboard from 'clipboard';
-import ChooseImage from '../../../old-com/choose-image/src';
+import ChooseImage from '../../component/choose-image';
 import StoreImage from '../../../old-com/store-image/src';
 import zzhHandling from '../../../old-com/handling/src';
 import purifyATarget from 'util/purify_a_target';

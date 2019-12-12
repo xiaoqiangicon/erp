@@ -1,12 +1,11 @@
 import $ from 'jquery';
-import ChooseIcon from '../../../../../old-com/choose-icon/src';
+import ChooseIcon from '../../../../component/choose-icon';
 import commonFunc from 'common/function';
 import indexData from '../../data';
 import commonTpl from '../../tpl/common';
 import shortcutTpl from '../../tpl/shortcut';
 import shortcutViewUtil from './util';
 import seeView from 'see-view';
-import 'component/choose_icon_config/index';
 var chooseIconInstances = {};
 var defaultMatches = {
   1: {

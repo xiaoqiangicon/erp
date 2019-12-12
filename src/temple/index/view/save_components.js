@@ -7,7 +7,7 @@ import indexData from '../data';
 import Clipboard from 'clipboard';
 import saveReverse from '../save_reverse';
 import commonTpl from '../tpl/common';
-import promotion from '../../../../old-com/promotion/src';
+import promotion from '../../../component/promotion';
 import zzhHandling from '../../../../old-com/handling/src';
 import confirm from 'util/confirm';
 import share from '../share';

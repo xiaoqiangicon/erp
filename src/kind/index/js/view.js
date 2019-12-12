@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import seeView from 'see-view';
 import seeAjax from 'see-ajax';
-import '../../../../old-com/promotion/less/index.less';
-import promotion from '../../../../old-com/promotion/src';
+import '../../../component/promotion/less/index.less';
+import promotion from '../../../component/promotion';
 import dialog from 'util/dialog';
 import confirm from 'util/confirm';
 import * as env from '../../../util/env';

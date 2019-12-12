@@ -11,10 +11,10 @@ import '../../../old-com/upload/src/css/index.css';
 import '../../../old-com/pagination/src/index.less';
 import '../../less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
-import '../../../old-com/choose-image/src/css/index.css';
+import '../../component/choose-image/css/index.css';
 import 'bootstrap-select/dist/css/bootstrap-select.css';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
-import '../../../old-com/promotion/less/index.less';
+import '../../component/promotion/less/index.less';
 
 import './index.css';
 

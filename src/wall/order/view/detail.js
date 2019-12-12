@@ -3,13 +3,12 @@ import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
 import commonVars from 'common/variables';
-import ChooseImage from '../../../../old-com/choose-image/src';
+import ChooseImage from '../../../component/choose-image';
 import data from '../data';
 import tpl from '../tpl';
 import util from './util';
 import '../ajax';
 import seeView from 'see-view';
-import 'component/choose_image_config/index';
 var upload;
 seeView({
   events: {

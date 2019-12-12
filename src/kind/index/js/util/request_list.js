@@ -18,7 +18,7 @@ import { makeUploadFileOptions } from '../../../../configs/upload';
 import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
 import coverPicTpl from '../tpl/main/detail/cover_pic_item';
 
-import ChooseImage from '../../../../../old-com/choose-image/src';
+import ChooseImage from '../../../../component/choose-image';
 import zzhHandling from '../../../../../old-com/handling/src';
 import recordCheckBeforeSave from '../util/record_check_before_save';
 import checkBeforeSave from '../util/check_before_save';

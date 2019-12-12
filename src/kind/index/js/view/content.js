@@ -1,10 +1,9 @@
 const $ = require('jquery');
 const seeView = require('see-view').default;
 
-import '../../../../../old-com/choose-image/src/css/index.css';
-import '../../../../../old-com/choose-icon/src/css/index.css';
-import ChooseImage from '../../../../../old-com/choose-image/src';
-import 'component/choose_image_config';
+import '../../../../component/choose-image/css/index.css';
+import '../../../../component/choose-icon/css/index.css';
+import ChooseImage from '../../../../component/choose-image';
 
 import coverPicItemTpl from '../tpl/main/detail/cover_pic_item';
 

@@ -1,12 +1,11 @@
 import $ from 'jquery';
-import ChooseImage from '../../../../old-com/choose-image/src';
+import ChooseImage from '../../../component/choose-image';
 import indexData from '../data';
 import commonTpl from '../tpl/common';
 import introTpl from '../tpl/introduction';
 import 'swiper';
 import '../../../../pro-com/src/distpicker';
 import seeView from 'see-view';
-import 'component/choose_image_config/index';
 var chooseImageInstances = {};
 seeView({
   events: {

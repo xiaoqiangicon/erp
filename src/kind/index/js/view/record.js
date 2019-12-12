@@ -1,10 +1,8 @@
 const $ = require('jquery');
 const seeView = require('see-view').default;
 
-import '../../../../../old-com/choose-image/src/css/index.css';
-import '../../../../../old-com/choose-icon/src/css/index.css';
-import 'component/choose_image_config';
-import 'component/choose_icon_config';
+import '../../../../component/choose-image/css/index.css';
+import '../../../../component/choose-icon/css/index.css';
 
 seeView({
   events: {

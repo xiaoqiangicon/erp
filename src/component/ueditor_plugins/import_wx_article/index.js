@@ -1,5 +1,5 @@
-import '../../../../old-com/import-wx-article/src/css/index.css';
-import ImportWxArticle from '../../../../old-com/import-wx-article/src';
+import '../../../component/import-wx-article/css/index.css';
+import ImportWxArticle from '../../../component/import-wx-article';
 import './index.less';
 import './config';
 window.UE.registerUI('zzh-import-wx-article', (editor, uiName) => {

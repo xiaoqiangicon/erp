@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import commonFunc from 'common/function';
 import commonVars from 'common/variables';
-import ChooseImage from '../../../../old-com/choose-image/src';
+import ChooseImage from '../../../component/choose-image';
 import data from './data';
 import func from './func';
 import './ajax';
