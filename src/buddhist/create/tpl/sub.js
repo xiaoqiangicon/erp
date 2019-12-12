@@ -36,7 +36,7 @@ const tpl = `
       <a class="upload_box" style="height: 50px;margin: 0; position: relative;" href="javascript:;" >
         {@if conversionSubdivide === 1}
           <div style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 100; cursor: not-allowed;"></div>
-        {@/if}x
+        {@/if}
         <input name="file" data-cid="\${cid}" class="btn btn-sm btn-primary smallPicture" id="sizePic0" style="width:50px;height:50px;opacity: 0; padding: 0" \${conversionSubdivide === 1 ? 'disabled' : ''}/>
       </a>
     </td>
