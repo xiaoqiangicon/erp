@@ -8,7 +8,7 @@ import Clipboard from 'clipboard';
 import saveReverse from '../save_reverse';
 import commonTpl from '../tpl/common';
 import promotion from '../../../component/promotion';
-import zzhHandling from '../../../../old-com/handling/src';
+import * as zzhHandling from '../../../../../pro-com/src/handling';
 import confirm from 'util/confirm';
 import share from '../share';
 import 'jquery-confirm';
@@ -16,9 +16,6 @@ import seeView from 'see-view';
 import '../ajax';
 import 'clone';
 
-zzhHandling.setOnClickCloseCallback(function() {
-  commonFunc.alert('正在保存微站数据，请勿操作或关闭页面。');
-});
 var componentData;
 var currentSaveId;
 var currentSaveType;

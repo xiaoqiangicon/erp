@@ -1,7 +1,7 @@
 import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import toastr from 'toastr';
-import zzhHandling from '../../../../old-com/handling/src';
+import * as zzhHandling from '../../../../../pro-com/src/handling';
 import '../ajax';
 export default function() {
   var $components = $('[data-container="component-display"]');

@@ -6,15 +6,13 @@ import tpl from './tpl';
 import Clipboard from 'clipboard';
 import ChooseImage from '../../component/choose-image';
 import StoreImage from '../../../old-com/store-image/src';
-import zzhHandling from '../../../old-com/handling/src';
+import * as zzhHandling from '../../../../../pro-com/src/handling';
 import purifyATarget from 'util/purify_a_target';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
 import seeAjax from 'see-ajax';
 import seeView from 'see-view';
-zzhHandling.setOnClickCloseCallback(function() {
-  commonFunc.alert('正在保存文章数据，请勿操作或关闭页面。');
-});
+
 seeView({
   events: {
     'click #edit-category': 'onClickEditCategory',

@@ -6,7 +6,6 @@ import 'jquery-confirm/dist/jquery-confirm.min.css';
 import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
 import 'bootstrap-datetime-picker/css/bootstrap-datetimepicker.css';
-import '../../../old-com/handling/src/css/index.css';
 import './index.css';
 
 import 'component/ueditor_config';

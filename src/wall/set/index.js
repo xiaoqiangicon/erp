@@ -7,8 +7,6 @@ import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
 
-import '../../../old-com/handling/src/css/index.css';
-
 import './index.css';
 
 import '../../component/ueditor_config';
