@@ -6,7 +6,7 @@
 
 ```
 import 'bootstrap/dist/css/bootstrap.css';
-import 'old-com/pagination/src/index.less';
+import 'component/pagination/index.less';
 import 'old-com/upload/src/css/index.css';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
 

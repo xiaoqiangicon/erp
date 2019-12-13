@@ -1,0 +1,71 @@
+@color-1: #65cea7;
+
+@border-1: 1px solid @color-1;
+
+.zzh-pagination {
+  width: 100%;
+  text-align: center;
+
+  .cell-0-1 {
+    min-width: 34px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 5px;
+    display: inline-block;
+    margin-right: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #535351;
+    background-color: #fff;
+    border: @border-1;
+    text-decoration: none;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &.active,
+    &:hover {
+      background-color: @color-1;
+      color: #fff;
+    }
+
+    &.active {
+      cursor: default;
+    }
+
+    &.disabled {
+      cursor: default;
+      color: #535351;
+      background-color: #fff;
+    }
+  }
+
+  .input-0-1 {
+    border: @border-1;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 12px;
+    padding: 0 3px;
+    text-align: center;
+    background-color: #fff;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .text-0-1 {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 28px;
+    margin-right: 10px;
+  }
+}

@@ -3,7 +3,7 @@ import commonFunc from 'common/function';
 import Data from './data';
 import api from './api';
 import tpl from './tpl';
-import Pagination from '../../../old-com/pagination/src';
+import Pagination from '../../component/pagination';
 import commonVars from 'common/variables';
 import './ajax';
 import 'bootstrap-select';

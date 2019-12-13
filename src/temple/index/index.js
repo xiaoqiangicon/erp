@@ -10,7 +10,7 @@ import 'swiper/dist/css/swiper.css';
 import 'toastr/build/toastr.css';
 import '../../component/promotion/less/index.less';
 import '../../../old-com/upload/src/css/index.css';
-import '../../../old-com/pagination/src/index.less';
+import '../../component/pagination/index.less';
 import '../../less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
 import '../../component/choose-image/css/index.css';

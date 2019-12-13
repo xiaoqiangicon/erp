@@ -9,7 +9,7 @@ import 'video.js/dist/video-js.min.css';
 
 // choose-image
 import '../../../old-com/upload/src/css/index.css'; //
-import '../../../old-com/pagination/src/index.less'; // ../../../old-com/pagination/src css
+import '../../component/pagination/index.less'; // ../../component/pagination css
 import 'less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css'; // @fancyapps/fancybox css
 import '../../component/choose-image/css/index.css';

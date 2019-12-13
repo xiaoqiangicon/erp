@@ -1,6 +1,6 @@
 import seeAjax from 'see-ajax';
 import $ from 'jquery';
-import Pagination from '../../../old-com/pagination/src';
+import Pagination from '../../component/pagination';
 import commonFunc from 'common/function';
 import commonTpl from 'common/tpl';
 import data from './data';

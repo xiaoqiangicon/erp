@@ -9,7 +9,7 @@ import '@senntyou/shortcut.css';
 import '../../lib/material-icons.css';
 import '../../lib/bootstrap-material-datetimepicker.css';
 import 'toastr/build/toastr.css';
-import '../../../old-com/pagination/src/index.less';
+import '../../component/pagination/index.less';
 import '../../less/pagination.less';
 
 import '../../css/base.css';

@@ -1,6 +1,6 @@
 import 'component/nav';
 import '@senntyou/shortcut.css';
-import '../../../old-com/pagination/src/index.less';
+import '../../component/pagination/index.less';
 import '../../component/promotion/less/index.less';
 import 'tippy.js/dist/tippy.css';
 import 'toastr/build/toastr.css';

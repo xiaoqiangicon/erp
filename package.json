@@ -59,7 +59,7 @@
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0"
   },
-  "lint-staged": {
+  "//lint-staged": {
     "**/*.js": [
       "eslint --fix",
       "prettier --write",
@@ -82,6 +82,12 @@
       "git add"
     ],
     "**/*.{html,md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,vue,css,less,scss,sass,html,md,json}": [
       "prettier --write",
       "git add"
     ]

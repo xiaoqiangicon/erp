@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import Pagination from '../../../old-com/pagination/src';
+import Pagination from '../../component/pagination';
 import commonTpl from '../../common/tpl';
 import { verifyRowsTpl, manRowsTpl } from './tpl';
 import share from './share';

@@ -7,7 +7,7 @@ import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
 
-import '../../../old-com/pagination/src/index.less';
+import '../../component/pagination/index.less';
 import '../../less/pagination.less';
 
 import './index.css';

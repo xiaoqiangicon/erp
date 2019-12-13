@@ -3,7 +3,7 @@ import seeAjax from 'see-ajax';
 import commonFunc from 'common/function';
 import Data from './data';
 import tpl from './tpl';
-import Pagination from '../../../../old-com/pagination/src';
+import Pagination from '../../../component/pagination';
 import commonVars from 'common/variables';
 import api from './api';
 import zzhUpload from '../../../../old-com/upload/src';

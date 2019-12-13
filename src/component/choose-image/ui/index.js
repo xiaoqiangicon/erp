@@ -1,3 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
-import "../../../old-com/pagination/src/index.less";
-import "../css/index.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import '../../component/pagination/index.less';
+import '../css/index.css';
