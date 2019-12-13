@@ -6,7 +6,7 @@ import commonVars from 'common/variables';
 import data from '../data';
 import tpl from '../tpl';
 import func from '../function';
-import StoreImage from '../../../../old-com/store-image/src';
+import StoreImage from '../../../com-deprecated/store-image';
 import * as zzhHandling from '../../../../../pro-com/src/handling';
 import '../ajax';
 import seeView from 'see-view';

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import seeView from 'see-view';
-import zzhUtil from '../../../../old-com/util/src';
+import zzhUtil from '../../../com-deprecated/util';
 import checkStartEndDate from 'util/check_start_end_date';
 import dialog from 'util/dialog';
 import data from './data';

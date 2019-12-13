@@ -7,7 +7,7 @@
 ```
 import 'bootstrap/dist/css/bootstrap.css';
 import 'com-deprecated/pagination/index.less';
-import 'old-com/upload/src/css/index.css';
+import 'com-deprecated/upload/css/index.css';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
 
 import ChooseImage from 'com-deprecated/choose-image';

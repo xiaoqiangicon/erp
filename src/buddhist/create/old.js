@@ -8,7 +8,7 @@ import config from './config';
 import Const from './const';
 import modelDispose from './dispose_model';
 import myTool from './util';
-import StoreImage from '../../../old-com/store-image/src';
+import StoreImage from '../../com-deprecated/store-image';
 import purifyATarget from 'util/purify_a_target';
 import doRequest from 'old/utils';
 import 'old/backbone';

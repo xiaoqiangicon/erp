@@ -5,7 +5,7 @@ import data from './data';
 import tpl from './tpl';
 import Clipboard from 'clipboard';
 import ChooseImage from '../../com-deprecated/choose-image';
-import StoreImage from '../../../old-com/store-image/src';
+import StoreImage from '../../com-deprecated/store-image';
 import * as zzhHandling from '../../../../pro-com/src/handling';
 import purifyATarget from 'util/purify_a_target';
 import '../../../pro-com/src/libs-es5/jquery-qrcode';

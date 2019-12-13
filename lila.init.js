@@ -18,7 +18,6 @@ const rename = {
 const defaultCssModulesExcludeRules = [
   /node_modules/,
   /pro-com/,
-  /old-com/,
   /src\/lib/,
   /src\\lib/,
 ];

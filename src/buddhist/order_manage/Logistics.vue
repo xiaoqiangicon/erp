@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import upload from '../../../old-com/upload/src';
+import upload from '../../com-deprecated/upload';
 import { Notification } from 'element-ui';
 
 export default {

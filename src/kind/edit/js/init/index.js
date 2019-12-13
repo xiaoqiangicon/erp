@@ -1,4 +1,4 @@
-import zzhUtil from '../../../../../old-com/util/src';
+import zzhUtil from '../../../../com-deprecated/util';
 import seeAjax from 'see-ajax';
 import '../ajax';
 import start from './start';

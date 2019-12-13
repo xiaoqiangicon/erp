@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import seeAjax from 'see-ajax';
-import util from '../../../../old-com/util/src';
+import util from '../../../com-deprecated/util';
 
 const req = {
   id: 'commodityId',

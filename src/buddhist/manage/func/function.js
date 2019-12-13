@@ -6,7 +6,7 @@ import tpl from './tpl';
 import Pagination from '../../../com-deprecated/pagination';
 import commonVars from 'common/variables';
 import api from './api';
-import zzhUpload from '../../../../old-com/upload/src';
+import zzhUpload from '../../../com-deprecated/upload';
 import toastr from 'toastr';
 import './upload_config.js';
 import './ajax';

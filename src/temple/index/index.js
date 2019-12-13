@@ -9,7 +9,7 @@ import '../../lib/bootstrap-material-datetimepicker.css';
 import 'swiper/dist/css/swiper.css';
 import 'toastr/build/toastr.css';
 import '../../com-deprecated/promotion/less/index.less';
-import '../../../old-com/upload/src/css/index.css';
+import '../../com-deprecated/upload/css/index.css';
 import '../../com-deprecated/pagination/index.less';
 import '../../less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';

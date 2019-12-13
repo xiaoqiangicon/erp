@@ -231,7 +231,7 @@
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
 import { parse } from 'path';
-import zzhUtil from '../../../old-com/util/src';
+import zzhUtil from '../../com-deprecated/util';
 import { getDate, urlParams } from '../../../pro-com/src/utils';
 
 import Detail from './components/Detail';

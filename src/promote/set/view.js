@@ -3,7 +3,7 @@ import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import * as handling from '../../../pro-com/src/handling';
 import promotion from '../../com-deprecated/promotion';
-import StoreImage from '../../../old-com/store-image/src';
+import StoreImage from '../../com-deprecated/store-image';
 import share from './share';
 // import toastr from 'toastr';
 import dialog from '../../util/dialog';

@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'video.js/dist/video-js.min.css';
 
 // choose-image
-import '../../../old-com/upload/src/css/index.css'; //
+import '../../com-deprecated/upload/css/index.css'; //
 import '../../com-deprecated/pagination/index.less'; //
 import 'less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css'; // @fancyapps/fancybox css
@@ -21,7 +21,7 @@ import '../../../pro-com/src/ueditor/ueditor.all';
 import '../../component/ueditor_plugins/xiu_mi';
 
 // upload
-import '../../../old-com/upload/src/css/index.css';
+import '../../com-deprecated/upload/css/index.css';
 import '../../component/upload_config';
 
 import './index.less';

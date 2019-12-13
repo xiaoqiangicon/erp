@@ -1,5 +1,5 @@
 import seeAjax from 'see-ajax';
-import zzhUtil from '../../../../../old-com/util/src';
+import zzhUtil from '../../../../com-deprecated/util';
 // import preHandleAdd from './pre_handle_add';
 const requestKeys = {
   title: 'name',
