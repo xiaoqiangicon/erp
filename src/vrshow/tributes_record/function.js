@@ -3,7 +3,7 @@ import $ from 'jquery';
 import commonFunc from 'common/function';
 import tpl from './tpl';
 import data from './data';
-import Pagination from '../../component/pagination';
+import Pagination from '../../com-deprecated/pagination';
 import './ajax';
 var func = {};
 func.init = function() {

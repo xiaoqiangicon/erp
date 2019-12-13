@@ -3,7 +3,7 @@ import $ from 'jquery';
 import toastr from 'toastr';
 import commonFunc from 'common/function';
 import commonVars from 'common/variables';
-import ChooseImage from '../../../component/choose-image';
+import ChooseImage from '../../../com-deprecated/choose-image';
 import data from '../data';
 import tpl from '../tpl';
 import util from './util';

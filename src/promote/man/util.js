@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import Pagination from '../../component/pagination';
+import Pagination from '../../com-deprecated/pagination';
 import commonTpl from '../../common/tpl';
 import { rowsTpl } from './tpl';
 

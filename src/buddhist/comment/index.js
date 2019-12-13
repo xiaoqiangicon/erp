@@ -9,10 +9,10 @@ import 'video.js/dist/video-js.min.css';
 
 // choose-image
 import '../../../old-com/upload/src/css/index.css'; //
-import '../../component/pagination/index.less'; // ../../component/pagination css
+import '../../com-deprecated/pagination/index.less'; // ../../com-deprecated/pagination css
 import 'less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css'; // @fancyapps/fancybox css
-import '../../component/choose-image/css/index.css';
+import '../../com-deprecated/choose-image/css/index.css';
 
 // ueditor
 import '../../component/ueditor_config';

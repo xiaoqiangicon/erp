@@ -1,0 +1,201 @@
+.zzh-choose-image {
+  overflow: auto;
+}
+.zzh-choose-image .modal-dialog,
+.zzh-choose-image-add .modal-dialog {
+  z-index: 1041;
+}
+.zzh-choose-image .modal-dialog {
+  width: 900px;
+}
+.zzh-choose-image .modal-footer {
+  text-align: center;
+}
+.zzh-choose-image .modal-body {
+  padding-left: 0;
+  padding-right: 0;
+  height: 450px;
+}
+.zzh-choose-image.in-delete-mode .modal-body {
+  height: 540px;
+}
+.zzh-choose-image .left-part {
+  position: relative;
+  float: left;
+  width: 120px;
+  height: 100%;
+  border-right: 1px solid #ddd;
+}
+.zzh-choose-image .left-part-line {
+  width: 100%;
+  text-align: center;
+}
+.zzh-choose-image .vertical-tab {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: #333;
+  text-align: center;
+  cursor: pointer;
+}
+.zzh-choose-image .vertical-tab.active {
+  background: #e4e4e4;
+}
+.zzh-choose-image .right-part {
+  float: right;
+  width: 770px;
+  height: 100%;
+  padding: 0 20px;
+}
+.zzh-choose-image .pagination-container {
+  width: 100%;
+  height: 370px;
+  overflow: auto;
+}
+.zzh-choose-image.in-delete-mode .pagination-container {
+  height: 460px;
+}
+.zzh-choose-image .image-cell {
+  position: relative;
+  float: left;
+  width: 110px;
+  height: 110px;
+  margin: 5px;
+  padding: 5px;
+}
+.zzh-choose-image .image-cell-inner {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 100px;
+  overflow: hidden;
+}
+.zzh-choose-image .image-cell img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.zzh-choose-image .selected-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://pic.zizaihome.com/3aec6dd0-3229-11e8-a117-00163e0c001e.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+.zzh-choose-image .image-cell.active .selected-mark {
+  display: block;
+}
+.zzh-choose-image .image-cell .delete-active-mark {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  border: 2px solid #7ed82e;
+  border-radius: 4px;
+  display: none;
+}
+.zzh-choose-image .image-cell .delete-cell {
+  position: absolute;
+  left: 5px;
+  width: 100px;
+  bottom: 5px;
+  height: 24px;
+  line-height: 24px;
+  background-color: rgba(244, 244, 244, 0.8);
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  display: none;
+}
+.zzh-choose-image .image-cell .see-cell {
+  position: absolute;
+  left: 5px;
+  width: 100px;
+  bottom: 29px;
+  height: 24px;
+  line-height: 24px;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  display: none;
+}
+.zzh-choose-image.in-delete-mode .image-cell {
+  height: 134px;
+}
+.zzh-choose-image.in-delete-mode .image-cell.delete-active .delete-active-mark,
+.zzh-choose-image.in-delete-mode .image-cell .delete-cell,
+.zzh-choose-image.in-delete-mode .image-cell .see-cell {
+  display: block;
+}
+.zzh-choose-image.in-delete-mode .image-cell img {
+  width: 100%;
+  height: 100%;
+}
+.zzh-choose-image .pagination-content {
+  margin: 20px 0 0 0;
+}
+
+.zzh-choose-image .container-placeholder {
+  width: 100%;
+  height: 370px;
+  font-size: 32px;
+  line-height: 370px;
+  text-align: center;
+}
+.zzh-choose-image.in-delete-mode .container-placeholder {
+  height: 460px;
+}
+.zzh-choose-image .container-placeholder > img {
+  width: 50px;
+  height: 50px;
+}
+.zzh-choose-image-add .image-cell-remove {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 30px;
+  line-height: 30px;
+  display: none;
+  text-align: center;
+}
+
+.zzh-choose-image-add .image-cell:hover .image-cell-remove {
+  display: block;
+}
+.zzh-choose-image-add .upload-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(https://pic.zizaihome.com/2c20aa50-3229-11e8-a117-00163e0c001e.png)
+    no-repeat;
+  background-size: contain;
+}
+.zzh-choose-image-add .file-upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+.zzh-choose-image-add .progress {
+  margin: 30px 0;
+}

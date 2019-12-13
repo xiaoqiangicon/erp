@@ -3,7 +3,7 @@ import Toast from 'old/toast';
 import data from './data';
 import tpl from './tpl';
 import func from './function';
-import Promotion from '../../component/promotion';
+import Promotion from '../../com-deprecated/promotion';
 import './ajax';
 import 'jquery-confirm';
 import seeView from 'see-view';

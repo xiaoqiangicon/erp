@@ -8,7 +8,7 @@ import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
 
 import 'bootstrap-select/dist/css/bootstrap-select.css';
-import '../../component/pagination/index.less';
+import '../../com-deprecated/pagination/index.less';
 import '../../less/pagination.less';
 
 import '../../css/base.css';

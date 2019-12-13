@@ -4,7 +4,7 @@ import Toast from 'old/toast';
 import data from './data';
 import tpl from './tpl';
 import func from './function';
-import ChooseImage from '../../component/choose-image';
+import ChooseImage from '../../com-deprecated/choose-image';
 import './ajax';
 import 'jquery-confirm';
 import seeView from 'see-view';

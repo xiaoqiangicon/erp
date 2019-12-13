@@ -1,7 +1,7 @@
 import '../../component/nav';
 import '@senntyou/shortcut.css';
 import 'toastr/build/toastr.css';
-import '../../component/promotion/less/index.less';
+import '../../com-deprecated/promotion/less/index.less';
 import '../../less/common.less';
 import '../../less/bootstrap.less';
 import './index.less';

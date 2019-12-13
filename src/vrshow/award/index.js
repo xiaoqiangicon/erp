@@ -11,10 +11,10 @@ import './index.less';
 
 // choose-image
 import '../../../old-com/upload/src/css/index.css';
-import '../../component/pagination/index.less';
+import '../../com-deprecated/pagination/index.less';
 import 'less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css'; // @fancyapps/fancybox css
-import '../../component/choose-image/css/index.css';
+import '../../com-deprecated/choose-image/css/index.css';
 
 import './ajax';
 import './init';

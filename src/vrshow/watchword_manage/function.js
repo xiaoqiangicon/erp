@@ -3,7 +3,7 @@ import $ from 'jquery';
 import commonFunc from 'common/function';
 import data from './data';
 import tpl from './tpl';
-import Pagination from '../../component/pagination';
+import Pagination from '../../com-deprecated/pagination';
 import './ajax';
 import 'bootstrap-select';
 var func = {};

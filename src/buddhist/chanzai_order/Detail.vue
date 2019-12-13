@@ -221,7 +221,7 @@ import VideoPlayer from './VideoPlayer';
 import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
 import QRCode from '../../../pro-com/src/libs-es5/qrcode';
-import ChooseImage from '../../component/choose-image';
+import ChooseImage from '../../com-deprecated/choose-image';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
 
 let qrCodeImg;

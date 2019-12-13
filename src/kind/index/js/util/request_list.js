@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import '../../../../component/pagination/index.less';
+import '../../../../com-deprecated/pagination/index.less';
 import 'less/pagination.less';
-import Pagination from '../../../../component/pagination';
+import Pagination from '../../../../com-deprecated/pagination';
 import commonTpl from 'common/tpl';
 import data from '../data';
 import scrollTop from './scroll_top';
@@ -18,7 +18,7 @@ import { makeUploadFileOptions } from '../../../../configs/upload';
 import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
 import coverPicTpl from '../tpl/main/detail/cover_pic_item';
 
-import ChooseImage from '../../../../component/choose-image';
+import ChooseImage from '../../../../com-deprecated/choose-image';
 import * as zzhHandling from '../../../../../pro-com/src/handling';
 import recordCheckBeforeSave from '../util/record_check_before_save';
 import checkBeforeSave from '../util/check_before_save';

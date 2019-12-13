@@ -1,0 +1,27 @@
+.zzh-choose-icon-mg-t-30 {
+  margin-top: 30px;
+}
+
+.zzh-choose-icon-btn-green,
+.zzh-choose-icon-btn-green:hover,
+.zzh-choose-icon-btn-green:focus,
+.zzh-choose-icon-btn-green.focus,
+.zzh-choose-icon-btn-green:active,
+.zzh-choose-icon-btn-green.active {
+  color: #fff;
+  background-color: #6fba2c;
+  border-color: #7ed82e;
+}
+
+.zzh-choose-icon-ok {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.zzh-choose-icon-clean {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none;
+}

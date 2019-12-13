@@ -1,0 +1,81 @@
+.zzh-promotion {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+
+  .inner-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 420px;
+    margin-left: -300px;
+    margin-top: -210px;
+    border-radius: 6px;
+    background-color: #fff;
+    padding-top: 50px;
+
+    > .close-1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://pic.zizaihome.com/b211456a-6b00-11e8-b0a0-00163e0c001e.png');
+      background-size: 15px 15px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      z-index: 2;
+    }
+  }
+
+  &.zzh-promotion-hide-desc .inner-1 {
+    height: 374px;
+    margin-top: -187px;
+  }
+
+  .top-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #c1c1c1;
+    z-index: 1;
+  }
+
+  .tab-1 {
+    height: 100%;
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    cursor: pointer;
+
+    .text-1 {
+      display: inline-block;
+      padding: 0 8px;
+    }
+
+    &.active {
+      font-weight: bold;
+      color: #6fba2c;
+      line-height: 47px;
+
+      .text-1 {
+        border-bottom: 3px solid #6fba2c;
+      }
+    }
+  }
+
+  &.zzh-promotion-three-columns {
+    .tab-1 {
+      width: 33.33%;
+    }
+  }
+}

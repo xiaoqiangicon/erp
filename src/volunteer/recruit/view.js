@@ -5,7 +5,7 @@ import data from './data';
 import tpl from './tpl';
 import func from './function';
 import Clipboard from 'clipboard';
-import Promotion from '../../component/promotion';
+import Promotion from '../../com-deprecated/promotion';
 import './ajax';
 import seeView from 'see-view';
 seeView({

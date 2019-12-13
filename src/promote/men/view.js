@@ -2,7 +2,7 @@ import $ from 'jquery';
 import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import toastr from 'toastr';
-import promotion from '../../component/promotion';
+import promotion from '../../com-deprecated/promotion';
 import {
   manFilter,
   requestManList,

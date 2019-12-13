@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import '../../../../component/pagination/index.less';
+import '../../../../com-deprecated/pagination/index.less';
 import 'less/pagination.less';
-import Pagination from '../../../../component/pagination';
+import Pagination from '../../../../com-deprecated/pagination';
 import commonTpl from 'common/tpl';
 import data from '../data';
 import scrollTop from './scroll_top';

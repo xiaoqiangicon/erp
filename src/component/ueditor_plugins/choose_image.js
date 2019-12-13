@@ -1,10 +1,10 @@
 import 'component/upload_config';
 import '../../../old-com/upload/src/css/index.css';
-import '../../component/pagination/index.less';
+import '../../com-deprecated/pagination/index.less';
 import 'less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css';
-import '../../component/choose-image/css/index.css';
-import ChooseImage from '../../component/choose-image';
+import '../../com-deprecated/choose-image/css/index.css';
+import ChooseImage from '../../com-deprecated/choose-image';
 window.UE.registerUI('zzh-choose-image', (editor, uiName) => {
   const btn = new UE.ui.Button({
     name: uiName,

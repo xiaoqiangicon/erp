@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import ChooseImage from '../../../../component/choose-image';
+import ChooseImage from '../../../../com-deprecated/choose-image';
 import commonFunc from 'common/function';
 import indexData from '../../data';
 import commonTpl from '../../tpl/common';

@@ -2,7 +2,7 @@ import seeAjax from 'see-ajax';
 import $ from 'jquery';
 import _ from 'underscore';
 import commonTpl from 'common/tpl';
-import Pagination from 'component/pagination';
+import Pagination from 'com-deprecated/pagination';
 import tpl from './tpl';
 import data from './data';
 import { urlParams } from '../../../pro-com/src/utils';

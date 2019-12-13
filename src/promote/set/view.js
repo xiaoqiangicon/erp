@@ -2,7 +2,7 @@ import $ from 'jquery';
 import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import * as handling from '../../../pro-com/src/handling';
-import promotion from '../../component/promotion';
+import promotion from '../../com-deprecated/promotion';
 import StoreImage from '../../../old-com/store-image/src';
 import share from './share';
 // import toastr from 'toastr';

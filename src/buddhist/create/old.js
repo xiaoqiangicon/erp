@@ -3,7 +3,7 @@ import _ from 'underscore';
 import Toast from 'old/toast';
 import moment from 'moment';
 import ClipBoard from 'clipboard';
-import ChooseImage from '../../component/choose-image';
+import ChooseImage from '../../com-deprecated/choose-image';
 import config from './config';
 import Const from './const';
 import modelDispose from './dispose_model';
@@ -3660,7 +3660,8 @@ var View = Backbone.View.extend({
       for (var i = 0; i < inputLength; i++) {
         var postScriptInner = {};
         editType == 1 &&
-          additionID[i] != null && additionID[i] != 0 &&
+          additionID[i] != null &&
+          additionID[i] != 0 &&
           (postScriptInner['id'] = additionID[i]);
         postScriptInner['inputType'] = inputType[i];
         postScriptInner['prompt_text'] = prompt_text[i];
@@ -4488,7 +4489,7 @@ var View = Backbone.View.extend({
       if (
         inputSizesOrigin.length == 0 ||
         (inputSizesOrigin.length == 1 && inputSizesOrigin[0]['cid'] == '') ||
-          inputSizesOrigin[0]['name'] == ''
+        inputSizesOrigin[0]['name'] == ''
       ) {
         self.sizes = new SizeCollection({});
         self.sizesView = new SizesView({
@@ -4758,7 +4759,7 @@ var View = Backbone.View.extend({
       if (
         inputResPos.length == 0 ||
         (inputResPos.length == 1 && inputResPos[0]['cid'] == '') ||
-          inputResPos[0]['name'] == ''
+        inputResPos[0]['name'] == ''
       ) {
         self.additionItems = new AdditionCollection({});
         self.additionView = new AdditionsView({
