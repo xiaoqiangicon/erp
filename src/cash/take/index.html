@@ -410,6 +410,7 @@
                               <div class="detail-cell">数量</div>
                               <div class="detail-cell">金额</div>
                               <div class="detail-cell">增值服务费</div>
+                              <div class="detail-cell">支付渠道手续费</div>
                               <div class="detail-cell" style="display: none">妙严手续费补助</div>
                               <div class="detail-cell" style="display: none">备注</div>
                           </div>
@@ -433,6 +434,7 @@
                               <div class="detail-cell">${detailItem.count}</div>
                               <div class="detail-cell">¥${detailItem.money}</div>
                               <div class="detail-cell">{@if !!detailItem.fee}-¥${detailItem.fee}{@else}-{@/if}</div>
+                              <div class="detail-cell">{@if !!detailItem.charge}-¥${detailItem.charge}{@else}-{@/if}</div>
                               <div class="detail-cell" style="display: none">{@if !!detailItem.assistance}+¥${detailItem.assistance}{@else}-{@/if}</div>
                               <div class="detail-cell" style="display: none">${detailItem.extra}</div>
                           </div>
@@ -465,8 +467,7 @@
                           <button class="clean-button glyphicon glyphicon-question-sign blue" data-tip="1" title="奖励金是结算给推广员的金额"></button>
                       </p>
                       {@/if}
-                      <!-- 待删除 -->
-                      <!-- {@if totalCharge}
+                      {@if totalCharge}
                       <p>
                           <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
                           支付渠道手续费：${totalCharge} 元
@@ -478,7 +479,7 @@
                           <span class="badge-1 badge-1-green pd-l-20 pd-r-20 mg-r-20">增加</span>
                           <span style="color: #00CC66;">自在家补贴支付渠道手续费：${totalAssistance} 元</span>
                       </p>
-                      {@/if} -->
+                      {@/if}
                       {@if reward}
                       <p>
                           <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
