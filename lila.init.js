@@ -6,6 +6,7 @@ import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack';
 import { forReactVue as reactVueWebpackConfigPlugin } from 'lila-webpack-config';
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
+import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import qiniuTask from './qiniu-task';
 
 const { readFileSync } = fse;
@@ -251,6 +252,14 @@ export default lila => {
       plugins: [
         new MomentLocalesPlugin({
           localesToKeep: ['es-us', 'zh-cn'],
+        }),
+
+        new ScriptExtHtmlWebpackPlugin({
+          custom: {
+            test: /\.js$/,
+            attribute: 'crossorigin',
+            value: 'anonymous',
+          },
         }),
       ],
       rebuildWebpackConfig({ webpackConfig }) {
