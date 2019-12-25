@@ -1,8 +1,16 @@
 import 'component/nav';
 import '@senntyou/shortcut.css';
 import 'less/common.less';
-import './index.less';
 import $ from 'jquery';
+import Vue from 'vue';
+import App from './App.vue';
+import api from './api';
+import { Dialog } from 'element-ui';
+
+Vue.config.devtools = true;
+Vue.use(Dialog);
+Vue.prototype.$api = api;
+
 $('#temple-name').text(window.localStorage.templeName);
 $.getJSON('/zzhadmin/getTemple/', {}, res => {
   $.getJSON(
@@ -17,4 +25,9 @@ $.getJSON('/zzhadmin/getTemple/', {}, res => {
       $('[data-wall-order-count]').text(res.buddhaWallCount);
     }
   );
+});
+
+new Vue({
+  el: '#app',
+  render: h => h(App),
 });
