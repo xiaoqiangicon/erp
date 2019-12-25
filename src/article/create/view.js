@@ -300,6 +300,7 @@ seeView({
       publishTime = $('#input-publish-time').val(),
       showTitle = parseInt($('input[name="show-title"]:checked').val()),
       showSupport = parseInt($('input[name="show-support"]:checked').val());
+    var showAd = parseInt($('input[name="show-adv"]:checked').val());
     if (!title) {
       commonFunc.alert('标题不能为空');
       return !1;
@@ -348,6 +349,7 @@ seeView({
       publishTime: publishTime,
       showTitle: showTitle,
       showSupport: showSupport,
+      isShowAd: showAd,
     };
     return !0;
   },
