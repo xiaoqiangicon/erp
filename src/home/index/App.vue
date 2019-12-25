@@ -32,7 +32,8 @@ export default {
     };
   },
   created() {
-    if (window.localStorage.id) this.templeInfo.name = window.localStorage.id;
+    if (window.localStorage.templeId)
+      this.templeInfo.id = window.localStorage.templeId;
     if (window.localStorage.templeName)
       this.templeInfo.name = window.localStorage.templeName;
     this.getAdInfo();

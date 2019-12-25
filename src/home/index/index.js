@@ -1,7 +1,6 @@
 import 'component/nav';
 import '@senntyou/shortcut.css';
 import 'less/common.less';
-import $ from 'jquery';
 import Vue from 'vue';
 import App from './App.vue';
 import api from './api';
@@ -11,21 +10,19 @@ Vue.config.devtools = true;
 Vue.use(Dialog);
 Vue.prototype.$api = api;
 
-$('#temple-name').text(window.localStorage.templeName);
-$.getJSON('/zzhadmin/getTemple/', {}, res => {
-  $.getJSON(
-    '/zzhadmin/orderNumGet/',
-    {
-      templeId: res.temple.id,
-    },
-    res => {
-      window.localStorage.orderNumber = res.commodityCount;
-      $('[data-buddhist-order-count]').text(res.commodityCount);
-      window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
-      $('[data-wall-order-count]').text(res.buddhaWallCount);
-    }
-  );
-});
+// 获取左侧菜单消息提示数量
+api
+  .getMenuTipNum({
+    templeId: window.localStorage.templeId,
+  })
+  .then(res => {
+    document.querySelector('[data-buddhist-order-count]').innerText =
+      res.commodityCount;
+    document.querySelector('[data-wall-order-count]').innerText =
+      res.buddhaWallCount;
+    window.localStorage.orderNumber = res.commodityCount;
+    window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
+  });
 
 new Vue({
   el: '#app',

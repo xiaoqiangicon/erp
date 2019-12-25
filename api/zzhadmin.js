@@ -27,6 +27,6 @@ export const getTemple = {
 };
 
 export const orderNumGet = {
-  buddhaWallCount: 163,
-  commodityCount: 508,
+  buddhaWallCount: 222,
+  commodityCount: 333,
 };
