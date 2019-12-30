@@ -79,7 +79,7 @@
         {
           "id": "order-credits",
           "name": "积分兑换",
-          "link": "zzhadmin/creditsIndex/",
+          "link": "/zzhadmin/creditsIndex/",
           "isHtml": true,
           "controlMark": "pw_ceremony"
         }

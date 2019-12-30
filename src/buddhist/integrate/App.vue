@@ -5,20 +5,33 @@
         <p class="level">会员等级：{{ level }}</p>
       </div>
       <div class="gray-block"></div>
-      <div class="task-list">
+      <div :class="{ 'task-list': list.length }">
         <div class="task-title">任务积分</div>
-        <div
-          :class="{ 'single-task': true, 'single-task-odd': index % 2 == 0 }"
-          v-for="(item, index) in list"
-          :key="index"
-        >
-          <p class="mission">{{ item.mission }}</p>
-          <div class="sign plus" v-if="item.coin > 0">增加</div>
-          <div class="sign minus" v-else>减少</div>
-          <span class="coin">{{ Math.abs(item.coin) }}</span>
+        <div v-if="list.length">
+          <div
+            :class="{ 'single-task': true, 'single-task-odd': index % 2 == 0 }"
+            v-for="(item, index) in list"
+            :key="index"
+          >
+            <p class="mission">{{ item.mission }}</p>
+            <div class="sign plus" v-if="item.coin > 0">增加</div>
+            <div class="sign minus" v-else>减少</div>
+            <span class="coin">{{ Math.abs(item.coin) }}</span>
+          </div>
+        </div>
+        <div class="empty-list" v-else>
+          <img
+            src="https://pic.zizaihome.com/7a93169c-2786-11ea-af6b-00163e060b31.png"
+            class="empty-img"
+            alt=""
+          />
+          <p class="empty-tips">还没有获得任务积分</p>
         </div>
       </div>
-      <div style="text-align: center; width: 100%; margin-top: 40px;">
+      <div
+        v-if="list.length"
+        style="text-align: center; width: 100%; margin-top: 40px;"
+      >
         <el-pagination
           small
           @current-change="handleCurrentChange"
@@ -29,8 +42,8 @@
         ></el-pagination>
       </div>
     </div>
-    <div class="iframe-box">
-      <iframe :src="url"></iframe>
+    <div class="iframe-box" ref="iframeBox" id="iframe-box">
+      <!-- <iframe id="frame-content" ref="frameContent" :src="url" scrolling="auto" frameborder="0"></iframe> -->
     </div>
   </div>
 </template>
@@ -38,7 +51,9 @@
 <script>
 import seeAjax from 'see-ajax';
 import { Notification } from 'element-ui';
+import { setTimeout } from 'timers';
 
+let timer = null;
 export default {
   data() {
     return {
@@ -47,12 +62,32 @@ export default {
       url: '',
       pageSize: 10,
       currentPage: 1,
-      totalCount: 100,
+      totalCount: 10,
     };
   },
   created() {
     this.fetchList();
     this.fetchInfo();
+  },
+  mounted() {
+    let ifr = document.getElementById('frame-content');
+    let { frameContent } = this.$refs;
+    frameContent.onload = function() {
+      //   let iDoc = ifr.contentDocument || ifr.document || ifr.contentWindow;
+      //   let cHeight = Math.max(iDoc.body.clientHeight, iDoc.documentElement.clientHeight);
+      //   let sHeight = Math.max(iDoc.body.scrollHeight, iDoc.documentElement.scrollHeight);
+      //   let height = Math.max(cHeight, sHeight);
+      //   ifr.style.height = 1200 + 'px';
+      //   console.log(height, iDoc.body.scrollHeight);
+      // ifrBox.style.overflow = 'auto';
+      // setTimeout(() => {
+      //   frameContent.style.display = 'block';
+      // }, 2000)
+    };
+    // console.log(ifr);
+  },
+  beforeDestroy() {
+    timer = null;
   },
   methods: {
     fetchList() {
@@ -76,6 +111,21 @@ export default {
       seeAjax('creditsInfo', {}, res => {
         this.url = res.data.url;
         this.level = res.data.level;
+
+        // 插入iframe
+        let ifr = document.createElement('iframe');
+        const { iframeBox } = this.$refs;
+        iframeBox.appendChild(ifr);
+        ifr.className = 'iframe-item';
+        ifr.style.width = '100%';
+        ifr.style.height = '100%';
+        ifr.style.border = 'none';
+        ifr.src = res.data.url;
+        ifr.onload = function() {
+          timer = setTimeout(() => {
+            ifr.style.display = 'block';
+          }, 1000);
+        };
       });
     },
     handleCurrentChange() {
@@ -180,11 +230,24 @@ p {
   text-align: right;
 }
 
+.empty-list {
+  padding-top: 70px;
+  text-align: center;
+}
+.empty-tips {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 18px;
+}
+
 .iframe-box {
   width: 375px;
   height: 667px;
   box-shadow: 4px 4px 10px #999;
-  iframe {
+  overflow: auto;
+  .iframe-item {
     width: 100%;
     height: 100%;
     border: none;
