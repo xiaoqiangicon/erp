@@ -1,10 +1,76 @@
 <template>
   <div class="content-container" id="content-container">
     <div class="content">
-      <div class="greeting">
-        <div class="text-1 text-1-1">欢迎您</div>
-        <div class="text-1 text-1-2">{{ templeInfo.name }}的管理者</div>
-      </div>
+      <header class="recommend-box">
+        <div class="r-left">
+          <div class="r-item">
+            <div
+              class="r-item-con"
+              :style="{ cursor: recommendAd.p1.link ? 'pointer' : 'auto' }"
+            >
+              <img
+                :src="recommendAd.p1.picUrl"
+                :alt="recommendAd.p1.name"
+                @click="jumpPage(recommendAd.p1)"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="r-right">
+          <div class="r-item">
+            <div
+              class="r-item-con"
+              :style="{ cursor: recommendAd.p2.link ? 'pointer' : 'auto' }"
+            >
+              <img
+                :src="recommendAd.p2.picUrl"
+                :alt="recommendAd.p2.name"
+                @click="jumpPage(recommendAd.p2)"
+              />
+            </div>
+          </div>
+          <div class="r-item">
+            <div
+              class="r-item-con"
+              :style="{ cursor: recommendAd.p3.link ? 'pointer' : 'auto' }"
+            >
+              <img
+                :src="recommendAd.p3.picUrl"
+                :alt="recommendAd.p3.name"
+                @click="jumpPage(recommendAd.p3)"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <footer class="footer-box">
+        <div class="introduce">
+          <span class="i-bule">自在家</span>
+          <span>国内首家服务于寺院的正规互联网</span>
+        </div>
+        <div class="department">
+          <div class="d-item">
+            <div class="d-title">合作伙伴：</div>
+            <div class="d-img partners">
+              <img
+                src="https://pic.zizaihome.com/9dc72d8b-bc58-44fd-ad90-6307ae508267.png"
+                alt="合作伙伴"
+              />
+            </div>
+          </div>
+          <div class="split-line"></div>
+          <div class="d-item">
+            <div class="d-title">授权服务单位：</div>
+            <div class="d-img authorize">
+              <img
+                src="https://pic.zizaihome.com/8e17a039-ee63-4359-854c-a35b7adc4022.png"
+                alt="授权服务单位"
+              />
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <el-dialog :visible.sync="adImgDialog.visible" class="ad-img-dialog">
@@ -29,6 +95,29 @@ export default {
         link: '',
         imgsrc: '',
       },
+      recommendAd: {
+        p1: {
+          picUrl:
+            'https://pic.zizaihome.com/38c2c6ab-12b1-4f3e-9a16-9e77cc186e15.png',
+          name: '推荐位01',
+          link: '',
+          id: -1,
+        },
+        p2: {
+          picUrl:
+            'https://pic.zizaihome.com/d0d9a7d4-1ea7-49b0-8e03-092ba4a5e59a.png',
+          name: '推荐位02',
+          link: '',
+          id: -1,
+        },
+        p3: {
+          picUrl:
+            'https://pic.zizaihome.com/d4ddb709-5113-469c-bc50-052994731a21.png',
+          name: '推荐位03',
+          link: '',
+          id: -1,
+        },
+      },
     };
   },
   created() {
@@ -42,15 +131,39 @@ export default {
     // 获取广告数据
     getAdInfo() {
       this.$api.getAdInfo().then(res => {
-        if (res.result === 0 && res.data.picUrl) {
-          this.adImgDialog.name = res.data.name;
-          this.adImgDialog.link = res.data.link || '';
-          this.adImgDialog.imgsrc = res.data.picUrl;
-          this.adImgDialog.visible = true;
+        if (res.result === 0) {
+          if (res.announcement) {
+            this.adImgDialog.name = res.announcement.name;
+            this.adImgDialog.link = res.announcement.link || '';
+            this.adImgDialog.imgsrc = res.announcement.picUrl;
+            this.adImgDialog.visible = true;
+          }
+          if (res.erpAdDataList && res.erpAdDataList.length) {
+            res.erpAdDataList.forEach(e => {
+              this.recommendAd['p' + e.position].id = e.id;
+              this.recommendAd['p' + e.position].name = e.name;
+              this.recommendAd['p' + e.position].link = e.link;
+              this.recommendAd['p' + e.position].picUrl = e.picUrl;
+            });
+          }
         } else {
           console.log(res);
         }
       });
+    },
+    // 跳转页面
+    jumpPage(item) {
+      if (item.id === -1) return;
+      this.$api
+        .getAdInfo({
+          adId: item.id,
+        })
+        .then(res => {
+          window.location.href = item.link;
+        })
+        .catch(err => {
+          window.location.href = item.link;
+        });
     },
   },
 };
@@ -58,28 +171,94 @@ export default {
 
 <style lang="less">
 .content-container {
+  padding: 15px;
   .content {
-    padding: 60px 60px;
-    overflow: hidden;
-    background-size: 100% 100%;
-    background-image: url(https://pic.zizaihome.com/a45cad7c-8006-11e8-b517-00163e0c001e.jpg);
-    .greeting {
-      float: left;
-      color: #fff;
-      font-size: 32px;
-      font-family: '楷体';
-      padding: 30px 20px;
-      background-color: rgba(0, 0, 0, 0.2);
-      .text-1 {
-        float: left;
-        padding: 30px 10px;
+    position: relative;
+    min-height: calc(100vh - 126px);
+    padding-bottom: 112px;
+    background-color: #ffffff;
+    .recommend-box {
+      display: flex;
+      padding: 20px 0;
+      .r-left {
+        margin-left: 1.875%;
+        width: 64.375%;
+        .r-item {
+          padding-top: 29.787%;
+        }
       }
-      .text-1-1 {
-        width: 64px;
+      .r-right {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        width: 30.625%;
+        margin-left: 1.25%;
+        margin-right: 1.875%;
+        .r-item {
+          padding-top: 29.795%;
+        }
       }
-      .text-1-2 {
-        width: 32px;
-        font-size: 16px;
+      .r-item {
+        position: relative;
+        .r-item-con {
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+
+    .footer-box {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0 10px 16px;
+      .introduce {
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid #e5e5e5;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 13px;
+        letter-spacing: 2px;
+        color: #666666;
+        .i-bule {
+          color: #0486fe;
+        }
+      }
+      .department {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .d-item {
+          display: flex;
+          align-items: center;
+          .d-title {
+            color: #333333;
+            font-size: 13px;
+            margin-right: 10px;
+          }
+          .partners img {
+            width: 341px;
+          }
+          .authorize img {
+            width: 105px;
+          }
+        }
+        .split-line {
+          width: 1px;
+          background-color: #e5e5e5;
+          height: 28px;
+          margin: 0 42px;
+        }
       }
     }
   }
@@ -110,20 +289,14 @@ export default {
 }
 @media (min-width: 1290px) {
   .content {
-    background-image: url(https://pic.zizaihome.com/b42568a2-8006-11e8-b517-00163e0c001e.png);
-    padding: 60px 60px;
   }
 }
 @media (min-width: 1400px) {
   .content {
-    background-image: url(https://pic.zizaihome.com/b42568a2-8006-11e8-b517-00163e0c001e.png);
-    padding: 90px 80px;
   }
 }
 @media (min-width: 1620px) {
   .background-image {
-    background-image: url(https://pic.zizaihome.com/bfdd683e-8006-11e8-b517-00163e0c001e.jpg);
-    padding: 100px 80px;
   }
 }
 </style>

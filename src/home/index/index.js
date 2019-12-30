@@ -16,12 +16,14 @@ api
     templeId: window.localStorage.templeId,
   })
   .then(res => {
-    document.querySelector('[data-buddhist-order-count]').innerText =
-      res.commodityCount;
-    document.querySelector('[data-wall-order-count]').innerText =
-      res.buddhaWallCount;
-    window.localStorage.orderNumber = res.commodityCount;
-    window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
+    setTimeout(() => {
+      document.querySelector('[data-buddhist-order-count]').innerText =
+        res.commodityCount;
+      document.querySelector('[data-wall-order-count]').innerText =
+        res.buddhaWallCount;
+      window.localStorage.orderNumber = res.commodityCount;
+      window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
+    }, 300);
   });
 
 new Vue({
