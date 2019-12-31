@@ -47,7 +47,7 @@
       <footer class="footer-box">
         <div class="introduce">
           <span class="i-bule">自在家</span>
-          <span>国内首家服务于寺院的正规互联网</span>
+          <span>国内首家服务于寺院的正规互联网 + 项目</span>
         </div>
         <div class="department">
           <div class="d-item">
@@ -155,7 +155,7 @@ export default {
     jumpPage(item) {
       if (item.id === -1) return;
       this.$api
-        .getAdInfo({
+        .clickAd({
           adId: item.id,
         })
         .then(res => {
