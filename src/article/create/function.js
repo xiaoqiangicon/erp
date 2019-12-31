@@ -98,6 +98,10 @@ func.renderArticle = function(res) {
     $('input[name="show-support"][value="' + res.data.showSupport + '"]').prop({
       checked: !0,
     });
+  typeof res.data.isShowAd !== 'undefined' &&
+    $('input[name="show-adv"][value="' + res.data.isShowAd + '"]').prop({
+      checked: !0,
+    });
 };
 func.initPage = function() {
   $('#loading-toast')

@@ -75,6 +75,13 @@
           "link": "/zzhadmin/commentIndex/",
           "isHtml": true,
           "controlMark": "pw_order"
+        },
+        {
+          "id": "order-credits",
+          "name": "积分兑换",
+          "link": "/zzhadmin/creditsIndex/",
+          "isHtml": true,
+          "controlMark": "pw_ceremony"
         }
       ]
     },
