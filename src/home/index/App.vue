@@ -132,7 +132,7 @@ export default {
     getAdInfo() {
       this.$api.getAdInfo().then(res => {
         if (res.result === 0) {
-          if (res.announcement) {
+          if (res.announcement && res.announcement.picUrl) {
             this.adImgDialog.name = res.announcement.name;
             this.adImgDialog.link = res.announcement.link || '';
             this.adImgDialog.imgsrc = res.announcement.picUrl;
