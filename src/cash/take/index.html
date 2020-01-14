@@ -401,12 +401,28 @@
               {@/if}
 
               <div class="detail-sub-title">${templeName}善款电子账单</div>
+              <div class="change-sort mgt20" style="text-align: right;">
+                <button
+                  class="btn btn-default btn-green pdl20 pdr20"
+                  data-status-sort-action="1"
+                  data-status-sort="1"
+                >
+                  时间汇总
+                </button>
+                <button
+                  class="btn btn-default pdl20 pdr20 mgl10"
+                  data-status-sort-action="2"
+                  data-status-sort="1"
+                >
+                  项目汇总
+                </button>
+              </div>
               {@each details as detail}
               <div class="detail-unit-container">
                   <div class="detail-head">
                       <div class="detail-unit detail-unit-head">
                           <div class="detail-unit-inner">
-                              <div class="detail-cell detail-cell-name">${detail.year}年${detail.month}月项目</div>
+                              <div class="detail-cell detail-cell-name">{@if !!detail.year}${detail.year}年{@/if}${detail.month}项目</div>
                               <div class="detail-cell">数量</div>
                               <div class="detail-cell">金额</div>
                               <div class="detail-cell">增值服务费</div>
@@ -422,21 +438,21 @@
                            data-status="${status}">
                           <div class="detail-unit-inner">
                               <div class="detail-cell detail-cell-name">
-                                  <p>${detailItem.title}</p>
+                                  <p>${detailItem.name}</p>
                                   {@if !!detailItem.category}<p>【${detailItem.category}】</p>{@/if}
                                   <p>
-                                      {@if !!detailItem.fee}<span class="badge-1 badge-1-blue">增值服务费</span>{@/if}
-                                      {@if !!detailItem.promoteAmountForZzh}<span class="badge-1 badge-1-blue">功能服务费</span>{@/if}
-                                      {@if !!detailItem.promoteAmountForUser}<span class="badge-1 badge-1-blue">推广员奖励金</span>{@/if}
-                                      {@if !!detailItem.assistance}<span class="badge-1 badge-1-green">自在家支付渠道补贴</span>{@/if}
+                                      {@if !!detailItem.percentMoney}<span class="badge-1 badge-1-blue">增值服务费</span>{@/if}
+                                      {@if !!detailItem.serviceMoney}<span class="badge-1 badge-1-blue">功能服务费</span>{@/if}
+                                      {@if !!detailItem.promotionMoney}<span class="badge-1 badge-1-blue">推广员奖励金</span>{@/if}
+                                      {@if !!detailItem.subsidy_counter_fee}<span class="badge-1 badge-1-green">自在家支付渠道补贴</span>{@/if}
                                   </p>
                               </div>
-                              <div class="detail-cell">${detailItem.count}</div>
-                              <div class="detail-cell">¥${detailItem.money}</div>
-                              <div class="detail-cell">{@if !!detailItem.fee}-¥${detailItem.fee}{@else}-{@/if}</div>
-                              <div class="detail-cell">{@if !!detailItem.charge}-¥${detailItem.charge}{@else}-{@/if}</div>
-                              <div class="detail-cell" style="display: none">{@if !!detailItem.assistance}+¥${detailItem.assistance}{@else}-{@/if}</div>
-                              <div class="detail-cell" style="display: none">${detailItem.extra}</div>
+                              <div class="detail-cell">${detailItem.order_num}</div>
+                              <div class="detail-cell">¥${detailItem.price}</div>
+                              <div class="detail-cell">{@if !!detailItem.percentMoney}-¥${detailItem.percentMoney}{@else}-{@/if}</div>
+                              <div class="detail-cell">{@if !!detailItem.counter_fee}-¥${detailItem.counter_fee}{@else}-{@/if}</div>
+                              <div class="detail-cell" style="display: none">{@if !!detailItem.subsidy_counter_fee}+¥${detailItem.subsidy_counter_fee}{@else}-{@/if}</div>
+                              <div class="detail-cell" style="display: none">${detailItem.remarks}</div>
                           </div>
                       </div>
                       {@/each}
