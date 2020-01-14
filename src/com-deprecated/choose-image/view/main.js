@@ -82,7 +82,7 @@ seeView({
         );
         let $imageCell = $(
           uploadImageCellTpl({
-            image: url,
+            image: url + '?imageMogr/auto-orient',
           })
         );
         $uploadEl.before($imageCell);

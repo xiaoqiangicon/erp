@@ -512,7 +512,7 @@ export default {
           if (res.result >= 0) {
             const { url: img } = res;
             let { images } = this;
-            images.push(img);
+            images.push(img + '?imageMogr/auto-orient');
             this.images = [...images];
           } else {
             Notification({
