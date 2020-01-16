@@ -1,16 +1,10 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax');
-const zzhUtil = require('@zzh/util');
-
+import seeAjax from 'see-ajax';
+import zzhUtil from '../../../../com-deprecated/util';
 const requestKeys = {
   page: 'pageNum',
   startDate: 'startTime',
   endDate: 'endTime',
 };
-
 const responseRefactor = {
   data: [
     {
@@ -21,17 +15,14 @@ const responseRefactor = {
     },
   ],
 };
-
 const preHandle = req => {
   req.charityId = zzhUtil.urlParams.id;
   req.pageNum -= 1;
   req.pageSize = 20;
 };
-
 const postHandle = res => {
   res.totalPages = Math.ceil((res.total || 0) / 20);
 };
-
 seeAjax.config('list', {
   url: [
     '/zzhadmin/charityOrderList/',

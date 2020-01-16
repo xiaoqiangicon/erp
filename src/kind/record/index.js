@@ -1,8 +1,7 @@
-require('component/nav');
-require('@zzh/common.css');
-require('less/common.less');
-require('less/bootstrap.less');
-require('./index.less');
-
-require('./js/init');
-require('./js/view');
+import 'component/nav';
+import '@senntyou/shortcut.css';
+import 'less/common.less';
+import 'less/bootstrap.less';
+import './index.less';
+import './js/init';
+import './js/view';

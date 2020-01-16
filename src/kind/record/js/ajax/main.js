@@ -1,21 +1,14 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax');
-const zzhUtil = require('@zzh/util');
-
+import seeAjax from 'see-ajax';
+import zzhUtil from '../../../../com-deprecated/util';
 const responseRefactor = {
   todayTotalMoney: 'data.todayPrice',
   todayTotalPeople: 'data.todayJoinNum',
   totalMoney: 'data.totalPrice',
   totalPeople: 'data.joinNum',
 };
-
 const preHandle = req => {
   req.charityId = zzhUtil.urlParams.id;
 };
-
 seeAjax.config('main', {
   url: [
     '/zzhadmin/charityTotalInfo/',

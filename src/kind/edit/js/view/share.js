@@ -1,12 +1,9 @@
-const $ = require('jquery');
-const seeView = require('see-view').default;
-
+import $ from 'jquery';
+import seeView from 'see-view';
 seeView({
   events: {
-    // 点击删除封面
     'click [data-share-item-delete]': 'onClickShareItemDelete',
   },
-  // 点击删除封面
   onClickShareItemDelete: e => {
     $(e.target)
       .parent()

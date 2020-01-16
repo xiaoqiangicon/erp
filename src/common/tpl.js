@@ -1,6 +1,5 @@
-require('../less/base.less');
-
-module.exports = {
+import '../less/base.less';
+export default {
   loading: `<div class="common-placeholder"><img src="https://pic.zizaihome.com/cbd3e5ec-fc5b-11e8-9c94-00163e0c001e.gif"></div>`,
   noData: `
 <div class="common-no-data">

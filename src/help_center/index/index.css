@@ -1,0 +1,34 @@
+.summary {
+  margin-top: 10px;
+}
+.my-logo {
+  background: url('../../../images/register/bitmap.png') no-repeat;
+  background-size: 30% auto;
+  background-position: 16px center;
+  height: 48px;
+  width: 100%;
+}
+.firstMenu {
+  text-decoration: none !important;
+}
+.firstMenu:hover {
+  text-decoration: none !important;
+}
+.custom-link {
+  height: 48px;
+}
+.book {
+  font-family: '微软雅黑' !important;
+}
+.addTimeDiv {
+  margin-bottom: 50px;
+}
+.addTime {
+  float: right;
+  color: #666;
+}
+@media screen and (max-width: 518px) {
+  #book-search-results img {
+    width: 100%;
+  }
+}

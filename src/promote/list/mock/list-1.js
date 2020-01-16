@@ -1,5 +1,7 @@
-module.exports = (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
+export default (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+  });
   res.end(
     JSON.stringify({
       result: 1,
@@ -13,6 +15,7 @@ module.exports = (req, res) => {
           totalMoney: id * 2,
           totalPromotionMoney: id * 3,
           isPromotion: [-1, 1][Math.floor(Math.random() * 2)],
+          senilitySale: Math.floor(Math.random() * 2),
           isEnd: Math.floor(Math.random() * 2),
         })),
       },

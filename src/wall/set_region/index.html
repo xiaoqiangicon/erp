@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>区域设置 - 位置设置</title>
+  </head>
+  <body data-menu-id="wall-set-region">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="content-nav">
+          <span class="content-nav-icon"></span> <span>微供奉</span>
+          <span class="glyphicon glyphicon-menu-right"></span>
+          <span
+            ><a href="/zzhadmin/buddhaRegion/" class="green">区域设置</a></span
+          >
+          <span class="glyphicon glyphicon-menu-right green"></span>
+          <span class="green">位置设置</span>
+        </div>
+        <div class="content-title">
+          <span class="fs18 fwb">区域名称：</span>
+          <span id="region-name"></span>
+        </div>
+        <div class="content-body clearfix">
+          <div class="content-body-left">
+            <div
+              class="content-body-left-top"
+              id="content-prices"
+              style="display: none;"
+            >
+              <h4>价格类型设置</h4>
+              <p>
+                选中位置后请设置价格类型，确认后点击按钮将该价格类型绑定到位置上。
+              </p>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>价格类型</th>
+                    <th>单价</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="content-prices-body"></tbody>
+              </table>
+              <div class="mgt20 clearfix">
+                <button class="btn btn-default left" id="add-price">
+                  添加价格类型
+                </button>
+                <button class="btn btn-green right" id="apply-price">
+                  绑定价格到位置
+                </button>
+              </div>
+            </div>
+            <div class="content-body-left-bottom">
+              <h4>位置图价格说明</h4>
+              <p>
+                设置价格类型后，会按照您价格设置的顺序生成一个说明表，可与位置图对比除错。
+              </p>
+              <div class="content-prices" id="content-show-prices">
+                <div class="content-price-row">
+                  <i class="content-price-row-icon"></i>
+                  <span>没有设置价格类型</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-body-right">
+            <p>
+              提示：您可以选择区域图上的位置后通过上方的按钮设置位置的类型，例如把不可租售的位置设为“不可选位置”。
+            </p>
+            <div class="seat-section-intro">
+              <div class="seat-cell available seat-section-intro-cell"></div>
+              <div class="seat-section-intro-cell">可选位置</div>
+              <div class="seat-cell disabled seat-section-intro-cell"></div>
+              <div class="seat-section-intro-cell">不可选位置</div>
+              <button
+                class="btn btn-green seat-section-intro-action"
+                id="action-edit"
+              >
+                修改
+              </button>
+            </div>
+            <div class="seat-section-content">
+              <div id="seat-content"></div>
+            </div>
+            <div class="mgt20">
+              <button class="btn btn-green" id="action-save">保存设置</button>
+              <button class="btn btn-default mgl20" id="action-cancel">
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in" id="seats-popup">
+      <div class="modal-dialog" style="width:550px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">修改区域</h4>
+          </div>
+          <div class="pd30">
+            <div class="form-group">
+              <label>编号：</label>
+              <textarea
+                class="form-control"
+                rows="10"
+                id="seats-popup-input"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group text-center">
+              <button class="btn btn-green" id="seats-popup-ok">确定</button>
+              <button class="btn btn-default mgl20" data-popup-close="1">
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in" id="base-price-popup">
+      <div class="modal-dialog" style="width:550px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip">价格设置</h4>
+          </div>
+          <div class="pd30">
+            <h4>基础价格</h4>
+            <p>若设置基础价格，则：供奉价格 = 基础价格 + 单价 × 数量</p>
+            <div class="mgt30">
+              <input
+                class="form-control"
+                placeholder="默认为0"
+                id="base-price-popup-input"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group text-center">
+              <button class="btn btn-green" id="base-price-popup-ok">
+                确定
+              </button>
+              <button class="btn btn-default mgl20" data-popup-close="1">
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hover-popup" id="hover-popup"></div>
+
+    <script type="text/html" id="tpl-detail">
+      {@each rowItems as rowItem, rowIndex}
+      <div class="seat-row clearfix">
+          {@each rowItem as columnItem, columnIndex}
+          <div class="seat-cell {@if rowIndex > 0 && columnIndex > 0}
+              {@if columnItem.disabled}disabled
+              {@else}available
+              {@/if}
+          {@/if}"
+              data-detail-cell="{@if rowIndex > 0 && columnIndex > 0}1{@else}0{@/if}"
+               data-row-index="${rowIndex}" data-column-index="${columnIndex}"
+              data-sequence="${columnItem.sequence}" data-available="${columnItem.available}"
+              data-disabled="${columnItem.disabled}"
+              >
+              {@if rowIndex == 0 && columnIndex == 0}全选
+              {@else if rowIndex == 0 && columnIndex > 0}${columnIndex}
+              {@else if columnIndex == 0 && rowIndex > 0}${rowIndex}
+              {@/if}
+          </div>
+          {@/each}
+      </div>
+      {@/each}
+    </script>
+    <script type="text/html" id="tpl-price-row">
+      <tr data-price-row="${index}">
+          <td>
+              <select class="form-control" data-price-row-type="${index}">
+                  <option value="6">按天供奉</option>
+                  <option value="7">按周供奉</option>
+                  <option value="1">按月供奉</option>
+                  <option value="2">按季供奉</option>
+                  <option value="3">按年供奉</option>
+                  <option value="8">十年供奉</option>
+                  <option value="5">终身供奉</option>
+              </select>
+          </td>
+          <td>
+              <input class="form-control" placeholder="需大于0" data-price-row-price="${index}">
+          </td>
+          <td>
+              <button class="btn btn-green" data-price-row-set="${index}" data-value="">设置</button>
+              {@if index > 0}<button class="btn btn-warning" data-price-row-delete="${index}">删除</button>{@/if}
+          </td>
+      </tr>
+    </script>
+    <script type="text/html" id="tpl-price-show-row">
+      <div class="content-price-row" data-price-show-row="${id}">
+          <i class="content-price-row-icon" data-type="${id}"></i>
+          <span>
+          {@each prices as price, index}
+              {@if index > 0}<br>{@/if}${price.typeText}：单价（${price.price}元） {@if price.basePrice > 0}基础价格（${price.basePrice}元）{@/if}
+          {@/each}
+          </span>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-hover">
+      <p>${name} ${row}行${column}列</p>
+      <p>位置编号：${sequence}</p>
+      <hr>
+      {@if prices && prices.length}
+      {@each prices as price}
+      <p>${price.typeText}：单价（${price.price}元） {@if price.basePrice > 0}基础价格（${price.basePrice}元）{@/if}</p>
+      {@/each}
+      {@else}
+      <p>暂未设置价格</p>
+      {@/if}
+    </script>
+  </body>
+</html>

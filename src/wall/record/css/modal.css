@@ -1,0 +1,64 @@
+.create-modal-content {
+  padding: 20px;
+}
+.create-modal-row {
+  width: 100%;
+  overflow: hidden;
+  line-height: 34px;
+  font-size: 18px;
+  padding-left: 50px;
+}
+.create-modal-contact-unit {
+  margin-bottom: 10px;
+}
+.create-modal-contact-unit:last-child {
+  margin-bottom: 0;
+}
+.create-modal-input {
+  margin: 10px 0;
+}
+.create-modal-sub-row {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.create-modal-sub-row:last-child {
+  margin-bottom: 0;
+}
+.create-modal-sub-row-left {
+  width: 33%;
+  float: left;
+  line-height: 34px;
+  font-weight: bold;
+  text-align: right;
+}
+.create-modal-sub-row-right {
+  width: 66%;
+  float: left;
+  font-weight: bold;
+  padding-left: 20px;
+  overflow: hidden;
+}
+.create-modal-content input {
+  width: 200px;
+}
+.create-modal-sub-row-right select {
+  width: 80px;
+}
+.create-modal-sub-row-right input,
+.create-modal-sub-row-right select {
+  float: left;
+}
+.create-modal-content input[type='checkbox'] {
+  float: none;
+  width: auto;
+}
+.create-modal-sub-row-delete {
+  float: left;
+  margin-left: 10px;
+  width: 34px;
+  height: 34px;
+  background-image: url('../../../../images/wall/record/dustbin.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}

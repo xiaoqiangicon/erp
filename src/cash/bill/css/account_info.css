@@ -1,0 +1,21 @@
+.account-info {
+  margin-top: 40px;
+  padding: 16px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.account-info-title {
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+.account-info-title-mark {
+  display: inline-block;
+  float: left;
+  width: 5px;
+  height: 24px;
+  background-color: #71ba31;
+  margin-right: 10px;
+}

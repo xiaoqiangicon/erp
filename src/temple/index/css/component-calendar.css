@@ -1,0 +1,449 @@
+/* calendar component */
+.component-calendar-top-bar {
+  height: 32px;
+  margin: 0 10px;
+  border-bottom: solid 1px #e0e0e0;
+}
+.component-calendar-see-detail {
+  float: right;
+  margin-right: 8px;
+  line-height: 32px;
+  font-size: 16px;
+  color: #253163;
+  text-decoration: none;
+}
+.component-calendar-see-detail:hover,
+.component-calendar-see-detail:active {
+  color: #253163;
+  text-decoration: none;
+}
+.component-calendar-show-date {
+  position: relative;
+  height: 44px;
+  margin: 0 10px;
+  border-bottom: solid 1px #e0e0e0;
+}
+.component-calendar-show-date-main {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  font-size: 16px;
+  color: #333333;
+}
+.icon-calendar {
+  width: 18px;
+  height: 18px;
+  margin-bottom: -3px;
+  background-image: url(../../../../images/temple/icon-calendar.png);
+}
+.component-calendar-show-date .button-prev,
+.component-calendar-show-date .button-next {
+  position: absolute;
+  top: 0;
+  width: 24px;
+  height: 44px;
+}
+.component-calendar-show-date .button-prev {
+  left: 0;
+}
+.component-calendar-show-date .button-next {
+  right: 0;
+}
+.icon-prev {
+  width: 8px;
+  height: 16px;
+  background-image: url(../../../../images/temple/icon-prev.png);
+}
+.icon-next {
+  width: 8px;
+  height: 16px;
+  background-image: url(../../../../images/temple/icon-next.png);
+}
+.component-calendar-show-date .icon-prev,
+.component-calendar-show-date .icon-next {
+  position: absolute;
+  margin: 0;
+}
+.component-calendar-show-date .icon-prev {
+  top: 14px;
+  left: 8px;
+}
+.component-calendar-show-date .icon-next {
+  top: 14px;
+  right: 8px;
+}
+.component-calendar .component-container-inner {
+  background: transparent;
+}
+.component-calendar-body {
+  width: 100%;
+  display: block;
+  background-image: url('../../../../images/temple/index/calendar-bg-1@2x.png');
+  background-size: 100% 100%;
+}
+.component-calendar-body,
+.component-calendar-body:hover,
+.component-calendar-body:active {
+  text-decoration: none;
+}
+.component-calendar-body.today-has-foshi {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.component-calendar-show-week {
+  width: 100%;
+  height: 36px;
+  display: table;
+}
+.component-calendar-week-cell {
+  display: table-cell;
+  width: 14.2857%;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 16px;
+  color: #000000;
+}
+.component-calendar-week-cell.weekend {
+  color: #4c70c6;
+}
+.component-calendar-show-day {
+  width: 100%;
+  padding: 2px 0;
+  border-bottom: solid 1px #e0e0e0;
+}
+.component-calendar-show-day-inner {
+  width: 100%;
+  /*height: 54px;*/
+  /*transition: all .5s;*/
+  /*overflow-y: hidden;*/
+}
+/*.component-calendar-show-day-inner.open {*/
+/*height: 270px;*/
+/*}*/
+.component-calendar-swiper-slide {
+  width: 100%;
+  height: 324px;
+  overflow: hidden;
+  /*transition: all .5s;*/
+}
+.component-calendar-swiper-container.fold .component-calendar-swiper-slide {
+  height: 54px;
+}
+.component-calendar-day-unit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 324px;
+  /*transition: all .5s;*/
+}
+.component-calendar-swiper-container.fold
+  .component-calendar-day-unit.in-first-row {
+  top: 0;
+}
+.component-calendar-swiper-container.fold
+  .component-calendar-day-unit.in-second-row {
+  top: -54px;
+}
+.component-calendar-swiper-container.fold
+  .component-calendar-day-unit.in-third-row {
+  top: -108px;
+}
+.component-calendar-swiper-container.fold
+  .component-calendar-day-unit.in-fourth-row {
+  top: -162px;
+}
+.component-calendar-swiper-container.fold
+  .component-calendar-day-unit.in-fifth-row {
+  top: -216px;
+}
+.component-calendar-swiper-container.fold
+  .component-calendar-day-unit.in-sixth-row {
+  top: -270px;
+}
+/*.component-calendar-day-row {*/
+/*position: relative;*/
+/*display: table;*/
+/*width: 100%;*/
+/*height: 54px;*/
+/*}*/
+.component-calendar-day-cell {
+  display: inline-block;
+  position: relative;
+  width: 14.2857%;
+  height: 54px;
+}
+/* 有斋日 */
+.component-calendar-day-cell.with-feast {
+  background: #dbe2f4;
+}
+/* 有佛事 */
+.component-calendar-day-cell.with-buddhist {
+  /*background: #A3B6E2;*/
+  background: #dbe2f4;
+}
+/* 选中状态或当天状态 */
+.component-calendar-day-cell.active,
+.component-calendar-day-cell.today {
+  background: #4c70c6;
+}
+.component-calendar-day-cell .solar-day {
+  height: 22px;
+  line-height: 22px;
+  font-size: 16px;
+  color: #e1e1e1;
+  margin-top: 9px;
+  text-align: center;
+}
+.component-calendar-day-cell .lunar-day {
+  height: 14px;
+  line-height: 14px;
+  font-size: 10px;
+  color: #e1e1e1;
+  text-align: center;
+}
+.component-calendar-day-cell .calendar-event-cells-container {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+}
+.component-calendar-day-cell .calendar-event-cell {
+  font-size: 8px;
+  height: 12px;
+  line-height: 12px;
+  color: #333333;
+}
+.component-calendar-day-cell .calendar-buddhist-cell {
+  background: #f2693d;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  color: #ffffff;
+}
+.component-calendar-day-cell.in-current-month .solar-day,
+.component-calendar-day-cell.with-feast .solar-day,
+.component-calendar-day-cell.with-buddhist .solar-day {
+  color: #000000;
+}
+.component-calendar-day-cell.in-current-month .lunar-day,
+.component-calendar-day-cell.with-feast .lunar-day,
+.component-calendar-day-cell.with-buddhist .lunar-day {
+  color: #656565;
+}
+.component-calendar-day-cell.active .solar-day,
+.component-calendar-day-cell.today .solar-day,
+.component-calendar-day-cell.active .lunar-day,
+.component-calendar-day-cell.today .lunar-day,
+.component-calendar-day-cell.active .calendar-event-cell,
+.component-calendar-day-cell.today .calendar-event-cell,
+.component-calendar-day-cell.active .calendar-event-cell,
+.component-calendar-day-cell.today .calendar-event-cell {
+  color: #ffffff;
+}
+.component-calendar-show-detail {
+  position: relative;
+  width: 100%;
+  min-height: 82px;
+  padding: 5px 0;
+}
+.component-calendar-show-detail .solar-day-container {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 182px;
+  height: 72px;
+  overflow: hidden;
+}
+.component-calendar-show-detail .solar-day {
+  float: left;
+  height: 72px;
+  line-height: 72px;
+  font-size: 40px;
+  font-weight: 500;
+  color: #4c70c6;
+  margin-top: 6px;
+  margin-left: 20px;
+}
+.component-calendar-show-detail .solar-day-inner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-image: url(../../../../images/temple/index/calendar-bg-3@2x.png);
+  background-size: 100% 100%;
+  color: #ffffff;
+}
+.component-calendar-show-detail .solar-day-month {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 14px;
+  line-height: 14px;
+  font-size: 12px;
+  color: #ffffff;
+  text-align: center;
+  margin-top: -7px;
+  width: 40px;
+  margin-left: -20px;
+}
+.component-calendar-show-detail .solar-day-day {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 30px;
+  line-height: 1;
+  margin-top: -15px;
+  color: #ffffff;
+  text-align: center;
+  width: 16px;
+  margin-left: -10px;
+  font-size: 15px;
+}
+.component-calendar-show-detail .extra-day {
+  float: left;
+  height: 72px;
+  margin-left: 10px;
+}
+.component-calendar-show-detail .lunar-day,
+.component-calendar-show-detail .week-day {
+  height: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.component-calendar-show-detail .lunar-day {
+  font-size: 14px;
+  margin-top: 14px;
+}
+.component-calendar-show-detail .week-day {
+  font-size: 12px;
+}
+/* 第二版的样式，根据产品的要求作出调整 */
+.component-calendar-show-detail .event-day-info {
+  position: relative;
+  width: 100%;
+  padding-left: 188px;
+}
+.component-calendar-show-detail .feast-day-info,
+.component-calendar-show-detail .birth-day-info,
+.component-calendar-show-detail .buddhist-info {
+  max-width: 100%;
+  height: 20px;
+  line-height: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+  margin-top: 6px;
+}
+.component-calendar-show-detail .event-day-info-cell:first-child {
+  margin-top: 16px;
+}
+.component-calendar-show-detail .event-day-info-cell:last-child {
+  margin-bottom: 6px;
+}
+.event-day-info-cell-middle {
+  margin-top: 26px !important;
+}
+.component-calendar-show-detail .buddhist-info .buddhist-mark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  color: #ffffff;
+  text-align: center;
+  margin-right: 3px;
+  border-radius: 50%;
+  background: #f2693d;
+}
+.component-calendar-show-detail .calendar-link {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 72px;
+  background-image: url(../../../../images/temple/icon-next-small.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.component-calendar-show-detail .toggle-calendar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -25px;
+  width: 50px;
+  height: 22px;
+  background-image: url(../../../../images/temple/button-toggle-calendar.png);
+  background-size: 100% 100%;
+}
+.component-calendar-divider {
+  width: 100%;
+  height: 5px;
+  background: #eeeeee;
+}
+.component-calendar-bottom {
+  width: 100%;
+  padding: 0 10px;
+}
+.component-calendar-bottom-cell {
+  position: relative;
+  line-height: 24px;
+  padding: 5px 0;
+  max-height: 82px;
+  overflow: hidden;
+  white-space: normal;
+  border-bottom: solid 1px #e0e0e0;
+}
+.component-calendar-bottom-cell:last-child {
+  border: none;
+}
+.component-calendar-bottom-cell .buddhist-content {
+  width: 100%;
+  display: block;
+  padding-left: 20px;
+  text-decoration: none;
+  color: #333333;
+}
+/* 无佛事 */
+.component-calendar-bottom-cell.blank .buddhist-content {
+  color: #ff9900;
+}
+.component-calendar-bottom-cell .buddhist-start {
+  position: absolute;
+  left: 4px;
+  top: 13px;
+  width: 8px;
+  height: 8px;
+  background-image: url(../../../../images/temple/icon-buddhist-start.png);
+  background-size: 100% 100%;
+}
+.component-calendar-predict {
+  position: relative;
+  height: 70px;
+  width: 100%;
+  background-image: url('../../../../images/temple/index/calendar-bg-2@2x.png');
+  background-size: 100% 100%;
+}
+.component-calendar-predict .title-mark {
+  position: absolute;
+  left: 30px;
+  width: 60px;
+  top: 0;
+  height: 70px;
+  line-height: 70px;
+  color: #ffffff;
+}
+.component-calendar-predict .content {
+  display: block;
+  padding-left: 110px;
+  line-height: 70px;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

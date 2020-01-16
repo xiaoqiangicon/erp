@@ -1,0 +1,38 @@
+/*页面公用*/
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+
+.content-container-inner {
+  padding: 15px;
+  min-width: 850px;
+  min-height: 500px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+}
+
+/*公用样式补充*/
+.vam {
+  vertical-align: middle;
+}
+
+/*old*/
+/*.content-placeholder {*/
+/*width: 100%;*/
+/*height: 370px;*/
+/*font-size: 32px;*/
+/*line-height: 370px;*/
+/*text-align: center;*/
+/*}*/
+/*.content-placeholder > img {*/
+/*width: 50px;*/
+/*height: 50px;*/
+/*}*/
+
+/*.content-empty-hint {*/
+/*text-align: center;*/
+/*line-height: 40px;*/
+/*margin-top: 20px;*/
+/*color: #2ECC40;*/
+/*}*/

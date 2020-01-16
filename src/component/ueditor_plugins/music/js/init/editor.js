@@ -1,30 +1,19 @@
-const data = require('../data');
-
+import data from '../data';
 const parent = window.parent;
-
-// dialog对象
 const dialog = parent.$EDITORUI[window.frameElement.id.replace(/_iframe$/, '')];
 window.dialog = dialog;
-
-// 当前打开dialog的编辑器实例
 const editor = dialog.editor;
 window.editor = editor;
-
 const UE = parent.UE;
 window.UE = UE;
-
 const domUtils = UE.dom.domUtils;
 window.domUtils = domUtils;
-
 const utils = UE.utils;
 window.utils = utils;
-
 const browser = UE.browser;
 window.browser = browser;
-
 const ajax = UE.ajax;
 window.ajax = ajax;
-
 utils.loadFile(document, {
   href: `${editor.options.themePath +
     editor.options.theme}/dialogbase.css?cache=${Math.random()}`,
@@ -32,23 +21,18 @@ utils.loadFile(document, {
   type: 'text/css',
   rel: 'stylesheet',
 });
-
 const lang = editor.getLang(dialog.className.split('-')[2]);
 window.lang = lang;
-
 if (lang) {
   domUtils.on(window, 'load', () => {
     const langImgPath = `${editor.options.langPath +
       editor.options.lang}/images/`;
-    // 针对静态资源
     for (const i in lang.static) {
       const dom = document.getElementById(i);
       if (!dom) continue;
       const tagName = dom.tagName;
-
       let content = lang.static[i];
       if (content.src) {
-        // clone
         content = utils.extend({}, content, false);
         content.src = langImgPath + content.src;
       }
@@ -78,13 +62,10 @@ if (lang) {
     }
   });
 }
-
 dialog.onok = () => {
   if (!data.selectedItem) return;
-
   const self = this;
   const selectedItem = data.selectedItem;
-
   const dataSrc = `/cgi-bin/readtemplate?t=tmpl/qqmusic_tmpl&singer=${encodeURIComponent(
     selectedItem.f.split('|')[3]
   )}&music_name=${encodeURIComponent(selectedItem.songname)}`;
@@ -103,7 +84,6 @@ dialog.onok = () => {
     datasrc: dataSrc,
     singername: selectedItem.singername,
   };
-
   const url = `${
     data.playerUrl
   }?from=tiebasongwidget&url=&name=${encodeURIComponent(

@@ -1,0 +1,18 @@
+.common-btn-1 {
+  display: inline-block;
+  width: 128px;
+  height: 42px;
+  line-height: 42px;
+  font-size: 20px;
+  text-align: center;
+  color: #5b5b5b;
+  background-image: url('https://pic.zizaihome.com/c6e3a40a-0666-11e8-80dd-00163e0c001e.png');
+  background-size: 100% 100%;
+}
+.common-btn-1,
+.common-btn-1:hover,
+.common-btn-1:focus,
+.common-btn-1:active {
+  text-decoration: none;
+  color: #5b5b5b;
+}

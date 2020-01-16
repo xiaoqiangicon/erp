@@ -1,0 +1,13 @@
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+.nav-tabs-custom > li.active > a,
+.nav-tabs-custom > li.active > a:hover,
+.nav-tabs-custom > li.active > a:focus {
+  border: none;
+  border-bottom: 1px solid #6fba2c;
+}
+.badge {
+  background-color: #d9534f;
+}

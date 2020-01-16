@@ -1,0 +1,49 @@
+.banner {
+  position: relative;
+  width: 542px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.banner .image-1 {
+  width: 100%;
+}
+.banner .image-2 {
+  position: absolute;
+  left: -368px;
+  top: 43px;
+  width: 317px;
+}
+.banner .image-3 {
+  position: absolute;
+  right: -337px;
+  top: 100px;
+  width: 293px;
+}
+.banner .image-4 {
+  position: absolute;
+  top: 404px;
+  left: -162px;
+  width: 217px;
+  z-index: -1;
+  animation: slide 10s linear infinite;
+}
+.banner .image-5 {
+  position: absolute;
+  top: 334px;
+  right: -76px;
+  width: 206px;
+  z-index: -1;
+  animation: slide 10s linear infinite;
+}
+
+@media (max-width: 500px) {
+  .banner {
+    width: 90%;
+  }
+  .banner .image-2,
+  .banner .image-3,
+  .banner .image-4,
+  .banner .image-5 {
+    display: none;
+  }
+}

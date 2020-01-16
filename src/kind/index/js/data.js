@@ -1,8 +1,3 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-module.exports = {
-  // 分页组件示例
+export default {
   pagination: void 0,
 };

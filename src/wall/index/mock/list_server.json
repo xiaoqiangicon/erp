@@ -1,0 +1,61 @@
+{
+  "msg": "\u83b7\u53d6\u6210\u529f",
+  "data": [
+    {
+      "sort": 2,
+      "name": "\u5c0f\u6613\u6d4b\u8bd5",
+      "buddhaModelId": 8,
+      "url": "https://wx.zizaihome.com/buddhaWall/buddhaWallIndex?templeId=302&buddhaId=300307",
+      "priceName": "\u5929/\u5468/\u6708/\u5b63\u5ea6/\u5e74/\u7ec8\u751f/\u5929/\u5468/\u6708/\u5b63\u5ea6/\u5e74/\u7ec8\u751f/\u5929/\u5468/\u6708/\u5b63\u5ea6/\u5e74/\u7ec8\u751f/\u5929/\u5468/\u5929/\u5468/\u5929/\u5468/\u5929/\u5929/\u5468/\u5929/\u5929/\u5468/\u5929/\u5468/\u6708/\u5b63\u5ea6/\u5e74/\u7ec8\u751f/\u5929/\u5468/\u6708/\u5b63\u5ea6/\u5e74/\u5929/\u5929/\u5929",
+      "wallName": "A\u533a(\u672a\u6fc0\u6d3b)",
+      "coverPic": "https://pic.zizaihome.com/c8282146-317e-11e7-8f7d-00163e0c1e1c.jpg",
+      "place": "\u5927\u6bbf",
+      "id": 38
+    },
+    {
+      "sort": 3,
+      "name": "\u5982\u6765\u4f5b\u7956",
+      "buddhaModelId": 9,
+      "url": "https://wx.zizaihome.com/buddhaWall/buddhaWallIndex?templeId=302&buddhaId=209308",
+      "priceName": "\u7ec8\u751f/\u5e74/\u5b63\u5ea6/\u6708/\u5468/\u5468/\u5929/\u5929/\u7ec8\u751f/\u5e74/\u5b63\u5ea6/\u6708/\u5468/\u5468/\u5929/\u5929/\u7ec8\u751f/\u7ec8\u751f/\u7ec8\u751f/\u5e74/\u5929/\u7ec8\u751f/\u5e74/\u5929/\u5929/\u5468/\u5929/\u5468/\u5929/\u5468/\u5929/\u5468/\u5929",
+      "wallName": "123,\u5982\u6765\u4f5b\u7956\u4f5b\u5899\u4e00\u53f7(\u672a\u6fc0\u6d3b),\u5982\u6765\u4f5b\u7956\u4f5b\u5899\u4e8c\u53f7(\u672a\u6fc0\u6d3b)",
+      "coverPic": "https://pic.zizaihome.com/1491983040007.jpg",
+      "place": "\u5927\u96c4\u5b9d\u6bbf",
+      "id": 29
+    },
+    {
+      "sort": 4,
+      "name": "\u5143\u59cb\u5929\u5c0a\u4e00",
+      "buddhaModelId": 8,
+      "url": "https://wx.zizaihome.com/buddhaWall/buddhaWallIndex?templeId=302&buddhaId=209304",
+      "priceName": "\u7ec8\u751f/\u5e74/\u5b63\u5ea6/\u6708/\u5929/\u5929/\u5929/\u5929/\u5468/\u5929/\u5468/\u5929/\u5468/\u5929/\u5929/\u5468/\u5929/\u5929",
+      "wallName": "\u6682\u65e0\u8bbe\u7f6e",
+      "coverPic": "https://pic.zizaihome.com/1491986831349.jpg",
+      "place": "\u73c8\u84dd\u6bbf",
+      "id": 25
+    },
+    {
+      "sort": 5,
+      "name": "\u5f25\u52d2\u4f5b",
+      "buddhaModelId": 12,
+      "url": "https://wx.zizaihome.com/buddhaWall/buddhaWallIndex?templeId=302&buddhaId=300304",
+      "priceName": "\u7ec8\u751f/\u5e74/\u5b63\u5ea6/\u6708/\u5468/\u5929/\u7ec8\u751f/\u5e74/\u5b63\u5ea6/\u6708/\u5468/\u5468/\u5929/\u5929/\u7ec8\u751f/\u5e74/\u5b63\u5ea6/\u6708/\u5468/\u5468/\u5929/\u5929/\u7ec8\u751f/\u5e74/\u5b63\u5ea6/\u6708/\u5468/\u5929/\u5468/\u5929/\u5468/\u5929/\u5929",
+      "wallName": "\u5f25\u52d2\u4f5b\u4f5b\u5899\u4e00\u53f7",
+      "coverPic": "https://pic.zizaihome.com/c73e03f4-2017-11e7-9717-00163e0c1e1c.gif",
+      "place": "\u5f25\u52d2\u4f5b\u5927\u6bbf",
+      "id": 35
+    },
+    {
+      "sort": 1000,
+      "name": "\u81ea\u5b9a\u4e49\u5efa\u4f5b\u50cf\u81ea\u5b9a\u4e49\u5efa\u4f5b\u50cf",
+      "buddhaModelId": 8,
+      "url": "https://wx.zizaihome.com/buddhaWall/buddhaWallIndex?templeId=302&buddhaId=306209",
+      "priceName": "\u6682\u65e0\u8bbe\u7f6e",
+      "wallName": "\u6682\u65e0\u8bbe\u7f6e",
+      "coverPic": "https://pic.zizaihome.com/10c61a10-6218-11e7-bbe7-00163e0c1e1c.jpg",
+      "place": "\u5927\u795e",
+      "id": 50
+    }
+  ],
+  "result": 0
+}

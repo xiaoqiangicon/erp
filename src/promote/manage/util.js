@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import Pagination from '@zzh/pagination';
+import Pagination from '../../com-deprecated/pagination';
 import commonTpl from '../../common/tpl';
 import { itemsTpl, recordsTpl } from './tpl';
 import share from './share';
@@ -10,6 +10,36 @@ const $win = $(window);
 const $itemsList = $('#list-1');
 const $selectAllItems = $('#select-all-items');
 
+const renderInfo = res => {
+  const { title, statusText, addTime, ended, online, canOnline } = res;
+  $('#display-title').text(title);
+  $('#display-status').text(statusText);
+  $('#display-add-time').text(addTime);
+
+  const $content1 = $('[data-content="1"]');
+
+  // -1 未开始 0 进行中 1 已结束
+  if (ended > 0) $content1.addClass('no-select');
+
+  $('#summary').show();
+  $content1.show();
+
+  // 这个数据需要每次刷新
+  const $online = $('#online');
+
+  // 如果佛事以下架，则不能上架
+  if (res.ended === 1 || !canOnline) {
+    $online.removeClass('active');
+    $online.addClass('disabled');
+  } else if (online) {
+    $online.removeClass('disabled');
+    $online.addClass('active');
+  } else {
+    $online.removeClass('disabled');
+    $online.removeClass('active');
+  }
+};
+
 export const requestItems = () => {
   $selectAllItems.prop('checked', !1);
   $itemsList.html(commonTpl.loading);
@@ -18,6 +48,11 @@ export const requestItems = () => {
       $itemsList.html(commonTpl.noData);
       return;
     }
+
+    share.canOnline = res.canOnline;
+    share.ended = res.ended;
+
+    renderInfo(res);
 
     share.items = res.data;
 
@@ -90,7 +125,7 @@ export const checkSet = () => {
 
   const floatValue = parseFloat(value);
 
-  if (isNaN(floatValue)) {
+  if (Number.isNaN(floatValue)) {
     $setHint.text(`输入 ${value} 格式不合法，请正确输入数字`).show();
     $setOk.addClass('disabled');
     return;

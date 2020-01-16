@@ -1,0 +1,17 @@
+.brand .menu-3-item {
+  float: right;
+  margin-right: 56px;
+}
+.brand .menu-3-item:first-child {
+  margin-right: 0;
+}
+.brand .menu-3-item img {
+  width: 90px;
+}
+.brand .menu-3-item .text {
+  margin-top: 10px;
+  text-align: center;
+
+  line-height: 20px;
+  color: #ffffff;
+}

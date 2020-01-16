@@ -1,0 +1,118 @@
+main .tip {
+  margin: 20px 15% 20px 15%;
+}
+main .tip h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  font-family: 'Microsoft YaHei';
+}
+main nav .nav1 {
+  background-color: #007551;
+  position: relative;
+}
+main nav .nav1:after {
+  content: ' ';
+  width: 0;
+  position: absolute;
+  right: -40px;
+  border-width: 21px;
+  border-style: solid;
+  border-color: transparent transparent transparent #007551;
+}
+.nav1 span {
+  color: #fff;
+}
+main nav .nav2 {
+  background-image: url('../../../images/register/right-arrow.png');
+  background-repeat: no-repeat;
+  background-position: right;
+}
+main .uploadRow {
+  overflow: hidden;
+  margin: 0px 15% 20px 15%;
+}
+main .uploadimg {
+  width: 47%;
+  height: 260px;
+  background-color: #eee;
+  display: inline-block;
+  float: left;
+}
+main .uploadimg span {
+  width: 100%;
+  height: 35px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: block;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+}
+main .uploadimgOdd {
+  margin-right: 6%;
+}
+main .upload1 {
+  background-image: url('../../../images/register/sample-1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+main .upload2 {
+  background-image: url('../../../images/register/group2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+main .upload3 {
+  background-image: url('../../../images/register/group3.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+main .upload4 {
+  background-image: url('../../../images/register/group4.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+main .tips {
+  margin-left: 15%;
+  margin-right: 15%;
+  overflow: hidden;
+}
+main .tips p {
+  color: #666;
+  font-size: 18px;
+}
+input[type='checkbox'] {
+  display: none;
+}
+label {
+  color: #666;
+  font-size: 18px;
+  cursor: pointer;
+}
+label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../images/register/ic-disagree-gray.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: top;
+  margin-right: 10px;
+  margin-top: 4px;
+  -webkit-transition: background ease-in 0.3s;
+}
+input[type='checkbox']:checked + label::before {
+  background-image: url('../../../images/register/ic-agree-green.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.uploadSection {
+  position: relative;
+}
+.agree_title {
+  float: left;
+}

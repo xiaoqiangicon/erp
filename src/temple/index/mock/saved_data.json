@@ -1,0 +1,307 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "province": "河南省",
+      "city": "信阳市",
+      "images": [
+        {
+          "id": 1,
+          "url": "/sample/image1.jpg"
+        },
+        {
+          "id": 2,
+          "url": "/sample/image5.jpg"
+        },
+        {
+          "id": 3,
+          "url": "/sample/image3.jpg"
+        },
+        {
+          "id": 4,
+          "url": "/sample/image2.jpg"
+        },
+        {
+          "id": 5,
+          "url": "/sample/image1.jpg"
+        }
+      ],
+      "introduction": "hahahahahahahahahahahahahahahahahahahahahahahahahahahahahhaahahahahahhaahahahah",
+      "type": 1,
+      "sort": 1,
+      "sortId": 1
+    },
+    {
+      "id": 1,
+      "type": 2,
+      "sort": 2,
+      "sortId": 2,
+      "subType": 2,
+      "components": [
+        {
+          "id": 1,
+          "name": "bvjfdnvjkf",
+          "description": "bfdvbfndvnfjkdnvcxkz",
+          "avatar": "/sample/image5.jpg",
+          "honorName": "荣誉名字"
+        },
+        {
+          "id": 2,
+          "name": "bvjfdnvjkf",
+          "description": "bfdvbfndvnfjkdnvcxkz",
+          "avatar": "/sample/image5.jpg",
+          "honorName": "荣誉名字"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "活动",
+      "displaySource": 2,
+      "buddhistCategory": 0,
+      "itemsCount": 10,
+      "subType": 3,
+      "showTitle": 1,
+      "showMore": 1,
+      "images": [
+        {
+          "id": 200,
+          "url": "/sample/image1.jpg",
+          "content": "33"
+        },
+        {
+          "id": 191,
+          "url": "/sample/image5.jpg",
+          "content": "供奉佛事（无支付、无附言）"
+        },
+        {
+          "id": 189,
+          "url": "/sample/image3.jpg",
+          "content": "佛事供奉（无规格需支付、无附言）"
+        },
+        {
+          "id": 188,
+          "url": "/sample/image2.jpg",
+          "content": "佛事供奉（无需支付，有附言）"
+        },
+        {
+          "id": 186,
+          "url": "/sample/image1.jpg",
+          "content": "供奉法事（有规格可选、附言）"
+        }
+      ],
+      "type": 3,
+      "sort": 3,
+      "sortId": 3
+    },
+    {
+      "id": 2,
+      "title": "活动2",
+      "displaySource": 1,
+      "buddhistCategory": 82,
+      "itemsCount": 3,
+      "subType": 2,
+      "showTitle": 0,
+      "showMore": 0,
+      "images": [],
+      "type": 3,
+      "sort": 4,
+      "sortId": 3
+    },
+    {
+      "id": 1,
+      "title": "功德",
+      "itemsCount": 4,
+      "showRealTimeList": 1,
+      "showMonthList": 0,
+      "showTotalList": 1,
+      "type": 4,
+      "sort": 5,
+      "sortId": 4
+    },
+    {
+      "id": 10,
+      "type": 5,
+      "sort": 6,
+      "sortId": 5,
+      "currentPage": 1,
+      "totalPages": 20,
+      "dayItems": [
+        {
+          "year": 2017,
+          "month": 1,
+          "day": 1,
+          "activities": [
+            {
+              "id": 10,
+              "type": 1,
+              "title": "佛事标题10",
+              "image": "/sample/image1.jpg"
+            },
+            {
+              "id": 11,
+              "type": 1,
+              "title": "佛事标题11",
+              "image": "/sample/image2.jpg"
+            },
+            {
+              "id": 12,
+              "type": 1,
+              "title": "佛事标题12",
+              "image": "/sample/image3.jpg"
+            },
+            {
+              "id": 10,
+              "type": 2,
+              "title": "新建标题10"
+            },
+            {
+              "id": 11,
+              "type": 2,
+              "title": "新建标题11"
+            }
+          ]
+        },
+        {
+          "year": 2017,
+          "month": 1,
+          "day": 5,
+          "activities": [
+            {
+              "id": 20,
+              "type": 1,
+              "title": "佛事标题20",
+              "image": "/sample/image1.jpg"
+            },
+            {
+              "id": 21,
+              "type": 1,
+              "title": "佛事标题21",
+              "image": "/sample/image5.jpg"
+            },
+            {
+              "id": 22,
+              "type": 1,
+              "title": "佛事标题22",
+              "image": "/sample/image3.jpg"
+            },
+            {
+              "id": 20,
+              "type": 2,
+              "title": "新建标题20"
+            },
+            {
+              "id": 21,
+              "type": 2,
+              "title": "新建标题21"
+            }
+          ]
+        },
+        {
+          "year": 2017,
+          "month": 1,
+          "day": 10,
+          "activities": [
+            {
+              "id": 30,
+              "type": 1,
+              "title": "佛事标题30",
+              "image": "/sample/image3.jpg"
+            },
+            {
+              "id": 30,
+              "type": 2,
+              "title": "新建标题30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "快捷入口",
+      "type": 6,
+      "sort": 60,
+      "sortId": 66,
+      "items": [
+        {
+          "title": "haha",
+          "image": "/images/common/example-avatar.jpg",
+          "link": "",
+          "linkType": 1,
+          "type": 3,
+          "subTypeId": 12
+        },
+        {
+          "title": "hehe",
+          "image": "/images/common/example-avatar.jpg",
+          "link": "http://www.zizaihome.com",
+          "linkType": 2,
+          "type": 0,
+          "subTypeId": 0
+        },
+        {
+          "title": "hoho",
+          "image": "/images/common/example-avatar.jpg",
+          "link": "",
+          "linkType": 1,
+          "type": 3,
+          "subTypeId": 13
+        },
+        {
+          "title": "huhu",
+          "image": "/images/common/example-avatar.jpg",
+          "link": "http://www.zizaihome.com",
+          "linkType": 2,
+          "type": 0,
+          "subTypeId": 0
+        }
+      ]
+    },
+    {
+      "id": 777,
+      "type": 7,
+      "subType": 1,
+      "title": "殿堂场景标题",
+      "houses": [
+        {
+          "id": 1,
+          "name": "殿堂1",
+          "covers": [
+            "/images/common/example-avatar.jpg",
+            "/images/common/example-avatar.jpg"
+          ],
+          "intro": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法"
+        },
+        {
+          "id": 2,
+          "name": "殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2殿堂2",
+          "covers": [
+            "/images/common/example-avatar.jpg",
+            "/images/common/example-avatar.jpg"
+          ],
+          "intro": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法<br>释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法"
+        },
+        {
+          "id": 3,
+          "name": "殿堂3",
+          "covers": [
+            "/images/common/example-avatar.jpg",
+            "/images/common/example-avatar.jpg"
+          ],
+          "intro": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法"
+        },
+        {
+          "id": 4,
+          "name": "殿堂4",
+          "covers": [
+            "/images/common/example-avatar.jpg",
+            "/images/common/example-avatar.jpg"
+          ],
+          "intro": "释本焕长老，出生于清光绪三十三年（公元1907年）1930年出家，得虚云禅师传法印可为南禅临济宗临济法"
+        }
+      ]
+    }
+  ]
+}

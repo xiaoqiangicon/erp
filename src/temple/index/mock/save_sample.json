@@ -1,0 +1,49 @@
+[
+  {
+    "province": "省份",
+    "city": "城市",
+    "id": 0,
+    "pics": [
+      {
+        "id": 0,
+        "url": "http://test.img"
+      }
+    ],
+    "describe": "",
+    "sort": 1,
+    "sortId": 0,
+    "type": 1
+  },
+  {
+    "id": 0,
+    "religion_name": "印顺法师",
+    "religion_prorerb": "法言",
+    "img_url": "http://test.img",
+    "sort": 2,
+    "sortId": 0,
+    "type": 2
+  },
+  {
+    "id": 0,
+    "content_type": 1,
+    "show_type": 1,
+    "buddnist_ceremony_type_id": 1,
+    "list_num": 10,
+    "is_show_title": 1,
+    "is_show_more": 1,
+    "title": "标题",
+    "sort": 1,
+    "sortId": 0,
+    "type": 3,
+    "imageTestList": [],
+    "show_list_type": 1
+  },
+  {
+    "id": 0,
+    "title": "标题",
+    "show_list_num": 10,
+    "sort": 4,
+    "sortId": 0,
+    "type": 4
+  }
+]

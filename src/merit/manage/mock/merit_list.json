@@ -1,0 +1,208 @@
+{
+  "msg": "获取成功",
+  "data": [
+    {
+      "name": "谢树文",
+      "money": 100003.3,
+      "pic": "https://pic.zizaihome.com/ab015ed87e88d6fa6ffb52d8da3e83f0.jpg",
+      "payTimes": 217,
+      "id": 7,
+      "userId": 100010
+    },
+    {
+      "name": "倾听千蝶",
+      "money": 100.54,
+      "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+      "payTimes": 89,
+      "id": 6,
+      "userId": 100134
+    },
+    {
+      "name": "Terry吴天",
+      "money": 60.42,
+      "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEL6xRmXD0OFibFzib7BS8bL6fgjwSPwoVvpskQnr04Uz1gQYDmvNd3LZIaKFtInib11OFI8ic9yAumV1Q/0",
+      "payTimes": 15,
+      "id": 1,
+      "userId": 100000009
+    },
+    {
+      "name": "麦子",
+      "money": 10.3,
+      "pic": "https://pic.zizaihome.com/3197fbf3dde91c2f7fded2b1534b2ffe.jpg",
+      "payTimes": 923,
+      "id": 4,
+      "userId": 100000727
+    },
+    {
+      "name": "欧阳哥哥的测试",
+      "money": 1.11,
+      "pic": "http://imgs.zizaihome.com/E0C869BECE4D687EA5C100644ED1B1D0",
+      "payTimes": 95,
+      "id": 15,
+      "userId": 100000796
+    },
+    {
+      "name": "你好",
+      "money": 1.08,
+      "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+      "payTimes": 115,
+      "id": 2,
+      "userId": 100000712
+    },
+    {
+      "name": "小小易",
+      "money": 0.98,
+      "pic": "http://imgs.zizaihome.com/AA79A7D5999A89C837921F0ACB2DE2F4",
+      "payTimes": 87,
+      "id": 34,
+      "userId": 100000714
+    },
+    {
+      "name": "禅在用户000738",
+      "money": 0.83,
+      "pic": "https://pic.zizaihome.com/chanzai_avatar_170619.png",
+      "payTimes": 83,
+      "id": 13,
+      "userId": 100000738
+    },
+    {
+      "name": "苏诱i",
+      "money": 0.77,
+      "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEK3UIKZyXvIK9CSUmD6ibLic4b1RE1nt64hqCPIpZacWPnTXHDBia0sLXdicZbNFzDKAW9Gic6AOIO8Xt1nncwMt503IrEseYO0ialY8/0",
+      "payTimes": 53,
+      "id": 14,
+      "userId": 100000150
+    },
+    {
+      "name": "麦子",
+      "money": 0.75,
+      "pic": "https://wx.qlogo.cn/mmopen/iaeytjqFH51ewAdric7ohzdMN3mjOBadOeaICOhukPyHZHSVqHMRLUIJRx0dkqcNv7qf32ictkFeH4pMLn4jD87lNHktxWWZhmY/0",
+      "payTimes": 49,
+      "id": 10,
+      "userId": 100000723
+    },
+    {
+      "name": "苏诱i",
+      "money": 0.59,
+      "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEK3UIKZyXvIK9CSUmD6ibLic4b1RE1nt64hqCPIpZacWPnTXHDBia0sLXdzgiaXBFiaZbpKicq2zgrSbzTibnYAYegoI1Td3KFRxQYpdk/0",
+      "payTimes": 54,
+      "id": 18,
+      "userId": 100163
+    },
+    {
+      "name": "李仲羽",
+      "money": 0.32,
+      "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEKWaDbug0eviakxxmpOedI2odeEGbzR79NDTJhzuFcMSFDaYC6olhIwGJ30Cd73Od3v9DuqsvH2bqw/0",
+      "payTimes": 15,
+      "id": 9,
+      "userId": 100000052
+    },
+    {
+      "name": "广东仔在哈尔滨的春天",
+      "money": 0.32,
+      "pic": "https://pic.zizaihome.com/8dd52be7d47aaaaa82e2f264d5973fba.jpg",
+      "payTimes": 33,
+      "id": 8,
+      "userId": 100000796
+    },
+    {
+      "name": "try so har",
+      "money": 0.25,
+      "pic": "https://pic.zizaihome.com/149709C39FD05850064D4BA04D28B96E",
+      "payTimes": 21,
+      "id": 17,
+      "userId": 100000712
+    },
+    {
+      "name": "185****3460",
+      "money": 0.21,
+      "pic": "https://pic.zizaihome.com/1495867003416.png",
+      "payTimes": 3,
+      "id": 19,
+      "userId": 100000712
+    },
+    {
+      "name": "谢树文",
+      "money": 0.18,
+      "pic": "https://pic.zizaihome.com/c9989b72c2facd6f8684a9f73fe174e7.jpg",
+      "payTimes": 18,
+      "id": 60,
+      "userId": 100000775
+    },
+    {
+      "name": "柳江",
+      "money": 0.17,
+      "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaELWaxf5YMORopjIOyGOT4Zu3fyfOT3bWAWTdiasSiboVV5piabkRtz1gLZuag4niaYgcUp3Ns7ldRFYqg/0",
+      "payTimes": 8,
+      "id": 22,
+      "userId": 100000012
+    },
+    {
+      "name": "禅在用户000797",
+      "money": 0.11,
+      "pic": "https://pic.zizaihome.com/chanzai_avatar_170619.png",
+      "payTimes": 11,
+      "id": 59,
+      "userId": 100000797
+    },
+    {
+      "name": "安安",
+      "money": 0.1,
+      "pic": "https://wx.qlogo.cn/mmopen/iaeytjqFH51eiaealVSSUibZnLSibkf3uu588gPXkBsX53Rxpyr4S2Xw4vE04x2w6CewhcUu5TZL37kbTddxwcYHvQ/0",
+      "payTimes": 1,
+      "id": 43,
+      "userId": 100000721
+    },
+    {
+      "name": "euwen",
+      "money": 0.1,
+      "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaELba6bVy1pa5wHmicLeicwCqfiaa6wsjghmbRvJV8SPUkrdEQ8JhAAia0z7AJMIXy9lwiadbHbZ1BVia2VQ/0",
+      "payTimes": 1,
+      "id": 40,
+      "userId": 100000011
+    },
+    {
+      "name": "枫L叶飘粼",
+      "money": 0.08,
+      "pic": "https://wx.qlogo.cn/mmopen/iaeytjqFH51cfXianmicJ4Z0ebQ9yccExL4YheT1iaTYsBjSKoDAckZ3Vhn4P1hic2pagxklmHIN24LwRcrD02ApseYx2JkyyicJ90/0",
+      "payTimes": 8,
+      "id": 11,
+      "userId": 100000054
+    },
+    {
+      "name": "禅在用户000739",
+      "money": 0.06,
+      "pic": "https://pic.zizaihome.com/chanzai_avatar_170619.png",
+      "payTimes": 6,
+      "id": 50,
+      "userId": 100000739
+    },
+    {
+      "name": "Nobita",
+      "money": 0.06,
+      "pic": "http://imgs.zizaihome.com/845139613",
+      "payTimes": 6,
+      "id": 16,
+      "userId": 100104
+    },
+    {
+      "name": "禅在用户",
+      "money": 0.05,
+      "pic": "http://imgs.zizaihome.com/chanzai_avatar_170619.png",
+      "payTimes": 5,
+      "id": 44,
+      "userId": 100094
+    },
+    {
+      "name": "",
+      "money": 0.05,
+      "pic": "",
+      "payTimes": 10,
+      "id": 5,
+      "userId": 100000712
+    }
+  ],
+  "total": 38,
+  "pageNum": 1,
+  "result": 0
+}

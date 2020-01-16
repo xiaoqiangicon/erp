@@ -1,0 +1,408 @@
+body {
+  margin: 0;
+  padding: 0 !important;
+  background-color: #f4f7f7;
+  font-size: 20px;
+  color: #333;
+}
+.btn-width {
+  width: 100px;
+}
+header {
+  background-color: #fff;
+  z-index: 1000;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #000;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.hide {
+  display: none !important;
+}
+.hideVS {
+  visibility: hidden;
+}
+.redBorder {
+  border: 1px solid #f00 !important;
+}
+.nullError_msg,
+.nullError {
+  font-size: 14px;
+}
+.loadEffect {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 39%;
+  left: 46.8%;
+}
+.loadEffect span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: lightgreen;
+  position: absolute;
+  -webkit-animation: load 1.04s ease infinite;
+}
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.3);
+    opacity: 0.5;
+  }
+}
+.loadEffect span:nth-child(1) {
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  -webkit-animation-delay: 0.13s;
+}
+.loadEffect span:nth-child(2) {
+  left: 14px;
+  top: 14px;
+  -webkit-animation-delay: 0.26s;
+}
+.loadEffect span:nth-child(3) {
+  left: 50%;
+  top: 0;
+  margin-left: -10px;
+  -webkit-animation-delay: 0.39s;
+}
+.loadEffect span:nth-child(4) {
+  top: 14px;
+  right: 14px;
+  -webkit-animation-delay: 0.52s;
+}
+.loadEffect span:nth-child(5) {
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+  -webkit-animation-delay: 0.65s;
+}
+.loadEffect span:nth-child(6) {
+  right: 14px;
+  bottom: 14px;
+  -webkit-animation-delay: 0.78s;
+}
+.loadEffect span:nth-child(7) {
+  bottom: 0;
+  left: 50%;
+  margin-left: -10px;
+  -webkit-animation-delay: 0.91s;
+}
+.loadEffect span:nth-child(8) {
+  bottom: 14px;
+  left: 14px;
+  -webkit-animation-delay: 1.04s;
+}
+.form-group input,
+.form-group textarea {
+  padding-left: 14px;
+  width: 99%;
+}
+.logo {
+  background: url('../../images/register/bitmap.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 102.8px;
+  height: 35px;
+  line-height: 35px;
+  margin-left: 38px;
+  margin-top: 18px;
+}
+.slogan {
+  margin-left: 38px;
+  margin-top: 8px;
+  clear: both;
+}
+.slogan span {
+  font-size: 18px;
+  color: #666;
+  font-family: 'Microsoft YaHei';
+}
+.leftHead {
+  display: inline-block;
+}
+.rightHead {
+  float: right;
+  position: relative;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+.protoRight {
+  float: right;
+  position: relative;
+  margin-top: 36px;
+  margin-right: 36px;
+}
+.rightHead .loginPic {
+  background: url('../../images/register/ic-login-off.png');
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 100%;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin-bottom: -5px;
+}
+.rightHead .loginedPic {
+  /*background-image: url("../../images/register/page-1.png");*/
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 100%;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+}
+.rightHead .login {
+  display: inline-block;
+  height: 28px;
+  line-height: 28px;
+  font-size: 20px;
+  font-family: 'Microsoft YaHei';
+  color: #333;
+}
+.rightHead .certifi {
+  position: absolute;
+  top: -22px;
+  right: 0px;
+  width: 50px;
+  font-size: 14px;
+  color: #f5a623;
+  border: solid 1px #f5a623;
+  text-align: center;
+}
+.rightHead .certicicated {
+  color: #fff;
+  background-color: #f5a623;
+}
+/* 响应式协议页面 */
+.protocol {
+  border-width: 0px;
+  width: 80%;
+  margin: 0 auto;
+  word-wrap: break-word;
+}
+#navIcon {
+  transition-duration: 0.5s;
+}
+.rotateIcon {
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+#navBar {
+  position: absolute;
+  width: 200px;
+  right: 20px;
+  top: 0;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.fadein {
+  opacity: 100 !important;
+  filter: alpha(opacity=100) !important;
+}
+@media (min-width: 500px) {
+  #phoneIcon {
+    display: none;
+  }
+  main {
+    width: 1200px;
+  }
+  header {
+    height: 94px;
+  }
+}
+@media (max-width: 499px) {
+  main {
+    margin: 15px 0 0px 0 !important;
+  }
+  #navIcon,
+  #navBar {
+    display: none;
+  }
+  .logo {
+    margin-left: 19px;
+    margin-top: 9px;
+  }
+}
+main {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 51px;
+  background-color: #fff;
+  padding-bottom: 92px;
+  overflow: hidden;
+}
+#main {
+  min-height: 700px;
+}
+main nav {
+  width: 100%;
+  border-top: solid 1px #d9dadc;
+  border-bottom: solid 1px #d9dadc;
+  border-right: solid 1px #eee;
+  border-left: solid 1px #eee;
+}
+main nav div {
+  width: 32.6%;
+  display: inline-block;
+  text-align: center;
+}
+main nav span {
+  line-height: 42px;
+  font-size: 20px;
+  color: #999;
+}
+main .divider {
+  margin: 22px 56px;
+  border-bottom: 1px solid #ccc;
+}
+main .next {
+  width: 338px;
+  height: 56px;
+  display: block;
+  margin: 0px auto;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #0d7652;
+  border: solid 1px #979797;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+#preparaNext {
+  background-color: #ccc;
+}
+#preparaNext a {
+  color: #fff;
+}
+footer {
+  width: 100%;
+  height: 60px;
+  margin-top: 22px;
+  background-color: #b8b9b9;
+  border: solid 1px #ccc;
+  border-left: none;
+  border-right: none;
+}
+.footer {
+  width: 90%;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+}
+.footer a {
+  margin-right: 20px;
+  color: #666;
+}
+.footer a:hover {
+  color: #000;
+}
+.footer span {
+  color: #666;
+}
+/*手机导航*/
+#phoneMenu {
+  width: 0;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #333;
+  z-index: 100;
+}
+.phoneList {
+  margin-top: 20px;
+}
+.phoneList span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0px;
+  color: #fff;
+  border: 1px solid #aaa;
+}
+#protocol span {
+  font-family: 'Arial Normal', 'Arial';
+}
+#protocol span.fontNeg {
+  font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
+}
+#submitPrev {
+  display: inline-block;
+  margin-right: 20px;
+}
+#submitNext {
+  display: inline-block;
+}
+.loginTip {
+  display: inline-block;
+  margin-left: 20px;
+  color: #999;
+  font-size: 16px;
+}
+#getCode {
+  font-family: Arial, 宋体;
+  font-style: italic;
+  color: green;
+  border: 0;
+  padding: 2px 3px;
+  letter-spacing: 3px;
+  font-weight: bolder;
+  width: 80px;
+}
+.logout {
+}
+.logout a {
+  font-size: 16px;
+  color: #999;
+}
+.modal {
+  top: 30%;
+}
+.modal-footer {
+  color: #000;
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-footer {
+  border-top: none;
+}
+#confirmVertifi {
+  background-color: #0d7652;
+}
+#toTop {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  background-iamge: url(../../images/register/top.png);
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,18 @@
+{
+  "msg": "成功",
+  "result": 1,
+  "data": [
+    {
+      "commodityId": 1,
+      "name": "第一个佛事"
+    },
+    {
+      "commodityId": 2,
+      "name": "第二个佛事"
+    },
+    {
+      "commodityId": 3,
+      "name": "第三个佛事"
+    }
+  ]
+}

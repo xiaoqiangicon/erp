@@ -1,0 +1,45 @@
+.edit-pop-house {
+  display: block;
+  z-index: 1049;
+}
+
+.edit-pop-house .modal-dialog {
+  width: 600px;
+}
+
+.edit-pop-house .modal-body {
+  padding: 20px;
+}
+
+.edit-pop-house .modal-footer {
+  text-align: center;
+}
+
+.edit-pop-house .row-1 {
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+  min-height: 34px;
+}
+
+.edit-pop-house .row-1:first-child {
+  margin-top: 0;
+}
+
+.edit-pop-house .title-1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+}
+
+.edit-pop-house .body-1 {
+  padding-left: 100px;
+}
+
+.edit-pop-house .box-1 {
+  position: relative;
+}

@@ -1,5 +1,4 @@
-const handlebars = require('handlebars');
-
+import handlebars from 'handlebars';
 const tpl = `
 <div class="row-0-1" data-pay-item="{{id}}">
     <div class="item-0-1 item-0-1-1">
@@ -24,5 +23,4 @@ const tpl = `
     </div>
 </div>
 `;
-
-module.exports = handlebars.compile(tpl);
+export default handlebars.compile(tpl);

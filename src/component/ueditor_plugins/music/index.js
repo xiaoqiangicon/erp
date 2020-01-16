@@ -1,4 +1,3 @@
-require('antd/lib/style/index.css');
-require('@senntyou/shortcut.css');
-
-require('./init');
+import 'antd/lib/style/index.css';
+import '@senntyou/shortcut.css';
+import './init';

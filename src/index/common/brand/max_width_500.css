@@ -1,0 +1,72 @@
+@media (max-width: 500px) {
+  .brand {
+    background-image: url(https://pic.zizaihome.com/a4ef6d72-1c58-11e8-b608-00163e0c001e.png);
+  }
+  .brand-left {
+    padding-left: 0;
+    width: 100%;
+    padding-top: 10px;
+  }
+  .brand-right {
+    padding-top: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+  .brand .menu-1 {
+    padding-left: 28px;
+  }
+  .brand .menu-1-item {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px;
+  }
+  .brand .menu-1-item-title {
+    font-size: 18px;
+  }
+  .brand .menu-2 {
+    margin-top: 50px;
+    text-align: center;
+  }
+  .brand .menu-2-item {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    line-height: 30px;
+    float: none;
+    display: inline-block;
+    text-align: center;
+  }
+  .brand .menu-3 {
+    display: none;
+  }
+  .brand .menu-3-item {
+    float: left;
+  }
+  .brand .menu-3-item:first-child {
+    margin-left: 18%;
+  }
+  .brand .menu-3-item:last-child {
+    float: right;
+    margin-right: 18%;
+  }
+  .brand .text-2,
+  .brand .text-3 {
+    width: 100%;
+    text-align: left;
+    padding-left: 28px;
+  }
+  .brand-type-2 .brand .text-2,
+  .brand-type-2 .brand .text-3 {
+    text-align: center;
+  }
+  .brand .text-2 {
+    margin-top: 0;
+    font-size: 18px;
+  }
+  .brand .text-1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+}

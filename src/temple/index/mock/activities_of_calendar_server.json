@@ -1,0 +1,143 @@
+{
+  "msg": "获取成功",
+  "result": 1,
+  "pageNumber": 20,
+  "total": 100,
+  "list": [
+    {
+      "date": "2017-01-01",
+      "events": [
+        {
+          "id": 10,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 10,
+          "commodityName": "佛事标题10",
+          "commodityPic": "/sample/image1.jpg"
+        },
+        {
+          "id": 11,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 11,
+          "commodityName": "佛事标题11",
+          "commodityPic": "/sample/image2.jpg"
+        },
+        {
+          "id": 12,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 12,
+          "commodityName": "佛事标题12",
+          "commodityPic": "/sample/image3.jpg"
+        },
+        {
+          "id": 13,
+          "title": "事件标题13",
+          "cover_pic": "",
+          "commodityId": 0,
+          "commodityName": "",
+          "commodityPic": ""
+        },
+        {
+          "id": 14,
+          "title": "事件标题14",
+          "cover_pic": "",
+          "commodityId": 0,
+          "commodityName": "",
+          "commodityPic": ""
+        }
+      ]
+    },
+    {
+      "date": "2017-01-05",
+      "events": [
+        {
+          "id": 20,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 20,
+          "commodityName": "佛事标题20",
+          "commodityPic": "/sample/image1.jpg"
+        },
+        {
+          "id": 21,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 21,
+          "commodityName": "佛事标题21",
+          "commodityPic": "/sample/image2.jpg"
+        },
+        {
+          "id": 22,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 22,
+          "commodityName": "佛事标题22",
+          "commodityPic": "/sample/image3.jpg"
+        },
+        {
+          "id": 23,
+          "title": "事件标题23",
+          "cover_pic": "",
+          "commodityId": 0,
+          "commodityName": "",
+          "commodityPic": ""
+        },
+        {
+          "id": 24,
+          "title": "事件标题24",
+          "cover_pic": "",
+          "commodityId": 0,
+          "commodityName": "",
+          "commodityPic": ""
+        }
+      ]
+    },
+    {
+      "date": "2017-01-10",
+      "events": [
+        {
+          "id": 30,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 30,
+          "commodityName": "佛事标题30",
+          "commodityPic": "/sample/image1.jpg"
+        },
+        {
+          "id": 31,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 31,
+          "commodityName": "佛事标题31",
+          "commodityPic": "/sample/image2.jpg"
+        },
+        {
+          "id": 32,
+          "title": "",
+          "cover_pic": "",
+          "commodityId": 32,
+          "commodityName": "佛事标题32",
+          "commodityPic": "/sample/image3.jpg"
+        },
+        {
+          "id": 33,
+          "title": "事件标题33",
+          "cover_pic": "",
+          "commodityId": 0,
+          "commodityName": "",
+          "commodityPic": ""
+        },
+        {
+          "id": 34,
+          "title": "事件标题34",
+          "cover_pic": "",
+          "commodityId": 0,
+          "commodityName": "",
+          "commodityPic": ""
+        }
+      ]
+    }
+  ]
+}

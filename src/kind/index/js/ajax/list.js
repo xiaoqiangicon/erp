@@ -1,13 +1,7 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax').default;
-
+import seeAjax from 'see-ajax';
 const requestKeys = {
   page: 'pageNum',
 };
-
 const responseRefactor = {
   data: [
     {
@@ -17,16 +11,13 @@ const responseRefactor = {
     },
   ],
 };
-
 const preHandle = req => {
   req.pageNum -= 1;
   req.pageSize = 20;
 };
-
 const postHandle = res => {
   res.totalPages = Math.ceil((res.total || 0) / 20);
 };
-
 seeAjax.config('list', {
   url: [
     '/zzhadmin/charityList',

@@ -1,0 +1,43 @@
+.edit-com-figure-row {
+  position: relative;
+  width: 100%;
+  padding: 10px 0 10px 60px;
+  min-height: 70px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.edit-com-figure-row:first-child {
+  border-top: 1px solid #dddddd;
+}
+
+.edit-com-figure-row .avatar-1 {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.edit-com-figure-row .name-1 {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.edit-com-figure-row .name-2 {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #989898;
+}
+
+.edit-com-figure-row .del-1 {
+  float: right;
+  margin-top: 12px;
+}
+
+.edit-com-figure-row .edit-1 {
+  float: right;
+  margin-top: 12px;
+  margin-right: 10px;
+}

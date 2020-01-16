@@ -1,0 +1,144 @@
+main .tip {
+  margin-left: 16%;
+  margin-right: 16%;
+  margin-top: 30px;
+}
+main .tip h3 {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 8px;
+  margin-bottom: 0px;
+  color: #333;
+  font-family: 'Microsoft YaHei';
+  border-bottom: solid 1px #ccc;
+}
+.nav2 span {
+  color: #fff;
+}
+main nav .nav2:before {
+  content: ' ';
+  width: 0;
+  position: absolute;
+  left: 0px;
+  border-width: 21px;
+  border-style: solid;
+  border-color: transparent transparent transparent #fff;
+  z-index: 9999;
+}
+main nav .nav2 {
+  background-color: #007551;
+  position: relative;
+}
+main nav .nav2:after {
+  content: ' ';
+  width: 0;
+  position: absolute;
+  right: -40px;
+  border-width: 21px;
+  border-style: solid;
+  border-color: transparent transparent transparent #007551;
+}
+main .form {
+  margin: 16px 16% 40px 16%;
+}
+main .form .templeForm {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+main .form .control-label {
+  width: 18%;
+  text-align: left;
+  padding-top: 5px;
+  padding-left: 4px;
+  padding-right: 0px;
+}
+main .form .templeValue {
+  width: 82%;
+  padding: 0px;
+}
+main .form .templeValue p {
+  color: #999;
+  font-size: 16px;
+  margin: 5px 0px;
+}
+main .form .formName {
+  padding-left: 4px;
+  padding-right: 0px;
+}
+main .form .form-control {
+  font-size: 20px;
+  font-family: 'Microsoft YaHei';
+  color: #343535;
+  background-color: #fff;
+  height: 36px;
+}
+main .form .frozen {
+  background-color: #e9e9e9;
+}
+main .tip2 h3 {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  color: #333;
+  font-family: 'Microsoft YaHei';
+  border-bottom: solid 1px #ccc;
+}
+#templeVertifica {
+  width: 80%;
+  display: inline-block;
+}
+main .vertifica {
+  background-color: #0d7652;
+  color: #fff;
+  width: 19%;
+  border: none;
+  padding: 5px 0px 3px 0px;
+  margin-left: -6px;
+}
+main input[type='radio'] {
+  display: none;
+  cursor: pointer;
+}
+main .checkbox {
+  background-image: url('../../../images/register/group-10.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#isLegal {
+  margin-right: 45px;
+  margin-left: 36px;
+}
+input[type='radio']:checked + .checkbox {
+  background-image: url('../../../images/register/ic-select-green.png') !important;
+  background-repeat: no-repeat;
+}
+input[type='radio']:checked + span {
+  color: #0d7652;
+}
+.showPassword {
+  position: absolute;
+  top: 6px;
+  right: 16px;
+  background-image: url(../../../images/register/showPassword.png);
+  background-repeat: no-repeat;
+  width: 30px;
+  cursor: pointer;
+  height: 25px;
+}
+.hidePassword {
+  position: absolute;
+  top: 6px;
+  right: 16px;
+  background-image: url(../../../images/register/hidePassword.png);
+  background-repeat: no-repeat;
+  width: 30px;
+  cursor: pointer;
+  height: 25px;
+}

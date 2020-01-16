@@ -1,0 +1,35 @@
+.prod-3 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.prod-3 .image-1 {
+  float: left;
+  width: 373px;
+  margin-left: 33px;
+}
+.prod-3 .content {
+  float: right;
+  margin-right: 50px;
+  width: 342px;
+}
+.prod-3 .image-2 {
+  height: 43px;
+}
+.prod-3 .common-text-1 {
+  margin-top: 24px;
+}
+
+@media (max-width: 500px) {
+  .prod-3 .image-1 {
+    float: none;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+  .prod-3 .content {
+    float: none;
+    width: 80%;
+    margin: 20px auto 0 auto;
+  }
+}

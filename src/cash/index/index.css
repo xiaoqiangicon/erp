@@ -1,0 +1,8 @@
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/dialog.css';
+@import 'css/dialog_account.css';
+
+.tippy-tooltip {
+  font-size: 14px;
+}

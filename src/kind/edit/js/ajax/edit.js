@@ -1,12 +1,6 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax').default;
-const zzhUtil = require('@zzh/util');
-
-const preHandleAdd = require('./pre_handle_add');
-
+import seeAjax from 'see-ajax';
+import zzhUtil from '../../../../com-deprecated/util';
+// import preHandleAdd from './pre_handle_add';
 const requestKeys = {
   title: 'name',
   intro: 'details',
@@ -16,12 +10,10 @@ const requestKeys = {
   shareIcon: 'shareHeadImg',
   showPeopleCountWhenShare: 'isShowJoinNum',
 };
-
 const preHandle = req => {
   req.charityId = zzhUtil.urlParams.id;
-  preHandleAdd(req);
+  // preHandleAdd(req);
 };
-
 seeAjax.config('edit', {
   method: ['post'],
   stringify: [!0],

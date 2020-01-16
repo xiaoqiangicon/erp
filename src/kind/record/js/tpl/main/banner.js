@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <div class="main-banner">
     <div class="item-1">
         <div class="inner">

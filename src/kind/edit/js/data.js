@@ -1,6 +1,4 @@
-module.exports = {
-  // 编辑时后台返回的原有信息
+export default {
   info: {},
-  // ueditor 实例
   editor: void 0,
 };

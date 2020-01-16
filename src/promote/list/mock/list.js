@@ -1,5 +1,7 @@
-module.exports = (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
+export default (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+  });
   res.end(
     JSON.stringify({
       success: true,
@@ -12,6 +14,7 @@ module.exports = (req, res) => {
         totalMoney: id * 2,
         profit: id * 3,
         online: Math.floor(Math.random() * 2),
+        canOnline: Math.floor(Math.random() * 2),
         ended: Math.floor(Math.random() * 2),
       })),
     })

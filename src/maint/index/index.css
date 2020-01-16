@@ -1,0 +1,90 @@
+html,
+body {
+  width: 100%;
+  background-color: #e9f2f9;
+  margin: 0;
+  padding: 0;
+}
+.ctnr {
+  width: 1020px;
+  height: 688px;
+  margin: 135px auto 201px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.ctnr-l {
+  float: left;
+  width: 49%;
+  height: 100%;
+  background: url('https://pic.zizaihome.com/86b0a67e-2cb5-11e8-8c69-00163e0c001e.png')
+    no-repeat;
+  background-size: cover;
+}
+.ctnr-r {
+  float: left;
+  width: 51%;
+  height: 100%;
+  background-color: #fff;
+}
+.title {
+  margin: 32px 0 35px;
+  text-align: center;
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: bold;
+}
+.desc {
+  margin-bottom: 25px;
+  padding: 0 23px 0 44px;
+  text-align: left;
+  font-size: 22px;
+  line-height: 47px;
+}
+.contact {
+  padding-left: 44px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: bold;
+}
+.contact-info {
+  color: #6490c7;
+}
+.qrcode {
+  width: 115px;
+  height: 115px;
+  margin: 50px auto 23px;
+  background: url('https://pic.zizaihome.com/85d78aee-2cae-11e8-8899-00163e0c001e.png')
+    no-repeat;
+  background-size: cover;
+}
+.more {
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* 适配手机 */
+@media screen and (max-width: 1024px) {
+  .ctnr {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 10px;
+    border-radius: 0;
+  }
+  .ctnr-l {
+    display: none;
+  }
+  .ctnr-r {
+    box-sizing: border-box;
+    float: none;
+    width: 100%;
+    border-radius: 15px;
+  }
+  .title {
+    margin: 0;
+    padding-top: 32px;
+  }
+}

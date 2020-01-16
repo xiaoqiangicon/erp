@@ -1,0 +1,106 @@
+/*panel公用*/
+.panel {
+  border: 1px solid #979797;
+  border-radius: 10px;
+}
+.panel-header {
+  height: 40px;
+  font-weight: bold;
+  border-bottom: 2px solid #979797;
+}
+.panel-header .panel-title {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.panel-content {
+  position: relative;
+  padding: 30px 50px;
+}
+/*特殊panel-promotion-panel*/
+.promotion-panel .content-cell {
+  width: 50%;
+}
+.promotion-panel .br98 {
+  border-right: 1px solid #989898;
+}
+.promotion-panel .content-title {
+  text-align: center;
+  font-size: 20px;
+}
+.promotion-panel .main-qrcode {
+  width: 150px;
+  height: 150px;
+  margin: 10px auto;
+}
+.promotion-panel .main-qrcode canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+.promotion-panel .main-input {
+  margin: 80px 0 50px;
+  text-align: center;
+}
+.promotion-panel .main-input input {
+  width: 300px;
+  height: 30px;
+}
+.promotion-panel .content-action {
+  margin: 30px 0;
+  text-align: center;
+}
+.promotion-panel .switch-qrcode {
+  color: #666;
+  cursor: pointer;
+}
+.promotion-panel .switch-qrcode.active {
+  color: #6fba2c;
+}
+.promotion-panel .content-cell.right .content-action {
+  margin: 40px 0 60px;
+}
+.promotion-panel .content-usage {
+  margin-left: 30px;
+}
+/*特殊panel temple-set-panel*/
+.temple-set-panel .award-set .label-day {
+  width: 150px;
+}
+.temple-set-panel .award-set .label-type {
+  width: 80px;
+  text-align: center;
+}
+.temple-set-panel .award-set .award-set-input {
+  width: 400px;
+}
+
+.temple-set-panel .music-set .content-cell {
+  float: left;
+  width: 33%;
+  position: relative;
+}
+.temple-set-panel .music-set .content-cell label {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.temple-set-panel .music-set .content-cell .play-music {
+  float: right;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  padding-left: 1px;
+  margin-right: 70px;
+  font-size: 10px;
+}
+/*播放器按钮*/
+.music-play {
+  background: url(../../../../images/vrshow/base_set/play.png) no-repeat;
+  background-size: contain;
+}
+.music-stop {
+  background: url(../../../../images/vrshow/base_set/pause.png) no-repeat;
+  background-size: contain;
+}

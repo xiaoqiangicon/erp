@@ -1,0 +1,7 @@
+@import '../common/base.css';
+@import '../common/nav.css';
+@import '../common/brand.css';
+
+@import 'css/common.css';
+@import 'css/base.css';
+@import 'css/detail.css';

@@ -1,11 +1,5 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax').default;
-
-const preHandle = require('./pre_handle_add');
-
+import seeAjax from 'see-ajax';
+// import preHandle from './pre_handle_add';
 const requestKeys = {
   title: 'name',
   intro: 'details',
@@ -15,7 +9,6 @@ const requestKeys = {
   shareIcon: 'shareHeadImg',
   showPeopleCountWhenShare: 'isShowJoinNum',
 };
-
 seeAjax.config('add', {
   method: ['post'],
   stringify: [!0],
@@ -25,5 +18,5 @@ seeAjax.config('add', {
     '/src/kind/edit/data/add.json',
   ],
   requestKeys: [requestKeys, requestKeys],
-  preHandle: [preHandle, preHandle],
+  // preHandle: [preHandle, preHandle],
 });

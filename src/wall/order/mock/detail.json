@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": {
+    "id": 1,
+    "name": "haha",
+    "place": "hehe",
+    "sequence": 123,
+    "time": "2016-07-01 01:01:01",
+    "money": 123,
+    "type": "1天",
+    "orderNumber": "12398893u492",
+    "flowNumber": "vhuidfvjkdn4839u",
+    "feedImage": "/images/common/example-avatar.jpg",
+    "memo": "vuifdvhufidvd",
+    "contactList": [
+      {
+        "name": "name1",
+        "phone": 1234556777
+      },
+      {
+        "name": "name2",
+        "phone": 38946777
+      }
+    ]
+  }
+}

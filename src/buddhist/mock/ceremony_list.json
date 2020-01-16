@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "id": 526,
+      "collect_money": 0.01,
+      "status": 0,
+      "join_num": 1,
+      "isStart": 1,
+      "isEnd": 0,
+      "name": "无规格有附言",
+      "price": 0.01,
+      "pic": "http://imgs.zizaihome.com/c8ef3f18-03c7-11e7-b2b9-00163e0c1e1c.jpg",
+      "wx_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=526"
+    },
+    {
+      "id": 527,
+      "collect_money": 55,
+      "status": 0,
+      "join_num": 1,
+      "isStart": 1,
+      "isEnd": 0,
+      "name": "规格有附言",
+      "price": 0.1,
+      "pic": "http://imgs.zizaihome.com/c8ef3f18-03c7-11e7-b2b9-00163e0c1e1c.jpg",
+      "wx_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=527"
+    },
+    {
+      "id": 528,
+      "collect_money": 99,
+      "status": 0,
+      "join_num": 1,
+      "isStart": 1,
+      "isEnd": 0,
+      "name": "附言",
+      "price": 0.01,
+      "pic": "http://imgs.zizaihome.com/c8ef3f18-03c7-11e7-b2b9-00163e0c1e1c.jpg",
+      "wx_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=528"
+    },
+    {
+      "id": 529,
+      "collect_money": 25,
+      "status": 0,
+      "join_num": 1,
+      "isStart": 1,
+      "isEnd": 0,
+      "name": "无附言",
+      "price": 8.88,
+      "pic": "http://imgs.zizaihome.com/c8ef3f18-03c7-11e7-b2b9-00163e0c1e1c.jpg",
+      "wx_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=529"
+    },
+    {
+      "id": 53,
+      "collect_money": 88,
+      "status": 0,
+      "join_num": 2,
+      "isStart": 1,
+      "isEnd": 0,
+      "name": "大苏打似的",
+      "price": 5,
+      "pic": "http://imgs.zizaihome.com/c8ef3f18-03c7-11e7-b2b9-00163e0c1e1c.jpg",
+      "wx_url": "http://wx.zizaihome.com/commodity/commodityInfo?commodityId=53"
+    }
+  ],
+  "msg": "",
+  "result": 0,
+  "total": 5
+}

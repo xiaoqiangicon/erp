@@ -1,0 +1,58 @@
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+.content-container-inner {
+  min-width: 900px;
+  padding: 20px;
+  background-color: #ffffff;
+}
+.nav-tabs > li {
+  border-bottom-width: 0;
+  cursor: pointer;
+}
+.nav-tabs > li > a {
+  color: #333333;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: #6fba2c;
+}
+.nav-tabs > li + li {
+  margin-left: 0;
+}
+.nav-tabs > li {
+  width: 18%;
+  text-align: center;
+}
+.filter-section {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+.filter-section-row {
+  width: 100%;
+  padding-left: 30px;
+  margin-top: 20px;
+}
+.filter-section-row:first-child {
+  margin-top: 0;
+}
+.filter-section-row-title,
+.filter-section-row-desc {
+  float: left;
+  width: 150px;
+  line-height: 34px;
+  font-size: 16px;
+}
+.filter-section-row-content {
+  float: left;
+  width: 200px;
+}
+.filter-section-row-desc {
+  margin-left: 20px;
+}
+.filter-section-action {
+  padding-left: 180px;
+}

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "data": {
+    "type": 2,
+    "bank": "中国银行",
+    "subBank": "深圳南山支行",
+    "bankCard": "1234567890123456",
+    "account": "雅尼",
+    "licenceImage": "/sample/image1.jpg",
+    "idCardImage1": "/sample/image2.jpg",
+    "idCardImage2": "/sample/image3.jpg"
+  }
+}

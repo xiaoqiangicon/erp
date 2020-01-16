@@ -1,6 +1,4 @@
-module.exports = {
+export default {
   id: 1,
-  optionsCollection: {
-    // id => options
-  },
+  optionsCollection: {},
 };

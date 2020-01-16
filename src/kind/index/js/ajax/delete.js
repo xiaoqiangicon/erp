@@ -1,13 +1,7 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax').default;
-
+import seeAjax from 'see-ajax';
 const requestKeys = {
   id: 'charityId',
 };
-
 seeAjax.config('delete', {
   url: [
     '/zzhadmin/charityDel/',

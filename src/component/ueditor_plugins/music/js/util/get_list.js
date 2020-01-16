@@ -1,19 +1,10 @@
-const $ = require('jquery');
-
-const data = require('../data');
-const handleList = require('./handle_list');
-
-// qq音乐的 jsonp 接口上不能加 `_` 参数，否则请求不到数据
-$.ajaxSetup({ cache: !0 });
-
-/**
- * 请求列表数据
- *
- * @param key 搜索关键字
- * @param success 成功的回调函数
- * @param fail 失败的回调函数
- */
-module.exports = (key, success, fail) => {
+import $ from 'jquery';
+import data from '../data';
+import handleList from './handle_list';
+$.ajaxSetup({
+  cache: !0,
+});
+export default (key, success, fail) => {
   $.ajax({
     url: `${
       data.dataUrl

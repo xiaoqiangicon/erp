@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "currentPage": 1,
+  "totalPages": 10,
+  "totalCount": 99,
+  "perPage": 10,
+  "data": [
+    {
+      "id": 1,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 2,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 3,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 4,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 5,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 6,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 7,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 8,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 9,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    },
+    {
+      "id": 10,
+      "image": "https://pic.zizaihome.com/e2601442-32fe-11e8-91c9-00163e0c1e1c.jpg"
+    }
+  ]
+}

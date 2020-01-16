@@ -1,0 +1,80 @@
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+.content-container-inner {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  padding-right: 100px;
+}
+.content-body {
+  width: 900px;
+  height: 950px;
+  padding: 30px 150px;
+  overflow: hidden;
+  background-image: url('../../../../images/wall/intro/bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.content-body-inner {
+  padding: 10px 20px;
+  border: 1px solid #f00;
+  box-shadow: 0 0 1px 4px #fc8385, 0 0 1px 10px #fff, 0 0 1px 14px #f74851;
+}
+.content-body h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.content-body .description {
+  text-indent: 33px;
+}
+
+.content-body p {
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #333;
+}
+
+.content-body strong {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #333;
+}
+
+.content-actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  height: 120px;
+}
+.content-btn,
+.content-btn-outline {
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+.content-btn,
+.content-btn:hover,
+.content-btn:focus,
+.content-btn:active {
+  color: #fff;
+  background-color: #73bc32;
+  border-color: #5b991f;
+}
+.content-btn-outline,
+.content-btn-outline:hover,
+.content-btn-outline:focus,
+.content-btn-outline:active {
+  color: #72ba31;
+  background-color: #f4f7f7;
+  border: 1px solid #72ba31;
+}

@@ -1,0 +1,124 @@
+{
+  "msg": "获取成功",
+  "data": [
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        }
+      ],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        }
+      ],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 19,
+      "activityName": "课堂",
+      "manageUser": [
+        {
+          "pic": "http://imgs.zizaihome.com/077DB5B52067314804B42D822A12F208",
+          "nickName": "倾听千蝶"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/chanzai_avatar_170619.png",
+          "nickName": "禅在用户000723"
+        },
+        {
+          "pic": "http://imgs.zizaihome.com/D46F8B2CF3199A89B76F9A92C5CD53DA",
+          "nickName": "你好"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEL6xRmXD0OFibFzib7BS8bL6fgjwSPwoVvpskQnr04Uz1gQYDmvNd3LZIaKFtInib11OFI8ic9yAumV1Q/0",
+          "nickName": "Terry吴天"
+        },
+        {
+          "pic": "https://wx.qlogo.cn/mmopen/PiajxSqBRaEL6xRmXD0OFibFzib7BS8bL6fgjwSPwoVvpskQnr04Uz1gQYDmvNd3LZIaKFtInib11OFI8ic9yAumV1Q/0",
+          "nickName": "Terry吴天"
+        }
+      ],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=1",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 19
+    },
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    },
+    {
+      "signNum": 0,
+      "activityName": "ceshi",
+      "manageUser": [],
+      "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=2",
+      "pic": "http://oax4peezh.bkt.clouddn.com/hfsyg001.jpg",
+      "inputNum": 0,
+      "joinNum": 1
+    }
+  ],
+  "total": 6,
+  "pageNumber": 2,
+  "result": 1
+}

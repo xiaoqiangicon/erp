@@ -1,0 +1,16 @@
+.share-title-count {
+  position: absolute;
+  right: 28px;
+  top: 0;
+  height: 34px;
+  line-height: 34px;
+  color: #989898;
+  font-size: 16px;
+}
+.share-content-count {
+  margin-top: 10px;
+  text-align: right;
+  color: #989898;
+  font-size: 16px;
+  padding-right: 8px;
+}

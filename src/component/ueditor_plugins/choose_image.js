@@ -1,25 +1,15 @@
-require('component/upload_config');
-
-require('@zzh/upload/dist/upload.css');
-require('@zzh/pagination/dist/pagination.css');
-require('less/pagination.less');
-require('@fancyapps/fancybox/dist/jquery.fancybox.css');
-require('@zzh/choose-image/dist/choose-image.css');
-const ChooseImage = require('@zzh/choose-image');
-
-require('component/choose_image_config');
-
-// 单选图片
+import 'component/upload_config';
+import '../../com-deprecated/upload/css/index.css';
+import '../../com-deprecated/pagination/index.less';
+import 'less/pagination.less';
+import '@fancyapps/fancybox/dist/jquery.fancybox.css';
+import '../../com-deprecated/choose-image/css/index.css';
+import ChooseImage from '../../com-deprecated/choose-image';
 window.UE.registerUI('zzh-choose-image', (editor, uiName) => {
-  // 创建一个button
   const btn = new UE.ui.Button({
-    // 按钮的名字
     name: uiName,
-    // 提示
     title: '添加图片',
-    // 需要添加的额外样式，指定icon图标，这里默认使用一个重复的icon
     cssRules: 'background-position: -380px 0;',
-    // 点击时执行的命令
     onclick: () => {
       if (!editor.zzhChooseImage) {
         editor.zzhChooseImage = new ChooseImage({
@@ -27,7 +17,10 @@ window.UE.registerUI('zzh-choose-image', (editor, uiName) => {
           onSubmit: items => {
             const get_img = editor.selection.getRange().getClosedNode();
             if (typeof get_img !== 'undefined')
-              $(get_img).attr({ src: items[0].src, _src: items[0].src });
+              $(get_img).attr({
+                src: items[0].src,
+                _src: items[0].src,
+              });
             else
               editor.execCommand('insertimage', {
                 src: items[0].src,

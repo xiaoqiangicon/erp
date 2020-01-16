@@ -1,0 +1,45 @@
+.edit-pop-figure {
+  display: block;
+  z-index: 1049;
+}
+
+.edit-pop-figure .modal-dialog {
+  width: 600px;
+}
+
+.edit-pop-figure .modal-body {
+  padding: 20px;
+}
+
+.edit-pop-figure .modal-footer {
+  text-align: center;
+}
+
+.edit-pop-figure .row-1 {
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+  min-height: 34px;
+}
+
+.edit-pop-figure .row-1:first-child {
+  margin-top: 0;
+}
+
+.edit-pop-figure .title-1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 16px;
+}
+
+.edit-pop-figure .body-1 {
+  padding-left: 100px;
+}
+
+.edit-pop-figure .box-1 {
+  position: relative;
+}

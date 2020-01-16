@@ -1,0 +1,29 @@
+body {
+  background: #f5f5f5;
+}
+.content-container {
+  padding: 10px;
+  position: relative;
+}
+
+.content-container-inner {
+  min-width: 850px;
+  min-height: 500px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding-bottom: 50px;
+}
+
+.btn-custom {
+  height: 28px;
+  line-height: 26px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.btn-custom-outline {
+  background: transparent;
+  color: #71ba31;
+}
+.special-text {
+  color: #3382d5;
+}

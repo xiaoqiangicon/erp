@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>自录数据</title>
+  </head>
+  <body data-menu-id="wall-record">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="select-section">
+          <div class="clearfix">
+            <div class="select-section-title">选择大殿：</div>
+            <select
+              class="form-control select-section-select"
+              id="select-house"
+            >
+              <option value="0">未选择</option>
+            </select>
+            <div class="select-section-title">选择区域：</div>
+            <select
+              class="form-control select-section-select"
+              id="select-region"
+            >
+              <option value="0">未选择</option>
+            </select>
+          </div>
+          <p class="mgt20">
+            提示：单选位置点击“录入数据”填写供奉信息，单选已录入位置可修改供奉信息。
+          </p>
+        </div>
+        <div class="seat-section">
+          <div class="seat-section-intro clearfix">
+            <div class="seat-cell available seat-section-intro-cell"></div>
+            <div class="seat-section-intro-cell">未录入位置</div>
+            <div class="seat-cell recorded seat-section-intro-cell"></div>
+            <div class="seat-section-intro-cell">自录数据</div>
+            <div class="seat-cell online seat-section-intro-cell"></div>
+            <div class="seat-section-intro-cell">线上数据</div>
+            <button
+              class="btn btn-green seat-section-intro-in hide"
+              id="action-record"
+            >
+              录入数据
+            </button>
+          </div>
+          <div class="seat-section-content"><div id="content-body"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade in" id="create-modal">
+      <div class="modal-dialog" style="width: 540px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-popup-close="1">
+              <span>×</span>
+            </button>
+            <h4 class="modal-tip" id="create-modal-title">录入数据</h4>
+          </div>
+          <div class="create-modal-content" id="create-modal-content">
+            <div class="create-modal-row">
+              位置行列：<span id="create-modal-row">0</span>行<span
+                id="create-modal-column"
+                >0</span
+              >列
+            </div>
+            <div class="create-modal-row">填写位置编号信息：</div>
+            <div class="create-modal-input">
+              <div class="create-modal-sub-row">
+                <div class="create-modal-sub-row-left">编号信息：</div>
+                <div class="create-modal-sub-row-right">
+                  <input class="form-control" id="create-modal-sequence" />
+                </div>
+              </div>
+            </div>
+            <div class="create-modal-row mgt10">到期时间以及功德芳名</div>
+            <div class="create-modal-input">
+              <div class="create-modal-sub-row">
+                <div class="create-modal-sub-row-left">到期时间：</div>
+                <div class="create-modal-sub-row-right">
+                  <input class="form-control" id="create-modal-time" />
+                  <button
+                    class="btn btn-success mgl10 left"
+                    id="create-modal-forever"
+                  >
+                    设为永久
+                  </button>
+                  <p class="clear pdt10" style="font-weight: normal;">
+                    日期格式：2017-01-01
+                  </p>
+                </div>
+              </div>
+              <div class="create-modal-sub-row" id="create-modal-row-name">
+                <div class="create-modal-sub-row-left">功德芳名：</div>
+                <div class="create-modal-sub-row-right">
+                  <input class="form-control" id="create-modal-name" />
+                </div>
+              </div>
+              <div
+                class="create-modal-sub-row"
+                id="create-modal-row-yang-shang-ren"
+                style="display: none;"
+              >
+                <div class="create-modal-sub-row-left">阳上人：</div>
+                <div class="create-modal-sub-row-right">
+                  <input
+                    class="form-control"
+                    id="create-modal-yang-shang-ren"
+                  />
+                </div>
+              </div>
+              <div
+                class="create-modal-sub-row"
+                id="create-modal-row-wang-sheng-zhe"
+                style="display: none;"
+              >
+                <div class="create-modal-sub-row-left">往生者：</div>
+                <div class="create-modal-sub-row-right">
+                  <input
+                    class="form-control"
+                    id="create-modal-wang-sheng-zhe"
+                  />
+                </div>
+              </div>
+              <div
+                class="create-modal-sub-row"
+                id="create-modal-row-wish"
+                style="display: none;"
+              >
+                <div class="create-modal-sub-row-left">心愿：</div>
+                <div class="create-modal-sub-row-right">
+                  <input class="form-control" id="create-modal-wish" />
+                </div>
+              </div>
+            </div>
+            <div class="create-modal-row mgt10">填写联系人信息(非必填)</div>
+            <div class="create-modal-input" id="create-modal-contact">
+              <div
+                class="create-modal-contact-unit"
+                data-create-contact-unit="1"
+              >
+                <div class="create-modal-sub-row">
+                  <div class="create-modal-sub-row-left">联系人：</div>
+                  <div class="create-modal-sub-row-right">
+                    <input class="form-control" data-create-contact-name="1" />
+                  </div>
+                </div>
+                <div class="create-modal-sub-row">
+                  <div class="create-modal-sub-row-left">手机号码：</div>
+                  <div class="create-modal-sub-row-right">
+                    <input
+                      class="form-control"
+                      type="number"
+                      data-create-contact-phone="1"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="create-modal-sub-row mgb0"
+                  data-create-contact-birth="1"
+                  style="display: none"
+                >
+                  <div class="create-modal-sub-row-left">出生日期：</div>
+                  <div class="create-modal-sub-row-right">
+                    <input
+                      class="form-control"
+                      data-create-contact-birth-date="1"
+                    />
+                    <select
+                      class="form-control"
+                      data-create-contact-lunar-year="1"
+                      style="display: none"
+                    ></select>
+                    <select
+                      class="form-control mgl10"
+                      data-create-contact-lunar-month="1"
+                      style="display: none"
+                    ></select>
+                    <select
+                      class="form-control mgl10"
+                      data-create-contact-lunar-day="1"
+                      style="display: none"
+                    ></select>
+                  </div>
+                </div>
+                <div
+                  class="create-modal-sub-row"
+                  data-create-contact-birth="2"
+                  style="display: none"
+                >
+                  <div class="create-modal-sub-row-left">&nbsp;</div>
+                  <div class="create-modal-sub-row-right">
+                    <div class="checkbox">
+                      <label
+                        ><input type="checkbox" data-create-contact-lunar="1" />
+                        农历</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mgt20 text-center">
+              <button
+                class="btn btn-info pdl30 pdr30"
+                id="create-modal-add-contact"
+              >
+                添加联系人
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group text-center">
+              <button class="btn btn-green pdl30 pdr30" id="create-modal-ok">
+                保存录入
+              </button>
+              <button class="btn btn-warning" data-popup-close="1">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hover-popup" id="hover-popup" style="display: none;">
+      <div class="hover-popup-content" id="hover-popup-content"></div>
+      <div class="hover-popup-actions hide" id="hover-popup-actions">
+        <button class="btn btn-hover-popup" id="hover-popup-ok">
+          修改数据
+        </button>
+        <button class="btn btn-default mgl20" id="hover-popup-no">取消</button>
+      </div>
+    </div>
+
+    <script type="text/html" id="tpl-detail">
+      {@each rowItems as rowItem, rowIndex}
+      <div class="seat-row clearfix">
+          {@each rowItem as columnItem, columnIndex}
+          <div class="seat-cell {@if rowIndex > 0 && columnIndex > 0}
+              {@if columnItem.recorded}recorded
+              {@else if columnItem.online}online
+              {@else if columnItem.disabled}
+              {@else}available
+              {@/if}
+          {@/if}"
+               {@if rowIndex > 0 && columnIndex > 0}
+               data-detail-cell="1" data-row-index="${rowIndex}" data-column-index="${columnIndex}"
+               data-sequence="${columnItem.sequence}" data-available="${columnItem.available}"
+               data-recorded="${columnItem.recorded}" data-online="${columnItem.online}"
+               data-disabled="${columnItem.disabled}"
+              {@/if}>
+              {@if rowIndex == 0 && columnIndex > 0}${columnIndex}{@else if columnIndex == 0 && rowIndex > 0}${rowIndex}{@/if}
+          </div>
+          {@/each}
+      </div>
+      {@/each}
+    </script>
+    <script type="text/html" id="tpl-contact">
+      {@each contactList as contact, index}
+      {@if index > 0}
+      <div class="create-modal-contact-unit" data-create-contact-unit="1">
+          <div class="create-modal-sub-row">
+              <div class="create-modal-sub-row-left">联系人：</div>
+              <div class="create-modal-sub-row-right">
+                  <input class="form-control" data-create-contact-name="1" value="${contact.name}">
+                  <button class="clean-button create-modal-sub-row-delete" data-create-contact-delete="1"></button>
+              </div>
+          </div>
+          <div class="create-modal-sub-row">
+              <div class="create-modal-sub-row-left">手机号码：</div>
+              <div class="create-modal-sub-row-right">
+                  <input class="form-control" type="number" data-create-contact-phone="1" value="${contact.phone}">
+              </div>
+          </div>
+          <div class="create-modal-sub-row mgb0" data-create-contact-birth="1" style="display: none">
+              <div class="create-modal-sub-row-left">出生日期：</div>
+              <div class="create-modal-sub-row-right">
+                  <input class="form-control" data-create-contact-birth-date="1">
+                  <select class="form-control" data-create-contact-lunar-year="1" style="display: none"></select>
+                  <select class="form-control mgl10" data-create-contact-lunar-month="1" style="display: none"></select>
+                  <select class="form-control mgl10" data-create-contact-lunar-day="1" style="display: none"></select>
+              </div>
+          </div>
+          <div class="create-modal-sub-row" data-create-contact-birth="2" style="display: none">
+              <div class="create-modal-sub-row-left">&nbsp;</div>
+              <div class="create-modal-sub-row-right">
+                  <div class="checkbox">
+                      <label><input type="checkbox" data-create-contact-lunar="1"> 农历</label>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {@/if}
+      {@/each}
+    </script>
+    <script type="text/html" id="tpl-contact-unit">
+      <div class="create-modal-contact-unit" data-create-contact-unit="1">
+          <div class="create-modal-sub-row">
+              <div class="create-modal-sub-row-left">联系人：</div>
+              <div class="create-modal-sub-row-right">
+                  <input class="form-control" data-create-contact-name="1">
+                  <button class="clean-button create-modal-sub-row-delete" data-create-contact-delete="1"></button>
+              </div>
+          </div>
+          <div class="create-modal-sub-row">
+              <div class="create-modal-sub-row-left">手机号码：</div>
+              <div class="create-modal-sub-row-right">
+                  <input class="form-control" type="number" data-create-contact-phone="1">
+              </div>
+          </div>
+          <div class="create-modal-sub-row mgb0" data-create-contact-birth="1" style="display: none">
+              <div class="create-modal-sub-row-left">出生日期：</div>
+              <div class="create-modal-sub-row-right">
+                  <input class="form-control" data-create-contact-birth-date="1">
+                  <select class="form-control" data-create-contact-lunar-year="1" style="display: none"></select>
+                  <select class="form-control mgl10" data-create-contact-lunar-month="1" style="display: none"></select>
+                  <select class="form-control mgl10" data-create-contact-lunar-day="1" style="display: none"></select>
+              </div>
+          </div>
+          <div class="create-modal-sub-row" data-create-contact-birth="2" style="display: none">
+              <div class="create-modal-sub-row-left">&nbsp;</div>
+              <div class="create-modal-sub-row-right">
+                  <div class="checkbox">
+                      <label><input type="checkbox" data-create-contact-lunar="1"> 农历</label>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-option">
+      <option value="${id}">${name}</option>
+    </script>
+    <script type="text/html" id="tpl-region-cell">
+      <option value="${id}" class="hide" data-name="${name}">${buddhaName} - ${shortedName}</option>
+    </script>
+    <script type="text/html" id="tpl-hover">
+      <p>${regionName} ${row}行${column}列</p>
+      <p>位置编号：${sequence}</p>
+      {@if endTime && writeName}
+      <hr>
+      <p>到期时间：${endTime}</p>
+      {@if writeName}<p>功德芳名：${writeName}</p>{@/if}
+      {@if yangShangRen}<p>阳上人：${yangShangRen}</p>{@/if}
+      {@if wangShengZhe}<p>往生者：${wangShengZhe}</p>{@/if}
+      {@if wish}<p>心愿：${wish}</p>{@/if}
+      {@/if}
+      {@if contactList && contactList.length}
+      <hr>
+      {@each contactList as contact}
+      <p>联系人：${contact.name}</p>
+      <p>手机号码：${contact.phone}</p>
+      {@if contact.birth}<p>出生日期：${contact.birth}{@if !!contact.lunar}（农历）{@/if}</p>{@/if}
+      {@/each}
+      {@/if}
+    </script>
+  </body>
+</html>

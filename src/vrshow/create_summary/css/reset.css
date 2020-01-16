@@ -1,0 +1,17 @@
+/*基本标签重置*/
+a {
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: #690;
+}
+
+/*bootstrap重置*/
+/*.modal-footer {*/
+/*text-align: center !important;*/
+/*}*/
+textarea {
+  resize: none;
+}

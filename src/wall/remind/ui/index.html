@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>到期提醒</title>
+
+    <link rel="stylesheet" href="../../css/lib_extra/bootstrap/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/lib/jquery-confirm2/jquery-confirm.min.css"
+    />
+    <link rel="stylesheet" href="../../css/lib/colors/colors.css" />
+    <link rel="stylesheet" href="../../css/common/base.css" />
+    <link rel="stylesheet" href="../../css/common/common.css" />
+    <link rel="stylesheet" href="../../css/component/navigation.css" />
+    <link rel="stylesheet" href="../../css/wall/remind.css" />
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <ul class="nav nav-tabs">
+          <li class="active"><a>线上订单</a></li>
+          <li><a>自录订单</a></li>
+        </ul>
+        <div class="filter-section">
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">选择区域：</div>
+            <div class="filter-section-row-content">
+              <select class="form-control">
+                <option>哈哈</option>
+                <option>哈哈</option>
+                <option>哈哈</option>
+                <option>哈哈</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter-section-row clearfix">
+            <div class="filter-section-row-title">距离到期还剩余：</div>
+            <div class="filter-section-row-content">
+              <input class="form-control" />
+            </div>
+            <div class="filter-section-row-desc">天</div>
+          </div>
+          <div class="filter-section-row filter-section-action clearfix">
+            <button class="btn btn-green left">查询</button>
+            <button class="btn btn-default left mgl20">重置</button>
+            <button class="btn btn-default left mgl20">重发短信</button>
+          </div>
+          <div class="message-info">
+            <div class="message-info-left">
+              <p class="message-info-left-count mgb0">12345</p>
+              <p class="fs12">剩余短信数量</p>
+            </div>
+            <div class="message-info-right">
+              <button class="btn btn-default">充值</button>
+            </div>
+          </div>
+        </div>
+        <div class="content-section">
+          <div class="content-section-head">
+            <div class="content-row">
+              <div class="content-row-cell">
+                <button class="clean-button content-row-select">
+                  <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <span>全选</span>
+              </div>
+              <div class="content-row-cell content-row-name">名称</div>
+              <div class="content-row-cell content-row-place">位置信息</div>
+              <div class="content-row-cell">到期时间</div>
+              <div class="content-row-cell">发送状态/次数</div>
+              <div class="content-row-cell">最近发送时间</div>
+              <div class="content-row-cell">操作</div>
+            </div>
+          </div>
+          <div class="content-section-body">
+            <div class="content-row">
+              <div class="content-row-cell">
+                <button class="clean-button content-row-select">
+                  <i class="glyphicon glyphicon-ok"></i>
+                </button>
+              </div>
+              <div class="content-row-cell content-row-name">小易测试</div>
+              <div class="content-row-cell content-row-place">
+                土地公左下11不连号
+              </div>
+              <div class="content-row-cell">36480天</div>
+              <div class="content-row-cell content-row-send">已发送(6)</div>
+              <div class="content-row-cell">2017-08-22 14:28:43</div>
+              <div class="content-row-cell content-row-actions">
+                <button class="clean-button mgr5">发送</button> <span>-</span>
+                <button class="clean-button mgl5">删除</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-section">
+          <div class="pagination">
+            <button class="clean-button pagination-cell special">上一页</button>
+            <button class="clean-button pagination-cell ">1</button>
+            <button class="clean-button pagination-cell ">2</button>
+            <button class="clean-button pagination-cell active">3</button>
+            <button class="clean-button pagination-cell ">4</button>
+            <button class="clean-button pagination-cell disabled">...</button>
+            <button class="clean-button pagination-cell ">79</button>
+            <button class="clean-button pagination-cell special">下一页</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade in">
+      <div class="modal-backdrop fade in"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="panel mgb0">
+            <div class="panel-body">
+              <div class=" form-group mgt20">
+                <div class="text-center">
+                  <img
+                    src="../../../../images/common/miaoyan-weidian.jpg"
+                    alt="微信二维码"
+                    width="160"
+                    height="160"
+                    class="mgb30"
+                  />
+                  <p class="hint text-center mgb0">
+                    请微信扫描二维码进入自在家平台微店，拍下您所需要的短信
+                  </p>
+                  <p class="hint text-center mgb30">
+                    群发套餐后，与管理员联系增加短信条数。
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="text-center">
+                  <span class="btn btn-default">关闭</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade in show">
+      <div class="modal-backdrop fade in"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="panel mgb0">
+            <div class="panel-body">
+              <div class=" form-group mgt20">
+                <p class="fs18 fb">提醒内容：</p>
+                <textarea class="form-control" rows="3"></textarea>
+                <p class="gray mgt10">
+                  已输入：<span>0</span>字&nbsp;&nbsp;&nbsp;&nbsp;每70个字消耗一条短信
+                </p>
+              </div>
+              <div class=" form-group mgt20">
+                <p class="fs18 fb">已选择群发用户：</p>
+                <div class="send-popup-phones">
+                  <p class="text-center">123456</p>
+                  <p class="text-center">123456</p>
+                  <p class="text-center">123456</p>
+                  <p class="text-center">123456</p>
+                  <p class="text-center">123456</p>
+                  <p class="text-center">123456</p>
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <button class="btn btn-green">立即发送</button>
+                <button class="btn btn-default mgl30">取消</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/lib/jquery/jquery.js"></script>
+  <script src="../../js/lib/bootstrap/bootstrap.js"></script>
+</html>

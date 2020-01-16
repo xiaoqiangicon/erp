@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>交易记录</title>
+
+    <link rel="stylesheet" href="../../css/lib_extra/bootstrap/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/lib/jquery-confirm2/jquery-confirm.min.css"
+    />
+    <link rel="stylesheet" href="../../css/common/base.css" />
+    <link rel="stylesheet" href="../../css/common/common.css" />
+    <link rel="stylesheet" href="../../css/component/navigation.css" />
+    <link rel="stylesheet" href="../../css/cash/record.css" />
+  </head>
+  <body data-menu-id="cash-record">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section">
+          <a class="btn btn-default btn-lg fs14 mgr10" href="/">善款统计</a>
+          <a class="btn btn-green btn-lg fs14">交易记录</a>
+        </div>
+        <div class="filter-section">
+          <div class="filter-sub-section clearfix">
+            <div class="cell name">时间：</div>
+            <div class="cell time-input">
+              <input class="form-control" />
+              <i class="glyphicon glyphicon-calendar calendar-icon"></i>
+            </div>
+            <div class="cell time-input">
+              <input class="form-control" />
+              <i class="glyphicon glyphicon-calendar calendar-icon"></i>
+            </div>
+            <button class="clean-button cell">今天</button>
+            <span class="cell">|</span> <span class="cell">最近：</span>
+            <button class="clean-button cell">1个月</button>
+            <button class="clean-button cell">3个月</button>
+            <button class="clean-button cell">1年</button>
+          </div>
+          <div class="filter-sub-section mgt20 clearfix">
+            <div class="cell name">分类：</div>
+            <div class="btn-group btn-group-sm btn-group-dropdown mgr20 left">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-toggle="dropdown"
+              >
+                <span class="text">2017年</span> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="item">2016年</a></li>
+                <li><a class="item">2015年</a></li>
+                <li><a class="item">2014年</a></li>
+                <li><a class="item">2013年</a></li>
+              </ul>
+            </div>
+            <button class="btn btn-default left">查询</button>
+          </div>
+          <div class="filter-sub-section clearfix mgt20">
+            <div class="cell name">手机号：</div>
+            <div class="cell time-input">
+              <input class="form-control" />
+              <i class="glyphicon glyphicon-calendar calendar-icon"></i>
+            </div>
+            <button class="btn btn-default left">查询</button>
+            <button class="btn btn-primary right">导出查询结果</button>
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="head">
+            <div class="unit unit-head">
+              <div class="cell cell-common"><span>分类</span></div>
+              <div class="cell cell-date"><span>日期</span></div>
+              <div class="cell cell-title"><span>项目名称</span></div>
+              <div class="cell cell-common"><span>对方名称</span></div>
+              <div class="cell cell-common"><span>金额</span></div>
+              <div class="cell cell-common"><span>操作</span></div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="unit">
+              <div class="cell cell-common"><span>佛事</span></div>
+              <div class="cell cell-common cell-date">
+                <span>2016-8-20 17:54</span>
+              </div>
+              <div class="cell cell-title">
+                <p class="title">2016年正月初九斋天法会</p>
+                <p class="category">供奉祈福牌位</p>
+              </div>
+              <div class="cell cell-common"><span>李某某</span></div>
+              <div class="cell cell-common"><span>+300.00</span></div>
+              <div class="cell cell-common">
+                <button class="btn btn-info btn-sm">详情</button>
+              </div>
+            </div>
+            <div class="unit">
+              <div class="cell cell-common"><span>佛事</span></div>
+              <div class="cell cell-common cell-date">
+                <span>2016-8-20 17:54</span>
+              </div>
+              <div class="cell cell-title">
+                <p class="title">2016年正月初九斋天法会</p>
+                <p class="category">供奉祈福牌位</p>
+              </div>
+              <div class="cell cell-common"><span>李某某</span></div>
+              <div class="cell cell-common"><span>+300.00</span></div>
+              <div class="cell cell-common">
+                <button class="btn btn-info btn-sm">详情</button>
+              </div>
+            </div>
+            <div class="unit">
+              <div class="cell cell-common"><span>佛事</span></div>
+              <div class="cell cell-common cell-date">
+                <span>2016-8-20 17:54</span>
+              </div>
+              <div class="cell cell-title">
+                <p class="title">2016年正月初九斋天法会</p>
+                <p class="category">供奉祈福牌位</p>
+              </div>
+              <div class="cell cell-common"><span>李某某</span></div>
+              <div class="cell cell-common"><span>+300.00</span></div>
+              <div class="cell cell-common">
+                <button class="btn btn-info btn-sm">详情</button>
+              </div>
+            </div>
+            <div class="unit">
+              <div class="cell cell-common"><span>佛事</span></div>
+              <div class="cell cell-common cell-date">
+                <span>2016-8-20 17:54</span>
+              </div>
+              <div class="cell cell-title">
+                <p class="title">2016年正月初九斋天法会</p>
+                <p class="category">供奉祈福牌位</p>
+              </div>
+              <div class="cell cell-common"><span>李某某</span></div>
+              <div class="cell cell-common"><span>+300.00</span></div>
+              <div class="cell cell-common">
+                <button class="btn btn-info btn-sm">详情</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-section">
+          <div class="pagination">
+            <button class="btn btn-default btn-sm pdl20 pdr20 mgr20">
+              上一页
+            </button>
+            <button class="clean-button pagination-cell">1</button>
+            <button class="clean-button pagination-cell">2</button>
+            <button class="clean-button pagination-cell">3</button>
+            <button class="clean-button pagination-cell active">4</button>
+            <button class="clean-button pagination-cell">5</button>
+            <button class="clean-button pagination-cell">6</button>
+            <button class="clean-button pagination-cell">7</button>
+            <button class="btn btn-default btn-sm pdl20 pdr20 mgl20">
+              下一页
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="promotion" style="display: block">
+      <div class="promotion-background"></div>
+      <div class="promotion-pane">
+        <div class="promotion-top">
+          <div class="promotion-title">交易详情</div>
+          <div
+            class="promotion-close"
+            data-action="close"
+            data-type="promotion"
+          >
+            X
+          </div>
+        </div>
+        <div class="promotion-content">
+          <div class="promotion-content-unit">
+            <p class="fs18 fb">名称：释加牟尼佛像-A区 8行23列</p>
+            <p>分类：供佛</p>
+          </div>
+          <div class="promotion-content-unit">
+            <p>订单号：123442222</p>
+            <p>支付流水号：201603161635164781736108</p>
+            <p>支付订单号：1005100852201603164032709091</p>
+          </div>
+          <div class="promotion-content-unit">
+            <p>对方信息：李某某某 18820154664</p>
+          </div>
+          <div class="promotion-content-unit"><p>实际支付：￥300.00</p></div>
+          <div class="promotion-content-unit">
+            <p>下单时间：2016-8-18 20:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/lib/requirejs/require.js"></script>
+  <script
+    src="../../js/common/require_js_config.js"
+    data-require-js-config-tag="1"
+  ></script>
+  <script>
+    require(['cash/record']);
+  </script>
+</html>

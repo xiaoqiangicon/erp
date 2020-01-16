@@ -1,5 +1,4 @@
-require('./index.less');
-
+import './index.less';
 window.UE.registerUI('dialog', (editor, uiName) => {
   const btn = new UE.ui.Button({
     name: 'xiumi-connect',
@@ -18,6 +17,5 @@ window.UE.registerUI('dialog', (editor, uiName) => {
       dialog.open();
     },
   });
-
   return btn;
 });

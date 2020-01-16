@@ -1,0 +1,28 @@
+/*页面公用*/
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+
+.content-container-inner {
+  padding: 15px;
+  min-width: 850px;
+  min-height: 500px;
+  /*box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);*/
+  /*background: #ffffff;*/
+}
+
+/*公用样式补充*/
+.vam {
+  vertical-align: middle;
+}
+
+/*生成海报图loading添加了文本标题样式*/
+.loading-toast-title {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: #fff;
+}

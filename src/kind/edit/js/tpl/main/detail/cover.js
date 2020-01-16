@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <div class="container-1">
     <div class="text-2">
         <span>封面图片：</span>

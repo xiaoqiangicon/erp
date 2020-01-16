@@ -1,0 +1,130 @@
+.intro {
+  position: relative;
+  padding: 20px 0;
+}
+.intro .inner {
+  width: 1000px;
+  margin: 0 auto;
+  border-radius: 7px;
+  background-color: #ffffff;
+  padding: 33px 110px 45px 50px;
+  overflow: hidden;
+}
+.intro .inner-left {
+  float: left;
+  width: 510px;
+}
+.intro .inner-left-2 {
+  float: left;
+  width: 180px;
+}
+.intro .inner-right {
+  float: right;
+  width: 180px;
+}
+.intro .inner-right-2 {
+  float: right;
+  width: 430px;
+}
+.intro-qr-code {
+  width: 100%;
+}
+.intro-qr-text {
+  margin-top: 17px;
+  font-size: 18px;
+  line-height: 25px;
+  color: #989898;
+  text-align: center;
+}
+.intro .tab {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+}
+.intro .tab-inner {
+  width: 820px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.intro .tab-item {
+  position: relative;
+  padding-bottom: 42px;
+  font-size: 24px;
+
+  color: #ffffff;
+  cursor: pointer;
+}
+.intro .tab-item.active {
+  color: #ffc966;
+}
+.intro .tab-badge {
+  position: relative;
+  display: inline-block;
+  top: -3px;
+  width: 64px;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 6px;
+  color: #ffc966;
+  border: 1px solid #ffc966;
+  font-size: 15px;
+  text-align: center;
+  font-weight: normal;
+}
+.intro .tab-mark {
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  margin-left: -9px;
+  bottom: 0;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #e9f2f9;
+  border-left: 9px solid transparent;
+  display: none;
+}
+.intro .tab-item.active .tab-mark {
+  display: block;
+}
+
+.intro .common-text-1 .special {
+  font-size: 22px;
+  color: #ffc966;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+@media (max-width: 500px) {
+  .intro {
+    padding: 0;
+  }
+  .intro .tab {
+    display: none;
+  }
+  .intro .inner {
+    width: 90%;
+    margin-top: 20px;
+    padding: 20px 5%;
+  }
+  .intro .inner-left,
+  .intro .inner-right-2 {
+    width: 100%;
+    float: none;
+  }
+  .intro .inner-right,
+  .intro .inner-left-2 {
+    float: none;
+    margin: 20px auto 0 auto;
+    width: 150px;
+  }
+  .intro-qr-text {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .intro .common-text-1 .special {
+    font-size: 16px;
+    color: #ffc966;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+}

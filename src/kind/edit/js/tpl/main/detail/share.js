@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <div class="container-1">
     <div class="text-2">
         <span>分享标题：</span>
@@ -23,7 +23,7 @@ module.exports = `
 </div>
 <div class="container-1">
     <div class="text-2">
-        <span>分享图标：</span>
+        <span>分享图片：</span>
     </div>
     <div class="container-2">
         <div class="main-detail-cover">

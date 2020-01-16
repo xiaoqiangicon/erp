@@ -1,0 +1,47 @@
+{
+  "msg": "成功",
+  "data": {
+    "printerId": "0",
+    "qrcodePrint": 0,
+    "isPrintMobile": 0,
+    "isOpenPrinter": 0,
+    "continuousPrintNum": 2,
+    "subdividePrinter": [
+      {
+        "printer": [
+          {
+            "qrcodePrint": 1,
+            "printerId": 1,
+            "continuousPrintNum": 1,
+            "isPrintMobile": 1
+          }
+        ],
+        "subdivideId": 1313
+      },
+      {
+        "printer": [
+          {
+            "qrcodePrint": 1,
+            "printerId": 1,
+            "continuousPrintNum": 1,
+            "isPrintMobile": 1
+          }
+        ],
+        "subdivideId": 1314
+      },
+      {
+        "printer": [],
+        "subdivideId": 1315
+      },
+      {
+        "printer": [],
+        "subdivideId": 1316
+      },
+      {
+        "printer": [],
+        "subdivideId": 1317
+      }
+    ]
+  },
+  "result": 1
+}

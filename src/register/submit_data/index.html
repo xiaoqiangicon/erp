@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>提交资料</title>
+  </head>
+  <body>
+    <section>
+      <section id="menu">
+        <header>
+          <div class="leftHead">
+            <a href="javascript:void[0]"
+              ><span class="logo pull-left"></span
+            ></a>
+            <!--<div class="slogan">
+                    <span class="sloganText"></span>
+                </div>-->
+          </div>
+          <div class="rightHead">
+            <span class="loginPic"></span>
+            <span class="login" id="login"
+              ><a href="/accounts/login/">登录</a></span
+            >
+            <span class="login hide" id="logined"></span>
+            <span class="certifi uncerticicated ">认证中</span>
+            <span class="logout"><a href="/zzhadmin/logout/">注销</a></span>
+          </div>
+        </header>
+      </section>
+      <section id="main">
+        <main data-id="submitData">
+          <nav>
+            <div class="nav1"><span>资料准备</span></div>
+            <div class="nav2"><span>填写信息</span></div>
+            <div class="nav3"><span>提交资料</span></div>
+          </nav>
+          <div class="uploadBox">
+            <div class="uploadHead">
+              <h3>1.宗教场所登记证（必填）</h3>
+              <p>
+                请上传宗教场所登记拍照扫描原件，保证文字清晰可辨认，要求宗教场所登记证和寺院名称上的名称一致
+              </p>
+            </div>
+            <div class="uploadData">
+              <div class="uploadButton">
+                <input
+                  class="imgButton"
+                  id="upload1"
+                  name="file"
+                  type="file"
+                /><button onclick="upload1.click()">选择文件</button>
+              </div>
+              <div class="uploadImg">
+                <img src="" alt="" data-id="upload1" />
+              </div>
+              <div class="uploadExample uploadExample1 hideVS"></div>
+            </div>
+          </div>
+          <div class="uploadBox" style="display: none;">
+            <div class="uploadHead">
+              <h3>2.银行开户许可证（必填）</h3>
+              <p>对公账户许可证需跟宗教场所登记证上的名称一致</p>
+            </div>
+            <div class="uploadData">
+              <div class="uploadButton">
+                <input
+                  class="imgButton"
+                  id="upload2"
+                  name="file"
+                  type="file"
+                /><button onclick="upload2.click()">选择文件</button>
+              </div>
+              <div class="uploadImg">
+                <img src="" alt="" data-id="upload2" />
+              </div>
+              <div class="uploadExample uploadExample2 hideVS"></div>
+            </div>
+          </div>
+          <div class="uploadBox" style="display: none;">
+            <div class="uploadHead"><h3>3.住持戒牒证或教职员证</h3></div>
+            <div class="uploadData">
+              <div class="uploadButton">
+                <input
+                  class="imgButton"
+                  id="upload3"
+                  name="file"
+                  type="file"
+                /><button onclick="upload3.click()">选择文件</button>
+              </div>
+              <div class="uploadImg">
+                <img src="" alt="" data-id="upload3" />
+              </div>
+              <div class="uploadExample uploadExample3 hideVS"></div>
+            </div>
+          </div>
+          <div class="uploadBox" style="display: none;">
+            <div class="uploadHead">
+              <h3>4.法人或住持身份证</h3>
+              <p>法人身份证需跟宗教场所登记证上的法人名称一致</p>
+            </div>
+            <div class="uploadData">
+              <div class="uploadButton">
+                <input
+                  class="imgButton"
+                  id="upload4"
+                  name="file"
+                  type="file"
+                /><button onclick="upload4.click()">选择文件</button>
+              </div>
+              <div class="uploadImg">
+                <img src="" alt="" data-id="upload4" />
+              </div>
+              <div class="uploadExample uploadExample4 hideVS"></div>
+            </div>
+          </div>
+          <div class="uploadBox" style="display: none;">
+            <div class="uploadHead"><h3>5.其他证明附件</h3></div>
+            <div class="uploadOthersData" data-type="otherUploadData">
+              <div class="uploadButton">
+                <input
+                  data-type="otherImgButton"
+                  id="5"
+                  name="file"
+                  type="file"
+                /><button id="othersUploadButton">选择文件</button>
+              </div>
+              <div class="uploadImg">
+                <img src="" alt="" data-id="uploadOthers" />
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div style="text-align: center">
+            <button class="next" id="submitPrev">上一步</button>
+            <button class="next" id="submitNext">下一步</button>
+          </div>
+        </main>
+      </section>
+      <footer>
+        <div class="footer">
+          <a href="javascript:void[0]">关于自在家</a>
+          <a href="javascript:void[0]">服务协议</a>
+          <a href="javascript:void[0]">运营规范</a>
+          <a href="javascript:void[0]">客服中心</a>
+          <a href="javascript:void[0]">侵权投诉</a>
+          <span>Copyright © 2012-2017 Miaoyan. All Rights Reserved</span>
+        </div>
+      </footer>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+a {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+/* 重置toastr 样式 */
+#toast-container.toast-top-center > div,
+#toast-container.toast-bottom-center > div {
+  width: 420px !important;
+}
+.toast-center-center {
+  top: 50%;
+  left: 50%;
+  margin-top: -87px;
+  margin-left: -210px;
+}
+#toast-container > div {
+  /* width: 350px; */
+  width: 420px;
+  height: 174px;
+  background-color: #ffff;
+  color: #606060;
+  font-size: 18px;
+}
+.toast-title {
+  margin-top: 9px;
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.toastr-icon-off {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('https://pic.zizaihome.com/431e21f6-e59c-11e9-a4fd-00163e060b31.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#toast-container > .toast-success {
+  padding-left: 69px;
+}
+.toast-title::before {
+  content: '';
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-size: 100% 100%;
+  background-image: url(https://pic.zizaihome.com/3bfd2246-e97a-11e9-b22f-00163e060b31.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 22px;
+}

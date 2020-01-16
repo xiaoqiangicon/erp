@@ -1,0 +1,117 @@
+/* 佛历组件的编辑部分 */
+.component-edit-calendar-selected-date {
+  width: 200px;
+  float: left;
+}
+.component-edit-calendar-selected-cell {
+  width: 100%;
+  position: relative;
+  margin-top: 25px;
+}
+.component-edit-calendar-selected-cell .title {
+  line-height: 30px;
+}
+.component-edit-calendar-selected-cell .content-unit {
+  margin-top: 10px;
+  overflow-x: hidden;
+}
+.component-edit-calendar-selected-cell .content-cell {
+  line-height: 20px;
+  white-space: nowrap;
+}
+.component-edit-calendar-selected-pagination {
+  width: 100%;
+}
+.popup-calendar-select-date .modal-dialog {
+  width: 420px;
+}
+.popup-calendar-select-date .modal-footer {
+  border: 0;
+  text-align: center;
+}
+.popup-calendar-select-date .title {
+  width: 100%;
+}
+.popup-calendar-select-date .content {
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
+}
+.popup-calendar-select-date .content li {
+  white-space: nowrap;
+}
+.popup-calendar-add-title .modal-dialog {
+  width: 450px;
+}
+.popup-calendar-add-title .modal-header {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 14px;
+  background: #f4f7f7;
+}
+.popup-calendar-add-title .modal-title {
+  font-size: 15px;
+}
+.popup-calendar-add-title .modal-footer {
+  text-align: center;
+}
+.popup-calendar-add-title .title-input {
+  display: inline-block;
+  width: 60%;
+}
+.popup-calendar-add-title .title-mark {
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+}
+.popup-calendar-add-title .body-bottom-section {
+  margin-top: 40px;
+}
+.popup-calendar-modify-activity .modal-dialog {
+  width: 600px;
+}
+.popup-calendar-modify-activity .modal-header {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 14px;
+  background: #f4f7f7;
+}
+.popup-calendar-modify-activity .popup-activity-cell {
+  width: 100%;
+  height: 100px;
+}
+.popup-calendar-modify-activity .popup-activity-cell .sequence {
+  width: 5%;
+  text-align: center;
+}
+.popup-calendar-modify-activity .popup-activity-cell .title {
+  width: 40%;
+  padding: 0 15px;
+  line-height: 25px;
+  text-align: center;
+}
+.popup-calendar-modify-activity .popup-activity-cell .image {
+  width: 40%;
+  padding: 10px;
+  line-height: 80px;
+  text-align: center;
+}
+.popup-calendar-modify-activity .popup-activity-cell .image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.popup-calendar-modify-activity .popup-activity-cell .action {
+  width: 15%;
+  line-height: 100px;
+  text-align: center;
+}
+.popup-calendar-modify-activity .modal-body {
+  max-height: 500px;
+  overflow: auto;
+}
+.component-edit-calendar-selected-content {
+  max-height: 400px;
+  overflow: auto;
+}

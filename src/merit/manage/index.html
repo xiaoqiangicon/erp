@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>功德主管理</title>
+  </head>
+  <body data-menu-id="merit-manage">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="top-bar clearfix mgb20">
+          <div class="tab active" id="all-tab" data-ele="tab">
+            <div class="tab-num-tip" id="all-merit-num">...</div>
+            <div class="tab-name">全部</div>
+          </div>
+          <div class="tab" id="tag-tab" data-ele="tab">
+            <div class="tab-num-tip" id="follow-num">...</div>
+            <div class="tab-name">分组</div>
+          </div>
+          <div class="search-ctnr">
+            <form class="form-inline">
+              <select
+                class="mgr20"
+                name="filter-select"
+                id="filter-select"
+                title="请选择筛选项目"
+              >
+                <option value="1">功德主昵称</option>
+                <option value="2">自在家号</option>
+              </select>
+              <input
+                type="text"
+                class="form-control search-input"
+                id="filter-input"
+              />
+              <button class="btn btn-success" id="search-submit">搜索</button>
+              <button class="btn btn-default" id="search-reset">重置</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="all-ctnr">
+          <div class="btn-bar clearfix mgb20">
+            <div class="left">
+              已选择&nbsp;&nbsp;<span
+                data-ele="select-num"
+                style="display:inline-block; width:20px;"
+                >0</span
+              >&nbsp;&nbsp;位
+            </div>
+            <button
+              type="button"
+              class="btn btn-default right"
+              id="exportExcel"
+            >
+              导出Excel
+            </button>
+            <button
+              type="button"
+              class="btn btn-success right mgr20"
+              data-ele="show-add-to-follow-modal"
+            >
+              加入分组
+            </button>
+          </div>
+          <table class="table table-striped" id="all-table">
+            <thead>
+              <tr>
+                <th style="width:10%;" class="text-center">
+                  <input
+                    type="checkbox"
+                    class="mgr5"
+                    data-ele="select-all"
+                  /><label>全选</label>
+                </th>
+                <th style="width:15%;" class="text-center">排名</th>
+                <th style="width:25%;" class="text-center meriterInfo">
+                  功德主
+                </th>
+                <th
+                  style="width:20%;"
+                  class="text-center csp desc"
+                  data-ele="table-title-collect-money"
+                >
+                  善款金额 <i></i>
+                </th>
+                <th
+                  style="width:20%;"
+                  class="text-center csp unsort"
+                  data-ele="table-title-total-amount"
+                >
+                  参与次数 <i></i>
+                </th>
+                <th style="width:10%;" class="text-center">操作</th>
+              </tr>
+            </thead>
+            <tbody class="text-center" id="all-tbody"></tbody>
+          </table>
+          <!--分页器-->
+          <div class="mgb20" data-ele="pagination-ctnr"></div>
+        </div>
+        <div id="tag-ctnr" class="clearfix" style="display: none">
+          <div class="tag-list-ctnr" id="tag-list-ctnr">
+            <div
+              class="pdb10 mgb10"
+              style="line-height: 34px;border-bottom: 1px solid #ddd;"
+            >
+              分组操作
+              <span class="tag-opt pull-right" data-ele="add-tag"
+                >添加分组</span
+              >
+            </div>
+            <div id="list-ctnr" class="mgb10"></div>
+            <div
+              class="mgb20"
+              style="display: none;position: relative;"
+              id="add-tag-ctnr"
+            >
+              <input
+                type="text"
+                style="padding-right: 35px;"
+                id="add-tag-input"
+                class="form-control"
+                placeholder="回车键确定"
+              />
+              <!--<div class="add-tag-input-icon" id="add-tag-input-icon"></div>-->
+              <div class="clearfix mgt20">
+                <button class="btn btn-success pull-left" id="save-add-tag">
+                  确定
+                </button>
+                <button class="btn btn-default pull-right">取消</button>
+              </div>
+            </div>
+          </div>
+          <div class="tag-table-ctnr" id="tag-table-ctnr">
+            <div class="tag-table-opt-ctnr clearfix">
+              <span>当前分组名：</span>
+              <span class="cur-tag-name mgr20" data-ele="cur-tag-name"
+                >...</span
+              >
+              <span class="tag-opt mgr20" data-opt="rename-tag">重命名</span>
+              <span class="tag-opt mgr20" data-opt="del-tag">删除分组</span>
+              <span class="mgr20"
+                >已选择&nbsp;&nbsp;<span
+                  data-ele="select-num"
+                  style=" display: inline-block; width: 20px;"
+                  >0</span
+                >&nbsp;&nbsp;人</span
+              >
+              <!--<select name="tag-select" data-ele="tag-table-tag-select"></select>-->
+              <button
+                class="btn btn-success pull-right"
+                data-ele="remove-from-tag"
+              >
+                移出分组
+              </button>
+              <button
+                class="btn btn-success pull-right mgr20"
+                data-ele="show-add-to-follow-modal"
+              >
+                加入其它分组
+              </button>
+            </div>
+            <table class="table table-striped" id="tag-table">
+              <thead>
+                <tr>
+                  <th style="width: 10%;" class="text-center">
+                    <input
+                      type="checkbox"
+                      class="mgr5"
+                      data-ele="select-all"
+                    /><label>全选</label>
+                  </th>
+                  <th style="width: 30%;" class="text-center meriterInfo">
+                    功德主
+                  </th>
+                  <th
+                    style="width: 25%;"
+                    class="text-center csp desc table-title-collect-money"
+                    data-ele="table-title-collect-money"
+                  >
+                    善款金额 <i></i>
+                  </th>
+                  <th
+                    style="width: 25%;"
+                    class="text-center csp unsort table-title-total-amount"
+                    data-ele="table-title-total-amount"
+                  >
+                    参与次数 <i></i>
+                  </th>
+                  <th style="width: 10%;" class="text-center">操作</th>
+                </tr>
+              </thead>
+              <tbody class="text-center" id="tag-tbody"></tbody>
+            </table>
+            <!--分页器-->
+            <div class="mgb20" data-ele="pagination-ctnr"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+    <!--给功德主添加标签modal-->
+    <div
+      class="modal"
+      id="add-to-follow-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" style="width: 50%;">
+        <div class="modal-content mgt60">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only">Close</span>
+            </button>
+            <h4>选择关注分组</h4>
+          </div>
+          <div
+            class="modal-body pdt60 pdr30 pdb30 pdl30"
+            style="text-align: center;"
+          >
+            <select data-ele="tag-select" multiple title="请选择分组"></select>
+            <div class="text-center mgt60">
+              <button class="btn btn-success" id="save-add-to-follow">
+                保存
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

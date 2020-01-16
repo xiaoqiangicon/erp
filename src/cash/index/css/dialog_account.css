@@ -1,0 +1,29 @@
+.dialog-account-icon {
+  margin-top: 32px;
+  height: 66px;
+  text-align: center;
+}
+.dialog-account-icon img {
+  width: 66px;
+  height: 66px;
+}
+.dialog-account-title {
+  margin-top: 30px;
+  line-height: 28px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #333333;
+}
+.dialog-account-content {
+  margin-top: 30px;
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #989898;
+}
+.dialog-account-btn {
+  margin-top: 48px;
+  text-align: center;
+}

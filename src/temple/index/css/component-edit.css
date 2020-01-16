@@ -1,0 +1,53 @@
+/* component edit container */
+.component-edit {
+  width: 100%;
+}
+
+.component-edit-cell {
+  width: 100%;
+}
+
+.component-edit-cell-title {
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+.component-edit-city-pick {
+  display: table;
+}
+
+.component-edit-city-pick-cell {
+  display: table-cell;
+  width: auto;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.component-edit-upload-container {
+  width: 100%;
+  padding: 0;
+}
+
+.component-edit-upload-container li {
+  float: left;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin: 5px;
+  list-style: none;
+  overflow: hidden;
+}
+
+.component-edit-upload-container li img {
+  width: 100%;
+}
+
+.component-edit-upload-container li:hover .upload-remove {
+  display: block;
+}
+
+.edit-swipe-list-select {
+  width: 120px;
+  display: inline-block;
+}

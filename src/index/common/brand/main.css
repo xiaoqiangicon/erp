@@ -1,0 +1,63 @@
+.brand {
+  width: 100%;
+  background-image: url('https://pic.zizaihome.com/ad123f4e-0708-11e8-8a9e-00163e0c001e.png');
+  background-size: 100% 100%;
+}
+.brand-left {
+  float: left;
+  padding: 40px 0 30px 40px;
+}
+
+.brand-right {
+  float: right;
+  padding: 40px 50px 0 0;
+}
+
+.brand .text-1 {
+  margin-top: 25px;
+
+  line-height: 20px;
+  color: #ffffff;
+}
+.brand .text-1 a,
+.brand .text-1 a:hover,
+.brand .text-1 a:focus,
+.brand .text-1 a:active {
+  color: #ffffff;
+}
+.brand .text-2 {
+  display: block;
+  margin-top: 92px;
+  font-size: 28px;
+
+  line-height: 40px;
+  color: #ffffff;
+  text-align: right;
+}
+.brand .text-2,
+.brand .text-2:hover,
+.brand .text-2:active,
+.brand .text-2:focus {
+  text-decoration: none;
+}
+
+.brand .text-3 {
+  margin-top: 6px;
+
+  line-height: 20px;
+  color: #ffffff;
+  text-align: right;
+}
+
+/* 如果屏幕太高，让brand固定在最底部 */
+@media (min-height: 966px) {
+  body {
+    padding-bottom: 350px;
+  }
+  .brand {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+}

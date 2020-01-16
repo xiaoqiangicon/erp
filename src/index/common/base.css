@@ -1,0 +1,36 @@
+body {
+  font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB',
+    'Microsoft YaHei', '微软雅黑', STHeiti, 'WenQuanYi Micro Hei', SimSun,
+    sans-serif;
+}
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+.pd-l-37-pc {
+  padding-left: 37%;
+}
+.swiper-button-next {
+  width: 35px;
+  height: 35px;
+  margin-right: 38px;
+  background: url('https://pic.zizaihome.com/71f9af84-0a76-11e8-bf6f-00163e0c001e.png ')
+    no-repeat;
+}
+.swiper-button-prev {
+  width: 35px;
+  height: 35px;
+  margin-left: 38px;
+  background: url('https://pic.zizaihome.com/76f0877e-0a76-11e8-9dd1-00163e0c001e.png')
+    no-repeat;
+}
+
+@media (max-width: 500px) {
+  .swiper-button-prev {
+    margin-left: 8px;
+  }
+  .swiper-button-next {
+    margin-right: 8px;
+  }
+}

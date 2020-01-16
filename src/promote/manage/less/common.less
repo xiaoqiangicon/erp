@@ -25,3 +25,63 @@
   border: 1px solid #ffb147;
   color: #ffb147;
 }
+
+.c-switch {
+  position: relative;
+  display: inline-block;
+  width: 72px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: #c1e0a9;
+  cursor: pointer;
+
+  .circle-1 {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: #fff;
+    transition: all 0.5s;
+  }
+
+  .text-left-1,
+  .text-right-1 {
+    position: absolute;
+    top: 0;
+    line-height: 26px;
+    color: #fff;
+    transition: all 0.5s;
+  }
+
+  .text-left-1 {
+    left: 6px;
+    opacity: 0;
+  }
+
+  .text-right-1 {
+    right: 6px;
+    opacity: 1;
+  }
+}
+
+.c-switch.active {
+  background-color: #70ba2c;
+
+  .circle-1 {
+    left: 50px;
+  }
+
+  .text-left-1 {
+    opacity: 1;
+  }
+
+  .text-right-1 {
+    opacity: 0;
+  }
+}
+
+.c-switch.disabled {
+  background-color: #c6c6c6;
+}

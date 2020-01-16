@@ -1,0 +1,39 @@
+.dialog-receipts-content {
+  padding: 25px;
+}
+.dialog-receipts-row {
+  position: relative;
+  margin-bottom: 25px;
+}
+.dialog-receipts-row:last-child {
+  margin-bottom: 0;
+}
+.dialog-receipts-row img {
+  width: 100%;
+}
+.dialog-receipts-row-delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 18px;
+  display: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+.dialog-receipts-row:hover .dialog-receipts-row-delete {
+  display: block;
+}
+
+.dialog-receipts-add {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-image: url('../../../../images/common/image-add.png');
+  background-size: 100% 100%;
+  margin-left: 20px;
+  cursor: pointer;
+}

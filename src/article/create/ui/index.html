@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>新建文章</title>
+  </head>
+  <body>
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section">
+          <span class="title-section-item">微文章</span>
+          <span class="title-section-item">></span>
+          <a class="title-section-item" href="index.html">文章管理</a>
+          <span class="title-section-item">></span>
+          <span class="title-section-item">新建文章</span>
+        </div>
+        <div class="tip-section">
+          <button class="clean-button tip-section-close">X</button>
+          <p>
+            使用微文章功能，可以帮助您创建寺院介绍、新闻公告、佛言教法等各种图文并茂的丰富内容。
+          </p>
+          <p>
+            文章内容需严格遵守国家的法律法规及微信公众平台的管理规定，如发布不合规合法的内容，将根据影响的严重程度，作出屏蔽文章、封禁账号、甚至冻结账款等处罚。
+          </p>
+        </div>
+        <div class="content-section">
+          <div class="content-section-item title">
+            <div class="name">
+              <span>标题：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content"><input class="form-control" /></div>
+          </div>
+          <div class="content-section-item category">
+            <div class="name"><span>分类：</span></div>
+            <div class="content clearfix">
+              <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <button class="clean-button button">编辑</button>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name">
+              <span>封面：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content">
+              <ul class="upload-container clearfix">
+                <li><button class="clean-button upload-button"></button></li>
+              </ul>
+              <p class="mgt10">建议尺寸：900 x 500 px</p>
+            </div>
+          </div>
+          <div class="content-section-item content-t">
+            <div class="name">
+              <span>内容：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content"></div>
+          </div>
+          <div class="content-section-item">
+            <div class="name">
+              <span>简介：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content">
+              <textarea class="form-control" rows="3"></textarea>
+              <p class="mgt10">此处内容用于微信转发时显示预览</p>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>随喜功能：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input type="radio" name="use-pay" value="1" checked /> 启用
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="use-pay" value="0" /> 禁用
+              </label>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name">
+              <span>随喜按钮：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content clearfix">
+              <input class="form-control fixed-width left" value="随喜" />
+              <p class="left mgl15 line-height-34">4个字内</p>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>随喜默认金额：</span></div>
+            <div class="content clearfix">
+              <input class="form-control fixed-width" value="10" />
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name">
+              <span>随喜引导文字：</span><span class="asterisk">*</span>
+            </div>
+            <div class="content clearfix">
+              <input
+                class="form-control fixed-width left"
+                value="随缘布施，广种福田。"
+              />
+              <p class="left mgl15 line-height-34">12个字内</p>
+            </div>
+          </div>
+          <div class="content-section-item">
+            <div class="name"><span>封面图片：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input
+                  type="radio"
+                  name="show-cover-in-detail"
+                  value="1"
+                  checked
+                />
+                显示在详情页
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="show-cover-in-detail" value="0" />
+                不显示在详情页
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="actions-section">
+          <button class="btn btn-default">存为草稿</button>
+          <button class="btn btn-green mgl20">正式发布</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup">
+      <div class="popup-background"></div>
+      <div class="popup-pane">
+        <div class="popup-top">
+          <div class="popup-title">编辑分类</div>
+          <div class="popup-close" data-action="close" data-type="popup">X</div>
+        </div>
+        <div class="popup-content">
+          <div class="popup-category-body">
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-info btn-sm mgr10">修改</button>
+                <button class="btn btn-warning btn-sm">删除</button>
+              </div>
+            </div>
+          </div>
+          <div class="popup-category-foot">
+            <div class="popup-category-cell">
+              <input class="form-control input" value="哈哈哈哈哈哈" />
+              <div class="actions">
+                <button class="btn btn-green btn-sm">添加</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

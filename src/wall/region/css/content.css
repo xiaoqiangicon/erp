@@ -1,0 +1,80 @@
+.content-unit {
+  float: left;
+  width: 33%;
+  padding: 10px;
+}
+.content-unit-inner {
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.content-unit-row {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0 10px 0;
+}
+.content-unit-row:last-child {
+  border-bottom: none;
+}
+.content-unit-row-left {
+  float: left;
+  width: 33%;
+  font-weight: bold;
+  padding: 0 15px;
+}
+.content-unit-row-right {
+  float: right;
+  width: 66%;
+  padding: 0 15px;
+  text-align: center;
+}
+.content-unit-row-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.select-modal-row-image {
+  width: 100px;
+  height: 150px;
+  cursor: pointer;
+}
+.select-modal-row-selected {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+.select-modal-row-cover {
+  width: 100px;
+  height: 150px;
+}
+.select-modal-row.active .select-modal-row-selected {
+  display: block;
+}
+.select-modal-row.active .select-modal-row-cover {
+  border: 2px solid #73bc32;
+}
+.content-unit-freeze {
+  color: #f2693d;
+}
+.content-unit-freeze.active {
+  color: #71ba31;
+}
+.content-unit-actions {
+  text-align: left;
+}
+.content-unit-btn-freeze,
+.content-unit-btn-freeze:hover,
+.content-unit-btn-freeze:active,
+.content-unit-btn-freeze:focus {
+  background-color: #3b6ec1;
+  border-color: #3b6ec1;
+}
+.content-unit-btn-freeze.active,
+.content-unit-btn-freeze.active:hover,
+.content-unit-btn-freeze.active:active,
+.content-unit-btn-freeze.active:focus {
+  background-color: #ffa00f;
+  border-color: #ffa00f;
+  box-shadow: none;
+}

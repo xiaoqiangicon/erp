@@ -1,4 +1,3 @@
-require('bootstrap/dist/css/bootstrap.css');
-require('../index.css');
-
-require('bootstrap');
+import 'bootstrap/dist/css/bootstrap.css';
+import '../index.css';
+import 'bootstrap';

@@ -10,13 +10,11 @@ import 'less/common.less';
 import './index.less';
 
 // choose-image
-// require('bootstrap/dist/css/bootstrap.css'); // bootstrap css
-import '@zzh/upload/dist/upload.css'; // @zzh/upload css
-import '@zzh/pagination/dist/pagination.css'; // @zzh/pagination css
+import '../../com-deprecated/upload/css/index.css';
+import '../../com-deprecated/pagination/index.less';
 import 'less/pagination.less';
 import '@fancyapps/fancybox/dist/jquery.fancybox.css'; // @fancyapps/fancybox css
-import '@zzh/choose-image/dist/choose-image.css';
-import 'component/choose_image_config';
+import '../../com-deprecated/choose-image/css/index.css';
 
 import './ajax';
 import './init';

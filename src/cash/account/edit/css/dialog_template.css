@@ -1,0 +1,26 @@
+.dialog-template-unit {
+  margin-bottom: 15px;
+}
+.dialog-template-unit-title,
+.dialog-template-unit-content {
+  font-size: 20px;
+  line-height: 28px;
+  color: #333333;
+  margin-bottom: 6px;
+}
+.dialog-template-unit-title {
+  font-weight: bold;
+}
+.dialog-template-body {
+  margin-top: 10px;
+  text-align: center;
+}
+.dialog-template-body img {
+  width: 414px;
+}
+.dialog-template-body-desc {
+  font-size: 20px;
+  text-align: center;
+  color: #989898;
+  margin-top: 10px;
+}

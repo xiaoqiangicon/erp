@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>提现管理</title>
+  </head>
+  <body data-menu-id="cash-take">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="title-section"><p class="fs20">提现管理</p></div>
+        <div class="tip-section clearfix">
+          <div class="tip-section-left">
+            <p class="title"><i class="title-mark"></i><span>温馨提示</span></p>
+            <p class="mgt10">
+              普通提现：选择您需要提现的项目，双方核对结算账单后，将在
+              <span class="green">3~5个工作日</span
+              >（双休日或法定节假日顺延）为您提现到账，请您确认后邮寄善款收据。
+            </p>
+            <div class="special-cash">
+              <div class="special-cash-con">
+                特殊提现：剩余 <span id="special-cash-surplus">0</span> 次
+              </div>
+              <div class="special-cash-tip-box">
+                <i class="special-cash-icon">i</i>
+                <div class="s-c-tip">
+                  <div class="s-c-tip-head">
+                    <i class="special-cash-icon">i</i>
+                    <span
+                      >已特殊提现 <span id="special-cash-used">0</span> 次</span
+                    >
+                  </div>
+                  <div class="s-c-tip-text">
+                    提现方式：联系自在家客服可申请<br />重置规则：自然年的1月1日
+                    0:00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tip-section-right">
+            <div id="tip-section-info" style="display: none;">
+              <p>开户名称：<span id="account-name"></span></p>
+              <p>银行卡号：<span id="account-number"></span></p>
+            </div>
+            <div class="text-center" style="margin-top: 50px">
+              <button class="btn btn-green pdl20 pdr20" id="action-take">
+                申请提现
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="filter-section">
+          <div class="filter-sub-section clearfix">
+            <div class="cell name">时间：</div>
+            <div class="cell time-input">
+              <input class="form-control" data-select-date="1" />
+              <i class="calendar-icon"></i>
+            </div>
+            <div class="cell time-input">
+              <input class="form-control" data-select-date="2" />
+              <i class="calendar-icon"></i>
+            </div>
+            <button class="clean-button cell" data-special-date="1">
+              今天
+            </button>
+            <button class="clean-button cell" data-special-date="2">
+              1个月
+            </button>
+            <button class="clean-button cell" data-special-date="3">
+              3个月
+            </button>
+            <button class="clean-button cell" data-special-date="4">1年</button>
+          </div>
+          <div class="filter-sub-section clearfix mgt15">
+            <div class="cell name">状态：</div>
+            <button class="clean-button cell active" data-select-status="0">
+              全部
+            </button>
+            <button class="clean-button cell" data-select-status="1">
+              提现中
+            </button>
+            <button class="clean-button cell" data-select-status="4">
+              上传收据
+            </button>
+            <button class="clean-button cell" data-select-status="2">
+              提现完成
+            </button>
+            <button class="clean-button cell" data-select-status="3">
+              有疑问
+            </button>
+          </div>
+        </div>
+        <div class="content-section">
+          <div class="head">
+            <div class="unit unit-head">
+              <div class="cell">日期</div>
+              <div class="cell">提现编号</div>
+              <div class="cell">金额</div>
+              <div class="cell">状态</div>
+              <div class="cell">操作</div>
+            </div>
+          </div>
+          <div class="body" id="content-body"></div>
+        </div>
+        <div class="pagination-section" id="pagination-container"></div>
+      </div>
+    </div>
+    <div class="dialog" style="display: none" id="dialog-receipts">
+      <div class="dialog-inner">
+        <div class="dialog-pane">
+          <div class="dialog-top">
+            <div class="dialog-title">上传收据</div>
+            <div class="dialog-close" data-dialog-close="1">X</div>
+          </div>
+          <div class="dialog-content">
+            <div
+              class="dialog-receipts-content"
+              id="dialog-receipts-content"
+            ></div>
+            <div class="dialog-receipts-add" id="dialog-receipts-add">
+              <input
+                class="file-upload"
+                type="file"
+                name="file"
+                id="dialog-receipts-add-input"
+                multiple
+              />
+            </div>
+          </div>
+          <div class="dialog-foot text-center">
+            <button class="btn btn-green" id="dialog-receipts-ok">提交</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog" style="display: none" id="dialog-account-pending">
+      <div class="dialog-inner">
+        <div class="dialog-pane" style="width: 684px;">
+          <div class="dialog-content">
+            <div class="dialog-account-icon">
+              <img src="../../../images/cash/take/pending@3x.png" />
+            </div>
+            <div class="dialog-account-title">正在审核中，请耐心等待</div>
+            <div class="dialog-account-content">
+              自在家将在1个工作日内（双休日或法定节假日顺延）完成审核
+            </div>
+            <div class="dialog-account-btn">
+              <button class="btn btn-green btn-outline" data-dialog-close="1">
+                我知道了
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog" style="display: none" id="dialog-account-no">
+      <div class="dialog-inner">
+        <div class="dialog-pane" style="width: 684px;">
+          <div class="dialog-content">
+            <div class="dialog-account-icon">
+              <img src="../../../images/cash/take/no@3x.png" />
+            </div>
+            <div class="dialog-account-title">您的审核信息未通过</div>
+            <div class="dialog-account-content">
+              自在家将在1个工作日内与您沟通，修改审核信息后请重新提交
+            </div>
+            <div
+              class="olive text-center mgt30 hide"
+              id="dialog-account-no-reason"
+            >
+              原因：<span id="dialog-account-no-reason-content"></span>
+            </div>
+            <div class="dialog-account-btn">
+              <button class="btn btn-green btn-outline" data-dialog-close="1">
+                我知道了
+              </button>
+              <a
+                class="btn btn-green mgl20"
+                href="/static/build/cash/account/index.html?edit=1"
+                >修改审核资料</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog" style="display: none" id="dialog-receipt-tip">
+      <div class="dialog-inner">
+        <div class="dialog-pane">
+          <div class="dialog-content">
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第一步</div>
+              <div class="dialog-template-unit-content">
+                请您根据自在家“善款账单”实际提现金额填写《账单收据》
+              </div>
+            </div>
+            <div class="dialog-template-unit">
+              <div class="dialog-template-unit-title">第二步</div>
+              <div class="dialog-template-unit-content">
+                拍照并上传您的《账单收据》
+              </div>
+            </div>
+            <div class="dialog-template-body">
+              <img
+                src="https://pic.zizaihome.com/826f865e-d99d-11e7-8d6d-00163e0c1e1c.png"
+              />
+            </div>
+          </div>
+          <div class="dialog-foot text-center">
+            <button class="btn btn-green pdl20 pdr20" data-dialog-close="1">
+              知道了
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/html" id="tpl-unit">
+      <div class="unit" data-unit="${id}">
+          <div class="cell">${time}</div>
+          <div class="cell">${id}</div>
+          <div class="cell">¥${realTotalMoney}</div>
+          <div class="cell">
+              <button class="clean-button {@if isQuestion == 0 && type == 1}green{@else if isQuestion == 0 && type == 6}red{@else if isQuestion == 1 && type == 1}orange{@/if}"
+                      data-unit-is-question="${isQuestion}" data-unit-type="${type}" data-id="${id}">${typeText}
+              </button>
+          </div>
+          <div class="cell select">
+              {@if type == 1}
+              <button class="btn btn-green btn-outline btn-sm" data-unit-cancel="${id}">撤回</button>
+              {@/if}
+              {@if isQuestion == 0 && (type == 2 || type == 4 || type == 6 || type == 5) && images}
+              <button class="btn btn-green btn-outline btn-sm" data-unit-show-images="${id}"
+                      data-images="${feedBackImagesString}">回单照片
+              </button>
+              {@/if}
+              {@if isQuestion == 0 && type == 4}
+              <button class="btn btn-green btn-outline btn-sm" data-unit-upload-receipts="${id}">上传收据</button>
+              {@/if}
+              {@if isQuestion == 0 && type == 6}
+              <button class="btn btn-green btn-outline btn-sm" data-unit-upload-receipts="${id}"
+                      data-receipts="${receiptsString}">修改收据
+              </button>
+              {@/if}
+              {@if isQuestion == 0 && (type == 2 || type == 5) && receipts}
+              <button class="btn btn-green btn-outline btn-sm" data-show-images="${receiptsString}">收据照片</button>
+              {@/if}
+              {@if isQuestion == 1 && type == 2 && answer}
+              <button class="btn btn-green btn-outline btn-sm" data-unit-show-answer="${id}" data-answer="${answer}">
+                  查看回复
+              </button>
+              {@/if}
+              <button class="btn btn-default btn-sm" data-unit-scan="${id}">提现进度</button>
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-detail">
+      <div class="detail-title">
+          <div class="detail-wrapper">
+              <div class="detail-real-title">
+                  <span>善款账单详情</span>
+                  <button class="clean-button detail-close" id="detail-close"></button>
+              </div>
+          </div>
+      </div>
+      <div class="detail-body">
+          <div class="detail-wrapper">
+              <div class="detail-summary clearfix {@if isQuestion || type == 1 || type == 2 || type == 5}no-right{@/if}">
+                  <div class="detail-summary-left">
+                      <div class="detail-common-unit clearfix" id="detail-summary-left-unit">
+                          {@if isQuestion}
+                          <div class="detail-steps">
+                              <div class="detail-step">
+                                  <p>
+                                      <span class="detail-step-circle {@if type == 1}active{@else if type == 2}full{@/if}">{@if type == 1}✓{@else}1{@/if}</span>
+                                      <span>有疑问</span>
+                                  </p>
+                                  {@if updatedAt}<p class="fs14 gray">${createdAt}</p>{@/if}
+                              </div>
+                              <div class="detail-step">
+                                  <p class="detail-step-line {@if type == 2}active{@/if}"></p>
+                              </div>
+                              <div class="detail-step">
+                                  <p>
+                                      <span class="detail-step-circle {@if type == 2}active{@/if}">{@if type == 2}✓{@else}2{@/if}</span>
+                                      <span class="{@if type == 1}gray{@/if}">已回复</span>
+                                  </p>
+                                  {@if type == 2 && updatedAt}<p class="fs14 gray">${updatedAt}</p>{@/if}
+                              </div>
+                          </div>
+                          {@if type == 1}
+                          <p class="fs16">您已经发起了疑问账单，我们将在<span class="green">3~5个工作日</span>（双休日或法定节假日顺延）为您答复，请您耐心等待。</p>
+                          {@else}
+                          <p class="fs16">请查看我们对疑问账单的处理与回复，我们会积极的配合您处理“有疑问”的提现账单。</p>
+                          {@/if}
+                          {@else}
+                          <div class="detail-steps">
+                              <div class="detail-step">
+                                  <p>
+                                      <span class="detail-step-circle {@if type == 1}active{@else if type == 2 || type == 4 || type == 6 || type == 5}full{@/if}">{@if type == 1}✓{@else}1{@/if}</span>
+                                      <span>提现中</span>
+                                  </p>
+                                  {@if createdAt}<p class="fs14 gray">${createdAt}</p>{@/if}
+                              </div>
+                              <div class="detail-step">
+                                  <p class="detail-step-line {@if type == 2 || type == 4 || type == 6 || type == 5}active{@/if}"></p>
+                              </div>
+                              <div class="detail-step">
+                                  <p>
+                                      <span class="detail-step-circle {@if type == 4 || type == 6}active{@else if type == 2 || type == 5}full{@/if}">{@if type == 4 || type == 6}✓{@else}2{@/if}</span>
+                                      <span class="{@if type == 1}gray{@/if}">{@if type == 6}收据未通过{@else}上传收据{@/if}</span>
+                                  </p>
+                                  {@if (type == 4 || type == 6) && updatedAt}<p class="fs14 gray">${updatedAt}</p>{@/if}
+                              </div>
+                              <div class="detail-step">
+                                  <p class="detail-step-line {@if type == 2 || type == 5}active{@/if}"></p>
+                              </div>
+                              <div class="detail-step">
+                                  <p>
+                                      <span class="detail-step-circle {@if type == 5}active{@else if type == 2}full{@/if}">{@if type == 5}✓{@else}3{@/if}</span>
+                                      <span class="{@if type == 1 || type == 4 || type == 6}gray{@/if}">转账处理中</span>
+                                  </p>
+                                  {@if type == 5 && updatedAt}<p class="fs14 gray">${updatedAt}</p>{@/if}
+                              </div>
+                              <div class="detail-step">
+                                  <p class="detail-step-line {@if type == 2}active{@/if}"></p>
+                              </div>
+                              <div class="detail-step">
+                                  <p>
+                                      <span class="detail-step-circle {@if type == 2}active{@/if}">{@if type == 2}✓{@else}4{@/if}</span>
+                                      <span class="{@if type == 1 || type == 4 || type == 5 || type == 6}gray{@/if}">提现完成</span>
+                                  </p>
+                                  {@if type == 2 && updatedAt}<p class="fs14 gray">${updatedAt}</p>{@/if}
+                              </div>
+                          </div>
+                          {@if type == 1}
+                          <p class="fs16">自在家善款系统将在<span class="green">3~5个工作日</span>（双休日或法定节假日顺延）为您核对并处理提现账单请您耐心等待。</p>
+                          {@else if type == 4}
+                          <p class="fs16">1.自在家善款系统正在审计中请耐心等待。</p>
+                          <p class="fs16">2.根据银行监管部门要求需要您邮寄收据或上传收据照片才可完成本次提现。</p>
+                          <p class="fs16">3.如何上传收据照片？
+                              <button class="clean-button blue" id="upload-receipt-tip">点击查看提示</button>
+                          </p>
+                          {@else if type == 6}
+                          <p class="fs16">您的收据信息未通过，
+                              <button class="clean-button blue">原因：${answer}</button>
+                          </p>
+                          <p class="fs16">请按照收据未通过的原因，修改收据照片后并请重新提交。</p>
+                          {@else if type == 2}
+                          <p class="fs16">您的本次提现已经完成。</p>
+                          <p class="mgb0 gray">如遇到问题？请及时联系自在家平台客服人员。</p>
+                          <p class="mgb0 gray">如您只是上传收据照片而未邮寄收据，按照银行监管部门的要求请在提现满3笔后及时邮寄收据。</p>
+                          {@/if}
+                          {@/if}
+                      </div>
+                  </div>
+                  <div class="detail-summary-right">
+                      <div class="detail-summary-right-inner">
+                          <div class="detail-common-unit" id="detail-summary-right-unit">
+                              <p class="text-center">
+                                  {@if type == 4}
+                                  请您及时上传收据
+                                  {@else if type == 6}
+                                  请您及时重新上传收据
+                                  {@/if}
+                              </p>
+                              <p class="text-center mgt40">
+                                  {@if type == 4}
+                                  <button class="btn btn-green pdl20 pdr20" data-unit-upload-receipts="${id}">上传收据照片
+                                  </button>
+                                  {@else if type == 6}
+                                  <button class="btn btn-green pdl20 pdr20" data-unit-upload-receipts="${id}"
+                                          data-receipts="${receiptsString}">修改收据照片
+                                  </button>
+                                  {@/if}
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              {@if isQuestion}
+              {@if remarks}
+              <div class="detail-interact-unit">
+                  <div class="detail-common-unit">
+                      <p class="fs16 mgb0">${remarks}</p>
+                  </div>
+                  <button class="clean-button detail-interact-circle">寺院</button>
+              </div>
+              {@/if}
+              {@if answer && type == 2}
+              <div class="detail-interact-unit">
+                  <div class="detail-common-unit">
+                      <p class="fs16 mgb0">${answer}</p>
+                  </div>
+                  <button class="clean-button detail-interact-circle detail-interact-circle-2">自<br>在家</button>
+              </div>
+              {@/if}
+              {@/if}
+
+              <div class="detail-sub-title">${templeName}善款电子账单</div>
+              {@each details as detail}
+              <div class="detail-unit-container">
+                  <div class="detail-head">
+                      <div class="detail-unit detail-unit-head">
+                          <div class="detail-unit-inner">
+                              <div class="detail-cell detail-cell-name">${detail.year}年${detail.month}月项目</div>
+                              <div class="detail-cell">数量</div>
+                              <div class="detail-cell">金额</div>
+                              <div class="detail-cell">增值服务费</div>
+                              <div class="detail-cell">支付渠道手续费</div>
+                              <div class="detail-cell" style="display: none">妙严手续费补助</div>
+                              <div class="detail-cell" style="display: none">备注</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="detail-unit-content">
+                      {@each detail.data as detailItem}
+                      <div class="detail-unit {@if !detailItem.category}small{@/if}" data-unit="${detailItem.id}"
+                           data-status="${status}">
+                          <div class="detail-unit-inner">
+                              <div class="detail-cell detail-cell-name">
+                                  <p>${detailItem.title}</p>
+                                  {@if !!detailItem.category}<p>【${detailItem.category}】</p>{@/if}
+                                  <p>
+                                      {@if !!detailItem.fee}<span class="badge-1 badge-1-blue">增值服务费</span>{@/if}
+                                      {@if !!detailItem.promoteAmountForZzh}<span class="badge-1 badge-1-blue">功能服务费</span>{@/if}
+                                      {@if !!detailItem.promoteAmountForUser}<span class="badge-1 badge-1-blue">推广员奖励金</span>{@/if}
+                                      {@if !!detailItem.assistance}<span class="badge-1 badge-1-green">自在家支付渠道补贴</span>{@/if}
+                                  </p>
+                              </div>
+                              <div class="detail-cell">${detailItem.count}</div>
+                              <div class="detail-cell">¥${detailItem.money}</div>
+                              <div class="detail-cell">{@if !!detailItem.fee}-¥${detailItem.fee}{@else}-{@/if}</div>
+                              <div class="detail-cell">{@if !!detailItem.charge}-¥${detailItem.charge}{@else}-{@/if}</div>
+                              <div class="detail-cell" style="display: none">{@if !!detailItem.assistance}+¥${detailItem.assistance}{@else}-{@/if}</div>
+                              <div class="detail-cell" style="display: none">${detailItem.extra}</div>
+                          </div>
+                      </div>
+                      {@/each}
+                  </div>
+              </div>
+              {@/each}
+              <div class="detail-common-unit">
+                  <p class="fs18"><i class="detail-common-title-mark"></i> <span>账单计算</span></p>
+                  <div class="mgt20">
+                      <p>账单总金额：${totalMoney} 元</p>
+                      {@if totalFee}
+                      <p>
+                          <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
+                          增值服务费：${totalFee} 元
+                      </p>
+                      {@/if}
+                      {@if totalPromoteAmountForZzh}
+                      <p>
+                          <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
+                          功能服务费：<span data-show-total-fee="${year}" data-status="${status}">${totalPromoteAmountForZzh}</span> 元
+                          <button class="clean-button glyphicon glyphicon-question-sign blue" data-tip="1" title="若使用分享推广功能自在家系统将收取2%的服务费"></button>
+                      </p>
+                      {@/if}
+                      {@if totalPromoteAmountForUser}
+                      <p>
+                          <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
+                          推广员奖励金：<span data-show-total-fee="${year}" data-status="${status}">${totalPromoteAmountForUser}</span> 元
+                          <button class="clean-button glyphicon glyphicon-question-sign blue" data-tip="1" title="奖励金是结算给推广员的金额"></button>
+                      </p>
+                      {@/if}
+                      {@if totalCharge}
+                      <p>
+                          <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
+                          支付渠道手续费：${totalCharge} 元
+                          <button class="clean-button glyphicon glyphicon-question-sign blue" data-tip="1" title="支付渠道手续费是支付宝或微信收取，自在家只是负责代扣。"></button>
+                      </p>
+                      {@/if}
+                      {@if totalAssistance}
+                      <p>
+                          <span class="badge-1 badge-1-green pd-l-20 pd-r-20 mg-r-20">增加</span>
+                          <span style="color: #00CC66;">自在家补贴支付渠道手续费：${totalAssistance} 元</span>
+                      </p>
+                      {@/if}
+                      {@if reward}
+                      <p>
+                          <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
+                          打赏自在家的金额：${reward} 元
+                      </p>
+                      {@/if}
+                      {@if specialCharge}
+                      <p>
+                          <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
+                          特殊提现超限服务费：${specialCharge} 元
+                          <button class="clean-button glyphicon glyphicon-question-sign blue" data-tip="1" title="寺院每年可特殊提现两次，因特殊提现需要额外计算与校验，超出次数后将收取6%人工处理费。"></button>
+                      </p>
+                      {@/if}
+                      <hr>
+                      <p>
+                          <span class="badge-1 badge-1-blue pd-l-20 pd-r-20 mg-r-20">总计</span>
+                          <span class="f-wg-bold">提现金额：${realTotalMoney} 元</span>
+                      </p>
+                  </div>
+              </div>
+              <div class="detail-unit-container" style="display: none;">
+                  <div class="detail-unit-content">
+                      <div class="detail-unit detail-unit-head">
+                          <div class="detail-unit-inner">
+                              <div class="detail-cell detail-cell-name">总计</div>
+                              <div class="detail-cell">${totalCount}</div>
+                              <div class="detail-cell active">¥${totalMoney}</div>
+                              <div class="detail-cell">-¥${totalFee}</div>
+                              <div class="detail-cell">-¥${totalCharge}</div>
+                              <div class="detail-cell">+¥${totalAssistance}</div>
+                              <div class="detail-cell"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {@if reward}
+              <div class="detail-foot" style="display: none;">
+                  <div class="detail-foot-inner text-right">
+                      支持自在家金额：-￥${reward}
+                  </div>
+              </div>
+              {@/if}
+              <div class="detail-foot">
+                  <div class="detail-foot-inner">
+                      <p class="fs16">实际提现金额：¥${realTotalMoney}（妙严科技已为您补助支付渠道手续费：¥${totalAssistance}）</p>
+                      <p class="fs16">流水号：${id}</p>
+                      <p class="fs16 mgb0">提现时间：${time}</p>
+                  </div>
+              </div>
+              {@if feedBackImages && feedBackImages.length}
+              <div class="detail-common-unit">
+                  <p class="fs18">
+                      <i class="detail-common-title-mark"></i>
+                      <span>回单照片</span>
+                  </p>
+                  <p>
+                      {@each feedBackImages as feedBackImage}
+                      <img src="${feedBackImage}" data-show-images="${feedBackImage}">
+                      {@/each}
+                  </p>
+              </div>
+              {@/if}
+              {@if receipts && receipts.length}
+              <div class="detail-common-unit">
+                  <p class="fs18">
+                      <i class="detail-common-title-mark"></i>
+                      <span>收据照片</span>
+                  </p>
+                  <p>
+                      {@each receipts as receiptImage}
+                      <img src="${receiptImage}" data-show-images="${receiptImage}">
+                      {@/each}
+                  </p>
+              </div>
+              {@/if}
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="tpl-popup-receipts-row">
+      <div class="dialog-receipts-row" data-popup-receipts-row="1" data-image="${src}">
+          <img src="${src}">
+          <button class="clean-button dialog-receipts-row-delete" data-popup-receipts-row-delete="1">X</button>
+      </div>
+    </script>
+
+    <script>
+      var globalData = {
+        // -1：未添加过，0：审核中，1：审核通过，2：审核未通过
+        accountStatus: parseInt('{{status}}'),
+      };
+    </script>
+  </body>
+</html>

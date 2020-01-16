@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <div class="main-detail-pay">
     <div class="container-0-1">
         <div class="row-0-1">

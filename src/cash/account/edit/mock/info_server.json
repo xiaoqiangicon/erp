@@ -1,0 +1,17 @@
+{
+  "result": 1,
+  "authBankType": 0,
+  "pickUpSpecialCnt": 1,
+  "data": {
+    "type": 2,
+    "// bankName": "中国银行",
+    "bankName": "中国农业银行",
+    "bankBranchName": "深圳南山支行",
+    "bankCardNumber": "0231234567890123456789",
+    "bankCardUserName": "雅尼",
+    "certificatePicUrl": "/sample/image1.jpg",
+    "identityCardPic": "/sample/image2.jpg",
+    "identityCardPic2": "/sample/image3.jpg",
+    "examineMessage": "审核不通过原因"
+  }
+}

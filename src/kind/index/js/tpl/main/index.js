@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <div class="content-container" id="content-container">
     <div class="main-top">
         <a href="/zzhadmin/charityEditHtml/" class="btn btn-green btn-1">新建</a>

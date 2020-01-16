@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>微站首页</title>
+  </head>
+  <body data-menu-id="temple-create">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="design clearfix">
+          <div class="design-preview">
+            <div class="design-container">
+              <div class="design-title"><h3 data-temple-name="1">- -</h3></div>
+              <div
+                class="design-components"
+                id="components-display-container"
+              ></div>
+            </div>
+            <div class="design-add">
+              <h4>添加内容</h4>
+              <ul
+                class="clearfix component-add-container"
+                id="components-container"
+              ></ul>
+              <h4>寺院设置</h4>
+              <div class="clearfix component-add-container">
+                <button class="btn btn-default" id="donate-box-settings">
+                  功德箱设置
+                </button>
+                <button class="btn btn-default" id="join-list-settings">
+                  参与列表设置
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="design-sidebar"
+            id="design-sidebar"
+            style="display: none;"
+          >
+            <div class="arrow"></div>
+            <div
+              class="design-sidebar-inner"
+              id="components-edit-container"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fixed-bottom" id="fixed-bottom" style="display: none;">
+      <button class="btn btn-default" id="preview-data">推广</button>
+    </div>
+
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+
+    <div
+      class="modal edit-pop-figure"
+      id="edit-pop-figure"
+      style="display: none;"
+    >
+      <div class="modal-backdrop fade in" data-modal-close="1"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header modal-header-article">
+            <button type="button" class="close" data-modal-close="1">
+              <span>&times;</span>
+            </button>
+            <h4 class="modal-title" id="edit-pop-figure-title">编辑法师信息</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row-1 clearfix">
+              <div class="title-1">照片：</div>
+              <div class="body-1">
+                <ul class="popup-shortcut-select-container clearfix">
+                  <li id="edit-pop-figure-add-avatar-box">
+                    <button
+                      class="clean-button component-upload-btn"
+                      id="edit-pop-figure-add-avatar"
+                    ></button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row-1 clearfix">
+              <div class="title-1">法师名称：</div>
+              <div class="body-1">
+                <input
+                  class="form-control"
+                  placeholder="请填写法师的名称（不超过10个字）"
+                  maxlength="10"
+                  id="edit-pop-figure-input-name"
+                />
+              </div>
+            </div>
+            <div class="row-1 clearfix">
+              <div class="title-1">法师称谓：</div>
+              <div class="body-1">
+                <input
+                  class="form-control"
+                  placeholder="请填写法师的称谓（不超过6个字，可不填）"
+                  maxlength="6"
+                  id="edit-pop-figure-input-honor-name"
+                />
+              </div>
+            </div>
+            <div class="row-1 clearfix">
+              <div class="title-1">简介：</div>
+              <div class="body-1 box-1">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  id="edit-pop-figure-input-description"
+                  maxlength="500"
+                ></textarea>
+                <div class="mgt5 text-right">
+                  <span id="edit-pop-figure-input-description-count">0</span> /
+                  500
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center">
+            <button class="btn btn-green pdl20 pdr20" id="edit-pop-figure-ok">
+              保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal edit-pop-house"
+      id="edit-pop-house"
+      style="display: none;"
+    >
+      <div class="modal-backdrop fade in" data-modal-close="1"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header modal-header-article">
+            <button type="button" class="close" data-modal-close="1">
+              <span>&times;</span>
+            </button>
+            <h4 class="modal-title" id="edit-pop-house-title">编辑殿堂信息</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row-1 clearfix">
+              <div class="title-1">照片：</div>
+              <div class="body-1">
+                <ul class="popup-shortcut-select-container clearfix">
+                  <li id="edit-pop-house-add-cover-box">
+                    <button
+                      class="clean-button component-upload-btn"
+                      id="edit-pop-house-add-cover"
+                    ></button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row-1 clearfix">
+              <div class="title-1">殿堂名称：</div>
+              <div class="body-1">
+                <input
+                  class="form-control"
+                  placeholder="请填写殿堂名称（不超过10个字）"
+                  maxlength="10"
+                  id="edit-pop-house-input-name"
+                />
+              </div>
+            </div>
+            <div class="row-1 clearfix">
+              <div class="title-1">殿堂介绍：</div>
+              <div class="body-1 box-1">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  id="edit-pop-house-input-intro"
+                  maxlength="500"
+                ></textarea>
+                <div class="mgt5 text-right">
+                  <span id="edit-pop-house-input-intro-count">0</span> / 500
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer text-center">
+            <button class="btn btn-green pdl20 pdr20" id="edit-pop-house-ok">
+              保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="donate-box-settings-popup"
+      id="donate-box-settings-popup"
+      style="display: none;"
+    >
+      <div class="body-1">
+        <div class="f-s-18">功德箱组件</div>
+        <div class="gray mg-t-5">可勾选控制功德箱在指定页面是否展示</div>
+        <div class="mg-t-30 clearfix">
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-home-sui-xi"
+              data-setting="1"
+              checked=""
+            />
+            微站首页（关闭此功能，请务必下架"千寺祈福"产品） </label
+          ><br />
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-monk-sui-xi"
+              data-setting="1"
+              checked=""
+            />
+            高僧法师 </label
+          ><br />
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-scene-sui-xi"
+              data-setting="1"
+              checked=""
+            />
+            殿堂场景
+          </label>
+        </div>
+        <div class="f-s-18 mg-t-40">订单列表</div>
+        <div class="mg-t-10">
+          <a href="/zzhadmin/meritBoxIndex/">查看功德箱订单 ></a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="donate-box-settings-popup"
+      id="join-list-settings-popup"
+      style="display: none"
+    >
+      <div class="body-1">
+        <div class="f-s-18">参与列表设置</div>
+        <div class="mg-t-30 clearfix">
+          <label class="radio-inline">
+            <input
+              type="checkbox"
+              id="show-join-list-price"
+              data-setting="1"
+              checked=""
+            />
+            显示参与列表金额
+          </label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

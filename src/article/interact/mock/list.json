@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "totalPages": 2,
+  "data": [
+    {
+      "id": 1,
+      "title": "标题1",
+      "nickname": "昵称1",
+      "avatar": "/static/images/common/example-avatar.jpg",
+      "amount": 111,
+      "time": "2016-09-09 09:09"
+    },
+    {
+      "id": 2,
+      "title": "标题2",
+      "nickname": "昵称2",
+      "avatar": "/static/images/common/example-avatar.jpg",
+      "amount": 222,
+      "time": "2016-09-09 09:09"
+    }
+  ]
+}

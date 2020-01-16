@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>场景管理</title>
+  </head>
+  <body data-menu-id="scene-manage">
+    <div class="content-container" id="content-container">
+      <div class="content-container-inner">
+        <div class="top-nav-bar">
+          <span class="glyphicon glyphicon-globe slide-icon"></span>
+          <span>实境礼佛</span>
+          <span class="glyphicon glyphicon-menu-right"></span>
+          <span><a href="" id="back-nav" class="csp">场景管理</a></span>
+          <span class="glyphicon glyphicon-menu-right"></span>
+          <span class="color690" data-ele="nav-bar-title">添加简介</span>
+        </div>
+        <form>
+          <div class="form-group" style="margin-bottom: 40px;">
+            <label for="scene"
+              ><span class="necessary-icon">*</span>选择场景</label
+            >
+            <div style="width: 200px;">
+              <select
+                name=""
+                class="form-control"
+                id="scene"
+                style="width: 200px"
+              ></select>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom: 70px;">
+            <label for="summary"
+              ><span class="necessary-icon">*</span>简介</label
+            >
+            <div class="textarea-container three-fourths">
+              <textarea
+                name=""
+                class="form-control"
+                id="summary"
+                data-ele="textarea"
+                rows="10"
+                placeholder="简介不超过500字"
+                maxlength="500"
+              ></textarea>
+              <span class="num-tip" data-ele="textarea-num-tip">0/500</span>
+            </div>
+          </div>
+          <!--存在图片是给外层添加class has-img-->
+          <div
+            class="form-group"
+            data-ele="img-container"
+            style="margin-bottom: 70px;"
+          >
+            <label for="">
+              图片
+              <!--<span class="upload-limit-info">(最多可上传5张图片)</span>-->
+            </label>
+            <div class="clearfix mgt20">
+              <div data-ele="img-cell-container">
+                <!--<div class="img-cell">-->
+                <!--<div class="delete-img" data-ele="delete-img"></div>-->
+                <!--<img src="\${src}" data-ele="img" data-id="\${id}" data-type="\${type}">-->
+                <!--</div>-->
+              </div>
+              <div class="add-img" data-ele="add-img">
+                <p class="upload-info">上传图片</p>
+              </div>
+            </div>
+            <div class="add-img-tip" data-ele="add-img-tip">
+              最多可上传5张图片
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom: 140px;">
+            <label for="">
+              语音
+              <!--<span class="upload-limit-info">(可上传大小不超过1M的音频,支持MP3 、Wav 、AAC 格式的音频)</span>-->
+            </label>
+            <div class="clearfix mgt20" data-ele="add-sound-container">
+              <div class="add-sound" data-ele="add-sound">
+                <p class="upload-info">上传语音</p>
+              </div>
+              <div class="add-sound-tip" data-ele="add-sound-tip">
+                可上传大小不能超过 1 M的音频，支持MP3、Wav、AAC格式的音频
+              </div>
+              <input
+                data-ele="sound-input-file"
+                type="file"
+                name="file"
+                accept=".mp3,.wav,.aac"
+                style="display: none;"
+              />
+            </div>
+            <div
+              class="delete-sound mgt20"
+              style="display: none;"
+              data-ele="audio-container"
+            >
+              <audio class="vam" src="" data-ele="audio" controls></audio>
+              <div class="delete-img" data-ele="delete-sound"></div>
+            </div>
+          </div>
+        </form>
+        <div class="text-center">
+          <button class="btn btn-success mgr50" id="submit">保存</button>
+          <button class="btn btn-default green" id="cancel">取消</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 载入等待图片 开始 -->
+    <div id="loading-toast" class="loading-toast unloaded">
+      <img
+        class="loading-toast-image"
+        src="../../../images/common/loading.gif"
+      />
+    </div>
+    <!--载入等待图片 结束-->
+  </body>
+</html>

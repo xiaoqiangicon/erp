@@ -1,0 +1,70 @@
+.temple {
+  width: 100%;
+  padding-top: 48px;
+  padding-bottom: 30px;
+}
+.temple .content {
+  margin-top: 30px;
+}
+.temple-item {
+  padding: 18px 10px 10px 10px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  width: 285px;
+  box-shadow: 0 0 3px #dce4eb;
+}
+.temple-item-image {
+  width: 100%;
+  height: 183px;
+}
+.temple-item-title {
+  margin-top: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+
+  color: #333;
+}
+.temple-item-desc {
+  position: relative;
+  margin-top: 6px;
+  /*padding-left: 24px;*/
+  padding-left: 10px;
+  color: #989898;
+  height: 40px;
+  overflow: hidden;
+}
+.temple-item-desc i {
+  position: absolute;
+  left: 10px;
+  top: 3px;
+  width: 9px;
+  height: 14px;
+  background-image: url('https://pic.zizaihome.com/1bb14cc0-0636-11e8-a5ef-00163e0c001e.png');
+  background-size: 100% 100%;
+}
+.temple-item-btn {
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .temple {
+    padding-top: 20px;
+  }
+  .temple-item {
+    width: 211px;
+    padding: 14px 7px 7px 7px;
+  }
+  .temple-item-image {
+    height: 137px;
+  }
+  .temple-item-title {
+    font-size: 14px;
+    margin-top: 7px;
+  }
+  .temple-item-desc {
+    font-size: 12px;
+    height: 32px;
+    margin-top: 4px;
+  }
+}

@@ -4,7 +4,7 @@ const req = {
   id: 'commodityId',
 };
 
-const pre = params => ({ ...params, isPromotion: 1 });
+const pre = params => ({ ...params, isPromotion: -1 });
 
 seeAjax.config('add', {
   url: [

@@ -1,0 +1,13 @@
+@import 'css/base.css';
+@import 'css/main.css';
+@import 'css/detail.css';
+@import 'css/dialog.css';
+@import 'css/account_info.css';
+@import 'css/prize.css';
+@import 'css/agree.css';
+@import 'css/confirm.css';
+@import 'css/badge.css';
+
+.tippy-tooltip {
+  font-size: 14px;
+}

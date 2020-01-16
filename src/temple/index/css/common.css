@@ -1,0 +1,29 @@
+.c-badge-1 {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 10px;
+  padding: 0 5px;
+  border: 1px solid #6490c7;
+  background-color: #e1effc;
+  color: #6692c8;
+  font-size: 12px;
+  text-align: center;
+}
+
+.c-btn-1 {
+  line-height: 24px;
+  border-radius: 4px;
+  padding: 0 6px;
+  color: #71ba31;
+  border: 1px solid #71ba31;
+}
+
+.c-btn-1-round {
+  border-radius: 12px;
+}
+
+.c-btn-1-orange {
+  color: #e28830;
+  border: 1px solid #e28830;
+}

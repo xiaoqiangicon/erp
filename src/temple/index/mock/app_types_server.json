@@ -1,0 +1,556 @@
+{
+  "msg": "获取成功",
+  "data": [
+    {
+      "url": "http://wx.zizaihome.com/website/calendar",
+      "linkList": [],
+      "name": "佛事日历",
+      "link_type": 1
+    },
+    {
+      "url": "",
+      "linkList": [
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=1",
+          "message_id": 1,
+          "name": "供奉长生禄位"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=12",
+          "message_id": 12,
+          "name": "测试12"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=13",
+          "message_id": 13,
+          "name": "测试13"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=14",
+          "message_id": 14,
+          "name": "测试14"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=165",
+          "message_id": 165,
+          "name": "dasd"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=184",
+          "message_id": 184,
+          "name": "供奉法事（有规格可选、附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=185",
+          "message_id": 185,
+          "name": "佛事供奉（无规格需支付、有附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=186",
+          "message_id": 186,
+          "name": "供奉法事（有规格可选、附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=188",
+          "message_id": 188,
+          "name": "佛事供奉（无需支付，有附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=189",
+          "message_id": 189,
+          "name": "佛事供奉（无规格需支付、无附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=191",
+          "message_id": 191,
+          "name": "供奉佛事（无支付、无附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=200",
+          "message_id": 200,
+          "name": "33"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=238",
+          "message_id": 238,
+          "name": "1（无需支付）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=239",
+          "message_id": 239,
+          "name": "2（无规格，一个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=240",
+          "message_id": 240,
+          "name": "3（无规格，多个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=242",
+          "message_id": 242,
+          "name": "5（多个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=243",
+          "message_id": 243,
+          "name": "6（1个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=244",
+          "message_id": 244,
+          "name": "7（价格为0，多个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=245",
+          "message_id": 245,
+          "name": "8（价格为0,1个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=246",
+          "message_id": 246,
+          "name": "9（多个价格，1个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=249",
+          "message_id": 249,
+          "name": "11（价格为空）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=265",
+          "message_id": 265,
+          "name": "长生法事长生法事长生法事长生法事长生法事长生法事长生法事长生"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=289",
+          "message_id": 289,
+          "name": "正月佛事"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=294",
+          "message_id": 294,
+          "name": "3正月佛事（无规格，多个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=295",
+          "message_id": 295,
+          "name": "4正月佛事（一个规格，无需支付）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=296",
+          "message_id": 296,
+          "name": "5正月佛事（一个规格，一个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=297",
+          "message_id": 297,
+          "name": "6正月佛事（多个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=298",
+          "message_id": 298,
+          "name": "7正月佛事（价格为0，一个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=300",
+          "message_id": 300,
+          "name": "9正月佛事（一个价格，多个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=301",
+          "message_id": 301,
+          "name": "10正月佛事（价格为0，一个价格，多个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=311",
+          "message_id": 311,
+          "name": "一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=312",
+          "message_id": 312,
+          "name": "佛事申请"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=326",
+          "message_id": 326,
+          "name": "一（规格价格为0）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=327",
+          "message_id": 327,
+          "name": "二（有规格，一个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=328",
+          "message_id": 328,
+          "name": "三（有规格，一个随喜）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=329",
+          "message_id": 329,
+          "name": "四（价格为0，一个价格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=330",
+          "message_id": 330,
+          "name": "五（价格为0，随喜）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=331",
+          "message_id": 331,
+          "name": "六（价格为0、一个价格、随喜）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=332",
+          "message_id": 332,
+          "name": "七（无规格，无支付，无附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=333",
+          "message_id": 333,
+          "name": "八（无规格，无支付，有附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=334",
+          "message_id": 334,
+          "name": "九（无规格、一个价格，无附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=335",
+          "message_id": 335,
+          "name": "十（无规格、一个价格、有附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=336",
+          "message_id": 336,
+          "name": "十一（无规格、随喜、无附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=337",
+          "message_id": 337,
+          "name": "十二（无规格、随喜、有附言）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=380",
+          "message_id": 380,
+          "name": "1111"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=385",
+          "message_id": 385,
+          "name": "佛事优化（时间差7天）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=386",
+          "message_id": 386,
+          "name": "佛事优化（时间差大于7天）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=387",
+          "message_id": 387,
+          "name": "佛事优化（只设置开始时间、当天）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=388",
+          "message_id": 388,
+          "name": "佛事优化（只设置开始时间、3天前）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=389",
+          "message_id": 389,
+          "name": "佛事优化（只设置开始时间、一天前）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=400",
+          "message_id": 400,
+          "name": "佛事优化（只设置开始时间、第二天）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=403",
+          "message_id": 403,
+          "name": "佛事优化（只设置结束时间、第二天）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=404",
+          "message_id": 404,
+          "name": "佛事优化（只设置结束时间、三天后）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=433",
+          "message_id": 433,
+          "name": "附言"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=439",
+          "message_id": 439,
+          "name": "2222222 "
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=440",
+          "message_id": 440,
+          "name": "啦啦啦"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=450",
+          "message_id": 450,
+          "name": "打印打印"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=456",
+          "message_id": 456,
+          "name": "打印２"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=458",
+          "message_id": 458,
+          "name": "打印２（无规格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=459",
+          "message_id": 459,
+          "name": "123"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=460",
+          "message_id": 460,
+          "name": "呵呵"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=461",
+          "message_id": 461,
+          "name": "打印3"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=462",
+          "message_id": 462,
+          "name": "打印3（无规格）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=463",
+          "message_id": 463,
+          "name": "打印3"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=464",
+          "message_id": 464,
+          "name": "打印4（无规格，关闭打印机）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=466",
+          "message_id": 466,
+          "name": "打印4（二维码全打印）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=467",
+          "message_id": 467,
+          "name": "打印4（无规格、二维码全打印）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=473",
+          "message_id": 473,
+          "name": "打印3"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=480",
+          "message_id": 480,
+          "name": "打印加佛历设置"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=481",
+          "message_id": 481,
+          "name": "123"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=482",
+          "message_id": 482,
+          "name": "打印6"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=485",
+          "message_id": 485,
+          "name": "打印6(无规格)"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=493",
+          "message_id": 493,
+          "name": "打印7"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=495",
+          "message_id": 495,
+          "name": "打印7(无规格)"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=496",
+          "message_id": 496,
+          "name": "123"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=498",
+          "message_id": 498,
+          "name": "回复的地方"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=499",
+          "message_id": 499,
+          "name": "1232"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=500",
+          "message_id": 500,
+          "name": "1232啦"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=501",
+          "message_id": 501,
+          "name": "枫asd"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=504",
+          "message_id": 504,
+          "name": "无规格无支付无附言"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=505",
+          "message_id": 505,
+          "name": "无规格无支付无附言复制"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=506",
+          "message_id": 506,
+          "name": "无规格无支付无附言复制复制"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=507",
+          "message_id": 507,
+          "name": "无规格有支付无附言"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=511",
+          "message_id": 511,
+          "name": "有规格"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=514",
+          "message_id": 514,
+          "name": "有规格有附言"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=520",
+          "message_id": 520,
+          "name": "枫2"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=526",
+          "message_id": 526,
+          "name": "无规格有支付有附言2（2017.04.29.23.55开始）"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=530",
+          "message_id": 530,
+          "name": "规格不带附言，佛事带附言"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=531",
+          "message_id": 531,
+          "name": "测试webp"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=534",
+          "message_id": 534,
+          "name": "无规格无附言1"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=538",
+          "message_id": 538,
+          "name": "无规格有附言1"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=539",
+          "message_id": 539,
+          "name": "有规格有附言1"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=540",
+          "message_id": 540,
+          "name": "有规格无附言1"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=541",
+          "message_id": 541,
+          "name": "有规格有附言2"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=546",
+          "message_id": 546,
+          "name": "测试小票打印1"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=548",
+          "message_id": 548,
+          "name": "测试小票打印带规格"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=549",
+          "message_id": 549,
+          "name": "测试小票打印不带规格"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=550",
+          "message_id": 550,
+          "name": "小票打印更换按钮名称不带规格"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=557",
+          "message_id": 557,
+          "name": "测试有规格模板"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=558",
+          "message_id": 558,
+          "name": "达斯丁"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=559",
+          "message_id": 559,
+          "name": "测试模板"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=563",
+          "message_id": 563,
+          "name": "附言全设置"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=564",
+          "message_id": 564,
+          "name": "附言全设置"
+        },
+        {
+          "url": "http://wx.zizaihome.com/commodity/commodityAuth?commodityId=565",
+          "message_id": 565,
+          "name": "无规格"
+        }
+      ],
+      "name": "佛事",
+      "link_type": 2
+    },
+    {
+      "url": "",
+      "linkList": [
+        {
+          "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=11",
+          "message_id": 1,
+          "name": "课堂"
+        },
+        {
+          "url": "http://wx.zizaihome.com/yg?templeId=1&activityId=12",
+          "message_id": 2,
+          "name": "ceshi"
+        }
+      ],
+      "name": "义工",
+      "link_type": 3
+    }
+  ],
+  "result": 1
+}

@@ -1,13 +1,7 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
-
-const seeAjax = require('see-ajax').default;
-
+import seeAjax from 'see-ajax';
 const requestKeys = {
   id: 'charityId',
 };
-
 const responseRefactor = {
   data: {
     title: 'name',
@@ -25,7 +19,6 @@ const responseRefactor = {
     showPeopleCountWhenShare: 'isShowJoinNum',
   },
 };
-
 const postHandle = res => {
   const covers = [];
   res.data.img &&
@@ -35,7 +28,6 @@ const postHandle = res => {
     });
   res.data.covers = covers;
 };
-
 seeAjax.config('info', {
   url: [
     '/zzhadmin/charityGet/',

@@ -1,0 +1,40 @@
+/* 滑动组件的弹出框600px像素宽度分页不够，故在此更改 */
+.modal-dialog {
+  width: 800px;
+}
+.dropdown-menu {
+  max-height: 400px;
+  overflow: auto;
+}
+.btn-group > .btn {
+  border-radius: 3px !important;
+}
+.btn-group-dropdown .btn .text,
+.btn-group-dropdown .dropdown-menu .item {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.btn-group-dropdown .btn .text {
+  line-height: 20px;
+}
+.btn-group-dropdown .dropdown-menu .item {
+  max-width: 250px;
+  width: 100%;
+}
+
+/* component */
+/* 重写样式 */
+.swiper-slide .image {
+  width: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0d7652;
+}
+
+.swiper-container-vertical {
+}

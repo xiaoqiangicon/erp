@@ -1,0 +1,84 @@
+.title-section {
+  width: 100%;
+}
+.title-section .link,
+.title-section .link:hover {
+  color: #2ecc40;
+}
+.tip-section {
+  float: left;
+  width: 70%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.actions-section {
+  float: right;
+  width: 28%;
+  padding: 20px 0;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.actions-section .actions {
+  text-align: center;
+}
+.filter-section {
+  width: 100%;
+  margin-top: 20px;
+}
+.filter-section .btn-group .btn {
+  border-radius: 3px !important;
+}
+.filter-section .btn-group .caret {
+  margin-left: 20px;
+}
+.filter-section .btn-group .dropdown-menu {
+  left: inherit;
+  right: 0;
+}
+.filter-section .menu-item {
+  display: inline-block;
+  float: left;
+  padding: 6px 20px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  border-left: none;
+  color: #333;
+  background: #fff;
+}
+.filter-section .menu-item:first-child {
+  border-left: 1px solid #cccccc;
+}
+.filter-section .menu-item.active {
+  color: #ffffff;
+  background: #70b931;
+  border-color: transparent;
+}
+.pagination-section {
+  width: 100%;
+  margin-top: 60px;
+}
+.pagination {
+  width: 100%;
+  text-align: center;
+}
+.pagination-cell {
+  display: inline-block;
+  width: 30px;
+  color: #3399ff;
+  font-size: 16px;
+  vertical-align: bottom;
+  line-height: 1;
+}
+.pagination-cell.active {
+  font-size: 28px;
+  color: #666666;
+}

@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import Pagination from '@zzh/pagination';
+import Pagination from '../../com-deprecated/pagination';
 import commonTpl from '../../common/tpl';
-import { rowsTpl } from './tpl';
+import { rowsTpl, searchTpl } from './tpl';
 import share from './share';
 
 const $win = $(window);
@@ -42,6 +42,40 @@ export const requestList = (page = 1, init = !0) => {
       pagination.render();
     } else {
       $win.scrollTop($rowHead.offset().top);
+    }
+  });
+};
+
+const $addList = $('#add-list');
+const $addPage = $('#add-page');
+
+let addPagination;
+
+export const addFilter = {
+  search: '',
+};
+
+export const requestAddList = (page = 1, init = !0) => {
+  $addList.html(commonTpl.loading);
+  if (init) $addPage.html('');
+
+  seeAjax('search', { ...addFilter, page }, res => {
+    if (!res.success || !res.data || !res.data.length) {
+      $addList.html(commonTpl.noData);
+      return;
+    }
+
+    $addList.html(searchTpl(res));
+
+    if (init) {
+      addPagination = new Pagination('#add-page', {
+        totalPages: res.totalPages,
+        onChange: p => {
+          requestAddList(p, !1);
+          addPagination.render();
+        },
+      });
+      addPagination.render();
     }
   });
 };

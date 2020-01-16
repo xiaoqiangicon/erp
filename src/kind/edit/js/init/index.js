@@ -1,17 +1,20 @@
-const zzhUtil = require('@zzh/util');
-const seeAjax = require('see-ajax').default;
-
-require('../ajax');
-const start = require('./start');
-const data = require('../data');
-
-// 是编辑页
+import zzhUtil from '../../../../com-deprecated/util';
+import seeAjax from 'see-ajax';
+import '../ajax';
+import start from './start';
+import data from '../data';
 if (zzhUtil.urlParams.edit) {
-  seeAjax('info', { id: zzhUtil.urlParams.id }, res => {
-    data.info = res.data;
-    data.info.isEdit = !!zzhUtil.urlParams.edit;
-    start();
-  });
+  seeAjax(
+    'info',
+    {
+      id: zzhUtil.urlParams.id,
+    },
+    res => {
+      data.info = res.data;
+      data.info.isEdit = !!zzhUtil.urlParams.edit;
+      start();
+    }
+  );
 } else {
   start();
 }

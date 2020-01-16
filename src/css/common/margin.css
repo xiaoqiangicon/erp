@@ -1,0 +1,151 @@
+/* 0的时候不能加 !impotant, 否则上下左右以后就都不能改变了 */
+.mg0 {
+  margin: 0;
+}
+.mgt0 {
+  margin-top: 0 !important;
+}
+.mgl0 {
+  margin-left: 0 !important;
+}
+.mgr0 {
+  margin-right: 0 !important;
+}
+.mgb0 {
+  margin-bottom: 0 !important;
+}
+.mg5 {
+  margin: 5px;
+}
+.mgt5 {
+  margin-top: 5px !important;
+}
+.mgl5 {
+  margin-left: 5px !important;
+}
+.mgr5 {
+  margin-right: 5px !important;
+}
+.mgb5 {
+  margin-bottom: 5px !important;
+}
+.mg10 {
+  margin: 10px;
+}
+.mgt10 {
+  margin-top: 10px !important;
+}
+.mgl10 {
+  margin-left: 10px !important;
+}
+.mgr10 {
+  margin-right: 10px !important;
+}
+.mgb10 {
+  margin-bottom: 10px !important;
+}
+.mg15 {
+  margin: 15px;
+}
+.mgt15 {
+  margin-top: 15px !important;
+}
+.mgl15 {
+  margin-left: 15px !important;
+}
+.mgr15 {
+  margin-right: 15px !important;
+}
+.mgb15 {
+  margin-bottom: 15px !important;
+}
+.mg20 {
+  margin: 20px;
+}
+.mgt20 {
+  margin-top: 20px !important;
+}
+.mgl20 {
+  margin-left: 20px !important;
+}
+.mgr20 {
+  margin-right: 20px !important;
+}
+.mgb20 {
+  margin-bottom: 20px !important;
+}
+.mg25 {
+  margin: 25px;
+}
+.mgt25 {
+  margin-top: 25px !important;
+}
+.mgl25 {
+  margin-left: 25px !important;
+}
+.mgr25 {
+  margin-right: 25px !important;
+}
+.mgb25 {
+  margin-bottom: 25px !important;
+}
+.mg30 {
+  margin: 30px;
+}
+.mgt30 {
+  margin-top: 30px !important;
+}
+.mgl30 {
+  margin-left: 30px !important;
+}
+.mgr30 {
+  margin-right: 30px !important;
+}
+.mgb30 {
+  margin-bottom: 30px !important;
+}
+.mg40 {
+  margin: 40px;
+}
+.mgr40 {
+  margin-right: 40px !important;
+}
+.mgb40 {
+  margin-bottom: 40px !important;
+}
+.mgt40 {
+  margin-top: 40px !important;
+}
+.mgl40 {
+  margin-left: 40px !important;
+}
+.mg50 {
+  margin: 50px;
+}
+.mgr50 {
+  margin-right: 50px !important;
+}
+.mgb50 {
+  margin-bottom: 50px !important;
+}
+.mgt50 {
+  margin-top: 50px !important;
+}
+.mgl50 {
+  margin-left: 50px !important;
+}
+.mg60 {
+  margin: 60px;
+}
+.mgr60 {
+  margin-right: 60px !important;
+}
+.mgb60 {
+  margin-bottom: 60px !important;
+}
+.mgt60 {
+  margin-top: 60px !important;
+}
+.mgl60 {
+  margin-left: 60px !important;
+}

@@ -1,0 +1,23 @@
+.act-2 {
+  width: 100%;
+  padding: 134px 6% 0 6%;
+  background-image: url('https://pic.zizaihome.com/f82280a0-0705-11e8-8081-00163e0c001e.png');
+  background-size: 100% 100%;
+}
+.act-2-left {
+  float: left;
+  width: 44%;
+}
+.act-2-left img {
+  margin-bottom: -55px;
+}
+.act-2-right {
+  float: right;
+  width: 50%;
+  padding-top: 73px;
+}
+.act-2 .text-1,
+.act-2 .text-2,
+.act-2 .text-3 {
+  color: #ffffff;
+}

@@ -1,0 +1,18 @@
+{
+  "result": 1,
+  "data": {
+    "title": "文章",
+    "typeId": 2,
+    "pic": "/images/example-avatar.jpg",
+    "detail": "<p>文章</p><p><strong>文章</strong></p><p></p><table><tbody><tr class=\"firstRow\"><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td></tr><tr><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td><td width=\"183\" valign=\"top\" style=\"word-break: break-all;\">文章</td></tr></tbody></table><p>文章<br/></p>",
+    "synopsis": "文章文章文章文章文章文章文章文章文章文章",
+    "isOpenSuiXi": 0,
+    "suixiBtnName": "随喜文章",
+    "suixiList": "5,10,15,20,25,35",
+    "publicTime": "2019-12-10 00:00:00",
+    "suixiDetail": "随缘布施，广种福田。文章",
+    "picIsShowDetail": 1,
+    "isShowTitle": 0,
+    "isShowZanBtn": 0
+  }
+}

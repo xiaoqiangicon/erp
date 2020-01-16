@@ -1,7 +1,14 @@
 module.exports = {
   root: true,
-  extends: ['plugin:vue/recommended', 'prettier'],
-  plugins: ['vue', 'prettier'],
+  parser: 'vue-eslint-parser',
+  extends: [
+    'plugin:vue/recommended',
+    'airbnb-base',
+    'plugin:flowtype/recommended',
+    'prettier',
+    'prettier/flowtype',
+  ],
+  plugins: ['vue', 'import', 'node', 'prettier', 'flowtype'],
   env: {
     node: true,
     es6: true,
@@ -9,6 +16,13 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
-    ecmaVersion: 2017,
+    ecmaVersion: 2018,
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.vue'],
+      },
+    },
   },
 };

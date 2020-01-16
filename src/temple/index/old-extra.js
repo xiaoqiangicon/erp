@@ -1,0 +1,14 @@
+import toastr from 'toastr';
+import './view/add_component';
+import './view/common';
+import './view/introduction';
+import './view/figure';
+import './view/swipe_list';
+import './view/donate_chart';
+import './view/calendar';
+import './view/shortcut';
+import './view/house';
+import './view/save_components';
+import './view/settings';
+toastr.options.positionClass = 'toast-bottom-full-width';
+toastr.options.timeOut = 2000;

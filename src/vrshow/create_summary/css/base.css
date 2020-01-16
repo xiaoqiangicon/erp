@@ -1,0 +1,24 @@
+/*页面公用*/
+.content-container {
+  padding: 20px;
+  position: relative;
+}
+
+.content-container-inner {
+  padding: 15px;
+  min-width: 850px;
+  min-height: 500px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+}
+/*工具*/
+.csp {
+  cursor: pointer;
+}
+.vam {
+  vertical-align: middle;
+}
+.horizontal-center {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}

@@ -1,0 +1,1079 @@
+{
+  "msg": "",
+  "total": 672,
+  "isHavePrinter": 1,
+  "data": [
+    {
+      "status": 1,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "测试发布（仲羽）",
+      "printerList": [],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/f1412b7e-f921-11e8-aae1-00163e0c1e1c.jpg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1603&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1603",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1603
+    },
+    {
+      "status": 0,
+      "join_num": 11,
+      "isStart": 0,
+      "name": "2020-01-01开始",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["普通佛事"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["普通佛事"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["普通佛事"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥0.01",
+      "pic": "https://pic.zizaihome.com/d4be1068-4a28-11e9-94c8-00163e0c1e1c.jpg",
+      "view_count": 48,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1602&templeName=弘法寺&templeId=1",
+      "collect_money": 0.11,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1602",
+      "isEnd": -1,
+      "endTime": "2099-12-31",
+      "id": 1602
+    },
+    {
+      "status": 0,
+      "join_num": 5,
+      "isStart": 1,
+      "name": "统计推送佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["规格一", "随喜"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["规格一", "随喜"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["规格一", "随喜"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "随喜/￥0.01",
+      "pic": "https://pic.zizaihome.com/1494328547817.bmp",
+      "view_count": 14,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1601&templeName=弘法寺&templeId=1",
+      "collect_money": 0.05,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1601",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1601
+    },
+    {
+      "status": 0,
+      "join_num": 1,
+      "isStart": 0,
+      "name": "2019-04-18零点结束佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["普通佛事"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["普通佛事"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["普通佛事"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/1c4d2c12-4c76-11e9-b7e6-00163e0c1e1c.jpeg",
+      "view_count": 5,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1600&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1600",
+      "isEnd": 1,
+      "endTime": "2019-04-19",
+      "id": 1600
+    },
+    {
+      "status": 1,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "小程序端创建时效佛事",
+      "printerList": [],
+      "price": "",
+      "pic": "https://pic.zizaihome.com/c06b49b5-0011-4415-9ce3-6aeda54006d3.jpg",
+      "view_count": 1,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1599&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1599",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1599
+    },
+    {
+      "status": 0,
+      "join_num": 14,
+      "isStart": 1,
+      "name": "erp端时效佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事供奉一天",
+            "往生牌位供奉一天",
+            "祈福牌位供奉两天",
+            "邮寄佛事供奉默认为0",
+            "供奉十二月",
+            "供奉二十年",
+            "2019-04-18零点结束"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事供奉一天",
+            "往生牌位供奉一天",
+            "祈福牌位供奉两天",
+            "邮寄佛事供奉默认为0",
+            "供奉十二月",
+            "供奉二十年",
+            "2019-04-18零点结束"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事供奉一天",
+            "往生牌位供奉一天",
+            "祈福牌位供奉两天",
+            "邮寄佛事供奉默认为0",
+            "供奉十二月",
+            "供奉二十年",
+            "2019-04-18零点结束"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥0.0 - 200.0",
+      "pic": "https://pic.zizaihome.com/4e00f170-4a29-11e9-b29d-00163e0c1e1c.jpg",
+      "view_count": 82,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1598&templeName=弘法寺&templeId=1",
+      "collect_money": 114,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1598",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1598
+    },
+    {
+      "status": 0,
+      "join_num": 5,
+      "isStart": 1,
+      "name": "测试机-日行一善佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["普通佛事1", "普通佛事2", "普通佛事3"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["普通佛事1", "普通佛事2", "普通佛事3"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["普通佛事1", "普通佛事2", "普通佛事3"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥10.0 - 30.0",
+      "pic": "https://pic.zizaihome.com/709d3484-60d9-11e9-8374-00163e0c1e1c.jpg",
+      "view_count": 26,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1597&templeName=弘法寺&templeId=1",
+      "collect_money": 120,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1597",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1597
+    },
+    {
+      "status": 0,
+      "join_num": 35,
+      "isStart": 1,
+      "name": "测试机-放生修福",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["随喜", "月", "季", "年", "放生鱼"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["随喜", "月", "季", "年", "放生鱼"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["随喜", "月", "季", "年", "放生鱼"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "随喜/￥10.0 - 900.0",
+      "pic": "https://pic.zizaihome.com/293ddf2c-f922-11e8-aae1-00163e0c1e1c.jpg",
+      "view_count": 144,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1596&templeName=弘法寺&templeId=1",
+      "collect_money": 7363.47,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1596",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1596
+    },
+    {
+      "status": 0,
+      "join_num": 4,
+      "isStart": 1,
+      "name": "测试机-2019浴佛节佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事一",
+            "祈福牌位一",
+            "普通佛事一一",
+            "供油灯一",
+            "供油灯一一",
+            "供油灯一一一",
+            "随喜一",
+            "随喜一一",
+            "随喜一一一",
+            "随喜"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事一",
+            "祈福牌位一",
+            "普通佛事一一",
+            "供油灯一",
+            "供油灯一一",
+            "供油灯一一一",
+            "随喜一",
+            "随喜一一",
+            "随喜一一一",
+            "随喜"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事一",
+            "祈福牌位一",
+            "普通佛事一一",
+            "供油灯一",
+            "供油灯一一",
+            "供油灯一一一",
+            "随喜一",
+            "随喜一一",
+            "随喜一一一",
+            "随喜"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "随喜/￥30.0 - 700.0",
+      "pic": "https://pic.zizaihome.com/70a9ccb2-60d9-11e9-ae48-00163e0c1e1c.jpg",
+      "view_count": 19,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1595&templeName=弘法寺&templeId=1",
+      "collect_money": 420,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1595",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1595
+    },
+    {
+      "status": 0,
+      "join_num": 1,
+      "isStart": 1,
+      "name": "测试机-2019浴佛节活动浴佛登记",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["测试机-登记浴佛节"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["测试机-登记浴佛节"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["测试机-登记浴佛节"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/70b813da-60d9-11e9-9add-00163e0c1e1c.jpg",
+      "view_count": 13,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1594&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1594",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1594
+    },
+    {
+      "status": 0,
+      "join_num": 5,
+      "isStart": 1,
+      "name": "测试机-2019浴佛节活动实物奖励领取",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "测试机-开运红绳",
+            "测试机-纯银转运珠",
+            "测试机-荷韵清香茶具",
+            "测试机-福顺金钞"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "测试机-开运红绳",
+            "测试机-纯银转运珠",
+            "测试机-荷韵清香茶具",
+            "测试机-福顺金钞"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "测试机-开运红绳",
+            "测试机-纯银转运珠",
+            "测试机-荷韵清香茶具",
+            "测试机-福顺金钞"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/708f0a12-60d9-11e9-9097-00163e0c1e1c.jpg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1593&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1593",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1593
+    },
+    {
+      "status": 1,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "kk1253",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/07d4d7b2-4835-11e8-ba71-00163e0c1e1c.jpg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1592&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1592",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1592
+    },
+    {
+      "status": 0,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "测试小程序时效",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/07d4d7b2-4835-11e8-ba71-00163e0c1e1c.jpg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1591&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1591",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1591
+    },
+    {
+      "status": 0,
+      "join_num": 5,
+      "isStart": 1,
+      "name": "订单处理反馈测试",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "往生牌位二",
+            "祈福牌位三",
+            "邮寄佛事",
+            "复制邮寄佛事改为普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "往生牌位二",
+            "祈福牌位三",
+            "邮寄佛事",
+            "复制邮寄佛事改为普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "往生牌位二",
+            "祈福牌位三",
+            "邮寄佛事",
+            "复制邮寄佛事改为普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "随喜/￥0.0 - 0.01",
+      "pic": "https://pic.zizaihome.com/08b45d46-f920-11e8-aae1-00163e0c1e1c.jpg",
+      "view_count": 24,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1590&templeName=弘法寺&templeId=1",
+      "collect_money": 100,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1590",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1590
+    },
+    {
+      "status": 0,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "kk新建测试佛事选择项时效佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通",
+            "往生",
+            "祈福",
+            "邮寄",
+            "时效",
+            "邮寄"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通",
+            "往生",
+            "祈福",
+            "邮寄",
+            "时效",
+            "邮寄"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通",
+            "往生",
+            "祈福",
+            "邮寄",
+            "时效",
+            "邮寄"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/1c4d2c12-4c76-11e9-b7e6-00163e0c1e1c.jpeg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1589&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1589",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1589
+    },
+    {
+      "status": 1,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "微信端邮寄佛事二",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["祈福牌位三", "邮寄佛事二"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["祈福牌位三", "邮寄佛事二"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["祈福牌位三", "邮寄佛事二"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "随喜",
+      "pic": "https://pic.zizaihome.com/c06b49b5-0011-4415-9ce3-6aeda54006d3.jpg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1588&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1588",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1588
+    },
+    {
+      "status": 0,
+      "join_num": 9,
+      "isStart": 1,
+      "name": "微信端邮寄佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "往生牌位二",
+            "祈福牌位三",
+            "邮寄佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "往生牌位二",
+            "祈福牌位三",
+            "邮寄佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "往生牌位二",
+            "祈福牌位三",
+            "邮寄佛事"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "随喜/￥0.0 - 0.01",
+      "pic": "https://pic.zizaihome.com/c06b49b5-0011-4415-9ce3-6aeda54006d3.jpg",
+      "view_count": 41,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1587&templeName=弘法寺&templeId=1",
+      "collect_money": 10.01,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1587",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1587
+    },
+    {
+      "status": 1,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "佛事模板创建佛事-邮寄佛事规格测试",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["普通佛事一", "普通佛事二", "邮寄佛事三"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["普通佛事一", "普通佛事二", "邮寄佛事三"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["普通佛事一", "普通佛事二", "邮寄佛事三"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥0.0 - 0.01",
+      "pic": "https://pic.zizaihome.com/72945dac-af41-11e8-9181-00163e0c1e1c.jpg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1586&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1586",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1586
+    },
+    {
+      "status": 0,
+      "join_num": 9,
+      "isStart": 1,
+      "name": "有快递订单佛事二",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事二",
+            "往生牌位二",
+            "祈福牌位二",
+            "邮寄佛事二"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事二",
+            "往生牌位二",
+            "祈福牌位二",
+            "邮寄佛事二"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事二",
+            "往生牌位二",
+            "祈福牌位二",
+            "邮寄佛事二"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥1.0 - 10.0",
+      "pic": "https://pic.zizaihome.com/9fafd9de-4ba3-11e9-a51c-00163e0c1e1c.jpg",
+      "view_count": 25,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1585&templeName=弘法寺&templeId=1",
+      "collect_money": 59,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1585",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1585
+    },
+    {
+      "status": 0,
+      "join_num": 0,
+      "isStart": 1,
+      "name": "弘法寺拆单佛事-快递订单测试1",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["普通佛事1", "邮寄佛事1"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["普通佛事1", "邮寄佛事1"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["普通佛事1", "邮寄佛事1"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥0.0 - 1.0",
+      "pic": "https://pic.zizaihome.com/4e00f170-4a29-11e9-b29d-00163e0c1e1c.jpg",
+      "view_count": 9,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1584&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1584",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1584
+    },
+    {
+      "status": 2,
+      "join_num": 0,
+      "isStart": 0,
+      "name": "kkk测试保存草稿",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事",
+            "普通佛事",
+            "普通佛事",
+            "普通佛事"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/288fa980-a421-11e8-a514-00163e0c1e1c.jpg",
+      "view_count": 0,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1580&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1580",
+      "isEnd": 1,
+      "endTime": "2019-03-21",
+      "id": 1580
+    },
+    {
+      "status": 0,
+      "join_num": 10,
+      "isStart": 1,
+      "name": "有快递订单佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "普通佛事一",
+            "往生牌位一",
+            "祈福牌位一",
+            "邮寄佛事一"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "普通佛事一",
+            "往生牌位一",
+            "祈福牌位一",
+            "邮寄佛事一"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "普通佛事一",
+            "往生牌位一",
+            "祈福牌位一",
+            "邮寄佛事一"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥1.0 - 10.0",
+      "pic": "https://pic.zizaihome.com/d4be1068-4a28-11e9-94c8-00163e0c1e1c.jpg",
+      "view_count": 32,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1579&templeName=弘法寺&templeId=1",
+      "collect_money": 103,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1579",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1579
+    },
+    {
+      "status": 0,
+      "join_num": 3,
+      "isStart": 1,
+      "name": "实物奖品领奖佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "实物奖品规格一",
+            "实物奖品规格二",
+            "实物奖品规格三",
+            "实物奖品规格四"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "实物奖品规格一",
+            "实物奖品规格二",
+            "实物奖品规格三",
+            "实物奖品规格四"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "实物奖品规格一",
+            "实物奖品规格二",
+            "实物奖品规格三",
+            "实物奖品规格四"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥0.0 - 0.01",
+      "pic": "https://pic.zizaihome.com/1d5f14f6-a421-11e8-a514-00163e0c1e1c.jpg",
+      "view_count": 10,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1577&templeName=弘法寺&templeId=1",
+      "collect_money": 0.01,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1577",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1577
+    },
+    {
+      "status": 0,
+      "join_num": 6,
+      "isStart": 1,
+      "name": "虚拟道具领奖佛事",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": ["虚拟道具一随喜放生", "虚拟道具二放生月卡"],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": ["虚拟道具一随喜放生", "虚拟道具二放生月卡"],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": ["虚拟道具一随喜放生", "虚拟道具二放生月卡"],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "无需支付",
+      "pic": "https://pic.zizaihome.com/288fa980-a421-11e8-a514-00163e0c1e1c.jpg",
+      "view_count": 7,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1576&templeName=弘法寺&templeId=1",
+      "collect_money": 0,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1576",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1576
+    },
+    {
+      "status": 0,
+      "join_num": 57,
+      "isStart": 1,
+      "name": "万灯卡",
+      "printerList": [
+        {
+          "printerId": 1,
+          "notBoundSubNameList": [
+            "万灯卡规格一",
+            "万灯卡规格二",
+            "万灯卡规格三",
+            "万灯卡规格四",
+            "万灯卡规格五"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司"
+        },
+        {
+          "printerId": 2,
+          "notBoundSubNameList": [
+            "万灯卡规格一",
+            "万灯卡规格二",
+            "万灯卡规格三",
+            "万灯卡规格四",
+            "万灯卡规格五"
+          ],
+          "subNameList": [],
+          "address": "妙严科技公司2"
+        },
+        {
+          "printerId": 3,
+          "notBoundSubNameList": [
+            "万灯卡规格一",
+            "万灯卡规格二",
+            "万灯卡规格三",
+            "万灯卡规格四",
+            "万灯卡规格五"
+          ],
+          "subNameList": [],
+          "address": "妙言科技公司3"
+        }
+      ],
+      "price": "￥0.01",
+      "pic": "https://pic.zizaihome.com/0eca92e2-af40-11e8-9181-00163e0c1e1c.jpg",
+      "view_count": 148,
+      "preview_url": "https://wx.zizaihome.com/commodity/commodityInfo2?commodityId=1575&templeName=弘法寺&templeId=1",
+      "collect_money": 0.57,
+      "wx_url": "https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1575",
+      "isEnd": 0,
+      "endTime": "2099-12-31",
+      "id": 1575
+    }
+  ],
+  "result": 0
+}
