@@ -38,12 +38,17 @@ const configs = {
   environment: __SEE_ENV__,
   name: {
     list: 'list',
+    del: 'del',
   },
   url: {
     list: [
       '/zzhadmin/getActivityList/',
       '/src/volunteer/recruit/mock/index_list_server.json',
       '/src/volunteer/recruit/mock/index_list.json',
+    ],
+    del: [
+      '/zzhadmin/deleteManageVolunteer/',
+      '/src/volunteer/recruit/mock/del.json',
     ],
   },
   requestKeys: {
@@ -79,4 +84,9 @@ seeAjax.config('list', {
   preHandle: configs.preHandle.list,
   responseRefactor: configs.responseRefactor.list,
   postHandle: configs.postHandle.list,
+});
+
+seeAjax.config('del', {
+  url: configs.url.del,
+  method: ['POST'],
 });

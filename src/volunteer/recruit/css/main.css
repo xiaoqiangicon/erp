@@ -53,6 +53,17 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+.create {
+  padding: 6px 12px;
+  margin-top: 10px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  float: right;
+  cursor: pointer;
+  background-color: #6fba2c;
+  color: white;
+  border-radius: 4px;
+}
 .content-section .recruit-cell {
   width: 100%;
   overflow: hidden;
@@ -73,11 +84,14 @@
 .content-section .recruit-adm,
 .content-section .recruit-actions {
   float: left;
-  width: 12%;
+  width: 10%;
   padding: 0 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.content-section .recruit-actions {
+  width: 14%;
 }
 .content-section .recruit-title {
   height: 60px;
@@ -105,15 +119,41 @@
   width: 60px;
   height: 60px;
 }
+.recruit-cover-box {
+  position: relative;
+  margin: 0 5px 5px 0;
+}
+.recruit-cover-box:hover .recruit-cover-mask {
+  display: block;
+}
+
+.recruit-adm {
+  display: flex;
+  flex-wrap: wrap;
+}
+.recruit-cover-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+}
 .recruit-adm .recruit-cover {
   display: block;
   float: left;
   width: 40px;
   height: 40px;
-  margin: 0 5px 5px 0;
 }
 .recruit-adm .recruit-cover:nth-child(2n + 2) {
   margin-right: 0;
+}
+.add-manager {
+  cursor: pointer;
 }
 .condition-content-containers .recruit-cell p {
   margin-bottom: 0;
@@ -196,4 +236,47 @@
   color: #333;
   background: #ffffff;
   font-size: 16px;
+}
+
+.qrcode-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: none;
+}
+
+.qrcode-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 300px;
+  padding-top: 30px;
+  background: white;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+}
+
+.qrcode {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.qrcode-tips {
+  margin-top: 20px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 32px;
+  color: black;
+  cursor: pointer;
 }
