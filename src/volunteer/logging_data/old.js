@@ -94,7 +94,10 @@ var View = Backbone.View.extend({
       }
     });
     $('[name="phoneText"]').each(function(index, ele) {
-      phone_feedback = Validator.phoneNum(ele.value);
+      if (!ele.value || ele.value.length != 11) {
+        phone_feedback = '手机号码为11位数字！请正确填写！';
+      }
+      // phone_feedback = Validator.phoneNum(ele.value);
       if (phone_feedback != true) {
         $(ele)
           .nextAll('[data-id="phone_msg"]')

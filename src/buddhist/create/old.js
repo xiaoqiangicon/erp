@@ -28,10 +28,10 @@ var myRegExp = {
 };
 var foshiId = null,
   templateId = null,
-  editType = null,
+  editType = null, // 复制0，修改1，新建2
   foshiName = null,
-  ifTemplate = null,
-  verifyId = null,
+  ifTemplate = null, // 是否是模板
+  verifyId = null, // 修改0，草稿2
   sizeIteration = 0,
   origin_printer_list = [],
   printer_list = [],
@@ -3892,7 +3892,10 @@ var View = Backbone.View.extend({
         if (save_to_draft) {
           self.change_url();
         } else {
-          if (editType != 1 && !(editType == 3 && ifTemplate == 1))
+          if (
+            (editType != 1 && !(editType == 3 && ifTemplate == 1)) ||
+            (editType == 1 && verifyId == 2)
+          )
             window.sessionStorage.setItem('buddhistVerify', 1);
           if (res.createCalendar !== 1) {
             self.getUnprintedOrder();

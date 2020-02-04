@@ -35,12 +35,6 @@
           "name": "招募管理",
           "link": "/zzhadmin/volunteerRecruit/",
           "controlMark": "pw_volunteer"
-        },
-        {
-          "id": "send-message",
-          "name": "群发通知",
-          "link": "/zzhadmin/volunteer_sendSMS_index/",
-          "controlMark": "pw_sendmsg"
         }
       ]
     },
@@ -75,6 +69,13 @@
           "link": "/zzhadmin/commentIndex/",
           "isHtml": true,
           "controlMark": "pw_order"
+        },
+        {
+          "id": "order-credits",
+          "name": "积分兑换",
+          "link": "/zzhadmin/creditsIndex/",
+          "isHtml": true,
+          "controlMark": "pw_ceremony"
         }
       ]
     },

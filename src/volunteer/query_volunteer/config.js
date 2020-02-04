@@ -1,4 +1,5 @@
 import images from './images';
+import { maleImage, femaleImage, userImage } from './images';
 import juicer from 'juicer';
 var appConfig = {
   environment: 0,
@@ -12,11 +13,11 @@ appConfig.template.component.volunteer_panel_temp = [
   '<div class="topleft pull-left">',
   '{@if item.head_img == ""}',
   '{@if item.sex == "男"}',
-  '<img src="' + images.maleImage + '" alt="头像" class="portrait"/>',
+  '<img src="' + maleImage + '" alt="头像" class="portrait"/>',
   '{@else if item.sex == "女"}',
-  '<img src="' + images.femaleImage + '" alt="默认头像" class="portrait"/>',
+  '<img src="' + femaleImage + '" alt="默认头像" class="portrait"/>',
   '{@else}',
-  '<img src="' + images.userImage + '" alt="默认头像" class="portrait"/>',
+  '<img src="' + userImage + '" alt="默认头像" class="portrait"/>',
   '{@/if}',
   '{@else}',
   '<img src="${item.head_img}" alt="头像" class="portrait"/>',

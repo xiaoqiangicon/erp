@@ -41,27 +41,27 @@ const tpl = `
       </a>
     </td>
     <td class="text-center">
+      <span 
+        class="green tagbtn mgr10" 
+        data-cid="\${cid}" 
+        data-sub-type="\${subdivide_type}" 
+        data-toggle="modal" 
+        data-target="#sizesPostModal"
+        data-ele="tooltip" 
+        data-placement="left" 
+        title="设置信众参与此项时需填写的信息"
+        >
+        附言
+      </span>
+      <span class="green tagbtn" data-cid="\${cid}" data-toggle="modal" data-target="#sub-set-modal">设置</span>
+      <br>
+      <span class="green tagbtn copyProSize mgr10" data-cid="\${cid}">复制</span>
       {@if conversionSubdivide === 1}
-        <div style="text-algin: center;color: red;">转单选择项<br/>不可编辑</div>
+        <span style="padding-left:30px;"></span>
       {@else}
-        <span 
-          class="green tagbtn mgr10" 
-          data-cid="\${cid}" 
-          data-sub-type="\${subdivide_type}" 
-          data-toggle="modal" 
-          data-target="#sizesPostModal"
-          data-ele="tooltip" 
-          data-placement="left" 
-          title="设置信众参与此项时需填写的信息"
-          >
-          附言
-        </span>
-        <span class="green tagbtn" data-cid="\${cid}" data-toggle="modal" data-target="#sub-set-modal">设置</span>
-        <br>
-        <span class="green tagbtn copyProSize mgr10" data-cid="\${cid}">复制</span>
         <span class="green tagbtn removeProSize" data-cid="\${cid}">删除</span>
-        <br>
       {@/if}
+      <br>
     </td>
   `;
 export default tpl;

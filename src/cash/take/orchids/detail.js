@@ -4,6 +4,7 @@ import Tippy from 'tippy';
 import data from '../data';
 import tpl from '../tpl';
 import util from '../util';
+
 orchids.registerPage(
   'detail',
   {
@@ -12,12 +13,20 @@ orchids.registerPage(
       self.$el = $(self.el);
       util.disableBodyScroll();
       var item = data.listItems[param.id];
-      console.log(item);
-      item.templeName = window.localStorage['templeName'];
+      data.id = param.id;
+      // seeAjax('getPickUpDetails', { id: param.id, sumType: param.sumType || 1 }, res => {
+      //   var singleItem = Object.assign(item, res.data[0]);
+      //   console.log(singleItem)
+      //   self.$el.html(tpl.detail.render(singleItem));
+      //   $('#detail-summary-right-unit').css({
+      //     height: $('#detail-summary-left-unit').outerHeight(),
+      //   });
+      // })
       self.$el.html(tpl.detail.render(item));
       $('#detail-summary-right-unit').css({
         height: $('#detail-summary-left-unit').outerHeight(),
       });
+      item.templeName = window.localStorage['templeName'];
     },
     destroyed: function() {
       util.enableBodyScroll();
