@@ -5,6 +5,4 @@ window.UEDITOR_HOME_URL =
     : '/static/res/ueditor/';
 window.UEDITOR_SERVER_URL = '/zzhadmin/uploadPicUEditor/';
 window.UEDITOR_MUSIC_IFRAME_URL =
-  '/static/build/component/ueditor_plugins/music_iframe.html';
-window.UEDITOR_MUSIC_DIALOG_URL =
-  '/static/build/component/ueditor_plugins/music.html';
+  '/static/build/com/ueditor-plugins/self-music-iframe.html';

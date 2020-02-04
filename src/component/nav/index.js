@@ -1,5 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import '@senntyou/shortcut.css';
+import 'colors.css/css/colors.css';
+import 'element-ui/lib/theme-chalk/index.css';
 import '../../less/base.less';
+import '../../styles/base.less';
 import './index.css';
 import '../../../pro-com/src/ie-tip';
 import 'bootstrap';

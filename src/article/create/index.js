@@ -2,6 +2,8 @@ import './preset';
 import '../../component/nav';
 import '../../css/common/index.css';
 
+import Vue from 'vue';
+import { Input, Button } from 'element-ui';
 import 'jquery-confirm/dist/jquery-confirm.min.css';
 import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
@@ -17,5 +19,9 @@ import 'component/ueditor_plugins/import_wx_article';
 import 'component/ueditor_plugins/video';
 import 'component/ueditor_plugins/choose_image';
 import 'component/ueditor_plugins/choose_image_multi';
+import '../../com/ueditor-plugins/self-music';
+
+Vue.component(Input.name, Input);
+Vue.component(Button.name, Button);
 
 import './old';
