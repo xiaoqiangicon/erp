@@ -1,7 +1,7 @@
+import { Notification } from 'element-ui';
 import Upload from '../../upload/Upload';
 import { makeUploadFileOptions } from '../../../configs/upload';
 import upload from '../../../../pro-com/src/upload';
-import alert from '../../../util/alert';
 
 export default {
   name: 'SelfMusicPopup',
@@ -55,7 +55,10 @@ export default {
       else if (!this.audio) error = '音频不能为空';
 
       if (error) {
-        alert(error);
+        Notification.info({
+          title: '提示',
+          message: error,
+        });
         return;
       }
 
