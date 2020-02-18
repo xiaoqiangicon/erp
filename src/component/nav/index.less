@@ -91,9 +91,9 @@ a:focus {
 
 /* 左边导航栏 */
 .component-nav-aside {
-  padding: 0 5px;
+  margin-right: 15px;
   overflow: hidden;
-  width: 206px;
+  width: 196px;
   min-height: 500px;
   background-color: #fff;
   position: absolute;
@@ -247,7 +247,8 @@ a:focus {
 .component-nav-help-center-text {
   display: inline-block;
   margin-right: 8px;
-  color: #c7c8c3;
+  font-size: 18px;
+  color: #ffffff;
 }
 .component-nav-help-center-icon {
   background: url('https://pic.zizaihome.com/b78d505a-28d0-11e8-983b-00163e0c001e.png')
@@ -262,6 +263,182 @@ a:focus {
 }
 .component-nav-help-center:hover .component-nav-help-center-text {
   color: #fff;
+}
+.notice-btn-box {
+  position: relative;
+  float: right;
+  margin: 31px 50px 0 0;
+  cursor: pointer;
+  .n-text {
+    font-size: 18px;
+    color: #ffffff;
+  }
+  .n-num {
+    display: none;
+    position: absolute;
+    top: -15px;
+    right: 0;
+    transform: translateX(80%);
+    padding: 0 8px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    border-radius: 14px;
+    color: #ffffff;
+    background-color: #f02c2c;
+  }
+}
+
+/* 通知中心侧栏 */
+.component-nav-notice {
+  position: fixed;
+  right: -457px;
+  top: 96px;
+  width: 457px;
+  padding-bottom: 76px;
+  z-index: 1000;
+  background-color: #ffffff;
+  .n-header {
+    position: relative;
+    height: 64px;
+    border-bottom: 1px solid rgba(112, 112, 112, 0.35);
+    .n-text {
+      padding-left: 20px;
+      line-height: 64px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333333;
+    }
+    .n-close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      width: 14px;
+      height: 14px;
+      background-image: url(https://pic.zizaihome.com/5d5b289b-f370-43ff-a334-e9111c8d0efa.png);
+      background-size: 100%;
+      cursor: pointer;
+    }
+  }
+  .n-container {
+    position: relative;
+    height: calc(100vh - 160px);
+    .n-footer {
+      display: block;
+      width: 100%;
+      height: 76px;
+      line-height: 76px;
+      text-align: center;
+      background-color: #71ba31;
+      font-size: 20px;
+      color: #ffffff;
+    }
+    .n-main {
+      height: calc(100vh - 236px);
+      overflow-y: auto;
+      .notice-item {
+        cursor: pointer;
+        position: relative;
+        padding: 15px 20px;
+        .n-item-head {
+          display: flex;
+          justify-content: space-between;
+          .n-tab {
+            width: 65px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            background: rgba(248, 112, 36, 1);
+            border-radius: 15px;
+            font-size: 18px;
+            color: #ffffff;
+          }
+          .n-date {
+            font-size: 15px;
+            line-height: 21px;
+            color: rgba(96, 96, 96, 1);
+          }
+        }
+        .n-item-op {
+          display: none;
+          justify-content: space-between;
+          padding-bottom: 3px;
+          .n-text {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+            color: rgba(136, 136, 136, 1);
+          }
+          .n-read-btn {
+            font-size: 16px;
+            line-height: 22px;
+            color: rgba(74, 144, 226, 1);
+          }
+        }
+        .n-title {
+          margin-top: 15px;
+          word-break: break-all;
+          font-size: 18px;
+          line-height: 25px;
+          color: rgba(96, 96, 96, 1);
+        }
+        &:after {
+          position: absolute;
+          left: 20px;
+          bottom: 0;
+          content: '';
+          width: 417px;
+          height: 1px;
+          background-color: rgba(112, 112, 112, 0.15);
+        }
+        &:hover {
+          .n-item-head {
+            display: none;
+          }
+          .n-item-op {
+            display: flex;
+          }
+          background-color: rgba(152, 194, 246, 0.15);
+        }
+      }
+      .notice-item:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    .notice-null {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      .n-img {
+        width: 150px;
+        margin: 0 auto 25px;
+        > img {
+          width: 100%;
+        }
+      }
+      .n-text {
+        text-align: center;
+        font-size: 16px;
+        line-height: 22px;
+        color: rgba(51, 51, 51, 1);
+      }
+      .n-more-btn {
+        display: block;
+        margin: 100px auto 0;
+        width: 234px;
+        height: 47px;
+        line-height: 47px;
+        text-align: center;
+        background: rgba(113, 186, 49, 1);
+        border-radius: 24px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
 }
 
 /* 供佛墙导航图标 */

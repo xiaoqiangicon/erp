@@ -1,6 +1,7 @@
 import _promise from 'es6-promise';
 import axios from 'axios';
 import QS from 'qs';
+import { Notification } from 'element-ui';
 
 if (!window.Promise) window.Promise = _promise;
 
@@ -27,6 +28,11 @@ export default (method = 'get', url = '', params = {}) => {
         resolve(res.data);
       })
       .catch(err => {
+        Notification({
+          title: '提示',
+          message: `接口错误，请联系开发人员：url [ ${err.config.url} ], errorText [ ${err.message} ]`,
+          duration: 0,
+        });
         reject(err.data);
       });
   });

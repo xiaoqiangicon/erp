@@ -3,6 +3,7 @@ import tplContainer from './tpl/container';
 import tplHeader from './tpl/header';
 import tplItems from './tpl/items';
 import fillItemsFields from './util/fill_items_fields';
+import initNotice from './util/init_notice';
 import initAccess from './util/init_access';
 const $body = $('body');
 export default res => {
@@ -20,6 +21,7 @@ export default res => {
       items: res.superItems,
     })
   );
+  initNotice();
   initAccess(res.items);
   initAccess(res.superItems);
   const id = $body.attr('data-menu-id');

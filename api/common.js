@@ -47,3 +47,25 @@ export const clickAd = {
   msg: '成功',
   result: 0,
 };
+
+// 更新单条推送信息为已读
+export const updateTempleMessageRead = {
+  msg: '成功',
+  result: 0,
+};
+
+// 获取寺院推送信息列表
+export const getTempleMessageList = {
+  msg: '成功',
+  result: 0,
+  total: 20,
+  data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
+    title: '标题标题标题标题' + id,
+    url: '/url',
+    addTime: '2020-02-04 Feb:32:20',
+    content:
+      '测试一下测试一下测试一下测试一下测试一下测试一下测试一下测试一下测试一下',
+    isRead: 0,
+    id: id,
+  })),
+};
