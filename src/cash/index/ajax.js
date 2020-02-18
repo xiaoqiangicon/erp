@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
+import handleAjaxError from '../../com/handle-ajax-error';
 var requestKeys = {
   list: {
     page: 'pageNumber',
@@ -39,6 +40,8 @@ var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
+
+    handleAjaxError(res);
   },
   stat: function(res) {
     res.data = {};
