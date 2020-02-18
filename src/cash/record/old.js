@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import commonData from './data';
 import './ajax';
-import './bind';
 import './view';
 import 'lib/bootstrap-material-datetimepicker';
 

@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../less/base.less';
-import './index.css';
+import './index.less';
 import '../../../pro-com/src/ie-tip';
 import 'bootstrap';
 import $ from 'jquery';

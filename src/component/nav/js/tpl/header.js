@@ -17,4 +17,10 @@ export default `
     <span class="component-nav-help-center-text">帮助中心</span>
     <i class="component-nav-help-center-icon"></i>
 </a>
+<div class="notice-btn-box" id="notice-btn-box">
+    <div class="n-text">通知中心</div>
+    <div class="n-num" id="notice-unread-num">
+        <span></span>未读
+    </div>
+</div>
 `;
