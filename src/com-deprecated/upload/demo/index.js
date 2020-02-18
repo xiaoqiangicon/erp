@@ -1,3 +1,3 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import upload from '../src';
+import upload from '..';
 upload('#el');
