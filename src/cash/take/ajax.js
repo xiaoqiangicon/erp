@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import data from './data';
 import seeAjax from 'see-ajax';
+import handleAjaxError from '../../com/handle-ajax-error';
 var listPerPage = 20;
 var requestKeys = {
   list: {
@@ -96,6 +97,8 @@ var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
+
+    handleAjaxError(res);
   },
   list: function(res) {
     res.totalPages = Math.ceil(res.cnt / listPerPage);
