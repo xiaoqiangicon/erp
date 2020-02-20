@@ -6,4 +6,3 @@ import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js';
 import commonTpl from 'common/tpl';
 import mainTpl from './tpl/main';
 import './ajax';
-import 'main';

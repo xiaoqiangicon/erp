@@ -13,9 +13,11 @@ export default () => {
     })
     .then(res => {
       if (res.result === 0 && res.data) {
+        $('#notice-unread-num>span').text(res.total);
         if (res.total > 0) {
-          $('#notice-unread-num>span').text(res.total);
           $('#notice-unread-num').show();
+        } else {
+          $('#notice-unread-num').hide();
         }
         if (res.data.length) {
           $('#notice-container').html(
