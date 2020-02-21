@@ -19,7 +19,10 @@
                 <div class="n-icon"></div>
               </div>
             </div>
-            <div class="n-content">{{ item.content }}</div>
+            <div class="n-content">
+              <div class="n-content-text">{{ item.content }}</div>
+              <a class="n-url" :href="item.url" v-if="item.url">查看详情</a>
+            </div>
           </div>
         </div>
       </div>
@@ -187,10 +190,17 @@ export default {
           .n-content {
             display: none;
             margin-top: 10px;
-            font-size: 16px;
-            line-height: 26px;
-            word-break: break-all;
-            color: #606060;
+            .n-content-text {
+              font-size: 16px;
+              line-height: 26px;
+              word-break: break-all;
+              color: #606060;
+            }
+            .n-url {
+              display: inline-block;
+              margin-top: 10px;
+              color: #6293e2;
+            }
           }
         }
       }
