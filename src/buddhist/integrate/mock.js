@@ -1,6 +1,6 @@
 export const creditsInfo = {
   data: {
-    url: 'http://baidu.com',
+    url: 'https://wx.zizaihome.com/article/articleIndex?articleId=116',
     level: 2,
   },
   msg: '成功',

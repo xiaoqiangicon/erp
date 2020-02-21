@@ -9,6 +9,7 @@ erp 微佛事模块
 - manage          佛事管理          /zzhadmin/managerCeremonyIndex/
 - order_manage    佛事订单          /zzhadmin/ceremony_index/
 - template        佛事模板页        /zzhadmin/selectCeremonyTemplate/
+- integrate       积分兑换页        /zzhadmin/creditsIndex/
 
 ## 解析
 

@@ -15,3 +15,9 @@ const postHandle = res => {
 seeAjax.config('common', {
   postHandle: [postHandle, postHandle],
 });
+
+// 获取积分任务列表
+seeAjax.config('getTaskList', {
+  method: ['get'],
+  url: ['/zzhadmin/getTempleMissionList/', '/zzhadmin/getTempleMissionList/'],
+});
