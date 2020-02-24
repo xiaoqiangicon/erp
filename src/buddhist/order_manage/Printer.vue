@@ -140,7 +140,12 @@ export default {
 
           res.data.forEach(item => {
             seeAjax('getPrinterStatus', { printerId: item.id }, res => {
-              item.status = res.success;
+              if (res.msg === '离线。') {
+                item.status = 0;
+              } else {
+                item.status = 1;
+              }
+              // item.status = res.success;
               count += 1;
               if (count === length) {
                 this.printerList = printerList;
