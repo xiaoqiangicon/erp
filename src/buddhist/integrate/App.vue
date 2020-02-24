@@ -57,7 +57,7 @@
                   alt=""
                 />
               </div>
-              <div class="t-null-text">抱歉，暂时没有任何通知</div>
+              <div class="t-null-text">您暂时没有积分任务</div>
             </div>
           </div>
           <!-- 已完成 Tab内容 -->
