@@ -285,9 +285,21 @@ var tpl = {
                     <div class="upload-btn" data-ele="add-video">上传小视频</div>
                     </div>
                 </div>
+                <!--链接-->
+                <div class="row mgt20">
+                    <div class="col-md-1 fwb" style="height: 40px; line-height: 40px;">链接</div>
+                    <div class="col-md-11" style="height: 40px; line-height: 40px; padding-left: 20px;">
+                        {@if url}
+                        <span id="schedule-url">\${url}</span>
+                        {@/if}
+                        {@if !url}
+                        <span>未修改</span>
+                        {@/if}
+                    </div>
+                </div>
                 <!--推送-->
                 {@if !isShow}
-                <div class="row mgt40 item-push-set" data-ele="schedule-push-set">
+                <div class="row mgt10 item-push-set" data-ele="schedule-push-set">
                     <div class="col-md-1 fwb" style="height: 40px; line-height: 40px;">推送</div>
                     <div class="col-md-11">
                         <label class="radio-inline" style="padding-left: 0;" for="push-schedule-\${id}">
