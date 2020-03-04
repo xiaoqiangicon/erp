@@ -137,6 +137,12 @@ const requestList = (page, init) => {
             $('#save').click(e => {
               const $this = $(e.target);
               const result = checkBeforeSave();
+              let editUrl;
+              if ($('span[data-edit-url=0]').hasClass('link-select-active')) {
+                editUrl = '';
+              } else {
+                editUrl = $('#edit-link-input').val();
+              }
               result.data.charityId = charityId;
 
               if (!result.success) return;
@@ -150,6 +156,7 @@ const requestList = (page, init) => {
                   img: result.data.img.join(','),
                   video: '',
                   isPush: result.data.isPush,
+                  url: editUrl,
                 },
                 res => {
                   if (!res.success) {
@@ -440,6 +447,7 @@ const requestList = (page, init) => {
                     img: result.data.img.join(','),
                     video: '',
                     isPush: result.data.isPush,
+                    url: recordScheduleList.list[index].url,
                   },
                   res => {
                     if (!res.success) return;
@@ -463,7 +471,6 @@ const requestList = (page, init) => {
                 data.list = data.scheduleList.list;
 
                 $('#remain-time').text(data.scheduleList.todayNum);
-                console.log(data.scheduleList);
                 // $('.update-content').html(contentTpl(data.scheduleList));
                 const $uploadLoading = $('[data-ele="video-upload-loading"]');
                 $uploadLoading.hide();
@@ -471,7 +478,7 @@ const requestList = (page, init) => {
                 $('.record-content').html(listTpl(recordScheduleList));
                 $('[data-remain-time]').text(data.scheduleList.todayNum);
                 $('.publish-mask').show();
-
+                console.log(recordScheduleList);
                 // 发布进展上传视频
                 upload(
                   makeUploadFileOptions({
@@ -510,7 +517,6 @@ const requestList = (page, init) => {
                 // 保存
                 $('#save').click(e => {
                   const $this = $(e.target);
-                  const result = checkBeforeSave();
                   result.data.charityId = charityId;
 
                   if (!result.success) return;
@@ -813,6 +819,7 @@ const requestList = (page, init) => {
                         content: result.data.content,
                         img: result.data.img.join(','),
                         video: '',
+                        url: recordScheduleList.list[index].url,
                         isPush: result.data.isPush,
                       },
                       res => {
