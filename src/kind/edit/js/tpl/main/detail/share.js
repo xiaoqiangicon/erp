@@ -29,7 +29,7 @@ export default `
         <div class="main-detail-cover">
             <div class="of-hidden">
                 <div class="container-0-1" id="share-icon-container"></div>
-                <button class="clean btn-0-2 ps-relative" id="share-icon-add"></button>
+                <button class="clean btn-0-2 ps-relative" style="margin-left: 0" id="share-icon-add"></button>
             </div>
         </div>
     </div>

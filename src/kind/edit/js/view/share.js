@@ -8,6 +8,15 @@ seeView({
     $(e.target)
       .parent()
       .remove();
-    $('#share-icon-add').removeClass('hide');
+    let sort = parseInt($(e.target).attr('data-share-item-delete'), 10);
+    if (sort === 0) {
+      $('#index-img-add').removeClass('hide');
+    }
+    if (sort === 1) {
+      $('#res-img-add').removeClass('hide');
+    }
+    if (sort === 2) {
+      $('#share-icon-add').removeClass('hide');
+    }
   },
 });
