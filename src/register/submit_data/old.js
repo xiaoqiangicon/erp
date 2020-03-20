@@ -431,6 +431,9 @@ var View = Backbone.View.extend({
           },
         });
       },
+      fail: function(e) {
+        console.log(e);
+      },
       extensionerror: function() {
         alert('允许的格式为：jpg、jpeg、gif、png');
         return;

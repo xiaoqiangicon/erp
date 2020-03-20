@@ -1,5 +1,8 @@
+main {
+  padding-bottom: 30px !important;
+}
 main .tip {
-  margin: 20px 15% 20px 15%;
+  margin: 40px 15% 20px 15%;
 }
 main .tip h3 {
   font-size: 20px;
@@ -7,30 +10,43 @@ main .tip h3 {
   color: #333;
   font-family: 'Microsoft YaHei';
 }
+
 main nav .nav1 {
-  background-color: #007551;
   position: relative;
 }
-main nav .nav1:after {
-  content: ' ';
-  width: 0;
-  position: absolute;
-  right: -40px;
-  border-width: 21px;
-  border-style: solid;
-  border-color: transparent transparent transparent #007551;
+.nav1 div {
+  font-size: 18px;
+  color: #154d97;
 }
-.nav1 span {
+.nav3 div,
+.nav2 div {
+  font-size: 18px;
+  color: #aaaaaa;
+}
+.nav3 .step,
+.nav2 .step {
+  width: 35px;
+  height: 35px;
+  margin: 0px auto 14px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: #cccccc;
   color: #fff;
 }
-main nav .nav2 {
-  background-image: url('../../../images/register/right-arrow.png');
-  background-repeat: no-repeat;
-  background-position: right;
+.nav1 .step-1 {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 9px;
+  line-height: 45px;
+  color: #fff;
+  font-size: 22px;
+  background-image: url('https://pic.zizaihome.com/907e9d80-6824-11ea-a71d-00163e060b31.png');
+  background-size: cover;
 }
+
 main .uploadRow {
   overflow: hidden;
-  margin: 0px 15% 20px 15%;
+  margin: 30px 15% 30px 15%;
 }
 main .uploadimg {
   width: 47%;
@@ -52,7 +68,7 @@ main .uploadimgOdd {
   margin-right: 6%;
 }
 main .upload1 {
-  background-image: url('../../../images/register/sample-1.jpg');
+  background-image: url('https://pic.zizaihome.com/f7873d10-6726-11ea-b696-00163e060b31.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -80,6 +96,11 @@ main .tips {
   margin-right: 15%;
   overflow: hidden;
 }
+main .tips .tips-content {
+  padding-top: 10px;
+  background-color: #eaf5ff;
+  border: 1px solid #aad9ff;
+}
 main .tips p {
   color: #666;
   font-size: 18px;
@@ -97,8 +118,9 @@ label::before {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background-image: url('../../../images/register/ic-disagree-gray.png');
+  background-image: url('https://pic.zizaihome.com/48b7f3b0-64dd-11ea-b9dd-00163e060b31.png');
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
   vertical-align: top;
   margin-right: 10px;
@@ -106,13 +128,23 @@ label::before {
   -webkit-transition: background ease-in 0.3s;
 }
 input[type='checkbox']:checked + label::before {
-  background-image: url('../../../images/register/ic-agree-green.png');
+  background-image: url('https://pic.zizaihome.com/30655fe0-682b-11ea-a55c-00163e060b31.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 .uploadSection {
   position: relative;
 }
 .agree_title {
   float: left;
+  margin-top: 20px;
+}
+.tips-star {
+  margin-left: 10px;
+  font-weight: 1000;
+  border-radius: 50%;
+}
+.next {
+  margin-top: 80px !important;
 }

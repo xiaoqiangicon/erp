@@ -30,9 +30,20 @@
       <section id="main">
         <main data-id="filePreparation">
           <nav>
-            <div class="nav1"><span>资料准备</span></div>
-            <div class="nav2"><span>填写信息</span></div>
-            <div class="nav3"><span>提交资料</span></div>
+            <div class="nav1">
+              <div class="step step-1">1</div>
+              <div>资料准备</div>
+            </div>
+            <div class="line"></div>
+            <div class="nav2">
+              <div class="step step-2">2</div>
+              <div>填写信息</div>
+            </div>
+            <div class="line"></div>
+            <div class="nav3">
+              <div class="step step-3">3</div>
+              <div>提交资料</span>
+            </div>
           </nav>
           <div class="tip">
             <h3>请准备好如下材料的扫描件或照片，要求清晰可辨认：</h3>
@@ -58,14 +69,16 @@
             </div>
           </div>
           <div class="tips">
-            <p>
-              ●
-              自在家认证将谨慎、严格的验证真实性，能够更好地保护寺院及用户的合法权益；
-            </p>
-            <p>
-              ●
-              认证资料仅在自在家后台进行备注和核实信息用，通过认证后将展示在认证页面。
-            </p>
+            <div class="tips-content">
+              <p>
+                <span class="tips-star">·</span>
+                自在家认证将谨慎、严格的验证真实性，能够更好地保护寺院及用户的合法权益；
+              </p>
+              <p>
+                <span class="tips-star">·</span>
+                认证资料仅在自在家后台进行备注和核实信息用，通过认证后将展示在认证页面。
+              </p>
+            </div>
             <input type="checkbox" name="agree" id="agree" /><label
               for="agree"
               class="agree_title"
@@ -75,7 +88,7 @@
               ></label
             >
           </div>
-          <div class="divider"></div>
+          <!-- <div class="divider"></div> -->
           <div>
             <button class="next" id="preparaNext">
               <a href="javascript:void[0]">下一步</a>

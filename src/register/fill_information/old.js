@@ -232,7 +232,7 @@ var View = Backbone.View.extend({
       }
     }
     if ($('#agree:checked').length == 1) {
-      $('#preparaNext').css('background-color', '#0d7652');
+      $('#preparaNext').css('background-color', '#9F383D');
       $('#preparaNext').attr('data-href', '/zzhadmin/templeApplyFillInfo/');
     }
     if (
@@ -577,7 +577,7 @@ var View = Backbone.View.extend({
   },
   preparaNext: function(e) {
     if ($('#agree:checked').length == 1) {
-      $('#preparaNext').css('background-color', '#0d7652');
+      $('#preparaNext').css('background-color', '#9F383D');
       $('#preparaNext').attr('data-href', '/zzhadmin/templeApplyFillInfo/');
     } else {
       $('#preparaNext').css('background-color', '#ccc');
