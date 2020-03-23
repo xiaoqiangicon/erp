@@ -3,41 +3,53 @@ main div {
   text-align: center;
 }
 main .icon1 {
-  width: 100px;
-  height: 100px;
-  margin-top: 131px;
-  background-image: url('../../../images/register/ic-check-blue.png');
+  width: 80px;
+  height: 80px;
+  margin-top: 63px;
+  background-image: url('https://pic.zizaihome.com/9dcc0898-6733-11ea-a36a-00163e060b31.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 main .icon2 {
-  width: 100px;
-  height: 100px;
-  margin-top: 131px;
+  width: 80px;
+  height: 80px;
+  margin-top: 63px;
   background-image: url('../../../images/register/ic-check-yellow.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 main .icon3 {
-  width: 100px;
-  height: 100px;
-  margin-top: 131px;
+  width: 80px;
+  height: 80px;
+  margin-top: 63px;
   background-image: url('../../../images/register/ic-check-green.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 main .tip {
-  margin-top: 22px;
+  margin-top: 14px;
   font-size: 20px;
   font-weight: 500;
+  margin-left: 0;
   color: #333;
+  font-weight: bold;
   font-family: 'Microsoft YaHei';
 }
+
 main .tip2 {
   margin-top: 23px;
   font-size: 16px;
   line-height: 1.38;
   color: #333;
+}
+
+main .reason-tip {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #888;
 }
 main .zizaihom {
   width: 338px;
@@ -52,12 +64,14 @@ main .zizaihom {
   font-family: 'Microsoft YaHei';
 }
 main .supplement {
-  width: 338px;
-  height: 56px;
-  margin-top: 34px;
-  background-color: #fff;
-  border-radius: 2px;
-  border: solid 1px #979797;
+  width: 230px;
+  height: 54px;
+  margin-top: 24px;
+  font-size: 18px;
+  background-color: #164e98;
+  color: #fff;
+  border-radius: 27px;
+  border: none;
 }
 main .supplement a {
   color: #fff;
@@ -66,14 +80,15 @@ main .supplement a {
   font-family: 'Microsoft YaHei';
 }
 main .previous {
-  width: 338px;
-  height: 56px;
-  margin-top: 34px;
+  width: 300px;
+  height: 54px;
+  margin-top: 24px;
   background-color: #fff;
-  border-radius: 2px;
-  border: solid 1px #0d7652;
-  color: #0d7652;
-  font-size: 20px;
+  border-radius: 27px;
+  border: none;
+  background-color: #164e98;
+  color: #fff;
+  font-size: 18px;
   font-weight: 500;
   font-family: 'Microsoft YaHei';
 }
@@ -90,23 +105,24 @@ main .login {
   font-family: 'Microsoft YaHei';
 }
 main .question {
-  margin-top: 62px;
-  font-size: 20px;
-  color: #333;
+  font-size: 14px;
+  color: #666;
   font-family: 'Microsoft YaHei';
 }
 main .public {
-  margin-top: 63px;
-  margin-bottom: 32px;
+  width: 300px;
+  margin-top: 72px;
+  padding: 30px 0;
+  background-color: #f5f5f5;
 }
 main .public h3 {
-  font-size: 20px;
-  color: #333;
+  font-size: 13px;
+  color: #666;
   font-family: 'Microsoft YaHei';
-  margin: 0px auto;
+  margin: 0 auto 16px;
 }
 main .public p {
-  font-size: 20px;
-  color: #0d7652;
+  font-size: 22px;
+  color: #333;
   margin-top: 10px;
 }

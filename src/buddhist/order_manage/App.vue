@@ -205,6 +205,12 @@
           label="数量"
           show-overflow-tooltip
         ></el-table-column>
+        <el-table-column label="备注">
+          <template slot-scope="scope">
+            <div v-if="scope.row.usercomment">{{ scope.row.usercomment }}</div>
+            <div v-else>-</div>
+          </template>
+        </el-table-column>
         <el-table-column
           width="100"
           prop="price"

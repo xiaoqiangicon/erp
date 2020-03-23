@@ -34,6 +34,12 @@ export default _ => {
     });
     data.info.covers.length >= 3 && $coverAdd.addClass('hide');
   }
+  if (data.info.headImg) {
+    $('img[data-share-item-image=0]').attr('src', data.info.headImg);
+  }
+  if (data.info.payImg) {
+    $('img[data-share-item-image=1]').attr('src', data.info.payImg);
+  }
   if (data.info.payItems && data.info.payItems.length) {
     const $payContainer = $('#pay-container');
     data.info.payItems.forEach(item => {

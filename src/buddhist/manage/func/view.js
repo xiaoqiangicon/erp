@@ -10,6 +10,7 @@ import Promotion from '../../../com-deprecated/promotion';
 import ChooseImage from '../../../com-deprecated/choose-image';
 import api from './api';
 import '../../../../pro-com/src/libs-es5/jquery-qrcode';
+import * as handling from '../../../../pro-com/src/handling';
 import 'jquery-confirm';
 import './ajax';
 import seeAjax from 'see-ajax';
@@ -49,7 +50,9 @@ seeView({
     'click [data-ele="del-video"]': 'onClickDelVideo',
     'click [data-ele="play-video"]': 'onClickPlayVideo',
     'click #video-player-mask': 'onClickVideoPlayerMask',
+    'input #edit-link-input': 'inputLink',
     'click #save-schedule': 'onClickSaveSchedule',
+    'click [data-link-radio]': 'onClickLinkRadio',
     'click [data-ele="edit-schedule-item"]': 'onClickEditScheduleItem',
     'click [data-ele="save-schedule-item"]': 'onClickSaveScheduleItem',
     'click [data-ele="cancel-schedule-item"]': 'onClickCancelScheduleItem',
@@ -632,6 +635,18 @@ seeView({
     Data.videoPlayer.pause();
     $videoPlayerMask.hide();
   },
+  onClickLinkRadio: e => {
+    if ($(e.currentTarget).attr('data-link-radio') == 1) {
+      $('#set-link-box').css('display', 'block');
+    } else {
+      $('#set-link-box').css('display', 'none');
+    }
+  },
+  inputLink: e => {
+    if (e.target.value.length < 25) {
+      e.target.value = 'https://wx.zizaihome.com/';
+    }
+  },
   onClickSaveSchedule: function(e) {
     if (Data.isSubmit) {
       return;
@@ -656,16 +671,28 @@ seeView({
         src = $ele.attr('data-src');
       params.video.push(src);
     });
+    var isSetLink = parseInt(
+      $('input:radio[name="if-set-link"]:checked').val(),
+      10
+    );
+    if (!isSetLink) {
+      params.url = '';
+    } else {
+      params.url = $('#edit-link-input').val();
+    }
+
     params.isShow = parseInt($('[name="if-push"]:checked').val(), 10);
     if (!params.content) {
       Toast('内容不能为空', 2);
       return;
     }
     Data.isSubmit = 1;
+    // handling.show();
     api.updateBuddhistSchedule(params, function(res) {
       Toast('发布成功', 1);
       var $scheduleListNav = $('[data-ele="modal-head-nav"][data-index="1"]');
       $scheduleListNav.click();
+      handling.hide();
       Data.isSubmit = 0;
     });
   },
@@ -695,6 +722,11 @@ seeView({
     params.scheduleId = scheduleId;
     params.content = scheduleContent;
     params.img = [];
+    if ($('#schedule-url').get(0)) {
+      params.url = $('#schedule-url').text();
+    } else {
+      params.url = '';
+    }
     var $scheduleImg = $curScheduleItem.find('[data-ele="schedule-img"]');
     $scheduleImg.each(function(index, ele) {
       var $ele = $(ele),

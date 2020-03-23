@@ -431,6 +431,20 @@ input[type='radio']:checked + .radio {
   right: -5px;
   cursor: pointer;
 }
+.set-link {
+  padding-left: 16px;
+}
+.set-link-box {
+  display: none;
+}
+.edit-link-input {
+  width: 60%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 26px;
+  padding-left: 8px;
+}
 .push-times {
   display: inline-block;
   margin-left: 20px;

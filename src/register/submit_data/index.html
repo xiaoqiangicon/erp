@@ -32,15 +32,26 @@
       <section id="main">
         <main data-id="submitData">
           <nav>
-            <div class="nav1"><span>资料准备</span></div>
-            <div class="nav2"><span>填写信息</span></div>
-            <div class="nav3"><span>提交资料</span></div>
+            <div class="nav1">
+              <div class="step step-active step-1">1</div>
+              <div class="step-active-tip">资料准备</div>
+            </div>
+            <div class="line line-active"></div>
+            <div class="nav2">
+              <div class="step step-active step-2">2</div>
+              <div class="step-active-tip">填写信息</div>
+            </div>
+            <div class="line line-active"></div>
+            <div class="nav3">
+              <div class="step step-3">3</div>
+              <div class="step-active-tip">提交资料</span>
+            </div>
           </nav>
           <div class="uploadBox">
             <div class="uploadHead">
               <h3>1.宗教场所登记证（必填）</h3>
               <p>
-                请上传宗教场所登记拍照扫描原件，保证文字清晰可辨认，要求宗教场所登记证和寺院名称上的名称一致
+                请上传宗教场所登记拍照扫描原件，保证文字清晰可辨认，要求宗教场所登记证和寺院名称上的名称一致。
               </p>
             </div>
             <div class="uploadData">
@@ -50,7 +61,7 @@
                   id="upload1"
                   name="file"
                   type="file"
-                /><button onclick="upload1.click()">选择文件</button>
+                /><button onclick="upload1.click()">+&nbsp选择文件</button>
               </div>
               <div class="uploadImg">
                 <img src="" alt="" data-id="upload1" />
@@ -131,8 +142,7 @@
               </div>
             </div>
           </div>
-          <div class="divider"></div>
-          <div style="text-align: center">
+          <div style="margin-top: 80px;text-align: center">
             <button class="next" id="submitPrev">上一步</button>
             <button class="next" id="submitNext">下一步</button>
           </div>

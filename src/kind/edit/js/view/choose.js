@@ -13,12 +13,18 @@ import coverItemTpl from '../tpl/main/detail/cover_item';
 import shareItemTpl from '../tpl/main/detail/share_item';
 let coverChoose;
 let shareChoose;
+let indexChoose;
+let resChoose;
 let payChoose;
 let $currentPayItemAdd;
 seeView({
   events: {
     'click #cover-add': 'onClickCoverAdd',
     'click #share-icon-add': 'onClickShareIconAdd',
+    'click #index-img-add': 'onClickIndexImgAdd',
+    'click [data-index-img-delete]': 'onClickIndexDelete',
+    'click [data-res-img-delete]': 'onClickResDelete',
+    'click #res-img-add': 'onClickResImgAdd',
     'click [data-pay-item-add]': 'onClickPayItemAdd',
   },
   onClickCoverAdd: e => {
@@ -53,6 +59,7 @@ seeView({
           $shareIconContainer.append(
             shareItemTpl({
               image: items[0].src,
+              sort: 2, // 0:封面图，1：落地页图，2：分享图
             })
           );
           $shareIconAdd.addClass('hide');
@@ -60,6 +67,44 @@ seeView({
       });
     }
     shareChoose.show();
+  },
+  onClickIndexImgAdd: e => {
+    if (!indexChoose) {
+      indexChoose = new ChooseImage({
+        multiSelect: !1,
+        onSubmit: items => {
+          const $indexImgContainer = $('#index-img-container');
+          const $indexImgAdd = $('#index-img-add');
+          $indexImgContainer.append(
+            shareItemTpl({
+              image: items[0].src,
+              sort: 0,
+            })
+          );
+          $indexImgAdd.addClass('hide');
+        },
+      });
+    }
+    indexChoose.show();
+  },
+  onClickResImgAdd: e => {
+    if (!resChoose) {
+      resChoose = new ChooseImage({
+        multiSelect: !1,
+        onSubmit: items => {
+          const $indexImgContainer = $('#res-img-container');
+          const $indexImgAdd = $('#res-img-add');
+          $indexImgContainer.append(
+            shareItemTpl({
+              image: items[0].src,
+              sort: 1,
+            })
+          );
+          $indexImgAdd.addClass('hide');
+        },
+      });
+    }
+    resChoose.show();
   },
   onClickPayItemAdd: e => {
     $currentPayItemAdd = $(e.target);

@@ -1,43 +1,64 @@
+main {
+  padding-bottom: 33px !important;
+}
 main .tip {
   margin-left: 16%;
   margin-right: 16%;
   margin-top: 30px;
 }
 main .tip h3 {
+  position: relative;
+  padding-left: 14px;
   font-size: 20px;
   font-weight: 500;
   padding-bottom: 8px;
   margin-bottom: 0px;
   color: #333;
   font-family: 'Microsoft YaHei';
-  border-bottom: solid 1px #ccc;
+  font-weight: bold;
 }
-.nav2 span {
-  color: #fff;
-}
-main nav .nav2:before {
-  content: ' ';
-  width: 0;
+main .tip h3 .h-decorate {
   position: absolute;
-  left: 0px;
-  border-width: 21px;
-  border-style: solid;
-  border-color: transparent transparent transparent #fff;
-  z-index: 9999;
+  width: 4px;
+  height: 20px;
+  background-color: #154d97;
+  left: 2px;
+  top: 3px;
 }
+
 main nav .nav2 {
-  background-color: #007551;
   position: relative;
 }
-main nav .nav2:after {
-  content: ' ';
-  width: 0;
-  position: absolute;
-  right: -40px;
-  border-width: 21px;
-  border-style: solid;
-  border-color: transparent transparent transparent #007551;
+.nav2 div {
+  font-size: 18px;
+  color: #154d97;
 }
+.nav3 div,
+.nav1 div {
+  font-size: 18px;
+  color: #aaaaaa;
+}
+.nav3 .step,
+.nav1 .step {
+  width: 35px;
+  height: 35px;
+  margin: 0px auto 14px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: #cccccc;
+  color: #fff;
+}
+.nav2 .step-2 {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 9px;
+  line-height: 45px;
+  color: #fff;
+  font-size: 22px;
+  background-image: url('https://pic.zizaihome.com/907e9d80-6824-11ea-a71d-00163e060b31.png');
+  background-size: cover;
+}
+
 main .form {
   margin: 16px 16% 40px 16%;
 }
@@ -51,6 +72,9 @@ main .form .control-label {
   padding-top: 5px;
   padding-left: 4px;
   padding-right: 0px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #666;
 }
 main .form .templeValue {
   width: 82%;
@@ -76,25 +100,40 @@ main .form .frozen {
   background-color: #e9e9e9;
 }
 main .tip2 h3 {
+  position: relative;
+  padding-left: 18px;
   font-size: 20px;
   font-weight: 500;
   padding-bottom: 8px;
   margin-bottom: 16px;
   color: #333;
   font-family: 'Microsoft YaHei';
-  border-bottom: solid 1px #ccc;
+  font-weight: bold;
+}
+main .tip2 h3 .h-decorate {
+  position: absolute;
+  width: 4px;
+  height: 20px;
+  background-color: #154d97;
+  left: 4px;
+  top: 3px;
 }
 #templeVertifica {
   width: 80%;
   display: inline-block;
 }
 main .vertifica {
-  background-color: #0d7652;
+  background-color: #be956e;
   color: #fff;
-  width: 19%;
+  width: 18%;
   border: none;
   padding: 5px 0px 3px 0px;
-  margin-left: -6px;
+  margin-left: 1%;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  vertical-align: top;
+  border-radius: 4px;
 }
 main input[type='radio'] {
   display: none;
@@ -116,11 +155,12 @@ main .checkbox {
   margin-left: 36px;
 }
 input[type='radio']:checked + .checkbox {
-  background-image: url('../../../images/register/ic-select-green.png') !important;
+  background-image: url('https://pic.zizaihome.com/30655fe0-682b-11ea-a55c-00163e060b31.png') !important;
   background-repeat: no-repeat;
+  background-size: 18px 18px;
 }
 input[type='radio']:checked + span {
-  color: #0d7652;
+  color: #9f383d;
 }
 .showPassword {
   position: absolute;
@@ -136,8 +176,9 @@ input[type='radio']:checked + span {
   position: absolute;
   top: 6px;
   right: 16px;
-  background-image: url(../../../images/register/hidePassword.png);
+  background-image: url('https://pic.zizaihome.com/756aa28a-6501-11ea-8ded-00163e060b31.png');
   background-repeat: no-repeat;
+  background-size: 22px 25px;
   width: 30px;
   cursor: pointer;
   height: 25px;

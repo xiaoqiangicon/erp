@@ -31,6 +31,9 @@ const tpl = `
                         {{/each}}
                     </div>
                 </div>
+                {{#if url}}
+                <div>引导链接<span class="record-item-url">{{url}}</span></div>
+                {{/if}}
             </div>
             <div class="record-item-edit">
                 <div class="record-publish-content">
@@ -75,6 +78,15 @@ const tpl = `
                         </div>
                         <p class="record-upload-tips">图片格式支持JPG、PNG等，视频格式支持MP4、WMV、MOV等，文件大小不超过50M</p>
                     </div>
+                </div>
+                <div class="record-set-link">
+                    <span class="set-link-title">引导链接</span>
+                    {{#if url}}
+                    <span class="set-link-url">{{ url }}</span>
+                    {{/if}}
+                    {{#unless url}}
+                    <span class="not-set-link">未修改</span>
+                    {{/unless}}
                 </div>
                 {{#unless isShow}}
                 <div class="record-set-push">

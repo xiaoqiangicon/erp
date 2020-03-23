@@ -570,7 +570,7 @@ var View = Backbone.View.extend({
   },
   preparaNext: function(e) {
     if ($('#agree:checked').length == 1) {
-      $('#preparaNext').css('background-color', '#0d7652');
+      $('#preparaNext').css('background-color', '#154D97');
       $('#preparaNext').attr('data-href', '/zzhadmin/templeApplyFillInfo/');
     } else {
       $('#preparaNext').css('background-color', '#ccc');
