@@ -1,0 +1,13 @@
+@import 'base.css';
+@import 'main.css';
+@import 'detail.css';
+@import 'promotion.css';
+@import 'dialog.css';
+@import 'dialog_receipts.css';
+@import 'dialog_account.css';
+@import 'dialog_template.css';
+@import '../../bill/css/badge.css';
+
+.tippy-tooltip {
+  font-size: 14px;
+}

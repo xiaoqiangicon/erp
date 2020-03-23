@@ -113,14 +113,50 @@
         <div class="dialog-pane">
           <div class="dialog-top">
             <div class="dialog-title">上传收据</div>
-            <div class="dialog-close" data-dialog-close="1">X</div>
+            <div
+              class="dialog-close"
+              data-dialog-close="1"
+              style="font-size: 30px; margin-right: 0; line-height: 1.1;"
+            >
+              ×
+            </div>
           </div>
           <div class="dialog-content">
+            <div class="upload-receipt-tip">
+              <i class="upload-receipt-tip-icon"></i>
+              <div class="upload-receipt-tip-title">温馨提示</div>
+              <div class="upload-receipt-tip-content">
+                根据银行监管部门要求：需上传收据照片并系统审核后才可完成提现操作。
+              </div>
+            </div>
+            <div class="mg-t-20 ps-relative">
+              <div class="f-s-18 f-wg-bold">电子收据</div>
+              <div class="f-s-16 mg-t-5" style="color: #5B5B5B;">
+                系统已经为本次提现自动生成了电子收据。<br />
+                下载后需打印、签字并加盖公章。
+                <button
+                  class="clean upload-receipt-download"
+                  id="upload-receipt-download"
+                >
+                  点击下载
+                </button>
+              </div>
+            </div>
+            <div class="mg-t-20 ps-relative">
+              <div class="f-s-18 f-wg-bold">上传收据</div>
+              <div class="f-s-16 mg-t-5" style="color: #5B5B5B;">
+                将已签字并加盖公章的电子收据，进行拍照或扫描成图片格式后上传。
+              </div>
+            </div>
             <div
-              class="dialog-receipts-content"
+              class="dialog-receipts-content clearfix"
               id="dialog-receipts-content"
             ></div>
             <div class="dialog-receipts-add" id="dialog-receipts-add">
+              <img
+                class="hg-100-pc"
+                src="https://pic.zizaihome.com/d9f59e4e-6266-4710-b59d-38f2aeb8f698.png"
+              />
               <input
                 class="file-upload"
                 type="file"
@@ -340,7 +376,7 @@
                           {@else if type == 4}
                           <p class="fs16">1.自在家善款系统正在审计中请耐心等待。</p>
                           <p class="fs16">2.根据银行监管部门要求需要您邮寄收据或上传收据照片才可完成本次提现。</p>
-                          <p class="fs16">3.如何上传收据照片？
+                          <p class="fs16 dp-none">3.如何上传收据照片？
                               <button class="clean-button blue" id="upload-receipt-tip">点击查看提示</button>
                           </p>
                           {@else if type == 6}
@@ -577,7 +613,7 @@
     <script type="text/html" id="tpl-popup-receipts-row">
       <div class="dialog-receipts-row" data-popup-receipts-row="1" data-image="${src}">
           <img src="${src}">
-          <button class="clean-button dialog-receipts-row-delete" data-popup-receipts-row-delete="1">X</button>
+          <button class="clean-button dialog-receipts-row-delete" data-popup-receipts-row-delete="1"></button>
       </div>
     </script>
 

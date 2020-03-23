@@ -17,7 +17,8 @@ import '../../com-deprecated/choose-image/css/index.css';
 import '../../lib/material-icons.css';
 import '../../lib/bootstrap-material-datetimepicker.css';
 
-import './index.css';
+import './css/index.css';
+import './index.less';
 
 import 'tippy.js';
 

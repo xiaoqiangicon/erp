@@ -15,6 +15,8 @@ seeView({
   events: {
     'click [data-popup-receipts-row-delete]': 'onClickPopupReceiptsRowDelete',
     '!click #dialog-receipts-ok': 'onClickDialogReceiptsOk',
+    // 下载电子收据
+    '!click #upload-receipt-download': 'onClickUploadReceiptDownload',
   },
   onClickPopupReceiptsRowDelete: function(e) {
     $(e.target)
@@ -72,5 +74,11 @@ seeView({
       })
       .text('收据照片');
     orchids.back();
+  },
+  // 下载电子收据
+  onClickUploadReceiptDownload() {
+    window.open(
+      `${window.location.origin}/bg/getPickUpPdf?pickUpId=${data.currentHandleId}`
+    );
   },
 });
