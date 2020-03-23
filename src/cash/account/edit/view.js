@@ -145,7 +145,11 @@ seeView({
       bank: $('#input-bank').val(),
       subBank: $('#input-sub-bank').val(),
       bankCard: $('#input-bank-card').val(),
-      account: $('#input-account').val(),
+      account:
+        data.type === 1
+          ? $('#input-company-account').val()
+          : $('#input-person-account').val(),
+      idCardNumber: $('#input-id-card-number').val(),
       licenceImage: !!parseInt($imageLicence.attr('data-uploaded'))
         ? $imageLicence.attr('src')
         : '',
@@ -186,6 +190,20 @@ seeView({
     if (data.type == 1 && !values.licenceImage) {
       values.success = !1;
       values.message = '许可证图片不能为空';
+      return values;
+    }
+    if (data.type == 2 && !values.idCardNumber) {
+      values.success = !1;
+      values.message = '身份证号不能为空，且须为15位或18位';
+      return values;
+    }
+    if (
+      data.type == 2 &&
+      values.idCardNumber.length !== 15 &&
+      values.idCardNumber.length !== 18
+    ) {
+      values.success = !1;
+      values.message = '身份证号须为15位或18位';
       return values;
     }
     if (data.type == 2 && !values.templateImage) {

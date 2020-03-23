@@ -11,6 +11,7 @@ var requestKeys = {
     licenceImage: 'certificatePicUrl',
     idCardImage1: 'identityCardPic',
     idCardImage2: 'identityCardPic2',
+    idCardNumber: 'idCardNum',
   },
   update: {
     bank: 'bankName',
@@ -20,6 +21,7 @@ var requestKeys = {
     licenceImage: 'certificatePicUrl',
     idCardImage1: 'identityCardPic',
     idCardImage2: 'identityCardPic2',
+    idCardNumber: 'idCardNum',
   },
 };
 var responseRefactor = {
@@ -32,6 +34,7 @@ var responseRefactor = {
       licenceImage: 'certificatePicUrl',
       idCardImage1: 'identityCardPic',
       idCardImage2: 'identityCardPic2',
+      idCardNumber: 'idCardNum',
     },
   },
 };

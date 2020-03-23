@@ -8,6 +8,7 @@
     "account": "雅尼",
     "licenceImage": "/sample/image1.jpg",
     "idCardImage1": "/sample/image2.jpg",
-    "idCardImage2": "/sample/image3.jpg"
+    "idCardImage2": "/sample/image3.jpg",
+    "idCardNumber": "123456789012345678"
   }
 }

@@ -12,6 +12,7 @@
     "certificatePicUrl": "/sample/image1.jpg",
     "identityCardPic": "/sample/image2.jpg",
     "identityCardPic2": "/sample/image3.jpg",
-    "examineMessage": "审核不通过原因"
+    "examineMessage": "审核不通过原因",
+    "idCardNum": "123456789012345678"
   }
 }
