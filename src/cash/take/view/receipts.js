@@ -6,6 +6,7 @@ import fn from 'common/function';
 import tpl from '../tpl';
 import data from '../data';
 import util from '../util';
+import { wxSubDomain } from '../../../util/env';
 import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
@@ -78,7 +79,7 @@ seeView({
   // 下载电子收据
   onClickUploadReceiptDownload() {
     window.open(
-      `${window.location.origin}/bg/getPickUpPdf?pickUpId=${data.currentHandleId}`
+      `https://${wxSubDomain}.zizaihome.com/bg/getPickUpPdf?pickUpId=${data.currentHandleId}`
     );
   },
 });

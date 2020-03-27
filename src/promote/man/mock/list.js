@@ -8,7 +8,7 @@ export default (req, res) => {
       totalPages: 20,
       nickname: '昵称昵称昵称',
       name: '姓名姓名姓名',
-      avatar: '/images/chan-zai-128x128.png',
+      avatar: '/images/logo.png',
       phone: '12312312312',
       promoteCount: 321,
       totalIncome: 789,

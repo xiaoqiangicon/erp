@@ -9,7 +9,7 @@ export default (req, res) => {
         total: 20,
         list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
           id,
-          headImg: '/images/chan-zai-128x128.png',
+          headImg: '/images/logo.png',
           nickName: `昵称昵称昵称 ${id}`,
           name: `姓名姓名姓名 ${id}`,
           mobile: '12345678901',

@@ -3,11 +3,7 @@
   "data": {
     "id": 11,
     "title": "日行一善 善行十生",
-    "covers": [
-      "/images/chan-zai-128x128.png",
-      "/images/chan-zai-128x128.png",
-      "/images/chan-zai-128x128.png"
-    ],
+    "covers": ["/images/logo.png", "/images/logo.png", "/images/logo.png"],
     "intro": "<p>hahahahahahah</p>",
     "payItems": [
       {
@@ -15,26 +11,26 @@
         "name": "日行1善",
         "price": 1.11,
         "desc": "hahahahahhahaha",
-        "icon": "/images/chan-zai-128x128.png"
+        "icon": "/images/logo.png"
       },
       {
         "id": 2,
         "name": "日行2善",
         "price": 2.22,
         "desc": "hahahahahhahaha",
-        "icon": "/images/chan-zai-128x128.png"
+        "icon": "/images/logo.png"
       },
       {
         "id": 3,
         "name": "日行3善",
         "price": 3.33,
         "desc": "hahahahahhahaha",
-        "icon": "/images/chan-zai-128x128.png"
+        "icon": "/images/logo.png"
       }
     ],
     "shareTitle": "分享标题",
     "shareDesc": "分享描述",
-    "shareIcon": "/images/chan-zai-128x128.png",
+    "shareIcon": "/images/logo.png",
     "showPeopleCountWhenShare": 1
   }
 }

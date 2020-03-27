@@ -10,7 +10,7 @@ export default (req, res) => {
       hasPromoteUrl: 1,
       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
         id,
-        avatar: '/images/chan-zai-128x128.png',
+        avatar: '/images/logo.png',
         nickname: `昵称昵称昵称 ${id}`,
         name: `姓名姓名姓名 ${id}`,
         phone: '12345678901',
