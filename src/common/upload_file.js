@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import commonFunc from './function';
-import '../../pro-com/src/jquery-file-upload/js/jquery.fileupload';
+import '../../../pro-com/src/jquery-file-upload/js/jquery.fileupload';
 import seeAjax from 'see-ajax';
 var env;
 var url;

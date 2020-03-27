@@ -1,6 +1,6 @@
 import 'component/nav';
 import '@senntyou/shortcut.css';
-import '../../../pro-com/src/element-ui/theme-zzh/index.css';
+import '../../../../pro-com/src/element-ui/theme-zzh/index.css';
 import 'less/common.less';
 import Vue from 'vue';
 import App from './App.vue';

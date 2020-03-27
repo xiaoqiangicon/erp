@@ -3,7 +3,7 @@ import Toast from 'old/toast';
 import data from './data';
 import tpl from './tpl';
 import func from './function';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
 import seeView from 'see-view';
 seeView({

@@ -25,7 +25,7 @@
 <script>
 import '@senntyou/shortcut.css';
 import { makeUploadImageOptions } from '../../configs/upload';
-import upload from '../../../pro-com/src/upload';
+import upload from '../../../../pro-com/src/upload';
 
 export default {
   name: 'Upload',

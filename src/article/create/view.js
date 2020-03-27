@@ -8,7 +8,7 @@ import ChooseImage from '../../com-deprecated/choose-image';
 import StoreImage from '../../com-deprecated/store-image';
 import * as zzhHandling from '../../../../pro-com/src/handling';
 import purifyATarget from 'util/purify_a_target';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
 import seeAjax from 'see-ajax';
 import seeView from 'see-view';

@@ -1,7 +1,7 @@
 import './css/index.css';
 import $ from 'jquery';
-import '../../../pro-com/src/jquery-file-upload/js/jquery.fileupload-image';
-import '../../../pro-com/src/jquery-file-upload/js/jquery.fileupload-validate';
+import '../../../../pro-com/src/jquery-file-upload/js/jquery.fileupload-image';
+import '../../../../pro-com/src/jquery-file-upload/js/jquery.fileupload-validate';
 import defaults from './defaults';
 import tpl from './tpl';
 export default (container, done, progress, option) => {

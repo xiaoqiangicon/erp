@@ -2,7 +2,7 @@ import $ from 'jquery';
 import seeView from 'see-view';
 import seeAjax from 'see-ajax';
 import StoreImage from '../../../../com-deprecated/store-image';
-import * as zzhHandling from '../../../../../pro-com/src/handling';
+import * as zzhHandling from '../../../../../../pro-com/src/handling';
 import dialog from '../../../../util/dialog';
 import checkBeforeSave from '../util/check_before_save';
 import data from '../data';

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Clipboard from 'clipboard';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 import logger from './util/logger';
 import data from './data';
 import tpl from './tpl';

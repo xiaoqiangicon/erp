@@ -1,7 +1,7 @@
 import seeView from 'see-view';
 import $ from 'jquery';
 import Canvas2Image from '@senntyou/canvas2image';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 let $body = $('body');
 import data from './data';
 import tpl from './tpl/post';

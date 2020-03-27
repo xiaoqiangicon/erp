@@ -81,13 +81,13 @@
 <script>
 import seeAjax from 'see-ajax';
 import * as env from '../../util/env';
-// import StoreImage from '../../../pro-com/src/store-image';
+// import StoreImage from '../../../../pro-com/src/store-image';
 import StoreImage from '../../com-deprecated/store-image';
 import AddUser from './Adduser';
 import ChooseImage from '../../com-deprecated/choose-image';
 import { Notification } from 'element-ui';
-import { urlParams } from '../../../pro-com/src/utils';
-import * as zzhHandling from '../../../pro-com/src/handling';
+import { urlParams } from '../../../../pro-com/src/utils';
+import * as zzhHandling from '../../../../pro-com/src/handling';
 
 let recruitEditor;
 let registerEditor;

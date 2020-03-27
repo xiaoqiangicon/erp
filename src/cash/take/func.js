@@ -5,7 +5,7 @@ import commonTpl from 'common/tpl';
 import Pagination from 'com-deprecated/pagination';
 import tpl from './tpl';
 import data from './data';
-import { urlParams } from '../../../pro-com/src/utils';
+import { urlParams } from '../../../../pro-com/src/utils';
 import * as orchids from 'orchids';
 import './ajax';
 var func = {};

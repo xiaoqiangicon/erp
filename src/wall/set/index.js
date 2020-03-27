@@ -10,8 +10,8 @@ import 'toastr/build/toastr.css';
 import './index.css';
 
 import '../../component/ueditor_config';
-import '../../../pro-com/src/ueditor/ueditor.config';
-import '../../../pro-com/src/ueditor/ueditor.all';
+import '../../../../pro-com/src/ueditor/ueditor.config';
+import '../../../../pro-com/src/ueditor/ueditor.all';
 
 import '../../component/ueditor_plugins/xiu_mi';
 import '../../component/ueditor_plugins/import_wx_article';

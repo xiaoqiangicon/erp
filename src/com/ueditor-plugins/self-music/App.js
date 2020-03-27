@@ -1,7 +1,7 @@
 import { Notification } from 'element-ui';
 import Upload from '../../upload/Upload';
 import { makeUploadFileOptions } from '../../../configs/upload';
-import upload from '../../../../pro-com/src/upload';
+import upload from '../../../../../pro-com/src/upload';
 
 export default {
   name: 'SelfMusicPopup',

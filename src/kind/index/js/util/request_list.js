@@ -19,7 +19,7 @@ import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
 import coverPicTpl from '../tpl/main/detail/cover_pic_item';
 
 import ChooseImage from '../../../../com-deprecated/choose-image';
-import * as zzhHandling from '../../../../../pro-com/src/handling';
+import * as zzhHandling from '../../../../../../pro-com/src/handling';
 import recordCheckBeforeSave from '../util/record_check_before_save';
 import checkBeforeSave from '../util/check_before_save';
 

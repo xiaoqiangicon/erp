@@ -5,7 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '../../less/base.less';
 import './index.less';
 import '../../styles/base.less';
-import '../../../pro-com/src/ie-tip';
+import '../../../../pro-com/src/ie-tip';
 import 'bootstrap';
 import $ from 'jquery';
 import data from './js/data';

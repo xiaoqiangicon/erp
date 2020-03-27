@@ -50,7 +50,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
-import CountDown from '../../../../pro-com/src/count-down';
+import CountDown from '../../../../../pro-com/src/count-down';
 export default {
   props: {
     defaultMobile: String,

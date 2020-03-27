@@ -16,8 +16,8 @@ import '../../com-deprecated/choose-image/css/index.css';
 
 // ueditor
 import '../../component/ueditor_config';
-import '../../../pro-com/src/ueditor/ueditor.config';
-import '../../../pro-com/src/ueditor/ueditor.all';
+import '../../../../pro-com/src/ueditor/ueditor.config';
+import '../../../../pro-com/src/ueditor/ueditor.all';
 import '../../component/ueditor_plugins/xiu_mi';
 
 // upload

@@ -20,8 +20,8 @@ import 'bootstrap-datepicker';
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js';
 
 import '../../component/ueditor_config';
-import '../../../pro-com/src/ueditor/ueditor.config';
-import '../../../pro-com/src/ueditor/ueditor.all';
+import '../../../../pro-com/src/ueditor/ueditor.config';
+import '../../../../pro-com/src/ueditor/ueditor.all';
 
 import '../../component/ueditor_plugins/xiu_mi';
 import '../../component/ueditor_plugins/import_wx_article';

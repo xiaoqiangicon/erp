@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import QRCode from '../../../pro-com/src/libs-es5/qrcode';
+import QRCode from '../../../../pro-com/src/libs-es5/qrcode';
 
 let qrCodeImg;
 export default {

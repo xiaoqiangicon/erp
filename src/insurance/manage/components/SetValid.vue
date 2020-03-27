@@ -96,7 +96,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
-import uploadCom from '../../../../pro-com/src/upload';
+import uploadCom from '../../../../../pro-com/src/upload';
 import { makeUploadFileOptions } from '../../../configs/upload';
 
 export default {
