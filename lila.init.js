@@ -8,6 +8,7 @@ import { forReactVue as reactVueWebpackConfigPlugin } from 'lila-webpack-config'
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import qiniuTask from './qiniu-task';
+import qiniuSourceMapTask from './qiniu-source-map-task';
 
 const { readFileSync } = fse;
 const cwd = process.cwd();
@@ -51,6 +52,7 @@ export default lila => {
   const { addCmdOption, setSetting, registerTask } = lila;
 
   registerTask('qiniu', qiniuTask);
+  registerTask('qiniu-source-map', qiniuSourceMapTask);
 
   const envOption = [
     '-e, --env [env]',
@@ -118,6 +120,12 @@ export default lila => {
       });
     }
 
+    const serverEnvMap = {
+      test: 0,
+      gray: 1,
+      prod: 5,
+    };
+
     const tasks = [
       '@lila/del-build',
       '@lila/webpack',
@@ -125,91 +133,60 @@ export default lila => {
         '@lila/move',
         {
           source: 'build/index.html',
-          target: `build/${rename[entry] || entry}.html`,
+          target: `build/${rename[entry] ? rename[entry] : entry}.html`,
         },
       ],
       [
         '@lila/clean-cache',
         { dir: 'build', cacheFileName: `cache-${argv.env}` },
       ],
+      [
+        'qiniu',
+        {
+          dirs: 'build',
+          sourceMap: !1,
+        },
+      ],
+      [
+        'qiniu-source-map',
+        {
+          dir: 'build',
+        },
+      ],
+      [
+        '@lila/sync-html',
+        {
+          server: servers[serverEnvMap[argv.env]],
+          remotePath:
+            argv.env === 'test'
+              ? '/data1/www/myerp/templates'
+              : '/data/www/myerp/templates',
+        },
+      ],
+      [
+        '@lila/sync-html',
+        {
+          server: servers[serverEnvMap[argv.env]],
+          remotePath:
+            argv.env === 'test'
+              ? '/data1/www/myerp/static/build'
+              : '/data/www/myerp/static/build',
+        },
+      ],
     ];
 
-    if (isTest) {
-      tasks.push(
-        [
-          'qiniu',
-          {
-            dirs: 'build',
-          },
-        ],
-        [
-          '@lila/sync-html',
-          {
-            server: servers[0],
-            remotePath: '/data1/www/myerp/templates',
-          },
-        ],
-        [
-          '@lila/sync-html',
-          {
-            server: servers[0],
-            remotePath: '/data1/www/myerp/static/build',
-          },
-        ]
-      );
-
-      if (argv.menu) {
-        tasks.push([
-          '@lila/sync-dir',
-          {
-            server: servers[0],
-            remotePath: '/data1/www/myerp/static/resources',
-            dirs: 'json',
-          },
-        ]);
-      }
-    } else if (isGray || isProd) {
-      tasks.push(
-        [
-          'qiniu',
-          {
-            dirs: 'build',
-            sourceMap: !1,
-          },
-        ],
-        [
-          '@lila/sync-source-map',
-          {
-            server: servers[0],
-            remotePath: '/data/h5/static/source-map',
-          },
-        ],
-        [
-          '@lila/sync-html',
-          {
-            server: isProd ? servers[5] : servers[1],
-            remotePath: '/data/www/myerp/templates',
-          },
-        ],
-        [
-          '@lila/sync-html',
-          {
-            server: isProd ? servers[5] : servers[1],
-            remotePath: '/data/www/myerp/static/build',
-          },
-        ]
-      );
-
-      if (argv.menu) {
-        tasks.push([
-          '@lila/sync-dir',
-          {
-            server: isProd ? servers[5] : servers[1],
-            remotePath: '/data/www/myerp/static/resources',
-            dirs: 'json',
-          },
-        ]);
-      }
+    if (argv.menu) {
+      tasks.push([
+        '@lila/sync-dir',
+        {
+          server: servers[0],
+          remotePath:
+            argv.env === 'test'
+              ? '/data1/www/myerp/static/resources'
+              : '/data/www/myerp/static/resources',
+          dirs: 'json',
+        },
+      ]);
     }
 
     tasks.push(
