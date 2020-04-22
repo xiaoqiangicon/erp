@@ -2045,15 +2045,6 @@ font-family:"Helvetica Neue";mso-fareast-font-family:宋体;mso-bidi-font-family
 100.0%;mso-style-textfill-fill-colortransforms:lumm=10000;mso-font-kerning:
 0pt'
         >、用户知晓并同意，用户在使用自在家期间，授权自在家代为收取基于自在家所产生的各类款项，自在家将通过代收代转账的形式发放到用户对应的账户，用户需自行承担和处理涉及的相关税费，开具对应的票据，并配合做好对应的后续执行与反馈事项等。</span
-      ><b
-        ><span
-          style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-bidi-font-family:宋体;
-color:#181717;mso-themecolor:background2;mso-themeshade:26;mso-style-textfill-fill-color:
-#181717;mso-style-textfill-fill-themecolor:background2;mso-style-textfill-fill-alpha:
-100.0%;mso-style-textfill-fill-colortransforms:lumm=10000;mso-font-kerning:
-0pt"
-          >四、服务条款的修改</span
-        ></b
       ><span
         lang="EN-US"
         style='mso-bidi-font-size:10.5pt;
@@ -2062,6 +2053,32 @@ font-family:"Helvetica Neue";mso-fareast-font-family:宋体;mso-bidi-font-family
 #181717;mso-style-textfill-fill-themecolor:background2;mso-style-textfill-fill-alpha:
 100.0%;mso-style-textfill-fill-colortransforms:lumm=10000;mso-font-kerning:
 0pt'
+        ><o:p></o:p
+      ></span>
+    </p>
+
+    <p
+      class="MsoNormal"
+      align="left"
+      style="margin-bottom:7.5pt;text-align:left;
+mso-pagination:widow-orphan"
+    >
+      <b
+        ><span
+          style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-bidi-font-family:宋体;color:#181717;mso-themecolor:background2;
+mso-themeshade:26;mso-style-textfill-fill-color:#181717;mso-style-textfill-fill-themecolor:
+background2;mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
+lumm=10000;mso-font-kerning:0pt"
+          >四、服务条款的修改</span
+        ></b
+      ><span
+        lang="EN-US"
+        style='mso-bidi-font-size:10.5pt;font-family:"Helvetica Neue";mso-fareast-font-family:
+宋体;mso-bidi-font-family:宋体;color:#181717;mso-themecolor:background2;mso-themeshade:
+26;mso-style-textfill-fill-color:#181717;mso-style-textfill-fill-themecolor:
+background2;mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
+lumm=10000;mso-font-kerning:0pt'
         ><o:p></o:p
       ></span>
     </p>
