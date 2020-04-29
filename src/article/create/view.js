@@ -191,7 +191,11 @@ seeView({
       return;
     }
     result.map(function(item) {
-      item.src += data.imageParams.cover;
+      const url = item.src;
+      const param = data.imageParams.cover;
+      item.src =
+        (url.indexOf('?') !== -1 ? url.slice(0, url.indexOf('?')) : url) +
+        param;
     });
     $coverImage.attr({
       src: result[0].src,
