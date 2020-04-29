@@ -49,19 +49,22 @@
                 </div>
               </div>
               <div class="upload-container">
-                <!-- 图片上传 -->
+                <!-- 图片上传 
                 <div
                   class="upload-img-container"
                   draggable=""
                   @dragover.prevent
                   @drop.prevent="onDrop"
                   @click="onClickChooseImage"
-                >
+                >-->
+                <div class="upload-img-container" @click="onClickChooseImage">
                   <img
                     class="upload-icon"
                     src="https://pic.zizaihome.com/7181a6a2-81c5-11e9-bda2-00163e0c001e.png"
                   />
-                  <div class="upload-text">图片拖到此处或点击上传</div>
+                  <div class="upload-text">
+                    <!-- 图片拖到此处或点击上传 -->点击上传图片
+                  </div>
                 </div>
                 <!-- 视频上传 -->
                 <el-upload

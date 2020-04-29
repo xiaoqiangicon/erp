@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import seeView from 'see-view';
+import data from '../data';
 seeView({
   events: {
     'click [data-share-item-delete]': 'onClickShareItemDelete',
@@ -15,7 +16,7 @@ seeView({
     if (sort === 1) {
       $('#res-img-add').removeClass('hide');
     }
-    if (sort === 2) {
+    if (sort === 2 || data.info.isEdit) {
       $('#share-icon-add').removeClass('hide');
     }
   },
