@@ -24,7 +24,7 @@ func.init = function() {
   });
   func.renderBuddhistStatus();
   func.refreshList();
-  func.initVideoUpload($('[data-ele="add-video"]'));
+  func.initVideoUpload($('[data-ele="add-video"]').get(0));
 };
 func.initBuddhistVerifyModal = function() {
   const buddhistVerify = window.sessionStorage.getItem('buddhistVerify');
@@ -81,7 +81,7 @@ func.initVideoUpload = function($btn) {
     function(url) {
       console.log('上传成功');
       $('[data-ele="video-upload-loading"]').remove();
-      $btn
+      $($btn)
         .parent()
         .prev()
         .append(
@@ -89,7 +89,7 @@ func.initVideoUpload = function($btn) {
             src: url,
           })
         );
-      $btn.show();
+      $($btn).show();
     },
     function(e, data) {
       const $progress = $('[data-ele="progress"]');
@@ -123,11 +123,11 @@ func.initVideoUpload = function($btn) {
             commonFunc.alert(uploadError.join('\n'));
           } else {
             Data.curUploadJqXHR = data.submit();
-            $btn
+            $($btn)
               .parent()
               .prev()
               .append(tpl.scheduleVideoUploadLoading.render({}));
-            $btn.hide();
+            $($btn).hide();
           }
         },
       },
@@ -661,7 +661,7 @@ func.initScheduleListModalBody = function() {
       $modalBody.html(htmlStr);
       const $addVideos = $modalBody.find('[data-ele="add-video"]');
       $addVideos.each(function(index, ele) {
-        func.initVideoUpload($(ele));
+        func.initVideoUpload(ele);
       });
     });
   });

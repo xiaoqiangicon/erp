@@ -59,4 +59,17 @@ export default (container, done, progress, option) => {
   };
   $el.append(htmlTpl);
   $el.find('[data-zzh-upload]').fileupload(currentOption);
+
+  // 修复PC浏览器拖动上传导致重复上传的问题
+  // https://github.com/blueimp/jQuery-File-Upload/issues/3634
+  $el.on('fileuploaddrop', e => {
+    const container = $el[0];
+    if (
+      container !== e.delegatedEvent.target &&
+      !$.contains(container, e.delegatedEvent.target)
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
 };
