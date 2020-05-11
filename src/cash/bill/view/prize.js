@@ -74,6 +74,21 @@ seeView({
       $($('[data-show-real-total-money]')[0]).text()
     ).toFixed(2);
 
+    // 选择自定义金额时
+    if ($('#slection-6').hasClass('selection-active')) {
+      console.log(totalMoney);
+      if (!data.donateMoney30 || data.donateMoney30 <= 0) {
+        alert('赞赏金额必须多于0元哦！');
+        return;
+      }
+      data.currentDonateMoney = data.donateMoney30;
+    }
+
+    if (data.currentDonateMoney > totalMoney) {
+      alert('赞赏的金额不能多于本次提现金额哦！');
+      return;
+    }
+
     // 减去打赏金
     $('#confirm-real-take').text(
       (totalMoney - data.currentDonateMoney).toFixed(2)
