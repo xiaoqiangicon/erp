@@ -104,6 +104,15 @@ var tpl = {
             </td>
             <td>
                 <div class="table-cell-common">
+                    {@if content}
+                        \${content}
+                    {@else}
+                        -
+                    {@/if}
+                </div>
+            </td>
+            <td>
+                <div class="table-cell-common">
                     <!-- 五种状态 进行中 待审核 未开始 已结束 草稿 -->
                     {@if status === 0}
                         {@if isEnd === -1}
