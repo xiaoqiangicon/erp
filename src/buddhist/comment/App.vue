@@ -108,7 +108,11 @@
         tooltip-effect="dark"
         style="width: 100%"
       >
-        <el-table-column label="评价内容" prop="labelRecordList">
+        <el-table-column
+          label="评价内容"
+          prop="labelRecordList"
+          :align="'center'"
+        >
           <template slot-scope="scope">
             <div v-if="scope.row.labelRecordList.length">
               <div
@@ -124,14 +128,14 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="文字评价">
+        <el-table-column label="文字评价" :align="'center'">
           <template slot-scope="scope">
             <div class="text-comment">
               {{ scope.row.content ? scope.row.content : '-' }}
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="回复内容">
+        <el-table-column label="回复内容" :align="'center'">
           <template slot-scope="scope">
             <p>{{ scope.row.reply }}</p>
             <div
@@ -146,11 +150,22 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="评价类型" prop="evaluation" />
-        <el-table-column label="参与项目" prop="commodityName">
+        <el-table-column label="评价类型" prop="evaluation" :align="'center'" />
+        <el-table-column
+          label="参与项目"
+          prop="commodityName"
+          :align="'center'"
+        >
         </el-table-column>
-        <el-table-column label="评价用户" prop="nickName" />
-        <el-table-column label="评价时间" prop="addTime" />
+        <el-table-column label="评价用户" prop="nickName" :align="'center'" />
+        <el-table-column label="评价时间" prop="addTime" :align="'center'" />
+        <el-table-column label="操作" :align="'center'">
+          <template slot-scope="scope">
+            <div class="detail" @click="toDetail(scope.row)">
+              订单详情
+            </div>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
     <div class="mg-t-10" style="text-align: center;">
@@ -347,6 +362,12 @@ export default {
       this.replyId = row.id;
       this.$store.commit({ type: 'updateReplyVisible', state: true });
     },
+    toDetail(row) {
+      console.log(row);
+      const commodityId = row.orderId;
+      const url = `/zzhadmin/ceremony_index?commodityId=${commodityId}`;
+      window.open(url);
+    },
     handleSizeChange(size) {
       this.currentSize = size;
       this.currentPage = 1;
@@ -435,6 +456,7 @@ main {
 .reply {
   width: 48px;
   height: 24px;
+  margin: 0 auto;
   line-height: 24px;
   text-align: center;
   border: 1px solid #4a90e2;
@@ -447,5 +469,9 @@ main {
 .modify {
   color: #1890ff;
   background-color: #d2e9ff;
+}
+.detail {
+  color: #1890ff;
+  cursor: pointer;
 }
 </style>

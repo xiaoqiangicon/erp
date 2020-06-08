@@ -56,11 +56,9 @@ const tpl = `
       <span class="green tagbtn" data-cid="\${cid}" data-toggle="modal" data-target="#sub-set-modal">设置</span>
       <br>
       <span class="green tagbtn copyProSize mgr10" data-cid="\${cid}">复制</span>
-      {@if conversionSubdivide === 1}
-        <span style="padding-left:30px;"></span>
-      {@else}
+      
         <span class="green tagbtn removeProSize" data-cid="\${cid}">删除</span>
-      {@/if}
+
       <br>
     </td>
   `;
