@@ -637,6 +637,10 @@ func.initCreateScheduleModalBody = function() {
       $('[name="if-push"][value="0"]').prop('disabled', false);
       $('[name="if-push"][value="0"]').click();
     }
+    if (!todayNum) {
+      $('[name="if-push"][value="0"]').click();
+      $('[name="if-push"][value="1"]').prop('disabled', true);
+    }
     $('#push-times').html(todayNum);
   });
 };
