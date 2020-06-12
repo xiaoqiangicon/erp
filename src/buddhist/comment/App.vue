@@ -364,8 +364,8 @@ export default {
     },
     toDetail(row) {
       console.log(row);
-      const commodityId = row.orderId;
-      const url = `/zzhadmin/ceremony_index?commodityId=${commodityId}`;
+      const orderId = row.orderId;
+      const url = `/zzhadmin/ceremony_index?orderId=${orderId}`;
       window.open(url);
     },
     handleSizeChange(size) {

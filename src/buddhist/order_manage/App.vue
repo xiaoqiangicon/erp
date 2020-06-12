@@ -283,6 +283,7 @@ import Printer from './Printer';
 import Logistics from './Logistics';
 import formatTime from '../../util/format_time';
 import underscore from 'underscore';
+import { urlParams } from '../../../../pro-com/src/utils';
 
 export default {
   name: 'App',
@@ -299,6 +300,7 @@ export default {
       // 列表请求参数
       buddhistId: '',
       subId: -1,
+      orderId: '',
       hasFb: false,
       notPrint: false,
       date: ['', ''],
@@ -377,6 +379,11 @@ export default {
     },
   },
   created() {
+    if (urlParams.orderId) {
+      this.orderId = parseInt(urlParams.orderId, 10);
+      this.type = 2; // 有ORDERID则为订单查询
+    }
+
     this.requestBuddhistList();
     this.requestList();
   },
@@ -414,6 +421,7 @@ export default {
         logisticsOrder,
         orderByPriceType,
         orderByTimeType,
+        orderId,
       } = this;
 
       seeAjax(
@@ -432,6 +440,7 @@ export default {
           logisticsOrder,
           orderByPriceType,
           orderByTimeType,
+          orderId,
         },
         res => {
           if (res.success) {
@@ -447,6 +456,7 @@ export default {
             }
 
             this.loadingList = false;
+            this.orderId = '';
           } else {
             Notification({
               title: '提示',
