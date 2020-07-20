@@ -496,10 +496,12 @@ export default {
     },
     onClickExport() {
       const { type, buddhistId, hasFb, notPrint, formatDate, tel } = this;
+      let subId = this.subId;
+      if (subId < 0) subId = 0;
       const excelUrl =
         `/zzhadmin/bcDownloadExcel/?type=${type}` +
         `&beginDate=${formatDate[0]}&endDate=${formatDate[1]}` +
-        `&buddishService=${buddhistId}&tel=${tel}` +
+        `&buddishService=${buddhistId}&tel=${tel}&subdirideId=${subId}` +
         `&isSearchNoPic=${Number(hasFb)}&searchNotPrint=${Number(notPrint)}`;
       window.open(excelUrl);
     },
