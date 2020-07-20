@@ -5624,7 +5624,7 @@ var AdditionView = Backbone.View.extend({
       }
       self.model.set('inputType', psType);
       if (psType == 15) {
-        self.model.set('font_length', 20);
+        self.model.set('font_length', 50);
       } else {
         self.model.set('font_length', 0);
       }

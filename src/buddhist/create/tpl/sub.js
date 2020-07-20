@@ -11,7 +11,7 @@ const tpl = `
       </select>
     </td>
     <td>
-      <input type="text" class="form-control proSizeName" data-cid="\${cid}" value="\${name}" maxlength="24" placeholder="不超过24个文字" \${conversionSubdivide === 1 ? 'disabled' : ''}>
+      <input type="text" class="form-control proSizeName" data-cid="\${cid}" value="\${name}" maxlength="24" placeholder="不超过24个文字" >
     </td>
     <td style="position: relative">
       <!--由switch生成dom结构-->
@@ -30,7 +30,7 @@ const tpl = `
       <input type="text" id="money\${cid}" name="money\${cid}" class="form-control proPrice" data-cid="\${cid}" data-isAutoFinish="\${isAutoFinish}" placeholder="为0或不填为无需支付" value="\${price}" \${conversionSubdivide === 1 ? 'disabled' : ''}>
     </td>
     <td class="stock_td">
-      <input type="number" name="\${cid}" class="form-control proStock" data-cid="\${cid}" value="\${stock}" \${conversionSubdivide === 1 ? 'disabled' : ''}>
+      <input type="number" name="\${cid}" class="form-control proStock" data-cid="\${cid}" value="\${stock}" >
     </td>
     <td class="text-center">
       <a class="upload_box" style="height: 50px;margin: 0; position: relative;" href="javascript:;" >
