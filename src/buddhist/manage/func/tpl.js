@@ -96,19 +96,13 @@ var tpl = {
                 {@else}
                     <!-- === 2 -->
                     <span style="color:#999;">草稿</span>
+                    {@if content}
+                    <span class="forbid-label" data-content="\${content}">不通过原因</span>
+                    {@/if}
                 {@/if}
 
                 </a>
                 </p>
-                </div>
-            </td>
-            <td>
-                <div class="table-cell-common">
-                    {@if content}
-                        \${content}
-                    {@else}
-                        -
-                    {@/if}
                 </div>
             </td>
             <td>

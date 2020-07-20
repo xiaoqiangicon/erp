@@ -12,9 +12,12 @@ import api from './api';
 import '../../../../../pro-com/src/libs-es5/jquery-qrcode';
 import * as handling from '../../../../../pro-com/src/handling';
 import 'jquery-confirm';
+import toastr from 'toastr';
 import './ajax';
 import seeAjax from 'see-ajax';
 import seeView from 'see-view';
+
+toastr.options.closeHtml = '<button><i class="toastr-icon-off"></i></button>';
 seeView({
   events: {
     'keyup [data-ele="s-textarea"]': 'onKeyupSTextarea',
@@ -23,6 +26,7 @@ seeView({
     'click #search': 'onClickSearch',
     'click #table-title-total-join': 'sortByJoinNum',
     'click #table-title-total-collect': 'sortByMoney',
+    'click [data-content]': 'onClickContent',
     'click [data-opt="edit"]': 'onClickOptEdit',
     'click [data-opt="promotion"]': 'onClickOptPromotion',
     'click [data-opt="del"]': 'onClickOptDel',
@@ -88,6 +92,20 @@ seeView({
       $('#table-title-total-collect'),
       'orderByCollectMoney'
     );
+  },
+  onClickContent: function(e) {
+    var $curTar = $(e.currentTarget);
+    var content = $curTar.attr('data-content');
+    console.log(content);
+
+    toastr.info(content, '不通过原因', {
+      timeOut: 10000 + (content.length > 60 ? (content.length - 60) / 8 : 0),
+      // extendedTimeOut: 0,
+
+      closeButton: !0,
+      positionClass: 'toast-center-center',
+      escapeHtml: !1,
+    });
   },
   onClickOptEdit: function(e) {
     var $curTar = $(e.currentTarget),

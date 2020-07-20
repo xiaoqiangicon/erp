@@ -105,6 +105,15 @@ table tr > td {
   text-align: center;
 }
 
+.forbid-label {
+  display: inline-block;
+  padding: 6px 4px;
+  border-radius: 4px;
+  background-color: #6fba2c;
+  cursor: pointer;
+  color: #fff;
+}
+
 .table-cell-button,
 .table-cell-link,
 .table-cell-link a {

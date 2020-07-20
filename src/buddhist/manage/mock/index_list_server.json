@@ -4,7 +4,8 @@
   "isHavePrinter": 1,
   "data": [
     {
-      "status": 1,
+      "status": 2,
+      "content": "hello",
       "join_num": 0,
       "isStart": 1,
       "name": "测试发布（仲羽）",
