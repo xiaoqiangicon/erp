@@ -127,6 +127,12 @@
           "name": "提现管理",
           "link": "/zzhadmin/cashTake/",
           "controlMark": "pw_money_center"
+        },
+        {
+          "id": "cash-receipt",
+          "name": "发票管理",
+          "link": "/zzhadmin/receiptIndex/",
+          "controlMark": "pw_money_center"
         }
       ]
     },
