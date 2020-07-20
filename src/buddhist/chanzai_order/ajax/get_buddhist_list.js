@@ -11,7 +11,7 @@ const refactor = {
         },
       ],
       subList: 'subdivideList',
-      buddhistId: 'commodityId',
+      buddhistId: 'id',
       buddhistName: 'name',
     },
   ],
@@ -23,7 +23,7 @@ seeAjax.config('getBuddhistList', {
   method: ['get'],
   stringify: [!0],
   url: [
-    '/zzhadmin/getCommodityNameList',
+    '/zzhadmin/getConversionCommodityList',
     '/src/buddhist/chanzai_order/mock/get_buddhist_list.json',
   ],
   refactor: [refactor, refactor],

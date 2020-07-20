@@ -116,6 +116,14 @@
           <span v-else>批量处理</span>
         </el-button>
         <el-button
+          v-show="type === 1 && buddhistId"
+          type="default"
+          size="medium"
+          @click="onClickLogistics"
+        >
+          批量发货
+        </el-button>
+        <el-button
           type="default"
           class="pull-right mg-r-20"
           size="medium"
@@ -216,6 +224,7 @@
       :detail="detail"
       @refresh="requestList"
     />
+    <Logistics :buddhistId="buddhistId" :date="date" @refresh="requestList" />
   </main>
 </template>
 
@@ -224,13 +233,16 @@ import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
 import Detail from './Detail';
 import Printer from './Printer';
+import Logistics from './Logistics';
 import formatTime from '../../util/format_time';
+import underscore from 'underscore';
 
 export default {
   name: 'App',
   components: {
     Printer,
     Detail,
+    Logistics,
   },
   data() {
     return {
@@ -368,6 +380,10 @@ export default {
     },
     onChangeBuddhistId() {
       this.onChangeFilter();
+    },
+    onClickLogistics() {
+      console.log(1234123);
+      this.$store.commit({ type: 'updateLogisticsDialogVisible', state: true });
     },
     onChangeDatePicker() {
       const { date } = this;
