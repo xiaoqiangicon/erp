@@ -49,7 +49,7 @@
                 </div>
               </div>
               <div class="upload-container">
-                <!-- 图片上传 
+                <!-- 图片上传
                 <div
                   class="upload-img-container"
                   draggable=""
@@ -119,6 +119,21 @@
             <div class="cell-title">处理备注</div>
             <div class="cell-body">
               <div class="remark" id="remark-editor"></div>
+            </div>
+          </div>
+          <div class="cell">
+            <div class="cell-title">下次处理时间</div>
+            <div class="cell-body">
+              <el-date-picker
+                v-model="nextFeedBackTime"
+                type="date"
+                format="yyyy-MM-dd"
+                value-format="yyyy-MM-dd"
+              >
+              </el-date-picker>
+              <div class="mg-t-10">
+                需要多次处理的订单，请在这里选择下次需要处理的日期；如果已处理完，请把这里的时间清除
+              </div>
             </div>
           </div>
           <div v-show="!isGroup" class="cell">
@@ -273,6 +288,9 @@ export default {
 
       videoPlayerSrc:
         'https://pic.zizaihome.com/b7c155f70d6a2d0a49cabcb6b790ce6b.mp4',
+
+      // 下次处理时间
+      nextFeedBackTime: '',
     };
   },
   computed: {
@@ -355,6 +373,7 @@ export default {
           outerOrderNumber,
           runningNumber,
           ps,
+          nextFeedBackTime,
         } = this.detail;
 
         ({
@@ -377,6 +396,7 @@ export default {
         this.outerOrderNumber = outerOrderNumber;
         this.runningNumber = runningNumber;
         this.ps = ps;
+        this.nextFeedBackTime = nextFeedBackTime;
 
         // 初始化qrcode
         this.$refs.qrcode.innerHTML = '';
@@ -531,7 +551,13 @@ export default {
       this.chooseImage.show();
     },
     onClickHandle() {
-      const { isGroup, images, videos, logisticsOrder } = this;
+      const {
+        isGroup,
+        images,
+        videos,
+        logisticsOrder,
+        nextFeedBackTime,
+      } = this;
       let { courierCompanyCode } = this;
       const remark = remarkEditor.getContent();
       let orderIds;
@@ -569,6 +595,7 @@ export default {
           courierCompanyCode,
           logisticsOrder,
           remark,
+          nextFeedBackTime,
         },
         res => {
           if (res.success) {

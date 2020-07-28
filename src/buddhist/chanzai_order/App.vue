@@ -96,6 +96,13 @@
         >
           已处理
         </div>
+        <div
+          class="s-tab-panel"
+          @click="onClickType(6)"
+          v-bind:class="{ active: type === 6 }"
+        >
+          多次处理订单
+        </div>
       </div>
       <div class="mg-b-10" style="height: 40px; line-height: 40px;">
         <span class="mg-r-10 mg-l-30" style="color:#989898;">
@@ -255,7 +262,7 @@ export default {
       formatDate: ['', ''],
       tel: '',
       logisticsOrder: '',
-      type: 1, // 1 未处理 2 已处理  3 已发货 4 已收货
+      type: 1, // 1 未处理 2 已处理  3 已发货 4 已收货 6 多次处理
       // 分页
       currentSize: 25,
       currentPage: 1,
@@ -510,11 +517,11 @@ main {
   margin-bottom: 10px;
   box-sizing: content-box;
   .s-tab-panel {
-    width: 200px;
+    width: 160px;
     text-align: center;
     float: left;
     background-color: #fff;
-    margin-right: 20px;
+    margin-right: 10px;
     border: 1px solid #e0e0e0;
     cursor: pointer;
     &.active {
