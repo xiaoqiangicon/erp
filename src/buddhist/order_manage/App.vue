@@ -283,7 +283,7 @@
 </template>
 
 <script>
-import { Notification } from 'element-ui';
+import { Notification, MessageBox } from 'element-ui';
 import seeAjax from 'see-ajax';
 import Detail from './Detail';
 import Printer from './Printer';
@@ -403,6 +403,8 @@ export default {
             ...res.data,
           ];
           this.loadingBuddhistList = false;
+
+          this.$store.state.buddhistList = this.buddhistList;
         } else {
           Notification({
             title: '提示',
@@ -522,14 +524,7 @@ export default {
     onClickHandleOrderGroup() {
       const { selected, type } = this;
 
-      if (!selected.length) {
-        Notification({
-          title: '提示',
-          message: '请先选中订单',
-          type: 'warning',
-        });
-        return;
-      } else {
+      if (selected.length) {
         // 处理订单弹窗
         this.isGroup = true;
         this.detail = {};
@@ -537,7 +532,25 @@ export default {
           type: 'updateDetailVisible',
           state: true,
         });
+        return;
       }
+
+      MessageBox.confirm(
+        `请至少选中一个订单，或选择『条件筛选批量${
+          type === 3 ? '修改' : '处理'
+        }』`,
+        {
+          cancelButtonText: '我知道了',
+          confirmButtonText: `条件筛选批量${type === 3 ? '修改' : '处理'}`,
+        }
+      ).then(() => {
+        this.isGroup = true;
+        this.detail = {};
+        this.$store.commit({
+          type: 'updateDetailVisible',
+          state: true,
+        });
+      });
     },
     onClickLogistics() {
       this.$store.commit({ type: 'updateLogisticsDialogVisible', state: true });

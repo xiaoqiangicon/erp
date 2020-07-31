@@ -8,6 +8,63 @@
         element-loading-background="rgba(0, 0, 0, 0.5)"
       >
         <div class="body">
+          <div class="cell" v-show="isGroup && !selected.length">
+            <div class="cell-title">筛选条件</div>
+            <div class="cell-body">
+              <div>
+                <label class="wd-100">佛事项目：</label>
+                <el-select
+                  style="width: 300px;"
+                  clearable
+                  size="medium"
+                  v-model="buddhistId"
+                  filterable
+                  placeholder="请选择或填写关键词搜索"
+                >
+                  <el-option
+                    v-for="item in buddhistList"
+                    :key="item.buddhistId"
+                    :label="item.buddhistName"
+                    :value="item.buddhistId"
+                  >
+                  </el-option>
+                </el-select>
+              </div>
+              <div class="mg-t-10" v-show="subList.length !== 0">
+                <label class="wd-100">佛事选择项：</label>
+                <el-select
+                  style="width: 300px;"
+                  size="medium"
+                  v-model="subId"
+                  filterable
+                  placeholder="请选择或填写关键词搜索"
+                >
+                  <el-option
+                    v-for="item in subList"
+                    :key="item.subId"
+                    :label="item.subName"
+                    :value="item.subId"
+                  >
+                  </el-option>
+                </el-select>
+              </div>
+              <div class="mg-t-10">
+                <label class="wd-100">下单时间：</label>
+                <el-date-picker
+                  style="width: 300px;"
+                  v-model="date"
+                  type="daterange"
+                  range-separator="-"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期"
+                  format="yyyy-MM-dd"
+                  value-format="yyyy-MM-dd"
+                  unlink-panels
+                >
+                </el-date-picker>
+              </div>
+            </div>
+          </div>
           <div class="cell">
             <div class="cell-title">处理反馈</div>
             <div class="cell-body">
@@ -234,6 +291,7 @@
 import VideoPlayer from './VideoPlayer';
 
 import { Notification } from 'element-ui';
+import _ from 'underscore';
 import seeAjax from 'see-ajax';
 import QRCode from '../../../../pro-com/src/libs-es5/qrcode';
 import ChooseImage from '../../com-deprecated/choose-image';
@@ -288,6 +346,11 @@ export default {
 
       // 下次处理时间
       nextFeedBackTime: '',
+
+      // 过滤参数
+      buddhistId: '',
+      subId: -1,
+      date: ['', ''],
     };
   },
   computed: {
@@ -296,6 +359,29 @@ export default {
     },
     visible() {
       return this.$store.state.detailDialogVisible;
+    },
+    buddhistList() {
+      return this.$store.state.buddhistList;
+    },
+    subList() {
+      // 为了兼容 360 兼容模式 不能使用 find
+      const curBuddhist = _.find(
+        this.buddhistList,
+        item => item.buddhistId === this.buddhistId
+      );
+
+      //      const curBuddhist = this.buddhistList.find(
+      //        item => item.buddhistId === this.buddhistId
+      //      );
+
+      if (curBuddhist) {
+        const subList = curBuddhist.subList;
+        return subList.length
+          ? [{ subName: '全部', subId: -1 }, ...subList]
+          : [];
+      } else {
+        return [];
+      }
     },
   },
   created() {
@@ -582,19 +668,37 @@ export default {
         orderIds = `[${this.id}]`;
       }
 
+      const params = {
+        orderIds,
+        pics: images,
+        videos,
+        courierCompanyCode,
+        logisticsOrder,
+        remark,
+        nextFeedBackTime,
+      };
+
+      if (isGroup && !this.selected.length) {
+        if (!this.buddhistId) {
+          Notification({
+            title: '提示',
+            message: '请选择一个佛事项目',
+            type: 'error',
+          });
+          return;
+        }
+
+        params.commodityId = this.buddhistId;
+        params.subdivideId = this.subId;
+        params.startTime = this.date[0];
+        params.endTime = this.date[1];
+      }
+
       this.handleLoading = true;
 
       seeAjax(
         'handleOrder',
-        {
-          orderIds,
-          pics: images,
-          videos,
-          courierCompanyCode,
-          logisticsOrder,
-          remark,
-          nextFeedBackTime,
-        },
+        params,
         res => {
           if (res.success) {
             this.handleLoading = false;

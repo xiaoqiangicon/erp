@@ -14,6 +14,8 @@ const store = new Vuex.Store({
     logisticsDialogVisible: false,
 
     videoPlayerVisible: false,
+    // 佛事列表
+    buddhistList: [],
   },
   mutations: {
     updateSelected(state, payload) {
