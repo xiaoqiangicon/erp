@@ -66,6 +66,11 @@ func.fillInfo = function(info) {
         src: info.licenceImage,
         'data-uploaded': 1,
       });
+    info.replenishCertificate &&
+      $('#image-replenish').attr({
+        src: info.replenishCertificate,
+        'data-uploaded': 1,
+      });
   }
 };
 func.initUI = function() {
