@@ -157,7 +157,7 @@
         <el-button
           type="success"
           size="medium"
-          v-show="type === 1 || type === 3"
+          v-show="type === 1 || type === 3 || type === 6"
           @click="onClickHandleOrderGroup"
         >
           <span v-if="type === 3">批量修改反馈</span>
@@ -377,7 +377,7 @@ export default {
 
       if (curBuddhist) {
         const subList = curBuddhist.subList;
-        return subList.length
+        return subList && subList.length
           ? [{ subName: '全部', subId: -1 }, ...subList]
           : [];
       } else {

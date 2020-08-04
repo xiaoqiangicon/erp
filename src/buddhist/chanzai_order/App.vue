@@ -116,7 +116,7 @@
         <el-button
           type="success"
           size="medium"
-          v-show="type === 1 || type === 2"
+          v-show="type === 1 || type === 2 || type === 6"
           @click="onClickHandleOrderGroup"
         >
           <span v-if="type === 2">批量修改反馈</span>

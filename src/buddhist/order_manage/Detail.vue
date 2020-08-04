@@ -272,7 +272,9 @@
           </div>
         </div>
         <div
-          v-show="type === 1 || type === 4 || type === 3 || type === 5"
+          v-show="
+            type === 1 || type === 4 || type === 3 || type === 5 || type === 6
+          "
           class="foot"
         >
           <div @click="onClickHandle" v-if="logisticsOrder" class="s-btn">
@@ -379,7 +381,7 @@ export default {
 
       if (curBuddhist) {
         const subList = curBuddhist.subList;
-        return subList.length
+        return subList && subList.length
           ? [{ subName: '全部', subId: -1 }, ...subList]
           : [];
       } else {
