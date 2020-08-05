@@ -113,12 +113,12 @@
     },
     {
       "id": "cash",
-      "name": "微善款",
+      "name": "财务中心",
       "icon": "glyphicon-briefcase",
       "subItems": [
         {
           "id": "cash-index",
-          "name": "善款统计",
+          "name": "财务统计",
           "link": "/zzhadmin/cashIndex/",
           "controlMark": "pw_money_center"
         },

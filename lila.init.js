@@ -179,7 +179,7 @@ export default lila => {
       tasks.push([
         '@lila/sync-dir',
         {
-          server: servers[0],
+          server: servers[serverEnvMap[argv.env]],
           remotePath:
             argv.env === 'test'
               ? '/data1/www/myerp/static/resources'
