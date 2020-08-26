@@ -97,6 +97,15 @@
             @keyup.enter.native="onClickSearch"
           ></el-input>
         </el-col>
+        <el-col :span="10">
+          <label for="">单号查询：</label>
+          <el-input
+            style="width: 350px;"
+            size="medium"
+            v-model="orderNo"
+            @keyup.enter.native="onClickSearch"
+          ></el-input>
+        </el-col>
       </el-row>
     </div>
 
@@ -307,6 +316,7 @@ export default {
       formatDate: ['', ''],
       tel: '',
       logisticsOrder: '',
+      orderNo: '',
       type: 1, // 1 未处理 3 已处理 4 已发货 2 全部订单 5 已发货
       orderByPriceType: 0,
       orderByTimeType: 0,
@@ -422,6 +432,7 @@ export default {
         orderByPriceType,
         orderByTimeType,
         orderId,
+        orderNo,
       } = this;
 
       seeAjax(
@@ -441,6 +452,7 @@ export default {
           orderByPriceType,
           orderByTimeType,
           orderId,
+          orderNo,
         },
         res => {
           if (res.success) {

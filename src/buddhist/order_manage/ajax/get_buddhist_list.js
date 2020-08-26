@@ -17,7 +17,11 @@ const refactor = {
   ],
 };
 
-const post = res => {};
+const post = res => {
+  res.data.forEach(item => {
+    item.buddhistName = item.commodityId + '-' + item.name;
+  });
+};
 
 seeAjax.config('getBuddhistList', {
   method: ['get'],
