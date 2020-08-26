@@ -1765,6 +1765,8 @@ var View = Backbone.View.extend({
           font_length = 0;
         }
         model.set('font_length', font_length);
+      } else if (inputType == 12) {
+        model.set('font_length', 10);
       } else {
         model.set('font_length', 0);
       }
@@ -3453,6 +3455,8 @@ var View = Backbone.View.extend({
                   postscriptWrap['inputType'] == 11))
             ) {
               postscriptWrap['font_length'] = curPostscriptArr[i].font_length;
+            } else if (postscriptWrap['inputType'] == 12) {
+              postscriptWrap['font_length'] = 10;
             } else {
               postscriptWrap['font_length'] = 0;
             }
@@ -3673,6 +3677,8 @@ var View = Backbone.View.extend({
         postScriptInner['isVerify'] = isVerify[i];
         if (inputType[i] == 15) {
           postScriptInner['font_length'] = font_length[i];
+        } else if (inputType[i] == 12) {
+          postScriptInner['font_length'] = 10;
         } else {
           postScriptInner['font_length'] = 0;
         }
@@ -5058,6 +5064,8 @@ var SizesAdditionView = Backbone.View.extend({
       self.model.set('inputType', psType);
       if (psType == 15) {
         self.model.set('font_length', 200);
+      } else if (psType == 12) {
+        self.model.set('font_length', 10);
       } else {
         self.model.set('font_length', 0);
       }
