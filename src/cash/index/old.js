@@ -51,7 +51,6 @@ $.ajaxSetup({
     .find('[data-year-content="' + currentYear + '"]')
     .html(
       commonData.tpl.paginationContentContainer.render({
-        page: 1,
         year: currentYear,
       })
     );

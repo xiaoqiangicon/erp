@@ -1,11 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import handleAjaxError from '../../com/handle-ajax-error';
-var requestKeys = {
-  list: {
-    page: 'pageNumber',
-  },
-};
 var responseRefactor = {
   list: {
     data: [
@@ -31,11 +26,6 @@ var responseRefactor = {
     },
   },
 };
-var preHandle = {
-  list: function(data) {
-    delete data.pageNumber;
-  },
-};
 var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
@@ -51,8 +41,6 @@ var postHandle = {
     res.data.chanzai = res.chanzaiOrderMoney;
   },
   list: function(res) {
-    res.currentPage = 1;
-    res.totalPages = 1;
     res.data.map(function(item) {
       var monthArray = item.month.split('-');
       item.year = parseInt(monthArray[0]);
@@ -79,22 +67,9 @@ const configs = {
       '/src/cash/account/edit/mock/info.json',
     ],
   },
-  requestKeys: {
-    list: [
-      requestKeys.list,
-      requestKeys.list,
-      {
-        year: 'year',
-        page: 'page',
-      },
-    ],
-  },
   responseRefactor: {
     list: [responseRefactor.list, responseRefactor.list],
     accountInfo: [responseRefactor.accountInfo, responseRefactor.accountInfo],
-  },
-  preHandle: {
-    list: [preHandle.list, preHandle.list],
   },
   postHandle: {
     common: [postHandle.common, postHandle.common],
@@ -111,24 +86,18 @@ seeAjax.config('common', {
 
 seeAjax.config('stat', {
   url: configs.url.stat,
-  requestKeys: configs.requestKeys.stat,
-  preHandle: configs.preHandle.stat,
   responseRefactor: configs.responseRefactor.stat,
   postHandle: configs.postHandle.stat,
 });
 
 seeAjax.config('list', {
   url: configs.url.list,
-  requestKeys: configs.requestKeys.list,
-  preHandle: configs.preHandle.list,
   responseRefactor: configs.responseRefactor.list,
   postHandle: configs.postHandle.list,
 });
 
 seeAjax.config('accountInfo', {
   url: configs.url.accountInfo,
-  requestKeys: configs.requestKeys.accountInfo,
-  preHandle: configs.preHandle.accountInfo,
   responseRefactor: configs.responseRefactor.accountInfo,
   postHandle: configs.postHandle.accountInfo,
 });

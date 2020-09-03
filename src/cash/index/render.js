@@ -135,23 +135,11 @@ export const renderSelectedYear = data => {
 };
 
 export const renderPaginationContent = (data, options) => {
-  const $el = $(
-    `[data-pagination-content="${options.page}"][data-year="${options.year}"]`
-  );
+  const $el = $(`[data-pagination-content][data-year="${options.year}"]`);
 
   var htmlString = '';
   data.map(function(item) {
     htmlString += commonData.tpl.detailUnit.render(item);
   });
   $el.html(htmlString || commonTpl.noData);
-};
-
-export const renderPagination = (data, options) => {
-  const $el = $(`[data-pagination][data-year="${options.year}"]`);
-
-  var i = 1,
-    il = data.totalPages;
-  data.pages = [];
-  for (; i <= il; i++) data.pages.push(i);
-  $el.html(commonData.tpl.pagination.render(data));
 };

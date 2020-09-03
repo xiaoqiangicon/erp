@@ -171,27 +171,6 @@
     <script type="text/html" id="tpl-select-year-item">
       <li><a class="item" data-select-year="${year}" href="javascript: void(0);">${year}年</a></li>
     </script>
-    <script type="text/html" id="tpl-pagination">
-      {@if totalPages > 1 && currentPage != 1}
-      <button class="btn btn-default btn-sm pdl20 pdr20 mgr20" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-1" data-year="${year}">上一页</button>
-      {@/if}
-      {@if totalPages <= 7}
-      {@each pages as page}
-      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}" data-year="${year}">${page}</button>
-      {@/each}
-      {@else}
-      {@each pages as page}
-      {@if page == 1 || page == totalPages || currentPage <= 4 && page <= 4 || currentPage >= totalPages - 3 && page >= totalPages - 3 || currentPage - page == 1 || currentPage - page == 0 || currentPage - page == -1}
-      <button class="clean-button pagination-cell {@if currentPage == page}active{@/if}" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="${page}" data-year="${year}">${page}</button>
-      {@else if currentPage >4 && page == 2 || currentPage < totalPages - 3 && page == totalPages - 1}
-      <button class="clean-button pagination-cell disabled">...</button>
-      {@/if}
-      {@/each}
-      {@/if}
-      {@if totalPages > 1 && currentPage != totalPages}
-      <button class="btn btn-default btn-sm pdl20 pdr20 mgl20" data-current-page="${currentPage}" data-total-pages="${totalPages}" data-page-index="-2" data-year="${year}">下一页</button>
-      {@/if}
-    </script>
     <script type="text/html" id="tpl-pagination-container">
       <div class="pagination" data-pagination="${year}"></div>
     </script>
@@ -222,7 +201,7 @@
       <div data-year-content="${year}"></div>
     </script>
     <script type="text/html" id="tpl-pagination-content-container">
-      <div data-pagination-content="${page}" data-year="${year}">
+      <div data-pagination-content data-year="${year}">
           <div class="common-placeholder"><img src="https://pic.zizaihome.com/1790508a-22c5-11e9-9b75-00163e0c001e.gif"></div>
       </div>
     </script>
