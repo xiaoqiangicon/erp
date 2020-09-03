@@ -4,7 +4,7 @@
       <div class="header-left">
         <p class="header-title">开票说明</p>
         <p class="header-tips">1、企业可申请增值税普通发票（电子）</p>
-        <p class="header-tips">2、开票内容：增值服务费</p>
+        <p class="header-tips">2、开票内容：信息技术服务费</p>
         <p class="header-tips">
           3、提交申请后，工作人员将在7个工作日内为您处理
         </p>
@@ -70,12 +70,18 @@
       <el-table-column label="操作" :align="'center'">
         <template slot-scope="scope">
           <div style="display: flex;">
-            <el-button
-              type="primary"
-              @click="download(scope)"
-              v-if="scope.row.status === 0"
-              >下载发票</el-button
+            <el-tooltip
+              content="若浏览器直接打开预览了发票文件，在右上角点击“保存”或“下载”"
+              placement="top"
+              effect="dark"
             >
+              <el-button
+                type="primary"
+                @click="download(scope)"
+                v-if="scope.row.status === 0"
+                >下载发票</el-button
+              >
+            </el-tooltip>
             <el-button
               type="primary"
               @click="detail(scope)"

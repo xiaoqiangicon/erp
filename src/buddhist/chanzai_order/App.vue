@@ -54,12 +54,21 @@
         </el-col>
       </el-row>
       <el-row class="mg-b-10" style="line-height: 40px;">
-        <el-col :span="10">
+        <el-col :span="11">
           <label for="">物流单号：</label>
           <el-input
             style="width: 350px;"
             size="medium"
             v-model="logisticsOrder"
+            @keyup.enter.native="onClickSearch"
+          ></el-input>
+        </el-col>
+        <el-col :span="10">
+          <label for="">单号查询：</label>
+          <el-input
+            style="width: 350px;"
+            size="medium"
+            v-model="orderNo"
             @keyup.enter.native="onClickSearch"
           ></el-input>
         </el-col>
@@ -262,6 +271,7 @@ export default {
       formatDate: ['', ''],
       tel: '',
       logisticsOrder: '',
+      orderNo: '',
       type: 1, // 1 未处理 2 已处理  3 已发货 4 已收货 6 多次处理
       // 分页
       currentSize: 25,
@@ -346,6 +356,7 @@ export default {
         formatDate,
         tel,
         logisticsOrder,
+        orderNo,
       } = this;
 
       seeAjax(
@@ -359,6 +370,7 @@ export default {
           endDate: formatDate[1],
           tel,
           logisticsOrder,
+          orderNo,
         },
         res => {
           if (res.success) {

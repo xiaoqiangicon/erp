@@ -19,7 +19,7 @@ export const list = {
     {
       id: 2,
       addTime: '2020-02-03 14:22:23',
-      status: 1,
+      status: 0,
       note: '备注',
       bankName: '开户行',
       bankNo: 12345678901,
@@ -32,7 +32,7 @@ export const list = {
     {
       id: 3,
       addTime: '2020-02-03 14:22:23',
-      status: 1,
+      status: 2,
       note: '备注',
       bankName: '开户行',
       bankNo: 12345678901,
