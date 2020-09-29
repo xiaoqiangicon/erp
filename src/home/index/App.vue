@@ -112,7 +112,7 @@ export default {
         },
         p3: {
           picUrl:
-            'https://pic.zizaihome.com/d4ddb709-5113-469c-bc50-052994731a21.png',
+            'https://pic.zizaihome.com/d0d9a7d4-1ea7-49b0-8e03-092ba4a5e59a.png',
           name: '推荐位03',
           link: '',
           id: -1,

@@ -14,10 +14,12 @@
     <script>
       window.localStorage['templeId'] = parseInt('{{temple_id}}');
       window.localStorage['templeName'] = '{{temple_name}}';
+      window.localStorage['templeType'] = '{{temple_type}}'; // type=4法师类型，不展示增值服务这块菜单
 
       // 兼容之前的数据
       window.localStorage['templeid'] = window.localStorage['templeId'];
       window.localStorage['templename'] = window.localStorage['templeName'];
+      window.localStorage['templeType'] = window.localStorage['templeType'];
     </script>
   </body>
 </html>

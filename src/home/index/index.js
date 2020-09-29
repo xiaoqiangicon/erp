@@ -5,6 +5,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import api from './api';
 import { Dialog } from 'element-ui';
+import $ from 'jquery';
 
 Vue.config.devtools = true;
 Vue.use(Dialog);
@@ -23,6 +24,15 @@ api
         res.buddhaWallCount;
       window.localStorage.orderNumber = res.commodityCount;
       window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
+
+      $('[data-menu-item-id="wall"]')
+        .parent()
+        .hide();
+      $('[data-menu-item-id="wall"]')
+        .parent()
+        .prev()
+        .hide();
+      $('[data-menu-sub-item-id="order-credits"]').hide();
     }, 300);
   });
 

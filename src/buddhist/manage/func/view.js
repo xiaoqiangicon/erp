@@ -37,7 +37,7 @@ seeView({
     'change [data-ele="more-opt"]': 'onClickMoreOpt',
     'hidden.bs.select [data-ele="more-opt"]': 'hiddenMoreOpt',
     'click #confirm-set-tmpl': 'onClickConfirmSetTmpl',
-    'click #cancle-set-tmpl': 'onClickCancelSetTmpl',
+    'click #cancel-set-tmpl': 'onClickCancelSetTmpl',
     'show.bs.modal #set-prt-modal': 'onShowSetPrtModal',
     'changed.bs.select #sub-prt-select': 'onChangeSubPrtSelect',
     'click [data-ele="sub-checkbox"]': 'onClickSubCheckbox',
