@@ -137,6 +137,25 @@
       ]
     },
     {
+      "id": "structure",
+      "name": "组织架构",
+      "icon": "glyphicon-user",
+      "subItems": [
+        {
+          "id": "structure-personel",
+          "name": "人员管理",
+          "link": "/zzhadmin/managerUser/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-verify",
+          "name": "人员审核",
+          "link": "/zzhadmin/managerUserVerify/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
       "id": "insurance",
       "name": "医保管理",
       "icon": "glyphicon-gas",
