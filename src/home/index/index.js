@@ -25,14 +25,16 @@ api
       window.localStorage.orderNumber = res.commodityCount;
       window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
 
-      $('[data-menu-item-id="wall"]')
-        .parent()
-        .hide();
-      $('[data-menu-item-id="wall"]')
-        .parent()
-        .prev()
-        .hide();
-      $('[data-menu-sub-item-id="order-credits"]').hide();
+      if (window.localStorage.templeType === 4) {
+        $('[data-menu-item-id="wall"]')
+          .parent()
+          .hide();
+        $('[data-menu-item-id="wall"]')
+          .parent()
+          .prev()
+          .hide();
+        $('[data-menu-sub-item-id="order-credits"]').hide();
+      }
     }, 300);
   });
 

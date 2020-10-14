@@ -152,7 +152,7 @@ export default {
       window.location.href = `/zzhadmin/signRecordIndex?id=${row.id}`;
     },
     handleCurrentChange(page) {
-      this.currentPage = page - 1;
+      this.currentPage = page;
       this.fetchList();
     },
     closeInvite() {
