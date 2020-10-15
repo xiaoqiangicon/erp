@@ -39,6 +39,12 @@
         </el-table-column>
         <el-table-column prop="addTime" label="申请时间" :align="'center'" />
         <el-table-column prop="memo" label="申请备注" :align="'center'" />
+        <el-table-column
+          prop="refuceReason"
+          label="拒绝原因"
+          :align="'center'"
+          v-if="status === 2"
+        />
         <el-table-column label="操作" :align="'center'" v-if="status === 1">
           <template slot-scope="scope">
             <div>
@@ -47,12 +53,6 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="refuceReason"
-          label="拒绝原因"
-          :align="'center'"
-          v-else
-        />
       </el-table>
     </div>
     <Detail :detail="detail" />
@@ -81,6 +81,7 @@
 <script>
 import Detail from './Detail';
 import seeAjax from 'see-ajax';
+import { MessageBox } from 'element-ui';
 
 export default {
   name: 'APP',
@@ -118,6 +119,10 @@ export default {
       this.showReject = !0;
     },
     confirmReject() {
+      if (!this.reason) {
+        MessageBox.alert(`请填写拒绝原因？`);
+        return;
+      }
       seeAjax(
         'verifyManager',
         { id: this.detail.id, status: 2, content: this.reason },
@@ -167,7 +172,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 3000;
+  z-index: 1000;
 }
 .mask-content {
   position: absolute;

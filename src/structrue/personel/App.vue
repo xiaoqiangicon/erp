@@ -182,6 +182,9 @@ export default {
   font-size: 16px;
   cursor: pointer;
 }
+.role-name {
+  color: #6fba2c;
+}
 .right {
   width: 74%;
   flex-shrink: 0;
