@@ -143,37 +143,6 @@
       ]
     },
     {
-      "id": "structure",
-      "name": "组织架构",
-      "icon": "glyphicon-user",
-      "subItems": [
-        {
-          "id": "structure-personel",
-          "name": "人员管理",
-          "link": "/zzhadmin/managerUser/",
-          "controlMark": "pw_office"
-        },
-        {
-          "id": "structure-verify",
-          "name": "人员审核",
-          "link": "/zzhadmin/managerUserVerify/",
-          "controlMark": "pw_office"
-        },
-        {
-          "id": "structure-class",
-          "name": "签到寺务",
-          "link": "/zzhadmin/signActivityIndex/",
-          "controlMark": "pw_office"
-        },
-        {
-          "id": "structure-sign",
-          "name": "签到记录",
-          "link": "/zzhadmin/signRecordIndex/",
-          "controlMark": "pw_office"
-        }
-      ]
-    },
-    {
       "id": "insurance",
       "name": "医保管理",
       "icon": "glyphicon-gas",
@@ -182,12 +151,6 @@
           "id": "insurance-index",
           "name": "待办事项",
           "link": "/zzhadmin/insuranceTodoHtml/",
-          "controlMark": "pw_insurance"
-        },
-        {
-          "id": "insurance-person",
-          "name": "人员管理",
-          "link": "/zzhadmin/insurancePersonalHtml/",
           "controlMark": "pw_insurance"
         },
         {
@@ -311,6 +274,52 @@
           "name": "分享推广",
           "link": "/zzhadmin/promotionListHtml/",
           "controlMark": "pw_promotion"
+        }
+      ]
+    }
+  ],
+  "zizaicloudItems": [
+    {
+      "id": "structure",
+      "name": "组织架构",
+      "icon": "glyphicon-user",
+      "subItems": [
+        {
+          "id": "structure-personel",
+          "name": "人员管理",
+          "link": "/zzhadmin/managerUser/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-verify",
+          "name": "人员审核",
+          "link": "/zzhadmin/managerUserVerify/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-class",
+          "name": "签到寺务",
+          "link": "/zzhadmin/signActivityIndex/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-sign",
+          "name": "签到记录",
+          "link": "/zzhadmin/signRecordIndex/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "secure",
+      "name": "食品安全",
+      "icon": "glyphicon-gas",
+      "subItems": [
+        {
+          "id": "secure-food",
+          "name": "检查记录",
+          "link": "/zzhadmin/foodInspect/",
+          "controlMark": "pw_office"
         }
       ]
     }

@@ -7,8 +7,10 @@ import initNotice from './util/init_notice';
 import initAccess from './util/init_access';
 const $body = $('body');
 export default res => {
+  console.log('菜单', res);
   fillItemsFields(res.items);
   fillItemsFields(res.superItems);
+  fillItemsFields(res.zizaicloudItems);
   $body.prepend(tplContainer);
   $('#component-nav-header').html(tplHeader);
   $('#component-nav-menu').html(
@@ -21,9 +23,15 @@ export default res => {
       items: res.superItems,
     })
   );
+  $('#zizaicloud-component-nav-menu').html(
+    tplItems({
+      items: res.zizaicloudItems,
+    })
+  );
   initNotice();
   initAccess(res.items);
   initAccess(res.superItems);
+  initAccess(res.zizaicloudItems);
   const id = $body.attr('data-menu-id');
   const $menuItem = $(`[data-menu-sub-item-id="${id}"]`);
   $menuItem.addClass('active');
