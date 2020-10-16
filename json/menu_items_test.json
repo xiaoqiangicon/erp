@@ -311,9 +311,28 @@
       ]
     },
     {
+      "id": "inspect",
+      "name": "安全巡查",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "inspect-manage",
+          "name": "巡查管理",
+          "link": "/zzhadmin/foodInspect/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "inspect-record",
+          "name": "巡查记录",
+          "link": "/zzhadmin/foodInspect/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
       "id": "secure",
       "name": "食品安全",
-      "icon": "glyphicon-gas",
+      "icon": "glyphicon-file",
       "subItems": [
         {
           "id": "secure-food",
