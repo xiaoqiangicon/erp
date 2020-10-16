@@ -318,13 +318,13 @@
         {
           "id": "inspect-manage",
           "name": "巡查管理",
-          "link": "/zzhadmin/foodInspect/",
+          "link": "/zzhadmin/placeInspectManage/",
           "controlMark": "pw_office"
         },
         {
           "id": "inspect-record",
           "name": "巡查记录",
-          "link": "/zzhadmin/foodInspect/",
+          "link": "/zzhadmin/placeInspectRecord/",
           "controlMark": "pw_office"
         }
       ]
