@@ -133,6 +133,12 @@
           "name": "发票管理",
           "link": "/zzhadmin/receiptIndex/",
           "controlMark": "pw_money_center"
+        },
+        {
+          "id": "cash-supply",
+          "name": "资产管理",
+          "link": "/zzhadmin/supplyIndex/",
+          "controlMark": "pw_money_center"
         }
       ]
     },

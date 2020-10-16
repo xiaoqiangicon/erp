@@ -47,7 +47,7 @@
         />
         <el-table-column label="操作" :align="'center'" v-if="status === 1">
           <template slot-scope="scope">
-            <div>
+            <div v-if="status === 1">
               <span class="btn allow" @click="allow(scope.row)">通过</span>
               <span class="btn reject" @click="reject(scope.row)">拒绝</span>
             </div>
