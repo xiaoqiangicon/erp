@@ -133,12 +133,6 @@
           "name": "发票管理",
           "link": "/zzhadmin/receiptIndex/",
           "controlMark": "pw_money_center"
-        },
-        {
-          "id": "cash-supply",
-          "name": "资产管理",
-          "link": "/zzhadmin/supplyIndex/",
-          "controlMark": "pw_money_center"
         }
       ]
     },
@@ -339,6 +333,25 @@
           "name": "检查记录",
           "link": "/zzhadmin/foodInspect/",
           "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "财务管理",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "finance-account",
+          "name": "财务记账",
+          "link": "/zzhadmin/managerAccount/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "finance-supply",
+          "name": "资产管理",
+          "link": "/zzhadmin/supplyIndex/",
+          "controlMark": "pw_money_center"
         }
       ]
     }

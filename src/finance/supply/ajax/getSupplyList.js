@@ -29,5 +29,5 @@ seeAjax.config('getSupplyList', {
   method: ['post'],
   stringify: [!0],
   post: [post, post, post],
-  url: ['/zzhadmin/getSuppliesList/', '/src/cash/supply/mock/getSupplyList'],
+  url: ['/zzhadmin/getSuppliesList/', '/src/finance/supply/mock/getSupplyList'],
 });
