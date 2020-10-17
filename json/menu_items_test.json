@@ -255,6 +255,18 @@
           "name": "客流统计",
           "link": "/zzhadmin/traffic/",
           "controlMark": "pw_guest_traffic"
+        },
+        {
+          "id": "hardware-manage",
+          "name": "设备管理",
+          "link": "/zzhadmin/traffic/",
+          "controlMark": "pw_guest_traffic"
+        },
+        {
+          "id": "hardware-status",
+          "name": "设备状态",
+          "link": "/zzhadmin/traffic/",
+          "controlMark": "pw_guest_traffic"
         }
       ]
     },
@@ -319,6 +331,19 @@
           "id": "inspect-record",
           "name": "巡查记录",
           "link": "/zzhadmin/placeInspectRecord/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "file",
+      "name": "文件管理",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "file-manage",
+          "name": "文件列表",
+          "link": "/zzhadmin/managerAccount/",
           "controlMark": "pw_office"
         }
       ]

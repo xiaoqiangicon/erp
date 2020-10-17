@@ -11,5 +11,8 @@ seeAjax.config('getBillList', {
   method: ['post'],
   stringify: [!0],
   post: [post, post, post],
-  url: ['/zzhadmin/getBillList/', '/src/finance/account/mock/getBillList'],
+  url: [
+    '/zzhadmin/getManagerBillList/',
+    '/src/finance/account/mock/getBillList',
+  ],
 });

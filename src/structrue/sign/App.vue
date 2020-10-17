@@ -61,6 +61,8 @@
 import seeAjax from 'see-ajax';
 import { urlParams } from '../../../../pro-com/src/utils';
 
+let firstSign = !0;
+
 export default {
   name: 'APP',
   data() {
@@ -69,6 +71,7 @@ export default {
       activityList: [],
       signId: '',
       date: '',
+      total: 0,
       currentPage: 1,
       pageSize: 25,
     };
@@ -88,7 +91,9 @@ export default {
         },
         res => {
           if (res.success) {
-            this.signId = parseInt(urlParams.id, 10) || '';
+            if (firstSign) {
+              this.signId = parseInt(urlParams.id, 10) || '';
+            }
             this.tableList = res.data.list;
             this.total = res.data.total;
           }
@@ -99,7 +104,14 @@ export default {
       seeAjax('getActivityList', { pageNum: 1, pageSize: 1000 }, res => {
         if (res.success) {
           this.activityList = res.data.list;
-          this.signId = this.signId ? this.signId : res.data.list[0].id;
+          if (firstSign) {
+            this.signId = this.signId
+              ? this.signId
+              : res.data.list.length
+              ? res.data.list[0].id
+              : '';
+            firstSign = !1;
+          }
           this.fetchList();
         }
       });

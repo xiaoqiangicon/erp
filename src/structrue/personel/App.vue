@@ -103,7 +103,7 @@ export default {
         if (detailRes.success) {
           this.typeList.forEach((item, key) => {
             this.list[key] = detailRes.data.filter(detailItem => {
-              return detailItem.type == item.value;
+              return detailItem.type == item.vaule;
             });
           });
           this.code = detailRes.code;
@@ -117,6 +117,7 @@ export default {
       seeAjax('getUserType', {}, res => {
         if (res.success) {
           this.typeList = res.data;
+          console.log('typeList', this.typeList);
           this.fetchList();
         }
       });

@@ -39,12 +39,13 @@
         </el-table-column>
         <el-table-column prop="addTime" label="申请时间" :align="'center'" />
         <el-table-column prop="memo" label="申请备注" :align="'center'" />
-        <el-table-column
-          prop="refuceReason"
-          label="拒绝原因"
-          :align="'center'"
-          v-if="status === 2"
-        />
+        <el-table-column label="拒绝原因" :align="'center'" v-if="status === 2">
+          <template slot-scope="scope">
+            <div v-if="status === 2">
+              <span>{{ scope.row.refuceReason }}</span>
+            </div>
+          </template>
+        </el-table-column>
         <el-table-column label="操作" :align="'center'" v-if="status === 1">
           <template slot-scope="scope">
             <div v-if="status === 1">
