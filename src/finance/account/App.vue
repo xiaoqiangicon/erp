@@ -78,7 +78,7 @@
         :page-size="pageSize"
         :current-page="currentPage"
         layout="prev, pager, next"
-        :total="total"
+        :total="count"
       ></el-pagination>
     </el-card>
     <div class="mask" v-if="showDetail">
@@ -162,7 +162,7 @@ export default {
       showDetail: !1,
       id: '',
       currentPage: 1,
-      total: 0,
+      count: 0,
       pageSize: 25,
     };
   },
@@ -185,8 +185,8 @@ export default {
         res => {
           if (res.success) {
             this.tableList = res.data.list;
-            this.total = res.data.count;
-            this.total = res.data.get - res.data.pay;
+            this.count = res.data.count;
+            this.total = (res.data.get - res.data.pay).toFixed(2);
             this.get = res.data.get;
             this.pay = res.data.pay;
             this.getNum = res.data.getNum;

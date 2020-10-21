@@ -70,19 +70,19 @@
             <div>
               <p class="time">{{ scope.row.addTime }}</p>
               <div class="info-box">
-                <img class="avatar" :src="scope.row.pic" alt="" />
-                <span>{{ scope.row.name }}</span>
+                <img class="avatar" :src="scope.row.headImg" alt="" />
+                <span>{{ scope.row.managerName }}</span>
               </div>
             </div>
           </template>
         </el-table-column>
         <el-table-column label="最近盘点人" :align="'center'">
           <template slot-scope="scope">
-            <div>
-              <p class="time">{{ scope.row.addTime }}</p>
+            <div v-if="scope.row.inventory.addTime">
+              <p class="time">{{ scope.row.inventory.addTime }}</p>
               <div class="info-box">
-                <img class="avatar" :src="scope.row.pic" alt="" />
-                <span>{{ scope.row.name }}</span>
+                <img class="avatar" :src="scope.row.inventory.headImg" alt="" />
+                <span>{{ scope.row.inventory.managerName }}</span>
               </div>
             </div>
           </template>
@@ -209,7 +209,7 @@ export default {
   name: 'APP',
   data() {
     return {
-      searchType: '',
+      searchType: 0,
       date: ['', ''],
       formatDate: ['', ''],
       tableList: [],
@@ -248,7 +248,7 @@ export default {
           pageSize: this.pageSize,
           startTime: this.formatDate[0],
           endTime: this.formatDate[1],
-          type: this.searchType,
+          type: this.searchType || 0,
         },
         res => {
           if (res.success) {
@@ -308,6 +308,7 @@ export default {
           pic: this.pic,
           remarks: this.remarks,
           id: this.id,
+          status: this.status,
         },
         res => {
           if (res.success) {

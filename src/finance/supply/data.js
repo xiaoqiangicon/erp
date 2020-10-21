@@ -1,4 +1,5 @@
 export const typeList = [
+  { id: 0, name: '全部' },
   { id: 1, name: '文物及陈列品' },
   { id: 2, name: '图书文物' },
   { id: 3, name: '文艺体育设备' },

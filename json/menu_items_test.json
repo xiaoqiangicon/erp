@@ -256,12 +256,7 @@
           "link": "/zzhadmin/traffic/",
           "controlMark": "pw_guest_traffic"
         },
-        {
-          "id": "hardware-manage",
-          "name": "设备管理",
-          "link": "/zzhadmin/traffic/",
-          "controlMark": "pw_guest_traffic"
-        },
+
         {
           "id": "hardware-status",
           "name": "设备状态",
@@ -343,7 +338,7 @@
         {
           "id": "file-manage",
           "name": "文件列表",
-          "link": "/zzhadmin/managerAccount/",
+          "link": "/zzhadmin/managerFile/",
           "controlMark": "pw_office"
         }
       ]
