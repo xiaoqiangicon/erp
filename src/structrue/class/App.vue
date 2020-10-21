@@ -56,7 +56,7 @@
             人员可通过微信扫描二维码打开小程序签到，可打印印刷固定在签到位置。
           </p>
           <div class="qrcode">
-            <img src="" alt="" />
+            <img class="qrcode-img" :src="signCode" alt="" />
           </div>
           <div class="download" @click="download">下载二维码</div>
         </div>
@@ -81,6 +81,7 @@ export default {
       total: 0,
       pageSize: 25,
       showInvite: !1,
+      signCode: '',
     };
   },
   components: {
@@ -147,6 +148,7 @@ export default {
     },
     showSignCode(row) {
       this.showInvite = !0;
+      this.signCode = row.signCode;
     },
     toSign(row) {
       window.location.href = `/zzhadmin/signRecordIndex?id=${row.id}`;

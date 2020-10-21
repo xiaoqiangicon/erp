@@ -6,6 +6,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     detailDialogVisible: !1,
+    roleList: [],
   },
   mutations: {
     updateDetailVisible(state, payload) {

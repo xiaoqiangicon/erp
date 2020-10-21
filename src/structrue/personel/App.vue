@@ -46,7 +46,7 @@
         </el-table>
       </div>
     </div>
-    <Detail :detail="detail" :roleList="typeList" />
+    <Detail :detail="detail" />
     <div class="mask" v-if="showInvite">
       <div class="mask-content">
         <div class="invite-header">
@@ -117,6 +117,7 @@ export default {
       seeAjax('getUserType', {}, res => {
         if (res.success) {
           this.typeList = res.data;
+          this.$store.state.roleList = res.data;
           console.log('typeList', this.typeList);
           this.fetchList();
         }

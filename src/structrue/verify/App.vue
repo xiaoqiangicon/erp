@@ -33,7 +33,7 @@
         <el-table-column label="面部" :align="'center'">
           <template slot-scope="scope">
             <div>
-              <img class="avatar" :src="scope.row.headImg" alt="" />
+              <img class="avatar" v-gallery :src="scope.row.headImg" alt="" />
             </div>
           </template>
         </el-table-column>

@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Vue from 'vue';
 import App from './App.vue';
 import store from './store';
+import gallery from 'img-vuer';
 import './ajax';
 import {
   Dialog,
@@ -27,6 +28,7 @@ Vue.use(TableColumn);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Input);
+Vue.use(gallery);
 
 new Vue({
   el: '#app',

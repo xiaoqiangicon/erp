@@ -26,12 +26,12 @@
               </div>
               <div class="row mg-b-20">
                 <p class="row-title">角色</p>
-                <el-select v-if="isModify" v-model="type">
+                <el-select value-key="value" v-if="isModify" v-model="type">
                   <el-option
                     v-for="item in roleList"
-                    :key="item.value"
+                    :key="item.vaule"
                     :label="item.name"
-                    :value="item.value"
+                    :value="item.vaule"
                   >
                   </el-option>
                 </el-select>
@@ -60,7 +60,20 @@
               </div>
               <div class="row">
                 <p class="row-title">面部照片</p>
-                <img class="avatar" :src="headImg" alt="" />
+                <div class="avatar-box">
+                  <img class="avatar" :src="covers[0]" alt="" />
+                  <span
+                    class="avatar-remove"
+                    @click="removeAvatar"
+                    v-if="covers[0] && isModify"
+                    >×</span
+                  >
+                  <Upload
+                    v-if="!covers.length && isModify"
+                    :images="covers"
+                    :multiple="false"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -79,7 +92,7 @@
         <div class="del-content">
           <div class="del-header">
             <p class="del-title">删除确认</p>
-            <span class="close-del">×</span>
+            <span class="close-del" @click="showDel = !1">×</span>
           </div>
           <div class="del-body">
             <div class="del-manager">
@@ -103,36 +116,46 @@
 
 <script>
 import seeAjax from 'see-ajax';
+import Upload from '../../com/upload/Upload';
 
 export default {
   name: 'Detail',
-  props: ['detail', 'roleList'],
+  props: ['detail'],
   data() {
     return {
       showDel: !1,
       isModify: !1,
       sexList: [{ name: '男', value: 1 }, { name: '女', value: 2 }],
       name: '',
+      id: '',
       sex: 0,
-      type: 0,
+      type: 2,
       mobile: '',
       memo: '',
       headImg: '',
+      covers: [],
     };
+  },
+  components: {
+    Upload,
   },
   computed: {
     visible() {
       return this.$store.state.detailDialogVisible;
     },
+    roleList() {
+      return this.$store.state.roleList;
+    },
   },
   watch: {
     detail(newVal) {
+      this.id = newVal.id;
       this.name = newVal.name;
       this.sex = newVal.sex;
       this.type = newVal.type;
       this.mobile = newVal.mobile;
       this.memo = newVal.memo;
-      this.headImg = newVal.headImg;
+      this.covers = newVal.headImg ? [newVal.headImg] : [];
     },
   },
   methods: {
@@ -140,12 +163,13 @@ export default {
       seeAjax(
         'update',
         {
+          id: this.id,
           name: this.name,
           sex: this.sex,
           type: this.type,
           mobile: this.mobile,
           memo: this.memo,
-          headImg: this.headImg,
+          headImg: this.covers[0],
         },
         res => {
           if (res.success) {
@@ -161,7 +185,11 @@ export default {
         }
       });
     },
+    removeAvatar() {
+      this.covers = [];
+    },
     onClickMask() {
+      this.isModify = !1;
       this.$store.commit({ type: 'updateDetailVisible', state: false });
     },
   },
@@ -206,7 +234,7 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 500px;
-  height: 220px;
+  height: 230px;
   background-color: #fff;
   border-radius: 8px;
 }
@@ -221,6 +249,7 @@ export default {
 .close-del {
   font-size: 22px;
   font-weight: bold;
+  cursor: pointer;
 }
 .del-manager {
   display: flex;
@@ -392,6 +421,24 @@ export default {
 .row-value {
   font-size: 16px;
   font-weight: bold;
+}
+.avatar-box {
+  position: relative;
+}
+.avatar-remove {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
+  cursor: pointer;
 }
 .avatar {
   width: 100px;

@@ -8,6 +8,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import './ajax';
 import store from './store';
+import gallery from 'img-vuer';
 import {
   Dialog,
   Card,
@@ -26,6 +27,7 @@ Vue.use(TableColumn);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Input);
+Vue.use(gallery);
 
 new Vue({
   el: '#app',

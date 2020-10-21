@@ -77,23 +77,32 @@ export default {
     };
   },
   created() {
+    this.signId = parseInt(urlParams.id, 10) || '';
     this.fetchActivity();
+  },
+  computed: {
+    time() {
+      return (
+        new Date(this.date).getFullYear() +
+        '-' +
+        (new Date(this.date).getMonth() + 1) +
+        '-' +
+        new Date(this.date).getDate()
+      );
+    },
   },
   methods: {
     fetchList() {
       seeAjax(
         'getList',
         {
-          time: this.date,
+          time: this.date ? this.time : '',
           pageNum: this.currentPage,
           pageSize: this.pageSize,
           signId: this.signId,
         },
         res => {
           if (res.success) {
-            if (firstSign) {
-              this.signId = parseInt(urlParams.id, 10) || '';
-            }
             this.tableList = res.data.list;
             this.total = res.data.total;
           }
@@ -104,12 +113,8 @@ export default {
       seeAjax('getActivityList', { pageNum: 1, pageSize: 1000 }, res => {
         if (res.success) {
           this.activityList = res.data.list;
-          if (firstSign) {
-            this.signId = this.signId
-              ? this.signId
-              : res.data.list.length
-              ? res.data.list[0].id
-              : '';
+          if (firstSign && !this.signId) {
+            this.signId = res.data.list.length ? res.data.list[0].id : '';
             firstSign = !1;
           }
           this.fetchList();
