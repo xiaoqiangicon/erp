@@ -50,7 +50,7 @@
             人员可通过微信扫描二维码打开巡查签到。
           </p>
           <div class="qrcode">
-            <img src="" alt="" />
+            <img :src="code" alt="" />
           </div>
           <div class="download" @click="download">下载二维码</div>
         </div>
@@ -74,6 +74,7 @@ export default {
       total: 0,
       pageSize: 25,
       showInvite: !1,
+      code: '',
     };
   },
   components: {
@@ -108,7 +109,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning',
       }).then(() => {
-        seeAjax('del', { signId: row.id }, res => {
+        seeAjax('del', { id: row.id, status: -1 }, res => {
           if (res.success) {
             window.location.reload();
           }
@@ -117,6 +118,7 @@ export default {
     },
     showSignCode(row) {
       this.showInvite = !0;
+      this.code = row.code;
     },
     toSign(row) {
       window.location.href = `/zzhadmin/placeInspectRecord?id=${row.id}`;

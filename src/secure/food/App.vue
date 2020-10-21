@@ -151,6 +151,10 @@ export default {
     margin-right: 10px;
   }
 }
+.pic {
+  max-width: 100%;
+  max-height: 200px;
+}
 .avatar {
   width: 100px;
   height: 150px;
