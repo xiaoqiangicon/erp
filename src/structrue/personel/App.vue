@@ -145,8 +145,7 @@ export default {
       this.showInvite = !1;
     },
     download() {
-      // let canvas = $(this.$refs.qrcode).find('canvas')[0];
-      // Canvas2Image.saveAsPNG(canvas);
+      window.open(this.code);
     },
   },
 };

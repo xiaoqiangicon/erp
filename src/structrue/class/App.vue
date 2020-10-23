@@ -9,6 +9,7 @@
         :data="tableList"
         tooltip-effect="dark"
         style="width: 100%"
+        v-loading="loading"
       >
         <el-table-column prop="name" label="项目名称" :align="'center'" />
         <el-table-column label="签到时间" :align="'center'">
@@ -82,6 +83,7 @@ export default {
       pageSize: 25,
       showInvite: !1,
       signCode: '',
+      loading: !0,
     };
   },
   components: {
@@ -92,6 +94,7 @@ export default {
   },
   methods: {
     fetchList() {
+      this.loading = !0;
       seeAjax(
         'getActivityList',
         { pageNum: this.currentPage, pageSize: this.pageSize },
@@ -111,6 +114,7 @@ export default {
               });
               item.deviceStr = deviceStr;
             });
+            this.loading = !1;
             this.$forceUpdate();
           }
         }
@@ -160,7 +164,9 @@ export default {
     closeInvite() {
       this.showInvite = !1;
     },
-    download() {},
+    download() {
+      window.open(this.signCode);
+    },
   },
 };
 </script>

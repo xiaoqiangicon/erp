@@ -82,11 +82,12 @@
               <p class="time">{{ scope.row.inventory.addTime }}</p>
               <div class="info-box">
                 <img class="avatar" :src="scope.row.inventory.headImg" alt="" />
-                <span>{{ scope.row.inventory.managerName }}</span>
+                <span>{{ scope.row.inventory.name }}</span>
               </div>
             </div>
           </template>
         </el-table-column>
+
         <el-table-column label="操作" :align="'center'">
           <template slot-scope="scope">
             <div>
