@@ -54,6 +54,7 @@
         :data="tableList"
         tooltip-effect="dark"
         style="width: 100%"
+        v-loading="loading"
       >
         <el-table-column prop="addDate" label="巡查时间" :align="'center'" />
         <el-table-column prop="areaName" label="巡查地点" :align="'center'" />
@@ -77,6 +78,7 @@
 import seeAjax from 'see-ajax';
 import { urlParams } from '../../../../pro-com/src/utils';
 import formatTime from '../../util/format_time';
+import { Notification } from 'element-ui';
 
 export default {
   name: 'APP',
@@ -92,6 +94,7 @@ export default {
       currentPage: 1,
       pageSize: 25,
       total: 0,
+      loading: !0,
     };
   },
   created() {
@@ -101,6 +104,8 @@ export default {
   },
   methods: {
     fetchList() {
+      this.areaId = parseInt(urlParams.id, 10) || '';
+      this.loading = !0;
       seeAjax(
         'areaRecordList',
         {
@@ -115,7 +120,14 @@ export default {
           if (res.success) {
             this.tableList = res.data.list;
             this.total = res.data.total;
+          } else {
+            Notification({
+              title: '提示',
+              message: res.message,
+              type: 'error',
+            });
           }
+          this.loading = !1;
         }
       );
     },
@@ -130,6 +142,7 @@ export default {
       seeAjax('getAreaList', { pageNo: 1, pageSize: 1000 }, res => {
         if (res.success) {
           this.areaList = res.data.list;
+          this.areaId = parseInt(urlParams.id, 10) || '';
         }
       });
     },

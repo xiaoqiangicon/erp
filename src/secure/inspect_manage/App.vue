@@ -130,7 +130,9 @@ export default {
     closeInvite() {
       this.showInvite = !1;
     },
-    download() {},
+    download() {
+      window.open(this.code);
+    },
   },
 };
 </script>

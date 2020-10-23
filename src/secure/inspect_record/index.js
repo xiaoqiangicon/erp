@@ -21,6 +21,7 @@ import {
   TimeSelect,
   CheckboxGroup,
   Checkbox,
+  Loading,
 } from 'element-ui';
 
 Vue.config.devtools = true;
@@ -38,6 +39,7 @@ Vue.use(TimePicker);
 Vue.use(TimeSelect);
 Vue.use(CheckboxGroup);
 Vue.use(Checkbox);
+Vue.use(Loading);
 
 new Vue({
   el: '#app',

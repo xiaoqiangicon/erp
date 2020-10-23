@@ -6,6 +6,7 @@ import './index.less';
 import 'element-ui/lib/theme-chalk/index.css';
 import Vue from 'vue';
 import App from './App.vue';
+import gallery from 'img-vuer';
 import './ajax';
 import {
   Dialog,
@@ -38,6 +39,7 @@ Vue.use(TimePicker);
 Vue.use(TimeSelect);
 Vue.use(CheckboxGroup);
 Vue.use(Checkbox);
+Vue.use(gallery);
 
 new Vue({
   el: '#app',

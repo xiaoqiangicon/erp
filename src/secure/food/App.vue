@@ -36,11 +36,12 @@
         <el-table-column prop="addDate" label="巡查时间" :align="'center'" />
         <el-table-column prop="managerName" label="报备人" :align="'center'" />
         <el-table-column prop="checkMemo" label="报备说明" :align="'center'" />
-        <el-table-column label="现场照片" :align="'center'">
+        <el-table-column label="现场照片" :align="'center'" :width="200">
           <template slot-scope="scope">
-            <div>
+            <div class="pic-list">
               <img
                 v-for="(item, key) in scope.row.picList"
+                v-gallery
                 :key="key"
                 class="pic"
                 :src="item"
@@ -151,9 +152,12 @@ export default {
     margin-right: 10px;
   }
 }
+.pic-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 .pic {
-  max-width: 100%;
-  max-height: 200px;
+  width: 200px;
 }
 .avatar {
   width: 100px;
