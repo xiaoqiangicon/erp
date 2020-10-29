@@ -66,11 +66,24 @@
           <template slot-scope="scope">
             <div>
               <span class="btn allow" @click="download(scope.row)">下载</span>
-              <span class="btn allow" @click="share(scope.row)">共享</span>
-              <span class="btn allow" @click="showRename(scope.row)"
+              <span
+                class="btn allow"
+                v-if="scope.row.userId === 0"
+                @click="share(scope.row)"
+                >共享</span
+              >
+              <span
+                class="btn allow"
+                v-if="scope.row.userId === 0"
+                @click="showRename(scope.row)"
                 >重命名</span
               >
-              <span class="btn allow" @click="del(scope.row)">删除</span>
+              <span
+                class="btn allow"
+                v-if="scope.row.userId === 0"
+                @click="del(scope.row)"
+                >删除</span
+              >
             </div>
           </template>
         </el-table-column>
@@ -101,7 +114,7 @@
       </div>
     </div>
     <Detail :detail="detail" :userList="userList" />
-    <div class="upload-box" v-if="uploading || finish">
+    <div class="upload-box" v-if="uploading">
       <div class="upload-header" v-if="uploading">
         <p class="upload-title">
           上传中{{ uploadNum }}/{{ uploadFiles.length }}
@@ -200,6 +213,13 @@ export default {
             if (This.uploadNum === This.uploadFiles.length) {
               This.uploading = !1;
               This.finish = !0;
+              This.uploadNum = 0;
+              This.uploadFiles = [];
+              Notification({
+                title: '提示',
+                message: '文件全部上传啦~',
+                type: 'success',
+              });
               This.fetchList();
             }
           }
@@ -339,6 +359,14 @@ export default {
       );
     },
     showRename(row) {
+      if (row.userId !== 0) {
+        Notification({
+          title: '提示',
+          message: '只能重命名自己上传的文件哦~',
+          type: 'warning',
+        });
+        return;
+      }
       this.detail = row;
       this.newName = this.detail.fileName;
       this.showDetail = !0;
