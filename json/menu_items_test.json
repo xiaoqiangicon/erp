@@ -260,7 +260,7 @@
         {
           "id": "hardware-status",
           "name": "设备状态",
-          "link": "/zzhadmin/traffic/",
+          "link": "/zzhadmin/hardwareStatus/",
           "controlMark": "pw_guest_traffic"
         }
       ]
@@ -371,7 +371,7 @@
           "id": "finance-supply",
           "name": "资产管理",
           "link": "/zzhadmin/supplyIndex/",
-          "controlMark": "pw_money_center"
+          "controlMark": "pw_office"
         }
       ]
     }

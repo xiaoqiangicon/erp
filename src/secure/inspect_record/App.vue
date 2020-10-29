@@ -98,13 +98,13 @@ export default {
     };
   },
   created() {
+    this.areaId = parseInt(urlParams.id, 10) || '';
     this.fetchList();
     this.fetchUserList();
     this.fetchAreaList();
   },
   methods: {
     fetchList() {
-      this.areaId = parseInt(urlParams.id, 10) || '';
       this.loading = !0;
       seeAjax(
         'areaRecordList',

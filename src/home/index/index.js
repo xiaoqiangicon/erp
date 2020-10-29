@@ -25,7 +25,7 @@ api
       window.localStorage.orderNumber = res.commodityCount;
       window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
 
-      if (window.localStorage.templeType === 4) {
+      if (parseInt(window.localStorage.templeType, 10) === 4) {
         $('[data-menu-item-id="wall"]')
           .parent()
           .hide();
