@@ -283,7 +283,7 @@
     {
       "id": "structure",
       "name": "组织架构",
-      "icon": "glyphicon-user",
+      "icon": "glyphicon-book",
       "subItems": [
         {
           "id": "structure-personel",
@@ -314,7 +314,7 @@
     {
       "id": "inspect",
       "name": "安全巡查",
-      "icon": "glyphicon-file",
+      "icon": "glyphicon-record",
       "subItems": [
         {
           "id": "inspect-manage",
@@ -333,7 +333,7 @@
     {
       "id": "file",
       "name": "文件管理",
-      "icon": "glyphicon-file",
+      "icon": "glyphicon-cloud",
       "subItems": [
         {
           "id": "file-manage",
@@ -346,7 +346,7 @@
     {
       "id": "secure",
       "name": "食品安全",
-      "icon": "glyphicon-file",
+      "icon": "glyphicon-apple",
       "subItems": [
         {
           "id": "secure-food",
@@ -359,7 +359,7 @@
     {
       "id": "finance",
       "name": "财务管理",
-      "icon": "glyphicon-file",
+      "icon": "glyphicon-yen",
       "subItems": [
         {
           "id": "finance-account",

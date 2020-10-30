@@ -23,4 +23,7 @@ export default `
         <span></span>未读
     </div>
 </div>
+<div class="notice-btn-box" id="board-btn">
+    <div class="n-text">数据看板</div>
+</div>
 `;

@@ -11,8 +11,14 @@ seeView({
     'click [data-menu-item-id]': 'onClickMenuItemId',
     'click [data-notice-item-id]': 'onClickNoticeItem',
     'click [data-notice-item-read]': 'onClickNoticeItemRead',
+    'click #board-btn': 'onClickBoardBtn',
     'click #notice-btn-box': 'onClickNoticeSwitch',
     'click #notice-close': 'onClickNoticeSwitch',
+  },
+  // 点击跳转数据看板;
+  onClickBoardBtn: e => {
+    let templeName = window.localStorage.templeName;
+    window.open(encodeURI(`/zzhadmin/panelDataHtml?templeName=${templeName}`));
   },
   // 点击显示/隐藏 侧栏推送通知
   onClickNoticeSwitch: e => {
