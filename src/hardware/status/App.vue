@@ -64,7 +64,7 @@
 <script>
 import Detail from './Detail';
 import seeAjax from 'see-ajax';
-import { MessageBox } from 'element-ui';
+import { MessageBox, Notification } from 'element-ui';
 import Hls from 'hls.js';
 
 export default {
@@ -109,6 +109,14 @@ export default {
       this.fetchList();
     },
     inspect(row) {
+      if (row.status === 2) {
+        Notification({
+          title: '提示',
+          message: '设备处在离线状态哦~',
+          type: 'error',
+        });
+        return;
+      }
       this.showReject = !0;
       this.loading = !0;
       seeAjax('getCameraUrl', { deviceId: row.id }, res => {
@@ -131,13 +139,33 @@ export default {
               video.play();
             });
           }
+        } else {
+          Notification({
+            title: '提示',
+            message: res.msg,
+            type: 'error',
+          });
         }
       });
     },
     clear(row) {
+      if (row.status === 2) {
+        Notification({
+          title: '提示',
+          message: '设备处在离线状态哦~',
+          type: 'error',
+        });
+        return;
+      }
       seeAjax('cancelAlarm', { deviceId: row.id }, res => {
         if (res.success) {
           window.location.reload();
+        } else {
+          Notification({
+            title: '提示',
+            message: res.msg,
+            type: 'error',
+          });
         }
       });
     },
@@ -152,6 +180,12 @@ export default {
         res => {
           if (res.success) {
             window.location.reload();
+          } else {
+            Notification({
+              title: '提示',
+              message: res.msg,
+              type: 'error',
+            });
           }
         }
       );
