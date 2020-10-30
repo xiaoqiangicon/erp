@@ -146,7 +146,7 @@ export default {
           type: this.type,
           startTime: this.startTime,
           endTime: this.endTime,
-          deviceList: selectList.join(','),
+          deviceList: this.type === 1 ? selectList.join(',') : '',
         },
         res => {
           if (res.success) {

@@ -8,7 +8,7 @@ const post = res => {
     } else {
       item.typeStr = '扫码签到';
     }
-    item.deviceList = item.deviceList ? item.deviceList.split(',') : '';
+    item.deviceList = item.deviceList ? item.deviceList.split(',') : [];
   });
 };
 
