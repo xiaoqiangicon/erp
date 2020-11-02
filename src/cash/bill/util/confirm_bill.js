@@ -6,8 +6,8 @@ import dialog from 'util/dialog';
 var $prizeDialog = $('#dialog-prize');
 
 export default function($this) {
-  var handling = !!parseInt($this.attr('data-handling'));
-  if (handling) return;
+  if (parseInt($this.attr('data-handling'))) return;
+
   $this
     .attr({
       'data-handling': 1,

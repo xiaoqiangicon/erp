@@ -349,6 +349,8 @@ seeView({
     );
   },
   onSubmitConfirm: function($this) {
+    if (parseInt($this.attr('data-handling'))) return;
+
     $this
       .attr({
         'data-handling': 1,
