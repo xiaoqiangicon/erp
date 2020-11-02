@@ -252,5 +252,102 @@
         }
       ]
     }
+  ],
+  "zizaicloudItems": [
+    {
+      "id": "structure",
+      "name": "组织架构",
+      "icon": "glyphicon-user",
+      "subItems": [
+        {
+          "id": "structure-personel",
+          "name": "人员管理",
+          "link": "/zzhadmin/managerUser/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-verify",
+          "name": "人员审核",
+          "link": "/zzhadmin/managerUserVerify/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-class",
+          "name": "签到寺务",
+          "link": "/zzhadmin/signActivityIndex/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-sign",
+          "name": "签到记录",
+          "link": "/zzhadmin/signRecordIndex/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "inspect",
+      "name": "安全巡查",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "inspect-manage",
+          "name": "巡查管理",
+          "link": "/zzhadmin/placeInspectManage/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "inspect-record",
+          "name": "巡查记录",
+          "link": "/zzhadmin/placeInspectRecord/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "file",
+      "name": "文件管理",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "file-manage",
+          "name": "文件列表",
+          "link": "/zzhadmin/managerFile/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "secure",
+      "name": "食品安全",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "secure-food",
+          "name": "检查记录",
+          "link": "/zzhadmin/foodInspect/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "财务管理",
+      "icon": "glyphicon-file",
+      "subItems": [
+        {
+          "id": "finance-account",
+          "name": "财务记账",
+          "link": "/zzhadmin/managerAccount/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "finance-supply",
+          "name": "资产管理",
+          "link": "/zzhadmin/supplyIndex/",
+          "controlMark": "pw_office"
+        }
+      ]
+    }
   ]
 }
