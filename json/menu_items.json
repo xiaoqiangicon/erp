@@ -230,12 +230,6 @@
           "name": "满福屏管理",
           "link": "/zzhadmin/merit_machine_index/",
           "controlMark": "pw_merit_machine"
-        },
-        {
-          "id": "traffic-statistics",
-          "name": "客流统计",
-          "link": "/zzhadmin/traffic/",
-          "controlMark": "pw_guest_traffic"
         }
       ]
     },
@@ -345,6 +339,25 @@
           "id": "finance-supply",
           "name": "资产管理",
           "link": "/zzhadmin/supplyIndex/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "secureHardware",
+      "name": "安全设备",
+      "icon": "glyphicon-apple",
+      "subItems": [
+        {
+          "id": "traffic-statistics",
+          "name": "客流管理",
+          "link": "/zzhadmin/traffic/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "hardware-status",
+          "name": "设备状态",
+          "link": "/zzhadmin/hardwareStatus/",
           "controlMark": "pw_office"
         }
       ]

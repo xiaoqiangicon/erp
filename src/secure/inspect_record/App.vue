@@ -60,6 +60,20 @@
         <el-table-column prop="areaName" label="巡查地点" :align="'center'" />
         <el-table-column prop="managerName" label="报备人" :align="'center'" />
         <el-table-column prop="checkMemo" label="报备说明" :align="'center'" />
+        <el-table-column label="现场照片" :align="'center'" :width="200">
+          <template slot-scope="scope">
+            <div class="pic-list">
+              <img
+                v-for="(item, key) in scope.row.pic"
+                v-gallery
+                :key="key"
+                class="pic"
+                :src="item"
+                alt=""
+              />
+            </div>
+          </template>
+        </el-table-column>
       </el-table>
       <el-pagination
         background
@@ -189,5 +203,12 @@ export default {
   width: 100px;
   height: 150px;
   border-radius: 8px;
+}
+.pic-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.pic {
+  width: 200px;
 }
 </style>

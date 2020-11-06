@@ -51,7 +51,7 @@
             </div>
             <div class="main_top_left_top main_top_left_bottom">
               <img src="./images/main_top_left.png" />
-              <div class="main_top_left_top_title">资产类型排行</div>
+              <div class="main_top_left_top_title">资产量排行</div>
               <div id="baseId" class="main_top_left_top_con"></div>
             </div>
           </div>
@@ -186,7 +186,7 @@
             </div>
             <div class="main_bottom_top_list">
               <img src="./images/main_bottopm_top1.png" />
-              <div class="main_bottom_t_l_title">当天项目签到人数</div>
+              <div class="main_bottom_t_l_title">寺务动态</div>
               <div class="main_bottom_t_l_con">
                 <div class="main_bottom_t_l_main2">
                   <ul id="sign-activity-list">
@@ -1675,7 +1675,9 @@
           res.signArray.forEach(item => {
             item.name = item.type;
             item.value = item.count;
-            signActivityListHtml += `<li><div class="main_bottom_t_l_main_list"><div class="main_bottom_t_list_title main_bottom_polity_title1">${item.type}</div><div class="main_bottom_t_list_time main_bottom_polity_time1">${item.count}人</div></div></li>`;
+          });
+          res.feedArray.forEach(item => {
+            signActivityListHtml += `<li><div class="main_bottom_t_l_main_list"><div class="main_bottom_t_list_title main_bottom_polity_title1">${item.content}</div><div class="main_bottom_t_list_time main_bottom_polity_time1">${item.addTime}</div></div></li>`;
           });
           $('#sign-activity-list').html(signActivityListHtml);
 

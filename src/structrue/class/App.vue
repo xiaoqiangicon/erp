@@ -24,7 +24,10 @@
             <div>
               <span class="btn allow" @click="edit(scope.row)">编辑</span>
               <span class="btn reject" @click="del(scope.row)">删除</span>
-              <span class="btn allow" @click="showSignCode(scope.row)"
+              <span
+                class="btn allow"
+                v-if="scope.row.type === 2"
+                @click="showSignCode(scope.row)"
                 >签到二维码</span
               >
               <span class="btn reject" @click="toSign(scope.row)"
