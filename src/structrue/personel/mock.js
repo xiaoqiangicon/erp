@@ -183,3 +183,21 @@ export const update = {
   msg: '',
   result: 0,
 };
+
+export const save = {
+  msg: '成功',
+  result: 0,
+};
+
+export const info = {
+  msg: '成功',
+  result: 0,
+  data: {
+    managerInviteCover:
+      'https://pic.zizaihome.com/0045c0c6-b542-403b-99df-5b69e7c343bd.jpg',
+    img: 'https://pic.zizaihome.com/0045c0c6-b542-403b-99df-5b69e7c343bd.jpg',
+    templeName: '寺院管理后台',
+    id: 4,
+    managerInviteTitle: 'test',
+  },
+};

@@ -18,7 +18,10 @@
       <div class="right">
         <div class="header">
           <div class="role-str">{{ role }}</div>
-          <div class="invite-btn" @click="invite">邀请人员</div>
+          <div class="header-right">
+            <div class="invite-btn" @click="set">邀请设置</div>
+            <div class="invite-btn" @click="invite">邀请人员</div>
+          </div>
         </div>
         <el-table
           highlight-current-row
@@ -63,17 +66,50 @@
         </div>
       </div>
     </div>
+    <div class="mask" v-if="showSet">
+      <div class="mask-content set-content">
+        <div class="invite-header set-header">
+          <p class="invite-title">寺院设置</p>
+          <span class="invite-close" @click="closeSet">×</span>
+        </div>
+        <div class="invite-body set-body">
+          <div class="invite-text-set">
+            <p class="title">小程序欢迎语</p>
+            <div>
+              <input class="input-text" type="text" v-model="inviteText" />
+              <span class="input-tips">{{ inviteText.length }}/25</span>
+            </div>
+            <p class="tips">邀请用户加入自在云管家小程序的欢迎语，最多25个字</p>
+          </div>
+          <div class="invite-img-set">
+            <p class="title">小程序封面图</p>
+            <div class="upload">
+              <Upload
+                v-if="!covers.length"
+                :images="covers"
+                :multiple="false"
+              />
+              <div v-else class="upload-cover">
+                <img :src="covers[0]" class="covers" />
+                <span class="remove" @click="remove">×</span>
+              </div>
+            </div>
+            <p class="tips">
+              邀请用户加入自在云管家小程序的寺院封面，图片宽高比例375*184最佳(注意不要上传黑色背景图)
+            </p>
+          </div>
+          <div class="save" @click="save">保存</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import seeAjax from 'see-ajax';
 import Detail from './Detail';
-import QRCode from '../../../../pro-com/src/libs-es5/qrcode';
-import $ from 'jquery';
-import Canvas2Image from '@senntyou/canvas2image';
-
-let qrCodeImg;
+import Upload from '../../com/upload/Upload';
+import { Notification } from 'element-ui';
 
 export default {
   name: 'APP',
@@ -86,16 +122,27 @@ export default {
       detail: {}, // 详情数据
       templeId: 0,
       showInvite: !1,
-      qrcode: '', // 二维码
       code: '', // 二维码图片
+
+      covers: [],
+      inviteText: '',
+      showSet: !1,
     };
   },
   components: {
     Detail,
+    Upload,
   },
   created() {
     this.templeId = window.localStorage['templeId'];
     this.fetchTypeList();
+  },
+  watch: {
+    inviteText(newVal) {
+      if (newVal.length >= 25) {
+        this.inviteText = newVal.slice(0, 25);
+      }
+    },
   },
   methods: {
     fetchList() {
@@ -123,14 +170,60 @@ export default {
         }
       });
     },
-    invite() {
-      let qrcode = 'www.baidu.com';
+    fetchInfo() {
+      seeAjax('info', {}, res => {
+        if (res.success) {
+          this.inviteText = res.data.managerInviteTitle;
+          this.covers = [res.data.managerInviteCover];
+          this.showSet = !0;
+        } else {
+          Notification({
+            title: '提示',
+            message: '接口出错了哦~',
+            type: 'error',
+          });
+        }
+      });
+    },
+    set() {
+      this.fetchInfo();
+    },
+    remove() {
+      this.covers = [];
+    },
+    save() {
+      if (!this.covers.length || !this.inviteText) {
+        Notification({
+          title: '提示',
+          message: '请填写必要数据',
+          type: 'error',
+        });
+        return;
+      }
 
+      seeAjax(
+        'save',
+        { cover: this.covers[0], title: this.inviteText },
+        res => {
+          if (res.success) {
+            this.showSet = !1;
+            Notification({
+              title: '提示',
+              message: '保存成功',
+              type: 'success',
+            });
+          } else {
+            Notification({
+              title: '提示',
+              message: '保存失败',
+              type: 'error',
+            });
+          }
+        }
+      );
+    },
+    invite() {
       this.showInvite = !0;
-      // this.$nextTick(() => {
-      //   this.$refs.qrcode.innerHTML = '';
-      //   qrCodeImg = new QRCode(this.$refs.qrcode, qrcode);
-      // })
     },
     changeList(key) {
       this.tableList = this.list[key];
@@ -143,6 +236,9 @@ export default {
     },
     closeInvite() {
       this.showInvite = !1;
+    },
+    closeSet() {
+      this.showSet = !1;
     },
     download() {
       window.open(this.code);
@@ -205,9 +301,13 @@ export default {
   font-size: 18px;
   font-weight: bold;
 }
+.header-right {
+  display: flex;
+}
 .invite-btn {
   width: 120px;
   height: 40px;
+  margin-right: 20px;
   line-height: 40px;
   background-color: #2ecc40;
   text-align: center;
@@ -215,6 +315,9 @@ export default {
   color: #fff;
   border-radius: 8px;
   font-size: 16px;
+  &:nth-of-type(2) {
+    margin-right: 0;
+  }
 }
 .avatar {
   width: 60px;
@@ -232,7 +335,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 3000;
+  z-index: 999;
 }
 .mask-content {
   position: absolute;
@@ -286,6 +389,80 @@ export default {
   border-radius: 15px;
   border: 1px solid rgba(46, 204, 64, 0.4);
   text-align: center;
+  cursor: pointer;
+}
+
+.set-content {
+  height: 430px;
+}
+.set-header {
+  padding: 10px 30px 10px;
+}
+.set-body {
+  padding: 20px 0 0 30px;
+}
+.invite-text-set {
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6px;
+}
+.input-text {
+  width: 400px;
+  height: 40px;
+  padding-left: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.input-tips {
+  margin-left: 10px;
+}
+.tips {
+  margin-top: 5px;
+  color: #999;
+  max-width: 450px;
+}
+.upload-cover {
+  position: relative;
+  width: 188px;
+  height: 92px;
+}
+.remove {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  background-color: red;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+}
+.covers {
+  width: 188px;
+  height: 92px;
+}
+.remove {
+  width: 20px;
+  height: 20px;
+}
+.save {
+  width: 120px;
+  height: 40px;
+  margin: 20px auto 0;
+  background-color: #6fba2c;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
   cursor: pointer;
 }
 </style>

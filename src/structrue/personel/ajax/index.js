@@ -4,7 +4,9 @@ import './getManagerList';
 import './userDetailList';
 import './getUserType';
 import './del';
+import './info';
 import './updateManager';
+import './save';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef
 
