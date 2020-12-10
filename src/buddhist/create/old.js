@@ -82,7 +82,9 @@ var View = Backbone.View.extend({
     'click .reviseClassificationList': 'reviseClassificationList',
     'click #addClassificationList': 'addClassificationList',
     'click #coverPic0': 'uploadCoverPic',
+    'click #coverVideo': 'uploadCoverVideo',
     'click .delPic': 'delPic',
+    'click #del-video': 'delCoverVideo',
     'click #myEditor': 'focusMyEditor',
     'click #generateRandom': 'generateRandom',
     'keyup #suixiInput': 'detectSuixiInput',
@@ -349,6 +351,8 @@ var View = Backbone.View.extend({
         if (data.length > maxAddPics) {
           Toast('封面图片数量最多为五张！', 2);
         } else {
+          // $('#videoBox').find('#video-pic').remove();
+          // $('#coverVideo').show();
           for (var i = 0; i < data.length; i++) {
             var html = self.html,
               imgSrc = data[i].src,
@@ -408,6 +412,16 @@ var View = Backbone.View.extend({
       },
     });
     upload.show();
+  },
+  uploadCoverVideo: function(e) {
+    var self = this,
+      $tar = $(e.target);
+  },
+  delCoverVideo: function() {
+    $('#coverVideo').show();
+    $('#videoBox')
+      .find('#video-pic')
+      .remove();
   },
   delPic: function(e) {
     var self = this,
@@ -644,6 +658,7 @@ var View = Backbone.View.extend({
     var self = this,
       $tar = $(e.target),
       subType = $tar.val();
+    console.log('changeType');
     e.preventDefault();
   },
   proName: function(e) {
@@ -2758,6 +2773,10 @@ var View = Backbone.View.extend({
     });
   },
   submit: function(e, save_to_template, save_to_draft) {
+    if (Const.isUploading) {
+      Toast('请等待视频上传完成！', 2);
+      return false;
+    }
     var self = this;
     if (
       ifFirstSave &&
@@ -3181,6 +3200,7 @@ var View = Backbone.View.extend({
               !!current_content.allow_showVistNum
             );
             self.showimgs(current_content);
+            self.showVideo(current_content);
             $('#summary').val(current_content.custom_introduce);
             $('#summary').trigger('keyup');
             self.showDetail(current_content, 1);
@@ -3267,6 +3287,7 @@ var View = Backbone.View.extend({
       start_time = $('#timeStart').val(),
       end_time = $('#timeLimit').val(),
       productionImg = [],
+      productVideo = [],
       no_need_pay = false;
     $(typeList).each(function(index, ele) {
       if (ele == typeName) {
@@ -3688,11 +3709,18 @@ var View = Backbone.View.extend({
     $('.myupload img').each(function(index, Dom) {
       productionImg.push($(Dom).attr('src'));
     });
+    $('#video-pic').each(function(index, Dom) {
+      productVideo.push($(Dom).attr('data-url'));
+    });
+    if (Const.isUploading) {
+      Toast('请等待视频上传完成！', 2);
+      return false;
+    }
     if (!$('.picture').val() && !$('.upload_wrap img').length) {
       $('#pictureBox')
         .parents('.form-group')
         .addClass('has-error');
-      Toast('请上传封面图片！', 2);
+      Toast('请上传至少一张封面图片！', 2);
       $('html, body').scrollTop(0);
       return false;
     } else {
@@ -3804,6 +3832,7 @@ var View = Backbone.View.extend({
     opt['title'] = foshiName;
     opt['ceremonyTypeId'] = typeIndex;
     opt['pics'] = productionImg;
+    opt['video'] = productVideo;
     opt['detail'] = details;
     opt['opName'] = buy_btn_name;
     opt['postScript'] = postScript;
@@ -4213,6 +4242,7 @@ var View = Backbone.View.extend({
     }
     $('#classification').selectpicker('val', getContent.ceremonyTypeId);
     self.showimgs(getContent);
+    self.showVideo(getContent);
     if (typeof getContent.custom_introduce !== 'undefined') {
       $('#summary').val(getContent.custom_introduce);
       $('#summary').trigger('keyup');
@@ -4460,6 +4490,27 @@ var View = Backbone.View.extend({
         'class',
         'myupload upload_box ui-sortable-handle'
       );
+    }
+  },
+  showVideo: function(getContent) {
+    console.log('showVideo');
+    var self = this,
+      video = getContent.video ? getContent.video[0] : '';
+
+    if (video === undefined || !video) {
+      $('#coverVideo').show();
+    } else {
+      $('#coverVideo').hide();
+      $('#videoBox')
+        .find('#video-loading')
+        .remove();
+      var videoHtml =
+        '<div class="video-pic glyphicon" id="video-pic" data-url="' +
+        video +
+        '"><img class="video-small-pic" src="' +
+        video +
+        '?vframe/jpg/offset/1" alt="" /><span class="glyphicon-remove-circle delPic" style="vertical-align: top;cursor: pointer;" id="del-video"></span></div>';
+      $('#videoBox').prepend(videoHtml);
     }
   },
   showDetail: function(getContent, ifLocalStorage) {
@@ -5679,13 +5730,14 @@ $(function() {
   if (!is_test_environment) {
     var inputFoshiTypeId = ceremonyMap.ceremonyTypeId;
     if (typeof inputFoshiTypeId === 'undefined') return false;
-    console.log(ceremonyMap);
     $('#proName').val(ceremonyMap.title);
     $('#show-join-num').bootstrapSwitch(
       'state',
       !!ceremonyMap.allow_showVistNum
     );
+    console.log('ceremonyMap', ceremonyMap);
     msgListView.showimgs(ceremonyMap);
+    msgListView.showVideo(ceremonyMap);
     $('#summary').val(ceremonyMap.custom_introduce);
     $('#summary').trigger('keyup');
     msgListView.showDetail(ceremonyMap);
