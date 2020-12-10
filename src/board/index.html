@@ -189,22 +189,7 @@
               <div class="main_bottom_t_l_title">寺务动态</div>
               <div class="main_bottom_t_l_con">
                 <div class="main_bottom_t_l_main2">
-                  <ul id="sign-activity-list">
-                    <li>
-                      <div class="main_bottom_t_l_main_list">
-                        <div
-                          class="main_bottom_t_list_title main_bottom_polity_title1"
-                        >
-                          早课
-                        </div>
-                        <div
-                          class="main_bottom_t_list_time main_bottom_polity_time1"
-                        >
-                          10人
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                  <ul id="sign-activity-list"></ul>
                 </div>
               </div>
             </div>
@@ -215,9 +200,9 @@
                     <div class="main_bottom_b_title">主要关注占比</div>
                     <div id="coverageId" class="main_bottom_b_con"></div> -->
             </div>
-            <div class="main_bottom_b_middle1" style="display: none;">
+            <div class="main_bottom_b_middle1">
               <img src="./images/main_bootm_middle.png" />
-              <div class="main_bottom_b_title">关注占比</div>
+              <div class="main_bottom_b_title">本周巡查记录</div>
               <div
                 id="contentId"
                 class="main_bottom_b_con main_bottom_b_con2"
@@ -1283,7 +1268,7 @@
             yearsNumChart.setOption(option);
           }, 120000);
         },
-        // 关注内容区域占比
+        // 本周巡查记录
         contentFn: function() {
           var resArr = [
             {
@@ -1306,16 +1291,21 @@
           var nameArr = [];
           var caiArr = [];
           var cunArr = [];
-          var danArr = [];
-          var junArr = [];
-          var zhenArr = [];
-          for (var i = 0; i < resArr.length; i++) {
-            nameArr.push(resArr[i].name);
-            caiArr.push(resArr[i].value);
-            cunArr.push(resArr[i].value);
-            danArr.push(resArr[i].value);
-            junArr.push(resArr[i].value);
-            zhenArr.push(resArr[i].value);
+          // for (var i = 0; i < resArr.length; i++) {
+          //   nameArr.push(resArr[i].name);
+          //   caiArr.push(resArr[i].value);
+          //   cunArr.push(resArr[i].value);
+          // }
+
+          var checkList = allData.areaCheckData.checkList;
+          var noCheckList = allData.areaCheckData.noCheckList;
+
+          for (var i = 0; i < checkList.length; i++) {
+            caiArr.push(checkList[i][1]);
+            nameArr.push(checkList[i][0]);
+          }
+          for (var i = 0; i < noCheckList.length; i++) {
+            cunArr.push(noCheckList[i][1]);
           }
 
           var contentChart = echarts.init(document.getElementById('contentId'));
@@ -1326,7 +1316,7 @@
             legend: {
               x: '35%',
               y: '0%',
-              data: ['财务', '村务', '党务', '居务', '政务'],
+              data: ['已巡查', '未巡查'],
               textStyle: {
                 color: '#fff',
                 fontSize: 8,
@@ -1360,12 +1350,12 @@
               {
                 type: 'value',
                 scale: true,
-                name: '单位：%',
+                name: '单位：个',
                 nameTextStyle: {
                   color: 'rgba(255,255,255,.7)',
                   fontSize: 8,
                 },
-                max: 100,
+                max: 20,
                 min: 0,
                 boundaryGap: [0.2, 0.2],
                 axisTick: {
@@ -1437,38 +1427,17 @@
             },
             series: [
               {
-                barWidth: '10%',
-                name: '财务',
+                barWidth: '20%',
+                name: '已巡查',
                 type: 'bar',
                 data: caiArr,
               },
               {
                 animationDuration: 2500,
                 barWidth: '20%',
-                name: '村务',
+                name: '未巡查',
                 type: 'bar',
                 data: cunArr,
-              },
-              {
-                animationDuration: 2500,
-                barWidth: '20%',
-                name: '党务',
-                type: 'bar',
-                data: danArr,
-              },
-              {
-                animationDuration: 2500,
-                barWidth: '20%',
-                name: '居务',
-                type: 'bar',
-                data: junArr,
-              },
-              {
-                animationDuration: 2500,
-                barWidth: '20%',
-                name: '政务',
-                type: 'bar',
-                data: zhenArr,
               },
             ],
           };
@@ -1506,8 +1475,12 @@
               value: 800,
             },
           ];
-          var enterList = allData.visitData.enterList;
-          var leaveList = allData.visitData.leaveList;
+          var enterList = allData.visitData.enterList
+            ? allData.visitData.enterList
+            : [];
+          var leaveList = allData.visitData.leaveList
+            ? allData.visitData.leaveList
+            : [];
 
           var xunArr = [];
           var jingArr = [];
@@ -1679,6 +1652,9 @@
           res.feedArray.forEach(item => {
             signActivityListHtml += `<li><div class="main_bottom_t_l_main_list"><div class="main_bottom_t_list_title main_bottom_polity_title1">${item.content}</div><div class="main_bottom_t_list_time main_bottom_polity_time1">${item.addTime}</div></div></li>`;
           });
+          signActivityListHtml = res.feedArray.length
+            ? signActivityListHtml
+            : `<li><div class="main_bottom_t_l_main_list"><div class="main_bottom_t_list_title main_bottom_polity_title1"></div><div class="main_bottom_t_list_time main_bottom_polity_time1"></div></div></li>`;
           $('#sign-activity-list').html(signActivityListHtml);
 
           res.managerArray.forEach(item => {
@@ -1690,6 +1666,9 @@
           res.managerUserArray.forEach(item => {
             managerUserListHtml += `<li><div class="main_bottom_t_l_main_list"><div class="main_bottom_t_list_title main_bottom_t_list_title1">${item.name}</div><div class="main_bottom_t_list_time main_bottom_t_list_time1">${item.lastLoginTime}</div></div></li>`;
           });
+          managerUserListHtml = res.managerUserArray.length
+            ? managerUserListHtml
+            : `<li><div class="main_bottom_t_l_main_list"><div class="main_bottom_t_list_title main_bottom_t_list_title1"></div><div class="main_bottom_t_list_time main_bottom_t_list_time1"></div></div></li>`;
           $('#user-list').html(managerUserListHtml);
 
           // 更新总参观人数
@@ -1721,6 +1700,23 @@
             item.name = item.type;
             item.value = item.count;
           });
+
+          // 本周巡查
+          var checkList = [];
+          var noCheckList = [];
+          res.areaCheckData = {};
+          res.areaCheckArray.forEach(item => {
+            let checkArray = [];
+            let notCheckArray = [];
+            checkArray.push(item.date);
+            checkArray.push(item.hasCheck);
+            notCheckArray.push(item.date);
+            notCheckArray.push(item.noCheck);
+            checkList.push(checkArray);
+            noCheckList.push(notCheckArray);
+          });
+          res.areaCheckData.checkList = checkList;
+          res.areaCheckData.noCheckList = noCheckList;
 
           allData = res;
 

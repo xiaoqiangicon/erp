@@ -365,7 +365,7 @@
     {
       "id": "secureHardware",
       "name": "安全设备",
-      "icon": "glyphicon-apple",
+      "icon": "glyphicon-scale",
       "subItems": [
         {
           "id": "traffic-statistics",

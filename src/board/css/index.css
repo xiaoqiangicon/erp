@@ -291,7 +291,7 @@
   font-size: 2vw;
   font-weight: bold;
   color: #0efcff;
-  line-height: 240%;
+  line-height: 200%;
 }
 .main_top_middle_num_list p {
   text-align: center;
@@ -517,7 +517,7 @@
   float: left;
   width: 30%;
   height: 100%;
-  margin-left: 17.8%;
+  margin-left: 1.8%;
 }
 .main_bottom_b_right {
   margin-left: 1.8%;

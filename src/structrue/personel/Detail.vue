@@ -96,13 +96,13 @@
           </div>
           <div class="del-body">
             <div class="del-manager">
-              <img class="del-avatar" :src="headImg" alt="" />
+              <img class="del-avatar" :src="covers[0]" alt="" />
               <div class="del-info">
                 <p class="del-name">{{ name }}</p>
                 <p class="del-type">{{ detail.typeStr }}</p>
               </div>
             </div>
-            <p class="del-tips">删除后当前人员将不可删除，用于人员离开等用途</p>
+            <p class="del-tips">删除后当前人员将不可登录，用于人员离开等用途</p>
           </div>
           <div class="del-foot">
             <div class="del-confirm" @click="del">确认</div>
