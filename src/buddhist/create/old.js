@@ -658,7 +658,6 @@ var View = Backbone.View.extend({
     var self = this,
       $tar = $(e.target),
       subType = $tar.val();
-    console.log('changeType');
     e.preventDefault();
   },
   proName: function(e) {
@@ -4493,7 +4492,6 @@ var View = Backbone.View.extend({
     }
   },
   showVideo: function(getContent) {
-    console.log('showVideo');
     var self = this,
       video = getContent.video ? getContent.video[0] : '';
 
@@ -5475,7 +5473,7 @@ var SizeView = Backbone.View.extend({
               ps4.push(ps);
             } else if (ps.get('inputType') === 5) {
               ps5.push(ps);
-            } else if (ps.get('inpputType') === 6) {
+            } else if (ps.get('inputType') === 6) {
               ps6.push(ps);
             } else {
               psOther.push(ps);
