@@ -3,6 +3,7 @@ import seeAjax from 'see-ajax';
 import '../../../../com-deprecated/pagination/index.less';
 import 'less/pagination.less';
 import Pagination from '../../../../com-deprecated/pagination';
+import commonFunc from 'common/function';
 import commonTpl from 'common/tpl';
 import data from '../data';
 import scrollTop from './scroll_top';
@@ -160,7 +161,9 @@ const requestList = (page, init) => {
                 },
                 res => {
                   if (!res.success) {
-                    alert('操作失败');
+                    zzhHandling.hide();
+                    commonFunc.alert(res.msg || '保存出错，请稍后重试');
+                    $this.text(`保存`);
                     return;
                   }
                   zzhHandling.hide();

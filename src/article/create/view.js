@@ -260,7 +260,8 @@ seeView({
         self.onSaveDataSuccess(res.articleId, data.saveType);
         zzhHandling.hide();
       } else {
-        commonFunc.alert(res.message || '保存出错，请稍后重试');
+        zzhHandling.hide();
+        commonFunc.alert(res.msg || '保存出错，请稍后重试');
       }
     });
   },
