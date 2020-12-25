@@ -104,7 +104,7 @@
         </div>
       </div>
 
-      <div class="iframe-box" ref="iframeBox" id="iframe-box">
+      <div class="iframe-box" ref="iframeBox" id="iframe-box" v-if="!1">
         <!-- <iframe id="frame-content" ref="frameContent" :src="url" scrolling="auto" frameborder="0"></iframe> -->
       </div>
     </div>
