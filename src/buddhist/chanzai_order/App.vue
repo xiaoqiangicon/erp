@@ -185,7 +185,7 @@
           label="数量"
           show-overflow-tooltip
         ></el-table-column>
-        <el-table-column label="备注">
+        <el-table-column label="用户留言">
           <template slot-scope="scope">
             <div v-if="scope.row.userComment">{{ scope.row.userComment }}</div>
             <div v-else>-</div>
