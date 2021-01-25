@@ -99,19 +99,6 @@
       ]
     },
     {
-      "id": "merit",
-      "name": "功德主",
-      "icon": "merit-logo",
-      "subItems": [
-        {
-          "id": "merit-manage",
-          "name": "功德主管理",
-          "link": "/zzhadmin/meritRankManage/",
-          "controlMark": "pw_merit_rank"
-        }
-      ]
-    },
-    {
       "id": "cash",
       "name": "财务中心",
       "icon": "glyphicon-briefcase",
