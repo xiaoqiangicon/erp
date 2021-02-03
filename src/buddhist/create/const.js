@@ -166,6 +166,11 @@ var Const = {
       text: '日行一善',
       src: 'https://pic.zizaihome.com/305dfde6-90b2-11e9-9666-00163e0c001e.png',
     },
+    {
+      value: 12,
+      text: '供奉拜垫',
+      src: 'https://pic.zizaihome.com/878bdcb0-9bc4-4f41-9a10-d87bf80bafb4.png',
+    },
   ],
 };
 export default Const;
