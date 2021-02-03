@@ -2,6 +2,7 @@
   <div id="app">
     <div class="integral-header">
       <h3>积分兑换</h3>
+      <span class="coin">可用积分：{{ coin }}</span>
     </div>
     <div class="contain">
       <div class="credits-box">
@@ -127,6 +128,7 @@ export default {
       pageSize: 10,
       currentPage: 1,
       totalCount: 10,
+      coin: 0,
       task: {
         total: 0,
         params: {
@@ -183,6 +185,7 @@ export default {
       seeAjax('creditsInfo', {}, res => {
         this.url = res.data.url;
         this.level = res.data.level;
+        this.coin = res.data.coin;
 
         // 插入iframe
         let ifr = document.createElement('iframe');
@@ -214,12 +217,18 @@ export default {
 <style lang="less" scoped>
 #app {
   .integral-header {
+    display: flex;
+    align-items: center;
     margin: 10px;
     padding: 1px 20px;
     background-color: #ffffff;
     h3 {
       margin-top: 18px;
       margin-bottom: 18px;
+    }
+    .coin {
+      margin-top: 10px;
+      margin-left: 40px;
     }
   }
 
