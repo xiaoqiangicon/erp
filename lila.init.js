@@ -15,6 +15,7 @@ const cwd = process.cwd();
 
 const rename = {
   'index/login': 'admin/registration/login',
+  xiumi: 'pages/com.zzj.buddhistService/xiumi-ue-dialog-v5',
 };
 
 const defaultCssModulesExcludeRules = [

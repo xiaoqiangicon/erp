@@ -8,15 +8,16 @@
           :class="['notice-item', item.open ? 'notice-open' : '']"
           v-for="(item, index) in noticeList"
           :key="item.id"
-          @click="openNoticeItem(item, index)"
         >
           <div class="n-container">
             <div class="n-head">
               <div class="n-title">{{ item.title }}</div>
               <div class="n-info">
                 <div class="n-tab" v-if="item.isRead === 0">未读</div>
-                <div class="n-date">{{ item.addTime }}</div>
-                <div class="n-icon"></div>
+                <div class="n-date" @click="openNoticeItem(item, index)">
+                  {{ item.addTime }}
+                </div>
+                <div class="n-icon" @click="openNoticeItem(item, index)"></div>
               </div>
             </div>
             <div class="n-content">
