@@ -12,3 +12,4 @@ import 'swiper/dist/css/swiper.css';
 import './index.css';
 
 import './old';
+import './view';
