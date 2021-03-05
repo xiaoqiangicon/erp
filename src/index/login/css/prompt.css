@@ -1,0 +1,81 @@
+.contact {
+  position: fixed;
+  right: 0;
+  bottom: 100px;
+  z-index: 10000;
+}
+.contact-prompt {
+  width: 41px;
+  height: 118px;
+  background: #377cfd;
+  box-shadow: -2px 1px 8px 0 rgb(0 9 41 / 8%);
+  border-radius: 2px 0 0 2px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  padding: 12px 0 0;
+  font-size: 14px;
+  color: #fff;
+  line-height: 17px;
+  cursor: pointer;
+  z-index: 200;
+}
+.contact-icon {
+  width: 19px;
+  margin: 0 0 5px;
+}
+.qr-box {
+  width: 404px;
+  height: 165px;
+  background: #fff;
+  box-shadow: 0 5px 9px 0 rgb(0 0 0 / 20%);
+  border-radius: 4px;
+  position: absolute;
+  left: -424px;
+  top: 0;
+  padding: 26px 36px;
+  display: -webkit-box;
+  display: flex;
+}
+.icon-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  background-image: url('https://pic.zizaihome.com/fc02fa6a-cafe-11e9-b500-00163e0c001e.png');
+  background-size: 26px 26px;
+  cursor: pointer;
+}
+.prompt-content {
+  -webkit-box-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+}
+.qr {
+  width: 112px;
+  height: 112px;
+  margin-right: 18px;
+}
+.prompt-title {
+  color: #333;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.prompt-info {
+  font-size: 13px;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 4px;
+}

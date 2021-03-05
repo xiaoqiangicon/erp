@@ -72,19 +72,26 @@
             <input
               class="input-account"
               name="username"
+              id="username"
               type="text"
               placeholder="登录账户或者手机号码"
             />
             <input
               class="input-pwd"
               name="password"
+              id="password"
               type="password"
               placeholder="密码"
             />
             <div class="container-1">
               <a target="_blank" href="/zzhadmin/findpwd/">忘记密码？</a>
             </div>
-            <button class="clean-button ok" type="submit">登 录</button>
+            <div class="login-box">
+              <button id="login-btn" class="clean-button ok" type="submit">
+                登 录
+              </button>
+              <div class="login-mask" id="login"></div>
+            </div>
             <p class="hint" id="hint" style="display: none;">
               请输入正确的用户名和密码。
             </p>
@@ -175,6 +182,29 @@
             >400-8816-318</a
           >
           <div class="text-3">客服电话（周一至周五 9:00-18:00）</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="contact-prompt" id="prompt">
+        <img
+          class="contact-icon"
+          src="https://assets.weibanzhushou.com/web/we-work-webapp/index-page_contact-us.404ea56240c0.svg"
+          alt=""
+        />
+        <p>联<br />系<br />我<br />们</p>
+      </div>
+      <div class="qr-box hide" id="qr-box">
+        <img
+          class="qr"
+          src="https://pic.zizaihome.com/6862e559-19b1-4015-a7ab-fdc9e4a7e284.jpeg"
+        />
+        <span class="icon-close" id="close"></span>
+        <div class="prompt-content">
+          <p class="prompt-title">你好，微信扫描二维码添加您的专属客服。</p>
+          <div class="prompt-info">
+            在了解、入驻或使用自在家过程中遇到任何的问题我都会帮你解决。
+          </div>
         </div>
       </div>
     </div>

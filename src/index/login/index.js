@@ -11,4 +11,6 @@ import 'swiper/dist/css/swiper.css';
 
 import './index.css';
 
+import './ajax';
 import './old';
+import './view';
