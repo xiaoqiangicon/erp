@@ -1060,6 +1060,7 @@ var View = Backbone.View.extend({
     self.sizesAdditionView.render();
   },
   showSizesPostModal: function(e) {
+    console.log('点击了附言');
     var $relatedTarget = $(e.relatedTarget),
       self = this,
       cid = $relatedTarget.attr('data-cid');
@@ -1077,6 +1078,15 @@ var View = Backbone.View.extend({
       }
       $('.saveAdd').attr('data-cid', cid);
       if (sizesPostScript) {
+        console.log(sizesPostScript, 'sizesPostScript');
+        sizesPostScript.models.map(ps => {
+          console.log(ps.get('inputType'), ps.inputType, 'psItem');
+          if (ps.get('inputType') == 16 && !ps.get('name')) {
+            ps.set('name', '是否邮寄');
+          } else if (ps.get('inputType') == 17 && !ps.get('name')) {
+            ps.set('name', '普通邮寄');
+          }
+        });
         var getSizesAddition = sizesPostScript,
           getSizesAdditionModels = getSizesAddition.models,
           getSizesAdditionModelsLen = getSizesAdditionModels.length;
@@ -3665,6 +3675,12 @@ var View = Backbone.View.extend({
           case '心愿':
             inputType[index] = 15;
             break;
+          case '是否邮寄':
+            inputType[index] = 16;
+            break;
+          case '普通邮寄':
+            inputType[index] = 17;
+            break;
           default:
             console.log('未匹配到附言类型');
             break;
@@ -3875,6 +3891,15 @@ var View = Backbone.View.extend({
       submit_url = '',
       start_time = $('#timeStart').val(),
       end_time = $('#timeLimit').val();
+    window.contentData.subdivideStr.forEach(subItem => {
+      subItem.postScript.forEach(posItem => {
+        if (posItem.inputType == 16) {
+          posItem.name = '是否邮寄';
+        } else if (posItem.inputType == 17) {
+          posItem.name = '普通邮寄';
+        }
+      });
+    });
     if (editType == 1) {
       params = window.contentData;
       params['id'] = foshiId;
@@ -5295,48 +5320,62 @@ var SizeView = Backbone.View.extend({
           ]);
         } else if (subType === 4) {
           psModelArr = new sizesAdditionCollection([
-            new sizesAdditionModel({
-              dataType: 2,
-              describe: '',
-              font_length: 8,
-              inputId: '',
-              inputType: 4,
-              is_must: 1,
-              name: '联系人',
-              pic_num: 0,
-              prompt_text: '请填写联系人姓名（方便寺院与您联系）',
-              selectInput: [],
-              durationDay: 0,
-              subType: 4,
-            }),
-            new sizesAdditionModel({
-              dataType: 2,
-              describe: '',
-              font_length: 20,
-              inputId: '',
-              inputType: 5,
-              is_must: 1,
-              name: '手机号码',
-              pic_num: 0,
-              prompt_text: '请填写联系人电话（方便寺院与您联系）',
-              selectInput: [],
-              durationDay: 0,
-              subType: 4,
-            }),
-            new sizesAdditionModel({
-              dataType: 2,
-              describe: '',
-              font_length: 20,
-              inputId: '',
-              inputType: 6,
-              is_must: 1,
-              name: '地址',
-              pic_num: 0,
-              prompt_text: '请填写您常用的居住地址',
-              selectInput: [],
-              durationDay: 0,
-              subType: 4,
-            }),
+            // new sizesAdditionModel({
+            //   dataType: 2,
+            //   describe: '',
+            //   font_length: 8,
+            //   inputId: '',
+            //   inputType: 4,
+            //   is_must: 1,
+            //   name: '联系人',
+            //   pic_num: 0,
+            //   prompt_text: '请填写联系人姓名（方便寺院与您联系）',
+            //   selectInput: [],
+            //   durationDay: 0,
+            //   subType: 4,
+            // }),
+            // new sizesAdditionModel({
+            //   dataType: 2,
+            //   describe: '',
+            //   font_length: 20,
+            //   inputId: '',
+            //   inputType: 5,
+            //   is_must: 1,
+            //   name: '手机号码',
+            //   pic_num: 0,
+            //   prompt_text: '请填写联系人电话（方便寺院与您联系）',
+            //   selectInput: [],
+            //   durationDay: 0,
+            //   subType: 4,
+            // }),
+            // new sizesAdditionModel({
+            //   dataType: 2,
+            //   describe: '',
+            //   font_length: 20,
+            //   inputId: '',
+            //   inputType: 6,
+            //   is_must: 1,
+            //   name: '地址',
+            //   pic_num: 0,
+            //   prompt_text: '请填写您常用的居住地址',
+            //   selectInput: [],
+            //   durationDay: 0,
+            //   subType: 4,
+            // }),
+            // new sizesAdditionModel({
+            //   dataType: 2,
+            //   describe: '',
+            //   font_length: 0,
+            //   inputId: '',
+            //   inputType: 16,
+            //   is_must: 1,
+            //   name: '是否邮寄',
+            //   pic_num: 0,
+            //   prompt_text: '',
+            //   selectInput: [],
+            //   durationDay: 0,
+            //   subType: 4,
+            // }),
           ]);
         }
       } else {

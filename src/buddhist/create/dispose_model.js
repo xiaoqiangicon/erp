@@ -33,6 +33,12 @@ app_model_dispose.method.add_default_title_prompt_text = function(
     case '15':
       if (my_json['name'] == '') my_json['name'] = '心愿';
       break;
+    case '16':
+      if (my_json['name'] == '') my_json['name'] = '是否邮寄';
+      break;
+    case '17':
+      if (my_json['name'] == '') my_json['name'] = '普通邮寄';
+      break;
     default:
       break;
   }
@@ -74,6 +80,14 @@ app_model_dispose.method.change_prompt_text = function(my_type, my_model) {
     case '9':
       my_model.set('name', '出生日期');
       my_model.set('prompt_text', '');
+      break;
+    case '16':
+      my_model.set('name', '是否邮寄');
+      my_model.set('prompt_text', '是否邮寄');
+      break;
+    case '17':
+      my_model.set('name', '普通邮寄');
+      my_model.set('prompt_text', '普通邮寄');
       break;
     default:
       my_model.set('name', '');

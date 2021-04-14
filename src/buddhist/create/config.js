@@ -25,6 +25,8 @@ appConfig.argument.addition_list = [
   '自定义-提示框',
   '自定义-图片上传',
   '心愿',
+  '是否邮寄',
+  '普通邮寄',
 ];
 appConfig.template = appConfig.template || {};
 appConfig.urls = appConfig.urls || {};

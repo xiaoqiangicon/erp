@@ -60,7 +60,9 @@ const td12 = `
       {@else}
         <td class="sortable-handle" style="cursor: pointer;line-height: 36px;text-align: center"><img src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png" data-id="\${inputId}" alt="换位置"></td>
         <td>
-          <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}">
+          <select name="additionType" class="additionType sizePosSelect selectpicker" data-cid="\${cid}" id="selectAdditionType">
+            <option value="16">用户自选邮寄</option>
+            <option value="17">普通邮寄</option>
             <option value="12">功德芳名</option>
             <option value="15">心愿</option>
             <option value="8">性别</option>
@@ -104,7 +106,7 @@ const td3 = `
       {@if 
         ((subType == 2) && (inputType == 10 || inputType == 11)) || 
         ((subType == 3) && (inputType == 12 || inputType == 15)) ||
-        ((subType == 4) && (inputType == 4 || inputType == 5 || inputType == 6))
+        ((subType == 4) && (inputType == 4 || inputType == 5 || inputType == 6 || inputType == 16 || inputType == 17))
       }
         \${name}
       {@else if inputType == 13}
@@ -169,6 +171,7 @@ const td5 = `
       <span class="green tagbtn additionOperation">
       <span class="sizeAdditionImagesSetting" data-toggle="modal" data-target="#imagesSizeAdditionModal" data-cid="\${cid}">设置</span>--
       <span class="sizesAdditionRemove" data-cid="\${cid}">删除</span></span>
+    {@else if (subType == 4) && (inputType == 16 || inputType == 17)}
     {@else}
       <!--1 4 5 6 7 10 11 12 15自定义单行文本框 联系人 手机号码 地址 自定义多行文本框 阳上人 往生者 功德芳名 心愿  => 调用单行文本狂-->
       <span class="green tagbtn additionOperation"><span class="sizeAdditionInputSetting " data-cid="\${cid}" data-toggle="modal" data-target="#inputSizeAdditionModal">设置</span>--

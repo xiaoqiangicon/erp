@@ -109,6 +109,14 @@ var Const = {
       value: 14,
       text: '自定义-图片上传',
     },
+    {
+      value: 16,
+      text: '是否邮寄',
+    },
+    {
+      value: 17,
+      text: '普通邮寄',
+    },
   ],
   feedbackImgArr: [
     {
@@ -169,7 +177,7 @@ var Const = {
     {
       value: 12,
       text: '供奉拜垫',
-      src: 'https://pic.zizaihome.com/878bdcb0-9bc4-4f41-9a10-d87bf80bafb4.png',
+      src: 'https://pic.zizaihome.com/56e1c0a6-748d-48d4-8c90-bd1dce3e1bbc.png',
     },
   ],
 };
