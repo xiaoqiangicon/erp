@@ -172,6 +172,8 @@ const td5 = `
       <span class="sizeAdditionImagesSetting" data-toggle="modal" data-target="#imagesSizeAdditionModal" data-cid="\${cid}">设置</span>--
       <span class="sizesAdditionRemove" data-cid="\${cid}">删除</span></span>
     {@else if (subType == 4) && (inputType == 16 || inputType == 17)}
+      <span class="green tagbtn additionOperation">
+      <span class="sizesAdditionRemove" data-cid="\${cid}">删除</span></span>
     {@else}
       <!--1 4 5 6 7 10 11 12 15自定义单行文本框 联系人 手机号码 地址 自定义多行文本框 阳上人 往生者 功德芳名 心愿  => 调用单行文本狂-->
       <span class="green tagbtn additionOperation"><span class="sizeAdditionInputSetting " data-cid="\${cid}" data-toggle="modal" data-target="#inputSizeAdditionModal">设置</span>--

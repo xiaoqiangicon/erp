@@ -3882,7 +3882,6 @@ var View = Backbone.View.extend({
     opt.pay_succ_details_flag =
       parseInt($('input[name="if_feedback"]:checked').attr('value')) || 0;
     window.contentData = opt;
-    console.log(window.contentData);
     return true;
   },
   saveOtherSiteAllImagesSuccess: function(save_to_draft) {
@@ -3891,14 +3890,33 @@ var View = Backbone.View.extend({
       submit_url = '',
       start_time = $('#timeStart').val(),
       end_time = $('#timeLimit').val();
+    console.log(window.contentData, '提交参数');
     window.contentData.subdivideStr.forEach(subItem => {
-      subItem.postScript.forEach(posItem => {
-        if (posItem.inputType == 16) {
-          posItem.name = '是否邮寄';
-        } else if (posItem.inputType == 17) {
-          posItem.name = '普通邮寄';
+      if (subItem.subdivide_type === 4) {
+        let isNotSetPostPs = !0;
+        subItem.postScript.forEach(posItem => {
+          if (posItem.inputType == 16) {
+            posItem.name = '是否邮寄';
+            isNotSetPostPs = !1;
+          } else if (posItem.inputType == 17) {
+            posItem.name = '普通邮寄';
+            isNotSetPostPs = !1;
+          }
+        });
+        if (isNotSetPostPs) {
+          subItem.postScript.push({
+            dataType: 2,
+            describe: '',
+            font_length: 0,
+            inputType: '17',
+            isVerify: 0,
+            is_must: 1,
+            name: '普通邮寄',
+            pic_num: 0,
+            prompt_text: '普通邮寄',
+          });
         }
-      });
+      }
     });
     if (editType == 1) {
       params = window.contentData;
@@ -5255,6 +5273,8 @@ var SizeView = Backbone.View.extend({
         qifuSrc =
           'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png';
       var psModelArr = self.model.get('postScript');
+      // 切换规格名称
+      console.log(psModelArr, '切换规格名称');
       if (!psModelArr) {
         if (subType === 2) {
           psModelArr = new sizesAdditionCollection([
@@ -5358,20 +5378,6 @@ var SizeView = Backbone.View.extend({
             //   name: '地址',
             //   pic_num: 0,
             //   prompt_text: '请填写您常用的居住地址',
-            //   selectInput: [],
-            //   durationDay: 0,
-            //   subType: 4,
-            // }),
-            // new sizesAdditionModel({
-            //   dataType: 2,
-            //   describe: '',
-            //   font_length: 0,
-            //   inputId: '',
-            //   inputType: 16,
-            //   is_must: 1,
-            //   name: '是否邮寄',
-            //   pic_num: 0,
-            //   prompt_text: '',
             //   selectInput: [],
             //   durationDay: 0,
             //   subType: 4,
@@ -5506,75 +5512,82 @@ var SizeView = Backbone.View.extend({
           var ps4 = [],
             ps5 = [],
             ps6 = [],
+            ps16 = [],
+            ps17 = [],
             psOther = [];
           psModelArr.models.map(function(ps) {
             if (ps.get('inputType') === 4) {
-              ps4.push(ps);
+              // ps4.push(ps);
             } else if (ps.get('inputType') === 5) {
-              ps5.push(ps);
+              // ps5.push(ps);
             } else if (ps.get('inputType') === 6) {
-              ps6.push(ps);
+              // ps6.push(ps);
+            } else if (ps.get('inputType') === 16) {
+              ps16.push(ps);
+            } else if (ps.get('inputType') === 17) {
+              ps17.push(ps);
             } else {
               psOther.push(ps);
             }
           });
-          if (!ps4.length) {
-            ps4.push(
-              new sizesAdditionModel({
-                dataType: 2,
-                describe: '',
-                font_length: 8,
-                inputId: '',
-                inputType: 4,
-                is_must: 1,
-                name: '联系人',
-                pic_num: 0,
-                prompt_text: '请填写联系人姓名（方便寺院与您联系）',
-                selectInput: [],
-                durationDay: 0,
-                subType: 4,
-              })
-            );
-          }
-          if (!ps5.length) {
-            ps5.push(
-              new sizesAdditionModel({
-                dataType: 2,
-                describe: '',
-                font_length: 20,
-                inputId: '',
-                inputType: 5,
-                is_must: 1,
-                name: '手机号码',
-                pic_num: 0,
-                prompt_text: '请填写联系人电话（方便寺院与您联系）',
-                selectInput: [],
-                durationDay: 0,
-                subType: 4,
-              })
-            );
-          }
-          if (!ps6.length) {
-            ps6.push(
-              new sizesAdditionModel({
-                dataType: 2,
-                describe: '',
-                font_length: 20,
-                inputId: '',
-                inputType: 6,
-                is_must: 1,
-                name: '地址',
-                pic_num: 0,
-                prompt_text: '请填写您常用的居住地址',
-                selectInput: [],
-                durationDay: 0,
-                subType: 4,
-              })
-            );
-          }
-          psModelArr.models = ps4.concat(ps5, ps6, psOther);
+          // if (!ps4.length) {
+          //   ps4.push(
+          //     new sizesAdditionModel({
+          //       dataType: 2,
+          //       describe: '',
+          //       font_length: 8,
+          //       inputId: '',
+          //       inputType: 4,
+          //       is_must: 1,
+          //       name: '联系人',
+          //       pic_num: 0,
+          //       prompt_text: '请填写联系人姓名（方便寺院与您联系）',
+          //       selectInput: [],
+          //       durationDay: 0,
+          //       subType: 4,
+          //     })
+          //   );
+          // }
+          // if (!ps5.length) {
+          //   ps5.push(
+          //     new sizesAdditionModel({
+          //       dataType: 2,
+          //       describe: '',
+          //       font_length: 20,
+          //       inputId: '',
+          //       inputType: 5,
+          //       is_must: 1,
+          //       name: '手机号码',
+          //       pic_num: 0,
+          //       prompt_text: '请填写联系人电话（方便寺院与您联系）',
+          //       selectInput: [],
+          //       durationDay: 0,
+          //       subType: 4,
+          //     })
+          //   );
+          // }
+          // if (!ps6.length) {
+          //   ps6.push(
+          //     new sizesAdditionModel({
+          //       dataType: 2,
+          //       describe: '',
+          //       font_length: 20,
+          //       inputId: '',
+          //       inputType: 6,
+          //       is_must: 1,
+          //       name: '地址',
+          //       pic_num: 0,
+          //       prompt_text: '请填写您常用的居住地址',
+          //       selectInput: [],
+          //       durationDay: 0,
+          //       subType: 4,
+          //     })
+          //   );
+          // }
+          psModelArr.models = ps4.concat(ps5, ps6, ps16, ps17, psOther);
         }
       }
+      console.log('afterset', psModelArr);
       self.model.set('postScript', psModelArr);
       self.model.set('subdivide_type', subType);
       if (subType === 1) {
