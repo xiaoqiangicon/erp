@@ -46,3 +46,37 @@ export const getTempleMissionList = {
   })),
   result: 0,
 };
+
+export const createCeremonyTypeList = {
+  msg: '',
+  data: '.'
+    .repeat(10)
+    .split('')
+    .map((d, i) => ({
+      ceremonyTypeId: i + 1,
+      name: `分类名称${Math.floor(Math.random() * 100)}`,
+    })),
+  result: 0,
+};
+
+export const createCeremonyType = {
+  msg: '添加成功',
+  result: 0,
+  typeId: 2346,
+};
+
+export const managerEditCeremonyType = {
+  msg: '修改成功',
+  result: 0,
+};
+
+export const delCeremonyType = {
+  msg: '删除成功',
+  result: 0,
+};
+
+export const uploadPic = {
+  msg: '上传成功',
+  result: 0,
+  url: 'https://pic.zizaihome.com/97a8607c-a406-11eb-9ea2-00163e0c1e1c.mp4',
+};

@@ -83,6 +83,8 @@ export default lila => {
     );
   });
 
+  setSetting('servePath', (entry, srcDir) => `${srcDir}/${entry}/serve.js`);
+
   tasksPlugin(lila);
   webpackPlugin(lila);
   reactVueWebpackConfigPlugin(lila);
@@ -198,7 +200,7 @@ export default lila => {
       '@lila/del-build'
     );
 
-    return {
+    const config = {
       tasks,
       staticServer: 'https://pic.zizaihome.com',
       define: {
@@ -251,5 +253,14 @@ export default lila => {
       },
       mockRoot: 'api',
     };
+
+    if (cmd === 'serve') {
+      config.devMiddleware = {
+        watchOptions: { ignored: /node_modules/ },
+        writeToDisk: !0,
+      };
+    }
+
+    return config;
   };
 };
