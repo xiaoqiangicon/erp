@@ -1,16 +1,18 @@
 import { Message, MessageBox } from 'element-ui';
 import draggable from 'vuedraggable';
-import Types from './com/Types.vue';
 import ChooseImage from '../../com-deprecated/choose-image';
 import upload from '../../../../pro-com/src/upload';
-
-let chooseCoverIns;
+import Types from './com/Types.vue';
+import GuiGe from './com/GuiGe.vue';
+import FuYan from './com/FuYan.vue';
 
 export default {
   name: 'App',
   components: {
     draggable,
     Types,
+    GuiGe,
+    FuYan,
   },
   data() {
     return {
@@ -29,6 +31,12 @@ export default {
         ],
         // 封面视频
         video: [],
+        // 简介
+        custom_introduce: '',
+        // 规格
+        subdivideStr: [],
+        // 公共附言
+        postScript: [],
       },
       rules: {
         title: [{ required: true, message: '请输入标题', trigger: 'blur' }],
@@ -37,6 +45,10 @@ export default {
       uploadingVideo: false,
       // 通过视频获取封面需要的后缀
       videoCoverSuffix: '?vframe/jpg/offset/1',
+      // 选取封面组件实例
+      chooseCoverIns: null,
+      // 详情编辑器实例
+      detailEditor: null,
     };
   },
   computed: {
@@ -87,7 +99,11 @@ export default {
       },
     });
 
-    // other
+    // 初始化详情编辑器
+    this.detailEditor = window.UE.getEditor(this.$refs.detailEditor, {
+      initialFrameWidth: 700,
+      initialFrameHeight: 400,
+    });
   },
   methods: {
     toTypesDialog() {
@@ -97,8 +113,8 @@ export default {
       this.form.pics.splice(index, 1);
     },
     addCover() {
-      if (!chooseCoverIns) {
-        chooseCoverIns = new ChooseImage({
+      if (!this.chooseCoverIns) {
+        this.chooseCoverIns = new ChooseImage({
           onSubmit: data => {
             data.forEach(item => {
               if (this.form.pics.length < 5) {
@@ -108,7 +124,7 @@ export default {
           },
         });
       }
-      chooseCoverIns.show();
+      this.chooseCoverIns.show();
     },
     delVideo(index) {
       this.form.video.splice(index, 1);

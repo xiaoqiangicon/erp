@@ -6,6 +6,17 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 import './index.less';
 
+import 'component/ueditor_config';
+import '../../../../pro-com/src/ueditor/ueditor.config';
+import '../../../../pro-com/src/ueditor/ueditor.all';
+
+import 'component/ueditor_plugins/xiu_mi';
+import 'component/ueditor_plugins/import_wx_article';
+import 'component/ueditor_plugins/video';
+import 'component/ueditor_plugins/choose_image';
+import 'component/ueditor_plugins/choose_image_multi';
+import '../../com/ueditor-plugins/self-music';
+
 import Vue from 'vue';
 import {
   CheckboxGroup,
@@ -19,6 +30,8 @@ import {
   Option,
   Button,
   Dialog,
+  DatePicker,
+  Tooltip,
 } from 'element-ui';
 import App from './App.vue';
 import store from './store';
@@ -37,6 +50,8 @@ Vue.use(Select);
 Vue.use(Option);
 Vue.use(Button);
 Vue.use(Dialog);
+Vue.use(DatePicker);
+Vue.use(Tooltip);
 
 // eslint-disable-next-line no-new
 new Vue({

@@ -11,14 +11,14 @@
     <el-form
       :model="form"
       :rules="rules"
-      label-width="180px"
+      label-width="150px"
       size="medium"
       class="forms"
     >
       <el-form-item label="标题：" prop="title" required>
         <template slot="label"
-          >标&nbsp;&nbsp;&nbsp;&nbsp;题：</template
-        >
+          >标&nbsp;&nbsp;&nbsp;&nbsp;题：
+        </template>
         <el-input
           v-model="form.title"
           placeholder="请输入不超过30个文字"
@@ -39,8 +39,8 @@
       </el-form-item>
       <el-form-item label="分类：" prop="ceremonyTypeId" required>
         <template slot="label"
-          >分&nbsp;&nbsp;&nbsp;&nbsp;类：</template
-        >
+          >分&nbsp;&nbsp;&nbsp;&nbsp;类：
+        </template>
         <el-select
           v-model="form.ceremonyTypeId"
           placeholder="请选择"
@@ -107,6 +107,45 @@
           />
         </div>
         <p>支持视频格式MP4/MOV等，不超过50MB，仅支持上传1个封面视频</p>
+      </el-form-item>
+      <el-form-item label="简介：">
+        <template slot="label"
+          >简&nbsp;&nbsp;&nbsp;&nbsp;介：
+        </template>
+        <el-input
+          type="textarea"
+          placeholder="简介可自定义佛事分享时的描述（选填）"
+          v-model="form.custom_introduce"
+          maxlength="60"
+          show-word-limit
+          rows="3"
+          style="max-width: 600px"
+        >
+        </el-input>
+      </el-form-item>
+      <el-form-item label="详情：" required>
+        <template slot="label"
+          >详&nbsp;&nbsp;&nbsp;&nbsp;情：
+        </template>
+        <div ref="detailEditor" class="editor-container"></div>
+      </el-form-item>
+      <el-form-item label="选择项：">
+        <template slot="label"
+          >选择项<el-tooltip
+            effect="dark"
+            content="可添加信众参与的选项"
+            placement="top-start"
+          >
+            <i class="el-icon-question"></i> </el-tooltip
+          >：
+        </template>
+        <GuiGe :subdivideStr="form.subdivideStr" />
+      </el-form-item>
+      <el-form-item label="附言：">
+        <template slot="label"
+          >附&nbsp;&nbsp;&nbsp;&nbsp;言：
+        </template>
+        <FuYan :postScript="form.postScript" />
       </el-form-item>
     </el-form>
 
