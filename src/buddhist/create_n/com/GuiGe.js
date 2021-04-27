@@ -5,6 +5,7 @@ import { randomPrices, redPacketCover, selectGuiGeList } from '../data';
 import { isInt } from '../../../utils/num';
 import ChooseImage from '../../../com-deprecated/choose-image';
 import FuYan from './FuYan.vue';
+import { removeIdDeep } from '../utils';
 
 export default {
   name: 'GuiGe',
@@ -41,6 +42,16 @@ export default {
       type: Array,
     },
   },
+  computed: {
+    allComponentsChange() {
+      return this.$store.state.allComponentsChange;
+    },
+  },
+  watch: {
+    allComponentsChange() {
+      this.$forceUpdate();
+    },
+  },
   created() {
     // 直接修改subdivideStr不会刷新默认（因为是属性），所以引用到list
     this.list = this.subdivideStr;
@@ -58,6 +69,9 @@ export default {
       item._durationDayType = 1;
       item._priceAutoBox = false;
       this.list.push(item);
+
+      // 更新 guiGeListLength
+      this.$store.state.guiGeListLength = this.list.length;
     },
     onChangeType(index) {
       const item = this.list[index];
@@ -73,6 +87,9 @@ export default {
     delGuiGe(index) {
       MessageBox.confirm('确定删除这个选择项吗').then(() => {
         this.list.splice(index, 1);
+
+        // 更新 guiGeListLength
+        this.$store.state.guiGeListLength = this.list.length;
       });
     },
     copyGuiGe(index) {
@@ -80,18 +97,7 @@ export default {
       const newItem = JSON.parse(JSON.stringify(item));
 
       // 删除所有的Id，包括深层的
-      delete newItem.id;
-      Object.keys(newItem).forEach(key => {
-        if (!newItem[key]) return;
-
-        if (Array.isArray(newItem[key])) {
-          newItem[key].forEach(item2 => {
-            delete item2.id;
-          });
-        } else if (typeof newItem[key] === 'object') {
-          delete newItem[key].id;
-        }
-      });
+      removeIdDeep(newItem);
 
       this.list.splice(index, 0, newItem);
     },
@@ -158,6 +164,24 @@ export default {
       this.$store.state.fuYanComponentDataChange += 1;
     },
     handleFuYanDialogConfirm() {
+      // 邮寄佛事
+      if (this.fuYanItem.subdivide_type === 4) {
+        const hasFuYan16 = !!this.fuYanItem.postScript.find(
+          i => i.inputType === 16
+        );
+        const hasFuYan17 = !!this.fuYanItem.postScript.find(
+          i => i.inputType === 17
+        );
+        if (!hasFuYan16 && !hasFuYan17) {
+          MessageBox.alert('必须要有一个用户自选邮寄或者普通邮寄附言');
+          return;
+        }
+        if (hasFuYan16 && hasFuYan17) {
+          MessageBox.alert('用户自选邮寄或者普通邮寄附言不能同时存在');
+          return;
+        }
+      }
+
       this.originalFuYanItem.postScript = this.fuYanItem.postScript;
       this.fuYanDialogVisible = false;
     },

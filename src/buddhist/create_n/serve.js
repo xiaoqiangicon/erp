@@ -15,7 +15,7 @@ const createdData = {
   detail: '<p>的的萨芬</p>',
   // 下单按钮文字
   opName: '随喜功德',
-  // 是否显示统计区域
+  // 是否显示统计区域（0 不显示、1 普通样式、2 众筹样式）
   showStatictics: 1,
   // 库存（-1为无限制）
   stock: -1,

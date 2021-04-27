@@ -1,3 +1,43 @@
+import { urlParams } from '../../../../pro-com/src/utils';
+
+// 共享数据
+export const shareData = {
+  createdData: {},
+};
+
+export const urlData = {
+  edit: parseInt(urlParams.edit, 10),
+  id: parseInt(urlParams.id, 10),
+  templateId: parseInt(urlParams.templateId, 10),
+  ifTemplate: parseInt(urlParams.ifTemplate, 10),
+  verifyId: parseInt(urlParams.verifyId, 10),
+  // 创建佛事
+  createByPlain: false,
+  // 复制佛事
+  createByCopy: false,
+  // 系统模板创建
+  createBySysTpl: false,
+  // 自定义模板创建
+  createByCusTpl: false,
+  // 更新佛事
+  updateFoShi: false,
+  // 编辑模板
+  updateCusTpl: false,
+};
+
+if (urlData.edit === 0) {
+  urlData.createByCopy = true;
+} else if (urlData.edit === 1) {
+  urlData.updateFoShi = true;
+} else if (urlData.edit === 2) {
+  urlData.createBySysTpl = true;
+} else if (urlData.edit === 3) {
+  urlData.createByCusTpl = !urlData.ifTemplate;
+  urlData.updateCusTpl = !!urlData.ifTemplate;
+} else {
+  urlData.createByPlain = true;
+}
+
 /**
  * 用于选择的附言列表
  *
@@ -35,6 +75,19 @@ export const selectFuYanList = [
   { value: 3, name: '自定义-下拉列表' },
   { value: 7, name: '自定义-多行文本框' },
   { value: 14, name: '自定义-图片上传' },
+];
+
+/**
+ * 邮寄佛事专用的附言列表
+ *
+ * 16: 用户自选邮寄
+ * 17: 普通邮寄
+ * @type {Array}
+ */
+export const expressFuYanList = [
+  { value: 16, name: '用户自选邮寄' },
+  { value: 17, name: '普通邮寄' },
+  ...selectFuYanList,
 ];
 
 // 新创建的附言列表（用于生成新的）
@@ -147,7 +200,7 @@ export const plainFuYanList = [
     dataType: 2,
     pic_num: 1,
     isVerify: 0,
-    font_length: 0,
+    font_length: 8,
   },
   {
     inputType: 11,
@@ -156,9 +209,9 @@ export const plainFuYanList = [
     name: '往生者',
     is_must: 1,
     dataType: 2,
-    pic_num: 1,
+    pic_num: 4,
     isVerify: 0,
-    font_length: 0,
+    font_length: 8,
   },
   {
     inputType: 12,
@@ -167,9 +220,9 @@ export const plainFuYanList = [
     name: '功德芳名',
     is_must: 1,
     dataType: 2,
-    pic_num: 1,
+    pic_num: 4,
     isVerify: 0,
-    font_length: 10,
+    font_length: 8,
   },
   {
     inputType: 13,
@@ -204,6 +257,28 @@ export const plainFuYanList = [
     isVerify: 0,
     font_length: 50,
   },
+  {
+    inputType: 16,
+    prompt_text: '是否邮寄',
+    describe: '',
+    name: '是否邮寄',
+    is_must: 1,
+    dataType: 2,
+    pic_num: 0,
+    isVerify: 0,
+    font_length: 0,
+  },
+  {
+    inputType: 17,
+    prompt_text: '普通邮寄',
+    describe: '',
+    name: '普通邮寄',
+    is_must: 1,
+    dataType: 2,
+    pic_num: 0,
+    isVerify: 0,
+    font_length: 0,
+  },
 ];
 
 /**
@@ -236,7 +311,7 @@ export const plainGuiGeList = [
     endTime: '',
     durationDay: '',
     enroll_num: 0,
-    sort: 4,
+    sort: 0,
     price: '',
     stock: '',
   },
@@ -248,10 +323,10 @@ export const plainGuiGeList = [
         name: '阳上人',
         is_must: 1,
         dataType: 2,
-        pic_num: 0,
+        pic_num: 1,
         describe: '',
         isVerify: 0,
-        font_length: 4,
+        font_length: 8,
       },
       {
         inputType: 11,
@@ -262,18 +337,7 @@ export const plainGuiGeList = [
         pic_num: 4,
         describe: '',
         isVerify: 0,
-        font_length: 4,
-      },
-      {
-        inputType: 6,
-        prompt_text: '请选择所在地区',
-        name: '所在地区',
-        is_must: 1,
-        dataType: 2,
-        pic_num: 0,
-        describe: '',
-        isVerify: 0,
-        font_length: 0,
+        font_length: 8,
       },
     ],
     name: '往生牌位',
@@ -285,7 +349,7 @@ export const plainGuiGeList = [
     endTime: '',
     durationDay: '',
     enroll_num: 0,
-    sort: 5,
+    sort: 0,
     price: '',
     stock: '',
   },
@@ -300,7 +364,7 @@ export const plainGuiGeList = [
         pic_num: 4,
         describe: '',
         isVerify: 0,
-        font_length: 4,
+        font_length: 8,
       },
       {
         inputType: 15,
@@ -311,18 +375,7 @@ export const plainGuiGeList = [
         pic_num: 0,
         describe: '',
         isVerify: 0,
-        font_length: 40,
-      },
-      {
-        inputType: 6,
-        prompt_text: '请选择所在地区',
-        name: '所在地区',
-        is_must: 1,
-        dataType: 2,
-        pic_num: 0,
-        describe: '',
-        isVerify: 0,
-        font_length: 0,
+        font_length: 20,
       },
     ],
     name: '祈福牌位',
@@ -334,7 +387,7 @@ export const plainGuiGeList = [
     endTime: '',
     durationDay: '',
     enroll_num: 0,
-    sort: 6,
+    sort: 0,
     price: '',
     stock: '',
   },
@@ -344,7 +397,7 @@ export const plainGuiGeList = [
         dataType: 2,
         describe: '',
         font_length: 0,
-        inputType: '17',
+        inputType: 17,
         isVerify: 0,
         is_must: 1,
         name: '普通邮寄',
@@ -361,7 +414,7 @@ export const plainGuiGeList = [
     endTime: '',
     durationDay: '',
     enroll_num: 0,
-    sort: 7,
+    sort: 0,
     price: '',
     stock: '',
   },
@@ -373,3 +426,101 @@ export const randomPrices =
 // 红包封面
 export const redPacketCover =
   'https://pic.zizaihome.com/e0898a9c-23a1-11e9-9b75-00163e0c001e.jpg';
+
+// 可视化附言预览图
+export const fuYanPreviewImages = {
+  // 往生排位
+  2: [
+    {
+      src: 'https://pic.zizaihome.com/fd4dd4da-0bfb-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+    {
+      src: 'https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+  ],
+  // 祈福排位
+  3: [
+    {
+      src: 'https://pic.zizaihome.com/478059f6-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+    {
+      src: 'https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+  ],
+};
+
+// 功德证书
+export const feedbackPrizes = [
+  {
+    value: 1,
+    name: '通用法会',
+    cover: 'https://pic.zizaihome.com/5cc635f6-90ad-11e9-b31f-00163e0c001e.png',
+  },
+  {
+    value: 2,
+    name: '通用捐赠',
+    cover: 'https://pic.zizaihome.com/5d1ebe38-90ad-11e9-8c90-00163e0c001e.png',
+  },
+  {
+    value: 3,
+    name: '供养万僧',
+    cover: 'https://pic.zizaihome.com/3066b49a-90b2-11e9-ac35-00163e0c001e.png',
+  },
+  {
+    value: 4,
+    name: '放生修福',
+    cover: 'https://pic.zizaihome.com/305dfbd4-90b2-11e9-8569-00163e0c001e.png',
+  },
+  {
+    value: 5,
+    name: '助印经书',
+    cover: 'https://pic.zizaihome.com/3069f40c-90b2-11e9-a570-00163e0c001e.png',
+  },
+  {
+    value: 6,
+    name: '生日法会',
+    cover: 'https://pic.zizaihome.com/5cbacbc6-90ad-11e9-9890-00163e0c001e.png',
+  },
+  {
+    value: 7,
+    name: '斋天普佛',
+    cover: 'https://pic.zizaihome.com/5ca50d7c-90ad-11e9-aed0-00163e0c001e.png',
+  },
+  {
+    value: 8,
+    name: '佛前供灯',
+    cover: 'https://pic.zizaihome.com/5db06af4-90ad-11e9-858e-00163e0c001e.png',
+  },
+  {
+    value: 9,
+    name: '奉花礼佛',
+    cover: 'https://pic.zizaihome.com/5d4f00c0-90ad-11e9-a299-00163e0c001e.png',
+  },
+  {
+    value: 10,
+    name: '功德宝树',
+    cover: 'https://pic.zizaihome.com/5e6d3b52-90ad-11e9-bfa9-00163e0c001e.png',
+  },
+  {
+    value: 11,
+    name: '日行一善',
+    cover: 'https://pic.zizaihome.com/305dfde6-90b2-11e9-9666-00163e0c001e.png',
+  },
+  {
+    value: 12,
+    name: '供奉拜垫',
+    cover: 'https://pic.zizaihome.com/56e1c0a6-748d-48d4-8c90-bd1dce3e1bbc.png',
+  },
+];
+
+// 默认的支付成功反馈信息富文本
+export const defaultPaySuccessHtml =
+  '<section><section style="margin: 10px auto;"><section style="border-style: solid;-webkit-border-image: url(http://mpt.135editor.com/mmbiz_png/yqVAqoZvDibGpfYS2cC4YzbozH31oekibOFPBxA1CDIwaGogibNAnYBrrLIvt9q2U2RhpJruHxyI9YyMStIK84ibgw/0?wx_fmt=png) 65 fill;border-width: 20px;padding: 5px;color:#feda8c;"><p style="text-align: center;"><span style="font-size: 24px; caret-color: red;"><br/></span></p><p style="text-align: center;"><span style="font-size: 24px; caret-color: red;">随喜赞叹，功德无量。</span></p><p style="text-align: center;"><span style="font-size: 24px; caret-color: red;">福慧双增，所愿皆遂。</span></p><p><span style="font-size: 24px; caret-color: red;"><br/></span></p></section></section></section>';

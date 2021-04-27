@@ -1,6 +1,14 @@
 <template>
   <div>
-    <div class="el-table el-table--fit el-table--border">
+    <div v-if="!list.length">
+      <div class="l-hg-1-6" v-if="!subdivide_type">
+        如果需要用户支付前填写信息（如联系人、联系电话等），请在此处添加。<br />如果为选择项单独设置了附言，则此处设置附言将会和选择项附言合并显示。
+      </div>
+      <div class="l-hg-1-6" v-else>
+        如果需要用户支付前填写信息（如联系人、联系电话等），请在此处添加。
+      </div>
+    </div>
+    <div class="el-table el-table--fit el-table--border" v-show="list.length">
       <div class="el-table__header-wrapper">
         <table
           cellspacing="0"
@@ -40,26 +48,36 @@
           class="el-table__body"
           style="width: 100%;"
         >
-          <draggable tag="tbody" v-model="list" handle=".draggable-handle">
+          <draggable
+            tag="tbody"
+            :list="list"
+            handle=".draggable-handle"
+            :move="onDraggableMove"
+          >
             <tr
               class="el-table__row"
               v-for="(item, index) in list"
               :key="index"
+              :class="item._isPredefined ? 'draggable-exclude' : ''"
             >
               <td
                 class="draggable-handle"
                 rowspan="1"
                 colspan="1"
                 style="width: 80px"
+                v-if="!item._isPredefined"
               >
-                <div class="cell">
+                <div class="cell cs-pointer">
                   <img
                     src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png"
                   />
                 </div>
               </td>
+              <td rowspan="1" colspan="1" style="width: 80px" v-else>
+                <div class="cell">可视化</div>
+              </td>
               <td rowspan="1" colspan="1">
-                <div class="cell">
+                <div class="cell" v-if="!item._isPredefined">
                   <!-- 已经生成的组件不能更改类型 -->
                   <el-select
                     v-model="item.inputType"
@@ -69,7 +87,9 @@
                     @change="onChangeType(index)"
                   >
                     <el-option
-                      v-for="fuYan in selectFuYanList"
+                      v-for="fuYan in subdivide_type === 4
+                        ? expressFuYanList
+                        : selectFuYanList"
                       :key="fuYan.value"
                       :label="fuYan.name"
                       :value="fuYan.value"
@@ -77,9 +97,24 @@
                     </el-option>
                   </el-select>
                 </div>
+                <div class="cell ps-relative" v-else>
+                  <img
+                    :src="fuYanPreviewImages[subdivide_type][index].thumbnail"
+                    class="preview-thumbnail"
+                    @mouseenter="enterPreviewThumbnail(index)"
+                    @mouseleave="leavePreviewThumbnail(index)"
+                  />
+                  <transition name="fade">
+                    <img
+                      v-if="item._previewImage"
+                      :src="fuYanPreviewImages[subdivide_type][index].src"
+                      class="preview-image"
+                    />
+                  </transition>
+                </div>
               </td>
               <td rowspan="1" colspan="1">
-                <div class="cell">
+                <div class="cell" v-if="!item._isPredefined">
                   <!-- 自定义提示框没有标题 -->
                   <el-input
                     v-model="item.name"
@@ -88,6 +123,9 @@
                     style="width: 100%"
                     v-show="item.inputType !== 13"
                   ></el-input>
+                </div>
+                <div class="cell" v-else>
+                  {{ item.name }}
                 </div>
               </td>
               <td rowspan="1" colspan="1">
@@ -143,6 +181,7 @@
                   <span
                     class="main-red cs-pointer mg-l-10"
                     @click="delFuYan(index)"
+                    v-if="!item._isPredefined"
                     >删除</span
                   >
                 </div>
@@ -165,7 +204,9 @@
       <el-form :model="setItem" label-width="150px" size="medium">
         <el-form-item
           label="必填项："
-          v-if="[13].indexOf(setItem.inputType) === -1"
+          v-if="
+            [13].indexOf(setItem.inputType) === -1 && !setItem._isPredefined
+          "
         >
           <el-radio v-model="setItem.is_must" :label="1">是</el-radio>
           <el-radio v-model="setItem.is_must" :label="0">否</el-radio>
@@ -214,6 +255,30 @@
         >
           <el-radio v-model="setItem.isVerify" :label="1">需要</el-radio>
           <el-radio v-model="setItem.isVerify" :label="0">不需要</el-radio>
+        </el-form-item>
+        <el-form-item
+          label="每个姓名最多字数："
+          v-if="[10, 11, 12].indexOf(setItem.inputType) > -1"
+        >
+          <el-select v-model="setItem.font_length" style="width: 100%">
+            <el-option label="3" :value="3"></el-option>
+            <el-option label="4" :value="4"></el-option>
+            <el-option label="6" :value="6"></el-option>
+            <el-option label="8" :value="8"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item
+          label="最多可填姓名数量："
+          v-if="[11, 12].indexOf(setItem.inputType) > -1"
+        >
+          <el-select v-model="setItem.pic_num" style="width: 100%">
+            <el-option label="1" :value="1"></el-option>
+            <el-option label="2" :value="2"></el-option>
+            <el-option label="3" :value="3"></el-option>
+            <el-option label="4" :value="4"></el-option>
+            <el-option label="5" :value="5"></el-option>
+            <el-option label="6" :value="6"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item
           label="提示内容："
@@ -292,5 +357,25 @@
 
 .el-form-item .el-form-item {
   margin-bottom: 22px;
+}
+
+.preview-thumbnail {
+  height: 50px;
+  cursor: pointer;
+}
+.preview-image {
+  position: fixed;
+  top: 20px;
+  right: 20%;
+  width: 250px;
+  z-index: 100;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

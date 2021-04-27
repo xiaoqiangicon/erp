@@ -1,7 +1,7 @@
 import draggable from 'vuedraggable';
 import { Message, MessageBox } from 'element-ui';
 import { generateFuYan } from '../func';
-import { selectFuYanList } from '../data';
+import { expressFuYanList, selectFuYanList, fuYanPreviewImages } from '../data';
 import { isInt } from '../../../utils/num';
 
 export default {
@@ -14,6 +14,8 @@ export default {
       // 列表
       list: null,
       selectFuYanList,
+      expressFuYanList,
+      fuYanPreviewImages,
       // 进行设置的项
       setItem: {},
       // 因为有取消的操作，所以需要保存原来的对象
@@ -36,6 +38,9 @@ export default {
     fuYanComponentDataChange() {
       return this.$store.state.fuYanComponentDataChange;
     },
+    allComponentsChange() {
+      return this.$store.state.allComponentsChange;
+    },
   },
   watch: {
     fuYanComponentDataChange() {
@@ -45,7 +50,11 @@ export default {
       this.list = [];
       setTimeout(() => {
         this.list = this.postScript;
+        this.fillTmpIsPredefined();
       }, 200);
+    },
+    allComponentsChange() {
+      this.$forceUpdate();
     },
   },
   created() {
@@ -56,8 +65,21 @@ export default {
       // 未预览添加模型字段，防止控制台报错
       item._tmpValueForDisplay = '';
     });
+
+    this.fillTmpIsPredefined();
   },
   methods: {
+    onDraggableMove(e) {
+      // 预定义的字段不能排序
+      return e.related.className.indexOf('draggable-exclude') === -1;
+    },
+    fillTmpIsPredefined() {
+      // 往生排位与祈福排位前两个附言是预定义的，不能删除，类型和名称不能修改
+      if ([2, 3].indexOf(this.subdivide_type) > -1) {
+        if (this.list[0]) this.list[0]._isPredefined = true;
+        if (this.list[1]) this.list[1]._isPredefined = true;
+      }
+    },
     addFuYan() {
       const item = generateFuYan();
       // 未预览添加模型字段，防止控制台报错
@@ -123,6 +145,14 @@ export default {
         this.originalSetItem[key] = this.setItem[key];
       });
       this.setDialogVisible = false;
+    },
+    enterPreviewThumbnail(index) {
+      this.list[index]._previewImage = true;
+      this.$forceUpdate();
+    },
+    leavePreviewThumbnail(index) {
+      this.list[index]._previewImage = false;
+      this.$forceUpdate();
     },
   },
 };

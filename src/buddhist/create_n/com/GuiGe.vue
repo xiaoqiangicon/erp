@@ -65,7 +65,7 @@
           class="el-table__body"
           style="width: 100%;"
         >
-          <draggable tag="tbody" v-model="list" handle=".draggable-handle">
+          <draggable tag="tbody" :list="list" handle=".draggable-handle">
             <tr
               class="el-table__row"
               v-for="(item, index) in list"
@@ -77,7 +77,7 @@
                 colspan="1"
                 style="width: 80px"
               >
-                <div class="cell">
+                <div class="cell cs-pointer">
                   <img
                     src="https://pic.zizaihome.com/bb8ca7d8-23a1-11e9-9b75-00163e0c001e.png"
                   />
@@ -275,11 +275,7 @@
       </span>
     </el-dialog>
     <el-dialog
-      :title="
-        '选择项附言：' +
-          fuYanItem.name +
-          ' (如果需要用户下单时填写信息，请在此处添加)'
-      "
+      :title="'选择项附言：' + fuYanItem.name"
       :visible.sync="fuYanDialogVisible"
       width="1000px"
     >

@@ -1,11 +1,11 @@
 import 'component/nav';
 import 'colors.css/css/colors.css';
 import '@senntyou/shortcut.css';
-
 import 'element-ui/lib/theme-chalk/index.css';
-
+import 'toastr/build/toastr.css';
 import './index.less';
 
+import toastr from 'toastr';
 import 'component/ueditor_config';
 import '../../../../pro-com/src/ueditor/ueditor.config';
 import '../../../../pro-com/src/ueditor/ueditor.all';
@@ -36,6 +36,9 @@ import {
 import App from './App.vue';
 import store from './store';
 import { refreshCeremonyTypes } from './func';
+import { shareData, urlData } from './data';
+import request from '../../utils/request';
+import { removeIdDeep } from './utils';
 
 Vue.config.devtools = true;
 
@@ -53,11 +56,52 @@ Vue.use(Dialog);
 Vue.use(DatePicker);
 Vue.use(Tooltip);
 
-// eslint-disable-next-line no-new
-new Vue({
-  el: '#app',
-  store,
-  render: h => h(App),
-});
+toastr.options.positionClass = 'toast-bottom-full-width';
+
+function init() {
+  // eslint-disable-next-line no-new
+  new Vue({
+    el: '#app',
+    store,
+    render: h => h(App),
+  });
+}
+
+// 复制佛事
+if (urlData.createByCopy) {
+  shareData.createdData = window.createdData;
+  removeIdDeep(shareData.createdData);
+  init();
+}
+// 编辑佛事
+else if (urlData.updateFoShi) {
+  shareData.createdData = window.createdData;
+  init();
+}
+// 使用系统模板创建
+else if (urlData.createBySysTpl) {
+  request({
+    url: '/zzhadmin/ceremony_template/',
+    params: { templateId: urlData.templateId },
+  }).then(res => {
+    shareData.createdData = res.data;
+    removeIdDeep(shareData.createdData);
+    init();
+  });
+}
+// 使用自定义模板创建
+else if (urlData.createByCusTpl || urlData.updateCusTpl) {
+  request({
+    url: '/zzhadmin/getCeremonyTemplate/',
+    params: { templateId: urlData.templateId },
+  }).then(res => {
+    shareData.createdData = res.data;
+    // 非编辑模板
+    if (urlData.createByCusTpl) removeIdDeep(shareData.createdData);
+    init();
+  });
+} else {
+  init();
+}
 
 refreshCeremonyTypes();

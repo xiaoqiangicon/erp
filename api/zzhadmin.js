@@ -80,3 +80,15 @@ export const uploadPic = {
   result: 0,
   url: 'https://pic.zizaihome.com/97a8607c-a406-11eb-9ea2-00163e0c1e1c.mp4',
 };
+
+export const saveCeremonyTemplate = {
+  result: 0,
+};
+
+export const managerEditCeremony = {
+  result: 0,
+};
+
+export const createCeremony = {
+  result: 0,
+};
