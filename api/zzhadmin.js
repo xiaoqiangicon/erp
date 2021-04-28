@@ -86,9 +86,70 @@ export const saveCeremonyTemplate = {
 };
 
 export const managerEditCeremony = {
+  commodityId: 9098,
+  createCalendar: 1,
+  createImageText: 1,
+  msg: '修改成功',
   result: 0,
 };
 
 export const createCeremony = {
+  commodityId: 9098,
+  createCalendar: 1,
+  createImageText: 1,
+  msg: '修改成功',
   result: 0,
+};
+
+export const getNeedPrintOrderNum = {
+  result: 0,
+  orderNum: 1,
+};
+
+export const addWebSite = {
+  result: 0,
+};
+
+export const printOrder = {
+  result: 0,
+};
+
+export const volunteer_getSmsCount = {
+  msg: '获取成功',
+  data: {
+    msgCnt: 54,
+  },
+  result: 0,
+};
+
+export const getPrinterList = {
+  msg: '获取成功',
+  data: [
+    {
+      type: 0,
+      id: 1,
+      address: '佛山本焕寺便携1号机（小票打印机）',
+    },
+    {
+      type: 0,
+      id: 2,
+      address: '佛山本焕寺便携2号机（小票打印机）',
+    },
+    {
+      type: 0,
+      id: 3,
+      address: '佛山本焕寺便携3号机（小票打印机）',
+    },
+    {
+      type: 0,
+      id: 4,
+      address: '佛山本焕寺便携4号机（小票打印机）',
+    },
+  ],
+  result: 1,
+};
+
+export const getPrinterStatus = {
+  msg: '离线。',
+  result: 1,
 };

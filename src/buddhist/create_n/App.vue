@@ -153,7 +153,9 @@
             type="success"
             size="medium"
             @click="fillRandomPrices"
-            v-if="form.price.indexOf(',') === -1"
+            v-if="
+              form.price.indexOf(',') === -1 && form.price.indexOf('，') === -1
+            "
           >
             自动生成随喜金额
           </el-button>
@@ -290,6 +292,7 @@
           type="datetime"
           value-format="yyyy-MM-dd HH:mm:ss"
           placeholder="为空默认今天开始"
+          :disabled="disableModifyTime"
           style="width: 250px;"
         />
       </el-form-item>
@@ -298,6 +301,7 @@
           v-model="form.endTime"
           type="datetime"
           value-format="yyyy-MM-dd HH:mm:ss"
+          :disabled="disableModifyTime"
           style="width: 250px;"
         />
       </el-form-item>
@@ -338,6 +342,18 @@
           <div id="pay-success-editor" class="editor-container"></div>
         </div>
       </el-form-item>
+      <el-form-item label="小票打印：">
+        <el-button
+          size="medium"
+          type="success"
+          v-if="printerSettled"
+          @click="openPrinterDialog"
+          >已设置</el-button
+        >
+        <el-button size="medium" v-else @click="openPrinterDialog"
+          >设置</el-button
+        >
+      </el-form-item>
     </el-form>
     <div class="mg-t-40 mg-b-40 t-a-center">
       <el-button type="success" size="medium" @click="submit">{{
@@ -366,6 +382,160 @@
 
     <!-- 分类管理 -->
     <Types />
+
+    <el-dialog
+      title="提醒设置"
+      :visible="notifyDialogVisible"
+      :show-close="false"
+      width="600px"
+    >
+      <div class="t-a-center">
+        <i
+          class="el-icon-circle-check main-green"
+          style="font-size: 40px;position: relative;top: 7px;"
+        ></i>
+        <span class="main-green f-s-18">保存成功</span>
+      </div>
+      <div class="mg-t-30 pd-l-30">
+        <el-checkbox
+          v-model="notifySet.calendar"
+          :true-label="1"
+          :false-label="0"
+          >审核成功添加进佛历</el-checkbox
+        >
+      </div>
+      <div class="mg-t-10 pd-l-30">
+        <span>提醒时间</span>
+        <el-date-picker
+          v-model="notifySet.startDate"
+          type="date"
+          size="medium"
+          value-format="yyyy-MM-dd"
+          placeholder="选择日期"
+          style="width: 180px;"
+          class="mg-l-10"
+        />
+        <span class="mg-l-10">-</span>
+        <el-date-picker
+          v-model="notifySet.endDate"
+          type="date"
+          size="medium"
+          value-format="yyyy-MM-dd"
+          placeholder="选择日期"
+          style="width: 180px;"
+          class="mg-l-10"
+        />
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button
+          type="primary"
+          size="small"
+          @click="handleNotifyDialogConfirm"
+          >好 的</el-button
+        >
+      </span>
+    </el-dialog>
+
+    <el-dialog
+      title="小票打印设置"
+      :visible="printerDialogVisible"
+      :show-close="false"
+      width="600px"
+    >
+      <el-form label-width="130px" size="medium">
+        <el-form-item label="选择打印机：">
+          <el-select
+            v-model="printerSelectedIndex"
+            placeholder="请选择"
+            style="width: 250px;"
+            @change="onChangeSelectPrinter"
+          >
+            <el-option
+              v-for="(item, index) in printerList"
+              :key="index"
+              :label="item.address"
+              :value="index"
+            >
+            </el-option>
+          </el-select>
+          <p
+            class="mg-b-0"
+            v-if="
+              printerSelectedIndex !== null && currentPrinterItem.online !== -1
+            "
+            :class="currentPrinterItem.online ? 'green' : 'orange'"
+          >
+            <span>{{ currentPrinterItem.statusText }}</span>
+          </p>
+        </el-form-item>
+        <el-form-item label="选择项：" v-if="printerSelectedIndex !== null">
+          <el-checkbox-group
+            v-model="currentPrinterGuiGeIndexes"
+            @change="onChangePrinterSelectGuiGe"
+          >
+            <el-checkbox
+              v-for="(item, index) in form.subdivideStr"
+              :label="index"
+              :key="index"
+              >{{ item.name || '未命名选择项' }}</el-checkbox
+            >
+          </el-checkbox-group>
+        </el-form-item>
+        <el-form-item label="打印联数：" v-if="printerSelectedIndex !== null">
+          <el-select
+            v-model="currentPrinterSetting.continuousPrintNum"
+            placeholder="请选择"
+            style="width: 250px;"
+          >
+            <el-option
+              v-for="n in 5"
+              :key="n"
+              :label="n + '联'"
+              :value="n"
+              :disabled="n === 1 && currentPrinterSetting.qrcodePrint === 2"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <!-- 隔联打印需打印联数 > 1 -->
+        <el-form-item label="二维码：" v-if="printerSelectedIndex !== null">
+          <el-radio v-model="currentPrinterSetting.qrcodePrint" :label="1"
+            >全部打印</el-radio
+          >
+          <el-radio
+            v-model="currentPrinterSetting.qrcodePrint"
+            :label="2"
+            :disabled="currentPrinterSetting.continuousPrintNum === 1"
+            >隔联打印</el-radio
+          >
+          <el-radio v-model="currentPrinterSetting.qrcodePrint" :label="3"
+            >不打印</el-radio
+          >
+          <p class="mg-b-0">
+            二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
+          </p>
+        </el-form-item>
+        <el-form-item label="电话号码：" v-if="printerSelectedIndex !== null">
+          <el-radio v-model="currentPrinterSetting.isPrintMobile" :label="1"
+            >打印</el-radio
+          >
+          <el-radio v-model="currentPrinterSetting.isPrintMobile" :label="0"
+            >不打印</el-radio
+          >
+          <p class="mg-b-0">
+            如果不希望透露功德主的联系方式，可以选择不打印电话号码。
+          </p>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button
+          type="primary"
+          size="small"
+          @click="handlePrinterDialogConfirm"
+          >好 的</el-button
+        >
+      </span>
+    </el-dialog>
   </div>
 </template>
 

@@ -255,6 +255,17 @@
         >
           <el-radio v-model="setItem.isVerify" :label="1">需要</el-radio>
           <el-radio v-model="setItem.isVerify" :label="0">不需要</el-radio>
+          <div v-if="remainMsgCount !== -1">
+            剩余短信数量<span class="main-green f-wg-bold">{{
+              remainMsgCount
+            }}</span
+            >，若不足请点击<a
+              class="f-wg-bold main-green"
+              href="/zzhadmin/volunteer_sendSMS_index/"
+              target="_blank"
+              >充值</a
+            >
+          </div>
         </el-form-item>
         <el-form-item
           label="每个姓名最多字数："

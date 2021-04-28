@@ -41,6 +41,9 @@ export default {
     allComponentsChange() {
       return this.$store.state.allComponentsChange;
     },
+    remainMsgCount() {
+      return this.$store.state.remainMsgCount;
+    },
   },
   watch: {
     fuYanComponentDataChange() {

@@ -19,8 +19,8 @@ import '../../com/ueditor-plugins/self-music';
 
 import Vue from 'vue';
 import {
+  Checkbox,
   CheckboxGroup,
-  RadioGroup,
   Radio,
   Form,
   FormItem,
@@ -42,8 +42,8 @@ import { removeIdDeep } from './utils';
 
 Vue.config.devtools = true;
 
+Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
-Vue.use(RadioGroup);
 Vue.use(Radio);
 Vue.use(Form);
 Vue.use(FormItem);
@@ -105,3 +105,7 @@ else if (urlData.createByCusTpl || urlData.updateCusTpl) {
 }
 
 refreshCeremonyTypes();
+
+request('/zzhadmin/volunteer_getSmsCount/').then(res => {
+  store.state.remainMsgCount = (res.data && res.data.msgCnt) || 0;
+});

@@ -67,7 +67,7 @@ const createdData = {
           // 是否打印电话号码
           isPrintMobile: 1,
           // 是否打印二维码（1 全部打印，2 隔联打印，3 不打印）
-          qrcodePrint: 1,
+          qrcodePrint: 2,
         },
       ],
       // 规格名称
@@ -167,7 +167,14 @@ const createdData = {
     },
     {
       sort: 1,
-      printer: [],
+      printer: [
+        {
+          printerId: 2,
+          continuousPrintNum: 3,
+          isPrintMobile: 1,
+          qrcodePrint: 2,
+        },
+      ],
       name: '纳福锦囊',
       subdivide_type: 4,
       price: 0,

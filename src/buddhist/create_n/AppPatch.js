@@ -398,7 +398,29 @@ export function generateSubmitData(form) {
   // 移除所有的_开头的临时字段，包括深层
   removeTmpFieldDeep(s);
 
+  // 这个字段没什么用，但后端要这个字段
+  s.explain = '';
+
   return s;
+}
+
+// 填充打印机到提交数据中
+export function fillPrinterToSubmitData(s, printerList) {
+  if (!s.subdivideStr.length) return;
+
+  const pl = JSON.parse(JSON.stringify(printerList));
+  pl.forEach(item => {
+    item.setting.printerId = item.id;
+  });
+
+  s.subdivideStr.forEach((item, index) => {
+    item.printer = [];
+    pl.forEach(item2 => {
+      if (item2.guiGeIndexes.indexOf(index) > -1) {
+        item.printer.push(item2.setting);
+      }
+    });
+  });
 }
 
 function formatGuiGeItemForCache(item) {

@@ -72,3 +72,11 @@ export function tranStoreImages(val, cb) {
 
   startStoreImages();
 }
+
+export function toManagePage() {
+  window.location.href = '/zzhadmin/managerCeremonyIndex/';
+}
+
+export function toTemplatePage() {
+  window.location.href = '/zzhadmin/selectCeremonyTemplate/';
+}

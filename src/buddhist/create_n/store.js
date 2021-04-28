@@ -15,6 +15,8 @@ const store = new Vuex.Store({
     guiGeListLength: 0,
     // 所有组件数据改变标志，每次变化+1
     allComponentsChange: 1,
+    // 剩余短信数量，初始化为-1
+    remainMsgCount: -1,
   },
 });
 

@@ -130,11 +130,21 @@
                   ></el-input>
                   <span
                     class="price-auto-box"
-                    v-if="item._priceAutoBox && item.price.indexOf(',') === -1"
+                    v-if="
+                      item._priceAutoBox &&
+                        item.price.indexOf(',') === -1 &&
+                        item.price.indexOf('，') === -1
+                    "
                     @click="fillRandomPrices(index)"
                     >自动生成随喜金额</span
                   >
-                  <div class="mg-t-10" v-if="item.price.indexOf(',') > -1">
+                  <div
+                    class="mg-t-10"
+                    v-if="
+                      item.price.indexOf(',') > -1 ||
+                        item.price.indexOf('，') > -1
+                    "
+                  >
                     自动处理订单
                     <el-switch
                       v-model="item.isAutoFinish"

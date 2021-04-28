@@ -10,16 +10,13 @@ const service = axios.create({
 // respone拦截器
 service.interceptors.response.use(
   response => {
-    /**
-     * code为非200是抛错 可结合自己业务进行修改
-     */
     const res = response.data;
-    const success = res.result >= 0 || res.errorCode >= 0;
-
-    if (!success) {
-      MessageBox.alert(res.message || res.msg || '未知错误，请稍后重试');
-      return Promise.reject(res);
-    }
+    // const success = res.result >= 0 || res.errorCode >= 0;
+    //
+    // if (!success) {
+    //   MessageBox.alert(res.message || res.msg || '未知错误，请稍后重试');
+    //   return Promise.reject(res);
+    // }
     return res;
   },
   error => {
