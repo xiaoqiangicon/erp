@@ -60,6 +60,9 @@ const post = res => {
     item.videos = item.dispose_video_url
       ? item.dispose_video_url.split(',')
       : [];
+    item.refundMessageJSON = item.refundMessageJSON
+      ? JSON.parse(item.refundMessageJSON)
+      : {};
   });
 };
 
