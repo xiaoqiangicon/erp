@@ -7,69 +7,14 @@
     <meta name="format-detection" content="telephone=no" />
     <title>新建佛事</title>
   </head>
-  <body>
-    <div id="content-container">
-      <section id="main">
-        <main data-id="BuddhistManage">
-          <!--面包屑-->
-          ${require('./html/main_breadcrumb.html')}
-          <!--表单-->
-          ${require('./html/main_form.html')}
-        </main>
-
-        <!--选择项设置 Modal -->
-        ${require('./html/modal_sub_set.html')}
-
-        <!--选择项附言 Modal -->
-        ${require('./html/modal_sub_ps.html')}
-
-        <!--附言单行文本框设置 Modal -->
-        ${require('./html/modal_ps_set_common.html')}
-        <!--选择项附言单行文本框设置 Modal-->
-        ${require('./html/modal_sub_ps_set_common.html')}
-
-        <!--附言日期设置 Modal-->
-        ${require('./html/modal_ps_set_date.html')}
-        <!--选择项附言日期设置 modal-->
-        ${require('./html/modal_sub_ps_set_date.html')}
-
-        <!--附言radio设置 Modal-->
-        ${require('./html/modal_ps_set_radio.html')}
-        <!--选择项附言radio设置 Modal-->
-        ${require('./html/modal_sub_ps_set_radio.html')}
-
-        <!--附言下拉组件设置 Modal -->
-        ${require('./html/modal_ps_set_select.html')}
-        <!--选择项附言下拉组件设置 Modal-->
-        ${require('./html/modal_sub_ps_set_select.html')}
-
-        <!--附言说明文本组件设置 Modal-->
-        ${require('./html/modal_ps_set_textarea.html')}
-        <!--选择项附言说明文本组件设置 Modal-->
-        ${require('./html/modal_sub_ps_set_textarea.html')}
-
-        <!--附言图片上传组件设置 Modal-->
-        ${require('./html/modal_ps_set_image.html')}
-        <!--选择项附言图片上传组件设置 Modal-->
-        ${require('./html/modal_sub_ps_set_image.html')}
-
-        <!--佛事分类选择 Modal-->
-        ${require('./html/modal_buddhist_type.html')}
-
-        <!--添加佛历 Modal-->
-        ${require('./html/modal_add_calendar.html')}
-
-        <!--设置打印机 Modal-->
-        ${require('./html/modal_printer_set.html')}
-        <!--未设置小票打印机 Modal-->
-        ${require('./html/modal_printer_not_set.html')}
-        <!--提交前未绑定小票打印机 Modal-->
-        ${require('./html/modal_printer_remind.html')}
-      </section>
+  <body data-menu-id="event-manage">
+    <div class="main-content" id="content-container">
+      <div id="main-body">
+        <div id="app"></div>
+      </div>
     </div>
-    ${require('./html/loading_toast.html')}
     <script>
-      var ceremonyMap = {{ceremonyMap | safe}};
+      window.createdData = {{ceremonyMap | safe}};
     </script>
   </body>
 </html>
