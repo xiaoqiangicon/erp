@@ -65,128 +65,156 @@
               </div>
             </div>
           </div>
-          <div class="cell">
-            <div class="cell-title">处理反馈</div>
-            <div class="cell-body">
-              <div class="mg-b-5">
-                <!-- 反馈图片 -->
-                <div
-                  v-for="item in images"
-                  :key="item"
-                  class="fb-cell img-cell"
-                >
-                  <img v-gallery :src="item" alt="" />
-                  <div @click="onClickImgDelete(item)" class="img-delete"></div>
-                </div>
-                <!-- 反馈视频 -->
-                <div
-                  v-for="item in videos"
-                  :key="item"
-                  class="fb-cell video-cell"
-                >
-                  <video :src="item"></video>
-                  <div class="video-play" @click="onClickPlayVideo(item)"></div>
+          <div v-if="detail.refund !== 2 && detail.refund !== 3">
+            <div class="cell">
+              <div class="cell-title">处理反馈</div>
+              <div class="cell-body">
+                <div class="mg-b-5">
+                  <!-- 反馈图片 -->
                   <div
-                    @click="onClickVideoDelete(item)"
-                    class="video-delete"
-                  ></div>
-                </div>
-                <!-- 视频正在上传 -->
-                <div
-                  v-show="curUploadVideo.uploading"
-                  v-loading="curUploadVideo.uploading"
-                  class="fb-cell"
-                  :element-loading-text="curUploadVideo.progress + '%'"
-                  element-loading-background="rgba(0, 0, 0, 0.8)"
-                >
+                    v-for="item in images"
+                    :key="item"
+                    class="fb-cell img-cell"
+                  >
+                    <img v-gallery :src="item" alt="" />
+                    <div
+                      @click="onClickImgDelete(item)"
+                      class="img-delete"
+                    ></div>
+                  </div>
+                  <!-- 反馈视频 -->
                   <div
-                    @click="onClickVideoUploadDelete"
-                    class="video-uploading-delete"
-                  ></div>
+                    v-for="item in videos"
+                    :key="item"
+                    class="fb-cell video-cell"
+                  >
+                    <video :src="item"></video>
+                    <div
+                      class="video-play"
+                      @click="onClickPlayVideo(item)"
+                    ></div>
+                    <div
+                      @click="onClickVideoDelete(item)"
+                      class="video-delete"
+                    ></div>
+                  </div>
+                  <!-- 视频正在上传 -->
+                  <div
+                    v-show="curUploadVideo.uploading"
+                    v-loading="curUploadVideo.uploading"
+                    class="fb-cell"
+                    :element-loading-text="curUploadVideo.progress + '%'"
+                    element-loading-background="rgba(0, 0, 0, 0.8)"
+                  >
+                    <div
+                      @click="onClickVideoUploadDelete"
+                      class="video-uploading-delete"
+                    ></div>
+                  </div>
+                </div>
+                <div class="upload-container">
+                  <!-- 图片上传 -->
+                  <div
+                    class="upload-img-container"
+                    draggable=""
+                    @dragover.prevent
+                    @drop.prevent="onDrop"
+                    @click="onClickChooseImage"
+                  >
+                    <img
+                      class="upload-icon"
+                      src="https://pic.zizaihome.com/7181a6a2-81c5-11e9-bda2-00163e0c001e.png"
+                    />
+                    <div class="upload-text">图片拖到此处或点击上传</div>
+                  </div>
+                  <!-- 视频上传 -->
+                  <el-upload
+                    ref="uploadVideo"
+                    :show-file-list="false"
+                    :action="uploadUrl"
+                    class="upload-video-container"
+                    drag
+                    :before-upload="beforeUploadVideo"
+                    :on-success="handleUploadVideoSuccess"
+                    :on-progress="handleUploadVideoProgress"
+                    :on-error="handleUploadVideoError"
+                  >
+                    <img
+                      class="upload-icon"
+                      src="https://pic.zizaihome.com/6b9b5dd2-81c5-11e9-8458-00163e0c001e.png"
+                    />
+                    <div class="upload-text">视频拖到此处或点击上传</div>
+                  </el-upload>
+                </div>
+                <div class="tip">
+                  图片格式支持JPG、PNG、GIF等，视频格式支持MP4、WMV、MOV等，文件大小不超过80M
                 </div>
               </div>
-              <div class="upload-container">
-                <!-- 图片上传 -->
-                <div
-                  class="upload-img-container"
-                  draggable=""
-                  @dragover.prevent
-                  @drop.prevent="onDrop"
-                  @click="onClickChooseImage"
+            </div>
+            <div v-show="!isGroup" class="cell">
+              <div class="cell-title">物流单号</div>
+              <div class="cell-body">
+                <el-input
+                  placeholder="请输入内容"
+                  v-model="logisticsOrder"
+                  class="logistics-container"
                 >
-                  <img
-                    class="upload-icon"
-                    src="https://pic.zizaihome.com/7181a6a2-81c5-11e9-bda2-00163e0c001e.png"
-                  />
-                  <div class="upload-text">图片拖到此处或点击上传</div>
+                  <el-select
+                    filterable
+                    v-model="courierCompanyCode"
+                    slot="prepend"
+                    placeholder="请选择"
+                    class="logistics-select"
+                  >
+                    <el-option
+                      v-for="item in courierCompanyList"
+                      :key="item.value"
+                      :label="item.name"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-input>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="cell-title">处理备注</div>
+              <div class="cell-body">
+                <div class="remark" id="remark-editor"></div>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="cell-title">下次处理时间</div>
+              <div class="cell-body">
+                <el-date-picker
+                  v-model="nextFeedBackTime"
+                  type="date"
+                  format="yyyy-MM-dd"
+                  value-format="yyyy-MM-dd"
+                >
+                </el-date-picker>
+                <div class="mg-t-10">
+                  需要多次处理的订单，请在这里选择下次需要处理的日期；如果已处理完，请把这里的时间清除
                 </div>
-                <!-- 视频上传 -->
-                <el-upload
-                  ref="uploadVideo"
-                  :show-file-list="false"
-                  :action="uploadUrl"
-                  class="upload-video-container"
-                  drag
-                  :before-upload="beforeUploadVideo"
-                  :on-success="handleUploadVideoSuccess"
-                  :on-progress="handleUploadVideoProgress"
-                  :on-error="handleUploadVideoError"
-                >
-                  <img
-                    class="upload-icon"
-                    src="https://pic.zizaihome.com/6b9b5dd2-81c5-11e9-8458-00163e0c001e.png"
-                  />
-                  <div class="upload-text">视频拖到此处或点击上传</div>
-                </el-upload>
-              </div>
-              <div class="tip">
-                图片格式支持JPG、PNG、GIF等，视频格式支持MP4、WMV、MOV等，文件大小不超过80M
               </div>
             </div>
           </div>
-          <div v-show="!isGroup" class="cell">
-            <div class="cell-title">物流单号</div>
-            <div class="cell-body">
-              <el-input
-                placeholder="请输入内容"
-                v-model="logisticsOrder"
-                class="logistics-container"
-              >
-                <el-select
-                  filterable
-                  v-model="courierCompanyCode"
-                  slot="prepend"
-                  placeholder="请选择"
-                  class="logistics-select"
-                >
-                  <el-option
-                    v-for="item in courierCompanyList"
-                    :key="item.value"
-                    :label="item.name"
-                    :value="item.value"
-                  ></el-option>
-                </el-select>
-              </el-input>
-            </div>
-          </div>
-          <div class="cell">
-            <div class="cell-title">处理备注</div>
-            <div class="cell-body">
-              <div class="remark" id="remark-editor"></div>
-            </div>
-          </div>
-          <div class="cell">
-            <div class="cell-title">下次处理时间</div>
-            <div class="cell-body">
-              <el-date-picker
-                v-model="nextFeedBackTime"
-                type="date"
-                format="yyyy-MM-dd"
-                value-format="yyyy-MM-dd"
-              >
-              </el-date-picker>
-              <div class="mg-t-10">
-                需要多次处理的订单，请在这里选择下次需要处理的日期；如果已处理完，请把这里的时间清除
+          <div v-else>
+            <div class="cell">
+              <div class="cell-title">
+                订单状态：{{
+                  detail.refund === 2
+                    ? '退款待审核'
+                    : detail.refund === 3
+                    ? '审核通过待退款'
+                    : ''
+                }}
+              </div>
+              <div class="cell-body">
+                <div v-for="(item, key) in detail.refundMessageJSON" :key="key">
+                  <p>申请状态：{{ item.title }}</p>
+                  <p>{{ item.message }}</p>
+                  <p>申请时间：{{ item.addTime }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -270,7 +298,13 @@
         </div>
         <div
           v-show="
-            type === 1 || type === 4 || type === 3 || type === 2 || type === 6
+            (type === 1 ||
+              type === 4 ||
+              type === 3 ||
+              type === 2 ||
+              type === 6) &&
+              detail.refund !== 2 &&
+              detail.refund !== 3
           "
           class="foot"
         >
@@ -280,7 +314,12 @@
           <div @click="onClickHandle" v-else class="s-btn">
             <span v-if="isGroup && type === 2">确定替换反馈内容</span>
             <span v-else-if="!isGroup && type === 2">保存</span>
-            <span v-else>设为已处理</span>
+            <span
+              v-else-if="
+                type !== 2 && detail.refund !== 2 && detail.refund !== 3
+              "
+              >设为已处理</span
+            >
           </div>
         </div>
       </div>
