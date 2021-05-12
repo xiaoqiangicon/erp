@@ -256,7 +256,7 @@ export default {
         item => item.id == this.printer
       );
       console.log(selectPrinter);
-      if (parseInt(selectPrinter.type, 10) === 0) {
+      if (parseInt(selectPrinter[0].type, 10) === 0) {
         this.printerType = 0;
       } else {
         this.printerType = 1;

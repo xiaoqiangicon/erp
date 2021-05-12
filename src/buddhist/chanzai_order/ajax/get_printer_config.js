@@ -18,7 +18,7 @@ seeAjax.config('getPrinterConfig', {
   method: ['get'],
   stringify: [!0],
   url: [
-    '/zzhadmin/getConversionOrderPrinter',
+    '/zzhadmin/getConversionOrderPrinter/',
     '/src/buddhist/chanzai_order/mock/get_printer_config.json',
   ],
   refactor: [refactor, refactor],

@@ -11,7 +11,7 @@ const req = {
 
 seeAjax.config('print', {
   method: ['post'],
-  stringify: [!1],
+  stringify: [!0],
   url: [
     '/zzhadmin/printConversionOrder/',
     '/src/buddhist/chanzai_order/mock/success.json',

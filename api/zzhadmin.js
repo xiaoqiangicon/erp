@@ -136,14 +136,14 @@ export const getPrinterList = {
       address: '佛山本焕寺便携2号机（小票打印机）',
     },
     {
-      type: 0,
+      type: 1,
       id: 3,
-      address: '佛山本焕寺便携3号机（小票打印机）',
+      address: '佛山本焕寺便携3号机（牌位打印机）',
     },
     {
-      type: 0,
+      type: 1,
       id: 4,
-      address: '佛山本焕寺便携4号机（小票打印机）',
+      address: '佛山本焕寺便携4号机（牌位打印机）',
     },
   ],
   result: 1,
