@@ -145,8 +145,7 @@ const td5 = `
   <td style="line-height: 34px;text-align: center">
     {@if 
       (subType == 3 && (inputType == 12 || inputType == 15)) || 
-      (subType == 2 && (inputType == 10 || inputType == 11)) ||
-      ((subType == 4) && (inputType == 4 || inputType == 5 || inputType == 6))
+      (subType == 2 && (inputType == 10 || inputType == 11))
     }
       <span class="green tagbtn additionOperation">
       <span class="sizeAdditionInputSetting " data-toggle="modal" data-target="#inputSizeAdditionModal" data-cid="\${cid}">设置</span>
