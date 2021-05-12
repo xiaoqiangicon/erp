@@ -5,7 +5,7 @@ seeAjax.config('getPrinterList', {
   method: ['get'],
   stringify: [!0],
   url: [
-    '/zzhadmin/getPrinterList',
+    '/zzhadmin/getPrinterList/',
     '/src/buddhist/order_manage/mock/get_printer_list.json',
   ],
 });
