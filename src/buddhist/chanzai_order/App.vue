@@ -170,7 +170,7 @@
             <p class="mg-b-0" style="font-size: 16px;">
               {{ scope.row.buddhistName }}
             </p>
-            <p class="mg-b-0">{{ scope.row.subName }}</p>
+            <p class="mg-b-0">{{ scope.row.subdivideName }}</p>
           </template>
         </el-table-column>
         <el-table-column width="200" label="联系人">

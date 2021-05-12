@@ -491,6 +491,7 @@ export default {
           price,
           buddhistName,
           subName,
+          subdivideName,
           qrcode,
           orderTime,
           orderNumber,
@@ -513,7 +514,7 @@ export default {
         this.buyNum = buyNum;
         this.price = price;
         this.buddhistName = buddhistName;
-        this.subName = subName;
+        this.subName = subdivideName;
         this.qrcode = qrcode;
         this.orderTime = orderTime;
         this.orderNumber = orderNumber;
