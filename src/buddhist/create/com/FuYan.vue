@@ -83,7 +83,6 @@
                     v-model="item.inputType"
                     placeholder="请选择"
                     style="width: 100%;"
-                    :disabled="!!item.id"
                     @change="onChangeType(index)"
                   >
                     <el-option
@@ -175,7 +174,10 @@
               </td>
               <td rowspan="1" colspan="1" style="width: 160px;">
                 <div class="cell">
-                  <span class="main-green cs-pointer" @click="setFuYan(index)"
+                  <span
+                    class="main-green cs-pointer"
+                    v-if="item.inputType !== 16 && item.inputType !== 17"
+                    @click="setFuYan(index)"
                     >设置</span
                   >
                   <span
@@ -271,7 +273,11 @@
           label="每个姓名最多字数："
           v-if="[10, 11, 12].indexOf(setItem.inputType) > -1"
         >
-          <el-select v-model="setItem.font_length" style="width: 100%">
+          <el-select
+            v-model="setItem.font_length"
+            style="width: 100%"
+            :disabled="setItem._isPredefined"
+          >
             <el-option label="3" :value="3"></el-option>
             <el-option label="4" :value="4"></el-option>
             <el-option label="6" :value="6"></el-option>
@@ -282,7 +288,11 @@
           label="最多可填姓名数量："
           v-if="[11, 12].indexOf(setItem.inputType) > -1"
         >
-          <el-select v-model="setItem.pic_num" style="width: 100%">
+          <el-select
+            v-model="setItem.pic_num"
+            style="width: 100%"
+            :disabled="setItem._isPredefined"
+          >
             <el-option label="1" :value="1"></el-option>
             <el-option label="2" :value="2"></el-option>
             <el-option label="3" :value="3"></el-option>
@@ -316,6 +326,7 @@
           <el-input
             v-model="setItem.font_length"
             style="width: 100%"
+            :disabled="setItem._isPredefined"
           ></el-input>
         </el-form-item>
       </el-form>

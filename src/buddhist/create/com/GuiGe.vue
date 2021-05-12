@@ -90,7 +90,7 @@
                     v-model="item.subdivide_type"
                     placeholder="请选择"
                     style="width: 100%;"
-                    :disabled="!!item.id"
+                    :disabled="!!item.conversionSubdivide"
                     @change="onChangeType(index)"
                   >
                     <el-option

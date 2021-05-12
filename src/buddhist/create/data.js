@@ -326,7 +326,7 @@ export const plainGuiGeList = [
         pic_num: 1,
         describe: '',
         isVerify: 0,
-        font_length: 8,
+        font_length: 4,
       },
       {
         inputType: 11,
@@ -337,7 +337,18 @@ export const plainGuiGeList = [
         pic_num: 4,
         describe: '',
         isVerify: 0,
-        font_length: 8,
+        font_length: 4,
+      },
+      {
+        inputType: 6,
+        prompt_text: '请选择地区',
+        name: '地区',
+        is_must: 1,
+        dataType: 2,
+        pic_num: 4,
+        describe: '',
+        isVerify: 0,
+        font_length: 20,
       },
     ],
     name: '往生牌位',
@@ -364,7 +375,7 @@ export const plainGuiGeList = [
         pic_num: 4,
         describe: '',
         isVerify: 0,
-        font_length: 8,
+        font_length: 4,
       },
       {
         inputType: 15,
@@ -373,6 +384,17 @@ export const plainGuiGeList = [
         is_must: 1,
         dataType: 2,
         pic_num: 0,
+        describe: '',
+        isVerify: 0,
+        font_length: 40,
+      },
+      {
+        inputType: 6,
+        prompt_text: '请选择地区',
+        name: '地区',
+        is_must: 1,
+        dataType: 2,
+        pic_num: 4,
         describe: '',
         isVerify: 0,
         font_length: 20,
@@ -441,11 +463,21 @@ export const fuYanPreviewImages = {
       thumbnail:
         'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
     },
+    {
+      src: 'https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
+    },
   ],
   // 祈福排位
   3: [
     {
       src: 'https://pic.zizaihome.com/478059f6-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+    {
+      src: 'https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png',
       thumbnail:
         'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png',
     },
@@ -527,10 +559,15 @@ export const defaultPaySuccessHtml =
 
 // 小票打印机默认设置
 export const defaultPrinterSetting = {
+  // 打印机type
+  printerType: 0,
   // 打印联数 1-5
   continuousPrintNum: 1,
   // 是否打印电话号码
   isPrintMobile: 1,
   // 是否打印二维码（1 全部打印，2 隔联打印，3 不打印）
   qrcodePrint: 1,
+  // 印章类型
+  sealType: 1,
+  fontType: 0,
 };

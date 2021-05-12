@@ -481,7 +481,13 @@
             >
           </el-checkbox-group>
         </el-form-item>
-        <el-form-item label="打印联数：" v-if="printerSelectedIndex !== null">
+        <el-form-item
+          label="打印联数："
+          v-if="
+            printerSelectedIndex !== null &&
+              currentPrinterSetting.printerType === 0
+          "
+        >
           <el-select
             v-model="currentPrinterSetting.continuousPrintNum"
             placeholder="请选择"
@@ -498,7 +504,13 @@
           </el-select>
         </el-form-item>
         <!-- 隔联打印需打印联数 > 1 -->
-        <el-form-item label="二维码：" v-if="printerSelectedIndex !== null">
+        <el-form-item
+          label="二维码："
+          v-if="
+            printerSelectedIndex !== null &&
+              currentPrinterSetting.printerType === 0
+          "
+        >
           <el-radio v-model="currentPrinterSetting.qrcodePrint" :label="1"
             >全部打印</el-radio
           >
@@ -515,7 +527,13 @@
             二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
           </p>
         </el-form-item>
-        <el-form-item label="电话号码：" v-if="printerSelectedIndex !== null">
+        <el-form-item
+          label="电话号码："
+          v-if="
+            printerSelectedIndex !== null &&
+              currentPrinterSetting.printerType === 0
+          "
+        >
           <el-radio v-model="currentPrinterSetting.isPrintMobile" :label="1"
             >打印</el-radio
           >
@@ -525,6 +543,96 @@
           <p class="mg-b-0">
             如果不希望透露功德主的联系方式，可以选择不打印电话号码。
           </p>
+        </el-form-item>
+        <el-form-item
+          label="二维码："
+          v-if="
+            printerSelectedIndex !== null &&
+              currentPrinterSetting.printerType === 1
+          "
+        >
+          <el-radio v-model="currentPrinterSetting.qrcodePrint" :label="1"
+            >打印</el-radio
+          >
+          <el-radio v-model="currentPrinterSetting.qrcodePrint" :label="2"
+            >不打印</el-radio
+          >
+          <p class="mg-b-0">
+            二维码适用于扫码对此订单进行拍照或者拍摄视频，为用户进行反馈。
+          </p>
+        </el-form-item>
+        <el-form-item
+          label="印章效果："
+          v-if="
+            printerSelectedIndex !== null &&
+              currentPrinterSetting.printerType === 1
+          "
+        >
+          <el-radio-group style="display: flex">
+            <el-radio
+              class="seal-radio"
+              :label="1"
+              v-model="currentPrinterSetting.sealType"
+            >
+              <div class="seal-radio-wrap">
+                <div class="seal1-img">
+                  <img
+                    class="seal1"
+                    src="https://pic.zizaihome.com/3bc20e17-64cd-4b4a-a9da-67e490271447.png"
+                    alt=""
+                  />
+                </div>
+                <span class="strong">不打印</span>
+              </div>
+            </el-radio>
+            <el-radio
+              class="seal-radio"
+              :label="2"
+              v-model="currentPrinterSetting.sealType"
+            >
+              <div class="seal-radio-wrap">
+                <div class="seal2-img">
+                  <img
+                    class="seal2"
+                    src="https://pic.zizaihome.com/9c4ac595-24cb-4d4e-9525-f4cc1e96bfc9.png"
+                    alt=""
+                  />
+                </div>
+                <span class="strong">万字印</span>
+              </div>
+            </el-radio>
+            <el-radio
+              class="seal-radio"
+              :label="3"
+              v-model="currentPrinterSetting.sealType"
+            >
+              <div class="seal-radio-wrap">
+                <div class="seal3-img">
+                  <img
+                    class="seal3"
+                    src="https://pic.zizaihome.com/bbf60ebf-06ba-475a-9274-5a982deabe66.png"
+                    alt=""
+                  />
+                </div>
+                <span class="strong">三宝印</span>
+              </div>
+            </el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item
+          label="打印字体："
+          v-if="
+            printerSelectedIndex !== null &&
+              currentPrinterSetting.printerType === 1
+          "
+        >
+          <el-select
+            v-model="currentPrinterSetting.fontType"
+            placeholder="请选择"
+            style="width: 250px;"
+          >
+            <el-option :label="'默认字体'" :value="0"> </el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">

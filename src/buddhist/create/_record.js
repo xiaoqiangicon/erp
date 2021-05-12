@@ -49,6 +49,8 @@ const saveFoShiParams = {
           printerId: 1,
           continuousPrintNum: 1,
           isPrintMobile: 1,
+          sealType: 1,
+          fontType: 0,
         },
       ],
       pic: 'https://pic.zizaihome.com/59b8822c-1673-4230-a922-29642031a86d.jpg',

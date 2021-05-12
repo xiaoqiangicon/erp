@@ -68,6 +68,8 @@ const createdData = {
           isPrintMobile: 1,
           // 是否打印二维码（1 全部打印，2 隔联打印，3 不打印）
           qrcodePrint: 2,
+          sealType: 1,
+          fontType: 0,
         },
       ],
       // 规格名称

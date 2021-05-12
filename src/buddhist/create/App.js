@@ -228,6 +228,7 @@ export default {
         this.printerList.forEach(item => {
           item.guiGeIndexes = [];
           item.setting = { ...defaultPrinterSetting };
+          item.setting.printerType = item.type;
           // 未初始化
           item.online = -1;
           item.statusText = '未获取状态';
@@ -344,6 +345,9 @@ export default {
       this.currentPrinterItem = printerItem;
       this.currentPrinterGuiGeIndexes = printerItem.guiGeIndexes;
       this.currentPrinterSetting = printerItem.setting;
+      this.currentPrinterSetting.printerType = this.printerList[
+        this.printerSelectedIndex
+      ].type;
 
       if (printerItem.online === -1) {
         request({

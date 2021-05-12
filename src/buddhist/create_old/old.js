@@ -3447,8 +3447,10 @@ var View = Backbone.View.extend({
           curPostscript = curModel.get('postScript'),
           postscriptArr = [];
         if (curPostscript != undefined) {
-          var curPostscriptLen = curPostscript.length,
-            curPostscriptArr = $.parseJSON(JSON.stringify(curPostscript));
+          // var curPostscriptLen = curPostscript.length,
+          //   curPostscriptArr = $.parseJSON(JSON.stringify(curPostscript));
+          var curPostscriptArr = $.parseJSON(JSON.stringify(curPostscript)),
+            curPostscriptLen = curPostscriptArr.length;
           for (var i = 0; i < curPostscriptLen; i++) {
             var postscriptWrap = {};
             if (editType == 1 || editType == 0) {
@@ -3891,33 +3893,38 @@ var View = Backbone.View.extend({
       start_time = $('#timeStart').val(),
       end_time = $('#timeLimit').val();
     console.log(window.contentData, '提交参数');
-    window.contentData.subdivideStr.forEach(subItem => {
-      if (subItem.subdivide_type === 4) {
-        let isNotSetPostPs = !0;
-        subItem.postScript.forEach(posItem => {
-          if (posItem.inputType == 16) {
-            posItem.name = '是否邮寄';
-            isNotSetPostPs = !1;
-          } else if (posItem.inputType == 17) {
-            posItem.name = '普通邮寄';
-            isNotSetPostPs = !1;
-          }
-        });
-        if (isNotSetPostPs) {
-          subItem.postScript.push({
-            dataType: 2,
-            describe: '',
-            font_length: 0,
-            inputType: '17',
-            isVerify: 0,
-            is_must: 1,
-            name: '普通邮寄',
-            pic_num: 0,
-            prompt_text: '普通邮寄',
+    if (
+      window.contentData.subdivideStr &&
+      window.contentData.subdivideStr.length
+    ) {
+      window.contentData.subdivideStr.forEach(subItem => {
+        if (subItem.subdivide_type === 4) {
+          let isNotSetPostPs = !0;
+          subItem.postScript.forEach(posItem => {
+            if (posItem.inputType == 16) {
+              posItem.name = '是否邮寄';
+              isNotSetPostPs = !1;
+            } else if (posItem.inputType == 17) {
+              posItem.name = '普通邮寄';
+              isNotSetPostPs = !1;
+            }
           });
+          if (isNotSetPostPs && !subItem.postScript.length) {
+            subItem.postScript.push({
+              dataType: 2,
+              describe: '',
+              font_length: 0,
+              inputType: '17',
+              isVerify: 0,
+              is_must: 1,
+              name: '普通邮寄',
+              pic_num: 0,
+              prompt_text: '普通邮寄',
+            });
+          }
         }
-      }
-    });
+      });
+    }
     if (editType == 1) {
       params = window.contentData;
       params['id'] = foshiId;

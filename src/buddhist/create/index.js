@@ -103,7 +103,6 @@ else if (urlData.createByCusTpl || urlData.updateCusTpl) {
 } else {
   init();
 }
-
 refreshCeremonyTypes();
 
 request('/zzhadmin/volunteer_getSmsCount/').then(res => {

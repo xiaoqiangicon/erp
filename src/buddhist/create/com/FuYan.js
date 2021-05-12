@@ -77,10 +77,11 @@ export default {
       return e.related.className.indexOf('draggable-exclude') === -1;
     },
     fillTmpIsPredefined() {
-      // 往生排位与祈福排位前两个附言是预定义的，不能删除，类型和名称不能修改
+      // 往生排位与祈福排位地区前三个附言是预定义的，不能删除，类型和名称不能修改
       if ([2, 3].indexOf(this.subdivide_type) > -1) {
         if (this.list[0]) this.list[0]._isPredefined = true;
         if (this.list[1]) this.list[1]._isPredefined = true;
+        if (this.list[2]) this.list[2]._isPredefined = true;
       }
     },
     addFuYan() {
