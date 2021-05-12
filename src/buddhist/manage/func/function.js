@@ -416,6 +416,9 @@ func.createLocalPrtCfg = function(ifHasSub, prtListData, BuddhistPrtData) {
         continuousPrintNum: 1,
         qrcodePrint: 1,
         isPrintMobile: 1,
+        printerType: 0,
+        sealType: 0,
+        fontType: 0,
       };
     });
     BuddhistPrtData.subdividePrinter.map(function(subPrt) {
@@ -424,6 +427,7 @@ func.createLocalPrtCfg = function(ifHasSub, prtListData, BuddhistPrtData) {
         cfg[curPrt.printerId].continuousPrintNum = curPrt.continuousPrintNum;
         cfg[curPrt.printerId].qrcodePrint = curPrt.qrcodePrint;
         cfg[curPrt.printerId].isPrintMobile = curPrt.isPrintMobile;
+        cfg[curPrt.printerId].sealType = curPrt.sealType;
         if (typeof cfg[curPrt.printerId].subList === 'undefined') {
           cfg[curPrt.printerId].subList = [];
         }
@@ -447,7 +451,7 @@ func.createLocalPrtCfg = function(ifHasSub, prtListData, BuddhistPrtData) {
   return cfg;
 };
 func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
-  var continuousPrintNum, qrcodePrint, isPrintMobile;
+  var continuousPrintNum, qrcodePrint, isPrintMobile, sealType, fontType;
   var curPrtId;
   if (ifHasSub) {
     if (typeof prtId !== 'undefined') {
@@ -466,6 +470,8 @@ func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
       continuousPrintNum = cfg[curPrtId].continuousPrintNum;
       qrcodePrint = cfg[curPrtId].qrcodePrint;
       isPrintMobile = cfg[curPrtId].isPrintMobile;
+      sealType = cfg[curPrtId].sealType;
+      fontType = cfg[curPrtId].fontType;
       $subPrtSelect.val(curPrtId).selectpicker('refresh');
       seeAjax(
         'printerStatus',
@@ -475,7 +481,7 @@ func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
         function(res) {
           if (res.success) {
             $exceptionTip.text(res.msg).show();
-            if (res.msg !== '在线，工作状态正常。') {
+            if (res.msg !== '在线，工作状态正常。' && res.msg !== '在线') {
               $subCheckbox.attr('disabled', 'disabled');
             } else {
               $subCheckbox.removeAttr('disabled');
@@ -558,6 +564,9 @@ func.createUpdatePrtParams = function(
     params.continuousPrintNum = '';
     params.qrcodePrint = '';
     params.isPrintMobile = '';
+    params.fontType = 0;
+    params.sealType = '';
+    params.printerType = 0;
     params.subdividePrinter = [];
     subListData.map(function(sub) {
       params.subdividePrinter.push({
@@ -570,16 +579,22 @@ func.createUpdatePrtParams = function(
         params.subdividePrinter.map(function(subPrt) {
           if (subPrt.subdivideId === subId) {
             subPrt.printer.push({
+              printerType: localPrtCfg[prtId].printerType,
               printerId: parseInt(prtId),
               continuousPrintNum: localPrtCfg[prtId].continuousPrintNum,
               qrcodePrint: localPrtCfg[prtId].qrcodePrint,
               isPrintMobile: localPrtCfg[prtId].isPrintMobile,
+              sealType: localPrtCfg[prtId].sealType,
+              fontType: localPrtCfg[prtId].fontType,
             });
           }
         });
       });
     });
   } else {
+    params.printerType = 0;
+    params.sealType = 0;
+    params.fontType = 0;
     params.isOpenPrinter = localPrtCfg.isOpenPrinter;
     params.printerId = '[' + localPrtCfg.printerId.toString() + ']';
     params.continuousPrintNum = localPrtCfg.continuousPrintNum;

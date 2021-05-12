@@ -60,6 +60,8 @@ seeView({
     'click [data-ele="edit-schedule-item"]': 'onClickEditScheduleItem',
     'click [data-ele="save-schedule-item"]': 'onClickSaveScheduleItem',
     'click [data-ele="cancel-schedule-item"]': 'onClickCancelScheduleItem',
+    'click [data-ele="prt-pw-qrcode-btn"]': 'onClickPrtPwQrcodeBtn',
+    'click [data-ele="prt-pw-seal-btn"]': 'onClickPrtSealBtn',
   },
   onKeyupSTextarea: function(e) {
     var $curTar = $(e.currentTarget),
@@ -374,12 +376,36 @@ seeView({
       $prtAllQrcode = $('#prt-all-qrcode'),
       $subCheckbox = $('[data-ele="sub-checkbox"]'),
       prtId = parseInt($tar.val());
+
+    // 筛选出所选中的打印机列表
+    let selectPrinter = {};
+    Data.getPrinterListRes.data.forEach(item => {
+      if (item.id === prtId) {
+        selectPrinter = item;
+      }
+    });
+    if (selectPrinter.type === 0) {
+      $('[data-prt-type="0"]').removeClass('hide');
+      $('[data-prt-type="1"]').addClass('hide');
+    } else {
+      $('[data-prt-type="1"]').removeClass('hide');
+      $('[data-prt-type="0"]').addClass('hide');
+    }
+    console.log(e.target, 'printer', Data.localPrtCfg, prtId);
     $exceptionTip.text('状态查询中...').show();
     $prtNumSelect.val(1).selectpicker('refresh');
     $prtTel.prop('checked', 'checked');
     $prtAllQrcode.prop('checked', 'checked');
-    $subCheckbox.removeAttr('checked');
+    $subCheckbox.attr('checked', false);
+    $subCheckbox.prop('checked', false);
     $subCheckbox.removeAttr('disabled');
+    var data;
+    if (Data.ifHasSub) {
+      data = Data.localPrtCfg[prtId];
+    } else {
+      data = Data.localPrtCfg;
+    }
+    data.printerType = selectPrinter.type;
     func.renderSetPrtModal(Data.ifHasSub, Data.localPrtCfg, prtId);
   },
   onClickSubCheckbox: function(e) {
@@ -545,6 +571,40 @@ seeView({
       });
       Data.handleListData[curId].printerList.splice(delIndex, 1);
     }
+  },
+  onClickPrtPwQrcodeBtn: function(e) {
+    var $curTar = $(e.currentTarget),
+      qrcode = parseInt($curTar.attr('data-value')),
+      $prtPwQrcodeBtn = $('[data-ele="prt-pw-qrcode-btn"]'),
+      $subPrtSelect = $('#sub-prt-select'),
+      prtId = parseInt($subPrtSelect.val()),
+      data;
+    if (Data.ifHasSub) {
+      data = Data.localPrtCfg[prtId];
+    } else {
+      data = Data.localPrtCfg;
+    }
+    $prtPwQrcodeBtn.removeClass('active');
+
+    $curTar.addClass('active');
+    data.qrcodePrint = qrcode;
+  },
+  onClickPrtSealBtn: function(e) {
+    var $curTar = $(e.currentTarget),
+      sealType = parseInt($curTar.attr('data-value')),
+      $prtPwSealBtn = $('[data-ele="prt-pw-seal-btn"]'),
+      $subPrtSelect = $('#sub-prt-select'),
+      prtId = parseInt($subPrtSelect.val()),
+      data;
+    if (Data.ifHasSub) {
+      data = Data.localPrtCfg[prtId];
+    } else {
+      data = Data.localPrtCfg;
+    }
+    $prtPwSealBtn.removeClass('active');
+
+    $curTar.addClass('active');
+    data.sealType = sealType;
   },
   onClickSavePrtSet: function(e) {
     var $modal = $('#set-prt-modal'),

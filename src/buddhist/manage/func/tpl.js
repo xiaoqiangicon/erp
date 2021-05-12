@@ -63,9 +63,9 @@ var tpl = {
                 <div class="table-cell-common">
                     {@if ifHasPrt}
                         {@if ifHasAddPrt}
-                            <p class="inline-block float-left mgb0 add-printer-tip" title="\${prtText}"  data-id="\${id}" data-html="true" data-toggle="tooltip" data-placement="left" data-delay={show:1000}><a class="table-cell-button" style="color:rgb(111, 186, 44)" data-ifHasSub="\${ifHasSub}" data-id="\${id}" data-toggle="modal" data-target="#set-prt-modal">已添加</a></p>
+                            <p class="inline-block float-left mgb0" data-id="\${id}" data-html="true" data-toggle="tooltip" data-placement="left" data-delay={show:1000}><a class="table-cell-button" style="color:rgb(111, 186, 44)" data-ifHasSub="\${ifHasSub}" data-id="\${id}">已添加</a></p>
                         {@else}
-                            <p class="inline-block float-left mgb0" title="为了方便您处理用户的订单请在编辑中添加小票打印机" data-id="\${id}" data-html="true" data-toggle="tooltip"><a class="table-cell-button not-add" style="color:#999" data-ifHasSub="\${ifHasSub}"  data-id="\${id}" data-toggle="modal" data-target="#set-prt-modal">未添加</a></p>
+                            <p class="inline-block float-left mgb0" title="为了方便您处理用户的订单请在编辑中添加小票打印机" data-id="\${id}" data-html="true" data-toggle="tooltip"><a class="table-cell-button not-add" style="color:#999" data-ifHasSub="\${ifHasSub}"  data-id="\${id}">未添加</a></p>
                         {@/if}
                     {@else}
                         <p class="inline-block float-left mgb0" title="开通打印机功能可以方便快捷处理用户的订单，请联系自在家平台管理员开通。" data-toggle="tooltip">未开通</p>

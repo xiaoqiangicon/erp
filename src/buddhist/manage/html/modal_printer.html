@@ -72,72 +72,139 @@
         <div class="form-group" id="sub-list-form-group">
           <div id="sub-list-ctnr" class="sub-list-ctnr"></div>
         </div>
-        <!--打印联数-->
-        <div class="form-group">
-          <label for="prt-num-select">打印联数：</label>
-          <select name="prt-num" id="prt-num-select" data-ele="select-picker">
-            <option value="1">1联</option>
-            <option value="2">2联</option>
-            <option value="3">3联</option>
-            <option value="4">4联</option>
-            <option value="5">5联</option>
-          </select>
+        <!-- 小票打印机 -->
+        <div class="more-set-ctnr" data-ele="more-set-ctnr" data-prt-type="0">
+          <!--打印联数-->
+          <div class="form-group">
+            <label for="prt-num-select">打印联数：</label>
+            <select name="prt-num" id="prt-num-select" data-ele="select-picker">
+              <option value="1">1联</option>
+              <option value="2">2联</option>
+              <option value="3">3联</option>
+              <option value="4">4联</option>
+              <option value="5">5联</option>
+            </select>
+          </div>
+          <!--二维码打印方式-->
+          <div class="form-group mgb0">
+            <label>二维码：</label>
+            <label for="prt-all-qrcode" class="csp mgr30">
+              <input
+                id="prt-all-qrcode"
+                name="prt-qrcode"
+                value="1"
+                type="radio"
+                checked
+              />
+              <span class="radio"></span
+              ><span class="vam">&nbsp;&nbsp;全部打印</span>
+            </label>
+            <label for="prt-divide-qrcode" class="csp mgr30">
+              <input
+                id="prt-divide-qrcode"
+                name="prt-qrcode"
+                value="2"
+                type="radio"
+              />
+              <span class="radio"></span
+              ><span class="vam">&nbsp;&nbsp;隔联打印</span>
+            </label>
+            <label for="prt-no-qrcode" class="csp mgr30">
+              <input
+                id="prt-no-qrcode"
+                name="prt-qrcode"
+                value="3"
+                type="radio"
+              />
+              <span class="radio"></span
+              ><span class="vam">&nbsp;&nbsp;不打印</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <p>
+              二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
+            </p>
+          </div>
+          <!--电话号码-->
+          <div class="form-group mgb0" data-ele="prt-tel">
+            <label for="prt-tel">电话号码：</label>
+            <label for="prt-tel" class="csp mgr30">
+              <input
+                id="prt-tel"
+                name="prt-tel"
+                value="1"
+                type="radio"
+                checked
+              />
+              <span class="radio"></span
+              ><span class="vam">&nbsp;&nbsp;打印</span>
+            </label>
+            <label for="prt-no-tel" class="csp mgr30">
+              <input id="prt-no-tel" name="prt-tel" value="0" type="radio" />
+              <span class="radio"></span
+              ><span class="vam">&nbsp;&nbsp;不打印</span>
+            </label>
+          </div>
+          <div class="form-group" data-ele="code-tips">
+            <p>如果不希望透露功德主的联系方式，可以选择不打印电话号码。</p>
+          </div>
         </div>
-        <!--二维码打印方式-->
-        <div class="form-group mgb0">
-          <label>二维码：</label>
-          <label for="prt-all-qrcode" class="csp mgr30">
-            <input
-              id="prt-all-qrcode"
-              name="prt-qrcode"
-              value="1"
-              type="radio"
-              checked
-            />
-            <span class="radio"></span
-            ><span class="vam">&nbsp;&nbsp;全部打印</span>
-          </label>
-          <label for="prt-divide-qrcode" class="csp mgr30">
-            <input
-              id="prt-divide-qrcode"
-              name="prt-qrcode"
-              value="2"
-              type="radio"
-            />
-            <span class="radio"></span
-            ><span class="vam">&nbsp;&nbsp;隔联打印</span>
-          </label>
-          <label for="prt-no-qrcode" class="csp mgr30">
-            <input
-              id="prt-no-qrcode"
-              name="prt-qrcode"
-              value="3"
-              type="radio"
-            />
-            <span class="radio"></span
-            ><span class="vam">&nbsp;&nbsp;不打印</span>
-          </label>
-        </div>
-        <div class="form-group">
-          <p>
-            二维码使用于内部工作流程处理，假如要把小票给客户，请选择“隔联打印”，可以打出无二维码的一联，将该联给客户。
-          </p>
-        </div>
-        <!--电话号码-->
-        <div class="form-group mgb0" data-ele="prt-tel">
-          <label for="prt-tel">电话号码：</label>
-          <label for="prt-tel" class="csp mgr30">
-            <input id="prt-tel" name="prt-tel" value="1" type="radio" checked />
-            <span class="radio"></span><span class="vam">&nbsp;&nbsp;打印</span>
-          </label>
-          <label for="prt-no-tel" class="csp mgr30">
-            <input id="prt-no-tel" name="prt-tel" value="0" type="radio" />
-            <span class="radio"></span
-            ><span class="vam">&nbsp;&nbsp;不打印</span>
-          </label>
-        </div>
-        <div class="form-group" data-ele="code-tips">
-          <p>如果不希望透露功德主的联系方式，可以选择不打印电话号码。</p>
+        <!-- 牌位打印机 -->
+        <div
+          class="more-set-ctnr hide"
+          data-ele="more-set-ctnr"
+          data-prt-type="1"
+        >
+          <div id="set-prt-num-ctnr">
+            <div class="set-title">二维码</div>
+            <div class="set-cont" style="padding:10px 15px 0;">
+              <span
+                class="btn-border active"
+                data-ele="prt-pw-qrcode-btn"
+                data-value="1"
+                >打印</span
+              >
+              <span
+                class="btn-border mgr0"
+                data-ele="prt-pw-qrcode-btn"
+                data-value="2"
+                >不打印</span
+              >
+            </div>
+          </div>
+          <div id="set-qrcode-ctnr">
+            <div class="set-title">印章效果</div>
+            <div class="set-cont" style="padding:10px 15px 0;">
+              <div
+                class="btn-border active"
+                data-ele="prt-pw-seal-btn"
+                data-value="1"
+              >
+                不打印
+              </div>
+              <div class="btn-border" data-ele="prt-pw-seal-btn" data-value="2">
+                万字印
+              </div>
+              <div
+                class="btn-border mgr0"
+                data-ele="prt-pw-seal-btn"
+                data-value="3"
+              >
+                三宝印
+              </div>
+            </div>
+          </div>
+          <div id="set-tel-ctnr">
+            <div class="set-title">打印字体</div>
+            <div class="set-cont" style="padding:10px 15px 0;">
+              <span
+                class="btn-border active"
+                data-ele="prt-pw-font-btn"
+                data-value="0"
+                >默认</span
+              >
+            </div>
+          </div>
         </div>
         <div class="form-group" style="text-align: center;">
           <button
