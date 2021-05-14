@@ -60,6 +60,8 @@ if (urlData.edit === 0) {
  * @type {*[]}
  */
 export const selectFuYanList = [
+  { value: 16, name: '用户自选邮寄' },
+  { value: 17, name: '普通邮寄' },
   { value: 4, name: '联系人' },
   { value: 12, name: '功德芳名' },
   { value: 15, name: '心愿' },
@@ -85,8 +87,8 @@ export const selectFuYanList = [
  * @type {Array}
  */
 export const expressFuYanList = [
-  { value: 16, name: '用户自选邮寄' },
-  { value: 17, name: '普通邮寄' },
+  // { value: 16, name: '用户自选邮寄' },
+  // { value: 17, name: '普通邮寄' },
   ...selectFuYanList,
 ];
 

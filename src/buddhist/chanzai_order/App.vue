@@ -175,8 +175,8 @@
         </el-table-column>
         <el-table-column width="200" label="联系人">
           <template slot-scope="scope">
-            <p>{{ scope.row.customerName }}</p>
-            <p>{{ scope.row.customerTel }}</p>
+            <p>{{ scope.row.user.name }}</p>
+            <p>{{ scope.row.user.mobile }}</p>
           </template>
         </el-table-column>
         <el-table-column

@@ -95,11 +95,12 @@ export default {
     copyGuiGe(index) {
       const item = this.list[index];
       const newItem = JSON.parse(JSON.stringify(item));
-
+      newItem.name = newItem.name + '复制';
+      console.log(newItem, index, '复制');
       // 删除所有的Id，包括深层的
       removeIdDeep(newItem);
 
-      this.list.splice(index, 0, newItem);
+      this.list.splice(index + 1, 0, newItem);
     },
     setGuiGe(index) {
       this.originalSetItem = this.list[index];
