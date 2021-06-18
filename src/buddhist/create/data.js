@@ -79,6 +79,40 @@ export const selectFuYanList = [
   { value: 14, name: '自定义-图片上传' },
 ];
 
+export const selectFuYanWS = [
+  { value: 16, name: '用户自选邮寄' },
+  { value: 17, name: '普通邮寄' },
+  { value: 4, name: '联系人' },
+  { value: 12, name: '功德芳名' },
+  { value: 15, name: '心愿' },
+  { value: 8, name: '性别' },
+  { value: 9, name: '出生日期' },
+  { value: 5, name: '手机号码' },
+  { value: 13, name: '自定义-提示框' },
+  { value: 1, name: '自定义-单行文本框' },
+  { value: 2, name: '自定义-日期选择' },
+  { value: 3, name: '自定义-下拉列表' },
+  { value: 7, name: '自定义-多行文本框' },
+  { value: 14, name: '自定义-图片上传' },
+];
+
+export const selectFuYanQF = [
+  { value: 16, name: '用户自选邮寄' },
+  { value: 17, name: '普通邮寄' },
+  { value: 4, name: '联系人' },
+  { value: 8, name: '性别' },
+  { value: 9, name: '出生日期' },
+  { value: 5, name: '手机号码' },
+  { value: 10, name: '阳上人' },
+  { value: 11, name: '往生者' },
+  { value: 13, name: '自定义-提示框' },
+  { value: 1, name: '自定义-单行文本框' },
+  { value: 2, name: '自定义-日期选择' },
+  { value: 3, name: '自定义-下拉列表' },
+  { value: 7, name: '自定义-多行文本框' },
+  { value: 14, name: '自定义-图片上传' },
+];
+
 /**
  * 邮寄佛事专用的附言列表
  *

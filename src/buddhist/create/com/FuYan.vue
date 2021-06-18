@@ -86,8 +86,10 @@
                     @change="onChangeType(index)"
                   >
                     <el-option
-                      v-for="fuYan in subdivide_type === 4
-                        ? expressFuYanList
+                      v-for="fuYan in subdivide_type === 2
+                        ? selectFuYanWS
+                        : subdivide_type === 3
+                        ? selectFuYanQF
                         : selectFuYanList"
                       :key="fuYan.value"
                       :label="fuYan.name"

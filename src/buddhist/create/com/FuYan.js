@@ -1,7 +1,13 @@
 import draggable from 'vuedraggable';
 import { Message, MessageBox } from 'element-ui';
 import { generateFuYan } from '../func';
-import { expressFuYanList, selectFuYanList, fuYanPreviewImages } from '../data';
+import {
+  expressFuYanList,
+  selectFuYanList,
+  fuYanPreviewImages,
+  selectFuYanWS,
+  selectFuYanQF,
+} from '../data';
 import { isInt } from '../../../utils/num';
 
 export default {
@@ -15,6 +21,8 @@ export default {
       list: null,
       selectFuYanList,
       expressFuYanList,
+      selectFuYanWS,
+      selectFuYanQF,
       fuYanPreviewImages,
       // 进行设置的项
       setItem: {},
@@ -79,6 +87,26 @@ export default {
     fillTmpIsPredefined() {
       // 往生排位与祈福排位地区前三个附言是预定义的，不能删除，类型和名称不能修改
       if ([2, 3].indexOf(this.subdivide_type) > -1) {
+        // 老的佛事需要自动补齐地区附言
+        if (
+          this.list[0].inputType !== 6 &&
+          this.list[1].inputType !== 6 &&
+          this.list[2].inputType !== 6
+        ) {
+          console.log('自动补齐了地区附言，需要重新保存');
+          this.list.unshift({
+            inputType: 6,
+            prompt_text: '请选择地区',
+            name: '地区',
+            is_must: 1,
+            dataType: 2,
+            pic_num: 4,
+            describe: '',
+            isVerify: 0,
+            font_length: 20,
+          });
+        }
+
         if (this.list[0]) this.list[0]._isPredefined = true;
         if (this.list[1]) this.list[1]._isPredefined = true;
         if (this.list[2]) this.list[2]._isPredefined = true;
