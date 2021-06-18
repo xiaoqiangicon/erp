@@ -244,6 +244,12 @@
                     </template>
                   </div>
                 </div>
+                <div class="ps-row">
+                  <div class="ps-title">用户留言：</div>
+                  <div class="ps-content f-wg-bold">
+                    {{ userComment || '无' }}
+                  </div>
+                </div>
               </template>
               <template v-else
                 >暂无附言信息</template
@@ -368,6 +374,7 @@ export default {
       subName: '', // 选择项名称
       qrcode: '', // 二维码
       orderTime: '', // 下单时间
+      userComment: '', // 用户留言
       orderNumber: '', // 订单号
       outerOrderNumber: '', // 外部订单号
       runningNumber: '', // 支付流水号
@@ -491,6 +498,7 @@ export default {
           subName,
           qrcode,
           orderTime,
+          usercomment,
           orderNumber,
           outerOrderNumber,
           runningNumber,
@@ -514,6 +522,7 @@ export default {
         this.subName = subName;
         this.qrcode = qrcode;
         this.orderTime = orderTime;
+        this.userComment = usercomment;
         this.orderNumber = orderNumber;
         this.outerOrderNumber = outerOrderNumber;
         this.runningNumber = runningNumber;

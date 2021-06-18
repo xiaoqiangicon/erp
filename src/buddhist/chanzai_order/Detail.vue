@@ -241,6 +241,12 @@
                     </template>
                   </div>
                 </div>
+                <div class="ps-row">
+                  <div class="ps-title">用户留言：</div>
+                  <div class="ps-content f-wg-bold">
+                    {{ userComment || '无' }}
+                  </div>
+                </div>
               </template>
               <template v-else
                 >暂无附言信息</template
@@ -373,6 +379,7 @@ export default {
       orderNumber: '', // 订单号
       outerOrderNumber: '', // 外部订单号
       runningNumber: '', // 支付流水号
+      userComment: '', // 用户留言
       ps: [], // 附言 {inputId name type value}
 
       // detail中的动态字段
@@ -499,6 +506,7 @@ export default {
           runningNumber,
           ps,
           nextFeedBackTime,
+          usercomment,
         } = this.detail;
 
         ({
@@ -517,6 +525,7 @@ export default {
         this.subName = subdivideName;
         this.qrcode = qrcode;
         this.orderTime = orderTime;
+        this.userComment = usercomment;
         this.orderNumber = orderNumber;
         this.outerOrderNumber = outerOrderNumber;
         this.runningNumber = runningNumber;
