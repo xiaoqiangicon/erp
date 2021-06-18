@@ -8,6 +8,7 @@ seeView({
     'click #login': 'onClickLogin',
     'click #prompt': 'onClickPrompt',
     'click #close': 'onClickClose',
+    'click #fs-login': 'onClickFsLogin',
   },
   onClickLogin() {
     var username = $('#username').val();
@@ -33,5 +34,9 @@ seeView({
   },
   onClickClose() {
     $('#qr-box').addClass('hide');
+  },
+  onClickFsLogin() {
+    window.location.href =
+      'https://open.feishu.cn/open-apis/authen/v1/index?redirect_uri=https%3A%2F%2Fwww.zizaihome.com%2Faccounts%2Flogin%2F&app_id=cli_a0b99107d7789013&state=';
   },
 });
