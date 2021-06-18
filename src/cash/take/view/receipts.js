@@ -78,8 +78,9 @@ seeView({
   },
   // 下载电子收据
   onClickUploadReceiptDownload() {
+    let templeId = window.localStorage.getItem('templeid');
     window.open(
-      `https://${wxSubDomain}.zizaihome.com/bg/getPickUpPdf?pickUpId=${data.currentHandleId}`
+      `https://${wxSubDomain}.zizaihome.com/bg/getPickUpPdf?pickUpId=${data.currentHandleId}&templeId=${templeId}`
     );
   },
 });
