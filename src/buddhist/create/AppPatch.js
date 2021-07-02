@@ -253,7 +253,7 @@ function checkGuiGeItem(item, index) {
     if (prices.length > 1) item.price = '[' + item.price + ']';
   }
 
-  if (item.stock) {
+  if (item.stock || item.stock === 0) {
     if (!isInt(item.stock) || parseInt(item.stock, 10) < 0) {
       MessageBox.alert(`${seqText}库存需输入大于或等于0的整数，请重新添加！`);
       return false;
@@ -346,7 +346,7 @@ export function generateSubmitData(form) {
     }
   }
 
-  if (s.stock) {
+  if (s.stock || s.stock === 0) {
     if (!isInt(s.stock) || parseInt(s.stock, 10) < 0) {
       MessageBox.alert('库存需输入大于或等于0的整数，请重新添加！');
       return false;

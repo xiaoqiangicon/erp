@@ -80,7 +80,7 @@
       </div>
 
       <div class="mg-t-20" v-if="printerType === 1">
-        <p class="strong">印章效果</p>
+        <p class="strong">印章效果(顶部)</p>
         <p class="mg-t-10">打印牌位时可自动印出印章效果（印章颜色为：黑色）</p>
         <el-radio-group v-model="sealType" style="display: flex">
           <el-radio class="seal-radio" :label="1">
@@ -113,6 +113,75 @@
                 <img
                   class="seal3"
                   src="https://pic.zizaihome.com/bbf60ebf-06ba-475a-9274-5a982deabe66.png"
+                  alt=""
+                />
+              </div>
+              <span class="strong">三宝印</span>
+            </div>
+          </el-radio>
+          <el-radio class="seal-radio" :label="4">
+            <div class="seal-radio-wrap">
+              <div class="seal3-img">
+                <img
+                  class="seal3"
+                  src="https://pic.zizaihome.com/fe82f688-4472-4cb1-a895-19acdfa81997.png"
+                  alt=""
+                />
+              </div>
+              <span class="strong">三宝印</span>
+            </div>
+          </el-radio>
+        </el-radio-group>
+      </div>
+
+      <div class="mg-t-20" v-if="printerType === 1">
+        <p class="strong">印章效果(底部)</p>
+        <p class="mg-t-10">打印牌位时可自动印出印章效果（印章颜色为：黑色）</p>
+        <el-radio-group v-model="sealTypeBottom" style="display: flex">
+          <el-radio class="seal-radio" :label="1">
+            <div class="seal-radio-wrap">
+              <div class="seal1-img">
+                <img
+                  class="seal1"
+                  src="https://pic.zizaihome.com/3bc20e17-64cd-4b4a-a9da-67e490271447.png"
+                  alt=""
+                />
+              </div>
+              <span class="strong">不打印</span>
+            </div>
+          </el-radio>
+          <el-radio class="seal-radio" :label="2">
+            <div class="seal-radio-wrap">
+              <div class="seal2-img">
+                <img
+                  class="seal2"
+                  src="https://pic.zizaihome.com/9c4ac595-24cb-4d4e-9525-f4cc1e96bfc9.png"
+                  alt=""
+                />
+              </div>
+              <span class="strong">万字印</span>
+            </div>
+          </el-radio>
+
+          <el-radio class="seal-radio" :label="3">
+            <div class="seal-radio-wrap">
+              <div class="seal3-img">
+                <img
+                  class="seal3"
+                  src="https://pic.zizaihome.com/bbf60ebf-06ba-475a-9274-5a982deabe66.png"
+                  alt=""
+                />
+              </div>
+              <span class="strong">三宝印</span>
+            </div>
+          </el-radio>
+
+          <el-radio class="seal-radio" :label="4">
+            <div class="seal-radio-wrap">
+              <div class="seal3-img">
+                <img
+                  class="seal3"
+                  src="https://pic.zizaihome.com/fe82f688-4472-4cb1-a895-19acdfa81997.png"
                   alt=""
                 />
               </div>
@@ -199,7 +268,8 @@ export default {
       printTel: 1,
       printer: [],
       printerType: 0, // 0 普通打印机 1 排位打印机
-      sealType: 1, // 印章类型
+      sealType: 2, // 印章类型
+      sealTypeBottom: 3,
       fontType: 0, // 默认字体
     };
   },
@@ -222,7 +292,7 @@ export default {
   },
   watch: {
     visible(newValue, oldValue) {
-      if (newValue) {
+      if (newValue && this.type === 'set') {
         this.getPrinterConfig();
       }
     },
@@ -233,7 +303,15 @@ export default {
       seeAjax('getPrinterConfig', {}, res => {
         if (res.success) {
           // 配置到本地
-          const { id, printNum, printQrcode, printTel } = res.data[0];
+          const {
+            id,
+            printNum,
+            printQrcode,
+            printTel,
+            printerType,
+            sealType,
+            sealTypeBottom,
+          } = res.data[0];
           let printer = [];
 
           res.data.map(item => {
@@ -310,6 +388,7 @@ export default {
         printerType,
         fontType,
         sealType,
+        sealTypeBottom,
       } = this;
 
       let printerIdList = [printer];
@@ -350,6 +429,7 @@ export default {
           printerType,
           fontType,
           sealType,
+          sealTypeBottom,
         };
       }
 

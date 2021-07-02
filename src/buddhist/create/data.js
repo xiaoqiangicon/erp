@@ -565,7 +565,7 @@ export const feedbackPrizes = [
   {
     value: 8,
     name: '佛前供灯',
-    cover: 'https://pic.zizaihome.com/5db06af4-90ad-11e9-858e-00163e0c001e.png',
+    cover: 'https://pic.zizaihome.com/eca05748-6d40-4900-b3f0-3b256cfe5190.png',
   },
   {
     value: 9,
@@ -604,6 +604,7 @@ export const defaultPrinterSetting = {
   // 是否打印二维码（1 全部打印，2 隔联打印，3 不打印）
   qrcodePrint: 1,
   // 印章类型
-  sealType: 1,
+  sealType: 2,
+  sealTypeBottom: 3,
   fontType: 0,
 };
