@@ -1,7 +1,12 @@
 import draggable from 'vuedraggable';
 import { Message, MessageBox } from 'element-ui';
 import { generateGuiGe } from '../func';
-import { randomPrices, redPacketCover, selectGuiGeList } from '../data';
+import {
+  randomPrices,
+  redPacketCover,
+  selectGuiGeList,
+  urlData,
+} from '../data';
 import { isInt } from '../../../utils/num';
 import ChooseImage from '../../../com-deprecated/choose-image';
 import FuYan from './FuYan.vue';
@@ -46,6 +51,16 @@ export default {
     allComponentsChange() {
       return this.$store.state.allComponentsChange;
     },
+    isZiYingTempleModify() {
+      let templeId = parseInt(window.localStorage.getItem('templeid'), 10);
+      let ziYingTemple = [5642, 5722, 6372, 6482, 6483];
+
+      return (
+        ziYingTemple.indexOf(templeId) > -1 &&
+        urlData.updateFoShi &&
+        urlData.verifyId == 1
+      );
+    },
   },
   watch: {
     allComponentsChange() {
@@ -68,6 +83,7 @@ export default {
       // 设置_durationDayType辅助字段
       item._durationDayType = 1;
       item._priceAutoBox = false;
+      item._isNew = true;
       this.list.push(item);
 
       // 更新 guiGeListLength

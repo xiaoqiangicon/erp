@@ -273,30 +273,37 @@
         </el-form-item>
         <el-form-item
           label="每个姓名最多字数："
-          v-if="[10, 11, 12].indexOf(setItem.inputType) > -1"
+          v-if="
+            [10, 11, 12].indexOf(setItem.inputType) > -1 &&
+              setItem._isPredefined
+          "
         >
-          <el-select
-            v-model="setItem.font_length"
-            style="width: 100%"
-            :disabled="setItem._isPredefined"
-          >
+          <el-select v-model="setItem.font_length" style="width: 100%">
             <el-option label="3" :value="3"></el-option>
             <el-option label="4" :value="4"></el-option>
+            <el-option label="5" :value="5"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item
+          label="每个姓名最多字数："
+          v-if="
+            [10, 11, 12].indexOf(setItem.inputType) > -1 &&
+              !setItem._isPredefined
+          "
+        >
+          <el-select v-model="setItem.font_length" style="width: 100%">
+            <el-option label="4" :value="4"></el-option>
+            <el-option label="5" :value="5"></el-option>
             <el-option label="6" :value="6"></el-option>
             <el-option label="8" :value="8"></el-option>
           </el-select>
         </el-form-item>
+
         <el-form-item
           label="最多可填姓名数量："
           v-if="[11, 12].indexOf(setItem.inputType) > -1"
         >
-          <el-select
-            v-model="setItem.pic_num"
-            style="width: 100%"
-            :disabled="setItem._isPredefined"
-          >
-            <el-option label="1" :value="1"></el-option>
-            <el-option label="2" :value="2"></el-option>
+          <el-select v-model="setItem.pic_num" style="width: 100%">
             <el-option label="3" :value="3"></el-option>
             <el-option label="4" :value="4"></el-option>
             <el-option label="5" :value="5"></el-option>
@@ -325,11 +332,13 @@
           label="填写字数："
           v-if="[15].indexOf(setItem.inputType) > -1"
         >
-          <el-input
-            v-model="setItem.font_length"
-            style="width: 100%"
-            :disabled="setItem._isPredefined"
-          ></el-input>
+          <el-select v-model="setItem.font_length" style="width: 100%">
+            <el-option label="50" :value="50"></el-option>
+            <el-option label="80" :value="80"></el-option>
+            <el-option label="100" :value="100"></el-option>
+            <el-option label="150" :value="150"></el-option>
+            <el-option label="200" :value="200"></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">

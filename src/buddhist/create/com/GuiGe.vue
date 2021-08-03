@@ -108,6 +108,7 @@
                   <el-input
                     v-model="item.name"
                     placeholder="不超过24个文字"
+                    :disabled="isZiYingTempleModify && !item._isNew"
                     maxlength="24"
                     style="width: 100%"
                   ></el-input>
@@ -120,10 +121,13 @@
                 style="width: 130px;"
               >
                 <div class="cell">
-                  <!-- 转单的规格不能修改价格 -->
+                  <!-- 转单的规格不能修改价格, 自营佛事修改不可修改价格 -->
                   <el-input
                     v-model="item.price"
-                    :disabled="!!item.conversionSubdivide"
+                    :disabled="
+                      !!item.conversionSubdivide ||
+                        (isZiYingTempleModify && !item._isNew)
+                    "
                     @focus="focusPriceInput(index)"
                     @blur="blurPriceInput(index)"
                     style="width: 100%"

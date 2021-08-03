@@ -34,7 +34,7 @@ function handleFuYanItem(item) {
   }
   // 阳上人、往生者、功德芳名
   if ([10, 11, 12].indexOf(item.inputType) > -1) {
-    if ([3, 4, 6, 8].indexOf(item.font_length) === -1) item.font_length = 8;
+    if ([3, 4, 6, 8].indexOf(item.font_length) === -1) item.font_length = 5;
   }
 }
 

@@ -39,6 +39,7 @@
       window.addEventListener(
         'message',
         function(event) {
+          console.log(event.data);
           if (event.origin == xiumi_url) {
             editor.execCommand('insertHtml', event.data);
             dialog.close();
