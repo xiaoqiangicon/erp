@@ -304,6 +304,8 @@
           v-if="[11, 12].indexOf(setItem.inputType) > -1"
         >
           <el-select v-model="setItem.pic_num" style="width: 100%">
+            <el-option label="1" :value="1"></el-option>
+            <el-option label="2" :value="2"></el-option>
             <el-option label="3" :value="3"></el-option>
             <el-option label="4" :value="4"></el-option>
             <el-option label="5" :value="5"></el-option>
@@ -333,6 +335,8 @@
           v-if="[15].indexOf(setItem.inputType) > -1"
         >
           <el-select v-model="setItem.font_length" style="width: 100%">
+            <el-option label="20" :value="20"></el-option>
+            <el-option label="30" :value="30"></el-option>
             <el-option label="50" :value="50"></el-option>
             <el-option label="80" :value="80"></el-option>
             <el-option label="100" :value="100"></el-option>
