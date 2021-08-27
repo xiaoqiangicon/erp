@@ -264,9 +264,9 @@ var tpl = {
                 <button data-ele="edit-schedule-item" type="button" class="mgt10 btn btn-info btn-sm pull-right btn-edit-schedule">编辑</button>
             </div>
             <div class="item-body">
-                <div class="item-content" data-ele="schedule-content">
+                <p class="item-content" data-ele="schedule-content" style="white-space: pre-line;">
                     \${content}
-                </div>
+                </p>
                 <div class="item-img mgt10 clearfix">
                     <div class="clearfix">
                     {@each img as item}

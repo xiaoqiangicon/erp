@@ -16,7 +16,7 @@ const refactor = {
   totalCount: 'total',
   data: [
     {
-      buddhistName: 'productName', // 佛事名称
+      buddhistName: 'name', // 佛事名称
       productImg: 'productImg', // 封面图
       customerName: 'customerName', // 联系人
       customerTel: 'customerTel', // 联系电话

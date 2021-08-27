@@ -342,7 +342,7 @@
           <div id="pay-success-editor" class="editor-container"></div>
         </div>
       </el-form-item>
-      <el-form-item label="小票打印：">
+      <el-form-item label="打印机设置：">
         <el-button
           size="medium"
           type="success"
@@ -437,7 +437,7 @@
     </el-dialog>
 
     <el-dialog
-      title="小票打印设置"
+      title="打印机设置"
       :visible="printerDialogVisible"
       :show-close="false"
       width="600px"

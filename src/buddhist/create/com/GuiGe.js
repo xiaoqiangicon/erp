@@ -73,7 +73,7 @@ export default {
 
     this.list.forEach(item => {
       // 设置_durationDayType辅助字段
-      item._durationDayType = 1;
+      item._durationDayType = item._durationDayType ? item._durationDayType : 1;
       item._priceAutoBox = false;
     });
   },

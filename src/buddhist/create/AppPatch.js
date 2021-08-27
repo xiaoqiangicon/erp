@@ -267,8 +267,8 @@ function checkGuiGeItem(item, index) {
   if (!item.durationDay) item.durationDay = 0;
   else {
     item.durationDay = parseInt(item.durationDay, 10);
-    if (item._durationDayType === 1) item.durationDay *= 30;
-    else if (item._durationDayType === 2) item.durationDay *= 365;
+    if (item._durationDayType === 2) item.durationDay *= 30;
+    else if (item._durationDayType === 3) item.durationDay *= 365;
   }
 
   for (let i = 0, il = item.postScript.length; i < il; i++) {

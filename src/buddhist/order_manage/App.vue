@@ -185,7 +185,7 @@
           size="medium"
           class="pull-right mg-r-20"
           @click="onClickPrintGroup"
-          >小票打印</el-button
+          >打印机设置</el-button
         >
       </div>
 

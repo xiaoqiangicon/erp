@@ -273,7 +273,7 @@ export default {
   },
   computed: {
     dialogTitle() {
-      return this.hasPrinter ? '小票打印' : '小票打印机';
+      return this.hasPrinter ? '打印机设置' : '打印机设置';
     },
     selected() {
       return this.$store.state.selected;
