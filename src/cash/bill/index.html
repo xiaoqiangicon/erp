@@ -140,12 +140,12 @@
     </script>
     <script type="text/html" id="tpl-content-unit">
       <div class="content">
-          {@each monthsData as oneMonthData}
+          {@each data as item}
           <div class="unit-container">
               <div class="head">
                   <div class="unit unit-head">
                       <div class="unit-inner">
-                          <div class="cell cell-name">${oneMonthData.year}年${oneMonthData.month}月项目</div>
+                          <div class="cell cell-name">项目</div>
                           <div class="cell">数量</div>
                           <div class="cell">金额</div>
                           <div class="cell">增值服务费</div>
@@ -156,38 +156,36 @@
                   </div>
               </div>
               <div class="body">
-                  {@each oneMonthData.bills as bill}
-                  <div class="unit {@if !bill.category}small{@/if}" data-unit="${bill.id}" data-status="${status}">
-                      {@if !bill.disabled}
-                      <button class="clean-button unit-select active" data-select-bill="${year}" data-bill-id="${bill.id}" data-status="${status}" data-count="${bill.count}" data-money="${bill.money}" data-fee="${bill.fee}" data-charge="${bill.charge}" data-assistance="${bill.assistance}"><i class="glyphicon glyphicon-ok"></i></button>
-                      {@/if}
-                      <div class="unit-inner">
-                          <div class="cell cell-name">
-                              <p>${bill.title}</p>
-                              {@if !!bill.category}<p>【${bill.category}】</p>{@/if}
-                              <p>
-                                  {@if !!bill.disabled}<span class="badge-1 badge-1-yellow">推广期不可提</span>{@/if}
-                                  {@if !!bill.fee}<span class="badge-1 badge-1-blue">增值服务费</span>{@/if}
-                                  {@if !!bill.promoteAmountForZzh}<span class="badge-1 badge-1-blue">功能服务费</span>{@/if}
-                                  {@if !!bill.promoteAmountForUser}<span class="badge-1 badge-1-blue">推广员奖励金</span>{@/if}
-                                  {@if !!bill.assistance}<span class="badge-1 badge-1-green">自在家支付渠道补贴</span>{@/if}
-                              </p>
-                          </div>
-                          <div class="cell">${bill.count}</div>
-                          <div class="cell">￥${bill.money}</div>
-                          <div class="cell">{@if !!bill.fee}-￥${bill.fee}{@else}-{@/if}</div>
-                          <div class="cell">{@if !!bill.charge}-￥${bill.charge}{@else}-{@/if}</div>
-                          <div class="cell" style="display: none">{@if !!bill.assistance}+￥${bill.assistance}{@else}-{@/if}</div>
-                          <div class="cell" style="display: none">${bill.extra}</div>
-                      </div>
-                  </div>
-                  {@/each}
+                <div class="unit {@if !category}small{@/if}" data-unit="${item.ids}" data-status="${status}">
+                    {@if !item.isPromotion}
+                    <button class="clean-button unit-select active" data-select-bill="${year}" data-bill-id="${item.ids}" data-status="${status}" data-count="${item.order_num}" data-money="${item.price}" data-promotionMoney="${item.promotionMoney}" data-fee="${item.percentMoney}" data-charge="${item.counter_fee}" data-assistance="${item.subsidy_counter_fee}"><i class="glyphicon glyphicon-ok"></i></button>
+                    {@/if}
+                    <div class="unit-inner">
+                        <div class="cell cell-name">
+                            <p>${item.name}</p>
+                            {@if !!category}<p>【${category}】</p>{@/if}
+                            <p>
+                                {@if !!item.isPromotion}<span class="badge-1 badge-1-yellow">推广期不可提</span>{@/if}
+                                {@if !!item.percentMoney}<span class="badge-1 badge-1-blue">增值服务费</span>{@/if}
+                                {@if !!item.serviceMoney}<span class="badge-1 badge-1-blue">功能服务费</span>{@/if}
+                                {@if !!item.promotionMoney}<span class="badge-1 badge-1-blue">推广员奖励金</span>{@/if}
+                                {@if !!item.subsidy_counter_fee}<span class="badge-1 badge-1-green">自在家支付渠道补贴</span>{@/if}
+                            </p>
+                        </div>
+                        <div class="cell">${item.order_num}</div>
+                        <div class="cell">￥${item.price}</div>
+                        <div class="cell">{@if !!item.percentMoney}-￥${item.percentMoney}{@else}-{@/if}</div>
+                        <div class="cell">{@if !!item.counter_fee}-￥${item.counter_fee}{@else}-{@/if}</div>
+                        <div class="cell" style="display: none">{@if !!item.subsidy_counter_fee}+￥${item.subsidy_counter_fee}{@else}-{@/if}</div>
+                        <div class="cell" style="display: none">${extra}</div>
+                    </div>
+                </div>
               </div>
           </div>
           {@/each}
       </div>
       <div class="foot">
-          <button class="clean-button unit-select active" data-select-all-bills="${year}" data-status="${status}" data-total-count="${totalCount}" data-total-money="${totalMoney}" data-total-fee="${totalFee}" data-total-charge="${totalCharge}" data-total-assistance="${totalAssistance}"><i class="glyphicon glyphicon-ok"></i></button>
+          <button class="clean-button unit-select active" data-select-all-bills="${year}" data-status="${status}" data-total-totalPromoteAmountForUser="${totalPromoteAmountForUser}" data-total-count="${totalCount}" data-total-money="${totalMoney}" data-total-fee="${totalFee}" data-total-charge="${totalCharge}" data-total-assistance="${totalAssistance}"><i class="glyphicon glyphicon-ok"></i></button>
           <div class="foot-inner">
               <span class="foot-text left">全选</span>
               <span class="foot-text right fs16" style="display: none;">提现金额：¥<span data-show-real-total-money="${year}" data-status="${status}">${realTotalMoney}</span>（妙严科技将为您补助支付渠道手续费：¥<span data-show-total-assistance="${year}" data-status="${status}">${totalAssistance}</span>）</span>
@@ -214,7 +212,7 @@
               {@if totalPromoteAmountForUser}
               <p>
                   <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
-                  推广员奖励金：<span data-show-total-fee="${year}" data-status="${status}">${totalPromoteAmountForUser}</span> 元
+                  推广员奖励金：<span data-show-total-promotion="${year}" data-status="${status}">${totalPromoteAmountForUser}</span> 元
                   <button class="clean-button glyphicon glyphicon-question-sign blue" data-tippy-content="奖励金是结算给推广员的金额"></button>
               </p>
               {@/if}
@@ -234,7 +232,7 @@
               </p>
           </div>
       </div>
-      <div class="total" style="display: none;">
+      <div class="total" style="display: none;" data-detail="1">
           <div class="unit-container">
               <div class="head">
                   <div class="unit unit-head">

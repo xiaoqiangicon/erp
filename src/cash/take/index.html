@@ -439,18 +439,18 @@
               <div class="detail-sub-title">${templeName}提现电子账单</div>
               <div class="change-sort mgt20" style="text-align: right;">
                 <button
-                  class="btn btn-default btn-green pdl20 pdr20"
-                  data-status-sort-action="1"
-                  data-status-sort="1"
-                >
-                  时间汇总
-                </button>
-                <button
                   class="btn btn-default pdl20 pdr20 mgl10"
                   data-status-sort-action="2"
                   data-status-sort="1"
                 >
                   项目汇总
+                </button>
+                <button
+                  class="btn btn-default pdl20 pdr20"
+                  data-status-sort-action="1"
+                  data-status-sort="1"
+                >
+                  每月详情
                 </button>
               </div>
               {@each details as detail}
@@ -461,8 +461,8 @@
                               <div class="detail-cell detail-cell-name">{@if !!detail.year}${detail.year}年{@/if}${detail.month}项目</div>
                               <div class="detail-cell">数量</div>
                               <div class="detail-cell">金额</div>
-                              <div class="detail-cell">增值服务费</div>
-                              <div class="detail-cell">支付渠道手续费</div>
+                              <div class="detail-cell" data-detail="1">增值服务费</div>
+                              <div class="detail-cell" data-detail="1">支付渠道手续费</div>
                               <div class="detail-cell" style="display: none">妙严手续费补助</div>
                               <div class="detail-cell" style="display: none">备注</div>
                           </div>
@@ -485,8 +485,8 @@
                               </div>
                               <div class="detail-cell">${detailItem.order_num}</div>
                               <div class="detail-cell">¥${detailItem.price}</div>
-                              <div class="detail-cell">{@if !!detailItem.percentMoney}-¥${detailItem.percentMoney}{@else}-{@/if}</div>
-                              <div class="detail-cell">{@if !!detailItem.counter_fee}-¥${detailItem.counter_fee}{@else}-{@/if}</div>
+                              <div class="detail-cell" data-detail="1">{@if !!detailItem.percentMoney}-¥${detailItem.percentMoney}{@else}-{@/if}</div>
+                              <div class="detail-cell" data-detail="1">{@if !!detailItem.counter_fee}-¥${detailItem.counter_fee}{@else}-{@/if}</div>
                               <div class="detail-cell" style="display: none">{@if !!detailItem.subsidy_counter_fee}+¥${detailItem.subsidy_counter_fee}{@else}-{@/if}</div>
                               <div class="detail-cell" style="display: none">${detailItem.remarks}</div>
                           </div>
@@ -495,7 +495,7 @@
                   </div>
               </div>
               {@/each}
-              <div class="detail-common-unit">
+              <div class="detail-common-unit" data-detail="1">
                   <p class="fs18"><i class="detail-common-title-mark"></i> <span>账单计算</span></p>
                   <div class="mgt20">
                       <p>账单总金额：${totalMoney} 元</p>
@@ -552,7 +552,7 @@
                       </p>
                   </div>
               </div>
-              <div class="detail-unit-container" style="display: none;">
+              <div class="detail-unit-container hide" style="display: none;">
                   <div class="detail-unit-content">
                       <div class="detail-unit detail-unit-head">
                           <div class="detail-unit-inner">
@@ -574,7 +574,7 @@
                   </div>
               </div>
               {@/if}
-              <div class="detail-foot">
+              <div class="detail-foot" data-detail="1">
                   <div class="detail-foot-inner">
                       <p class="fs16">实际提现金额：¥${realTotalMoney}（妙严科技已为您补助支付渠道手续费：¥${totalAssistance}）</p>
                       <p class="fs16">流水号：${id}</p>
@@ -582,7 +582,7 @@
                   </div>
               </div>
               {@if feedBackImages && feedBackImages.length}
-              <div class="detail-common-unit">
+              <div class="detail-common-unit" data-detail="1">
                   <p class="fs18">
                       <i class="detail-common-title-mark"></i>
                       <span>回单照片</span>
@@ -595,7 +595,7 @@
               </div>
               {@/if}
               {@if receipts && receipts.length}
-              <div class="detail-common-unit">
+              <div class="detail-common-unit" data-detail="1">
                   <p class="fs18">
                       <i class="detail-common-title-mark"></i>
                       <span>收据照片</span>

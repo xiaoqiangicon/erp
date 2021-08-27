@@ -27,6 +27,7 @@ orchids.registerPage(
         height: $('#detail-summary-left-unit').outerHeight(),
       });
       item.templeName = window.localStorage['templeName'];
+      $('[data-status-sort-action="2"]').click();
     },
     destroyed: function() {
       util.enableBodyScroll();

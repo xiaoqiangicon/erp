@@ -1,1 +1,51 @@
-{}
+{
+  "msg": "\u6210\u529f",
+  "data": [
+    {
+      "data": [
+        {
+          "name": "\u76f4\u64ad",
+          "subsidy_counter_fee": 1000.0,
+          "price": 100000.0,
+          "counter_fee": 1000.0,
+          "remarks": "",
+          "percentMoney": 1,
+          "order_num": 1,
+          "id": 81,
+          "isPromotion": 0,
+          "serviceMoney": 99,
+          "promotionMoney": 98
+        },
+        {
+          "name": "\u7688\u4f9d",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.04,
+          "counter_fee": 0.0,
+          "percentMoney": 1,
+          "remarks": "",
+          "order_num": 4,
+          "id": 84,
+          "isPromotion": 1
+        }
+      ],
+      "month": "2016-10"
+    },
+    {
+      "data": [
+        {
+          "name": "\u7688\u4f9d",
+          "subsidy_counter_fee": 0.0,
+          "price": 0.01,
+          "counter_fee": 0.0,
+          "percentMoney": 3,
+          "remarks": "",
+          "order_num": 1,
+          "id": 193
+        }
+      ],
+      "month": "2016-11"
+    }
+  ],
+  "result": 1,
+  "pickUpId": 986
+}

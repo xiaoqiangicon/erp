@@ -88,6 +88,7 @@ seeView({
     $targetYearContainer.show();
   },
   onClickSelectBill: function(e) {
+    console.log(1234);
     var $this = $(e.currentTarget);
     $this.toggleClass('active');
     var year = parseInt($this.attr('data-select-bill')),
@@ -112,6 +113,13 @@ seeView({
       $totalFee = $(
         '[data-show-total-fee="' + year + '"][data-status="' + status + '"]'
       ),
+      $totalPromotionMoney = $(
+        '[data-show-total-promotion="' +
+          year +
+          '"][data-status="' +
+          status +
+          '"]'
+      ),
       $totalCharge = $(
         '[data-show-total-charge="' + year + '"][data-status="' + status + '"]'
       ),
@@ -126,7 +134,9 @@ seeView({
       totalMoney = 0,
       totalFee = 0,
       totalCharge = 0,
+      totalPromotionMoney = 0,
       totalAssistance = 0;
+
     $(
       '[data-select-all-bills="' + year + '"][data-status="' + status + '"]'
     ).removeClass('active');
@@ -145,16 +155,28 @@ seeView({
         totalFee += parseFloat($this.attr('data-fee')) || 0;
         totalCharge += parseFloat($this.attr('data-charge')) || 0;
         totalAssistance += parseFloat($this.attr('data-assistance')) || 0;
+        totalPromotionMoney += parseFloat(
+          $this.attr('data-promotionMoney') || 0
+        );
       });
     }
+    // totalFee: 增值服务费；totalAssisitance: 自在家补贴支付渠道手续费;
+    // totalMoney: 选中总额; totalCharge: 支付渠道手续费；
     $totalCount.text(totalCount);
     $totalMoney.text(totalMoney.toFixed(2));
     $realTotalMoney.text(
-      (totalMoney + totalAssistance - totalCharge - totalFee).toFixed(2)
+      (
+        totalMoney +
+        totalAssistance -
+        totalCharge -
+        totalFee -
+        totalPromotionMoney
+      ).toFixed(2)
     );
     $totalFee.text(totalFee.toFixed(2));
     $totalCharge.text(totalCharge.toFixed(2));
     $totalAssistance.text(totalAssistance.toFixed(2));
+    $totalPromotionMoney.text(totalPromotionMoney.toFixed(2));
   },
   onClickSelectAllBills: function(e) {
     var $this = $(e.currentTarget),
@@ -180,6 +202,13 @@ seeView({
       $totalFee = $(
         '[data-show-total-fee="' + year + '"][data-status="' + status + '"]'
       ),
+      $totalPromotionMoney = $(
+        '[data-show-total-promotion="' +
+          year +
+          '"][data-status="' +
+          status +
+          '"]'
+      ),
       $totalCharge = $(
         '[data-show-total-charge="' + year + '"][data-status="' + status + '"]'
       ),
@@ -194,6 +223,7 @@ seeView({
       totalMoney = 0,
       totalFee = 0,
       totalCharge = 0,
+      totalPromotionMoney = 0,
       totalAssistance = 0;
     if ($this.hasClass('active')) {
       $items.removeClass('active');
@@ -212,6 +242,9 @@ seeView({
       totalFee = parseFloat($this.attr('data-total-fee'));
       totalCharge = parseFloat($this.attr('data-total-charge'));
       totalAssistance = parseFloat($this.attr('data-total-assistance'));
+      totalPromotionMoney += parseFloat(
+        $this.attr('data-total-totalPromoteAmountForUser') || 0
+      );
     }
     $totalCount.text(totalCount);
     $totalMoney.text(totalMoney.toFixed(2));
@@ -221,6 +254,7 @@ seeView({
     $totalFee.text(totalFee.toFixed(2));
     $totalCharge.text(totalCharge.toFixed(2));
     $totalAssistance.text(totalAssistance.toFixed(2));
+    $totalPromotionMoney.text(totalPromotionMoney.toFixed(2));
   },
   onClickStatusAction: function(e) {
     // 2019-09 add
@@ -255,10 +289,19 @@ seeView({
       return;
     }
     $selectedItems.map(function() {
-      billIds.push(parseInt($(this).attr('data-bill-id')));
+      console.log(
+        $(this).get(0),
+        $(this)
+          .attr('data-bill-id')
+          .split(',')
+      );
+      billIds.push(
+        ...$(this)
+          .attr('data-bill-id')
+          .split(',')
+      );
     });
-    data.saveBillIds = billIds;
-
+    data.saveBillIds = billIds.map(Number);
     // action: 1有疑问 2确认 3撤回
 
     if (action == 1) $questionDialog.show();

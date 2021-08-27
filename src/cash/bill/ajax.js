@@ -80,25 +80,25 @@ var postHandle = {
     var totalAssistance = 0;
     var totalPromoteAmountForZzh = 0;
     var totalPromoteAmountForUser = 0;
-    res.monthsData.map(function(item) {
-      var tempMonth = item.month,
-        tempMonthArray = tempMonth.split('-');
-      item.year = parseInt(tempMonthArray[0]);
-      item.month = parseInt(tempMonthArray[1]);
-      item.bills.map(function(subItem) {
-        if (subItem.disabled) return;
-        totalCount += subItem.count;
-        totalMoney += subItem.money;
-        !subItem.fee && (subItem.fee = 0);
-        totalFee += subItem.fee;
-        totalCharge += subItem.charge;
-        totalAssistance += subItem.assistance;
-        !subItem.promoteAmountForZzh && (subItem.promoteAmountForZzh = 0);
-        totalPromoteAmountForZzh += subItem.promoteAmountForZzh;
-        !subItem.promoteAmountForUser && (subItem.promoteAmountForUser = 0);
-        totalPromoteAmountForUser += subItem.promoteAmountForUser;
-      });
+    res.data.map(function(item) {
+      // var tempMonth = item.month,
+      //   tempMonthArray = tempMonth.split('-');
+      // item.year = parseInt(tempMonthArray[0]);
+      // item.month = parseInt(tempMonthArray[1]);
+      item.ids = item.billIdList.join(',');
+      if (item.isPromotion) return;
+      totalCount += item.order_num;
+      totalMoney += item.price;
+      !item.percentMoney && (item.percentMoney = 0);
+      totalFee += item.percentMoney;
+      totalCharge += item.counter_fee;
+      totalAssistance += item.subsidy_counter_fee;
+      !item.serviceMoney && (item.serviceMoney = 0);
+      totalPromoteAmountForZzh += item.serviceMoney;
+      !item.promotionMoney && (item.promotionMoney = 0);
+      totalPromoteAmountForUser += item.promotionMoney;
     });
+    console.log(res, 'res');
     res.totalCount = totalCount;
     res.totalMoney = parseFloat(totalMoney.toFixed(2));
     res.realTotalMoney = parseFloat(

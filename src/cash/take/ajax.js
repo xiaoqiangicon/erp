@@ -124,7 +124,7 @@ var postHandle = {
           totalCount += detailItemMonthItem.count;
           totalMoney += detailItemMonthItem.money;
           totalFee += detailItemMonthItem.fee || 0;
-          totalCharge += detailItemMonthItem.charge;
+          totalCharge += parseFloat(detailItemMonthItem.charge || 0);
           totalAssistance += detailItemMonthItem.assistance;
           !detailItemMonthItem.promoteAmountForZzh &&
             (detailItemMonthItem.promoteAmountForZzh = 0);
