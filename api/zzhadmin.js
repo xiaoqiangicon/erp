@@ -78,7 +78,8 @@ export const delCeremonyType = {
 export const uploadPic = {
   msg: '上传成功',
   result: 0,
-  url: 'https://pic.zizaihome.com/97a8607c-a406-11eb-9ea2-00163e0c1e1c.mp4',
+  // url: 'https://pic.zizaihome.com/97a8607c-a406-11eb-9ea2-00163e0c1e1c.mp4',
+  url: '/sample/image1.jpg',
 };
 
 export const saveCeremonyTemplate = {

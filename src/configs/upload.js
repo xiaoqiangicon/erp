@@ -1,7 +1,5 @@
 import { Notification } from 'element-ui';
 
-const isLocal = window.location.hostname.indexOf('localhost') > -1;
-
 export const makeUploadImageOptions = ({
   el,
   done,
@@ -17,7 +15,7 @@ export const makeUploadImageOptions = ({
   name,
   type: 'image',
   uploadOptions,
-  uploadUrl: isLocal ? '/mock/upload.json' : '/zzhadmin/uploadPic/',
+  uploadUrl: '/zzhadmin/uploadPic/',
   uploadHandle(res) {
     return res.url;
   },
@@ -41,7 +39,7 @@ export const makeUploadFileOptions = ({
   progress,
   multiple,
   name,
-  uploadUrl: isLocal ? '/mock/upload.json' : '/zzhadmin/uploadPic/',
+  uploadUrl: '/zzhadmin/uploadPic/',
   uploadOptions: {
     dataType: 'json',
     paramName: 'file',
