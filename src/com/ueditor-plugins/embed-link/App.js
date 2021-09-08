@@ -119,7 +119,7 @@ export default {
       }).then(response => {
         this.listLoading = false;
         this.list = response.data;
-        this.total = (response.all_page || 1) * (response.limit || 1);
+        this.total = response.all_items || 0;
       });
     },
     handleSelect(index, row) {

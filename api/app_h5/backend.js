@@ -1,7 +1,7 @@
 export const search = {
   msg: 'success', // success
   code: 1, // 1 成功
-  all_page: 100, // 总页数
+  all_items: 100, // 总页数
   limit: 10, // 每页条数
   data: '.'
     .repeat(5)
