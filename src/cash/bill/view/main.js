@@ -30,7 +30,7 @@ seeView({
     'click [data-select-all-bills]': 'onClickSelectAllBills',
     'click [data-status-action]': 'onClickStatusAction',
     'click [data-popup-close]': 'onClickPopup',
-    'click [data-popup-overlay]': 'onClickPopup',
+    // 'click [data-popup-overlay]': 'onClickPopup',
     'click [data-popup-submit]': 'onClickPopupSubmit',
     // 提现管理按钮
     'click #take-cash': 'onClickTakeCash',
@@ -338,6 +338,7 @@ seeView({
     console.log(parseInt(e.target.value, 10));
   },
   onClickPopup: function(e) {
+    if (parseInt($('#confirm-3-button').attr('data-handling'))) return;
     var $this = $(e.target),
       $popup = $this.parents('.dialog'),
       canClose =
