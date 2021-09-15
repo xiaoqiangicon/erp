@@ -109,7 +109,7 @@ func.initVideoUpload = function($btn) {
       componentOption: {
         add: function(e, data) {
           const { size, type } = data.originalFiles[0];
-          const limitSize = 50 * 1024 * 1024;
+          const limitSize = 100 * 1024 * 1024;
           let uploadError = [];
           const acceptFileTypes = /^video\/(mp4|wmv|mov)$/i;
           console.log(size, type);
@@ -117,7 +117,7 @@ func.initVideoUpload = function($btn) {
             uploadError.push('请上传mp4、wmv或mov格式的文件');
           }
           if (size > limitSize) {
-            uploadError.push('请上传不超过50M的文件');
+            uploadError.push('请上传不超过100M的文件');
           }
           if (uploadError.length) {
             commonFunc.alert(uploadError.join('\n'));
