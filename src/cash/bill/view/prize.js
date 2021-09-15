@@ -166,7 +166,5 @@ seeView({
     var $this = $(e.target);
     console.log(data);
     confirmBill($this);
-
-    $dialogConfirm3.hide();
   },
 });

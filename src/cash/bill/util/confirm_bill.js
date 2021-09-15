@@ -4,6 +4,7 @@ import toastr from 'toastr';
 import data from '../data';
 import dialog from 'util/dialog';
 var $prizeDialog = $('#dialog-prize');
+var $dialogConfirm3 = $('#dialog-confirm-3');
 
 export default function($this) {
   if (parseInt($this.attr('data-handling'))) return;
@@ -13,6 +14,7 @@ export default function($this) {
       'data-handling': 1,
     })
     .text('正在处理');
+
   seeAjax(
     'confirmBills',
     {
@@ -29,6 +31,7 @@ export default function($this) {
           .text('确认支持');
         $prizeDialog.hide();
         toastr.success('提交账单成功');
+        $dialogConfirm3.hide();
       } else {
         dialog(res.message || '操作失败，请稍后重试');
       }
