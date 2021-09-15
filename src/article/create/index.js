@@ -19,7 +19,8 @@ import 'component/ueditor_plugins/import_wx_article';
 import 'component/ueditor_plugins/video';
 import 'component/ueditor_plugins/choose_image';
 import 'component/ueditor_plugins/choose_image_multi';
-import '../../com/ueditor-plugins/self-music';
+import '../../com/ueditor-plugins/embed-music';
+import '../../com/ueditor-plugins/embed-link';
 
 Vue.component(Input.name, Input);
 Vue.component(Button.name, Button);

@@ -130,6 +130,8 @@ export default lila => {
       prod: 5,
     };
 
+    let staticServer = '';
+
     const tasks = [
       '@lila/del-build',
       '@lila/webpack',
@@ -140,70 +142,76 @@ export default lila => {
           target: `build/${rename[entry] ? rename[entry] : entry}.html`,
         },
       ],
-      [
-        '@lila/clean-cache',
-        { dir: 'build', cacheFileName: `cache-${argv.env}` },
-      ],
-      [
-        'qiniu',
-        {
-          dirs: 'build',
-          sourceMap: !1,
-        },
-      ],
-      [
-        'qiniu-source-map',
-        {
-          dir: 'build',
-        },
-      ],
-      [
-        '@lila/sync-html',
-        {
-          server: servers[serverEnvMap[argv.env]],
-          remotePath:
-            argv.env === 'test'
-              ? '/data1/www/myerp/templates'
-              : '/data/www/myerp/templates',
-        },
-      ],
-      [
-        '@lila/sync-html',
-        {
-          server: servers[serverEnvMap[argv.env]],
-          remotePath:
-            argv.env === 'test'
-              ? '/data1/www/myerp/static/build'
-              : '/data/www/myerp/static/build',
-        },
-      ],
     ];
 
-    if (argv.menu) {
-      tasks.push([
-        '@lila/sync-dir',
-        {
-          server: servers[serverEnvMap[argv.env]],
-          remotePath:
-            argv.env === 'test'
-              ? '/data1/www/myerp/static/resources'
-              : '/data/www/myerp/static/resources',
-          dirs: 'json',
-        },
-      ]);
-    }
+    if (cmd === 'sync') {
+      staticServer = 'https://pic.zizaihome.com';
+      tasks.push(
+        [
+          '@lila/clean-cache',
+          { dir: 'build', cacheFileName: `cache-${argv.env}` },
+        ],
+        [
+          'qiniu',
+          {
+            dirs: 'build',
+            sourceMap: !1,
+          },
+        ],
+        [
+          'qiniu-source-map',
+          {
+            dir: 'build',
+          },
+        ],
+        [
+          '@lila/sync-html',
+          {
+            server: servers[serverEnvMap[argv.env]],
+            remotePath:
+              argv.env === 'test'
+                ? '/data1/www/myerp/templates'
+                : '/data/www/myerp/templates',
+          },
+        ],
+        [
+          '@lila/sync-html',
+          {
+            server: servers[serverEnvMap[argv.env]],
+            remotePath:
+              argv.env === 'test'
+                ? '/data1/www/myerp/static/build'
+                : '/data/www/myerp/static/build',
+          },
+        ]
+      );
 
-    tasks.push(
-      [
-        '@lila/save-cache',
-        { dir: 'build', cacheFileName: `cache-${argv.env}` },
-      ],
-      '@lila/del-build'
-    );
+      if (argv.menu) {
+        tasks.push([
+          '@lila/sync-dir',
+          {
+            server: servers[serverEnvMap[argv.env]],
+            remotePath:
+              argv.env === 'test'
+                ? '/data1/www/myerp/static/resources'
+                : '/data/www/myerp/static/resources',
+            dirs: 'json',
+          },
+        ]);
+      }
+
+      tasks.push(
+        [
+          '@lila/save-cache',
+          { dir: 'build', cacheFileName: `cache-${argv.env}` },
+        ],
+        '@lila/del-build'
+      );
+    }
 
     const config = {
       tasks,
-      staticServer: 'https://pic.zizaihome.com',
+      staticServer,
       define: {
         __SEE_ENV__: isDev ? 1 : 0,
       },

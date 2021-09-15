@@ -1,0 +1,68 @@
+//表格栏样式
+.table-container {
+  margin-top: 20px;
+}
+
+//分页栏样式
+.pagination-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ellipsis-l2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.upload-box {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  line-height: 58px;
+  border-radius: 4px;
+  display: inline-block;
+
+  i {
+    font-size: 14px;
+  }
+}
+
+.img-box {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+}
+
+.img-box-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  line-height: 60px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
+
+  i {
+    font-size: 14px;
+    color: #fff;
+  }
+}
+
+.img-box:hover .img-box-overlay {
+  display: block;
+}
