@@ -109,7 +109,7 @@
             size="medium"
           ></el-input>
         </el-form-item>
-        <el-form-item label="封面：">
+        <el-form-item label="封面：" required>
           <div v-if="inputCover" class="img-box">
             <img :src="inputCover" />
             <div class="img-box-overlay" @click="inputCover = ''">
