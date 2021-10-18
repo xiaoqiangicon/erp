@@ -92,9 +92,6 @@ export default lila => {
 
   return ({ entry, argv, cmd }) => {
     const isDev = cmd === 'dev' || cmd === 'serve';
-    const isTest = argv.env === 'test';
-    const isGray = argv.env === 'gray';
-    const isProd = argv.env === 'prod';
 
     const servers = [];
     try {
@@ -168,20 +165,14 @@ export default lila => {
           '@lila/sync-html',
           {
             server: servers[serverEnvMap[argv.env]],
-            remotePath:
-              argv.env === 'test'
-                ? '/data1/www/myerp/templates'
-                : '/data/www/myerp/templates',
+            remotePath: '/data/www/myerp-py3/templates',
           },
         ],
         [
           '@lila/sync-html',
           {
             server: servers[serverEnvMap[argv.env]],
-            remotePath:
-              argv.env === 'test'
-                ? '/data1/www/myerp/static/build'
-                : '/data/www/myerp/static/build',
+            remotePath: '/data/www/myerp-py3/static/build',
           },
         ]
       );
@@ -191,10 +182,7 @@ export default lila => {
           '@lila/sync-dir',
           {
             server: servers[serverEnvMap[argv.env]],
-            remotePath:
-              argv.env === 'test'
-                ? '/data1/www/myerp/static/resources'
-                : '/data/www/myerp/static/resources',
+            remotePath: '/data/www/myerp-py3/static/resources',
             dirs: 'json',
           },
         ]);
