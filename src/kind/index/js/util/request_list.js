@@ -13,8 +13,7 @@ import '../ajax';
 import listTpl from '../tpl/main/detail/record';
 import contentTpl from '../tpl/main/detail/content';
 
-import upload from '../../../../../../pro-com/src/upload';
-import { makeUploadFileOptions } from '../../../../configs/upload';
+import multipartUpload from '../../../../com/multipartUpload';
 
 import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
 import coverPicTpl from '../tpl/main/detail/cover_pic_item';
@@ -103,35 +102,33 @@ const requestList = (page, init) => {
             });
 
             // 发布进展上传视频
-            upload(
-              makeUploadFileOptions({
-                el: '.upload-video',
-                done: (url, e, data) => {
-                  $('[data-ele="video-upload-loading"]').remove();
-                  const $coverContainer = $('#cover-container');
-                  $coverContainer.append(
-                    coverVideoItemTpl({
-                      video: url,
-                    })
-                  );
-                },
-                progress: (e, data) => {
-                  const $coverContainer = $('#cover-container');
-                  $coverContainer.append($uploadLoading);
-                  $uploadLoading.show();
-                  const $progress = $('[data-ele="progress"]');
-                  const $progressText = $('[data-ele="progress-text"]');
-                  let progress = parseInt((data.loaded / data.total) * 100, 10);
-                  if (progress > 95) {
-                    progress = 95;
-                  }
-                  $progress.css({
-                    width: `${progress}%`,
-                  });
-                  $progressText.text(`${progress}%`);
-                },
-              })
-            );
+            multipartUpload({
+              el: '.upload-video',
+              done: (url, e, data) => {
+                $('[data-ele="video-upload-loading"]').remove();
+                const $coverContainer = $('#cover-container');
+                $coverContainer.append(
+                  coverVideoItemTpl({
+                    video: url,
+                  })
+                );
+              },
+              progress: (e, data) => {
+                const $coverContainer = $('#cover-container');
+                $coverContainer.append($uploadLoading);
+                $uploadLoading.show();
+                const $progress = $('[data-ele="progress"]');
+                const $progressText = $('[data-ele="progress-text"]');
+                let progress = parseInt((data.loaded / data.total) * 100, 10);
+                if (progress > 95) {
+                  progress = 95;
+                }
+                $progress.css({
+                  width: `${progress}%`,
+                });
+                $progressText.text(`${progress}%`);
+              },
+            });
 
             // 新增
             // 保存
@@ -305,45 +302,43 @@ const requestList = (page, init) => {
                           alt="">
                   </div>`);
                   // $uploadRecordLoading.hide();
-                  upload(
-                    makeUploadFileOptions({
-                      el: $('.record-upload-video').eq(i),
-                      done: (url, e, data) => {
-                        $uploadRecordLoading.remove();
-                        const $recordItemVideo = $('.record-media').eq(i);
-                        $recordItemVideo.append(
-                          coverVideoItemTpl({
-                            video: url,
-                          })
-                        );
-                      },
-                      progress: (e, data) => {
-                        if (data.total >= 10485676 * 50) {
-                          $('.fail-big').show();
-                          return false;
-                        }
+                  multipartUpload({
+                    el: $('.record-upload-video').eq(i),
+                    done: (url, e, data) => {
+                      $uploadRecordLoading.remove();
+                      const $recordItemVideo = $('.record-media').eq(i);
+                      $recordItemVideo.append(
+                        coverVideoItemTpl({
+                          video: url,
+                        })
+                      );
+                    },
+                    progress: (e, data) => {
+                      if (data.total >= 10485676 * 50) {
+                        $('.fail-big').show();
+                        return false;
+                      }
 
-                        const $recordItemVideo = $('.record-media').eq(i);
-                        $recordItemVideo.append($uploadRecordLoading);
-                        $uploadRecordLoading.show();
-                        const $progress = $('[data-record-ele="progress"]');
-                        const $progressText = $(
-                          '[data-record-ele="progress-text"]'
-                        );
-                        let progress = parseInt(
-                          (data.loaded / data.total) * 100,
-                          10
-                        );
-                        if (progress > 95) {
-                          progress = 95;
-                        }
-                        $progress.css({
-                          width: `${progress}%`,
-                        });
-                        $progressText.text(`${progress}%`);
-                      },
-                    })
-                  );
+                      const $recordItemVideo = $('.record-media').eq(i);
+                      $recordItemVideo.append($uploadRecordLoading);
+                      $uploadRecordLoading.show();
+                      const $progress = $('[data-record-ele="progress"]');
+                      const $progressText = $(
+                        '[data-record-ele="progress-text"]'
+                      );
+                      let progress = parseInt(
+                        (data.loaded / data.total) * 100,
+                        10
+                      );
+                      if (progress > 95) {
+                        progress = 95;
+                      }
+                      $progress.css({
+                        width: `${progress}%`,
+                      });
+                      $progressText.text(`${progress}%`);
+                    },
+                  });
                   // 上传结束
                 });
             });
@@ -483,38 +478,36 @@ const requestList = (page, init) => {
                 $('.publish-mask').show();
                 console.log(recordScheduleList);
                 // 发布进展上传视频
-                upload(
-                  makeUploadFileOptions({
-                    el: '.upload-video',
-                    done: (url, e, data) => {
-                      $('[data-ele="video-upload-loading"]').remove();
-                      const $coverContainer = $('#cover-container');
-                      $coverContainer.append(
-                        coverVideoItemTpl({
-                          video: url,
-                        })
-                      );
-                    },
-                    progress: (e, data) => {
-                      const $coverContainer = $('#cover-container');
-                      $coverContainer.append($uploadLoading);
-                      $uploadLoading.show();
-                      const $progress = $('[data-ele="progress"]');
-                      const $progressText = $('[data-ele="progress-text"]');
-                      let progress = parseInt(
-                        (data.loaded / data.total) * 100,
-                        10
-                      );
-                      if (progress > 95) {
-                        progress = 95;
-                      }
-                      $progress.css({
-                        width: `${progress}%`,
-                      });
-                      $progressText.text(`${progress}%`);
-                    },
-                  })
-                );
+                multipartUpload({
+                  el: '.upload-video',
+                  done: (url, e, data) => {
+                    $('[data-ele="video-upload-loading"]').remove();
+                    const $coverContainer = $('#cover-container');
+                    $coverContainer.append(
+                      coverVideoItemTpl({
+                        video: url,
+                      })
+                    );
+                  },
+                  progress: (e, data) => {
+                    const $coverContainer = $('#cover-container');
+                    $coverContainer.append($uploadLoading);
+                    $uploadLoading.show();
+                    const $progress = $('[data-ele="progress"]');
+                    const $progressText = $('[data-ele="progress-text"]');
+                    let progress = parseInt(
+                      (data.loaded / data.total) * 100,
+                      10
+                    );
+                    if (progress > 95) {
+                      progress = 95;
+                    }
+                    $progress.css({
+                      width: `${progress}%`,
+                    });
+                    $progressText.text(`${progress}%`);
+                  },
+                });
 
                 // 新增
                 // 保存
@@ -678,45 +671,43 @@ const requestList = (page, init) => {
                             alt="">
                     </div>`);
                       // $uploadRecordLoading.hide();
-                      upload(
-                        makeUploadFileOptions({
-                          el: $('.record-upload-video').eq(i),
-                          done: (url, e, data) => {
-                            $uploadRecordLoading.remove();
-                            const $recordItemVideo = $('.record-media').eq(i);
-                            $recordItemVideo.append(
-                              coverVideoItemTpl({
-                                video: url,
-                              })
-                            );
-                          },
-                          progress: (e, data) => {
-                            if (data.total >= 10485676 * 50) {
-                              $('.fail-big').show();
-                              return false;
-                            }
+                      multipartUpload({
+                        el: $('.record-upload-video').eq(i),
+                        done: (url, e, data) => {
+                          $uploadRecordLoading.remove();
+                          const $recordItemVideo = $('.record-media').eq(i);
+                          $recordItemVideo.append(
+                            coverVideoItemTpl({
+                              video: url,
+                            })
+                          );
+                        },
+                        progress: (e, data) => {
+                          if (data.total >= 10485676 * 50) {
+                            $('.fail-big').show();
+                            return false;
+                          }
 
-                            const $recordItemVideo = $('.record-media').eq(i);
-                            $recordItemVideo.append($uploadRecordLoading);
-                            $uploadRecordLoading.show();
-                            const $progress = $('[data-record-ele="progress"]');
-                            const $progressText = $(
-                              '[data-record-ele="progress-text"]'
-                            );
-                            let progress = parseInt(
-                              (data.loaded / data.total) * 100,
-                              10
-                            );
-                            if (progress > 95) {
-                              progress = 95;
-                            }
-                            $progress.css({
-                              width: `${progress}%`,
-                            });
-                            $progressText.text(`${progress}%`);
-                          },
-                        })
-                      );
+                          const $recordItemVideo = $('.record-media').eq(i);
+                          $recordItemVideo.append($uploadRecordLoading);
+                          $uploadRecordLoading.show();
+                          const $progress = $('[data-record-ele="progress"]');
+                          const $progressText = $(
+                            '[data-record-ele="progress-text"]'
+                          );
+                          let progress = parseInt(
+                            (data.loaded / data.total) * 100,
+                            10
+                          );
+                          if (progress > 95) {
+                            progress = 95;
+                          }
+                          $progress.css({
+                            width: `${progress}%`,
+                          });
+                          $progressText.text(`${progress}%`);
+                        },
+                      });
                       // 上传结束
                     });
                 });

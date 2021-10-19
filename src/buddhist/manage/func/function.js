@@ -6,7 +6,7 @@ import tpl from './tpl';
 import Pagination from '../../../com-deprecated/pagination';
 import commonVars from 'common/variables';
 import api from './api';
-import zzhUpload from '../../../com-deprecated/upload';
+import multipartUpload from '../../../com/multipartUpload';
 import toastr from 'toastr';
 import './upload_config.js';
 import './ajax';
@@ -75,13 +75,13 @@ func.renderVideoPlayer = function(src) {
     Data.videoPlayer.load(srcData);
   }
 };
-func.initVideoUpload = function($btn) {
-  zzhUpload(
-    $btn,
-    function(url) {
+func.initVideoUpload = function(btn) {
+  multipartUpload({
+    el: btn,
+    done(url) {
       console.log('上传成功');
       $('[data-ele="video-upload-loading"]').remove();
-      $($btn)
+      $(btn)
         .parent()
         .prev()
         .append(
@@ -89,9 +89,9 @@ func.initVideoUpload = function($btn) {
             src: url,
           })
         );
-      $($btn).show();
+      $(btn).show();
     },
-    function(e, data) {
+    progress(e, data) {
       const $progress = $('[data-ele="progress"]');
       const $progressText = $('[data-ele="progress-text"]');
       let progress = parseInt((data.loaded / data.total) * 100, 10);
@@ -104,35 +104,34 @@ func.initVideoUpload = function($btn) {
       $progressText.text(`${progress}%`);
       console.log(progress);
     },
-    {
-      type: 'file',
-      componentOption: {
-        add: function(e, data) {
-          const { size, type } = data.originalFiles[0];
-          const limitSize = 100 * 1024 * 1024;
-          let uploadError = [];
-          const acceptFileTypes = /^video\/(mp4|wmv|mov)$/i;
-          console.log(size, type);
-          if (!acceptFileTypes.test(type)) {
-            uploadError.push('请上传mp4、wmv或mov格式的文件');
-          }
-          if (size > limitSize) {
-            uploadError.push('请上传不超过100M的文件');
-          }
-          if (uploadError.length) {
-            commonFunc.alert(uploadError.join('\n'));
-          } else {
-            Data.curUploadJqXHR = data.submit();
-            $($btn)
-              .parent()
-              .prev()
-              .append(tpl.scheduleVideoUploadLoading.render({}));
-            $($btn).hide();
-          }
-        },
-      },
-    }
-  );
+    uploadFail(msg) {
+      commonFunc.alert(msg || '上传视频失败');
+    },
+    beforeUpload(e, data) {
+      const { size, type } = data.originalFiles[0];
+      const limitSize = 100 * 1024 * 1024;
+      let uploadError = [];
+      const acceptFileTypes = /^video\/(mp4|wmv|mov)$/i;
+      console.log(size, type);
+      if (!acceptFileTypes.test(type)) {
+        uploadError.push('请上传mp4、wmv或mov格式的文件');
+      }
+      if (size > limitSize) {
+        uploadError.push('请上传不超过100M的文件');
+      }
+      if (uploadError.length) {
+        commonFunc.alert(uploadError.join('\n'));
+        return false;
+      } else {
+        $(btn)
+          .parent()
+          .prev()
+          .append(tpl.scheduleVideoUploadLoading.render({}));
+        $(btn).hide();
+        return true;
+      }
+    },
+  });
 };
 func.getBuddhistType = function(params, callback) {
   seeAjax('getBuddhistType', params, function(res) {
