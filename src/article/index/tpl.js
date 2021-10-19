@@ -3,6 +3,9 @@ import loading from '../../../images/loading.gif';
 var tpl = {
   articleCell: `
         <div class="article-cell" data-article-cell="\${id}">
+            <div class="article-id">
+                <p>\${id}</p>
+            </div>
             <div class="article-title">
                 <img src="\${cover}" class="article-cover">
                 <p class="article-title-text">\${title}</p>
@@ -18,6 +21,9 @@ var tpl = {
             </div>
             <div class="article-status">
                 <p class="{@if statusInt == 2}green{@else if statusInt == 3}red{@/if}">\${status}</p>
+            </div>
+            <div class="article-time">
+                <p>\${public_time}</p>
             </div>
             <div class="article-actions">
                 <p {@if statusInt == 3}style="line-height: 50px;"{@/if}>

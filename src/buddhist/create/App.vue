@@ -331,15 +331,80 @@
           />
         </div>
       </el-form-item>
-      <el-form-item label="反馈信息：">
+      <el-form-item label="默认反馈：">
         <el-radio v-model="form.pay_succ_details_flag" :label="1"
           >开启</el-radio
         >
         <el-radio v-model="form.pay_succ_details_flag" :label="0"
           >关闭</el-radio
         >
-        <div class="mg-t-20" v-show="form.pay_succ_details_flag">
-          <div id="pay-success-editor" class="editor-container"></div>
+        <div class="mg-t-10" v-show="form.pay_succ_details_flag">
+          <el-input
+            type="textarea"
+            style="width: 40%"
+            rows="4"
+            v-model="form.feedbackText"
+            resize="none"
+            placeholder="请输入默认反馈内容"
+          ></el-input>
+          <div style="margin: 10px 0;">
+            <draggable class="dp-inline-block" :list="form.feedPics">
+              <div
+                class="cover-item"
+                v-for="(pic, index) in form.feedPics"
+                :key="index"
+              >
+                <img class="wd-100-pc hg-100-pc" :src="pic" />
+                <span class="cover-mask"></span>
+                <i
+                  class="el-icon-circle-close cover-del"
+                  @click="delFeedCover(index)"
+                ></i>
+              </div>
+            </draggable>
+            <el-button
+              style="margin: 10px 0; margin-left: -4px;"
+              type="primary"
+              @click="addFeedCover"
+              >上传图片</el-button
+            >
+            <img
+              v-if="!1"
+              class="cover-add"
+              src="https://pic.zizaihome.com/build/2ed86af0ce03dd222864747496bcc75a.png"
+            />
+          </div>
+          <div>
+            <div
+              class="cover-item"
+              v-for="(src, index) in form.feedVideo"
+              :key="index"
+            >
+              <img class="wd-100-pc hg-100-pc" :src="src + videoCoverSuffix" />
+              <span class="cover-mask"></span>
+              <i
+                class="el-icon-circle-close cover-del"
+                @click="delFeedVideo(index)"
+              ></i>
+            </div>
+            <div class="cover-add" v-if="uploadingFeedVideo">
+              <img
+                class="cover-add"
+                src="https://pic.zizaihome.com/build/2ed86af0ce03dd222864747496bcc75a.png"
+                style="opacity: .2"
+              />
+              <img class="cover-loading" src="../../../images/loading.gif" />
+            </div>
+            <div
+              class="cover-feed-video-add"
+              ref="uploadFeedVideo"
+              v-show="!uploadingFeedVideo"
+            >
+              <el-button type="primary">上传视频</el-button>
+            </div>
+            <p>支持视频格式MP4/MOV等，不超过50MB，仅支持上传1个封面视频</p>
+          </div>
+          <div id="pay-success-editor" v-if="!1" class="editor-container"></div>
         </div>
       </el-form-item>
       <el-form-item label="打印机设置：">
