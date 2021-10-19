@@ -99,13 +99,20 @@ export default {
         pay_succ_details_flag: 0,
         // 支付成功反馈信息
         payDetail: defaultPaySuccessHtml,
+        feedbackText: '',
+        feedPics: [],
+        feedVideo: [],
       },
       // 是否正在上传视频
       uploadingVideo: false,
+      // 是否正在上传默认反馈视频
+      uploadingFeedVideo: false,
       // 通过视频获取封面需要的后缀
       videoCoverSuffix: '?vframe/jpg/offset/1',
       // 选取封面组件实例
       chooseCoverIns: null,
+      // 选取反馈图片组件实例
+      chooseFeedCoverIns: null,
       // 详情编辑器实例
       detailEditor: null,
       // 支付完成编辑器实例
@@ -280,6 +287,48 @@ export default {
       },
     });
 
+    // 默认反馈上传组件初始化
+    upload({
+      el: this.$refs.uploadFeedVideo,
+      uploadUrl: '/zzhadmin/uploadPic/',
+      done: url => {
+        this.uploadingFeedVideo = false;
+        this.form.feedVideo.push(url);
+      },
+      uploadHandle: res => res.url,
+      uploadOptions: {
+        formData: {},
+        add: (e, data) => {
+          const fileName = data.files[0].name.toLowerCase();
+          const size = data.files[0].size;
+          const limitSize = 50 * 1024 * 1024;
+
+          if (
+            fileName.indexOf('mp4') < 0 &&
+            fileName.indexOf('rmvb') < 0 &&
+            fileName.indexOf('mov') < 0
+          ) {
+            MessageBox.alert('请上传正确的视频格式');
+            return;
+          }
+          if (size > limitSize) {
+            MessageBox.alert('请上传不超过50M的文件');
+            return;
+          }
+
+          this.uploadingFeedVideo = true;
+
+          data.process().done(() => {
+            data.submit();
+          });
+        },
+        fail: () => {
+          this.uploadingFeedVideo = false;
+          Message.error('上传视频失败');
+        },
+      },
+    });
+
     // 初始化详情编辑器
     this.detailEditor = window.UE.getEditor('detail-editor', {
       initialFrameWidth: 700,
@@ -290,14 +339,14 @@ export default {
     });
 
     // 初始化支付完成编辑器
-    this.paySuccessEditor = window.UE.getEditor('pay-success-editor', {
-      initialFrameWidth: 700,
-      initialFrameHeight: 400,
-    });
-    this.paySuccessEditor.ready(() => {
-      if (this.form.payDetail)
-        this.paySuccessEditor.setContent(this.form.payDetail);
-    });
+    // this.paySuccessEditor = window.UE.getEditor('pay-success-editor', {
+    //   initialFrameWidth: 700,
+    //   initialFrameHeight: 400,
+    // });
+    // this.paySuccessEditor.ready(() => {
+    //   if (this.form.payDetail)
+    //     this.paySuccessEditor.setContent(this.form.payDetail);
+    // });
   },
   methods: {
     // 初始化打印机
@@ -384,7 +433,11 @@ export default {
     delCover(index) {
       this.form.pics.splice(index, 1);
     },
+    delFeedCover(index) {
+      this.form.feedPics.splice(index, 1);
+    },
     addCover() {
+      console.log('封面');
       if (!this.chooseCoverIns) {
         this.chooseCoverIns = new ChooseImage({
           onSubmit: data => {
@@ -398,8 +451,24 @@ export default {
       }
       this.chooseCoverIns.show();
     },
+    addFeedCover() {
+      console.log('反馈');
+      if (!this.chooseFeedCoverIns) {
+        this.chooseFeedCoverIns = new ChooseImage({
+          onSubmit: data => {
+            data.forEach(item => {
+              this.form.feedPics.push(item.src);
+            });
+          },
+        });
+      }
+      this.chooseFeedCoverIns.show();
+    },
     delVideo(index) {
       this.form.video.splice(index, 1);
+    },
+    delFeedVideo(index) {
+      this.form.feedVideo.splice(index, 1);
     },
     fillRandomPrices() {
       this.form.price = randomPrices;
@@ -423,10 +492,10 @@ export default {
     },
     getSubmitData() {
       const detail = this.detailEditor.getContent();
-      const payDetail = this.paySuccessEditor.getContent();
+      // const payDetail = this.paySuccessEditor.getContent();
 
       this.form.detail = detail;
-      this.form.payDetail = payDetail;
+      // this.form.payDetail = payDetail;
 
       return generateSubmitData(this.form);
     },
@@ -464,9 +533,9 @@ export default {
       fillPrinterToSubmitData(submitData, this.printerList);
 
       zzhHandling.show();
-      tranStoreImages([submitData.detail, submitData.payDetail], result => {
+      tranStoreImages([submitData.detail], result => {
         submitData.detail = result[0];
-        submitData.payDetail = result[1];
+        // submitData.payDetail = result[1];
 
         zzhHandling.setText('保存数据');
 
@@ -509,9 +578,9 @@ export default {
         const templateName = value || submitData.title;
 
         zzhHandling.show();
-        tranStoreImages([submitData.detail, submitData.payDetail], result => {
+        tranStoreImages([submitData.detail], result => {
           submitData.detail = result[0];
-          submitData.payDetail = result[1];
+          //submitData.payDetail = result[1];
 
           zzhHandling.setText('保存数据');
 
@@ -541,11 +610,13 @@ export default {
 
       const submitData = this.getSubmitData();
       if (!submitData) return;
+      // 填充打印机到提交数据中
+      fillPrinterToSubmitData(submitData, this.printerList);
 
       zzhHandling.show();
-      tranStoreImages([submitData.detail, submitData.payDetail], result => {
+      tranStoreImages([submitData.detail], result => {
         submitData.detail = result[0];
-        submitData.payDetail = result[1];
+        //submitData.payDetail = result[1];
 
         zzhHandling.setText('保存数据');
 
@@ -694,7 +765,11 @@ export default {
     },
     saveLocalCacheContent() {
       const detail = this.detailEditor.getContent();
-      const payDetail = this.paySuccessEditor.getContent();
+      const payDetail = {
+        content: this.form.feedbackText,
+        pic: this.form.feedPics.join(','),
+        video: this.form.feedVideo.join(','),
+      };
 
       this.form.detail = detail;
       this.form.payDetail = payDetail;

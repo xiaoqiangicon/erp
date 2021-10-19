@@ -97,8 +97,21 @@ export function renderCreatedData(s, isSystemTemplate, isDelay) {
   s.ceremonyTypeId = parseInt(d.ceremonyTypeId, 10) || null;
   s.pics = d.pics || [];
   s.video = d.video || [];
-  s.custom_introduce = d.custom_introduce || '';
+  if (!d.payDetail) {
+    d.payDetail = { content: '', pic: '', video: '' };
+  }
 
+  s.feedbackText = d.payDetail.content || '';
+  s.feedPics = d.payDetail.pic ? d.payDetail.pic.split(',') : [];
+  s.feedVideo = d.payDetail.video ? d.payDetail.video.split(',') : [];
+  s.custom_introduce = d.custom_introduce || '';
+  console.log(
+    d.payDetail,
+    typeof d.payDetail,
+    s.feedPics,
+    s.feedVideo,
+    s.feedbackText
+  );
   if (isDelay) {
     if (d.subdivideStr && d.subdivideStr.length)
       s.subdivideStr.push(...d.subdivideStr);
@@ -158,10 +171,10 @@ export function renderCreatedData(s, isSystemTemplate, isDelay) {
   s.pay_succ_details_flag = confirmInt(d.pay_succ_details_flag, 0);
   if (!isSystemTemplate) {
     s.detail = d.detail || '';
-    s.payDetail = d.payDetail || '';
+    s.payDetail = d.payDetail || {};
   } else {
     s.detail = d.details || '';
-    s.payDetail = d.pay_succ_details || '';
+    s.payDetail = d.pay_succ_details || {};
   }
 
   // 嵌套数据出炉
@@ -392,7 +405,14 @@ export function generateSubmitData(form) {
   if (!s._showFeedback) s.feedbackType = 0;
 
   if (s.pay_succ_details_flag && !s.payDetail) {
-    s.payDetail = defaultPaySuccessHtml;
+    // s.payDetail = defaultPaySuccessHtml;
+  }
+
+  if (s.pay_succ_details_flag) {
+    s.payDetail = {};
+    s.payDetail.content = form.feedbackText;
+    s.payDetail.pic = form.feedPics ? form.feedPics.join(',') : '';
+    s.payDetail.video = form.feedVideo ? form.feedVideo.join(',') : '';
   }
 
   // 移除所有的_开头的临时字段，包括深层
