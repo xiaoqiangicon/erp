@@ -9,6 +9,7 @@ import {
   selectFuYanQF,
 } from '../data';
 import { isInt } from '../../../utils/num';
+import { has } from 'core-js/core/dict';
 
 export default {
   name: 'FuYan',
@@ -86,30 +87,116 @@ export default {
     },
     fillTmpIsPredefined() {
       // 往生排位与祈福排位地区前三个附言是预定义的，不能删除，类型和名称不能修改
+      // 往生牌位新增预设出生日期，往生日期；祈福牌位新增出生日期
       if ([2, 3].indexOf(this.subdivide_type) > -1) {
-        // 老的佛事需要自动补齐地区附言
+        // 老的佛事需要自动补齐地区附言;虽然新增了地区type，但是改不了了，因为旧佛事已经使用了type为6的地址控件，且后面又加了一个详细地址;
         if (
           this.list[0].inputType !== 6 &&
           this.list[1].inputType !== 6 &&
           this.list[2].inputType !== 6
         ) {
-          console.log('自动补齐了地区附言，需要重新保存');
-          this.list.unshift({
-            inputType: 6,
-            prompt_text: '请选择地区',
-            name: '地区',
-            is_must: 1,
-            dataType: 2,
-            pic_num: 4,
-            describe: '',
-            isVerify: 0,
-            font_length: 20,
-          });
+          this.list.unshift(
+            {
+              inputType: 6,
+              prompt_text: '请选择地区',
+              name: '地区',
+              is_must: 1,
+              dataType: 2,
+              pic_num: 4,
+              describe: '',
+              isVerify: 0,
+              font_length: 20,
+            },
+            districtDetail
+          );
+        }
+        // 只有地区没有详细地址的情况;需要在地区后面新增一个详细地址;之前没有固定地区位导致更复杂了；地区组件可能出现在第一个也可能出现在第三个
+        let districtDetail = {
+          inputType: 19,
+          prompt_text: '请填写您的详细地址',
+          describe: '',
+          name: '详细地址',
+          is_must: 0,
+          dataType: 2,
+          pic_num: 1,
+          isVerify: 0,
+          font_length: 0,
+        };
+        let hasDistrictDetail = !1;
+        for (let i = 0; i < this.list.length; i++) {
+          if (this.list[i].inputType === 19) {
+            hasDistrictDetail = !0;
+          }
         }
 
+        if (!hasDistrictDetail) {
+          if (this.list[0].inputType === 6) {
+            this.list.splice(1, 0, districtDetail);
+          } else if (this.list[2].inputType === 6) {
+            this.list.splice(3, 0, districtDetail);
+          }
+
+          console.log(hasDistrictDetail, this.list, 'hasdfsdk');
+        }
+
+        // 老佛事需要补齐需要的日期控件(往生)
+        let birth = {
+          inputType: 9,
+          prompt_text: '',
+          describe: '',
+          name: '出生日期',
+          is_must: 0,
+          dataType: 2,
+          pic_num: 0,
+          isVerify: 0,
+          font_length: 0,
+        };
+        let wsBirth = {
+          inputType: 9,
+          prompt_text: '',
+          describe: '',
+          name: '往生日期',
+          is_must: 0,
+          dataType: 2,
+          pic_num: 0,
+          isVerify: 0,
+          font_length: 0,
+        };
+
+        if (this.subdivide_type === 2) {
+          if (this.list[4] && this.list[4].inputType !== 9) {
+            this.list.splice(4, 0, birth);
+          }
+          if (this.list[5] && this.list[5].inputType !== 9) {
+            this.list.splice(5, 0, wsBirth);
+          }
+          if (!this.list[5]) {
+            this.list[5] = birth;
+          }
+          if (!this.list[4]) {
+            this.list[4] = wsBirth;
+          }
+
+          this.list[4]._isPredefined = true;
+          this.list[5]._isPredefined = true;
+        }
+
+        // 祈福补齐需要的日期控件
+        if (this.subdivide_type === 3) {
+          if (this.list[4] && this.list[4].inputType !== 9) {
+            this.list.splice(4, 0, birth);
+          }
+          if (!this.list[4]) {
+            this.list[4] = birth;
+          }
+
+          this.list[4]._isPredefined = true;
+        }
+        console.log(this.postScript, 'postscript');
         if (this.list[0]) this.list[0]._isPredefined = true;
         if (this.list[1]) this.list[1]._isPredefined = true;
         if (this.list[2]) this.list[2]._isPredefined = true;
+        if (this.list[3]) this.list[3]._isPredefined = true;
       }
     },
     addFuYan() {

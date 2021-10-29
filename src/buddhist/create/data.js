@@ -72,6 +72,7 @@ export const selectFuYanList = [
   { value: 10, name: '阳上人' },
   { value: 11, name: '往生者' },
   { value: 18, name: '地区' },
+  { value: 19, name: '详细地址' },
   { value: 13, name: '自定义-提示框' },
   { value: 1, name: '自定义-单行文本框' },
   { value: 2, name: '自定义-日期选择' },
@@ -87,7 +88,6 @@ export const selectFuYanWS = [
   { value: 12, name: '功德芳名' },
   { value: 15, name: '心愿' },
   { value: 8, name: '性别' },
-  { value: 9, name: '出生日期' },
   { value: 5, name: '手机号码' },
   { value: 13, name: '自定义-提示框' },
   { value: 1, name: '自定义-单行文本框' },
@@ -102,7 +102,6 @@ export const selectFuYanQF = [
   { value: 17, name: '普通邮寄' },
   { value: 4, name: '联系人' },
   { value: 8, name: '性别' },
-  { value: 9, name: '出生日期' },
   { value: 5, name: '手机号码' },
   { value: 10, name: '阳上人' },
   { value: 11, name: '往生者' },
@@ -327,6 +326,17 @@ export const plainFuYanList = [
     isVerify: 0,
     font_length: 0,
   },
+  {
+    inputType: 19,
+    prompt_text: '请填写您的详细地址',
+    describe: '',
+    name: '详细地址',
+    is_must: 0,
+    dataType: 2,
+    pic_num: 1,
+    isVerify: 0,
+    font_length: 0,
+  },
 ];
 
 /**
@@ -398,6 +408,39 @@ export const plainGuiGeList = [
         isVerify: 0,
         font_length: 20,
       },
+      {
+        inputType: 19,
+        prompt_text: '请填写您的详细地址',
+        describe: '',
+        name: '详细地址',
+        is_must: 0,
+        dataType: 2,
+        pic_num: 1,
+        isVerify: 0,
+        font_length: 0,
+      },
+      {
+        inputType: 9,
+        prompt_text: '',
+        describe: '',
+        name: '出生日期',
+        is_must: 0,
+        dataType: 2,
+        pic_num: 0,
+        isVerify: 0,
+        font_length: 0,
+      },
+      {
+        inputType: 9,
+        prompt_text: '',
+        describe: '',
+        name: '往生日期',
+        is_must: 0,
+        dataType: 2,
+        pic_num: 0,
+        isVerify: 0,
+        font_length: 0,
+      },
     ],
     name: '往生牌位',
     printer: [],
@@ -446,6 +489,28 @@ export const plainGuiGeList = [
         describe: '',
         isVerify: 0,
         font_length: 20,
+      },
+      {
+        inputType: 19,
+        prompt_text: '请填写您的详细地址',
+        describe: '',
+        name: '详细地址',
+        is_must: 0,
+        dataType: 2,
+        pic_num: 1,
+        isVerify: 0,
+        font_length: 0,
+      },
+      {
+        inputType: 9,
+        prompt_text: '',
+        describe: '',
+        name: '出生日期',
+        is_must: 0,
+        dataType: 2,
+        pic_num: 1,
+        isVerify: 0,
+        font_length: 0,
       },
     ],
     name: '祈福牌位',
@@ -516,11 +581,36 @@ export const fuYanPreviewImages = {
       thumbnail:
         'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
     },
+    {
+      src: 'https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+    {
+      src: 'https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+    {
+      src: 'https://pic.zizaihome.com/0b34c996-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7b7c6276-0d6f-11e8-8feb-00163e0c001e.png',
+    },
   ],
   // 祈福排位
   3: [
     {
       src: 'https://pic.zizaihome.com/478059f6-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+    {
+      src: 'https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png',
+      thumbnail:
+        'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png',
+    },
+    {
+      src: 'https://pic.zizaihome.com/574a0f44-0bfc-11e8-91da-00163e0c001e.png',
       thumbnail:
         'https://pic.zizaihome.com/7d424d78-0d6f-11e8-8feb-00163e0c001e.png',
     },
