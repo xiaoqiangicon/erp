@@ -105,13 +105,6 @@ export function renderCreatedData(s, isSystemTemplate, isDelay) {
   s.feedPics = d.payDetail.pic ? d.payDetail.pic.split(',') : [];
   s.feedVideo = d.payDetail.video ? d.payDetail.video.split(',') : [];
   s.custom_introduce = d.custom_introduce || '';
-  console.log(
-    d.payDetail,
-    typeof d.payDetail,
-    s.feedPics,
-    s.feedVideo,
-    s.feedbackText
-  );
   if (isDelay) {
     if (d.subdivideStr && d.subdivideStr.length)
       s.subdivideStr.push(...d.subdivideStr);
