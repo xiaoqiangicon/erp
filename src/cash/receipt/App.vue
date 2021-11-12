@@ -2,14 +2,19 @@
   <div class="contain">
     <div class="header">
       <div class="header-left">
-        <p class="header-title">开票说明</p>
-        <p class="header-tips">1、企业可申请增值税普通发票（电子）</p>
-        <p class="header-tips">2、开票内容：信息技术服务费</p>
+        <p class="header-title">发票申请规则</p>
+        <p class="header-tips">1、可申请增值税普通发票（电子）</p>
         <p class="header-tips">
-          3、提交申请后，工作人员将在7个工作日内为您处理
+          2、可开票金额根据系统计算自动生成，如有问题请联系客服
         </p>
         <p class="header-tips">
-          4、申请过程中请注意保证信息的正确性，因为信息填写错误导致的发票开具、将不能重开
+          3、开票内容：信息技术服务费
+        </p>
+        <p class="header-tips">
+          4、提交申请后工作人员将在7个工作日内为您处理
+        </p>
+        <p class="header-tips">
+          5、申请过程中请注意保证信息的正确性，因为信息填写错误导致的发票开具、将不能重开
         </p>
       </div>
       <div class="line"></div>
@@ -184,13 +189,13 @@ export default {
       );
     },
     applyReceipt() {
-      if (!parseInt(this.invoicePrice, 0)) {
-        Notification({
-          title: '提示',
-          message: '当前可开票金额为0哦~',
-        });
-        return;
-      }
+      // if (!parseInt(this.invoicePrice, 0)) {
+      //   Notification({
+      //     title: '提示',
+      //     message: '当前可开票金额为0哦~',
+      //   });
+      //   return;
+      // }
       window.location.href = `/zzhadmin/applyReceipt?price=${this.invoicePrice}`;
     },
     cancel(scope) {
