@@ -21,6 +21,7 @@ import 'component/ueditor_plugins/choose_image';
 import 'component/ueditor_plugins/choose_image_multi';
 import '../../com/ueditor-plugins/embed-music';
 import '../../com/ueditor-plugins/embed-link';
+import '../../com/ueditor-plugins/135editor';
 
 Vue.component(Input.name, Input);
 Vue.component(Button.name, Button);
