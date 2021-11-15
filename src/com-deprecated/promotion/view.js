@@ -54,6 +54,9 @@ seeView({
     $('[data-zzh-promotion-tab-1-content]').addClass('dp-none');
     $(`[data-zzh-promotion-tab-1="${tab}"]`).addClass('active');
     $(`[data-zzh-promotion-tab-1-content="${tab}"]`).removeClass('dp-none');
+    if (tab === 3) {
+      $('#zzh-promotion-post-load').click();
+    }
   },
   onClickPostWx: e => {
     $body.append(tpl);

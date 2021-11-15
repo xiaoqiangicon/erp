@@ -109,6 +109,13 @@ export default {
   },
   methods: {
     apply() {
+      if (!this.price) {
+        Notification({
+          title: '提示',
+          message: '当前可开票金额为0哦~',
+        });
+        return;
+      }
       if (!this.invoiceCompany) {
         Notification({
           title: '提示',
