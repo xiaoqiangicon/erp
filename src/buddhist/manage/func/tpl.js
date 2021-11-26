@@ -49,11 +49,13 @@ var tpl = {
                     <p class="mgt10">\${joinNum}</p>
                 </div>
             </td>
+            {@if !isZiYingTemple}
             <td>
                 <div class="table-cell-common">
                     <p class="mgt10">\${collectMoney}</p>
                 </div>
             </td>
+            {@/if}
             <td>
                 <div class="table-cell-common">
                     <p class="mgt10">\${view_count}</p>

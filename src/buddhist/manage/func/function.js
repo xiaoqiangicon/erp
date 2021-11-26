@@ -13,11 +13,16 @@ import './ajax';
 import 'bootstrap-select';
 
 toastr.options.closeHtml = '<button><i class="toastr-icon-off"></i></button>';
+var ziYingTemple = [5591, 5642, 5722, 5614, 6372, 6482, 6483];
+var templeId = parseInt(window.localStorage['templeId'], 10);
+var isZiYingTemple = ziYingTemple.indexOf(templeId) > -1 ? true : false;
+console.log(templeId, isZiYingTemple, '是否自营');
 
 var func = {};
 func.init = function() {
   $('#loading-toast').hide();
   $('[data-ele="select-picker"]').selectpicker('refresh');
+  if (isZiYingTemple) $('#table-title-total-collect').hide();
   func.initBuddhistVerifyModal();
   func.getBuddhistType({}, function(res) {
     func.renderBuddhistTypeSelect(res);
@@ -278,6 +283,7 @@ func.renderList = function(res) {
     item.ifHasSub = printerDataResult.ifHasSub;
     item.prtText = printerDataResult.prtText;
     item.remainTimeText = statusDataResult.remainTimeText;
+    item.isZiYingTemple = isZiYingTemple;
     Data.handleListData[item.id] = item;
     htmlString += tpl.tableCell.render(item);
   });
