@@ -12,6 +12,7 @@ export default (content, originUrl, newUrl) => {
   newContent = newContent.replace(originUrl + ' ', newUrl + ' ');
   newContent = newContent.replace(originUrl + '"', newUrl + '"');
   newContent = newContent.replace(originUrl + ')', newUrl + ')');
+  newContent = newContent.replace(originUrl + '&', newUrl + '&');
   while (oldContent !== newContent) {
     oldContent = newContent;
 
@@ -22,6 +23,7 @@ export default (content, originUrl, newUrl) => {
     newContent = newContent.replace(originUrl + ' ', newUrl + ' ');
     newContent = newContent.replace(originUrl + '"', newUrl + '"');
     newContent = newContent.replace(originUrl + ')', newUrl + ')');
+    newContent = newContent.replace(originUrl + '&', newUrl + '&');
   }
   return newContent;
 };
