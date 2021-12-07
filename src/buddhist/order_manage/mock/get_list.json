@@ -4,6 +4,8 @@
   "total": 128,
   "data": [
     {
+      "express_print_status": 0,
+      "express_print_message": "knjkancdjksncjks",
       "nextFeedBackTime": "2020-09-09",
       "courierCompanyCode": "SF",
       "logisticsOrder": "123123131",
@@ -147,6 +149,8 @@
       }
     },
     {
+      "express_print_status": 1,
+      "express_print_message": "knjkancdjksncjks",
       "courierCompanyCode": "SF",
       "logisticsOrder": "123123131",
       "is_print": 1,
@@ -217,6 +221,8 @@
       }
     },
     {
+      "express_print_status": 2,
+      "express_print_message": "knjkancdjksncjks",
       "courierCompanyCode": "SF",
       "logisticsOrder": "123123131",
       "is_print": 1,
@@ -360,6 +366,8 @@
       }
     },
     {
+      "express_print_status": 3,
+      "express_print_message": "knjkancdjksncjks",
       "courierCompanyCode": "SF",
       "logisticsOrder": "123123131",
       "is_print": 1,
@@ -431,6 +439,8 @@
       }
     },
     {
+      "express_print_status": 9,
+      "express_print_message": "knjkancdjksncjks",
       "courierCompanyCode": "SF",
       "logisticsOrder": "123123131",
       "is_print": 1,

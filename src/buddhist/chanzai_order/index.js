@@ -54,6 +54,10 @@ import {
   Tabs,
   TabPane,
   Upload,
+  Alert,
+  MessageBox,
+  Message,
+  Notification,
 } from 'element-ui';
 import App from './App.vue';
 import './ajax';
@@ -87,6 +91,15 @@ Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(gallery);
 Vue.use(Upload);
+Vue.use(Alert);
+
+Vue.prototype.$loading = Loading.service;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;
 
 // eslint-disable-next-line no-new
 new Vue({

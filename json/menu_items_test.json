@@ -124,6 +124,23 @@
       ]
     },
     {
+      "id": "express",
+      "name": "物流服务",
+      "icon": "glyphicon-random",
+      "subItems": [
+        {
+          "id": "express-setting",
+          "name": "面单打印",
+          "link": "/express/setting"
+        },
+        {
+          "id": "express-device",
+          "name": "设备状态",
+          "link": "/express/device"
+        }
+      ]
+    },
+    {
       "id": "insurance",
       "name": "医保管理",
       "icon": "glyphicon-gas",

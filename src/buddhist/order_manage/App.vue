@@ -49,7 +49,7 @@
           ></el-checkbox>
           <el-checkbox
             @change="onChangeFilter"
-            label="未打印小票"
+            label="未打印"
             v-model="notPrint"
           ></el-checkbox>
         </el-col>
@@ -181,12 +181,48 @@
           批量发货
         </el-button>
         <el-button
+          v-show="expressSetting.enable_print && type === 1"
+          type="default"
+          size="medium"
+          @click="onClickExpressPrint"
+        >
+          快递单打印
+        </el-button>
+        <el-button
+          v-show="expressSetting.enable_print && type === 4"
+          type="default"
+          size="medium"
+          @click="onClickExpressPrint"
+        >
+          原单重打印
+        </el-button>
+        <el-button
           type="default"
           size="medium"
           class="pull-right mg-r-20"
           @click="onClickPrintGroup"
-          >打印机设置</el-button
+          >打印机设置
+        </el-button>
+      </div>
+
+      <div class="print-task-sec" v-if="expressPrintDevicesWithTask.length">
+        <div
+          class="print-task-row"
+          v-for="(item, index) in expressPrintDevicesWithTask"
+          :key="index"
         >
+          {{ item.device_name }} 正在打印第
+          <span class="green f-wg-bold">{{
+            (item.finish_count || 0) + 1
+          }}</span>
+          单， 共 {{ item.total_count }} 单
+
+          <span
+            class="fl-right green cs-pointer"
+            @click="seeExpressPrintTaskDetail(index)"
+            >查看详情 ></span
+          >
+        </div>
       </div>
 
       <el-table
@@ -199,7 +235,7 @@
         @selection-change="handleSelectionChange"
         @sort-change="handleSortChange"
       >
-        <el-table-column type="selection"> </el-table-column>
+        <el-table-column type="selection"></el-table-column>
         <el-table-column label="佛事">
           <template slot-scope="scope">
             <img class="td-cover" v-bind:src="scope.row.productImg" />
@@ -242,10 +278,43 @@
           sortable="custom"
           show-overflow-tooltip
         ></el-table-column>
-        <el-table-column width="100" label="打印状态" show-overflow-tooltip>
+        <el-table-column width="150" label="打印状态" show-overflow-tooltip>
           <template slot-scope="scope">
-            <div v-if="scope.row.isPrint">已打印</div>
-            <div v-else>未打印</div>
+            <div v-if="!scope.row.express_print_status">未打印</div>
+            <div v-else-if="scope.row.express_print_status === 1">
+              <el-button type="primary" size="small" round plain
+                >正在打印</el-button
+              >
+            </div>
+            <div v-else-if="scope.row.express_print_status === 2">
+              <el-button type="success" size="small" round plain
+                >打印完成</el-button
+              >
+            </div>
+            <div v-else-if="scope.row.express_print_status === 3">
+              <el-button type="warning" size="small" round plain
+                >打印失败</el-button
+              >
+              <div
+                class="mg-t-10"
+                style="color: #E6A23C"
+                v-if="scope.row.express_print_message"
+              >
+                {{ scope.row.express_print_message }}
+              </div>
+            </div>
+            <div v-else-if="scope.row.express_print_status === 9">
+              <el-button type="warning" size="small" round plain
+                >添加打印失败</el-button
+              >
+              <div
+                class="mg-t-10"
+                style="color: #E6A23C"
+                v-if="scope.row.express_print_message"
+              >
+                {{ scope.row.express_print_message }}
+              </div>
+            </div>
           </template>
         </el-table-column>
         <el-table-column width="100" label="操作" show-overflow-tooltip>
@@ -288,404 +357,136 @@
       :date="date"
       @refresh="requestList"
     />
+
+    <el-dialog
+      title="快递面单打印"
+      :visible.sync="expressDeviceSelectDialogVisible"
+      width="500px"
+    >
+      <el-alert
+        type="success"
+        :closable="false"
+        show-icon
+        v-if="expressDeviceSelectedOnline === true"
+      >
+        选中的云打印机在线，可正常使用。
+      </el-alert>
+      <el-alert
+        type="warning"
+        :closable="false"
+        show-icon
+        v-if="expressDeviceSelectedOnline === false"
+      >
+        {{ expressDeviceSelectedName || '' }}已离线，请检查本地网络是否正常。
+      </el-alert>
+      <el-form label-width="100px" size="small" class="mg-t-20">
+        <el-form-item label="云打印机：">
+          <el-select
+            v-model="expressDeviceSelectedId"
+            placeholder="请选择云打印机"
+            style="width: 250px;"
+            @change="onChangeExpressPrintDevice"
+          >
+            <el-option
+              v-for="item in expressPrintDevices"
+              :key="item.id"
+              :label="item.device_name"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <el-alert
+        type="warning"
+        :closable="false"
+        show-icon
+        v-if="expressDeviceSelectErrorMsg"
+      >
+        {{ expressDeviceSelectErrorMsg }}
+      </el-alert>
+      <span slot="footer" class="dialog-footer">
+        <el-button
+          size="small"
+          @click="expressDeviceSelectDialogVisible = false"
+          >取 消</el-button
+        >
+        <el-button
+          type="primary"
+          size="small"
+          v-loading="expressPrintAddingOrders"
+          @click="handleExpressDeviceSelectDialogConfirm"
+          :disabled="
+            !expressDeviceSelectedId || expressDeviceSelectedOnline !== true
+          "
+          >下一步</el-button
+        >
+      </span>
+    </el-dialog>
+    <el-dialog
+      title="快递面单打印"
+      :visible.sync="expressPrintingDialogVisible"
+      width="500px"
+    >
+      <el-alert type="info" :closable="false" show-icon>
+        请稍等，待全部快递单打印完成后再关闭此窗口，否则可能会出现漏单等情况。
+      </el-alert>
+      <div class="mg-t-40 mg-b-40 t-a-center">
+        正在打印第
+        <span class="green f-wg-bold">{{
+          expressDeviceCurrentFinishCount + 1
+        }}</span>
+        单，共 {{ expressDeviceCurrentTotalCount }} 单
+      </div>
+      <el-alert
+        type="warning"
+        :closable="false"
+        show-icon
+        v-if="expressDeviceCurrentLatestFailMsg"
+      >
+        {{ expressDeviceCurrentLatestFailMsg }}
+      </el-alert>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="small" @click="expressPrintingDialogVisible = false"
+          >关闭</el-button
+        >
+        <el-button
+          type="warning"
+          size="small"
+          @click="handleExpressPrintCancelDialogConfirm"
+          >取消打印</el-button
+        >
+      </span>
+    </el-dialog>
+    <el-dialog
+      title="快递面单打印"
+      :visible.sync="expressPrintedDialogVisible"
+      width="500px"
+    >
+      <div class="mg-t-40 mg-b-40 t-a-center f-s-16">
+        <img
+          src="https://pic.zizaihome.com/f6c88722-4071-4c94-b005-e5aa61ff8c93.svg"
+          width="50"
+          class="mg-r-20"
+        />
+        已打印完成，共
+        <span class="green f-wg-bold">{{
+          expressDeviceCurrentTotalCount
+        }}</span>
+        单
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button
+          type="primary"
+          size="small"
+          @click="expressPrintedDialogVisible = false"
+          >知道了</el-button
+        >
+      </span>
+    </el-dialog>
   </main>
 </template>
 
-<script>
-import { Notification, MessageBox } from 'element-ui';
-import seeAjax from 'see-ajax';
-import Detail from './Detail';
-import Printer from './Printer';
-import Logistics from './Logistics';
-import formatTime from '../../util/format_time';
-import underscore from 'underscore';
-import { urlParams } from '../../../../pro-com/src/utils';
+<script src="./App.js"></script>
 
-export default {
-  name: 'App',
-  components: {
-    Printer,
-    Detail,
-    Logistics,
-  },
-  data() {
-    return {
-      loadingBuddhistList: true,
-      loadingList: true,
-      unHandleNum: null,
-      // 列表请求参数
-      buddhistId: '',
-      subId: -1,
-      orderId: '',
-      hasFb: false,
-      notPrint: false,
-      date: ['', ''],
-      formatDate: ['', ''],
-      tel: '',
-      logisticsOrder: '',
-      orderNo: '',
-      type: 1, // 1 未处理 3 已处理 4 已发货 2 全部订单 5 已发货 6 多次处理
-      orderByPriceType: 0,
-      orderByTimeType: 0,
-      // 分页
-      currentSize: 25,
-      currentPage: 1,
-      totalCount: 0,
-      // 数据
-      buddhistList: [],
-      list: [],
-      isGroup: false, // 是否是批量处理
-      detail: {}, // 当前选中项的detail
-
-      pickerOptions: {
-        shortcuts: [
-          {
-            text: '最近一周',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [start, end]);
-            },
-          },
-          {
-            text: '最近一个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [start, end]);
-            },
-          },
-          {
-            text: '最近三个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit('pick', [start, end]);
-            },
-          },
-        ],
-      },
-    };
-  },
-  computed: {
-    selected() {
-      return this.$store.state.selected;
-    },
-
-    subList: function() {
-      // 为了兼容 360 兼容模式 不能使用 find
-      const curBuddhist = underscore.find(this.buddhistList, item => {
-        return item.buddhistId === this.buddhistId;
-      });
-
-      //      const curBuddhist = this.buddhistList.find(
-      //        item => item.buddhistId === this.buddhistId
-      //      );
-
-      if (curBuddhist) {
-        const subList = curBuddhist.subList;
-        return subList && subList.length
-          ? [{ subName: '全部', subId: -1 }, ...subList]
-          : [];
-      } else {
-        return [];
-      }
-    },
-  },
-  created() {
-    if (urlParams.orderId) {
-      this.orderId = parseInt(urlParams.orderId, 10);
-      this.type = 2; // 有ORDERID则为订单查询
-    }
-
-    this.requestBuddhistList();
-    this.requestList();
-  },
-  methods: {
-    requestBuddhistList() {
-      seeAjax('getBuddhistList', {}, res => {
-        if (res.success) {
-          this.buddhistList = [
-            //            { buddhistId: '', buddhistName: '全部', subList: [] },
-            ...res.data,
-          ];
-          this.loadingBuddhistList = false;
-
-          this.$store.state.buddhistList = this.buddhistList;
-        } else {
-          Notification({
-            title: '提示',
-            message: res.message,
-            type: 'error',
-          });
-        }
-      });
-    },
-    requestList() {
-      this.loadingList = true;
-
-      const {
-        currentPage: page,
-        currentSize: pageSize,
-        type,
-        buddhistId,
-        subId,
-        hasFb,
-        notPrint,
-        formatDate,
-        tel,
-        logisticsOrder,
-        orderByPriceType,
-        orderByTimeType,
-        orderId,
-        orderNo,
-      } = this;
-
-      seeAjax(
-        'getList',
-        {
-          page,
-          pageSize,
-          type,
-          buddhistId,
-          subId,
-          hasFb: Number(hasFb),
-          notPrint: Number(notPrint),
-          beginDate: formatDate[0],
-          endDate: formatDate[1],
-          tel,
-          logisticsOrder,
-          orderByPriceType,
-          orderByTimeType,
-          orderId,
-          orderNo,
-        },
-        res => {
-          if (res.success) {
-            this.totalCount = res.totalCount;
-            this.list = res.data;
-
-            if (type === 1) {
-              this.unHandleNum = res.totalCount;
-              // 导航栏的total显示
-              window.localStorage.setItem('orderNumber', res.totalCount);
-              document.querySelector('[data-buddhist-order-count]').innerHTML =
-                res.totalCount;
-            }
-
-            this.loadingList = false;
-            this.orderId = '';
-          } else {
-            Notification({
-              title: '提示',
-              message: res.message,
-              type: 'error',
-            });
-          }
-        }
-      );
-    },
-    onChangeBuddhistId() {
-      this.subId = -1;
-      this.onChangeFilter();
-    },
-    onChangeDatePicker() {
-      const { date } = this;
-      this.formatDate = date.map(item => formatTime(`${item}`));
-      this.onChangeFilter();
-    },
-    onChangeFilter() {
-      this.currentPage = 1;
-      this.requestList();
-    },
-    onClickSearch() {
-      this.requestList();
-    },
-    onClickReset() {
-      this.buddhistId = '';
-      this.subId = -1;
-      this.tel = '';
-      this.logisticsOrder = '';
-      this.hasFb = false;
-      this.notPrint = false;
-      this.date = ['', ''];
-      this.formatDate = ['', ''];
-      this.requestList();
-    },
-    onClickExport() {
-      const { type, buddhistId, hasFb, notPrint, formatDate, tel } = this;
-      let subId = this.subId;
-      if (subId < 0) subId = 0;
-      const excelUrl =
-        `/zzhadmin/bcDownloadExcel/?type=${type}` +
-        `&beginDate=${formatDate[0]}&endDate=${formatDate[1]}` +
-        `&buddishService=${buddhistId}&tel=${tel}&subdirideId=${subId}` +
-        `&isSearchNoPic=${Number(hasFb)}&searchNotPrint=${Number(notPrint)}`;
-      window.open(excelUrl);
-    },
-    onClickType(type) {
-      if (this.type === type) return;
-
-      this.type = type;
-      this.currentPage = 1;
-      this.requestList();
-    },
-    onClickHandleOrderGroup() {
-      const { selected, type } = this;
-
-      if (selected.length) {
-        // 处理订单弹窗
-        this.isGroup = true;
-        this.detail = {};
-        this.$store.commit({
-          type: 'updateDetailVisible',
-          state: true,
-        });
-        return;
-      }
-
-      MessageBox.confirm(
-        `请至少选中一个订单，或选择『条件筛选批量${
-          type === 3 ? '修改' : '处理'
-        }』`,
-        {
-          cancelButtonText: '我知道了',
-          confirmButtonText: `条件筛选批量${type === 3 ? '修改' : '处理'}`,
-        }
-      ).then(() => {
-        this.isGroup = true;
-        this.detail = {};
-        this.$store.commit({
-          type: 'updateDetailVisible',
-          state: true,
-        });
-      });
-    },
-    onClickLogistics() {
-      this.$store.commit({ type: 'updateLogisticsDialogVisible', state: true });
-    },
-    onClickPrintGroup() {
-      const { selected, type } = this;
-
-      if (!selected.length) {
-        Notification({
-          title: '提示',
-          message: '请先选中订单',
-          type: 'warning',
-        });
-        return;
-      } else {
-        // 打印小票弹窗
-        this.$store.commit({
-          type: 'updatePrinterVisible',
-          state: true,
-        });
-      }
-    },
-    handleSelectionChange(selectedData) {
-      let selected = [];
-      selectedData.forEach(item => {
-        selected.push(item.id);
-      });
-
-      this.$store.commit({
-        type: 'updateSelected',
-        state: selected,
-      });
-    },
-    handleSortChange({ prop, order }) {
-      let orderKey;
-      let orderType; // 0 不排序 1
-
-      // 重置
-      this.orderByPriceType = 0;
-      this.orderByTimeType = 0;
-
-      if (prop === 'orderTime') {
-        orderKey = 'orderByTimeType';
-      } else if (prop === 'price') {
-        orderKey = 'orderByPriceType';
-      }
-
-      if (order === 'ascending') {
-        // 1 降 2 升 0 无效
-        orderType = 2;
-      } else if (order === 'descending') {
-        orderType = 1;
-      }
-
-      if (orderKey) {
-        this[orderKey] = orderType;
-      }
-
-      this.requestList();
-    },
-    handleSizeChange(size) {
-      this.currentSize = size;
-      this.currentPage = 1;
-      this.requestList();
-    },
-    handleCurrentChange(page) {
-      this.currentPage = page;
-      this.requestList();
-    },
-    onClickDetail(rowData) {
-      console.log(rowData);
-      this.$store.commit({ type: 'updateDetailVisible', state: true });
-      this.isGroup = false;
-      this.detail = { ...rowData };
-    },
-  },
-};
-</script>
-
-<style lang="less" scoped>
-main {
-  padding: 15px;
-}
-.head {
-  margin: 20px 0 50px;
-  padding: 0 3%;
-}
-
-.s-tabs {
-  height: 42px;
-  line-height: 40px;
-  border-bottom: 2px solid #6fba2c;
-  margin-bottom: 10px;
-  box-sizing: content-box;
-  .s-tab-panel {
-    width: 160px;
-    text-align: center;
-    float: left;
-    background-color: #fff;
-    margin-right: 10px;
-    border: 1px solid #e0e0e0;
-    cursor: pointer;
-    &.active {
-      color: #fff;
-      background-color: #6fba2c;
-      border: 1px solid #6fba2c;
-    }
-  }
-}
-
-.s-a {
-  color: #2ecc40;
-}
-
-.badge {
-  background-color: #d9534f;
-}
-
-.td-cover {
-  float: left;
-  width: 45px;
-  height: 45px;
-  display: inline-block;
-  margin-right: 10px;
-}
-</style>
+<style lang="less" scoped src="./App.less"></style>
