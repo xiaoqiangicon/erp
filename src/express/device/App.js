@@ -1,6 +1,7 @@
 import { Message, MessageBox } from 'element-ui';
 import request from '../../utils/request';
 import { checkItemValid } from './utils';
+import { formatDate } from '../../utils/date';
 
 const defaultListQuery = {
   page_num: 1,
@@ -14,6 +15,15 @@ const defaultItem = {
 
 export default {
   name: 'App',
+  filters: {
+    formatDateTime(time) {
+      if (time == null || time === '') {
+        return 'N/A';
+      }
+      const date = new Date(time);
+      return formatDate(date, 'yyyy-MM-dd hh:mm:ss');
+    },
+  },
   data() {
     return {
       listQuery: Object.assign({}, defaultListQuery),

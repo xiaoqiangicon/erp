@@ -54,10 +54,20 @@ main {
 }
 
 .print-task-row {
-  padding: 15px 0;
+  position: relative;
+  padding: 15px 200px 15px 0;
   border-top: 1px solid #eeeeee;
 
   &:first-child {
     border-top: 0;
   }
+}
+
+.print-task-row-detail {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #2ecc40;
 }

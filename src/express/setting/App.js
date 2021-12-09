@@ -240,10 +240,14 @@ export default {
       if (this.switchingEnabled) return;
 
       if (!this.initData.partner_id) {
+        // 恢复到原来的样子
+        this.enabled = val ? 0 : 1;
         MessageBox.alert('请先添加快递网点信息');
         return;
       }
       if (!this.initData.sender_name) {
+        // 恢复到原来的样子
+        this.enabled = val ? 0 : 1;
         MessageBox.alert('请先添加发货人信息');
         return;
       }

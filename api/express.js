@@ -218,3 +218,22 @@ export const cancelPrintTask = {
   result: 1,
   msg: 'OK',
 };
+
+// 重新开始中断的打印任务
+// method: post
+// params:
+//   device_id: 设备Id
+export const restoreSuspendedPrintTask = {
+  result: 1,
+  msg: 'OK',
+};
+
+// 复打佛事订单快递
+// method: post
+// params:
+//   device_id: 设备Id
+//   order_id: 佛事订单Id
+export const printAgainFoshiOrder = {
+  result: 1,
+  msg: 'OK',
+};

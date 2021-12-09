@@ -131,12 +131,14 @@
         {
           "id": "express-setting",
           "name": "面单打印",
-          "link": "/express/setting"
+          "link": "/express/setting",
+          "control": false
         },
         {
           "id": "express-device",
           "name": "设备状态",
-          "link": "/express/device"
+          "link": "/express/device",
+          "control": false
         }
       ]
     },

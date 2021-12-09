@@ -23,10 +23,11 @@
             prop="device_name"
           ></el-table-column>
           <el-table-column label="设备编号" prop="device_num"></el-table-column>
-          <el-table-column
-            label="添加时间"
-            prop="create_time"
-          ></el-table-column>
+          <el-table-column label="添加时间">
+            <template slot-scope="scope">
+              {{ scope.row.create_time | formatDateTime }}<br />
+            </template>
+          </el-table-column>
           <el-table-column label="设备状态">
             <template slot-scope="scope">
               <div class="status-sec">

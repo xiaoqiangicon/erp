@@ -106,6 +106,17 @@ export default {
       expressPrintedDialogVisible: false,
       // 是否正在添加打印订单
       expressPrintAddingOrders: false,
+      // 是否是复打
+      expressPrintOrdersAgain: 0,
+      // 接口返回无打印任务，可能是取消造成的，而不是打印完了
+      expressPrintFinishByCancel: false,
+      // 复打的数据
+      expressPrintAgainTotalCount: 0,
+      expressPrintAgainFinishCount: 0,
+      expressPrintAgainLatestFailMsg: null,
+      expressPrintAgainOrderIds: [],
+      // 快递复打对话框
+      expressPrintingAgainDialogVisible: false,
     };
   },
   computed: {
@@ -170,7 +181,26 @@ export default {
     requestExpressPrintDevicesWithTask() {
       // 获取设备正在打印的列表
       return request('/express/getAllPrintDevicesWithTask').then(res => {
-        this.expressPrintDevices = res.data || [];
+        const newDevices = res.data || [];
+
+        // 是否打印过订单
+        let printedOrder = false;
+        if (newDevices.length !== this.expressPrintDevices.length)
+          printedOrder = true;
+        else {
+          newDevices.forEach((item, i) => {
+            const finishCountOld =
+              this.expressPrintDevices[i].finish_count || 0;
+            const finishCountNew = newDevices[i].finish_count || 0;
+            if (finishCountNew !== finishCountOld) printedOrder = true;
+          });
+        }
+
+        // 如果打印过订单了，刷新当前页数据
+        if (printedOrder) this.requestList();
+
+        this.expressPrintDevices = newDevices;
+
         this.expressPrintDevicesWithTask = this.expressPrintDevices.filter(
           i => !!i.total_count
         );
@@ -190,15 +220,24 @@ export default {
             this.expressDeviceCurrentLatestFailMsg =
               this.expressDeviceCurrentItem.latest_fail_msg || '';
           }
-          // 正在打印中，接口返回的数据显示打印完毕
-          else if (this.expressPrintingDialogVisible) {
-            this.expressPrintingDialogVisible = false;
-            this.expressPrintedDialogVisible = true;
+          // 如果没有值，但上一次有值，说明是任务打印完了，或者取消打印
+          else if (this.expressDeviceCurrentTotalCount) {
+            // 取消打印
+            if (this.expressPrintFinishByCancel) {
+              this.expressPrintingDialogVisible = false;
+              this.expressPrintFinishByCancel = false;
+            }
+            // 打印完成
+            // 没有值，就是已打印完，正在打印中，接口返回的数据显示打印完毕
+            else if (this.expressPrintingDialogVisible) {
+              this.expressPrintingDialogVisible = false;
+              this.expressPrintedDialogVisible = true;
+            }
           }
         }
       });
     },
-    onClickExpressPrint() {
+    onClickExpressPrint(type) {
       const { selected } = this;
 
       if (!selected.length) {
@@ -210,6 +249,7 @@ export default {
         return;
       }
 
+      this.expressPrintOrdersAgain = type;
       this.expressDeviceSelectDialogVisible = true;
     },
     onChangeExpressPrintDevice() {
@@ -242,12 +282,27 @@ export default {
       });
     },
     handleExpressDeviceSelectDialogConfirm() {
-      if (this.expressPrintAddingOrders) return;
       if (
         !this.expressDeviceSelectedId ||
         this.expressDeviceSelectedOnline !== true
       )
         return;
+
+      // 是复打
+      if (this.expressPrintOrdersAgain) {
+        this.expressPrintAgainOrderIds = JSON.parse(
+          JSON.stringify(this.selected)
+        );
+        this.expressPrintAgainTotalCount = this.expressPrintAgainOrderIds.length;
+        this.expressPrintAgainFinishCount = 0;
+        this.expressPrintAgainLatestFailMsg = '';
+        this.expressDeviceSelectDialogVisible = false;
+        this.expressPrintingAgainDialogVisible = true;
+        this.expressPrintAgainNext();
+        return;
+      }
+
+      if (this.expressPrintAddingOrders) return;
 
       const data = new URLSearchParams();
       data.append('device_id', this.expressDeviceSelectedId);
@@ -300,6 +355,7 @@ export default {
             message: '取消打印成功!',
           });
 
+          this.expressPrintFinishByCancel = true;
           this.requestExpressPrintDevicesWithTask().then(res2 => {
             this.expressPrintingDialogVisible = false;
           });
@@ -311,6 +367,101 @@ export default {
       this.expressDeviceSelectedId = item.id;
       this.onChangeExpressPrintDevice();
       this.expressPrintingDialogVisible = true;
+    },
+    handleExpressPrintCancelDialogRestore() {
+      this.$confirm('确定您已经处理好错误，要重新开始打印?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        const data = new URLSearchParams();
+        data.append('device_id', this.expressDeviceSelectedId);
+
+        request({
+          url: '/express/restoreSuspendedPrintTask',
+          method: 'post',
+          data,
+        }).then(response => {
+          if (response.result < 0) {
+            this.$alert(response.msg);
+            return;
+          }
+
+          this.$message({
+            type: 'success',
+            message: '重新开始打印成功!',
+          });
+
+          // 清除消息，并刷新数据
+          this.expressDeviceCurrentLatestFailMsg = null;
+          this.requestExpressPrintDevicesWithTask();
+        });
+      });
+    },
+    handleExpressPrintAgainCancelDialogConfirm() {
+      this.$confirm('确定要取消复打?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        this.expressPrintAgainOrderIds = [];
+        this.expressPrintAgainTotalCount = 0;
+        this.expressPrintAgainFinishCount = 0;
+        this.expressPrintAgainLatestFailMsg = '';
+        this.expressPrintingAgainDialogVisible = false;
+
+        this.$message({
+          type: 'success',
+          message: '取消打印成功!',
+        });
+      });
+    },
+    handleExpressPrintAgainCancelDialogRestore() {
+      this.$confirm('确定您已经处理好错误，要重新开始复打?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '重新开始复打成功!',
+        });
+
+        // 清除消息，并重新开始打印
+        this.expressDeviceCurrentLatestFailMsg = null;
+        this.expressPrintAgainNext();
+      });
+    },
+    expressPrintAgainNext() {
+      const orderId = this.expressPrintAgainOrderIds.shift();
+
+      // 全部打印完毕
+      if (!orderId) {
+        this.expressPrintingAgainDialogVisible = false;
+        this.expressPrintedDialogVisible = true;
+        return;
+      }
+
+      const data = new URLSearchParams();
+      data.append('device_id', this.expressDeviceSelectedId);
+      data.append('order_id', orderId);
+
+      request({
+        url: '/express/printAgainFoshiOrder',
+        method: 'post',
+        data,
+      }).then(response => {
+        if (response.result < 0) {
+          this.expressPrintAgainLatestFailMsg = response.msg;
+          return;
+        }
+
+        this.expressPrintAgainFinishCount += 1;
+
+        setTimeout(() => {
+          this.expressPrintAgainNext();
+        }, 1000);
+      });
     },
 
     requestBuddhistList() {

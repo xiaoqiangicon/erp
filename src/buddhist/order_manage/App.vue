@@ -184,7 +184,7 @@
           v-show="expressSetting.enable_print && type === 1"
           type="default"
           size="medium"
-          @click="onClickExpressPrint"
+          @click="onClickExpressPrint(0)"
         >
           快递单打印
         </el-button>
@@ -192,7 +192,7 @@
           v-show="expressSetting.enable_print && type === 4"
           type="default"
           size="medium"
-          @click="onClickExpressPrint"
+          @click="onClickExpressPrint(1)"
         >
           原单重打印
         </el-button>
@@ -213,14 +213,20 @@
         >
           {{ item.device_name }} 正在打印第
           <span class="green f-wg-bold">{{
-            (item.finish_count || 0) + 1
+            item.finish_count < item.total_count
+              ? item.finish_count + 1
+              : item.finish_count
           }}</span>
           单， 共 {{ item.total_count }} 单
-
+          <div class="mg-t-10" v-if="item.latest_fail_msg">
+            <el-alert type="warning" :closable="false" show-icon>
+              {{ item.latest_fail_msg }}
+            </el-alert>
+          </div>
           <span
-            class="fl-right green cs-pointer"
+            class="print-task-row-detail"
             @click="seeExpressPrintTaskDetail(index)"
-            >查看详情 ></span
+            >查看详情</span
           >
         </div>
       </div>
@@ -283,18 +289,18 @@
             <div v-if="!scope.row.express_print_status">未打印</div>
             <div v-else-if="scope.row.express_print_status === 1">
               <el-button type="primary" size="small" round plain
-                >正在打印</el-button
-              >
+                >正在打印
+              </el-button>
             </div>
             <div v-else-if="scope.row.express_print_status === 2">
               <el-button type="success" size="small" round plain
-                >打印完成</el-button
-              >
+                >打印完成
+              </el-button>
             </div>
             <div v-else-if="scope.row.express_print_status === 3">
               <el-button type="warning" size="small" round plain
-                >打印失败</el-button
-              >
+                >打印失败
+              </el-button>
               <div
                 class="mg-t-10"
                 style="color: #E6A23C"
@@ -305,8 +311,8 @@
             </div>
             <div v-else-if="scope.row.express_print_status === 9">
               <el-button type="warning" size="small" round plain
-                >添加打印失败</el-button
-              >
+                >添加打印失败
+              </el-button>
               <div
                 class="mg-t-10"
                 style="color: #E6A23C"
@@ -434,7 +440,9 @@
       <div class="mg-t-40 mg-b-40 t-a-center">
         正在打印第
         <span class="green f-wg-bold">{{
-          expressDeviceCurrentFinishCount + 1
+          expressDeviceCurrentFinishCount < expressDeviceCurrentTotalCount
+            ? expressDeviceCurrentFinishCount + 1
+            : expressDeviceCurrentFinishCount
         }}</span>
         单，共 {{ expressDeviceCurrentTotalCount }} 单
       </div>
@@ -456,6 +464,13 @@
           @click="handleExpressPrintCancelDialogConfirm"
           >取消打印</el-button
         >
+        <el-button
+          type="primary"
+          size="small"
+          @click="handleExpressPrintCancelDialogRestore"
+          v-if="expressDeviceCurrentLatestFailMsg"
+          >重新开始打印</el-button
+        >
       </span>
     </el-dialog>
     <el-dialog
@@ -471,7 +486,9 @@
         />
         已打印完成，共
         <span class="green f-wg-bold">{{
-          expressDeviceCurrentTotalCount
+          expressPrintOrdersAgain
+            ? expressPrintAgainTotalCount
+            : expressDeviceCurrentTotalCount
         }}</span>
         单
       </div>
@@ -481,6 +498,50 @@
           size="small"
           @click="expressPrintedDialogVisible = false"
           >知道了</el-button
+        >
+      </span>
+    </el-dialog>
+    <el-dialog
+      title="快递面单复打"
+      :visible.sync="expressPrintingAgainDialogVisible"
+      :show-close="false"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+      width="500px"
+    >
+      <el-alert type="info" :closable="false" show-icon>
+        请勿关闭此窗口或刷新页面，不然复打任务将取消
+      </el-alert>
+      <div class="mg-t-40 mg-b-40 t-a-center">
+        正在打印第
+        <span class="green f-wg-bold">{{
+          expressPrintAgainFinishCount < expressPrintAgainTotalCount
+            ? expressPrintAgainFinishCount + 1
+            : expressPrintAgainFinishCount
+        }}</span>
+        单，共 {{ expressPrintAgainTotalCount }} 单
+      </div>
+      <el-alert
+        type="warning"
+        :closable="false"
+        show-icon
+        v-if="expressPrintAgainLatestFailMsg"
+      >
+        {{ expressPrintAgainLatestFailMsg }}
+      </el-alert>
+      <span slot="footer" class="dialog-footer">
+        <el-button
+          type="warning"
+          size="small"
+          @click="handleExpressPrintAgainCancelDialogConfirm"
+          >取消打印</el-button
+        >
+        <el-button
+          type="primary"
+          size="small"
+          @click="handleExpressPrintAgainCancelDialogRestore"
+          v-if="expressPrintAgainLatestFailMsg"
+          >重新开始打印</el-button
         >
       </span>
     </el-dialog>
