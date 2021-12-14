@@ -184,7 +184,7 @@
           v-show="expressSetting.enable_print && type === 1"
           type="default"
           size="medium"
-          @click="onClickExpressPrint(0)"
+          @click="onClickExpressPrint"
         >
           快递单打印
         </el-button>
@@ -192,7 +192,7 @@
           v-show="expressSetting.enable_print && type === 4"
           type="default"
           size="medium"
-          @click="onClickExpressPrint(1)"
+          @click="onClickExpressPrintAgain"
         >
           原单重打印
         </el-button>

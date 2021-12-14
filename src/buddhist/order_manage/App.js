@@ -158,6 +158,25 @@ export default {
     if (this.refreshPrintDevicesInterval)
       clearInterval(this.refreshPrintDevicesInterval);
   },
+  watch: {
+    expressPrintingDialogVisible(value) {
+      // 关闭这个弹框，立即刷新列表
+      if (!value) {
+        this.requestList();
+      }
+    },
+    expressDeviceSelectDialogVisible(value) {
+      // 如果在选择对话框中，只有一台设备，有没有选过，默认选中第一个
+      if (
+        value &&
+        !this.expressDeviceSelectedId &&
+        this.expressPrintDevices.length === 1
+      ) {
+        this.expressDeviceSelectedId = this.expressPrintDevices[0].id;
+        this.onChangeExpressPrintDevice();
+      }
+    },
+  },
   methods: {
     // 获取快递设置
     requestExpressInfo() {
@@ -181,25 +200,7 @@ export default {
     requestExpressPrintDevicesWithTask() {
       // 获取设备正在打印的列表
       return request('/express/getAllPrintDevicesWithTask').then(res => {
-        const newDevices = res.data || [];
-
-        // 是否打印过订单
-        let printedOrder = false;
-        if (newDevices.length !== this.expressPrintDevices.length)
-          printedOrder = true;
-        else {
-          newDevices.forEach((item, i) => {
-            const finishCountOld =
-              this.expressPrintDevices[i].finish_count || 0;
-            const finishCountNew = newDevices[i].finish_count || 0;
-            if (finishCountNew !== finishCountOld) printedOrder = true;
-          });
-        }
-
-        // 如果打印过订单了，刷新当前页数据
-        if (printedOrder) this.requestList();
-
-        this.expressPrintDevices = newDevices;
+        this.expressPrintDevices = res.data || [];
 
         this.expressPrintDevicesWithTask = this.expressPrintDevices.filter(
           i => !!i.total_count
@@ -237,7 +238,7 @@ export default {
         }
       });
     },
-    onClickExpressPrint(type) {
+    onClickExpressPrint() {
       const { selected } = this;
 
       if (!selected.length) {
@@ -249,8 +250,30 @@ export default {
         return;
       }
 
-      this.expressPrintOrdersAgain = type;
+      this.expressPrintOrdersAgain = 0;
       this.expressDeviceSelectDialogVisible = true;
+    },
+    onClickExpressPrintAgain() {
+      const { selected } = this;
+
+      if (!selected.length) {
+        Notification({
+          title: '提示',
+          message: '请先选中订单',
+          type: 'warning',
+        });
+        return;
+      }
+
+      this.expressPrintOrdersAgain = 1;
+      this.expressPrintAgainOrderIds = JSON.parse(
+        JSON.stringify(this.selected)
+      );
+      this.expressPrintAgainTotalCount = this.expressPrintAgainOrderIds.length;
+      this.expressPrintAgainFinishCount = 0;
+      this.expressPrintAgainLatestFailMsg = '';
+      this.expressPrintingAgainDialogVisible = true;
+      this.expressPrintAgainNext();
     },
     onChangeExpressPrintDevice() {
       // 是否在线
@@ -282,27 +305,13 @@ export default {
       });
     },
     handleExpressDeviceSelectDialogConfirm() {
+      if (this.expressPrintAddingOrders) return;
+
       if (
         !this.expressDeviceSelectedId ||
         this.expressDeviceSelectedOnline !== true
       )
         return;
-
-      // 是复打
-      if (this.expressPrintOrdersAgain) {
-        this.expressPrintAgainOrderIds = JSON.parse(
-          JSON.stringify(this.selected)
-        );
-        this.expressPrintAgainTotalCount = this.expressPrintAgainOrderIds.length;
-        this.expressPrintAgainFinishCount = 0;
-        this.expressPrintAgainLatestFailMsg = '';
-        this.expressDeviceSelectDialogVisible = false;
-        this.expressPrintingAgainDialogVisible = true;
-        this.expressPrintAgainNext();
-        return;
-      }
-
-      if (this.expressPrintAddingOrders) return;
 
       const data = new URLSearchParams();
       data.append('device_id', this.expressDeviceSelectedId);
@@ -443,7 +452,6 @@ export default {
       }
 
       const data = new URLSearchParams();
-      data.append('device_id', this.expressDeviceSelectedId);
       data.append('order_id', orderId);
 
       request({
@@ -457,10 +465,7 @@ export default {
         }
 
         this.expressPrintAgainFinishCount += 1;
-
-        setTimeout(() => {
-          this.expressPrintAgainNext();
-        }, 1000);
+        this.expressPrintAgainNext();
       });
     },
 

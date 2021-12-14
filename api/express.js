@@ -231,7 +231,6 @@ export const restoreSuspendedPrintTask = {
 // 复打佛事订单快递
 // method: post
 // params:
-//   device_id: 设备Id
 //   order_id: 佛事订单Id
 export const printAgainFoshiOrder = {
   result: 1,

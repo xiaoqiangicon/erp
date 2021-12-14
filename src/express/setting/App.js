@@ -205,7 +205,7 @@ export default {
       data.append('sender_phone', this.senderPhone);
       data.append('sender_province', this.senderProvince);
       data.append('sender_city', this.senderCity);
-      data.append('sender_district', this.senderDistrict);
+      data.append('sender_district', this.senderDistrict || '');
       data.append('sender_address', this.senderAddress);
 
       this.savingSender = true;
@@ -229,7 +229,7 @@ export default {
           this.initData.sender_phone = this.senderPhone;
           this.initData.sender_province = this.senderProvince;
           this.initData.sender_city = this.senderCity;
-          this.initData.sender_district = this.senderDistrict;
+          this.initData.sender_district = this.senderDistrict || null;
           this.initData.sender_address = this.senderAddress;
         })
         .finally(() => {
