@@ -38,6 +38,9 @@
       <div class="gray">
         若已在线下快递网点签约了月结账户，请填写快递网点签约时分配给你的月结账号（客户号）和密码提交绑定；若未与快递网点签约，请联系快递网点开通月结账户。
       </div>
+      <el-alert class="mg-t-10" type="info" :closable="false" show-icon
+        >添加客户编码前，请联系自在家服务人员，激活您的客户编码</el-alert
+      >
       <div class="input-section" v-if="showEditPartner">
         <div>客户编码</div>
         <el-input

@@ -15,9 +15,9 @@ export const makeUploadImageOptions = ({
   name,
   type: 'image',
   uploadOptions,
-  uploadUrl: '/zzhadmin/uploadPic/',
+  uploadUrl: '/upload/upload',
   uploadHandle(res) {
-    return res.url;
+    return res.data;
   },
   uploadFail(msg) {
     Notification({
@@ -39,7 +39,7 @@ export const makeUploadFileOptions = ({
   progress,
   multiple,
   name,
-  uploadUrl: '/zzhadmin/uploadPic/',
+  uploadUrl: '/upload/upload',
   uploadOptions: {
     dataType: 'json',
     paramName: 'file',
@@ -50,7 +50,7 @@ export const makeUploadFileOptions = ({
     },
   },
   uploadHandle(res) {
-    return res.url;
+    return res.data;
   },
   uploadFail(msg) {
     Notification({

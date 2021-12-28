@@ -1,4 +1,5 @@
 import { Message, MessageBox } from 'element-ui';
+import { reportError } from '@senntyou/web-monitor-sdk';
 import request from '../../utils/request';
 import regionData from '../../../../pro-com/src/regions/three-levels.json';
 
@@ -174,6 +175,14 @@ export default {
             this.balanceQueryTime = res.data.query_time;
           }
           this.showEditPartner = false;
+        })
+        .catch(err => {
+          console.error(err);
+          reportError(err);
+
+          MessageBox.alert(
+            '您的客户编码有误，请联系自在家服务人员，检查客户编码'
+          );
         })
         .finally(() => {
           this.savingPartner = false;
