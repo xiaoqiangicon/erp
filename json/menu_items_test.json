@@ -129,6 +129,12 @@
       "icon": "glyphicon-random",
       "subItems": [
         {
+          "id": "express-manual",
+          "name": "新建打印",
+          "link": "/express/manual",
+          "control": false
+        },
+        {
           "id": "express-setting",
           "name": "面单打印",
           "link": "/express/setting",

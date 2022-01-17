@@ -61,7 +61,14 @@
           </el-table-column>
           <el-table-column label="操作" width="180" align="center">
             <template slot-scope="scope">
-              -
+              <el-button
+                type="danger"
+                size="small"
+                round
+                plain
+                @click="handleDelete(scope.$index, scope.row)"
+                >解绑</el-button
+              >
             </template>
           </el-table-column>
         </el-table>
@@ -70,8 +77,8 @@
         <el-pagination
           background
           layout="total, sizes,prev, pager, next,jumper"
-          :current-page.sync="listQuery.pageNum"
-          :page-size="listQuery.pageSize"
+          :current-page.sync="listQuery.page_num"
+          :page-size="listQuery.page_size"
           :page-sizes="[10, 20, 50]"
           :total="total"
           @size-change="handleSizeChange"

@@ -65,7 +65,7 @@ export default {
       this.item = Object.assign({}, row);
     },
     handleDelete(index, row) {
-      this.$confirm('是否要删除该设备?', '提示', {
+      this.$confirm('是否要解绑该设备?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
@@ -85,7 +85,7 @@ export default {
 
           this.$message({
             type: 'success',
-            message: '删除成功!',
+            message: '解绑成功!',
           });
           this.getList();
         });

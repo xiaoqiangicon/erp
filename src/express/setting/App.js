@@ -28,6 +28,8 @@ export default {
       senderDistrict: null,
       // 发件人地址
       senderAddress: '',
+      // 模板类型(1 标准模板、2 有二维码的模板)
+      template_type: 1,
 
       provinceList: regionData,
       cityList: [],
@@ -42,6 +44,7 @@ export default {
       showEditPartner: true,
       // 正在切换启用
       switchingEnabled: false,
+      switchingTemplateType: false,
 
       // 正在加载余额
       balanceRequesting: false,
@@ -78,6 +81,7 @@ export default {
         this.setRegion(d.sender_province, d.sender_city, d.sender_district);
       }
       this.enabled = d.enable_print || 0;
+      this.template_type = d.template_type || 1;
 
       if (this.partnerId) {
         this.balanceReq();
@@ -283,6 +287,46 @@ export default {
         })
         .finally(() => {
           this.switchingEnabled = false;
+        });
+    },
+    onChangeTemplateType(val) {
+      if (this.switchingTemplateType) return;
+
+      if (!this.initData.partner_id) {
+        // 恢复到原来的样子
+        this.template_type = val === 2 ? 1 : 2;
+        MessageBox.alert('请先添加快递网点信息');
+        return;
+      }
+      if (!this.initData.sender_name) {
+        // 恢复到原来的样子
+        this.template_type = val === 2 ? 1 : 2;
+        MessageBox.alert('请先添加发货人信息');
+        return;
+      }
+
+      this.switchingTemplateType = true;
+      const data = new URLSearchParams();
+      data.append('template_type', val);
+
+      request({
+        url: '/express/updatePrintSettingTemplateType',
+        method: 'post',
+        data,
+      })
+        .then(res => {
+          if (res.result < 0) {
+            MessageBox.alert(res.msg);
+            // 恢复到原来的样子
+            this.template_type = val === 2 ? 1 : 2;
+            return;
+          }
+
+          Message.success('更改面单成功');
+          this.initData.template_type = val;
+        })
+        .finally(() => {
+          this.switchingTemplateType = false;
         });
     },
   },
