@@ -21,6 +21,10 @@
         // 祈福牌位功德芳名；出生日期；心愿；地区；详细地址；
 
         (function() {
+        // payDetail默认应该是 { content: '', pic: '', video: ''}
+        if (window.createdData.payDetail && typeof window.createdData.payDetail === "string") {
+          window.createdData.payDetail = { content: '', pic: '', video: ''};
+        }
         let wsFixFuYan = [
           {
             inputType: 10,

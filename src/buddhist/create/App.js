@@ -801,8 +801,8 @@ export default {
         this.$forceUpdate();
 
         if (this.form.detail) this.detailEditor.setContent(this.form.detail);
-        if (this.form.payDetail)
-          this.paySuccessEditor.setContent(this.form.payDetail);
+        // if (this.form.payDetail)
+        //   this.paySuccessEditor.setContent(this.form.payDetail);
       });
     },
     handleNotifyDialogConfirm() {
