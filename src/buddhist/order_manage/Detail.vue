@@ -289,15 +289,15 @@
                 <div class="detail-title">下单时间：</div>
                 <div class="detail-content">{{ orderTime }}</div>
               </div>
-              <div class="detail-row">
+              <div class="detail-row" v-if="!1">
                 <div class="detail-title">订单号：</div>
                 <div class="detail-content">{{ orderNumber }}</div>
               </div>
               <div class="detail-row">
-                <div class="detail-title">外部订单号：</div>
+                <div class="detail-title">善缘号：</div>
                 <div class="detail-content">{{ outerOrderNumber }}</div>
               </div>
-              <div class="detail-row">
+              <div class="detail-row" v-if="!1">
                 <div class="detail-title">支付流水号：</div>
                 <div class="detail-content">{{ runningNumber }}</div>
               </div>
