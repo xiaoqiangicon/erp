@@ -171,7 +171,8 @@ export default {
           params: { id: item.id },
         }).then(response => {
           this.list[index].statusOnline = response.result >= 0;
-          this.list[index].statusMessage = response.msg;
+          this.list[index].statusMessage =
+            response.msg !== '成功' ? response.msg : null;
           this.list[index].statusLoaded = true;
 
           // 更新数据

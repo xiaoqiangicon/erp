@@ -300,8 +300,11 @@ export default {
         },
       }).then(res => {
         this.expressDeviceSelectedOnline = res.result >= 0;
-        if (!this.expressDeviceSelectedOnline)
-          this.expressDeviceSelectErrorMsg = res.msg;
+        if (!this.expressDeviceSelectedOnline) {
+          // 如果是成功两个字，则不展示
+          this.expressDeviceSelectErrorMsg =
+            res.msg !== '成功' ? res.msg : null;
+        }
       });
     },
     handleExpressDeviceSelectDialogConfirm() {

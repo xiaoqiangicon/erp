@@ -239,6 +239,17 @@ export default {
             if (json && json.length > 1) {
               // 第一行是title，去掉第一行
               json.shift();
+
+              json.forEach(item => {
+                // 因为excel会默认把超过15位的数字变成科学计数法，所以要在数字前面加个引号
+                if (item.foshiOrderIds) {
+                  const orderIds = item.foshiOrderIds.split(/[,;，；]/g);
+                  item.foshiOrderIds = orderIds
+                    .map(i => i.replace(/\D/g, ''))
+                    .join('；');
+                }
+              });
+
               result.push(...json);
             }
           });
@@ -383,18 +394,21 @@ export default {
       }
 
       const data = new URLSearchParams();
-      data.append('receiver_name', this.receiverName);
-      data.append('receiver_phone', this.receiverPhone);
-      data.append('receiver_province', this.receiverProvince);
-      data.append('receiver_city', this.receiverCity);
+      data.append('receiver_name', this.receiverName || '');
+      data.append('receiver_phone', this.receiverPhone || '');
+      data.append('receiver_province', this.receiverProvince || '');
+      data.append('receiver_city', this.receiverCity || '');
       data.append('receiver_district', this.receiverDistrict || '');
-      data.append('receiver_address', this.receiverAddress);
-      data.append('goods_name', this.goodsName);
-      data.append('goods_quantity', this.goodsQuantity);
-      data.append('remark', this.remark);
+      data.append('receiver_address', this.receiverAddress || '');
+      data.append('goods_name', this.goodsName || '');
+      data.append('goods_quantity', this.goodsQuantity || 1);
+      data.append('remark', this.remark || '');
       data.append(
         'foshi_order_ids',
-        this.foshiOrderIds.filter(i => !!i).join(',')
+        this.foshiOrderIds
+          .filter(i => !!i)
+          .join(',')
+          .replace(/\s+/g, '')
       );
 
       this.savingAdd = true;
@@ -497,16 +511,16 @@ export default {
       }
 
       const finalList = this.batchList.map(item => ({
-        receiver_name: item.receiverName,
-        receiver_phone: item.receiverPhone,
-        receiver_province: item.receiverProvince,
-        receiver_city: item.receiverCity,
-        receiver_district: item.receiverDistrict,
-        receiver_address: item.receiverAddress,
-        goods_name: item.goodsName,
+        receiver_name: item.receiverName || '',
+        receiver_phone: item.receiverPhone || '',
+        receiver_province: item.receiverProvince || '',
+        receiver_city: item.receiverCity || '',
+        receiver_district: item.receiverDistrict || '',
+        receiver_address: item.receiverAddress || '',
+        goods_name: item.goodsName || '',
         goods_quantity: parseInt(item.goodsQuantity, 10) || 1,
-        remark: item.remark,
-        foshi_order_ids: item.foshiOrderIds,
+        remark: item.remark || '',
+        foshi_order_ids: (item.foshiOrderIds || '').replace(/\s+/g, ''),
       }));
       const data = new URLSearchParams();
       data.append('content', JSON.stringify(finalList));
@@ -576,7 +590,8 @@ export default {
         item.remark = this.updateRecordRemark;
         item.foshiOrderIds = this.updateRecordFoshiOrderIds
           .filter(i => !!i)
-          .join(',');
+          .join(',')
+          .replace(/\s+/g, '');
 
         this.showUpdateDrawer = false;
         this.$nextTick(() => {
@@ -587,15 +602,15 @@ export default {
 
       const data = new URLSearchParams();
       data.append('id', this.updateRecordId);
-      data.append('receiver_name', this.updateRecordReceiverName);
-      data.append('receiver_phone', this.updateRecordReceiverPhone);
-      data.append('receiver_province', this.updateRecordReceiverProvince);
-      data.append('receiver_city', this.updateRecordReceiverCity);
+      data.append('receiver_name', this.updateRecordReceiverName || '');
+      data.append('receiver_phone', this.updateRecordReceiverPhone || '');
+      data.append('receiver_province', this.updateRecordReceiverProvince || '');
+      data.append('receiver_city', this.updateRecordReceiverCity || '');
       data.append('receiver_district', this.updateRecordReceiverDistrict || '');
-      data.append('receiver_address', this.updateRecordReceiverAddress);
-      data.append('goods_name', this.updateRecordGoodsName);
-      data.append('goods_quantity', this.updateRecordGoodsQuantity);
-      data.append('remark', this.updateRecordRemark);
+      data.append('receiver_address', this.updateRecordReceiverAddress || '');
+      data.append('goods_name', this.updateRecordGoodsName || '');
+      data.append('goods_quantity', this.updateRecordGoodsQuantity || 1);
+      data.append('remark', this.updateRecordRemark || '');
       data.append(
         'foshi_order_ids',
         this.updateRecordFoshiOrderIds.filter(i => !!i).join(',')
@@ -916,8 +931,11 @@ export default {
         },
       }).then(res => {
         this.expressDeviceSelectedOnline = res.result >= 0;
-        if (!this.expressDeviceSelectedOnline)
-          this.expressDeviceSelectErrorMsg = res.msg;
+        if (!this.expressDeviceSelectedOnline) {
+          // 如果是成功两个字，则不展示
+          this.expressDeviceSelectErrorMsg =
+            res.msg !== '成功' ? res.msg : null;
+        }
       });
     },
     handleExpressDeviceSelectDialogConfirm() {
