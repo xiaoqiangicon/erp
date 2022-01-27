@@ -213,7 +213,9 @@
       <div class="f-s-16 mg-t-20">面单设置</div>
       <div class="gray">
         系统默认选择“物流标准”面单。若佛事订单需要发货前确认发货人信息、拍照给用户邮寄物品等特殊情况请选择“显示订单处理二维码”面单。
-        <span class="f-wg-bold red">注意：发货前请务必“划掉”二维码</span>
+        <span class="f-wg-bold red"
+          >注意：订单设为已处理状态“48小时”后二维码会失效。</span
+        >
       </div>
       <div class="mg-t-20 clearfix">
         <div class="select-company">
