@@ -286,9 +286,9 @@
                 <div class="detail-title">下单时间：</div>
                 <div class="detail-content">{{ orderTime }}</div>
               </div>
-              <div class="detail-row" v-if="!1">
-                <div class="detail-title">订单号：</div>
-                <div class="detail-content">{{ orderNumber }}</div>
+              <div class="detail-row">
+                <div class="detail-title">自在家订单号：</div>
+                <div class="detail-content">{{ id }}</div>
               </div>
               <div class="detail-row">
                 <div class="detail-title">善缘号：</div>

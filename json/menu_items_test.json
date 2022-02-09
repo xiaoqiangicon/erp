@@ -75,7 +75,7 @@
           "name": "积分兑换",
           "link": "/zzhadmin/creditsIndex/",
           "isHtml": true,
-          "controlMark": "pw_ceremony"
+          "controlMark": "pw_ceremony_hide"
         }
       ]
     },

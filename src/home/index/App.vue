@@ -98,7 +98,7 @@ export default {
       recommendAd: {
         p1: {
           picUrl:
-            'https://pic.zizaihome.com/38c2c6ab-12b1-4f3e-9a16-9e77cc186e15.png',
+            'https://pic.zizaihome.com/05bef9ba-a6c5-4a1a-a0d0-7ec467215e8f.png',
           name: '推荐位01',
           link: '',
           id: -1,

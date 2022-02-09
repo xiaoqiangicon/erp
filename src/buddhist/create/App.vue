@@ -345,7 +345,7 @@
             rows="4"
             v-model="form.feedbackText"
             resize="none"
-            placeholder="请输入默认反馈内容"
+            placeholder="处理订单未填写文字时，会自动填写这段文字内容"
           ></el-input>
           <div style="margin: 10px 0;">
             <draggable class="dp-inline-block" :list="form.feedPics">
