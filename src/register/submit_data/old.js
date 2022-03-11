@@ -10,6 +10,21 @@ import 'old/uploadSize';
 import juicer from 'juicer';
 import 'bootstrap';
 import 'jquery-confirm';
+import upload from '../../../../pro-com/src/upload';
+import { makeUploadImageOptions } from '../../configs/upload';
+
+$('[data-upload]').map(function() {
+  const mark = $(this).attr('data-upload');
+  upload(
+    makeUploadImageOptions({
+      el: this,
+      done: src => {
+        $(`[data-id="${mark}"]`).attr('src', src);
+      },
+    })
+  );
+});
+
 pace.start({
   document: false,
 });

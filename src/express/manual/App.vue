@@ -340,7 +340,11 @@
                   label="创建时间"
                   prop="create_time"
                   sortable="custom"
-                ></el-table-column>
+                >
+                  <template slot-scope="scope">
+                    {{ scope.row.create_time | formatDateTime }}
+                  </template>
+                </el-table-column>
                 <el-table-column label="操作" align="center" width="150">
                   <template slot-scope="scope">
                     <el-button
@@ -522,15 +526,20 @@
                     ></i>
                   </template>
                 </el-table-column>
-                <el-table-column
-                  label="创建时间"
-                  prop="create_time"
-                ></el-table-column>
+                <el-table-column label="创建时间" prop="create_time">
+                  <template slot-scope="scope">
+                    {{ scope.row.create_time | formatDateTime }}
+                  </template>
+                </el-table-column>
                 <el-table-column
                   label="打印时间"
                   prop="print_time"
                   sortable="custom"
-                ></el-table-column>
+                >
+                  <template slot-scope="scope">
+                    {{ scope.row.print_time | formatDateTime }}
+                  </template>
+                </el-table-column>
                 <el-table-column label="操作" align="center" width="100">
                   <template slot-scope="scope">
                     <el-button

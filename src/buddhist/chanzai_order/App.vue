@@ -140,7 +140,7 @@
           批量发货
         </el-button>
         <el-button
-          v-show="expressSetting.enable_print && type === 1"
+          v-show="expressSetting.enable_print && (type === 1 || type === 2)"
           type="default"
           size="medium"
           @click="onClickExpressPrint"
