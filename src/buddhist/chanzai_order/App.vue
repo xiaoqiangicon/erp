@@ -164,7 +164,7 @@
         >
         <el-button
           type="default"
-          class="pull-right mg-r-20"
+          class=""
           size="medium"
           @click="onClickSetPrinter"
           >打印设置</el-button
