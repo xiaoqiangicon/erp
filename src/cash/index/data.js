@@ -31,43 +31,29 @@ data.tpl = {
   ),
   placeholder: $('#tpl-placeholder').html(),
   detailUnit: juicer($('#tpl-detail-unit').html()),
-  pagination: juicer($('#tpl-pagination').html()),
 };
-data.requestList = function(year, page) {
+data.requestList = function(year) {
   !year && (year = data.today.year);
-  !page && (page = 1);
   seeAjax(
     'list',
     {
       year: year,
-      page: page,
     },
     function(res) {
       res.success &&
         (renderPaginationContent(res.data, {
           year: year,
-          page: page,
         }),
-        renderPagination(
-          {
-            currentPage: page,
-            totalPages: res.totalPages,
-            year: year,
-          },
-          {
-            year: year,
-          }
-        ),
         !data.monthsData[year] &&
           ((data.monthsData[year] = {}), (data.monthDataForChart[year] = {})),
-        (data.monthsData[year][page] = res.data),
-        (data.monthDataForChart[year][page] = []),
+        (data.monthsData[year] = res.data),
+        (data.monthDataForChart[year] = []),
         res.data.map(function(item) {
-          data.monthDataForChart[year][page][item.month - 1] = item.money;
+          data.monthDataForChart[year][item.month - 1] = item.money;
         }),
         renderChart({
           year: year,
-          months: data.monthDataForChart[year][page],
+          months: data.monthDataForChart[year],
         }));
     }
   );

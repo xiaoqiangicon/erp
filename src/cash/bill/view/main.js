@@ -30,12 +30,14 @@ seeView({
     'click [data-select-all-bills]': 'onClickSelectAllBills',
     'click [data-status-action]': 'onClickStatusAction',
     'click [data-popup-close]': 'onClickPopup',
-    'click [data-popup-overlay]': 'onClickPopup',
+    // 'click [data-popup-overlay]': 'onClickPopup',
     'click [data-popup-submit]': 'onClickPopupSubmit',
     // 提现管理按钮
     'click #take-cash': 'onClickTakeCash',
     // 2019-09
     'click #confirm-2-button': 'onClickPrizeOk2',
+    // 自定义赞赏金额
+    'input #pre-30': 'inputCustomizeMoney',
   },
   onClickStatusMenu: function(e) {
     var self = this,
@@ -86,6 +88,7 @@ seeView({
     $targetYearContainer.show();
   },
   onClickSelectBill: function(e) {
+    console.log(1234);
     var $this = $(e.currentTarget);
     $this.toggleClass('active');
     var year = parseInt($this.attr('data-select-bill')),
@@ -110,6 +113,13 @@ seeView({
       $totalFee = $(
         '[data-show-total-fee="' + year + '"][data-status="' + status + '"]'
       ),
+      $totalPromotionMoney = $(
+        '[data-show-total-promotion="' +
+          year +
+          '"][data-status="' +
+          status +
+          '"]'
+      ),
       $totalCharge = $(
         '[data-show-total-charge="' + year + '"][data-status="' + status + '"]'
       ),
@@ -124,7 +134,9 @@ seeView({
       totalMoney = 0,
       totalFee = 0,
       totalCharge = 0,
+      totalPromotionMoney = 0,
       totalAssistance = 0;
+
     $(
       '[data-select-all-bills="' + year + '"][data-status="' + status + '"]'
     ).removeClass('active');
@@ -143,16 +155,28 @@ seeView({
         totalFee += parseFloat($this.attr('data-fee')) || 0;
         totalCharge += parseFloat($this.attr('data-charge')) || 0;
         totalAssistance += parseFloat($this.attr('data-assistance')) || 0;
+        totalPromotionMoney += parseFloat(
+          $this.attr('data-promotionMoney') || 0
+        );
       });
     }
+    // totalFee: 增值服务费；totalAssisitance: 自在家补贴支付渠道手续费;
+    // totalMoney: 选中总额; totalCharge: 支付渠道手续费；
     $totalCount.text(totalCount);
     $totalMoney.text(totalMoney.toFixed(2));
     $realTotalMoney.text(
-      (totalMoney + totalAssistance - totalCharge - totalFee).toFixed(2)
+      (
+        totalMoney +
+        totalAssistance -
+        totalCharge -
+        totalFee -
+        totalPromotionMoney
+      ).toFixed(2)
     );
     $totalFee.text(totalFee.toFixed(2));
     $totalCharge.text(totalCharge.toFixed(2));
     $totalAssistance.text(totalAssistance.toFixed(2));
+    $totalPromotionMoney.text(totalPromotionMoney.toFixed(2));
   },
   onClickSelectAllBills: function(e) {
     var $this = $(e.currentTarget),
@@ -178,6 +202,13 @@ seeView({
       $totalFee = $(
         '[data-show-total-fee="' + year + '"][data-status="' + status + '"]'
       ),
+      $totalPromotionMoney = $(
+        '[data-show-total-promotion="' +
+          year +
+          '"][data-status="' +
+          status +
+          '"]'
+      ),
       $totalCharge = $(
         '[data-show-total-charge="' + year + '"][data-status="' + status + '"]'
       ),
@@ -192,6 +223,7 @@ seeView({
       totalMoney = 0,
       totalFee = 0,
       totalCharge = 0,
+      totalPromotionMoney = 0,
       totalAssistance = 0;
     if ($this.hasClass('active')) {
       $items.removeClass('active');
@@ -210,6 +242,9 @@ seeView({
       totalFee = parseFloat($this.attr('data-total-fee'));
       totalCharge = parseFloat($this.attr('data-total-charge'));
       totalAssistance = parseFloat($this.attr('data-total-assistance'));
+      totalPromotionMoney += parseFloat(
+        $this.attr('data-total-totalPromoteAmountForUser') || 0
+      );
     }
     $totalCount.text(totalCount);
     $totalMoney.text(totalMoney.toFixed(2));
@@ -219,6 +254,7 @@ seeView({
     $totalFee.text(totalFee.toFixed(2));
     $totalCharge.text(totalCharge.toFixed(2));
     $totalAssistance.text(totalAssistance.toFixed(2));
+    $totalPromotionMoney.text(totalPromotionMoney.toFixed(2));
   },
   onClickStatusAction: function(e) {
     // 2019-09 add
@@ -253,28 +289,42 @@ seeView({
       return;
     }
     $selectedItems.map(function() {
-      billIds.push(parseInt($(this).attr('data-bill-id')));
+      console.log(
+        $(this).get(0),
+        $(this)
+          .attr('data-bill-id')
+          .split(',')
+      );
+      billIds.push(
+        ...$(this)
+          .attr('data-bill-id')
+          .split(',')
+      );
     });
-    data.saveBillIds = billIds;
-
+    data.saveBillIds = billIds.map(Number);
     // action: 1有疑问 2确认 3撤回
 
     if (action == 1) $questionDialog.show();
     else if (action == 2) {
       // 2019-09,每个选项的金额
-      data.donateMoney2 = parseFloat(totalMoney * 0.02).toFixed(2);
-      data.donateMoney5 = parseFloat(totalMoney * 0.05).toFixed(2);
-      data.donateMoney10 = parseFloat(totalMoney * 0.1).toFixed(2);
-      data.donateMoney15 = parseFloat(totalMoney * 0.15).toFixed(2);
-      data.donateMoney20 = parseFloat(totalMoney * 0.2).toFixed(2);
-      data.donateMoney30 = parseFloat(totalMoney * 0.3).toFixed(2);
+      // data.donateMoney2 = parseFloat(totalMoney * 0.02).toFixed(2);
+      // data.donateMoney5 = parseFloat(totalMoney * 0.05).toFixed(2);
+      // data.donateMoney10 = parseFloat(totalMoney * 0.1).toFixed(2);
+      // data.donateMoney15 = parseFloat(totalMoney * 0.15).toFixed(2);
+      // data.donateMoney20 = parseFloat(totalMoney * 0.2).toFixed(2);
+      // data.donateMoney30 = parseFloat(totalMoney * 0.3).toFixed(2);
+      data.donateMoney2 = 66;
+      data.donateMoney5 = 99;
+      data.donateMoney10 = 666;
+      data.donateMoney15 = 888;
+      data.donateMoney20 = 999;
 
       $pre2.text(data.donateMoney2);
       $pre5.text(data.donateMoney5);
       $pre10.text(data.donateMoney10);
       $pre15.text(data.donateMoney15);
       $pre20.text(data.donateMoney20);
-      $pre30.text(data.donateMoney30);
+      // $pre30.text(data.donateMoney30);
 
       if (data.haveOrderInHandling) $handlingDialog.show();
       else if (!data.canTakeOrder) $forbidDialog.show();
@@ -282,7 +332,13 @@ seeView({
       else showPrizeDialog();
     } else if (action == 3) $cancelDialog.show();
   },
+  inputCustomizeMoney: function(e) {
+    e.target.value = parseInt(e.target.value, 10);
+    data.donateMoney30 = parseInt(e.target.value, 10);
+    console.log(parseInt(e.target.value, 10));
+  },
   onClickPopup: function(e) {
+    if (parseInt($('#confirm-3-button').attr('data-handling'))) return;
     var $this = $(e.target),
       $popup = $this.parents('.dialog'),
       canClose =
@@ -337,6 +393,8 @@ seeView({
     );
   },
   onSubmitConfirm: function($this) {
+    if (parseInt($this.attr('data-handling'))) return;
+
     $this
       .attr({
         'data-handling': 1,

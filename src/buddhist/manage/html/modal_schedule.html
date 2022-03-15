@@ -68,13 +68,57 @@
               <div class="upload-btn" data-ele="add-video">上传小视频</div>
             </div>
             <div class="mgt20">
-              图片格式支持JPG、PNG等，视频格式支持MP4、WMV、MOV等，文件大小不超过50M
+              图片格式支持JPG、PNG等，视频格式支持MP4、WMV、MOV等，文件大小不超过100M
+            </div>
+          </div>
+        </div>
+
+        <!-- 设置链接 -->
+        <div class="row mgt20">
+          <div class="col-md-1 fwb" style="height: 40px; line-height: 40px;">
+            引导链接
+          </div>
+          <div class="col-md-11">
+            <label
+              class="radio-inline"
+              style="padding-left: 0;"
+              for="set-link"
+              data-link-radio="1"
+            >
+              <input type="radio" name="if-set-link" id="set-link" value="1" />
+              <span class="radio"></span> <span>修改引导链接</span>
+            </label>
+            <label
+              class="radio-inline"
+              style="padding-left: 0;"
+              for="not-set-link"
+              data-link-radio="0"
+            >
+              <input
+                type="radio"
+                name="if-set-link"
+                id="not-set-link"
+                value="0"
+                checked
+              />
+              <span class="radio"></span> <span>不修改</span>
+            </label>
+            <div class="set-link-box" id="set-link-box">
+              <input
+                class="edit-link-input  mgb10"
+                id="edit-link-input"
+                type="text"
+                value="https://wx.zizaihome.com/"
+              />
+            </div>
+            <div class="push-times-tip">
+              用户点击推送内容时的默认页面会变更为当前的页面，发布后不可修改。
             </div>
           </div>
         </div>
 
         <!--推送-->
-        <div class="row mgt40">
+        <div class="row mgt10">
           <div class="col-md-1 fwb" style="height: 40px; line-height: 40px;">
             推送
           </div>

@@ -3,13 +3,28 @@ import config from './config';
 import Toast from 'old/toast';
 import app from '../protocol/template';
 import doRequest from 'old/utils';
-import '../../../pro-com/src/distpicker';
+import '../../../../pro-com/src/distpicker';
 import 'old/backbone';
 import 'old/ajaxFileUpload';
 import 'old/uploadSize';
 import juicer from 'juicer';
 import 'bootstrap';
 import 'jquery-confirm';
+import upload from '../../../../pro-com/src/upload';
+import { makeUploadImageOptions } from '../../configs/upload';
+
+$('[data-upload]').map(function() {
+  const mark = $(this).attr('data-upload');
+  upload(
+    makeUploadImageOptions({
+      el: this,
+      done: src => {
+        $(`[data-id="${mark}"]`).attr('src', src);
+      },
+    })
+  );
+});
+
 pace.start({
   document: false,
 });
@@ -430,6 +445,9 @@ var View = Backbone.View.extend({
             Toast('网络繁忙，请稍后再试', 0);
           },
         });
+      },
+      fail: function(e) {
+        console.log(e);
       },
       extensionerror: function() {
         alert('允许的格式为：jpg、jpeg、gif、png');

@@ -1,6 +1,6 @@
 .brand {
   width: 100%;
-  background-image: url('https://pic.zizaihome.com/ad123f4e-0708-11e8-8a9e-00163e0c001e.png');
+  background-color: #6785d0;
   background-size: 100% 100%;
 }
 .brand-left {
@@ -51,13 +51,4 @@
 
 /* 如果屏幕太高，让brand固定在最底部 */
 @media (min-height: 966px) {
-  body {
-    padding-bottom: 350px;
-  }
-  .brand {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-  }
 }

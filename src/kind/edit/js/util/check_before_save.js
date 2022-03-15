@@ -83,6 +83,8 @@ export default _ => {
   // }
 
   // result.data.payItems = payItems;
+  result.data.headImg = $('img[data-share-item-image=0]').attr('src') || '';
+  result.data.payImg = $('img[data-share-item-image=1]').attr('src') || '';
 
   result.data.shareTitle =
     $('#input-share-title')
@@ -92,7 +94,7 @@ export default _ => {
     $('#input-share-desc')
       .val()
       .trim() || '';
-  result.data.shareIcon = $('[data-share-item-image]').attr('src') || '';
+  result.data.shareIcon = $('img[data-share-item-image=2]').attr('src') || '';
   result.data.showPeopleCountWhenShare = $(
     '#show-people-count-when-share'
   ).hasClass('active')

@@ -82,7 +82,7 @@ seeView({
         );
         let $imageCell = $(
           uploadImageCellTpl({
-            image: url,
+            image: url + '?imageMogr2/strip',
           })
         );
         $uploadEl.before($imageCell);

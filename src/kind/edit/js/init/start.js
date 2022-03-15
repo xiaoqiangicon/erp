@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import 'component/ueditor_config';
-import '../../../../../pro-com/src/ueditor/ueditor.config';
-import '../../../../../pro-com/src/ueditor/ueditor.all';
+import '../../../../../../pro-com/src/ueditor/ueditor.config';
+import '../../../../../../pro-com/src/ueditor/ueditor.all';
 import 'component/ueditor_plugins/xiu_mi';
 import 'component/ueditor_plugins/import_wx_article';
 import 'component/ueditor_plugins/video';
@@ -33,6 +33,12 @@ export default _ => {
       );
     });
     data.info.covers.length >= 3 && $coverAdd.addClass('hide');
+  }
+  if (data.info.headImg) {
+    $('img[data-share-item-image=0]').attr('src', data.info.headImg);
+  }
+  if (data.info.payImg) {
+    $('img[data-share-item-image=1]').attr('src', data.info.payImg);
   }
   if (data.info.payItems && data.info.payItems.length) {
     const $payContainer = $('#pay-container');

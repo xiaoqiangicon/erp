@@ -13,5 +13,6 @@ var data = {
     status: 0,
   },
   accountStatus: globalData.accountStatus,
+  id: 0,
 };
 export default data;

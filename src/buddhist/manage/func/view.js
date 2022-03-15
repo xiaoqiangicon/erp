@@ -9,11 +9,15 @@ import Clipboard from 'clipboard';
 import Promotion from '../../../com-deprecated/promotion';
 import ChooseImage from '../../../com-deprecated/choose-image';
 import api from './api';
-import '../../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../../pro-com/src/libs-es5/jquery-qrcode';
+import * as handling from '../../../../../pro-com/src/handling';
 import 'jquery-confirm';
+import toastr from 'toastr';
 import './ajax';
 import seeAjax from 'see-ajax';
 import seeView from 'see-view';
+
+toastr.options.closeHtml = '<button><i class="toastr-icon-off"></i></button>';
 seeView({
   events: {
     'keyup [data-ele="s-textarea"]': 'onKeyupSTextarea',
@@ -22,6 +26,7 @@ seeView({
     'click #search': 'onClickSearch',
     'click #table-title-total-join': 'sortByJoinNum',
     'click #table-title-total-collect': 'sortByMoney',
+    'click [data-content]': 'onClickContent',
     'click [data-opt="edit"]': 'onClickOptEdit',
     'click [data-opt="promotion"]': 'onClickOptPromotion',
     'click [data-opt="del"]': 'onClickOptDel',
@@ -32,7 +37,7 @@ seeView({
     'change [data-ele="more-opt"]': 'onClickMoreOpt',
     'hidden.bs.select [data-ele="more-opt"]': 'hiddenMoreOpt',
     'click #confirm-set-tmpl': 'onClickConfirmSetTmpl',
-    'click #cancle-set-tmpl': 'onClickCancelSetTmpl',
+    'click #cancel-set-tmpl': 'onClickCancelSetTmpl',
     'show.bs.modal #set-prt-modal': 'onShowSetPrtModal',
     'changed.bs.select #sub-prt-select': 'onChangeSubPrtSelect',
     'click [data-ele="sub-checkbox"]': 'onClickSubCheckbox',
@@ -49,10 +54,14 @@ seeView({
     'click [data-ele="del-video"]': 'onClickDelVideo',
     'click [data-ele="play-video"]': 'onClickPlayVideo',
     'click #video-player-mask': 'onClickVideoPlayerMask',
+    'input #edit-link-input': 'inputLink',
     'click #save-schedule': 'onClickSaveSchedule',
+    'click [data-link-radio]': 'onClickLinkRadio',
     'click [data-ele="edit-schedule-item"]': 'onClickEditScheduleItem',
     'click [data-ele="save-schedule-item"]': 'onClickSaveScheduleItem',
     'click [data-ele="cancel-schedule-item"]': 'onClickCancelScheduleItem',
+    'click [data-ele="prt-pw-qrcode-btn"]': 'onClickPrtPwQrcodeBtn',
+    'click [data-ele="prt-pw-seal-btn"]': 'onClickPrtSealBtn',
   },
   onKeyupSTextarea: function(e) {
     var $curTar = $(e.currentTarget),
@@ -85,6 +94,20 @@ seeView({
       $('#table-title-total-collect'),
       'orderByCollectMoney'
     );
+  },
+  onClickContent: function(e) {
+    var $curTar = $(e.currentTarget);
+    var content = $curTar.attr('data-content');
+    console.log(content);
+
+    toastr.info(content, '不通过原因', {
+      timeOut: 10000 + (content.length > 60 ? (content.length - 60) / 8 : 0),
+      // extendedTimeOut: 0,
+
+      closeButton: !0,
+      positionClass: 'toast-center-center',
+      escapeHtml: !1,
+    });
   },
   onClickOptEdit: function(e) {
     var $curTar = $(e.currentTarget),
@@ -353,12 +376,36 @@ seeView({
       $prtAllQrcode = $('#prt-all-qrcode'),
       $subCheckbox = $('[data-ele="sub-checkbox"]'),
       prtId = parseInt($tar.val());
+
+    // 筛选出所选中的打印机列表
+    let selectPrinter = {};
+    Data.getPrinterListRes.data.forEach(item => {
+      if (item.id === prtId) {
+        selectPrinter = item;
+      }
+    });
+    if (selectPrinter.type === 0) {
+      $('[data-prt-type="0"]').removeClass('hide');
+      $('[data-prt-type="1"]').addClass('hide');
+    } else {
+      $('[data-prt-type="1"]').removeClass('hide');
+      $('[data-prt-type="0"]').addClass('hide');
+    }
+    console.log(e.target, 'printer', Data.localPrtCfg, prtId);
     $exceptionTip.text('状态查询中...').show();
     $prtNumSelect.val(1).selectpicker('refresh');
     $prtTel.prop('checked', 'checked');
     $prtAllQrcode.prop('checked', 'checked');
-    $subCheckbox.removeAttr('checked');
+    $subCheckbox.attr('checked', false);
+    $subCheckbox.prop('checked', false);
     $subCheckbox.removeAttr('disabled');
+    var data;
+    if (Data.ifHasSub) {
+      data = Data.localPrtCfg[prtId];
+    } else {
+      data = Data.localPrtCfg;
+    }
+    data.printerType = selectPrinter.type;
     func.renderSetPrtModal(Data.ifHasSub, Data.localPrtCfg, prtId);
   },
   onClickSubCheckbox: function(e) {
@@ -525,6 +572,40 @@ seeView({
       Data.handleListData[curId].printerList.splice(delIndex, 1);
     }
   },
+  onClickPrtPwQrcodeBtn: function(e) {
+    var $curTar = $(e.currentTarget),
+      qrcode = parseInt($curTar.attr('data-value')),
+      $prtPwQrcodeBtn = $('[data-ele="prt-pw-qrcode-btn"]'),
+      $subPrtSelect = $('#sub-prt-select'),
+      prtId = parseInt($subPrtSelect.val()),
+      data;
+    if (Data.ifHasSub) {
+      data = Data.localPrtCfg[prtId];
+    } else {
+      data = Data.localPrtCfg;
+    }
+    $prtPwQrcodeBtn.removeClass('active');
+
+    $curTar.addClass('active');
+    data.qrcodePrint = qrcode;
+  },
+  onClickPrtSealBtn: function(e) {
+    var $curTar = $(e.currentTarget),
+      sealType = parseInt($curTar.attr('data-value')),
+      $prtPwSealBtn = $('[data-ele="prt-pw-seal-btn"]'),
+      $subPrtSelect = $('#sub-prt-select'),
+      prtId = parseInt($subPrtSelect.val()),
+      data;
+    if (Data.ifHasSub) {
+      data = Data.localPrtCfg[prtId];
+    } else {
+      data = Data.localPrtCfg;
+    }
+    $prtPwSealBtn.removeClass('active');
+
+    $curTar.addClass('active');
+    data.sealType = sealType;
+  },
   onClickSavePrtSet: function(e) {
     var $modal = $('#set-prt-modal'),
       curId = parseInt($modal.attr('data-id'));
@@ -632,6 +713,18 @@ seeView({
     Data.videoPlayer.pause();
     $videoPlayerMask.hide();
   },
+  onClickLinkRadio: e => {
+    if ($(e.currentTarget).attr('data-link-radio') == 1) {
+      $('#set-link-box').css('display', 'block');
+    } else {
+      $('#set-link-box').css('display', 'none');
+    }
+  },
+  inputLink: e => {
+    if (e.target.value.length < 25) {
+      e.target.value = 'https://wx.zizaihome.com/';
+    }
+  },
   onClickSaveSchedule: function(e) {
     if (Data.isSubmit) {
       return;
@@ -656,16 +749,28 @@ seeView({
         src = $ele.attr('data-src');
       params.video.push(src);
     });
+    var isSetLink = parseInt(
+      $('input:radio[name="if-set-link"]:checked').val(),
+      10
+    );
+    if (!isSetLink) {
+      params.url = '';
+    } else {
+      params.url = $('#edit-link-input').val();
+    }
+
     params.isShow = parseInt($('[name="if-push"]:checked').val(), 10);
     if (!params.content) {
       Toast('内容不能为空', 2);
       return;
     }
     Data.isSubmit = 1;
+    // handling.show();
     api.updateBuddhistSchedule(params, function(res) {
       Toast('发布成功', 1);
       var $scheduleListNav = $('[data-ele="modal-head-nav"][data-index="1"]');
       $scheduleListNav.click();
+      handling.hide();
       Data.isSubmit = 0;
     });
   },
@@ -695,6 +800,11 @@ seeView({
     params.scheduleId = scheduleId;
     params.content = scheduleContent;
     params.img = [];
+    if ($('#schedule-url').get(0)) {
+      params.url = $('#schedule-url').text();
+    } else {
+      params.url = '';
+    }
     var $scheduleImg = $curScheduleItem.find('[data-ele="schedule-img"]');
     $scheduleImg.each(function(index, ele) {
       var $ele = $(ele),

@@ -127,45 +127,6 @@
 .detail-section .unit-head .cell {
   color: #000;
 }
-.pagination-section {
-  width: 100%;
-  margin-top: 60px;
-  text-align: center;
-}
-.pagination {
-  display: inline-block;
-  overflow: hidden;
-}
-.pagination-cell {
-  float: left;
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
-  color: #333;
-  background: #ffffff;
-  font-size: 16px;
-  border: 1px solid #dddddd;
-  border-left: 0;
-}
-.pagination-cell:first-child {
-  border-left: 1px solid #dddddd;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.pagination-cell:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-.pagination-cell.special {
-  width: auto;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-.pagination-cell:hover,
-.pagination-cell.active {
-  color: #ffffff;
-  background: #70ba2c;
-}
 .title-section {
   border-bottom: 2px solid #dddddd;
 }

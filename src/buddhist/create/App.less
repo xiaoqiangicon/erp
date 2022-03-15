@@ -1,0 +1,248 @@
+.root {
+  padding: 20px 40px;
+}
+
+.nav {
+  position: relative;
+}
+
+.nav-icon-home {
+  background-image: url(https://pic.zizaihome.com/build/405fe11b9b280bc1bf8cb6a7c2c7ffde.png);
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  margin-top: -5px;
+  margin-right: 5px;
+}
+
+.nav-icon-arrow {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.nav-icon-arrow-2,
+.nav-text-3 {
+  color: #2ecc40;
+}
+
+.nav-text-2 {
+  color: #6fba2c;
+}
+
+.forms {
+  margin-top: 20px;
+}
+
+.edit-type {
+  display: inline-block;
+  color: #2ecc40;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.cover-item {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.cover-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: none;
+}
+
+.cover-del {
+  position: absolute;
+  color: #d46a40;
+  right: 2px;
+  top: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}
+
+.cover-item:hover {
+  .cover-mask,
+  .cover-del {
+    display: block;
+  }
+}
+
+.cover-add {
+  width: 100px;
+  height: 100px;
+}
+.cover-feed-video-add {
+  position: relative;
+  display: inline-block;
+}
+
+.cover-loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+.editor-container {
+  line-height: 1.428;
+}
+
+.stat-area .s-panel {
+  position: relative;
+  padding: 50px 10px 10px;
+  height: 180px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  background-color: #fff;
+  cursor: pointer;
+  background-image: url('https://pic.zizaihome.com/85eee1f2-9b86-11e8-9db8-00163e0c001e.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.stat-area .s-panel-3 {
+  padding-top: 10px;
+  height: auto;
+  background-image: none;
+}
+.stat-area .s-panel.active {
+  border: 3px solid #75bc36;
+}
+
+.stat-area .s-panel-select-img {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 30px;
+}
+.stat-area .s-panel.active .s-panel-select-img {
+  display: block;
+}
+.stat-area .s-panel-icon {
+  position: absolute;
+  top: 10px;
+  left: -8px;
+  width: 80px;
+  height: 30px;
+  line-height: 26px;
+  padding: 0 10px 0;
+  color: #fff;
+  background-image: url('https://pic.zizaihome.com/bf402b82-9b86-11e8-9db8-00163e0c001e.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.stat-area .s-panel-item {
+  float: left;
+  width: 33%;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+}
+.stat-area .s-panel-item:nth-child(2) {
+  border-left: 2px dotted #7d9ec8;
+  border-right: 2px dotted #7d9ec8;
+}
+.stat-area .s-panel-special-text {
+  color: RGBA(251, 185, 15, 1);
+}
+.stat-area .s-panel-1 {
+}
+.stat-area .s-panel-2 {
+}
+.stat-area .s-panel-title {
+  color: #ddd;
+  line-height: 1.8;
+}
+
+.stat-area .s-panel-bar-container {
+  height: 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+}
+.stat-area .s-panel-bar {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  background-color: #ffb937;
+  border-radius: 8px 0 0 8px;
+}
+.stat-area .s-panel-bar-icon {
+  position: absolute;
+  top: -5px;
+  left: 30%;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 5px;
+  border-radius: 8px;
+  background-color: #ffb937;
+  font-size: 12px;
+  color: #fff;
+}
+
+.feedback-type-list {
+  display: inline-block;
+  width: 150px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  line-height: 38px;
+  font-size: 14px;
+}
+.feedback-type-list .title {
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-left: 10px;
+}
+.feedback-type-list .item {
+  padding-left: 30px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  color: #999;
+}
+.feedback-type-list .item.active {
+  background: #5cb85c;
+  color: #fff;
+}
+.feedback-type-list .item:last-child {
+  border-bottom: none;
+}
+.feedback-img {
+  width: 300px;
+  height: 450px;
+  margin-left: 40px;
+  margin-top: 10px;
+  vertical-align: top;
+}
+
+.seal-radio {
+  display: flex;
+  align-items: center;
+  .seal1 {
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  .seal3,
+  .seal2 {
+    width: 50px;
+    margin-bottom: 10px;
+  }
+}

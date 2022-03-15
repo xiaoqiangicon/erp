@@ -296,6 +296,28 @@
   color: #ffff;
   background-color: #71ba31;
 }
+.customize-money::-webkit-input-placeholder {
+  color: #71ba31;
+}
+.customize-money {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+.selection-active .customize-money::-webkit-input-placeholder {
+  color: #fff;
+}
 
 .prize-select {
   display: flex;

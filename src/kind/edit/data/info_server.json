@@ -5,13 +5,13 @@
     "name": "日行一善 善行十生",
     "img": [
       {
-        "url": "/images/chan-zai-128x128.png"
+        "url": "/images/logo.png"
       },
       {
-        "url": "/images/chan-zai-128x128.png"
+        "url": "/images/logo.png"
       },
       {
-        "url": "/images/chan-zai-128x128.png"
+        "url": "/images/logo.png"
       }
     ],
     "details": "<p>hahahahahahah</p>",
@@ -21,26 +21,26 @@
         "name": "日行1善",
         "price": 1.11,
         "benison": "hahahahahhahaha",
-        "indexImg": "/images/chan-zai-128x128.png"
+        "indexImg": "/images/logo.png"
       },
       {
         "id": 2,
         "name": "日行2善",
         "price": 2.22,
         "benison": "hahahahahhahaha",
-        "indexImg": "/images/chan-zai-128x128.png"
+        "indexImg": "/images/logo.png"
       },
       {
         "id": 3,
         "name": "日行3善",
         "price": 3.33,
         "benison": "hahahahahhahaha",
-        "indexImg": "/images/chan-zai-128x128.png"
+        "indexImg": "/images/logo.png"
       }
     ],
     "shareName": "分享标题",
     "shareDetails": "分享描述",
-    "shareHeadImg": "/images/chan-zai-128x128.png",
+    "shareHeadImg": "/images/logo.png",
     "isShowJoinNum": 1
   }
 }

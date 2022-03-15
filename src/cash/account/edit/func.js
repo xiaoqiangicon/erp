@@ -41,8 +41,9 @@ func.fillInfo = function(info) {
     }
     $('#input-bank-card').val(info.bankCard);
   }
-  info.account && $('#input-account').val(info.account);
   if (data.type == 2) {
+    info.account && $('#input-person-account').val(info.account);
+    info.idCardNumber && $('#input-id-card-number').val(info.idCardNumber);
     info.templateImage &&
       $('#image-template').attr({
         src: info.templateImage,
@@ -59,9 +60,15 @@ func.fillInfo = function(info) {
         'data-uploaded': 1,
       });
   } else {
+    info.account && $('#input-company-account').val(info.account);
     info.licenceImage &&
       $('#image-licence').attr({
         src: info.licenceImage,
+        'data-uploaded': 1,
+      });
+    info.replenishCertificate &&
+      $('#image-replenish').attr({
+        src: info.replenishCertificate,
         'data-uploaded': 1,
       });
   }

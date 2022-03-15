@@ -11,6 +11,7 @@ var templateUpload;
 var idCard1Upload;
 var idCard2Upload;
 var licenceUpload;
+var replenishUpload;
 seeView({
   events: {
     'click [data-show-dialog]': 'onClickShowDialog',
@@ -19,6 +20,7 @@ seeView({
     '!click #upload-id-card-1': 'onClickUploadIdCard1',
     '!click #upload-id-card-2': 'onClickUploadIdCard2',
     '!click #upload-licence': 'onClickUploadLicence',
+    '!click #upload-replenish': 'onClickUploadReplenish',
     '!click #save': 'onClickSave',
     '!click #prev-step': 'onClickPrevStep',
     'change #input-bank': 'onChangeInputBank',
@@ -95,6 +97,21 @@ seeView({
     }
     licenceUpload.show();
   },
+  onClickUploadReplenish: function() {
+    if (!replenishUpload) {
+      replenishUpload = new ChooseImage({
+        multiSelect: !1,
+        onSubmit: function(items) {
+          $('#image-replenish').attr({
+            src: items[0].src,
+            'data-uploaded': 1,
+          });
+          $('#upload-replenish').text('更新补充资料');
+        },
+      });
+    }
+    replenishUpload.show();
+  },
   onClickSave: function(e) {
     var self = this,
       $this = $(e.target),
@@ -135,6 +152,7 @@ seeView({
   },
   checkFields: function() {
     var $imageLicence = $('#image-licence');
+    var $imageReplenish = $('#image-replenish');
     var $imageTemplate = $('#image-template');
     var $imageIdCard1 = $('#image-id-card-1');
     var $imageIdCard2 = $('#image-id-card-2');
@@ -145,9 +163,16 @@ seeView({
       bank: $('#input-bank').val(),
       subBank: $('#input-sub-bank').val(),
       bankCard: $('#input-bank-card').val(),
-      account: $('#input-account').val(),
+      account:
+        data.type === 1
+          ? $('#input-company-account').val()
+          : $('#input-person-account').val(),
+      idCardNumber: $('#input-id-card-number').val(),
       licenceImage: !!parseInt($imageLicence.attr('data-uploaded'))
         ? $imageLicence.attr('src')
+        : '',
+      replenishCertificate: !!parseInt($imageReplenish.attr('data-uploaded'))
+        ? $imageReplenish.attr('src')
         : '',
       templateImage: !!parseInt($imageTemplate.attr('data-uploaded'))
         ? $imageTemplate.attr('src')
@@ -186,6 +211,20 @@ seeView({
     if (data.type == 1 && !values.licenceImage) {
       values.success = !1;
       values.message = '许可证图片不能为空';
+      return values;
+    }
+    if (data.type == 2 && !values.idCardNumber) {
+      values.success = !1;
+      values.message = '身份证号不能为空，且须为15位或18位';
+      return values;
+    }
+    if (
+      data.type == 2 &&
+      values.idCardNumber.length !== 15 &&
+      values.idCardNumber.length !== 18
+    ) {
+      values.success = !1;
+      values.message = '身份证号须为15位或18位';
       return values;
     }
     if (data.type == 2 && !values.templateImage) {

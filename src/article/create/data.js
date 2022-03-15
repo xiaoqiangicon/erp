@@ -15,7 +15,8 @@ var data = {
   categories: void 0,
   uploadCoverInstance: void 0,
   imageParams: {
-    cover: '?imageMogr/v2/thumbnail/!900x500r/gravity/center/crop/!900x500',
+    cover:
+      '?imageMogr/v2/thumbnail/!900x500r/gravity/center/crop/!900x500/auto-orient',
   },
   saveTypeOriginText: ['存为草稿', '正式发布'],
   randomMoney:

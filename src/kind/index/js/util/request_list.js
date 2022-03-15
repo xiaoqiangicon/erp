@@ -3,6 +3,7 @@ import seeAjax from 'see-ajax';
 import '../../../../com-deprecated/pagination/index.less';
 import 'less/pagination.less';
 import Pagination from '../../../../com-deprecated/pagination';
+import commonFunc from 'common/function';
 import commonTpl from 'common/tpl';
 import data from '../data';
 import scrollTop from './scroll_top';
@@ -12,14 +13,13 @@ import '../ajax';
 import listTpl from '../tpl/main/detail/record';
 import contentTpl from '../tpl/main/detail/content';
 
-import upload from '../../../../../../pro-com/src/upload';
-import { makeUploadFileOptions } from '../../../../configs/upload';
+import multipartUpload from '../../../../com/multipartUpload';
 
 import coverVideoItemTpl from '../tpl/main/detail/cover_video_item';
 import coverPicTpl from '../tpl/main/detail/cover_pic_item';
 
 import ChooseImage from '../../../../com-deprecated/choose-image';
-import * as zzhHandling from '../../../../../pro-com/src/handling';
+import * as zzhHandling from '../../../../../../pro-com/src/handling';
 import recordCheckBeforeSave from '../util/record_check_before_save';
 import checkBeforeSave from '../util/check_before_save';
 
@@ -102,41 +102,45 @@ const requestList = (page, init) => {
             });
 
             // 发布进展上传视频
-            upload(
-              makeUploadFileOptions({
-                el: '.upload-video',
-                done: (url, e, data) => {
-                  $('[data-ele="video-upload-loading"]').remove();
-                  const $coverContainer = $('#cover-container');
-                  $coverContainer.append(
-                    coverVideoItemTpl({
-                      video: url,
-                    })
-                  );
-                },
-                progress: (e, data) => {
-                  const $coverContainer = $('#cover-container');
-                  $coverContainer.append($uploadLoading);
-                  $uploadLoading.show();
-                  const $progress = $('[data-ele="progress"]');
-                  const $progressText = $('[data-ele="progress-text"]');
-                  let progress = parseInt((data.loaded / data.total) * 100, 10);
-                  if (progress > 95) {
-                    progress = 95;
-                  }
-                  $progress.css({
-                    width: `${progress}%`,
-                  });
-                  $progressText.text(`${progress}%`);
-                },
-              })
-            );
+            multipartUpload({
+              el: '.upload-video',
+              done: (url, e, data) => {
+                $('[data-ele="video-upload-loading"]').remove();
+                const $coverContainer = $('#cover-container');
+                $coverContainer.append(
+                  coverVideoItemTpl({
+                    video: url,
+                  })
+                );
+              },
+              progress: (e, data) => {
+                const $coverContainer = $('#cover-container');
+                $coverContainer.append($uploadLoading);
+                $uploadLoading.show();
+                const $progress = $('[data-ele="progress"]');
+                const $progressText = $('[data-ele="progress-text"]');
+                let progress = parseInt((data.loaded / data.total) * 100, 10);
+                if (progress > 95) {
+                  progress = 95;
+                }
+                $progress.css({
+                  width: `${progress}%`,
+                });
+                $progressText.text(`${progress}%`);
+              },
+            });
 
             // 新增
             // 保存
             $('#save').click(e => {
               const $this = $(e.target);
               const result = checkBeforeSave();
+              let editUrl;
+              if ($('span[data-edit-url=0]').hasClass('link-select-active')) {
+                editUrl = '';
+              } else {
+                editUrl = $('#edit-link-input').val();
+              }
               result.data.charityId = charityId;
 
               if (!result.success) return;
@@ -150,10 +154,13 @@ const requestList = (page, init) => {
                   img: result.data.img.join(','),
                   video: '',
                   isPush: result.data.isPush,
+                  url: editUrl,
                 },
                 res => {
                   if (!res.success) {
-                    alert('操作失败');
+                    zzhHandling.hide();
+                    commonFunc.alert(res.msg || '保存出错，请稍后重试');
+                    $this.text(`保存`);
                     return;
                   }
                   zzhHandling.hide();
@@ -295,45 +302,43 @@ const requestList = (page, init) => {
                           alt="">
                   </div>`);
                   // $uploadRecordLoading.hide();
-                  upload(
-                    makeUploadFileOptions({
-                      el: $('.record-upload-video').eq(i),
-                      done: (url, e, data) => {
-                        $uploadRecordLoading.remove();
-                        const $recordItemVideo = $('.record-media').eq(i);
-                        $recordItemVideo.append(
-                          coverVideoItemTpl({
-                            video: url,
-                          })
-                        );
-                      },
-                      progress: (e, data) => {
-                        if (data.total >= 10485676 * 50) {
-                          $('.fail-big').show();
-                          return false;
-                        }
+                  multipartUpload({
+                    el: $('.record-upload-video').eq(i),
+                    done: (url, e, data) => {
+                      $uploadRecordLoading.remove();
+                      const $recordItemVideo = $('.record-media').eq(i);
+                      $recordItemVideo.append(
+                        coverVideoItemTpl({
+                          video: url,
+                        })
+                      );
+                    },
+                    progress: (e, data) => {
+                      if (data.total >= 10485676 * 50) {
+                        $('.fail-big').show();
+                        return false;
+                      }
 
-                        const $recordItemVideo = $('.record-media').eq(i);
-                        $recordItemVideo.append($uploadRecordLoading);
-                        $uploadRecordLoading.show();
-                        const $progress = $('[data-record-ele="progress"]');
-                        const $progressText = $(
-                          '[data-record-ele="progress-text"]'
-                        );
-                        let progress = parseInt(
-                          (data.loaded / data.total) * 100,
-                          10
-                        );
-                        if (progress > 95) {
-                          progress = 95;
-                        }
-                        $progress.css({
-                          width: `${progress}%`,
-                        });
-                        $progressText.text(`${progress}%`);
-                      },
-                    })
-                  );
+                      const $recordItemVideo = $('.record-media').eq(i);
+                      $recordItemVideo.append($uploadRecordLoading);
+                      $uploadRecordLoading.show();
+                      const $progress = $('[data-record-ele="progress"]');
+                      const $progressText = $(
+                        '[data-record-ele="progress-text"]'
+                      );
+                      let progress = parseInt(
+                        (data.loaded / data.total) * 100,
+                        10
+                      );
+                      if (progress > 95) {
+                        progress = 95;
+                      }
+                      $progress.css({
+                        width: `${progress}%`,
+                      });
+                      $progressText.text(`${progress}%`);
+                    },
+                  });
                   // 上传结束
                 });
             });
@@ -440,6 +445,7 @@ const requestList = (page, init) => {
                     img: result.data.img.join(','),
                     video: '',
                     isPush: result.data.isPush,
+                    url: recordScheduleList.list[index].url,
                   },
                   res => {
                     if (!res.success) return;
@@ -463,7 +469,6 @@ const requestList = (page, init) => {
                 data.list = data.scheduleList.list;
 
                 $('#remain-time').text(data.scheduleList.todayNum);
-                console.log(data.scheduleList);
                 // $('.update-content').html(contentTpl(data.scheduleList));
                 const $uploadLoading = $('[data-ele="video-upload-loading"]');
                 $uploadLoading.hide();
@@ -471,46 +476,43 @@ const requestList = (page, init) => {
                 $('.record-content').html(listTpl(recordScheduleList));
                 $('[data-remain-time]').text(data.scheduleList.todayNum);
                 $('.publish-mask').show();
-
+                console.log(recordScheduleList);
                 // 发布进展上传视频
-                upload(
-                  makeUploadFileOptions({
-                    el: '.upload-video',
-                    done: (url, e, data) => {
-                      $('[data-ele="video-upload-loading"]').remove();
-                      const $coverContainer = $('#cover-container');
-                      $coverContainer.append(
-                        coverVideoItemTpl({
-                          video: url,
-                        })
-                      );
-                    },
-                    progress: (e, data) => {
-                      const $coverContainer = $('#cover-container');
-                      $coverContainer.append($uploadLoading);
-                      $uploadLoading.show();
-                      const $progress = $('[data-ele="progress"]');
-                      const $progressText = $('[data-ele="progress-text"]');
-                      let progress = parseInt(
-                        (data.loaded / data.total) * 100,
-                        10
-                      );
-                      if (progress > 95) {
-                        progress = 95;
-                      }
-                      $progress.css({
-                        width: `${progress}%`,
-                      });
-                      $progressText.text(`${progress}%`);
-                    },
-                  })
-                );
+                multipartUpload({
+                  el: '.upload-video',
+                  done: (url, e, data) => {
+                    $('[data-ele="video-upload-loading"]').remove();
+                    const $coverContainer = $('#cover-container');
+                    $coverContainer.append(
+                      coverVideoItemTpl({
+                        video: url,
+                      })
+                    );
+                  },
+                  progress: (e, data) => {
+                    const $coverContainer = $('#cover-container');
+                    $coverContainer.append($uploadLoading);
+                    $uploadLoading.show();
+                    const $progress = $('[data-ele="progress"]');
+                    const $progressText = $('[data-ele="progress-text"]');
+                    let progress = parseInt(
+                      (data.loaded / data.total) * 100,
+                      10
+                    );
+                    if (progress > 95) {
+                      progress = 95;
+                    }
+                    $progress.css({
+                      width: `${progress}%`,
+                    });
+                    $progressText.text(`${progress}%`);
+                  },
+                });
 
                 // 新增
                 // 保存
                 $('#save').click(e => {
                   const $this = $(e.target);
-                  const result = checkBeforeSave();
                   result.data.charityId = charityId;
 
                   if (!result.success) return;
@@ -669,45 +671,43 @@ const requestList = (page, init) => {
                             alt="">
                     </div>`);
                       // $uploadRecordLoading.hide();
-                      upload(
-                        makeUploadFileOptions({
-                          el: $('.record-upload-video').eq(i),
-                          done: (url, e, data) => {
-                            $uploadRecordLoading.remove();
-                            const $recordItemVideo = $('.record-media').eq(i);
-                            $recordItemVideo.append(
-                              coverVideoItemTpl({
-                                video: url,
-                              })
-                            );
-                          },
-                          progress: (e, data) => {
-                            if (data.total >= 10485676 * 50) {
-                              $('.fail-big').show();
-                              return false;
-                            }
+                      multipartUpload({
+                        el: $('.record-upload-video').eq(i),
+                        done: (url, e, data) => {
+                          $uploadRecordLoading.remove();
+                          const $recordItemVideo = $('.record-media').eq(i);
+                          $recordItemVideo.append(
+                            coverVideoItemTpl({
+                              video: url,
+                            })
+                          );
+                        },
+                        progress: (e, data) => {
+                          if (data.total >= 10485676 * 50) {
+                            $('.fail-big').show();
+                            return false;
+                          }
 
-                            const $recordItemVideo = $('.record-media').eq(i);
-                            $recordItemVideo.append($uploadRecordLoading);
-                            $uploadRecordLoading.show();
-                            const $progress = $('[data-record-ele="progress"]');
-                            const $progressText = $(
-                              '[data-record-ele="progress-text"]'
-                            );
-                            let progress = parseInt(
-                              (data.loaded / data.total) * 100,
-                              10
-                            );
-                            if (progress > 95) {
-                              progress = 95;
-                            }
-                            $progress.css({
-                              width: `${progress}%`,
-                            });
-                            $progressText.text(`${progress}%`);
-                          },
-                        })
-                      );
+                          const $recordItemVideo = $('.record-media').eq(i);
+                          $recordItemVideo.append($uploadRecordLoading);
+                          $uploadRecordLoading.show();
+                          const $progress = $('[data-record-ele="progress"]');
+                          const $progressText = $(
+                            '[data-record-ele="progress-text"]'
+                          );
+                          let progress = parseInt(
+                            (data.loaded / data.total) * 100,
+                            10
+                          );
+                          if (progress > 95) {
+                            progress = 95;
+                          }
+                          $progress.css({
+                            width: `${progress}%`,
+                          });
+                          $progressText.text(`${progress}%`);
+                        },
+                      });
                       // 上传结束
                     });
                 });
@@ -813,6 +813,7 @@ const requestList = (page, init) => {
                         content: result.data.content,
                         img: result.data.img.join(','),
                         video: '',
+                        url: recordScheduleList.list[index].url,
                         isPush: result.data.isPush,
                       },
                       res => {

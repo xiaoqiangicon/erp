@@ -15,6 +15,9 @@ seeView({
     'click .upload-pic': 'onClickUploadPic',
     // 首页切换发布进展/发布记录
     'click .header-item': 'onClickHeaderItem',
+    // 修改引导链接
+    'click [data-edit-url]': 'onClickEditUrl',
+    'input #edit-link-input': 'inputEditLink',
     // 点击关闭发布弹窗
     'click #close-publish': 'onClickClosePublish',
   },
@@ -47,6 +50,23 @@ seeView({
       .addClass('push-select-active')
       .siblings()
       .removeClass('push-select-active');
+  },
+
+  // 选择是否修改url
+  onClickEditUrl: e => {
+    $('[data-edit-url]').removeClass('link-select-active');
+    $(e.target).addClass('link-select-active');
+    if ($(e.target).attr('data-edit-url') === '1') {
+      $('#set-link-box').css('display', 'block');
+    } else {
+      $('#set-link-box').css('display', 'none');
+    }
+  },
+
+  inputEditLink: e => {
+    if (e.target.value.length < 25) {
+      e.target.value = 'https://wx.zizaihome.com/';
+    }
   },
 
   // 上传图片

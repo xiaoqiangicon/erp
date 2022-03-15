@@ -1,0 +1,54 @@
+{
+  "msg": "\u6210\u529f",
+  "data": [
+    {
+      "update_time": "2019-07-11 17:45:10",
+      "feedBackPicList": [],
+      "subsidy_counter_fee": 0.0,
+      "type": 4,
+      "price": 0.02,
+      "picList": [],
+      "counter_fee": 0.0,
+      "answer": "",
+      "details": [
+        {
+          "data": [
+            {
+              "temple_id": 4,
+              "op_status": 0,
+              "order_num": 2,
+              "rateList": [],
+              "id": 20424,
+              "addition": "",
+              "question": "",
+              "percentMoney": 0.02,
+              "counter_fee": 0.0,
+              "add_time": "2019-07-11 17:45:11",
+              "type": 1,
+              "handlingFee": 0.0,
+              "update_time": "2019-07-11 17:45:11",
+              "serviceMoney": 0.0,
+              "subsidy_counter_fee": 0.0,
+              "price": 0.02,
+              "promotionMoney": 0.0,
+              "remarks": "",
+              "income_time": "2019-05-01 00:00:00",
+              "name": "\u5fae\u4f9b\u5949",
+              "pick_up_id": 986,
+              "commodity_id": 0,
+              "bill_id": 29025
+            }
+          ],
+          "month": "\u5fae\u4f9b\u5949"
+        }
+      ],
+      "specialPickUpMoney": 0.0,
+      "remarks": "",
+      "reward": 0.0,
+      "is_question": 0,
+      "id": 986,
+      "add_time": "2019-07-11 17:45:10"
+    }
+  ],
+  "result": 1
+}

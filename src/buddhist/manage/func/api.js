@@ -23,6 +23,7 @@ api.updateBuddhistSchedule = function(params, callback) {
       callback && callback(res);
     } else {
       res.message && commonFunc.alert(res.message);
+      Data.isSubmit = 0;
     }
   });
 };

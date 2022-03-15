@@ -63,24 +63,6 @@ export default [
       'https://pic.zizaihome.com/eeeea67a-151c-11e7-aef2-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
   },
   {
-    id: 5738,
-    name: '鹿湖禅寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5738',
-    desc:
-      '鹿湖禅寺，始建于东晋太和年间。坐落于四都镇鹿湖嶂下的青山秀水中。其形恰似“双龙戏珠、铁扇关门”。既是信徒修禅悟道的朝拜处,又是人们旅游观光的胜地。',
-    cover:
-      'https://pic.zizaihome.com/65f870a6-eab6-11e7-ab96-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 5655,
-    name: '安仁寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5655',
-    desc:
-      '安仁寺座落在永中街道双岙村前，占地七千余平米，背倚陵丘，万木葱茏，北傍双溪，流水悠悠，南依丰台，群峰耸翠。',
-    cover:
-      'https://pic.zizaihome.com/038c4e30-071a-11e8-8a9e-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
     id: 5671,
     name: '长寿禅寺',
     link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5671',
@@ -178,33 +160,6 @@ export default [
       '大洪山为佛教圣山，始建于唐，至南宋初，与五台、普陀齐名，僧众二千，法席天下，为临济宗、曹洞宗、华严宗祖庭。各朝皇帝屡次赐封：清净禅林、幽济禅院、灵峰禅院等。后遭战火灾患，屡毁屡建，历唐宋元明清，直到抗日战争，完全损毁。',
     cover:
       'https://pic.zizaihome.com/8bb30c5a-1516-11e7-aef2-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 5616,
-    name: '重庆华岩寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5616',
-    desc:
-      '重庆华岩寺距市中区23公里，寺庙依山傍水，雄伟壮观，全寺由大老山（待漏山）的华岩洞、接引殿和华岩寺建筑群三部份组成，被誉为巴山灵境，川东第一名刹，为国家文物保护单位。',
-    cover:
-      'https://pic.zizaihome.com/4430f3f2-5d68-11e7-93cf-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 5612,
-    name: '海口心灯讲堂',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5612',
-    desc:
-      '心灯讲堂是以佛教为主体，结合讲座、香道、茶道、养生等开展高端培训课程的禅修中心。',
-    cover:
-      'https://pic.zizaihome.com/d6709e2c-5d3e-11e7-93cf-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 5581,
-    name: '温州圣寿禅寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5581',
-    desc:
-      '千年古刹—圣寿禅寺，又名仙岩寺，位于镇江温州瓯海区仙岩风景区的入口处。圣寿禅寺始建于唐贞观年间（627－649），开山祖师为慧通归一。慧通归一禅师从四明山来此开基重兴，自此圣寿寺历代扩拓发展。北宋大中祥符二年（1009年），吏部侍郎姚揆奏请真宗皇帝，敕赐“圣寿禅寺”。',
-    cover:
-      'https://pic.zizaihome.com/e7009ed0-acc7-11e7-bcf8-00163e0c001e.png?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
   },
   {
     id: 5604,

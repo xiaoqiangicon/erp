@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import commonData from './data';
 import './ajax';
-import './bind';
 import './view';
 import 'lib/bootstrap-material-datetimepicker';
 
@@ -9,7 +8,7 @@ $.ajaxSetup({
   cache: !1,
 });
 
-var defaultExtremeDate,
+var defaultExtremeDate = {},
   $paginationContainers = $('#pagination-containers'),
   $paginationContentContainers = $('#pagination-content-containers');
 $('[data-select-date]').bootstrapMaterialDatePicker({
@@ -27,27 +26,31 @@ if (commonData.params.year) {
     commonData.params.month
   );
 }
-$('[data-select-date="1"]').val(defaultExtremeDate.start);
-$('[data-select-date="2"]').val(defaultExtremeDate.end);
+$('[data-select-date="1"]').val(defaultExtremeDate.start || '');
+$('[data-select-date="2"]').val(defaultExtremeDate.end || '');
 $paginationContainers.append(
   commonData.tpl.paginationContainer.render({
-    startDate: !!defaultExtremeDate ? defaultExtremeDate.start : '',
-    endDate: !!defaultExtremeDate ? defaultExtremeDate.end : '',
+    startDate: defaultExtremeDate.start || '',
+    endDate: defaultExtremeDate.end || '',
   })
 );
 $paginationContentContainers.append(
   commonData.tpl.dateContentContainer.render({
-    startDate: !!defaultExtremeDate ? defaultExtremeDate.start : '',
-    endDate: !!defaultExtremeDate ? defaultExtremeDate.end : '',
+    startDate: defaultExtremeDate.start || '',
+    endDate: defaultExtremeDate.end || '',
   })
 );
 $paginationContentContainers.find('[data-date-content]').html(
   commonData.tpl.paginationContentContainer.render({
     page: 1,
-    startDate: !!defaultExtremeDate ? defaultExtremeDate.start : '',
-    endDate: !!defaultExtremeDate ? defaultExtremeDate.end : '',
+    startDate: defaultExtremeDate.start || '',
+    endDate: defaultExtremeDate.end || '',
   })
 );
 !!commonData.params.year
-  ? commonData.requestList(defaultExtremeDate.start, defaultExtremeDate.end, 1)
+  ? commonData.requestList(
+      defaultExtremeDate.start || '',
+      defaultExtremeDate.end || '',
+      1
+    )
   : commonData.requestList();

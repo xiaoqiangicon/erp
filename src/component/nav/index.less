@@ -1,0 +1,476 @@
+.component-nav a {
+  color: #5a5a5a;
+}
+.component-nav a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+.component-nav-header {
+  background: url('https://pic.zizaihome.com/6f53dfd4-28d0-11e8-983b-00163e0c001e.jpg')
+    no-repeat;
+  background-size: cover;
+  height: 96px;
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.component-nav-logo-container {
+  float: left;
+}
+.component-nav-logo {
+  background: url('https://pic.zizaihome.com/85b62962-28d0-11e8-98cd-00163e0c001e.png')
+    no-repeat center;
+  background-size: 100%;
+  display: inline-block;
+  width: 138px;
+  height: 96px;
+  line-height: 96px;
+  margin-left: 20px;
+}
+.component-nav-top-nav {
+  float: right;
+}
+.component-nav-top-nav-right {
+  padding-left: 40px;
+}
+.component-nav-top-nav-right > li > a:focus,
+.component-nav-top-nav-right > li > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.component-nav-top-nav-right .open > a,
+.component-nav-top-nav-right .open > a:focus,
+.component-nav-top-nav-right .open > a:hover {
+  background-color: transparent;
+  border-color: #337ab7;
+}
+.component-nav-top-nav-right > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+/* 头部右边下拉框 */
+.component-nav-username {
+  display: inline-block;
+  color: #fff;
+  font-size: 18px;
+  padding: 21px 36px 0 0;
+}
+.component-nav-caret {
+  border-top: 8px dashed #fff;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  margin-right: 50px;
+  margin-bottom: 6px;
+}
+.component-nav li {
+  list-style: none;
+}
+.component-nav-logout {
+  min-width: 120px;
+  padding: 0;
+  margin: 0;
+  background-color: #f4f7f7;
+}
+.component-nav-logout li {
+  border-bottom: 1px solid #e7e7eb;
+}
+
+.component-nav-logout li:nth-child(3) {
+  border-bottom: none;
+}
+
+.component-nav-logout > li > a {
+  padding: 21px 17px 21px 19px;
+  color: #5a5a5a;
+  width: 156px;
+  white-space: normal;
+}
+
+/* 左边导航栏 */
+.component-nav-aside {
+  margin-right: 15px;
+  overflow: hidden;
+  width: 196px;
+  min-height: 500px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+}
+
+.component-nav-aside::before {
+  content: '';
+  display: block;
+  background: url('https://pic.zizaihome.com/a855d7ba-28d0-11e8-983b-00163e0c001e.png')
+    no-repeat;
+  width: 206px;
+  height: 12px;
+  position: absolute;
+  left: 0;
+}
+
+.component-nav-aside-top {
+  padding: 14px;
+  list-style: none;
+  border: 1px solid #e7e7eb;
+  border-bottom-width: 0;
+  width: 196px;
+  overflow: hidden;
+}
+
+.component-nav-menu {
+  padding: 0;
+  margin: 0;
+}
+
+.component-nav-menu li {
+  list-style: none;
+  border: 1px solid #e7e7eb;
+  border-bottom-width: 0;
+  width: 196px;
+  overflow: hidden;
+}
+
+.component-nav-menu li:hover {
+  cursor: pointer;
+}
+
+.component-nav-menu li a:hover {
+  background-color: rgb(111, 186, 44);
+  opacity: 0.6;
+  color: #fff;
+}
+
+.component-nav-menu li a:hover span {
+  color: #fff;
+}
+
+.component-nav-menu li a:focus {
+  color: #fff;
+}
+
+.component-nav-menu > li:last-child {
+  border-bottom-width: 1px;
+}
+
+.component-nav-menu li a {
+  padding: 14px;
+  display: block;
+}
+
+.component-nav-sub-menu {
+  padding: 0 !important;
+}
+.component-nav-menu .icon {
+  font-size: 24px;
+  vertical-align: middle;
+  padding-right: 15px;
+}
+.component-nav-menu .green {
+  color: rgb(111, 186, 44);
+}
+
+.component-nav-menu .arrow {
+  padding-top: 5px;
+  font-weight: 100;
+  -webkit-transition: transform 0.5s;
+  -moz-transition: transform 0.5s;
+  -o-transition: transform 0.5s;
+  transition: transform 0.5s;
+}
+
+.component-nav-menu .arrow.active {
+  -webkit-animation: toggle-icon 0.3s;
+  -o-animation: toggle-icon 0.3s;
+  animation: toggle-icon 0.3s;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+@keyframes toggle-icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.component-nav-sub-menu-inner {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+.component-nav-sub-menu-inner > li {
+  border-right-width: 0;
+  border-left-width: 0;
+}
+
+.component-nav-sub-menu-inner > li > a {
+  padding-left: 50px;
+  background-color: #f4f7f7;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.component-nav-menu-item-header,
+.component-nav-menu-item-header * {
+  color: rgb(111, 186, 44);
+}
+.component-nav-menu-item-header .text {
+  color: #333;
+}
+.component-nav-menu-item-header.active,
+.component-nav-menu-item-header.active * {
+  background-color: rgb(111, 186, 44) !important;
+  color: #fff !important;
+}
+.component-nav .boots-icon {
+  font-size: 24px;
+  vertical-align: middle;
+  padding-right: 15px;
+}
+.component-nav-sub-menu-inner li a.active {
+  background-color: rgb(111, 186, 44) !important;
+  color: #fff !important;
+}
+.component-nav-help-center {
+  float: right;
+  display: block;
+  margin-top: 34px;
+  line-height: 20px;
+}
+.component-nav-help-center-text {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 18px;
+  color: #ffffff;
+}
+.component-nav-help-center-icon {
+  background: url('https://pic.zizaihome.com/b78d505a-28d0-11e8-983b-00163e0c001e.png')
+    no-repeat;
+  background-size: 100%;
+  width: 20px;
+  height: 20px;
+  float: right;
+}
+.component-nav-help-center:hover .component-nav-help-center-icon {
+  background-image: url('https://pic.zizaihome.com/bfca91ce-28d0-11e8-98cd-00163e0c001e.png');
+}
+.component-nav-help-center:hover .component-nav-help-center-text {
+  color: #fff;
+}
+.notice-btn-box {
+  position: relative;
+  float: right;
+  margin: 31px 50px 0 0;
+  cursor: pointer;
+  .n-text {
+    font-size: 18px;
+    color: #ffffff;
+  }
+  .n-num {
+    display: none;
+    position: absolute;
+    top: -15px;
+    right: 0;
+    transform: translateX(80%);
+    padding: 0 8px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    border-radius: 14px;
+    color: #ffffff;
+    background-color: #f02c2c;
+  }
+}
+
+/* 通知中心侧栏 */
+.component-nav-notice {
+  position: fixed;
+  right: -457px;
+  top: 96px;
+  width: 457px;
+  padding-bottom: 76px;
+  z-index: 1000;
+  background-color: #ffffff;
+  .n-header {
+    position: relative;
+    height: 64px;
+    border-bottom: 1px solid rgba(112, 112, 112, 0.35);
+    .n-text {
+      padding-left: 20px;
+      line-height: 64px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333333;
+    }
+    .n-close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      width: 14px;
+      height: 14px;
+      background-image: url(https://pic.zizaihome.com/5d5b289b-f370-43ff-a334-e9111c8d0efa.png);
+      background-size: 100%;
+      cursor: pointer;
+    }
+  }
+  .n-container {
+    position: relative;
+    height: calc(100vh - 160px);
+    .n-footer {
+      display: block;
+      width: 100%;
+      height: 76px;
+      line-height: 76px;
+      text-align: center;
+      background-color: #71ba31;
+      font-size: 20px;
+      color: #ffffff;
+    }
+    .n-main {
+      height: calc(100vh - 236px);
+      overflow-y: auto;
+      .notice-item {
+        cursor: pointer;
+        position: relative;
+        padding: 15px 20px;
+        .n-item-head {
+          display: flex;
+          justify-content: space-between;
+          .n-tab {
+            width: 65px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            background: rgba(248, 112, 36, 1);
+            border-radius: 15px;
+            font-size: 18px;
+            color: #ffffff;
+          }
+          .n-date {
+            font-size: 15px;
+            line-height: 21px;
+            color: rgba(96, 96, 96, 1);
+          }
+        }
+        .n-item-op {
+          display: none;
+          justify-content: space-between;
+          padding-bottom: 3px;
+          .n-text {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+            color: rgba(136, 136, 136, 1);
+          }
+          .n-read-btn {
+            font-size: 16px;
+            line-height: 22px;
+            color: rgba(74, 144, 226, 1);
+          }
+        }
+        .n-title {
+          margin-top: 15px;
+          word-break: break-all;
+          font-size: 18px;
+          line-height: 25px;
+          color: rgba(96, 96, 96, 1);
+        }
+        &:after {
+          position: absolute;
+          left: 20px;
+          bottom: 0;
+          content: '';
+          width: 417px;
+          height: 1px;
+          background-color: rgba(112, 112, 112, 0.15);
+        }
+        &:hover {
+          .n-item-head {
+            display: none;
+          }
+          .n-item-op {
+            display: flex;
+          }
+          background-color: rgba(152, 194, 246, 0.15);
+        }
+      }
+      .notice-item:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    .notice-null {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      .n-img {
+        width: 150px;
+        margin: 0 auto 25px;
+        > img {
+          width: 100%;
+        }
+      }
+      .n-text {
+        text-align: center;
+        font-size: 16px;
+        line-height: 22px;
+        color: rgba(51, 51, 51, 1);
+      }
+      .n-more-btn {
+        display: block;
+        margin: 100px auto 0;
+        width: 234px;
+        height: 47px;
+        line-height: 47px;
+        text-align: center;
+        background: rgba(113, 186, 49, 1);
+        border-radius: 24px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
+
+/* 供佛墙导航图标 */
+.buddha-logo {
+  box-sizing: content-box !important;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('https://pic.zizaihome.com/d5569826-28d0-11e8-98cd-00163e0c001e.png');
+  background-position: initial;
+  background-repeat: no-repeat;
+}
+[data-menu-item-id='buddha']
+  > .component-nav-menu-item-header:hover
+  .buddha-logo {
+  background-image: url('https://pic.zizaihome.com/de3a831c-28d0-11e8-983b-00163e0c001e.png');
+}
+
+/* 功德主导航图标 */
+.merit-logo {
+  box-sizing: content-box !important;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('https://pic.zizaihome.com/f1982f36-28d0-11e8-98cd-00163e0c001e.png');
+  background-position: initial;
+  background-repeat: no-repeat;
+}
+[data-menu-item-id='merit']
+  > .component-nav-menu-item-header:hover
+  .merit-logo {
+  background-image: url('https://pic.zizaihome.com/f9ee71ae-28d0-11e8-983b-00163e0c001e.png');
+}
+
+/* end */

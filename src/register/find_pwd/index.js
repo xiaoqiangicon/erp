@@ -1,7 +1,7 @@
 /* 账户密码安全更新（重置密码）页面 */
 
 import 'less/reset.less';
-import '../../../pro-com/src/element-ui/theme-zzh/index.css';
+import '../../../../pro-com/src/element-ui/theme-zzh/index.css';
 import './utils/api';
 import Vue from 'vue';
 import App from './App.vue';

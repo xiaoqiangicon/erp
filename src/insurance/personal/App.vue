@@ -232,7 +232,7 @@ import { Notification } from 'element-ui';
 import seeAjax from 'see-ajax';
 import { parse } from 'path';
 import zzhUtil from '../../com-deprecated/util';
-import { getDate, urlParams } from '../../../pro-com/src/utils';
+import { getDate, urlParams } from '../../../../pro-com/src/utils';
 
 import Detail from './components/Detail';
 import Delete from './components/Delete';

@@ -280,7 +280,7 @@ var tpl = {
             <button class="btn btn-default btn-sm article-select-cell-action {@if status == 4}red{@/if}" {@if status != 4}data-swipe-list-selected="0" data-type="\${type}" data-image-id="\${id}" data-image="\${image}" data-content="\${content}" data-component-id="\${componentId}" data-status="\${status}"{@/if}>{@if status == 4}未审核{@else}选取{@/if}</button>
             {@if ended}<p class="article-select-cell-ended-mark">已结束</p>{@/if}
             {@if unStarted}<p class="article-select-cell-un-started-mark">未开始</p>{@/if}
-            <p class="article-select-cell-text">\${content}</p>
+            <p class="article-select-cell-text">\${showName}</p>
         </div>
     `,
   editPopupPagination: `

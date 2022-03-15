@@ -112,14 +112,6 @@ export default [
       'https://pic.zizaihome.com/ed97de74-8d00-46f2-956a-eb400befec94.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
   },
   {
-    id: 2818,
-    title: '本焕寺第十五期施放千台焰口及供灯法会,详情请扫二维码',
-    templeName: '佛山本焕寺',
-    link: 'https://wx.zizaihome.com/commodity/commodityAuth?commodityId=2818',
-    cover:
-      'https://pic.zizaihome.com/027fcf7e-f9e3-11e7-88d4-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
     id: 1894,
     title: '观音寺丁酉年盂兰盆暨大蒙山施食法会通启',
     templeName: '盘锦观音寺',
@@ -134,14 +126,6 @@ export default [
     link: 'https://wx.zizaihome.com/commodity/commodityAuth?commodityId=2471',
     cover:
       'https://pic.zizaihome.com/66127ad4-9df2-11e7-8c29-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 1875,
-    title: '禅修交流丨深圳五星寺院参禅悟道，约否？',
-    templeName: '深圳般若禅寺',
-    link: 'https://wx.zizaihome.com/commodity/commodityAuth?commodityId=1875',
-    cover:
-      'https://pic.zizaihome.com/4aef8424-20c8-11e7-8761-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
   },
   {
     id: 162,

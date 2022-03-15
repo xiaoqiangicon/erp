@@ -105,6 +105,15 @@ table tr > td {
   text-align: center;
 }
 
+.forbid-label {
+  display: inline-block;
+  padding: 6px 4px;
+  border-radius: 4px;
+  background-color: #6fba2c;
+  cursor: pointer;
+  color: #fff;
+}
+
 .table-cell-button,
 .table-cell-link,
 .table-cell-link a {
@@ -346,6 +355,27 @@ input[type='radio']:checked + .radio {
   display: inline;
   font-weight: normal;
 }
+
+.btn-border {
+  display: inline-block;
+  height: 26px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 1px 10px;
+  border: 1px solid rgba(152, 152, 152, 1);
+  border-radius: 3px;
+  line-height: 22px;
+  color: rgba(152, 152, 152, 1);
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn-border.active {
+  border: 1px solid rgb(81, 142, 194);
+  color: rgb(81, 142, 194);
+}
+.set-cont .btn-border:last-child {
+  margin-right: 0;
+}
 /*schedule-modal*/
 .schedule-modal-head {
   height: 50px;
@@ -430,6 +460,20 @@ input[type='radio']:checked + .radio {
   top: -5px;
   right: -5px;
   cursor: pointer;
+}
+.set-link {
+  padding-left: 16px;
+}
+.set-link-box {
+  display: none;
+}
+.edit-link-input {
+  width: 60%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 26px;
+  padding-left: 8px;
 }
 .push-times {
   display: inline-block;

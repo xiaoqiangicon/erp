@@ -20,7 +20,10 @@
           <div class="tip-section" data-same-height="1">
             <p class="fs16 fb">温馨提示</p>
             <p>
-              1.此电子账单由自在家善款系统计算生成，请选择您需要提现的项目，双方核对此结算账单后，将在
+              1.此电子账单由自在家财务系统计算生成，请选择您需要提现的项目，双方核对此结算账单后，<span
+                style="font-size: 20px;color: red;font-weight: bold;"
+                >收款方上传收据</span
+              >，将在
               <span class="green">3~5个工作日</span
               >（双休日或法定节假日顺延）为您提现到账。
             </p>
@@ -105,7 +108,7 @@
         <div class="detail-section">
           <div class="title">
             <div class="title-text">
-              <span data-temple-name="1"></span>善款电子账单
+              <span data-temple-name="1"></span>提现电子账单
             </div>
           </div>
           <div id="status-containers">
@@ -137,12 +140,12 @@
     </script>
     <script type="text/html" id="tpl-content-unit">
       <div class="content">
-          {@each monthsData as oneMonthData}
+          {@each data as item}
           <div class="unit-container">
               <div class="head">
                   <div class="unit unit-head">
                       <div class="unit-inner">
-                          <div class="cell cell-name">${oneMonthData.year}年${oneMonthData.month}月项目</div>
+                          <div class="cell cell-name">项目</div>
                           <div class="cell">数量</div>
                           <div class="cell">金额</div>
                           <div class="cell">增值服务费</div>
@@ -153,38 +156,36 @@
                   </div>
               </div>
               <div class="body">
-                  {@each oneMonthData.bills as bill}
-                  <div class="unit {@if !bill.category}small{@/if}" data-unit="${bill.id}" data-status="${status}">
-                      {@if !bill.disabled}
-                      <button class="clean-button unit-select active" data-select-bill="${year}" data-bill-id="${bill.id}" data-status="${status}" data-count="${bill.count}" data-money="${bill.money}" data-fee="${bill.fee}" data-charge="${bill.charge}" data-assistance="${bill.assistance}"><i class="glyphicon glyphicon-ok"></i></button>
-                      {@/if}
-                      <div class="unit-inner">
-                          <div class="cell cell-name">
-                              <p>${bill.title}</p>
-                              {@if !!bill.category}<p>【${bill.category}】</p>{@/if}
-                              <p>
-                                  {@if !!bill.disabled}<span class="badge-1 badge-1-yellow">推广期不可提</span>{@/if}
-                                  {@if !!bill.fee}<span class="badge-1 badge-1-blue">增值服务费</span>{@/if}
-                                  {@if !!bill.promoteAmountForZzh}<span class="badge-1 badge-1-blue">功能服务费</span>{@/if}
-                                  {@if !!bill.promoteAmountForUser}<span class="badge-1 badge-1-blue">推广员奖励金</span>{@/if}
-                                  {@if !!bill.assistance}<span class="badge-1 badge-1-green">自在家支付渠道补贴</span>{@/if}
-                              </p>
-                          </div>
-                          <div class="cell">${bill.count}</div>
-                          <div class="cell">￥${bill.money}</div>
-                          <div class="cell">{@if !!bill.fee}-￥${bill.fee}{@else}-{@/if}</div>
-                          <div class="cell">{@if !!bill.charge}-￥${bill.charge}{@else}-{@/if}</div>
-                          <div class="cell" style="display: none">{@if !!bill.assistance}+￥${bill.assistance}{@else}-{@/if}</div>
-                          <div class="cell" style="display: none">${bill.extra}</div>
-                      </div>
-                  </div>
-                  {@/each}
+                <div class="unit {@if !category}small{@/if}" data-unit="${item.ids}" data-status="${status}">
+                    {@if !item.isPromotion}
+                    <button class="clean-button unit-select active" data-select-bill="${year}" data-bill-id="${item.ids}" data-status="${status}" data-count="${item.order_num}" data-money="${item.price}" data-promotionMoney="${item.promotionMoney}" data-fee="${item.percentMoney}" data-charge="${item.counter_fee}" data-assistance="${item.subsidy_counter_fee}"><i class="glyphicon glyphicon-ok"></i></button>
+                    {@/if}
+                    <div class="unit-inner">
+                        <div class="cell cell-name">
+                            <p>${item.name}</p>
+                            {@if !!category}<p>【${category}】</p>{@/if}
+                            <p>
+                                {@if !!item.isPromotion}<span class="badge-1 badge-1-yellow">推广期不可提</span>{@/if}
+                                {@if !!item.percentMoney}<span class="badge-1 badge-1-blue">增值服务费</span>{@/if}
+                                {@if !!item.serviceMoney}<span class="badge-1 badge-1-blue">功能服务费</span>{@/if}
+                                {@if !!item.promotionMoney}<span class="badge-1 badge-1-blue">推广员奖励金</span>{@/if}
+                                {@if !!item.subsidy_counter_fee}<span class="badge-1 badge-1-green">自在家支付渠道补贴</span>{@/if}
+                            </p>
+                        </div>
+                        <div class="cell">${item.order_num}</div>
+                        <div class="cell">￥${item.price}</div>
+                        <div class="cell">{@if !!item.percentMoney}-￥${item.percentMoney}{@else}-{@/if}</div>
+                        <div class="cell">{@if !!item.counter_fee}-￥${item.counter_fee}{@else}-{@/if}</div>
+                        <div class="cell" style="display: none">{@if !!item.subsidy_counter_fee}+￥${item.subsidy_counter_fee}{@else}-{@/if}</div>
+                        <div class="cell" style="display: none">${extra}</div>
+                    </div>
+                </div>
               </div>
           </div>
           {@/each}
       </div>
       <div class="foot">
-          <button class="clean-button unit-select active" data-select-all-bills="${year}" data-status="${status}" data-total-count="${totalCount}" data-total-money="${totalMoney}" data-total-fee="${totalFee}" data-total-charge="${totalCharge}" data-total-assistance="${totalAssistance}"><i class="glyphicon glyphicon-ok"></i></button>
+          <button class="clean-button unit-select active" data-select-all-bills="${year}" data-status="${status}" data-total-totalPromoteAmountForUser="${totalPromoteAmountForUser}" data-total-count="${totalCount}" data-total-money="${totalMoney}" data-total-fee="${totalFee}" data-total-charge="${totalCharge}" data-total-assistance="${totalAssistance}"><i class="glyphicon glyphicon-ok"></i></button>
           <div class="foot-inner">
               <span class="foot-text left">全选</span>
               <span class="foot-text right fs16" style="display: none;">提现金额：¥<span data-show-real-total-money="${year}" data-status="${status}">${realTotalMoney}</span>（妙严科技将为您补助支付渠道手续费：¥<span data-show-total-assistance="${year}" data-status="${status}">${totalAssistance}</span>）</span>
@@ -211,7 +212,7 @@
               {@if totalPromoteAmountForUser}
               <p>
                   <span class="badge-1 badge-1-yellow pd-l-20 pd-r-20 mg-r-20">减去</span>
-                  推广员奖励金：<span data-show-total-fee="${year}" data-status="${status}">${totalPromoteAmountForUser}</span> 元
+                  推广员奖励金：<span data-show-total-promotion="${year}" data-status="${status}">${totalPromoteAmountForUser}</span> 元
                   <button class="clean-button glyphicon glyphicon-question-sign blue" data-tippy-content="奖励金是结算给推广员的金额"></button>
               </p>
               {@/if}
@@ -231,7 +232,7 @@
               </p>
           </div>
       </div>
-      <div class="total" style="display: none;">
+      <div class="total" style="display: none;" data-detail="1">
           <div class="unit-container">
               <div class="head">
                   <div class="unit unit-head">
@@ -281,7 +282,7 @@
       <div class="dialog-background" data-popup-overlay="2"></div>
       <div class="prize-box dialog-pane dialog-prize">
         <div class="close-icon">
-          <span class="prize-close-icon" data-popup-overlay="7"></span>
+          <span class="prize-close-icon" data-popup-close="7"></span>
         </div>
         <div class="confirm-content-2">
           <div class="confirm-content-img fr">
@@ -382,7 +383,7 @@
       <div class="dialog-background" data-popup-overlay="8"></div>
       <div class="confirm-3 prize-box dialog-pane dialog-prize">
         <div class="close-icon">
-          <span class="prize-close-icon" data-popup-overlay="7"></span>
+          <span class="prize-close-icon" data-popup-close="7"></span>
         </div>
         <div class="confirm-content-2">
           <div class="confirm-content-img fr">
@@ -455,7 +456,7 @@
             />
           </div>
           <p class="fs16 fwb text-center mgt20">
-            您有正在进行中的提现账单，善款系统正在结算中无法申请提现
+            您有正在进行中的提现账单，财务系统正在结算中无法申请提现
           </p>
           <p class="mgt20 mgb0 pdl10 gray">
             1.请您耐心等待我们将在<span class="green">3~5个工作日</span
@@ -490,7 +491,7 @@
       <div class="dialog-pane">
         <div class="dialog-top">
           <div class="dialog-title">温馨提示</div>
-          <div class="dialog-close" data-popup-overlay="5">X</div>
+          <div class="dialog-close" data-popup-close="5">X</div>
         </div>
         <div class="dialog-content">
           <div class="text-center">
@@ -526,7 +527,7 @@
       <div class="dialog-pane">
         <div class="dialog-top">
           <div class="dialog-title">温馨提示</div>
-          <div class="dialog-close" data-popup-overlay="6">X</div>
+          <div class="dialog-close" data-popup-close="6">X</div>
         </div>
         <div class="dialog-content">
           <div class="text-center">
@@ -561,7 +562,7 @@
       <div class="dialog-background" data-popup-overlay="7"></div>
       <div class="prize-box dialog-pane dialog-prize">
         <div class="close-icon">
-          <span class="prize-close-icon" data-popup-overlay="7"></span>
+          <span class="prize-close-icon" data-popup-close="7"></span>
         </div>
         <div class="prize-padding-box">
           <div class="prize-top">
@@ -577,7 +578,7 @@
             <div class="prize-title-box">
               <span class="arrow-1"></span>
               <span class="arrow-2"></span>
-              <h1 class="prize-title">已累计筹得善款</h1>
+              <h1 class="prize-title">已累计筹得金额</h1>
               <span class="rmb">￥</span
               ><span class="prize-money" id="prize-sum">0.0</span>
               <p class="prize-title-text">
@@ -611,8 +612,12 @@
               <span id="pre-20"></span>
             </div>
             <div class="selection" id="slection-6" prize-selection="30">
-              <span class="selection-rmb">￥</span>
-              <span id="pre-30"></span>
+              <input
+                id="pre-30"
+                class="customize-money"
+                type="number"
+                placeholder="自定义金额"
+              />
             </div>
           </div>
           <div class="prize-button">
@@ -637,7 +642,7 @@
         />
         <div class="container-6">
           自在家已为您带来
-          <span class="special" id="prize-sum">0.0</span> 元善款收入。<br />
+          <span class="special" id="prize-sum">0.0</span> 元收入。<br />
           您愿意帮助自在家成长，给我们些支持么？
         </div>
         <div class="container-1">
@@ -682,7 +687,7 @@
       <div class="dialog-pane agree-pane">
         <div class="dialog-top agree-top">
           <div class="dialog-title">《打赏服务协议》</div>
-          <div class="dialog-close" data-popup-overlay="8">X</div>
+          <div class="dialog-close" data-popup-close="8">X</div>
         </div>
         <div class="dialog-content agree-content">
           <div class="agree-content-inner">

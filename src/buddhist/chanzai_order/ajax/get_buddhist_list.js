@@ -11,19 +11,23 @@ const refactor = {
         },
       ],
       subList: 'subdivideList',
-      buddhistId: 'commodityId',
+      buddhistId: 'id',
       buddhistName: 'name',
     },
   ],
 };
 
-const post = res => {};
+const post = res => {
+  res.data.forEach(item => {
+    item.buddhistName = item.id + '-' + item.name;
+  });
+};
 
 seeAjax.config('getBuddhistList', {
   method: ['get'],
   stringify: [!0],
   url: [
-    '/zzhadmin/getCommodityNameList',
+    '/zzhadmin/getConversionCommodityList',
     '/src/buddhist/chanzai_order/mock/get_buddhist_list.json',
   ],
   refactor: [refactor, refactor],

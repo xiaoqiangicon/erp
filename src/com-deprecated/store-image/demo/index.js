@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import seeAjax from 'see-ajax';
-import StoreImage from '../src';
+import StoreImage from '..';
 window.storeImageSaveUrl = (url, successCallback, errorCallback) => {
   setTimeout(() => {
     successCallback('haha');

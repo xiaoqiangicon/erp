@@ -213,6 +213,18 @@
             </div>
           </div>
           <div class="content-section-item">
+            <div class="name"><span> 广告推荐：</span></div>
+            <div class="content">
+              <label class="radio-inline">
+                <input type="radio" name="show-adv" value="0" checked />
+                开启
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="show-adv" value="1" /> 关闭
+              </label>
+            </div>
+          </div>
+          <div class="content-section-item">
             <div class="name">
               <span>发布时间：</span><span class="asterisk">*</span>
             </div>
@@ -221,6 +233,7 @@
                 class="form-control fixed-width left"
                 value=""
                 id="input-publish-time"
+                onkeydown="event.preventDefault()"
               />
             </div>
           </div>

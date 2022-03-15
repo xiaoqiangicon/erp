@@ -4,8 +4,9 @@ import indexData from '../data';
 import commonTpl from '../tpl/common';
 import introTpl from '../tpl/introduction';
 import 'swiper';
-import '../../../../pro-com/src/distpicker';
+import '../../../../../pro-com/src/distpicker';
 import seeView from 'see-view';
+import data from '../../../article/create/data';
 var chooseImageInstances = {};
 seeView({
   events: {
@@ -84,7 +85,11 @@ seeView({
       return;
     }
     data.map(function(item) {
-      item.src += indexData.imagesParams[1];
+      const url = item.src;
+      const param = indexData.imagesParams[1];
+      item.src =
+        (url.indexOf('?') !== -1 ? url.slice(0, url.indexOf('?')) : url) +
+        param;
       var currentImageId = indexData.misc.imageId++;
       if (remainUploadCount <= 0) return;
       $imageContainer = $(

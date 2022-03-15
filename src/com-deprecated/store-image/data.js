@@ -6,6 +6,4 @@ export default {
   leftTrimRegExp: /^\s*/i,
   rightTrimRegExp: /\s*$/i,
   requestTimeOut: 30000,
-  requestsInterval: 2000,
-  requestsIntervalThreshold: 10,
 };

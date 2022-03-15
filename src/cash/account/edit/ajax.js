@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
+import handleAjaxError from '../../../com/handle-ajax-error';
 
 var requestKeys = {
   add: {
@@ -10,6 +11,7 @@ var requestKeys = {
     licenceImage: 'certificatePicUrl',
     idCardImage1: 'identityCardPic',
     idCardImage2: 'identityCardPic2',
+    idCardNumber: 'idCardNum',
   },
   update: {
     bank: 'bankName',
@@ -19,6 +21,7 @@ var requestKeys = {
     licenceImage: 'certificatePicUrl',
     idCardImage1: 'identityCardPic',
     idCardImage2: 'identityCardPic2',
+    idCardNumber: 'idCardNum',
   },
 };
 var responseRefactor = {
@@ -31,6 +34,7 @@ var responseRefactor = {
       licenceImage: 'certificatePicUrl',
       idCardImage1: 'identityCardPic',
       idCardImage2: 'identityCardPic2',
+      idCardNumber: 'idCardNum',
     },
   },
 };
@@ -39,6 +43,8 @@ var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     res.message = res.msg || '';
+
+    handleAjaxError(res);
   },
 };
 

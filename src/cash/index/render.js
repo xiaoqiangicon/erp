@@ -43,7 +43,7 @@ export const renderChart = data => {
       },
       0
     ),
-    titleText = data.year + '年筹集善款  ¥' + total.toFixed(2);
+    titleText = data.year + '年统计报表  ¥' + total.toFixed(2);
   if (!chart) {
     chartConfig = {
       type: 'line',
@@ -51,7 +51,7 @@ export const renderChart = data => {
         labels: chartMonths,
         datasets: [
           {
-            label: '筹集善款',
+            label: '统计报表',
             backgroundColor: chartColors.green,
             borderColor: chartColors.green,
             data: data.months,
@@ -135,23 +135,11 @@ export const renderSelectedYear = data => {
 };
 
 export const renderPaginationContent = (data, options) => {
-  const $el = $(
-    `[data-pagination-content="${options.page}"][data-year="${options.year}"]`
-  );
+  const $el = $(`[data-pagination-content][data-year="${options.year}"]`);
 
   var htmlString = '';
   data.map(function(item) {
     htmlString += commonData.tpl.detailUnit.render(item);
   });
   $el.html(htmlString || commonTpl.noData);
-};
-
-export const renderPagination = (data, options) => {
-  const $el = $(`[data-pagination][data-year="${options.year}"]`);
-
-  var i = 1,
-    il = data.totalPages;
-  data.pages = [];
-  for (; i <= il; i++) data.pages.push(i);
-  $el.html(commonData.tpl.pagination.render(data));
 };

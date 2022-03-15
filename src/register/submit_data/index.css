@@ -12,27 +12,27 @@ main .tip h3 {
   font-family: 'Microsoft YaHei';
   border-bottom: solid 1px #ccc;
 }
-.nav3 span {
+.nav2 .step,
+.nav1 .step {
+  width: 35px;
+  height: 35px;
+  margin: 0px auto 14px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: #cccccc;
   color: #fff;
 }
-main nav .nav1 {
-  background: url('../../../images/register/right-arrow.png') no-repeat right;
+.nav3 .step-3 {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 9px;
+  line-height: 45px;
+  color: #fff;
+  font-size: 22px;
+  background-image: url('https://pic.zizaihome.com/907e9d80-6824-11ea-a71d-00163e060b31.png');
+  background-size: cover;
 }
-main nav .nav3:before {
-  content: ' ';
-  width: 0;
-  position: absolute;
-  left: 0px;
-  border-width: 21px;
-  border-style: solid;
-  border-color: transparent transparent transparent #fff;
-  z-index: 9999;
-}
-main nav .nav3 {
-  width: 33.8%;
-  background-color: #007551;
-  position: relative;
-}
+
 main nav {
   border-right: none;
 }
@@ -60,20 +60,21 @@ main .uploadBox {
   position: relative;
   overflow: hidden;
   padding-bottom: 6px;
-  border-bottom: 1px solid #eee;
 }
 .uploadBox .uploadHead h3 {
-  display: inline-block;
   margin: 0;
-  width: 30%;
+  margin-bottom: 6px;
+  font-size: 20px;
+  color: #333;
+  font-weight: 500;
+  line-height: 28px;
   font-family: 'Microsoft YaHei';
 }
 .uploadBox .uploadHead p {
   display: inline-block;
   margin: 0;
-  width: 68%;
   font-size: 16px;
-  color: #666;
+  color: #888;
 }
 .uploadData {
   margin-top: 12px;
@@ -84,14 +85,17 @@ main .uploadBox {
   height: 260px;
   display: inline-block;
 }
-.uploadData button {
+.uploadButtonInner {
   position: absolute;
   top: 36%;
   left: 36%;
   padding: 12px 18px;
   border: none;
-  background-color: #72cdbf;
-  color: #fff;
+  color: #999999;
+  background-color: #fff;
+  border: 1px dashed #999;
+  border-radius: 4px;
+  font-weight: bold;
 }
 .uploadData .uploadImg {
   width: 32%;
@@ -115,7 +119,7 @@ main .uploadBox {
   width: 32%;
   height: 260px;
   display: inline-block;
-  background-image: url('../../../images/register/sample-1.jpg');
+  background-image: url('https://pic.zizaihome.com/f7873d10-6726-11ea-b696-00163e060b31.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -146,9 +150,6 @@ main .uploadBox {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-}
-.uploadButton input {
-  display: none;
 }
 
 .uploadOthersData {
@@ -198,4 +199,14 @@ main .uploadBox {
   background-image: url(../../../images/common/big_delete.png);
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.imgButton {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }

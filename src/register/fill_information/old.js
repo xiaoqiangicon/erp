@@ -3,7 +3,7 @@ import config from '../submit_data/config';
 import Toast from 'old/toast';
 import app from '../protocol/template';
 import doRequest from 'old/utils';
-import '../../../pro-com/src/distpicker';
+import '../../../../pro-com/src/distpicker';
 import 'old/backbone';
 import 'old/ajaxFileUpload';
 import 'old/uploadSize';
@@ -203,6 +203,7 @@ var View = Backbone.View.extend({
     'click #confirmVertifi': 'confirmVertifi',
     'click #showPassword': 'showPassword',
     'click #showPassword2': 'showPassword2',
+    'change #temple-source': 'onChangeSource',
   },
   initialize: function(e) {
     var self = this;
@@ -232,7 +233,7 @@ var View = Backbone.View.extend({
       }
     }
     if ($('#agree:checked').length == 1) {
-      $('#preparaNext').css('background-color', '#0d7652');
+      $('#preparaNext').css('background-color', '#9F383D');
       $('#preparaNext').attr('data-href', '/zzhadmin/templeApplyFillInfo/');
     }
     if (
@@ -243,7 +244,7 @@ var View = Backbone.View.extend({
     ) {
       $.ajax({
         type: 'get',
-        url: '/zzhadmin/templeApplyInfo',
+        url: '/zzhadmin/templeApplyInfo/',
         async: false,
         success: function(data) {
           var name = data.data.name;
@@ -260,7 +261,7 @@ var View = Backbone.View.extend({
     if (editTag == 1) {
       $.ajax({
         type: 'get',
-        url: '/zzhadmin/templeApplyInfo',
+        url: '/zzhadmin/templeApplyInfo/',
         async: false,
         success: function(data) {
           if (window.location.pathname == '/zzhadmin/templeApplyFillInfo/') {
@@ -274,6 +275,7 @@ var View = Backbone.View.extend({
               placeNo = data.data.placeNo,
               mobile = data.data.mobile,
               email = data.data.email,
+              sourceText = data.data.registrSource,
               corporation = data.data.corporation;
             $('#login').addClass('hide');
             $('#logined')
@@ -301,7 +303,25 @@ var View = Backbone.View.extend({
             if (registrant == '') {
               $('#isLegal').click();
             }
-            $('#templeSignin').val(registrant);
+            console.log(sourceText);
+            var sourceType = parseInt(sourceText.substring(0, 1), 10);
+            sourceText = sourceText.substring(1);
+            console.log(sourceType, 'sourcetype', sourceText);
+            $("#temple-source option[value='" + sourceType + "']").attr(
+              'selected',
+              'selected'
+            );
+            if (sourceType === 2) {
+              $('#templeSourceText1').removeClass('hide');
+              $('#templeSourceText1').val(sourceText);
+            } else if (sourceType === 3) {
+              $('#templeSourceText2').removeClass('hide');
+              $('#templeSourceText2').val(sourceText);
+            }
+            $('#templeSignin')
+              .val(registrant)
+              .attr('disabled', 'disabled')
+              .addClass('frozen');
             $('#templePhone')
               .val(registrantMobile)
               .attr('disabled', 'disabled')
@@ -577,7 +597,7 @@ var View = Backbone.View.extend({
   },
   preparaNext: function(e) {
     if ($('#agree:checked').length == 1) {
-      $('#preparaNext').css('background-color', '#0d7652');
+      $('#preparaNext').css('background-color', '#9F383D');
       $('#preparaNext').attr('data-href', '/zzhadmin/templeApplyFillInfo/');
     } else {
       $('#preparaNext').css('background-color', '#ccc');
@@ -612,6 +632,9 @@ var View = Backbone.View.extend({
       corporation = $('#templeLegal').val(),
       mobile = $('#templeTel').val(),
       email = $('#templeEmail').val(),
+      sourceType = parseInt($('#temple-source').val(), 10),
+      sourceText1 = $('#templeSourceText1').val(),
+      sourceText2 = $('#templeSourceText2').val(),
       isLegal = $('[name="Legal"]:checked').val(),
       registrant = $('#templeSignin').val(),
       registrantMobile = $('#templePhone').val(),
@@ -619,6 +642,7 @@ var View = Backbone.View.extend({
       pwd = $('#templePassword').val(),
       pwd2 = $('#templePassword2').val();
     error = 0;
+
     if (name == '' || $('#templeName').hasClass('redBorder')) {
       $('body').scrollTop($('#templeName').offset().top);
       error = 1;
@@ -722,27 +746,27 @@ var View = Backbone.View.extend({
       Toast('请正确填写邮箱！', 2);
       return false;
     }
+    if (
+      (sourceType === 2 && !sourceText1) ||
+      (sourceType === 3 && !sourceText2) ||
+      sourceType === 404
+    ) {
+      $('body').scrollTop($('#temple-source').offset().top);
+      error = 1;
+      Toast('请填写寺院来源！', 2);
+      return false;
+    }
     if (isLegal == 0) {
       if (registrant == '') {
         $('body').scrollTop($('#templeSignin').offset().top);
         error = 1;
         Toast('请填写注册人！', 2);
         return false;
-      } else if (registrant == corporation) {
-        $('body').scrollTop($('#templeSignin').offset().top);
-        error = 1;
-        Toast('注册人不能与法人相同！', 2);
-        return false;
       }
       if (registrantMobile == '' || $('#templePhone').hasClass('redBorder')) {
         $('body').scrollTop($('#templePhone').offset().top);
         error = 1;
         Toast('请正确填写注册人手机号码！', 2);
-        return false;
-      } else if (registrantMobile == mobile) {
-        $('body').scrollTop($('#templePhone').offset().top);
-        error = 1;
-        Toast('注册人手机号码不能与法人手机号相同！', 2);
         return false;
       }
     }
@@ -800,6 +824,16 @@ var View = Backbone.View.extend({
       opt['corporation'] = corporation;
       opt['mobile'] = mobile;
       opt['email'] = email;
+      opt['registrSource'] =
+        sourceType === 0
+          ? '0搜索到自在家'
+          : sourceType === 1
+          ? '1公众号看到自在家推文'
+          : sourceType === 2
+          ? '2' + sourceText1
+          : sourceType === 3
+          ? '3' + sourceText2
+          : '';
       if (isLegal == 0) {
         opt['registrant'] = registrant;
         opt['registrantMobile'] = registrantMobile;
@@ -1079,6 +1113,19 @@ var View = Backbone.View.extend({
     } else {
       $passwordInput.attr('type', 'text');
       $tar.attr('class', 'hidePassword');
+    }
+  },
+  onChangeSource: function(e) {
+    const sourceType = parseInt($('#temple-source').val(), 10);
+    if (sourceType === 2) {
+      $('#templeSourceText1').removeClass('hide');
+      $('#templeSourceText2').addClass('hide');
+    } else if (sourceType === 3) {
+      $('#templeSourceText2').removeClass('hide');
+      $('#templeSourceText1').addClass('hide');
+    } else {
+      $('#templeSourceText2').addClass('hide');
+      $('#templeSourceText1').addClass('hide');
     }
   },
 });

@@ -1,7 +1,7 @@
 import seeView from 'see-view';
 import $ from 'jquery';
 import Canvas2Image from '@senntyou/canvas2image';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 let $body = $('body');
 import data from './data';
 import tpl from './tpl/post';
@@ -54,6 +54,9 @@ seeView({
     $('[data-zzh-promotion-tab-1-content]').addClass('dp-none');
     $(`[data-zzh-promotion-tab-1="${tab}"]`).addClass('active');
     $(`[data-zzh-promotion-tab-1-content="${tab}"]`).removeClass('dp-none');
+    if (tab === 3) {
+      $('#zzh-promotion-post-load').click();
+    }
   },
   onClickPostWx: e => {
     $body.append(tpl);

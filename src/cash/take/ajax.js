@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import data from './data';
 import seeAjax from 'see-ajax';
+import handleAjaxError from '../../com/handle-ajax-error';
 var listPerPage = 20;
 var requestKeys = {
   list: {
@@ -49,6 +50,29 @@ var responseRefactor = {
       },
     ],
   },
+  getPickUpDetails: {
+    data: [
+      {
+        details: [
+          {
+            data: [
+              {
+                title: 'name',
+                money: 'price',
+                fee: 'percentMoney',
+                count: 'order_num',
+                extra: 'remarks',
+                charge: 'counter_fee',
+                assistance: 'subsidy_counter_fee',
+                promoteAmountForZzh: 'serviceMoney',
+                promoteAmountForUser: 'promotionMoney',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
   accountInfo: {
     status: 'authBankType',
     data: {
@@ -73,6 +97,8 @@ var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     !!res.msg && (res.message = res.msg);
+
+    handleAjaxError(res);
   },
   list: function(res) {
     res.totalPages = Math.ceil(res.cnt / listPerPage);
@@ -93,12 +119,12 @@ var postHandle = {
         var tempMonth = detailItem.month,
           tempMonthArray = tempMonth.split('-');
         detailItem.year = parseInt(tempMonthArray[0]);
-        detailItem.month = parseInt(tempMonthArray[1]);
+        detailItem.month = parseInt(tempMonthArray[1]) + '月';
         detailItem.data.map(function(detailItemMonthItem) {
           totalCount += detailItemMonthItem.count;
           totalMoney += detailItemMonthItem.money;
           totalFee += detailItemMonthItem.fee || 0;
-          totalCharge += detailItemMonthItem.charge;
+          totalCharge += parseFloat(detailItemMonthItem.charge || 0);
           totalAssistance += detailItemMonthItem.assistance;
           !detailItemMonthItem.promoteAmountForZzh &&
             (detailItemMonthItem.promoteAmountForZzh = 0);
@@ -135,6 +161,23 @@ var postHandle = {
       );
     });
   },
+  getPickUpDetails: function(res) {
+    res.data.map(function(item) {
+      item.details.map(function(detailItem) {
+        var tempMonth = detailItem.month,
+          tempMonthArray = tempMonth.split('-');
+        if (
+          tempMonth.length === 1 &&
+          !isNaN(parseInt(tempMonthArray[0])) &&
+          !isNaN(Number(tempMonthArray[0])) &&
+          !isNaN(Number(tempMonthArray[1]))
+        ) {
+          detailItem.year = parseInt(tempMonthArray[0]);
+          detailItem.month = parseInt(tempMonthArray[1]) + '月';
+        }
+      });
+    });
+  },
 };
 const configs = {
   url: {
@@ -162,6 +205,11 @@ const configs = {
       '/zzhadmin/pickUpPrompt/',
       '/src/cash/bill/mock/receipts_info_server.json',
       '/src/cash/bill/mock/receipts_info.json',
+    ],
+    getPickUpDetails: [
+      '/zzhadmin/getPickUpDetails/',
+      '/src/cash/take/mock/get_pickup_details_server.json',
+      '/src/cash/take/mock/get_pickup_details_server.json',
     ],
   },
   requestKeys: {
@@ -201,6 +249,10 @@ const configs = {
   postHandle: {
     common: [postHandle.common, postHandle.common],
     list: [postHandle.list, postHandle.list],
+    getPickUpDetails: [
+      postHandle.getPickUpDetails,
+      postHandle.getPickUpDetails,
+    ],
   },
 };
 
@@ -246,4 +298,11 @@ seeAjax.config('accountInfo', {
 // 新增判断当前是否有正在提现账单
 seeAjax.config('receiptsInfo', {
   url: configs.url.receiptsInfo,
+});
+
+seeAjax.config('getPickUpDetails', {
+  url: configs.url.getPickUpDetails,
+  responseRefactor: configs.responseRefactor.getPickUpDetails,
+  method: 'POST',
+  postHandle: configs.postHandle.getPickUpDetails,
 });

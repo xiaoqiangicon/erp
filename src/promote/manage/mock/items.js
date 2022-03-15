@@ -14,7 +14,7 @@ export default (req, res) => {
       data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
         id,
         title: `选择项名称 ${id}`,
-        cover: '/images/chan-zai-128x128.png',
+        cover: '/images/logo.png',
         isXuanZe: Math.floor(Math.random() * 2),
         priceType: Math.floor(Math.random() * 3) + 1,
         price: id * 10,

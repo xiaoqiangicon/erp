@@ -35,12 +35,6 @@
           "name": "招募管理",
           "link": "/zzhadmin/volunteerRecruit/",
           "controlMark": "pw_volunteer"
-        },
-        {
-          "id": "send-message",
-          "name": "群发通知",
-          "link": "/zzhadmin/volunteer_sendSMS_index/",
-          "controlMark": "pw_sendmsg"
         }
       ]
     },
@@ -75,6 +69,13 @@
           "link": "/zzhadmin/commentIndex/",
           "isHtml": true,
           "controlMark": "pw_order"
+        },
+        {
+          "id": "order-credits",
+          "name": "积分兑换",
+          "link": "/zzhadmin/creditsIndex/",
+          "isHtml": true,
+          "controlMark": "pw_ceremony_hide"
         }
       ]
     },
@@ -98,26 +99,13 @@
       ]
     },
     {
-      "id": "merit",
-      "name": "功德主",
-      "icon": "merit-logo",
-      "subItems": [
-        {
-          "id": "merit-manage",
-          "name": "功德主管理",
-          "link": "/zzhadmin/meritRankManage/",
-          "controlMark": "pw_merit_rank"
-        }
-      ]
-    },
-    {
       "id": "cash",
-      "name": "微善款",
+      "name": "财务中心",
       "icon": "glyphicon-briefcase",
       "subItems": [
         {
           "id": "cash-index",
-          "name": "善款统计",
+          "name": "财务统计",
           "link": "/zzhadmin/cashIndex/",
           "controlMark": "pw_money_center"
         },
@@ -126,6 +114,37 @@
           "name": "提现管理",
           "link": "/zzhadmin/cashTake/",
           "controlMark": "pw_money_center"
+        },
+        {
+          "id": "cash-receipt",
+          "name": "发票管理",
+          "link": "/zzhadmin/receiptIndex/",
+          "controlMark": "pw_money_center"
+        }
+      ]
+    },
+    {
+      "id": "express",
+      "name": "物流服务",
+      "icon": "glyphicon-random",
+      "subItems": [
+        {
+          "id": "express-manual",
+          "name": "新建打印",
+          "link": "/express/manual",
+          "control": false
+        },
+        {
+          "id": "express-setting",
+          "name": "面单打印",
+          "link": "/express/setting",
+          "control": false
+        },
+        {
+          "id": "express-device",
+          "name": "设备状态",
+          "link": "/express/device",
+          "control": false
         }
       ]
     },
@@ -138,12 +157,6 @@
           "id": "insurance-index",
           "name": "待办事项",
           "link": "/zzhadmin/insuranceTodoHtml/",
-          "controlMark": "pw_insurance"
-        },
-        {
-          "id": "insurance-person",
-          "name": "人员管理",
-          "link": "/zzhadmin/insurancePersonalHtml/",
           "controlMark": "pw_insurance"
         },
         {
@@ -248,12 +261,6 @@
           "name": "满福屏管理",
           "link": "/zzhadmin/merit_machine_index/",
           "controlMark": "pw_merit_machine"
-        },
-        {
-          "id": "traffic-statistics",
-          "name": "客流统计",
-          "link": "/zzhadmin/traffic/",
-          "controlMark": "pw_guest_traffic"
         }
       ]
     },
@@ -267,6 +274,122 @@
           "name": "分享推广",
           "link": "/zzhadmin/promotionListHtml/",
           "controlMark": "pw_promotion"
+        }
+      ]
+    }
+  ],
+  "zizaicloudItems": [
+    {
+      "id": "structure",
+      "name": "组织架构",
+      "icon": "glyphicon-book",
+      "subItems": [
+        {
+          "id": "structure-personel",
+          "name": "人员管理",
+          "link": "/zzhadmin/managerUser/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-verify",
+          "name": "人员审核",
+          "link": "/zzhadmin/managerUserVerify/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-class",
+          "name": "签到寺务",
+          "link": "/zzhadmin/signActivityIndex/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "structure-sign",
+          "name": "签到记录",
+          "link": "/zzhadmin/signRecordIndex/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "inspect",
+      "name": "安全巡查",
+      "icon": "glyphicon-record",
+      "subItems": [
+        {
+          "id": "inspect-manage",
+          "name": "巡查管理",
+          "link": "/zzhadmin/placeInspectManage/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "inspect-record",
+          "name": "巡查记录",
+          "link": "/zzhadmin/placeInspectRecord/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "file",
+      "name": "文件管理",
+      "icon": "glyphicon-cloud",
+      "subItems": [
+        {
+          "id": "file-manage",
+          "name": "文件列表",
+          "link": "/zzhadmin/managerFile/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "secure",
+      "name": "食品安全",
+      "icon": "glyphicon-apple",
+      "subItems": [
+        {
+          "id": "secure-food",
+          "name": "检查记录",
+          "link": "/zzhadmin/foodInspect/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "财务管理",
+      "icon": "glyphicon-yen",
+      "subItems": [
+        {
+          "id": "finance-account",
+          "name": "财务记账",
+          "link": "/zzhadmin/managerAccount/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "finance-supply",
+          "name": "寺产管理",
+          "link": "/zzhadmin/supplyIndex/",
+          "controlMark": "pw_office"
+        }
+      ]
+    },
+    {
+      "id": "secureHardware",
+      "name": "安全设备",
+      "icon": "glyphicon-scale",
+      "subItems": [
+        {
+          "id": "traffic-statistics",
+          "name": "客流管理",
+          "link": "/zzhadmin/traffic/",
+          "controlMark": "pw_office"
+        },
+        {
+          "id": "hardware-status",
+          "name": "设备状态",
+          "link": "/zzhadmin/hardwareStatus/",
+          "controlMark": "pw_office"
         }
       ]
     }

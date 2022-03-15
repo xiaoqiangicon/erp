@@ -7,7 +7,7 @@ import Promotion from '../../com-deprecated/promotion';
 import './ajax';
 import 'jquery-confirm';
 import seeView from 'see-view';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 seeView({
   events: {
     'click [data-ele="summary-tab"]': 'onClickSummaryTab',

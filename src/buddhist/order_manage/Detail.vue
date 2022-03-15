@@ -8,114 +8,217 @@
         element-loading-background="rgba(0, 0, 0, 0.5)"
       >
         <div class="body">
-          <div class="cell">
-            <div class="cell-title">处理反馈</div>
+          <div class="cell" v-show="isGroup && !selected.length">
+            <div class="cell-title">筛选条件</div>
             <div class="cell-body">
-              <div class="mg-b-5">
-                <!-- 反馈图片 -->
-                <div
-                  v-for="item in images"
-                  :key="item"
-                  class="fb-cell img-cell"
-                >
-                  <img v-gallery :src="item" alt="" />
-                  <div @click="onClickImgDelete(item)" class="img-delete"></div>
-                </div>
-                <!-- 反馈视频 -->
-                <div
-                  v-for="item in videos"
-                  :key="item"
-                  class="fb-cell video-cell"
-                >
-                  <video :src="item"></video>
-                  <div class="video-play" @click="onClickPlayVideo(item)"></div>
-                  <div
-                    @click="onClickVideoDelete(item)"
-                    class="video-delete"
-                  ></div>
-                </div>
-                <!-- 视频正在上传 -->
-                <div
-                  v-show="curUploadVideo.uploading"
-                  v-loading="curUploadVideo.uploading"
-                  class="fb-cell"
-                  :element-loading-text="curUploadVideo.progress + '%'"
-                  element-loading-background="rgba(0, 0, 0, 0.8)"
-                >
-                  <div
-                    @click="onClickVideoUploadDelete"
-                    class="video-uploading-delete"
-                  ></div>
-                </div>
-              </div>
-              <div class="upload-container">
-                <!-- 图片上传 -->
-                <div
-                  class="upload-img-container"
-                  draggable=""
-                  @dragover.prevent
-                  @drop.prevent="onDrop"
-                  @click="onClickChooseImage"
-                >
-                  <img
-                    class="upload-icon"
-                    src="https://pic.zizaihome.com/7181a6a2-81c5-11e9-bda2-00163e0c001e.png"
-                  />
-                  <div class="upload-text">图片拖到此处或点击上传</div>
-                </div>
-                <!-- 视频上传 -->
-                <el-upload
-                  ref="uploadVideo"
-                  :show-file-list="false"
-                  :action="uploadUrl"
-                  class="upload-video-container"
-                  drag
-                  :before-upload="beforeUploadVideo"
-                  :on-success="handleUploadVideoSuccess"
-                  :on-progress="handleUploadVideoProgress"
-                  :on-error="handleUploadVideoError"
-                >
-                  <img
-                    class="upload-icon"
-                    src="https://pic.zizaihome.com/6b9b5dd2-81c5-11e9-8458-00163e0c001e.png"
-                  />
-                  <div class="upload-text">视频拖到此处或点击上传</div>
-                </el-upload>
-              </div>
-              <div class="tip">
-                图片格式支持JPG、PNG、GIF等，视频格式支持MP4、WMV、MOV等，文件大小不超过80M
-              </div>
-            </div>
-          </div>
-          <div v-show="!isGroup" class="cell">
-            <div class="cell-title">物流单号</div>
-            <div class="cell-body">
-              <el-input
-                placeholder="请输入内容"
-                v-model="logisticsOrder"
-                class="logistics-container"
-              >
+              <div>
+                <label class="wd-100">佛事项目：</label>
                 <el-select
+                  style="width: 300px;"
+                  clearable
+                  size="medium"
+                  v-model="buddhistId"
                   filterable
-                  v-model="courierCompanyCode"
-                  slot="prepend"
-                  placeholder="请选择"
-                  class="logistics-select"
+                  placeholder="请选择或填写关键词搜索"
                 >
                   <el-option
-                    v-for="item in courierCompanyList"
-                    :key="item.value"
-                    :label="item.name"
-                    :value="item.value"
-                  ></el-option>
+                    v-for="item in buddhistList"
+                    :key="item.buddhistId"
+                    :label="item.buddhistName"
+                    :value="item.buddhistId"
+                  >
+                  </el-option>
                 </el-select>
-              </el-input>
+              </div>
+              <div class="mg-t-10" v-show="subList.length !== 0">
+                <label class="wd-100">佛事选择项：</label>
+                <el-select
+                  style="width: 300px;"
+                  size="medium"
+                  v-model="subId"
+                  filterable
+                  placeholder="请选择或填写关键词搜索"
+                >
+                  <el-option
+                    v-for="item in subList"
+                    :key="item.subId"
+                    :label="item.subName"
+                    :value="item.subId"
+                  >
+                  </el-option>
+                </el-select>
+              </div>
+              <div class="mg-t-10">
+                <label class="wd-100">下单时间：</label>
+                <el-date-picker
+                  style="width: 300px;"
+                  v-model="date"
+                  type="daterange"
+                  range-separator="-"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期"
+                  format="yyyy-MM-dd"
+                  value-format="yyyy-MM-dd"
+                  unlink-panels
+                >
+                </el-date-picker>
+              </div>
             </div>
           </div>
-          <div class="cell">
-            <div class="cell-title">处理备注</div>
-            <div class="cell-body">
-              <div class="remark" id="remark-editor"></div>
+          <div v-if="detail.refund !== 2 && detail.refund !== 3">
+            <div class="cell">
+              <div class="cell-title">处理反馈</div>
+              <div class="cell-body">
+                <div class="mg-b-5">
+                  <!-- 反馈图片 -->
+                  <div
+                    v-for="item in images"
+                    :key="item"
+                    class="fb-cell img-cell"
+                  >
+                    <img v-gallery :src="item" alt="" />
+                    <div
+                      @click="onClickImgDelete(item)"
+                      class="img-delete"
+                    ></div>
+                  </div>
+                  <!-- 反馈视频 -->
+                  <div
+                    v-for="item in videos"
+                    :key="item"
+                    class="fb-cell video-cell"
+                  >
+                    <video :src="item"></video>
+                    <div
+                      class="video-play"
+                      @click="onClickPlayVideo(item)"
+                    ></div>
+                    <div
+                      @click="onClickVideoDelete(item)"
+                      class="video-delete"
+                    ></div>
+                  </div>
+                  <!-- 视频正在上传 -->
+                  <div
+                    v-show="curUploadVideo.uploading"
+                    v-loading="curUploadVideo.uploading"
+                    class="fb-cell"
+                    :element-loading-text="curUploadVideo.progress + '%'"
+                    element-loading-background="rgba(0, 0, 0, 0.8)"
+                  >
+                    <div
+                      @click="onClickVideoUploadDelete"
+                      class="video-uploading-delete"
+                    ></div>
+                  </div>
+                </div>
+                <div class="upload-container">
+                  <!-- 图片上传
+                  <div
+                    class="upload-img-container"
+                    draggable=""
+                    @dragover.prevent
+                    @drop.prevent="onDrop"
+                    @click="onClickChooseImage"
+                  >-->
+                  <div class="upload-img-container" @click="onClickChooseImage">
+                    <img
+                      class="upload-icon"
+                      src="https://pic.zizaihome.com/7181a6a2-81c5-11e9-bda2-00163e0c001e.png"
+                    />
+                    <div class="upload-text">
+                      <!-- 图片拖到此处或点击上传 -->点击上传图片
+                    </div>
+                  </div>
+                  <!-- 视频上传 -->
+                  <el-upload
+                    ref="uploadVideo"
+                    :show-file-list="false"
+                    :action="uploadUrl"
+                    class="upload-video-container"
+                    drag
+                    :before-upload="beforeUploadVideo"
+                    :on-success="handleUploadVideoSuccess"
+                    :on-progress="handleUploadVideoProgress"
+                    :on-error="handleUploadVideoError"
+                  >
+                    <img
+                      class="upload-icon"
+                      src="https://pic.zizaihome.com/6b9b5dd2-81c5-11e9-8458-00163e0c001e.png"
+                    />
+                    <div class="upload-text">视频拖到此处或点击上传</div>
+                  </el-upload>
+                </div>
+                <div class="tip">
+                  图片格式支持JPG、PNG、GIF等，视频格式支持MP4、WMV、MOV等，文件大小不超过80M
+                </div>
+              </div>
+            </div>
+            <div v-show="!isGroup" class="cell">
+              <div class="cell-title">物流单号</div>
+              <div class="cell-body">
+                <el-input
+                  placeholder="请输入内容"
+                  v-model="logisticsOrder"
+                  class="logistics-container"
+                >
+                  <el-select
+                    filterable
+                    v-model="courierCompanyCode"
+                    slot="prepend"
+                    placeholder="请选择"
+                    class="logistics-select"
+                  >
+                    <el-option
+                      v-for="item in courierCompanyList"
+                      :key="item.value"
+                      :label="item.name"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-input>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="cell-title">处理备注</div>
+              <div class="cell-body">
+                <div class="remark" id="remark-editor"></div>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="cell-title">下次处理时间</div>
+              <div class="cell-body">
+                <el-date-picker
+                  v-model="nextFeedBackTime"
+                  type="date"
+                  format="yyyy-MM-dd"
+                  value-format="yyyy-MM-dd"
+                >
+                </el-date-picker>
+                <div class="mg-t-10">
+                  需要多次处理的订单，请在这里选择下次需要处理的日期；如果已处理完，请把这里的时间清除
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <div class="cell">
+              <div class="cell-title">
+                订单状态：{{
+                  detail.refund === 2
+                    ? '退款待审核'
+                    : detail.refund === 3
+                    ? '审核通过待退款'
+                    : ''
+                }}
+              </div>
+              <div class="cell-body">
+                <div v-for="(item, key) in detail.refundMessageJSON" :key="key">
+                  <p>申请状态：{{ item.title }}</p>
+                  <p>{{ item.message }}</p>
+                  <p>申请时间：{{ item.addTime }}</p>
+                </div>
+              </div>
             </div>
           </div>
           <div v-show="!isGroup" class="cell">
@@ -139,6 +242,12 @@
                     <template v-else>
                       <div class="ps-content">{{ item.value }}</div>
                     </template>
+                  </div>
+                </div>
+                <div class="ps-row">
+                  <div class="ps-title">用户留言：</div>
+                  <div class="ps-content f-wg-bold">
+                    {{ userComment || '无' }}
                   </div>
                 </div>
               </template>
@@ -181,14 +290,14 @@
                 <div class="detail-content">{{ orderTime }}</div>
               </div>
               <div class="detail-row">
-                <div class="detail-title">订单号：</div>
-                <div class="detail-content">{{ orderNumber }}</div>
+                <div class="detail-title">自在家订单号：</div>
+                <div class="detail-content">{{ id }}</div>
               </div>
               <div class="detail-row">
-                <div class="detail-title">外部订单号：</div>
+                <div class="detail-title">善缘号：</div>
                 <div class="detail-content">{{ outerOrderNumber }}</div>
               </div>
-              <div class="detail-row">
+              <div class="detail-row" v-if="!1">
                 <div class="detail-title">支付流水号：</div>
                 <div class="detail-content">{{ runningNumber }}</div>
               </div>
@@ -197,7 +306,15 @@
           </div>
         </div>
         <div
-          v-show="type === 1 || type === 4 || type === 3 || type === 5"
+          v-show="
+            (type === 1 ||
+              type === 4 ||
+              type === 3 ||
+              type === 5 ||
+              type === 6) &&
+              detail.refund !== 2 &&
+              detail.refund !== 3
+          "
           class="foot"
         >
           <div @click="onClickHandle" v-if="logisticsOrder" class="s-btn">
@@ -219,8 +336,9 @@
 import VideoPlayer from './VideoPlayer';
 
 import { Notification } from 'element-ui';
+import _ from 'underscore';
 import seeAjax from 'see-ajax';
-import QRCode from '../../../pro-com/src/libs-es5/qrcode';
+import QRCode from '../../../../pro-com/src/libs-es5/qrcode';
 import ChooseImage from '../../com-deprecated/choose-image';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
 
@@ -256,6 +374,7 @@ export default {
       subName: '', // 选择项名称
       qrcode: '', // 二维码
       orderTime: '', // 下单时间
+      userComment: '', // 用户留言
       orderNumber: '', // 订单号
       outerOrderNumber: '', // 外部订单号
       runningNumber: '', // 支付流水号
@@ -270,6 +389,14 @@ export default {
 
       videoPlayerSrc:
         'https://pic.zizaihome.com/b7c155f70d6a2d0a49cabcb6b790ce6b.mp4',
+
+      // 下次处理时间
+      nextFeedBackTime: '',
+
+      // 过滤参数
+      buddhistId: '',
+      subId: -1,
+      date: ['', ''],
     };
   },
   computed: {
@@ -278,6 +405,29 @@ export default {
     },
     visible() {
       return this.$store.state.detailDialogVisible;
+    },
+    buddhistList() {
+      return this.$store.state.buddhistList;
+    },
+    subList() {
+      // 为了兼容 360 兼容模式 不能使用 find
+      const curBuddhist = _.find(
+        this.buddhistList,
+        item => item.buddhistId === this.buddhistId
+      );
+
+      //      const curBuddhist = this.buddhistList.find(
+      //        item => item.buddhistId === this.buddhistId
+      //      );
+
+      if (curBuddhist) {
+        const subList = curBuddhist.subList;
+        return subList && subList.length
+          ? [{ subName: '全部', subId: -1 }, ...subList]
+          : [];
+      } else {
+        return [];
+      }
     },
   },
   created() {
@@ -348,10 +498,12 @@ export default {
           subName,
           qrcode,
           orderTime,
+          usercomment,
           orderNumber,
           outerOrderNumber,
           runningNumber,
           ps,
+          nextFeedBackTime,
         } = this.detail;
 
         ({
@@ -370,10 +522,12 @@ export default {
         this.subName = subName;
         this.qrcode = qrcode;
         this.orderTime = orderTime;
+        this.userComment = usercomment;
         this.orderNumber = orderNumber;
         this.outerOrderNumber = outerOrderNumber;
         this.runningNumber = runningNumber;
         this.ps = ps;
+        this.nextFeedBackTime = nextFeedBackTime;
 
         // 初始化qrcode
         this.$refs.qrcode.innerHTML = '';
@@ -512,7 +666,7 @@ export default {
           if (res.result >= 0) {
             const { url: img } = res;
             let { images } = this;
-            images.push(img);
+            images.push(img + '?imageMogr/auto-orient');
             this.images = [...images];
           } else {
             Notification({
@@ -528,7 +682,13 @@ export default {
       this.chooseImage.show();
     },
     onClickHandle() {
-      const { isGroup, images, videos, logisticsOrder } = this;
+      const {
+        isGroup,
+        images,
+        videos,
+        logisticsOrder,
+        nextFeedBackTime,
+      } = this;
       let { courierCompanyCode } = this;
       const remark = remarkEditor.getContent();
       let orderIds;
@@ -555,18 +715,37 @@ export default {
         orderIds = `[${this.id}]`;
       }
 
+      const params = {
+        orderIds,
+        pics: images,
+        videos,
+        courierCompanyCode,
+        logisticsOrder,
+        remark,
+        nextFeedBackTime,
+      };
+
+      if (isGroup && !this.selected.length) {
+        if (!this.buddhistId) {
+          Notification({
+            title: '提示',
+            message: '请选择一个佛事项目',
+            type: 'error',
+          });
+          return;
+        }
+
+        params.commodityId = this.buddhistId;
+        params.subdivideId = this.subId;
+        params.startTime = this.date[0];
+        params.endTime = this.date[1];
+      }
+
       this.handleLoading = true;
 
       seeAjax(
         'handleOrder',
-        {
-          orderIds,
-          pics: images,
-          videos,
-          courierCompanyCode,
-          logisticsOrder,
-          remark,
-        },
+        params,
         res => {
           if (res.success) {
             this.handleLoading = false;

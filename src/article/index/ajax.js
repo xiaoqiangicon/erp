@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
+import handleAjaxError from '../../com/handle-ajax-error';
+
 var statuses = {
   1: '草稿',
   2: '正式发布',
@@ -37,6 +39,8 @@ var postHandle = {
   common: function(res) {
     res.success = res.result >= 0;
     typeof res.msg != 'undefined' && (res.message = res.msg);
+
+    handleAjaxError(res);
   },
   list: function(res) {
     res.totalPages = Math.ceil((res.total || 1) / 20);

@@ -67,17 +67,17 @@ var data = {
     localStorage['templeId'] +
     (envData.envParamMark ? '&' + envData.envParamMark : ''),
   imagesParams: {
-    1: '?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-    2: '?imageMogr/v2/thumbnail/!480x480r/gravity/center/crop/!480x480',
+    1: '?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500/auto-orient',
+    2: '?imageMogr/v2/thumbnail/!480x480r/gravity/center/crop/!480x480/auto-orient',
     3: [
-      '?imageMogr/v2/thumbnail/!500x250r/gravity/center/crop/!500x250',
-      '?imageMogr/v2/thumbnail/!750x466r/gravity/center/crop/!750x466',
-      '?imageMogr/v2/thumbnail/!360x360r/gravity/center/crop/!360x360',
-      '?imageMogr/v2/thumbnail/!240x240r/gravity/center/crop/!240x240',
+      '?imageMogr/v2/thumbnail/!500x250r/gravity/center/crop/!500x250/auto-orient',
+      '?imageMogr/v2/thumbnail/!750x466r/gravity/center/crop/!750x466/auto-orient',
+      '?imageMogr/v2/thumbnail/!360x360r/gravity/center/crop/!360x360/auto-orient',
+      '?imageMogr/v2/thumbnail/!240x240r/gravity/center/crop/!240x240/auto-orient',
     ],
     7: [
-      '?imageMogr/v2/thumbnail/!556x300r/gravity/center/crop/!556x300',
-      '?imageMogr/v2/thumbnail/!432x300r/gravity/center/crop/!432x300',
+      '?imageMogr/v2/thumbnail/!556x300r/gravity/center/crop/!556x300/auto-orient',
+      '?imageMogr/v2/thumbnail/!432x300r/gravity/center/crop/!432x300/auto-orient',
     ],
   },
   swipeListBodyClasses: ['', 'vertical', 'two-columns', 'vertical-small'],

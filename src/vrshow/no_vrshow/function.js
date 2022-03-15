@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import commonFunc from 'common/function';
 import './ajax';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 var func = {};
 func.init = function() {
   $('#loading-toast').addClass('hide');

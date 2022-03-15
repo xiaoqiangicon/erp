@@ -46,24 +46,11 @@ class StoreImage {
     let self = this;
     self.afterSave(newUrl, url);
     if (self.savedCount < self.urlMatches.length) {
-      if (self.urlMatches.length >= data.requestsIntervalThreshold) {
-        setTimeout(() => {
-          self.save();
-        }, data.requestsInterval);
-      } else {
-        self.save();
-      }
+      self.save();
     }
   }
   saveFail() {
-    let self = this;
-    if (self.urlMatches.length >= data.requestsIntervalThreshold) {
-      setTimeout(() => {
-        self.save();
-      }, data.requestsInterval);
-    } else {
-      self.save();
-    }
+    this.save();
   }
   afterSave(newUrl, url) {
     let self = this;

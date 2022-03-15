@@ -9,7 +9,7 @@ export default (req, res) => {
         total: 199,
         nickName: '昵称昵称昵称',
         name: '姓名姓名姓名',
-        headImg: '/images/chan-zai-128x128.png',
+        headImg: '/images/logo.png',
         mobile: '12312312312',
         payNum: 321,
         promotionMoney: 789,

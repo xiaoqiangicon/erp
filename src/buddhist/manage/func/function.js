@@ -6,31 +6,36 @@ import tpl from './tpl';
 import Pagination from '../../../com-deprecated/pagination';
 import commonVars from 'common/variables';
 import api from './api';
-import zzhUpload from '../../../com-deprecated/upload';
+import multipartUpload from '../../../com/multipartUpload';
 import toastr from 'toastr';
 import './upload_config.js';
 import './ajax';
 import 'bootstrap-select';
 
 toastr.options.closeHtml = '<button><i class="toastr-icon-off"></i></button>';
+var ziYingTemple = [5591, 5642, 5722, 5614, 6372, 6482, 6483];
+var templeId = parseInt(window.localStorage['templeId'], 10);
+var isZiYingTemple = ziYingTemple.indexOf(templeId) > -1 ? true : false;
+console.log(templeId, isZiYingTemple, '是否自营');
 
 var func = {};
 func.init = function() {
   $('#loading-toast').hide();
   $('[data-ele="select-picker"]').selectpicker('refresh');
+  if (isZiYingTemple) $('#table-title-total-collect').hide();
   func.initBuddhistVerifyModal();
   func.getBuddhistType({}, function(res) {
     func.renderBuddhistTypeSelect(res);
   });
   func.renderBuddhistStatus();
   func.refreshList();
-  func.initVideoUpload($('[data-ele="add-video"]'));
+  func.initVideoUpload($('[data-ele="add-video"]').get(0));
 };
 func.initBuddhistVerifyModal = function() {
   const buddhistVerify = window.sessionStorage.getItem('buddhistVerify');
   if (parseInt(buddhistVerify)) {
     toastr.success(
-      '工作人员已收到通知，请耐心等待处理 <br> 周一至周五：10:00-19:30 <br> 周末节假日：12:00 （审核一次）',
+      '工作人员已收到通知，请耐心等待处理 <br> 周一至周五：10:00-19:30 <br> 周末节假日：12:00  17:00（各审核一次）',
       '提交成功，审核中',
       {
         // timeOut: 20000,
@@ -75,13 +80,13 @@ func.renderVideoPlayer = function(src) {
     Data.videoPlayer.load(srcData);
   }
 };
-func.initVideoUpload = function($btn) {
-  zzhUpload(
-    $btn,
-    function(url) {
+func.initVideoUpload = function(btn) {
+  multipartUpload({
+    el: btn,
+    done(url) {
       console.log('上传成功');
       $('[data-ele="video-upload-loading"]').remove();
-      $btn
+      $(btn)
         .parent()
         .prev()
         .append(
@@ -89,9 +94,9 @@ func.initVideoUpload = function($btn) {
             src: url,
           })
         );
-      $btn.show();
+      $(btn).show();
     },
-    function(e, data) {
+    progress(e, data) {
       const $progress = $('[data-ele="progress"]');
       const $progressText = $('[data-ele="progress-text"]');
       let progress = parseInt((data.loaded / data.total) * 100, 10);
@@ -104,35 +109,34 @@ func.initVideoUpload = function($btn) {
       $progressText.text(`${progress}%`);
       console.log(progress);
     },
-    {
-      type: 'file',
-      componentOption: {
-        add: function(e, data) {
-          const { size, type } = data.originalFiles[0];
-          const limitSize = 50 * 1024 * 1024;
-          let uploadError = [];
-          const acceptFileTypes = /^video\/(mp4|wmv|mov)$/i;
-          console.log(size, type);
-          if (!acceptFileTypes.test(type)) {
-            uploadError.push('请上传mp4、wmv或mov格式的文件');
-          }
-          if (size > limitSize) {
-            uploadError.push('请上传不超过50M的文件');
-          }
-          if (uploadError.length) {
-            commonFunc.alert(uploadError.join('\n'));
-          } else {
-            Data.curUploadJqXHR = data.submit();
-            $btn
-              .parent()
-              .prev()
-              .append(tpl.scheduleVideoUploadLoading.render({}));
-            $btn.hide();
-          }
-        },
-      },
-    }
-  );
+    uploadFail(msg) {
+      commonFunc.alert(msg || '上传视频失败');
+    },
+    beforeUpload(e, data) {
+      const { size, type } = data.originalFiles[0];
+      const limitSize = 100 * 1024 * 1024;
+      let uploadError = [];
+      const acceptFileTypes = /^video\/(mp4|wmv|mov)$/i;
+      console.log(size, type);
+      if (!acceptFileTypes.test(type)) {
+        uploadError.push('请上传mp4、wmv或mov格式的文件');
+      }
+      if (size > limitSize) {
+        uploadError.push('请上传不超过100M的文件');
+      }
+      if (uploadError.length) {
+        commonFunc.alert(uploadError.join('\n'));
+        return false;
+      } else {
+        $(btn)
+          .parent()
+          .prev()
+          .append(tpl.scheduleVideoUploadLoading.render({}));
+        $(btn).hide();
+        return true;
+      }
+    },
+  });
 };
 func.getBuddhistType = function(params, callback) {
   seeAjax('getBuddhistType', params, function(res) {
@@ -279,6 +283,7 @@ func.renderList = function(res) {
     item.ifHasSub = printerDataResult.ifHasSub;
     item.prtText = printerDataResult.prtText;
     item.remainTimeText = statusDataResult.remainTimeText;
+    item.isZiYingTemple = isZiYingTemple;
     Data.handleListData[item.id] = item;
     htmlString += tpl.tableCell.render(item);
   });
@@ -416,6 +421,9 @@ func.createLocalPrtCfg = function(ifHasSub, prtListData, BuddhistPrtData) {
         continuousPrintNum: 1,
         qrcodePrint: 1,
         isPrintMobile: 1,
+        printerType: 0,
+        sealType: 0,
+        fontType: 0,
       };
     });
     BuddhistPrtData.subdividePrinter.map(function(subPrt) {
@@ -424,6 +432,7 @@ func.createLocalPrtCfg = function(ifHasSub, prtListData, BuddhistPrtData) {
         cfg[curPrt.printerId].continuousPrintNum = curPrt.continuousPrintNum;
         cfg[curPrt.printerId].qrcodePrint = curPrt.qrcodePrint;
         cfg[curPrt.printerId].isPrintMobile = curPrt.isPrintMobile;
+        cfg[curPrt.printerId].sealType = curPrt.sealType;
         if (typeof cfg[curPrt.printerId].subList === 'undefined') {
           cfg[curPrt.printerId].subList = [];
         }
@@ -447,7 +456,7 @@ func.createLocalPrtCfg = function(ifHasSub, prtListData, BuddhistPrtData) {
   return cfg;
 };
 func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
-  var continuousPrintNum, qrcodePrint, isPrintMobile;
+  var continuousPrintNum, qrcodePrint, isPrintMobile, sealType, fontType;
   var curPrtId;
   if (ifHasSub) {
     if (typeof prtId !== 'undefined') {
@@ -466,6 +475,8 @@ func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
       continuousPrintNum = cfg[curPrtId].continuousPrintNum;
       qrcodePrint = cfg[curPrtId].qrcodePrint;
       isPrintMobile = cfg[curPrtId].isPrintMobile;
+      sealType = cfg[curPrtId].sealType;
+      fontType = cfg[curPrtId].fontType;
       $subPrtSelect.val(curPrtId).selectpicker('refresh');
       seeAjax(
         'printerStatus',
@@ -475,7 +486,7 @@ func.renderSetPrtModal = function(ifHasSub, cfg, prtId) {
         function(res) {
           if (res.success) {
             $exceptionTip.text(res.msg).show();
-            if (res.msg !== '在线，工作状态正常。') {
+            if (res.msg !== '在线，工作状态正常。' && res.msg !== '在线') {
               $subCheckbox.attr('disabled', 'disabled');
             } else {
               $subCheckbox.removeAttr('disabled');
@@ -558,6 +569,9 @@ func.createUpdatePrtParams = function(
     params.continuousPrintNum = '';
     params.qrcodePrint = '';
     params.isPrintMobile = '';
+    params.fontType = 0;
+    params.sealType = '';
+    params.printerType = 0;
     params.subdividePrinter = [];
     subListData.map(function(sub) {
       params.subdividePrinter.push({
@@ -570,16 +584,22 @@ func.createUpdatePrtParams = function(
         params.subdividePrinter.map(function(subPrt) {
           if (subPrt.subdivideId === subId) {
             subPrt.printer.push({
+              printerType: localPrtCfg[prtId].printerType,
               printerId: parseInt(prtId),
               continuousPrintNum: localPrtCfg[prtId].continuousPrintNum,
               qrcodePrint: localPrtCfg[prtId].qrcodePrint,
               isPrintMobile: localPrtCfg[prtId].isPrintMobile,
+              sealType: localPrtCfg[prtId].sealType,
+              fontType: localPrtCfg[prtId].fontType,
             });
           }
         });
       });
     });
   } else {
+    params.printerType = 0;
+    params.sealType = 0;
+    params.fontType = 0;
     params.isOpenPrinter = localPrtCfg.isOpenPrinter;
     params.printerId = '[' + localPrtCfg.printerId.toString() + ']';
     params.continuousPrintNum = localPrtCfg.continuousPrintNum;
@@ -637,6 +657,10 @@ func.initCreateScheduleModalBody = function() {
       $('[name="if-push"][value="0"]').prop('disabled', false);
       $('[name="if-push"][value="0"]').click();
     }
+    if (!todayNum) {
+      $('[name="if-push"][value="0"]').click();
+      $('[name="if-push"][value="1"]').prop('disabled', true);
+    }
     $('#push-times').html(todayNum);
   });
 };
@@ -661,7 +685,7 @@ func.initScheduleListModalBody = function() {
       $modalBody.html(htmlStr);
       const $addVideos = $modalBody.find('[data-ele="add-video"]');
       $addVideos.each(function(index, ele) {
-        func.initVideoUpload($(ele));
+        func.initVideoUpload(ele);
       });
     });
   });

@@ -31,11 +31,24 @@
       <section id="main">
         <main data-id="fillInformation">
           <nav>
-            <div class="nav1"><span>资料准备</span></div>
-            <div class="nav2"><span>填写信息</span></div>
-            <div class="nav3"><span>提交资料</span></div>
+            <div class="nav1">
+              <div class="step step-active step-1">1</div>
+              <div class="step-active-tip">资料准备</div>
+            </div>
+            <div class="line line-active"></div>
+            <div class="nav2">
+              <div class="step step-2">2</div>
+              <div>填写信息</div>
+            </div>
+            <div class="line"></div>
+            <div class="nav3">
+              <div class="step step-3">3</div>
+              <div>提交资料</div>
+            </div>
           </nav>
-          <div class="tip"><h3>寺院信息设置</h3></div>
+          <div class="tip">
+            <h3><span class="h-decorate"></span>寺院信息设置</h3>
+          </div>
           <div class="form">
             <form
               action="#"
@@ -169,7 +182,39 @@
                   >
                 </div>
               </div>
-              <div class="tip2"><h3>后台登录设置</h3></div>
+              <div class="form-group templeForm">
+                <label for="templeSource" class="col-sm-2 control-label"
+                  >寺院来源</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <select id="temple-source">
+                    <option value="404">请选择寺院来源</option>
+                    <option value="0">搜索到自在家</option>
+                    <option value="1">公众号看到自在家推文</option>
+                    <option value="2">其他寺院邀请或介绍</option>
+                    <option value="3">其他方式</option>
+                  </select>
+                  <input
+                    id="templeSourceText1"
+                    name="templeSourceText1"
+                    type="text"
+                    class="form-control required hide"
+                    placeholder="请填写邀请寺院名称或介绍人姓名"
+                    style="margin-top: 10px;"
+                  />
+                  <input
+                    id="templeSourceText2"
+                    name="templeSourceText2"
+                    type="text"
+                    class="form-control required hide"
+                    placeholder="请填写了解到自在家的途径"
+                    style="margin-top: 10px;"
+                  />
+                </div>
+              </div>
+              <div class="tip2">
+                <h3><span class="h-decorate"></span>后台登录设置</h3>
+              </div>
               <div class="form-group templeForm">
                 <label
                   class="col-sm-2 control-label"
@@ -299,7 +344,6 @@
               </div>
             </form>
           </div>
-          <div class="divider"></div>
           <div><button class="next" id="fillNext">下一步</button></div>
         </main>
       </section>

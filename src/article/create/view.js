@@ -8,7 +8,7 @@ import ChooseImage from '../../com-deprecated/choose-image';
 import StoreImage from '../../com-deprecated/store-image';
 import * as zzhHandling from '../../../../pro-com/src/handling';
 import purifyATarget from 'util/purify_a_target';
-import '../../../pro-com/src/libs-es5/jquery-qrcode';
+import '../../../../pro-com/src/libs-es5/jquery-qrcode';
 import './ajax';
 import seeAjax from 'see-ajax';
 import seeView from 'see-view';
@@ -191,7 +191,11 @@ seeView({
       return;
     }
     result.map(function(item) {
-      item.src += data.imageParams.cover;
+      const url = item.src;
+      const param = data.imageParams.cover;
+      item.src =
+        (url.indexOf('?') !== -1 ? url.slice(0, url.indexOf('?')) : url) +
+        param;
     });
     $coverImage.attr({
       src: result[0].src,
@@ -256,7 +260,8 @@ seeView({
         self.onSaveDataSuccess(res.articleId, data.saveType);
         zzhHandling.hide();
       } else {
-        commonFunc.alert(res.message || '保存出错，请稍后重试');
+        zzhHandling.hide();
+        commonFunc.alert(res.msg || '保存出错，请稍后重试');
       }
     });
   },
@@ -300,6 +305,7 @@ seeView({
       publishTime = $('#input-publish-time').val(),
       showTitle = parseInt($('input[name="show-title"]:checked').val()),
       showSupport = parseInt($('input[name="show-support"]:checked').val());
+    var showAd = parseInt($('input[name="show-adv"]:checked').val());
     if (!title) {
       commonFunc.alert('标题不能为空');
       return !1;
@@ -348,6 +354,7 @@ seeView({
       publishTime: publishTime,
       showTitle: showTitle,
       showSupport: showSupport,
+      isShowAd: showAd,
     };
     return !0;
   },

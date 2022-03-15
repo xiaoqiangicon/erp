@@ -6,6 +6,7 @@ import fn from 'common/function';
 import tpl from '../tpl';
 import data from '../data';
 import util from '../util';
+import { wxSubDomain } from '../../../util/env';
 import seeView from 'see-view';
 toastr.options.positionClass = 'toast-bottom-full-width';
 toastr.options.timeOut = 2000;
@@ -15,6 +16,8 @@ seeView({
   events: {
     'click [data-popup-receipts-row-delete]': 'onClickPopupReceiptsRowDelete',
     '!click #dialog-receipts-ok': 'onClickDialogReceiptsOk',
+    // 下载电子收据
+    '!click #upload-receipt-download': 'onClickUploadReceiptDownload',
   },
   onClickPopupReceiptsRowDelete: function(e) {
     $(e.target)
@@ -72,5 +75,12 @@ seeView({
       })
       .text('收据照片');
     orchids.back();
+  },
+  // 下载电子收据
+  onClickUploadReceiptDownload() {
+    let templeId = window.localStorage.getItem('templeid');
+    window.open(
+      `https://${wxSubDomain}.zizaihome.com/bg/getPickUpPdf?pickUpId=${data.currentHandleId}&templeId=${templeId}`
+    );
   },
 });

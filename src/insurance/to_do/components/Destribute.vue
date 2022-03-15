@@ -58,7 +58,7 @@
 <script>
 import seeAjax from 'see-ajax';
 import { Message } from 'element-ui';
-import { now } from '../../../../pro-com/src/utils';
+import { now } from '../../../../../pro-com/src/utils';
 
 export default {
   name: 'Destribute',

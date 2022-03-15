@@ -50,7 +50,7 @@
 
 <script>
 import seeAjax from 'see-ajax';
-import CountDown from '../../../../pro-com/src/count-down';
+import CountDown from '../../../../../pro-com/src/count-down';
 export default {
   props: {
     defaultMobile: String,
@@ -95,8 +95,8 @@ export default {
         pwd: [
           {
             required: true,
-            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-            message: '请输入密码，至少包含大写字母、小写字母、数字且不少于8位',
+            pattern: /^(?=.*\d)[a-zA-Z\d]{8,}$/,
+            message: '请输入密码，不少于8位（不支持特殊字符）',
             trigger: 'blur',
           },
         ],

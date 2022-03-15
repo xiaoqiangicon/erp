@@ -16,7 +16,7 @@ export default (req, res) => {
         list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => ({
           id,
           name: `选择项名称 ${id}`,
-          pic: '/images/chan-zai-128x128.png',
+          pic: '/images/logo.png',
           isSubdivide: Math.floor(Math.random() * 2),
           isNeedPay: Math.floor(Math.random() * 2),
           isRandow: Math.floor(Math.random() * 2),

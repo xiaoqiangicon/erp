@@ -15,11 +15,6 @@ seeAjax.config('storeImageSave', {
     },
   ],
   method: ['post'],
-  url: ['/zzhadmin/uploadPic/'],
-  requestKeys: [
-    {
-      url: 'picUrl',
-    },
-  ],
+  url: ['/upload/uploadByUrl'],
   implement: [void 0, implement, implement, implement, implement],
 });

@@ -90,7 +90,7 @@
 <script>
 import seeAjax from 'see-ajax';
 import { Message } from 'element-ui';
-import uploadCom from '../../../../pro-com/src/upload';
+import uploadCom from '../../../../../pro-com/src/upload';
 import { makeUploadFileOptions } from '../../../configs/upload';
 
 export default {
