@@ -32,7 +32,7 @@ const saveFoShiParams = {
         {
           id: 625475,
           inputType: 15,
-          prompt_text: '请填写您的心愿',
+          prompt_text: '填写心愿，获菩萨加持，早日实现！',
           name: '心愿',
           is_must: 0,
           dataType: 0,
@@ -75,6 +75,8 @@ const saveFoShiParams = {
   opName: '随喜功德',
   postScript: [],
   showClient: '1',
+  showRank: '1',
+  closeSchedule: '1',
   showStatictics: 1,
   targetAmount: 0,
   startTime: '2021-04-22 16:07:55',

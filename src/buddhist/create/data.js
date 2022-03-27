@@ -284,7 +284,7 @@ export const plainFuYanList = [
   },
   {
     inputType: 15,
-    prompt_text: '请填写您的心愿',
+    prompt_text: '填写心愿，获菩萨加持，早日实现！',
     describe: '',
     name: '心愿',
     is_must: 1,
@@ -503,7 +503,7 @@ export const plainGuiGeList = [
       },
       {
         inputType: 15,
-        prompt_text: '请填写您的心愿',
+        prompt_text: '填写心愿，获菩萨加持，早日实现！',
         name: '心愿',
         is_must: 0,
         dataType: 2,

@@ -77,6 +77,10 @@ export default {
         opName: '随喜功德',
         // 是否显示参与者列表
         showClient: 1,
+        // 是否显示功德榜列表
+        showRank: 1,
+        // 是否显示进展动态
+        closeSchedule: 1,
         // 是否显示统计区域
         // showStatictics: 1,
         // 是否显示统计区域
