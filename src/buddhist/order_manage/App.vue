@@ -184,6 +184,7 @@
           v-show="expressSetting.enable_print && (type === 1 || type === 3)"
           type="default"
           size="medium"
+          class="fl-right"
           @click="onClickExpressPrint"
         >
           快递单打印
@@ -199,7 +200,7 @@
         <el-button
           type="default"
           size="medium"
-          class=""
+          class="pull-right mg-r-20"
           @click="onClickPrintGroup"
           >打印机设置
         </el-button>

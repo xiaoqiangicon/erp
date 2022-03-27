@@ -142,6 +142,7 @@
         <el-button
           v-show="expressSetting.enable_print && (type === 1 || type === 2)"
           type="default"
+          class="fl-right"
           size="medium"
           @click="onClickExpressPrint"
         >
@@ -164,7 +165,7 @@
         >
         <el-button
           type="default"
-          class=""
+          class="pull-right mg-r-20"
           size="medium"
           @click="onClickSetPrinter"
           >打印设置</el-button
