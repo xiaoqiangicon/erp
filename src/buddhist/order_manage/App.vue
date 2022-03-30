@@ -199,7 +199,7 @@
         <el-button
           type="default"
           size="medium"
-          class="pull-right mg-r-20"
+          class=""
           @click="onClickPrintGroup"
           >打印机设置
         </el-button>

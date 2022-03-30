@@ -273,7 +273,7 @@ export default {
   },
   computed: {
     dialogTitle() {
-      return this.hasPrinter ? '打印机设置' : '打印机设置';
+      return this.hasPrinter ? '排位打印' : '排位打印';
     },
     selected() {
       return this.$store.state.selected;
