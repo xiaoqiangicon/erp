@@ -1,7 +1,7 @@
 /**
  *
- * 详见: /static/resources/json/menu_items_test.json（测试机）
- *       /static/resources/json/menu_items.json（正式机机）
+ * 详见: /static/resources/json/menu_items_test.json（测试环境）
+ *       /static/resources/json/menu_items.json（产品环境机）
  *
  * format
  *

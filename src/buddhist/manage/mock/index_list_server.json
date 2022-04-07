@@ -204,7 +204,7 @@
       "status": 0,
       "join_num": 5,
       "isStart": 1,
-      "name": "测试机-日行一善佛事",
+      "name": "测试环境-日行一善佛事",
       "printerList": [
         {
           "printerId": 1,
@@ -239,7 +239,7 @@
       "status": 0,
       "join_num": 35,
       "isStart": 1,
-      "name": "测试机-放生修福",
+      "name": "测试环境-放生修福",
       "printerList": [
         {
           "printerId": 1,
@@ -274,7 +274,7 @@
       "status": 0,
       "join_num": 4,
       "isStart": 1,
-      "name": "测试机-2019浴佛节佛事",
+      "name": "测试环境-2019浴佛节佛事",
       "printerList": [
         {
           "printerId": 1,
@@ -342,23 +342,23 @@
       "status": 0,
       "join_num": 1,
       "isStart": 1,
-      "name": "测试机-2019浴佛节活动浴佛登记",
+      "name": "测试环境-2019浴佛节活动浴佛登记",
       "printerList": [
         {
           "printerId": 1,
-          "notBoundSubNameList": ["测试机-登记浴佛节"],
+          "notBoundSubNameList": ["测试环境-登记浴佛节"],
           "subNameList": [],
           "address": "妙严科技公司"
         },
         {
           "printerId": 2,
-          "notBoundSubNameList": ["测试机-登记浴佛节"],
+          "notBoundSubNameList": ["测试环境-登记浴佛节"],
           "subNameList": [],
           "address": "妙严科技公司2"
         },
         {
           "printerId": 3,
-          "notBoundSubNameList": ["测试机-登记浴佛节"],
+          "notBoundSubNameList": ["测试环境-登记浴佛节"],
           "subNameList": [],
           "address": "妙言科技公司3"
         }
@@ -377,15 +377,15 @@
       "status": 0,
       "join_num": 5,
       "isStart": 1,
-      "name": "测试机-2019浴佛节活动实物奖励领取",
+      "name": "测试环境-2019浴佛节活动实物奖励领取",
       "printerList": [
         {
           "printerId": 1,
           "notBoundSubNameList": [
-            "测试机-开运红绳",
-            "测试机-纯银转运珠",
-            "测试机-荷韵清香茶具",
-            "测试机-福顺金钞"
+            "测试环境-开运红绳",
+            "测试环境-纯银转运珠",
+            "测试环境-荷韵清香茶具",
+            "测试环境-福顺金钞"
           ],
           "subNameList": [],
           "address": "妙严科技公司"
@@ -393,10 +393,10 @@
         {
           "printerId": 2,
           "notBoundSubNameList": [
-            "测试机-开运红绳",
-            "测试机-纯银转运珠",
-            "测试机-荷韵清香茶具",
-            "测试机-福顺金钞"
+            "测试环境-开运红绳",
+            "测试环境-纯银转运珠",
+            "测试环境-荷韵清香茶具",
+            "测试环境-福顺金钞"
           ],
           "subNameList": [],
           "address": "妙严科技公司2"
@@ -404,10 +404,10 @@
         {
           "printerId": 3,
           "notBoundSubNameList": [
-            "测试机-开运红绳",
-            "测试机-纯银转运珠",
-            "测试机-荷韵清香茶具",
-            "测试机-福顺金钞"
+            "测试环境-开运红绳",
+            "测试环境-纯银转运珠",
+            "测试环境-荷韵清香茶具",
+            "测试环境-福顺金钞"
           ],
           "subNameList": [],
           "address": "妙言科技公司3"
