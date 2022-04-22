@@ -138,6 +138,8 @@ export function renderCreatedData(s, isSystemTemplate, isDelay) {
   s.stock = d.stock === -1 ? '' : d.stock;
   s.opName = d.opName || '';
   s.showClient = confirmInt(d.showClient, 1);
+  s.showRank = confirmInt(d.showRank, 1);
+  s.closeSchedule = confirmInt(d.closeSchedule, 1);
 
   s.showStatictics = confirmInt(d.showStatictics, 1);
   if (s.showStatictics > 0) {
