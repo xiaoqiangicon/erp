@@ -12,12 +12,13 @@ import '../../../../pro-com/src/ueditor/ueditor.all';
 
 import 'component/ueditor_plugins/xiu_mi';
 import 'component/ueditor_plugins/import_wx_article';
-import 'component/ueditor_plugins/video';
+// import 'component/ueditor_plugins/video';
 import 'component/ueditor_plugins/choose_image';
 import 'component/ueditor_plugins/choose_image_multi';
 import '../../com/ueditor-plugins/embed-music';
 import '../../com/ueditor-plugins/embed-link';
 import '../../com/ueditor-plugins/135editor';
+import '../../com/ueditor-plugins/embed-video';
 
 import Vue from 'vue';
 import {
