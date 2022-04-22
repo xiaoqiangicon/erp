@@ -225,7 +225,7 @@
             <div class="cell-title">附言信息</div>
             <div class="cell-body">
               <template v-if="ps.length">
-                <div v-for="item in ps" :key="item.inputId" class="ps-row">
+                <div v-for="item in ps" :key="item.value" class="ps-row">
                   <div class="ps-title">{{ item.name }}：</div>
                   <div class="ps-content">
                     <!--图片-->
