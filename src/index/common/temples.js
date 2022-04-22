@@ -1,13 +1,13 @@
 export default [
-  {
-    id: 1,
-    name: '弘法寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=1',
-    desc:
-      '深圳弘法寺位于深圳仙湖植物园内，始建于1985年，是佛门泰斗本焕长老和衣钵真传印顺大和尚沥尽心血打造的佛教道场。',
-    cover:
-      'https://pic.zizaihome.com/ace9e37c-5d63-11e7-93cf-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
+  // {
+  //   id: 1,
+  //   name: '弘法寺',
+  //   link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=1',
+  //   desc:
+  //     '深圳弘法寺位于深圳仙湖植物园内，始建于1985年，是佛门泰斗本焕长老和衣钵真传印顺大和尚沥尽心血打造的佛教道场。',
+  //   cover:
+  //     'https://pic.zizaihome.com/ace9e37c-5d63-11e7-93cf-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
+  // },
   {
     id: 20,
     name: '北京圣泉寺',
@@ -17,33 +17,33 @@ export default [
     cover:
       'https://pic.zizaihome.com/6ed12f96-5d68-11e7-93cf-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
   },
-  {
-    id: 24,
-    name: '弘源寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=24',
-    desc:
-      '弘源寺，原名乌石寺，始建于清朝嘉庆年间，坐落于宝安石岩湖温泉度假村境内，几经战乱虽多次修复但终究毁损仅留遗址。',
-    cover:
-      'https://pic.zizaihome.com/5c3b16ea-5d67-11e7-93cf-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 23,
-    name: '龙兴寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=23',
-    desc:
-      '深圳龙岗龙兴寺原名观音阁，坐落于中国唯一以龙文化为主题的风景秀丽的园林式景区龙园公园内。2011年初，在龙岗区委和龙岗街道的邀请下，深圳弘法寺接管龙园公园内的观音阁。',
-    cover:
-      'https://pic.zizaihome.com/170c620a-1518-11e7-aef2-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 5611,
-    name: '本焕学院',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5611',
-    desc:
-      '本焕学院创办于2010年，是经国家宗教局批准，直属于中国佛教协会的全国性高等汉语系佛教院校。学院以培养爱国爱教，遵纪守法，信仰虔诚，佛学基础扎实，人文修养全面，熟悉各种佛教仪轨，能够对外弘法交流，推广和传播佛教文化的研究型、实用型人才为宗旨。',
-    cover:
-      'https://pic.zizaihome.com/97a7a8a6-5d67-11e7-93cf-00163e0c001e.JPG?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
+  // {
+  //   id: 24,
+  //   name: '弘源寺',
+  //   link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=24',
+  //   desc:
+  //     '弘源寺，原名乌石寺，始建于清朝嘉庆年间，坐落于宝安石岩湖温泉度假村境内，几经战乱虽多次修复但终究毁损仅留遗址。',
+  //   cover:
+  //     'https://pic.zizaihome.com/5c3b16ea-5d67-11e7-93cf-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
+  // },
+  // {
+  //   id: 23,
+  //   name: '龙兴寺',
+  //   link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=23',
+  //   desc:
+  //     '深圳龙岗龙兴寺原名观音阁，坐落于中国唯一以龙文化为主题的风景秀丽的园林式景区龙园公园内。2011年初，在龙岗区委和龙岗街道的邀请下，深圳弘法寺接管龙园公园内的观音阁。',
+  //   cover:
+  //     'https://pic.zizaihome.com/170c620a-1518-11e7-aef2-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
+  // },
+  // {
+  //   id: 5611,
+  //   name: '本焕学院',
+  //   link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5611',
+  //   desc:
+  //     '本焕学院创办于2010年，是经国家宗教局批准，直属于中国佛教协会的全国性高等汉语系佛教院校。学院以培养爱国爱教，遵纪守法，信仰虔诚，佛学基础扎实，人文修养全面，熟悉各种佛教仪轨，能够对外弘法交流，推广和传播佛教文化的研究型、实用型人才为宗旨。',
+  //   cover:
+  //     'https://pic.zizaihome.com/97a7a8a6-5d67-11e7-93cf-00163e0c001e.JPG?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
+  // },
   {
     id: 5597,
     name: '白瀑寺',
@@ -107,24 +107,24 @@ export default [
     cover:
       'https://pic.zizaihome.com/860cc1e6-de3e-11e7-8333-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
   },
-  {
-    id: 5684,
-    name: '鸡足山九莲寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5684',
-    desc:
-      '云南佛教文化底蕴深厚，大理自古即有“妙香佛国”之称。鸡足山乃佛陀的大弟子迦叶尊者的道场，尊者“守衣入定”以待弥勒佛下生。',
-    cover:
-      'https://pic.zizaihome.com/852e07da-be13-11e7-8e24-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
-  {
-    id: 5682,
-    name: '汝州风穴寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5682',
-    desc:
-      '国家重点寺院。风穴寺又名香积寺、千峰寺，白云禅寺，位于汝州市 区东北9公里的中岳嵩山少室山南麓风穴山中。',
-    cover:
-      'https://pic.zizaihome.com/813bd594-bd4b-11e7-8855-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
+  // {
+  //   id: 5684,
+  //   name: '鸡足山九莲寺',
+  //   link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5684',
+  //   desc:
+  //     '云南佛教文化底蕴深厚，大理自古即有“妙香佛国”之称。鸡足山乃佛陀的大弟子迦叶尊者的道场，尊者“守衣入定”以待弥勒佛下生。',
+  //   cover:
+  //     'https://pic.zizaihome.com/852e07da-be13-11e7-8e24-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
+  // },
+  // {
+  //   id: 5682,
+  //   name: '汝州风穴寺',
+  //   link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5682',
+  //   desc:
+  //     '国家重点寺院。风穴寺又名香积寺、千峰寺，白云禅寺，位于汝州市 区东北9公里的中岳嵩山少室山南麓风穴山中。',
+  //   cover:
+  //     'https://pic.zizaihome.com/813bd594-bd4b-11e7-8855-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
+  // },
   {
     id: 5661,
     name: '九华山大佛寺',
