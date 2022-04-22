@@ -267,7 +267,7 @@ export default {
       printQrcode: 1, // 2 1 3 隔 全 不
       printTel: 1,
       printer: [],
-      printerType: 0, // 0 普通打印机 1 排位打印机
+      printerType: 0, // 0 普通打印机 1 牌位打印机
       sealType: 2, // 印章类型
       sealTypeBottom: 3,
       fontType: 0, // 默认字体
@@ -275,7 +275,7 @@ export default {
   },
   computed: {
     dialogTitle() {
-      return this.hasPrinter ? '排位打印' : '排位打印';
+      return this.hasPrinter ? '牌位打印' : '牌位打印';
     },
     selected() {
       return this.$store.state.selected;

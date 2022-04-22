@@ -302,6 +302,7 @@ seeView({
       showTempleWebsite = parseInt(
         $('input[name="show-temple-website"]:checked').val()
       ),
+      showBlank = parseInt($('input[name="show-blank"]:checked').val()),
       publishTime = $('#input-publish-time').val(),
       showTitle = parseInt($('input[name="show-title"]:checked').val()),
       showSupport = parseInt($('input[name="show-support"]:checked').val());
@@ -351,6 +352,7 @@ seeView({
       payGuide: payGuide,
       showCoverInDetail: showCoverInDetail,
       showTempleWebsite: showTempleWebsite,
+      is_show_blank: showBlank,
       publishTime: publishTime,
       showTitle: showTitle,
       showSupport: showSupport,

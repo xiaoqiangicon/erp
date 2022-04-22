@@ -80,7 +80,7 @@ export default {
         // 是否显示功德榜列表
         showRank: 1,
         // 是否显示进展动态
-        closeSchedule: 1,
+        closeSchedule: 0,
         // 是否显示统计区域
         // showStatictics: 1,
         // 是否显示统计区域
@@ -151,7 +151,7 @@ export default {
 
       // 打印机列表
       printerList: [
-        // type: 0 小票打印、1 排位打印
+        // type: 0 小票打印、1 牌位打印
         // id, address
         // guiGeIndexes: 选中规格的索引列表
         // setting: 设置对象

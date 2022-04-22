@@ -10,7 +10,9 @@
     </div>
     <el-form :model="form" label-width="150px" size="medium" class="forms">
       <el-form-item label="标题：" required>
-        <template slot="label">标&nbsp;&nbsp;&nbsp;&nbsp;题： </template>
+        <template slot="label"
+          >标&nbsp;&nbsp;&nbsp;&nbsp;题：
+        </template>
         <el-input
           v-model="form.title"
           placeholder="请输入不超过30个文字"
@@ -30,7 +32,9 @@
         </el-switch>
       </el-form-item>
       <el-form-item label="分类：" required>
-        <template slot="label">分&nbsp;&nbsp;&nbsp;&nbsp;类： </template>
+        <template slot="label"
+          >分&nbsp;&nbsp;&nbsp;&nbsp;类：
+        </template>
         <el-select
           v-model="form.ceremonyTypeId"
           placeholder="请选择"
@@ -99,7 +103,9 @@
         <p>支持视频格式MP4/MOV等，不超过50MB，仅支持上传1个封面视频</p>
       </el-form-item>
       <el-form-item label="简介：">
-        <template slot="label">简&nbsp;&nbsp;&nbsp;&nbsp;介： </template>
+        <template slot="label"
+          >简&nbsp;&nbsp;&nbsp;&nbsp;介：
+        </template>
         <el-input
           type="textarea"
           placeholder="简介可自定义佛事分享时的描述（选填）"
@@ -112,7 +118,9 @@
         </el-input>
       </el-form-item>
       <el-form-item label="详情：" required>
-        <template slot="label">详&nbsp;&nbsp;&nbsp;&nbsp;情： </template>
+        <template slot="label"
+          >详&nbsp;&nbsp;&nbsp;&nbsp;情：
+        </template>
         <div id="detail-editor" class="editor-container"></div>
       </el-form-item>
       <el-form-item label="选择项：">
@@ -130,7 +138,9 @@
         <GuiGe :subdivideStr="form.subdivideStr" />
       </el-form-item>
       <el-form-item label="支付：" v-if="!guiGeListLength">
-        <template slot="label">支&nbsp;&nbsp;&nbsp;&nbsp;付： </template>
+        <template slot="label"
+          >支&nbsp;&nbsp;&nbsp;&nbsp;付：
+        </template>
         <el-radio v-model="form._needPay" :label="1">需支付</el-radio>
         <el-radio v-model="form._needPay" :label="0">无需支付</el-radio>
         <div class="mg-t-20" v-if="form._needPay">
@@ -163,7 +173,9 @@
         </div>
       </el-form-item>
       <el-form-item label="库存：" v-if="!guiGeListLength">
-        <template slot="label">库&nbsp;&nbsp;&nbsp;&nbsp;存： </template>
+        <template slot="label"
+          >库&nbsp;&nbsp;&nbsp;&nbsp;存：
+        </template>
         <el-input
           v-model="form.stock"
           placeholder="为空不限库存"
@@ -171,7 +183,9 @@
         ></el-input>
       </el-form-item>
       <el-form-item label="附言：">
-        <template slot="label">附&nbsp;&nbsp;&nbsp;&nbsp;言： </template>
+        <template slot="label"
+          >附&nbsp;&nbsp;&nbsp;&nbsp;言：
+        </template>
         <FuYan :postScript="form.postScript" />
       </el-form-item>
       <el-form-item label="按钮文字：">
@@ -186,10 +200,10 @@
         <el-radio v-model="form.showClient" :label="0">不显示</el-radio>
       </el-form-item>
       <el-form-item label="进展动态：">
-        <el-radio v-model="form.closeSchedule" :label="1">显示</el-radio>
-        <el-radio v-model="form.closeSchedule" :label="0">不显示</el-radio>
+        <el-radio v-model="form.closeSchedule" :label="0">显示</el-radio>
+        <el-radio v-model="form.closeSchedule" :label="1">不显示</el-radio>
       </el-form-item>
-      <el-form-item label="功德榜单：">
+      <el-form-item label="功德榜单：" v-if="!1">
         <el-radio v-model="form.showRank" :label="1">显示</el-radio>
         <el-radio v-model="form.showRank" :label="0">不显示</el-radio>
       </el-form-item>

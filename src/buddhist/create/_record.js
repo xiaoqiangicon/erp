@@ -76,7 +76,7 @@ const saveFoShiParams = {
   postScript: [],
   showClient: '1',
   showRank: '1',
-  closeSchedule: '1',
+  closeSchedule: '0',
   showStatictics: 1,
   targetAmount: 0,
   startTime: '2021-04-22 16:07:55',

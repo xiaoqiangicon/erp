@@ -162,13 +162,19 @@ export default {
     blurPriceInput(index) {
       // 这里需要延迟执行，不然会阻止fillRandomPrices()的运行
       setTimeout(() => {
-        this.list[index]._priceAutoBox = false;
+        let item = this.list[index];
+        item._priceAutoBox = false;
+        item.isAutoFinish =
+          item.price.indexOf(',') > -1 || item.price.indexOf('，') > -1
+            ? confirmInt(item.isAutoFinish, 1)
+            : 0;
         this.$forceUpdate();
       }, 300);
     },
     fillRandomPrices(index) {
       const item = this.list[index];
       item.price = randomPrices;
+      item.isAutoFinish = 1;
       // 如果没有封面，给个默认的红包封面
       if (!item.pic) item.pic = redPacketCover;
     },

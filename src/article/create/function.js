@@ -86,6 +86,9 @@ func.renderArticle = function(res) {
   ).prop({
     checked: !0,
   });
+  $('input[name="show-blank"][value="' + res.data.is_show_blank + '"]').prop({
+    checked: !0,
+  });
   // 当前为复制文章时 不对发布时间进行复制
   if (!(data.params.action && data.params.action == 'copy')) {
     $('#input-publish-time').val(res.data.publishTime);

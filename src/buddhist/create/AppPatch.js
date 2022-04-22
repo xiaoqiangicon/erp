@@ -59,7 +59,10 @@ function handleGuiGeItem(item) {
   item.name = item.name || '';
   if ([1, 2, 3, 4].indexOf(item.subdivide_type) === -1) item.subdivide_type = 1;
   item.pic = item.pic || '';
-  item.isAutoFinish = confirmInt(item.isAutoFinish, 1);
+  item.isAutoFinish =
+    item.price.indexOf(',') > -1 || item.price.indexOf('，') > -1
+      ? confirmInt(item.isAutoFinish, 1)
+      : 0;
 
   // 1 天、2 月、3 年
   if (!item.durationDay) {

@@ -1,0 +1,73 @@
+.code {
+  resize: none;
+}
+.upload-btn {
+  position: relative;
+}
+.insert {
+  display: block;
+  margin: 20px auto 0;
+}
+
+.cover-item {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.cover-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: none;
+}
+
+.cover-del {
+  position: absolute;
+  color: #d46a40;
+  right: 2px;
+  top: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}
+
+.cover-item:hover {
+  .cover-mask,
+  .cover-del {
+    display: block;
+  }
+}
+.cover-add {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+.cover-feed-video-add {
+  position: relative;
+  display: inline-block;
+}
+
+.cover-loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+.wd-100-pc {
+  width: 100px;
+}
+.hg-100-pc {
+  height: 100px;
+}
