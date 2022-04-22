@@ -9,7 +9,7 @@ const domains = {
 // 当前子域名
 export const subDomain = window.location.hostname.split('.')[0];
 
-// 服务器环境（0：本地环境，1：测试机，2：灰度机，3：正式机）
+// 服务器环境（0：本地环境，1：测试环境，2：灰度环境，3：产品环境）
 export const serverEnv = domains[subDomain] || 0;
 
 // 协议
