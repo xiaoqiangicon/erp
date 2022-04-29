@@ -420,7 +420,7 @@ export const plainGuiGeList = [
         font_length: 0,
       },
       {
-        inputType: 6,
+        inputType: 18,
         prompt_text: '请选择您常用的地区',
         name: '地区',
         is_must: 0,
@@ -480,7 +480,7 @@ export const plainGuiGeList = [
         font_length: 0,
       },
       {
-        inputType: 6,
+        inputType: 18,
         prompt_text: '请选择您常用的地区',
         name: '地区',
         is_must: 0,
