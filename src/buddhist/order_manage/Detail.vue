@@ -294,8 +294,12 @@
                 <div class="detail-content">{{ id }}</div>
               </div>
               <div class="detail-row">
-                <div class="detail-title">善缘号：</div>
+                <div class="detail-title">订单号：</div>
                 <div class="detail-content">{{ outerOrderNumber }}</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-title">用户ID：</div>
+                <div class="detail-content">{{ user_id }}</div>
               </div>
               <div class="detail-row" v-if="!1">
                 <div class="detail-title">支付流水号：</div>
@@ -377,6 +381,7 @@ export default {
       userComment: '', // 用户留言
       orderNumber: '', // 订单号
       outerOrderNumber: '', // 外部订单号
+      user_id: '', // 用户ID
       runningNumber: '', // 支付流水号
       ps: [], // 附言 {inputId name type value}
 
@@ -501,6 +506,7 @@ export default {
           usercomment,
           orderNumber,
           outerOrderNumber,
+          user_id,
           runningNumber,
           ps,
           nextFeedBackTime,
@@ -525,6 +531,7 @@ export default {
         this.userComment = usercomment;
         this.orderNumber = orderNumber;
         this.outerOrderNumber = outerOrderNumber;
+        this.user_id = user_id;
         this.runningNumber = runningNumber;
         this.ps = ps;
         this.nextFeedBackTime = nextFeedBackTime;
@@ -1015,7 +1022,7 @@ export default {
   font-size: 18px;
 }
 .detail-title {
-  flex: 2;
+  flex: 2.5;
 }
 .detail-content {
   flex: 5;

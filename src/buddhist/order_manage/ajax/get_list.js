@@ -63,6 +63,12 @@ const post = res => {
     item.refundMessageJSON = item.refundMessageJSON
       ? JSON.parse(item.refundMessageJSON)
       : {};
+    item.ps &&
+      item.ps.forEach(ps => {
+        if (ps.type === 5) {
+          item.mobile = ps.value;
+        }
+      });
   });
 };
 
