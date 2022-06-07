@@ -5,6 +5,7 @@ import Printer from './Printer';
 import Logistics from './Logistics';
 import formatTime from '../../util/format_time';
 import request from '../../utils/request';
+import { PARTNER_TYPE_SF, PARTNER_TYPE_YT } from '../../express/setting/data';
 
 export default {
   name: 'App',
@@ -109,6 +110,10 @@ export default {
       expressPrintAgainOrderIds: [],
       // 快递复打对话框
       expressPrintingAgainDialogVisible: false,
+      // 是否有多个快递公司
+      expressPrintMultiPartner: false,
+      // 快递公司类型：yt 圆通、sf 顺丰
+      expressPrintPartnerType: PARTNER_TYPE_YT,
     };
   },
   computed: {
@@ -155,9 +160,21 @@ export default {
 
         // 启用了快递打印设置
         if (
-          this.expressSetting.partner_id &&
+          (this.expressSetting.partner_id ||
+            this.expressSetting.sf_partner_id) &&
           this.expressSetting.enable_print
         ) {
+          this.expressPrintMultiPartner = !!(
+            this.expressSetting.partner_id && this.expressSetting.sf_partner_id
+          );
+          // 如果没有圆通，默认指定顺丰
+          if (
+            !this.expressSetting.partner_id &&
+            this.expressSetting.sf_partner_id
+          ) {
+            this.expressPrintPartnerType = PARTNER_TYPE_SF;
+          }
+
           // 每隔10秒重新刷新数据
           this.refreshPrintDevicesInterval = setInterval(
             this.requestExpressPrintDevicesWithTask,
@@ -289,6 +306,7 @@ export default {
       const data = new URLSearchParams();
       data.append('device_id', this.expressDeviceSelectedId);
       data.append('order_ids', this.selected.join(','));
+      data.append('partner_type', this.expressPrintPartnerType);
 
       this.expressPrintAddingOrders = true;
       request({

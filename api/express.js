@@ -8,7 +8,7 @@ export const getPrintSetting = {
     // 用户Id
     user_id: 123456,
     // 快递公司客户编码
-    partner_id: '',
+    partner_id: 'partner_id123',
     // 快递公司客户密钥
     partner_key: 'partner_id456',
     // 发件人姓名
@@ -30,7 +30,7 @@ export const getPrintSetting = {
     // 模板类型(1 标准模板、2 有二维码的模板)
     template_type: 2,
     // 顺丰速运月结账号
-    sf_partner_id: 'sf_partner_id111',
+    sf_partner_id: '',
   },
 };
 

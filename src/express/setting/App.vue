@@ -27,7 +27,11 @@
       <div class="gray">当前自在家仅支持圆通快递的电子面单打印</div>
       <div class="mg-t-20 clearfix">
         <div class="select-company">
-          <el-radio v-model="partnerType" label="yt">
+          <el-radio
+            v-model="partnerType"
+            label="yt"
+            @change="onChangePartnerType"
+          >
             <span class="select-company-content">
               <img
                 src="https://pic.zizaihome.com/1f079e06-c5be-43e2-95c8-21486b2f47ec.png"
@@ -37,7 +41,11 @@
           </el-radio>
         </div>
         <div class="select-company">
-          <el-radio v-model="partnerType" label="sf">
+          <el-radio
+            v-model="partnerType"
+            label="sf"
+            @change="onChangePartnerType"
+          >
             <span class="select-company-content">
               <img
                 src="https://pic.zizaihome.com/c6765579-6553-4864-983f-50e9590d96d3.png"

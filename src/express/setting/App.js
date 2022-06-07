@@ -373,5 +373,11 @@ export default {
           this.switchingTemplateType = false;
         });
     },
+    onChangePartnerType() {
+      const hasValue =
+        (this.partnerType === PARTNER_TYPE_YT && this.partnerId) ||
+        (this.partnerType === PARTNER_TYPE_SF && this.sfPartnerId);
+      if (!hasValue && !this.showEditPartner) this.showEditPartner = true;
+    },
   },
 };
