@@ -255,7 +255,7 @@
         <el-table-column width="200" label="联系人">
           <template slot-scope="scope">
             <p>{{ scope.row.user.name }}</p>
-            <p>{{ scope.row.user.mobile }}</p>
+            <p>{{ scope.row.mobile ? scope.row.mobile : '' }}</p>
           </template>
         </el-table-column>
         <el-table-column
