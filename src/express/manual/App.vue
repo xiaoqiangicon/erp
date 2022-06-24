@@ -516,7 +516,7 @@
                 ></el-table-column>
                 <el-table-column label="物流信息" prop="express_num">
                   <template slot-scope="scope">
-                    圆通速递<br />
+                    {{ getCompanyName(scope.row.express_company_code) }}<br />
                     <span class="blue" :ref="'printedCopy' + scope.row.id">{{
                       scope.row.express_num
                     }}</span>
@@ -817,6 +817,10 @@
         {{ expressDeviceSelectedName || '' }}已离线，请检查本地网络是否正常。
       </el-alert>
       <el-form label-width="100px" size="small" class="mg-t-20">
+        <el-form-item label="物流公司：" v-if="expressPrintMultiPartner">
+          <el-radio v-model="expressPrintPartnerType" label="yt">圆通</el-radio>
+          <el-radio v-model="expressPrintPartnerType" label="sf">顺丰</el-radio>
+        </el-form-item>
         <el-form-item label="云打印机：">
           <el-select
             v-model="expressDeviceSelectedId"

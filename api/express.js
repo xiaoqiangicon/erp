@@ -29,6 +29,8 @@ export const getPrintSetting = {
     del_flag: 0,
     // 模板类型(1 标准模板、2 有二维码的模板)
     template_type: 2,
+    // 顺丰速运月结账号
+    sf_partner_id: '',
   },
 };
 

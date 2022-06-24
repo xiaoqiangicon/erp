@@ -27,10 +27,28 @@
       <div class="gray">当前自在家仅支持圆通快递的电子面单打印</div>
       <div class="mg-t-20 clearfix">
         <div class="select-company">
-          <el-radio checked>
+          <el-radio
+            v-model="partnerType"
+            label="yt"
+            @change="onChangePartnerType"
+          >
             <span class="select-company-content">
               <img
                 src="https://pic.zizaihome.com/1f079e06-c5be-43e2-95c8-21486b2f47ec.png"
+                height="50"
+              />
+            </span>
+          </el-radio>
+        </div>
+        <div class="select-company">
+          <el-radio
+            v-model="partnerType"
+            label="sf"
+            @change="onChangePartnerType"
+          >
+            <span class="select-company-content">
+              <img
+                src="https://pic.zizaihome.com/c6765579-6553-4864-983f-50e9590d96d3.png"
                 height="50"
               />
             </span>
@@ -44,75 +62,130 @@
       <el-alert class="mg-t-10" type="info" :closable="false" show-icon
         >添加客户编码前，请联系自在家服务人员，激活您的客户编码</el-alert
       >
-      <div class="input-section" v-if="showEditPartner">
-        <div>客户编码</div>
-        <el-input
-          v-model="partnerId"
-          placeholder="请填写客户编码（K+8位数字）"
-          maxlength="100"
-          @focus="savePartnerError = null"
-          class="mg-t-10"
-          style="width: 300px"
-        ></el-input>
-        <div class="mg-t-10">客户密钥</div>
-        <el-input
-          v-model="partnerKey"
-          placeholder="请填写客户密钥"
-          maxlength="100"
-          @focus="savePartnerError = null"
-          class="mg-t-10"
-          style="width: 300px"
-        ></el-input>
-        <el-alert
-          class="mg-t-20"
-          type="warning"
-          show-icon
-          v-if="savePartnerError"
-          >{{ savePartnerError }}</el-alert
-        >
-        <div class="mg-t-40">
-          <el-button
-            type="success"
-            class="pd-l-40 pd-r-40"
-            @click="onSavePartner"
-            v-loading="savingPartner"
-            round
-            >{{ initData.partner_id ? '更新' : '绑定' }}</el-button
+      <!-- 顺丰 -->
+      <div v-if="partnerType === 'sf'">
+        <div class="input-section" v-if="showEditPartner">
+          <div>客户编码</div>
+          <el-input
+            v-model="sfPartnerId"
+            placeholder="请填写客户编码"
+            maxlength="100"
+            @focus="savePartnerError = null"
+            class="mg-t-10"
+            style="width: 300px"
+          ></el-input>
+          <el-alert
+            class="mg-t-20"
+            type="warning"
+            show-icon
+            v-if="savePartnerError"
+            >{{ savePartnerError }}</el-alert
           >
+          <div class="mg-t-40">
+            <el-button
+              type="success"
+              class="pd-l-40 pd-r-40"
+              @click="onSavePartner"
+              v-loading="savingPartner"
+              round
+              >{{ initData.sf_partner_id ? '更新' : '绑定' }}</el-button
+            >
+          </div>
+        </div>
+        <div class="input-section" v-else>
+          <div>
+            客户编码<span class="dp-inline-block wd-60"></span>{{ sfPartnerId }}
+          </div>
+          <div class="mg-t-40">
+            <el-button
+              type="success"
+              class="pd-l-40 pd-r-40"
+              @click="showEditPartner = true"
+              round
+              >修改</el-button
+            >
+            <el-button
+              type="warning"
+              class="pd-l-40 pd-r-40"
+              @click="removePartner"
+              round
+              >删除</el-button
+            >
+          </div>
         </div>
       </div>
-      <div class="input-section" v-else>
-        <div>
-          客户编码<span class="dp-inline-block wd-60"></span>{{ partnerId }}
-        </div>
-        <div class="mg-t-10">
-          剩余单量<span class="dp-inline-block wd-60"></span>
-          <span
-            style="display: inline-block; min-width: 50px"
-            v-loading="balanceRequesting"
-          >
-            <span class="blue" style="font-size: 24px">{{
-              partnerBalance
-            }}</span>
-            <span class="dp-inline-block wd-10"></span>
-            <span class="f-s-13 gray">{{ balanceQueryTime }}</span>
-          </span>
-        </div>
-        <div class="mg-t-40">
-          <el-button
-            type="success"
-            class="pd-l-40 pd-r-40"
-            @click="showEditPartner = true"
-            round
-            >修改</el-button
-          >
-          <el-button
+      <!-- 圆通 -->
+      <div v-else>
+        <div class="input-section" v-if="showEditPartner">
+          <div>客户编码</div>
+          <el-input
+            v-model="partnerId"
+            placeholder="请填写客户编码（K+8位数字）"
+            maxlength="100"
+            @focus="savePartnerError = null"
+            class="mg-t-10"
+            style="width: 300px"
+          ></el-input>
+          <div class="mg-t-10">客户密钥</div>
+          <el-input
+            v-model="partnerKey"
+            placeholder="请填写客户密钥"
+            maxlength="100"
+            @focus="savePartnerError = null"
+            class="mg-t-10"
+            style="width: 300px"
+          ></el-input>
+          <el-alert
+            class="mg-t-20"
             type="warning"
-            class="pd-l-40 pd-r-40"
-            @click="removePartner"
-            round
-            >删除</el-button
+            show-icon
+            v-if="savePartnerError"
+            >{{ savePartnerError }}</el-alert
           >
+          <div class="mg-t-40">
+            <el-button
+              type="success"
+              class="pd-l-40 pd-r-40"
+              @click="onSavePartner"
+              v-loading="savingPartner"
+              round
+              >{{ initData.partner_id ? '更新' : '绑定' }}</el-button
+            >
+          </div>
+        </div>
+        <div class="input-section" v-else>
+          <div>
+            客户编码<span class="dp-inline-block wd-60"></span>{{ partnerId }}
+          </div>
+          <div class="mg-t-10">
+            剩余单量<span class="dp-inline-block wd-60"></span>
+            <span
+              style="display: inline-block; min-width: 50px"
+              v-loading="balanceRequesting"
+            >
+              <span class="blue" style="font-size: 24px">{{
+                partnerBalance
+              }}</span>
+              <span class="dp-inline-block wd-10"></span>
+              <span class="f-s-13 gray">{{ balanceQueryTime }}</span>
+            </span>
+          </div>
+          <div class="mg-t-40">
+            <el-button
+              type="success"
+              class="pd-l-40 pd-r-40"
+              @click="showEditPartner = true"
+              round
+              >修改</el-button
+            >
+            <el-button
+              type="warning"
+              class="pd-l-40 pd-r-40"
+              @click="removePartner"
+              round
+              >删除</el-button
+            >
+          </div>
         </div>
       </div>
       <div class="f-s-16 mg-t-60">发货信息</div>

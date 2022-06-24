@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import qiniu from 'gulp-qiniu';
+import qiniu from './n-libs/gulp-qiniu';
 
 /**
  * sync directories to qiniu(relative to `root`)

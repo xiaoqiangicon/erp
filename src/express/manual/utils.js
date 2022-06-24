@@ -7,3 +7,9 @@ export const fakeBatchList = [1, 2, 3, 4, 5, 6].map(id => ({
   remark: '备注' + id,
   foshiOrderIds: '123；44' + id,
 }));
+
+export function getCompanyName(companyCode) {
+  if (companyCode === 'shunfeng' || companyCode === 'SF') return '顺丰速运';
+
+  return '圆通速递';
+}

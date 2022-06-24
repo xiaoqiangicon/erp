@@ -2,6 +2,7 @@ import { Message, MessageBox } from 'element-ui';
 import { reportError } from '@senntyou/web-monitor-sdk';
 import request from '../../utils/request';
 import regionData from '../../../../pro-com/src/regions/three-levels.json';
+import { PARTNER_TYPE_SF, PARTNER_TYPE_YT } from './data';
 
 export default {
   name: 'App',
@@ -12,9 +13,9 @@ export default {
       initRequesting: true,
       // 是否启用打印(1是 0否)
       enabled: false,
-      // 快递公司客户编码
+      // 圆通快递客户编码
       partnerId: '',
-      // 快递公司客户密钥
+      // 圆通快递客户密钥
       partnerKey: '',
       // 发件人姓名
       senderName: '',
@@ -30,6 +31,8 @@ export default {
       senderAddress: '',
       // 模板类型(1 标准模板、2 有二维码的模板)
       template_type: 1,
+      // 顺丰速运客户编码
+      sfPartnerId: '',
 
       provinceList: regionData,
       cityList: [],
@@ -50,6 +53,9 @@ export default {
       balanceRequesting: false,
       partnerBalance: null,
       balanceQueryTime: null,
+
+      // 合作方类型：yt 圆通、sf 顺丰
+      partnerType: PARTNER_TYPE_YT,
     };
   },
   created() {
@@ -69,10 +75,14 @@ export default {
     },
     init() {
       const d = this.initData;
-      if (d.partner_id) {
-        this.partnerId = d.partner_id;
-        this.partnerKey = d.partner_key;
+      if (d.partner_id || d.sf_partner_id) {
+        this.partnerId = d.partner_id || '';
+        this.partnerKey = d.partner_key || '';
+        this.sfPartnerId = d.sf_partner_id || '';
         this.showEditPartner = false;
+
+        // 如果有顺丰但没有圆通，切换到顺丰
+        if (!d.partner_id) this.partnerType = PARTNER_TYPE_SF;
       }
       if (d.sender_name) {
         this.senderName = d.sender_name;
@@ -87,6 +97,7 @@ export default {
         this.balanceReq();
       }
     },
+    // 顺丰不支持获取余额
     balanceReq() {
       this.balanceRequesting = true;
       request('/express/getPrintPartnerBalance')
@@ -102,16 +113,28 @@ export default {
     },
     removePartner() {
       MessageBox.confirm('确定删除网点签约信息吗').then(() => {
+        const data = new URLSearchParams();
+        data.append('partner_type', this.partnerType);
+
         request({
           method: 'post',
           url: '/express/removePrintSettingPartner',
+          data,
         }).then(res => {
           if (res.result >= 0) {
             Message.success('删除网点签约信息成功');
-            this.initData.partner_id = '';
-            this.initData.partner_key = '';
-            this.partnerId = '';
-            this.partnerKey = '';
+            // 顺丰
+            if (this.partnerType === PARTNER_TYPE_SF) {
+              this.initData.sf_partner_id = '';
+              this.slPartnerId = '';
+            }
+            // 圆通
+            else {
+              this.initData.partner_id = '';
+              this.initData.partner_key = '';
+              this.partnerId = '';
+              this.partnerKey = '';
+            }
             this.showEditPartner = true;
           }
         });
@@ -144,8 +167,12 @@ export default {
       if (this.savingPartner) return;
 
       let error;
-      if (!this.partnerId) error = '客户编码不能为空';
-      else if (!this.partnerKey) error = '客户密钥不能为空';
+      if (this.partnerType === PARTNER_TYPE_YT && !this.partnerId)
+        error = '客户编码不能为空';
+      else if (this.partnerType === PARTNER_TYPE_YT && !this.partnerKey)
+        error = '客户密钥不能为空';
+      else if (this.partnerType === PARTNER_TYPE_SF && !this.sfPartnerId)
+        error = '客户编码不能为空';
 
       if (error) {
         this.savePartnerError = error;
@@ -153,8 +180,14 @@ export default {
       }
 
       const data = new URLSearchParams();
-      data.append('partner_id', this.partnerId);
-      data.append('partner_key', this.partnerKey);
+      data.append('partner_type', this.partnerType);
+
+      if (this.partnerType === PARTNER_TYPE_SF) {
+        data.append('sf_partner_id', this.sfPartnerId);
+      } else {
+        data.append('partner_id', this.partnerId);
+        data.append('partner_key', this.partnerKey);
+      }
 
       this.savingPartner = true;
       request({
@@ -172,12 +205,17 @@ export default {
             (this.initData.partner_id ? '更新' : '绑定') + '网点签约信息成功'
           );
 
-          this.initData.partner_id = this.partnerId;
-          this.initData.partner_key = this.partnerKey;
-          if (res.data) {
-            this.partnerBalance = res.data.partner_balance;
-            this.balanceQueryTime = res.data.query_time;
+          if (this.partnerType === PARTNER_TYPE_SF) {
+            this.initData.sf_partner_id = this.sfPartnerId;
+          } else {
+            this.initData.partner_id = this.partnerId;
+            this.initData.partner_key = this.partnerKey;
+            if (res.data) {
+              this.partnerBalance = res.data.partner_balance;
+              this.balanceQueryTime = res.data.query_time;
+            }
           }
+
           this.showEditPartner = false;
         })
         .catch(err => {
@@ -252,7 +290,10 @@ export default {
     onChangeEnabled(val) {
       if (this.switchingEnabled) return;
 
-      if (!this.initData.partner_id) {
+      if (
+        (this.partnerType === PARTNER_TYPE_YT && !this.initData.partner_id) ||
+        (this.partnerType === PARTNER_TYPE_SF && !this.initData.sf_partner_id)
+      ) {
         // 恢复到原来的样子
         this.enabled = val ? 0 : 1;
         MessageBox.alert('请先添加快递网点信息');
@@ -292,7 +333,10 @@ export default {
     onChangeTemplateType(val) {
       if (this.switchingTemplateType) return;
 
-      if (!this.initData.partner_id) {
+      if (
+        (this.partnerType === PARTNER_TYPE_YT && !this.initData.partner_id) ||
+        (this.partnerType === PARTNER_TYPE_SF && !this.initData.sf_partner_id)
+      ) {
         // 恢复到原来的样子
         this.template_type = val === 2 ? 1 : 2;
         MessageBox.alert('请先添加快递网点信息');
@@ -328,6 +372,12 @@ export default {
         .finally(() => {
           this.switchingTemplateType = false;
         });
+    },
+    onChangePartnerType() {
+      const hasValue =
+        (this.partnerType === PARTNER_TYPE_YT && this.partnerId) ||
+        (this.partnerType === PARTNER_TYPE_SF && this.sfPartnerId);
+      if (!hasValue && !this.showEditPartner) this.showEditPartner = true;
     },
   },
 };
