@@ -252,7 +252,10 @@ export default {
               this.expressPrintedDialogVisible = true;
             }
           }
+
+          return this.expressDeviceCurrentItem.total_count;
         }
+        return 0;
       });
     },
     onClickExpressPrint() {
@@ -352,9 +355,16 @@ export default {
 
           Message.success('添加订单的快递单打印成功');
 
-          this.requestExpressPrintDevicesWithTask().then(res2 => {
+          this.requestExpressPrintDevicesWithTask().then(currentTotalCount => {
             this.expressDeviceSelectDialogVisible = false;
-            this.expressPrintingDialogVisible = true;
+
+            // 没有打印总数，说明没有单可以打（全是已经打过的）
+            if (!currentTotalCount) {
+              this.expressPrintedDialogVisible = true;
+              this.expressDeviceCurrentTotalCount = this.selected.length;
+            } else {
+              this.expressPrintingDialogVisible = true;
+            }
           });
         })
         .finally(() => {
@@ -386,7 +396,7 @@ export default {
           });
 
           this.expressPrintFinishByCancel = true;
-          this.requestExpressPrintDevicesWithTask().then(res2 => {
+          this.requestExpressPrintDevicesWithTask().then(() => {
             this.expressPrintingDialogVisible = false;
           });
         });

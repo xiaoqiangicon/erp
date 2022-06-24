@@ -180,7 +180,26 @@
               </div>
             </div>
             <div class="cell">
-              <div class="cell-title">处理备注</div>
+              <div class="cell-title">
+                处理备注
+                <div
+                  class="fl-right mg-r-20 f-s-14"
+                  v-show="showPrintWithRemark"
+                >
+                  在快递面单&nbsp;&nbsp;
+                  <el-switch
+                    v-model="expressPrintWithRemark"
+                    active-text="打印"
+                    inactive-text="不打印"
+                    :active-value="1"
+                    :inactive-value="0"
+                    :validate-event="false"
+                    active-color="#13ce66"
+                    style="margin-top: -4px"
+                  >
+                  </el-switch>
+                </div>
+              </div>
               <div class="cell-body">
                 <div class="remark" id="remark-editor"></div>
               </div>
@@ -251,9 +270,7 @@
                   </div>
                 </div>
               </template>
-              <template v-else
-                >暂无附言信息</template
-              >
+              <template v-else>暂无附言信息</template>
             </div>
           </div>
           <div v-show="!isGroup" class="cell">
@@ -354,7 +371,7 @@ export default {
   components: {
     VideoPlayer,
   },
-  props: ['isGroup', 'detail', 'type'],
+  props: ['isGroup', 'detail', 'type', 'expressSetting'],
   data() {
     return {
       uploadUrl: `${window.location.origin}/zzhadmin/uploadPic/`, // 上传地址 返回 {msg, result:0, url}
@@ -402,6 +419,9 @@ export default {
       buddhistId: '',
       subId: -1,
       date: ['', ''],
+
+      // 快递单是否打印备注(0 否、1 是)
+      expressPrintWithRemark: 0,
     };
   },
   computed: {
@@ -433,6 +453,14 @@ export default {
       } else {
         return [];
       }
+    },
+    // 是否显示快递单是否打印备注
+    showPrintWithRemark() {
+      return (
+        this.expressSetting &&
+        (this.expressSetting.partner_id || this.expressSetting.sf_partner_id) &&
+        this.expressSetting.enable_print
+      );
     },
   },
   created() {
@@ -510,6 +538,7 @@ export default {
           runningNumber,
           ps,
           nextFeedBackTime,
+          expressPrintWithRemark,
         } = this.detail;
 
         ({
@@ -535,6 +564,7 @@ export default {
         this.runningNumber = runningNumber;
         this.ps = ps;
         this.nextFeedBackTime = nextFeedBackTime;
+        this.expressPrintWithRemark = expressPrintWithRemark || 0;
 
         // 初始化qrcode
         this.$refs.qrcode.innerHTML = '';
@@ -729,6 +759,7 @@ export default {
         courierCompanyCode,
         logisticsOrder,
         remark,
+        expressPrintWithRemark: this.expressPrintWithRemark || 0,
         nextFeedBackTime,
       };
 

@@ -58,6 +58,7 @@ import {
   MessageBox,
   Message,
   Notification,
+  Switch,
 } from 'element-ui';
 import App from './App.vue';
 import './ajax';
@@ -92,6 +93,7 @@ Vue.use(TabPane);
 Vue.use(gallery);
 Vue.use(Upload);
 Vue.use(Alert);
+Vue.use(Switch);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$msgbox = MessageBox;

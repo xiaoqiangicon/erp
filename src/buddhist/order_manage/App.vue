@@ -356,6 +356,7 @@
       :isGroup="isGroup"
       :type="type"
       :detail="detail"
+      :expressSetting="expressSetting"
       @refresh="requestList"
     />
     <Logistics
