@@ -8,6 +8,7 @@ import './print';
 import './get_courier_company_list';
 import './get_printer_config';
 import './update_printer_config';
+import './verfiy_express';
 import handleAjaxError from '../../../com/handle-ajax-error';
 
 seeAjax.setEnv(__SEE_ENV__); // eslint-disable-line no-undef

@@ -193,7 +193,7 @@ export const checkSet = () => {
 
       if (floatValue > max) {
         if (hasPromote)
-          errorText = `当前佛事正在平台合作，分成比例不可超过<span class="special-11">${max}%</span>`;
+          errorText = `当前项目正在平台合作，分成比例不可超过<span class="special-11">${max}%</span>`;
         else
           errorText = `分成比例不可超过<span class="special-11">${max}%</span>`;
       }
@@ -249,7 +249,7 @@ export const checkSet = () => {
 
       if (floatValue > max) {
         if (hasPromote)
-          errorText = `当前佛事正在平台合作，分成金额不可超过<span class="special-11">${max}元</span>`;
+          errorText = `当前项目正在平台合作，分成金额不可超过<span class="special-11">${max}元</span>`;
         else
           errorText = `分成金额不可超过<span class="special-11">${max}元</span>`;
       }

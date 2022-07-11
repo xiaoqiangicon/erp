@@ -244,7 +244,7 @@ func.handleGetListStatusData = function(item) {
         endTimeArr.push(parseInt(value));
       });
     if (endTimeArr[0] === 2099) {
-      remainTimeText = '长期佛事活动。';
+      remainTimeText = '长期项目活动。';
     } else {
       remainTimeArr = [
         endTimeArr[0] - commonVars.today.year,

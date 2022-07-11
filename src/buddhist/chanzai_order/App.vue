@@ -3,7 +3,7 @@
     <div class="head">
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="11">
-          <label for="">佛事项目：</label>
+          <label for="">活动项目：</label>
           <el-select
             style="width: 350px;"
             clearable
@@ -208,7 +208,7 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection"></el-table-column>
-        <el-table-column label="佛事">
+        <el-table-column label="项目">
           <template slot-scope="scope">
             <img class="td-cover" v-bind:src="scope.row.productImg" />
             <p class="mg-b-0" style="font-size: 16px;">

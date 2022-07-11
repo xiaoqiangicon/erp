@@ -7,7 +7,7 @@ var totalPages = {};
 var listTotalPages = 0;
 var payTypes = {
   1: '皈依',
-  2: '佛事',
+  2: '项目',
   3: '直播',
   4: '供佛墙',
   5: '文章',

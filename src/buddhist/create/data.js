@@ -350,17 +350,17 @@ export const plainFuYanList = [
  * @type {*[]}
  */
 export const selectGuiGeList = [
-  { value: 1, name: '普通佛事' },
+  { value: 1, name: '普通项目' },
   { value: 2, name: '往生牌位' },
   { value: 3, name: '祈福牌位' },
-  { value: 4, name: '邮寄佛事' },
+  { value: 4, name: '邮寄项目' },
 ];
 
 // 新创建的规格列表（用于生成新的）
 export const plainGuiGeList = [
   {
     postScript: [],
-    name: '普通佛事',
+    name: '普通项目',
     printer: [],
     pic: '',
     explain: '',
@@ -540,7 +540,7 @@ export const plainGuiGeList = [
         prompt_text: '普通邮寄',
       },
     ],
-    name: '邮寄佛事',
+    name: '邮寄项目',
     printer: [],
     pic: '',
     explain: '',

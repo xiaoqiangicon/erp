@@ -9,7 +9,7 @@ import seeView from 'see-view';
 var chooseIconInstances = {};
 var defaultMatches = {
   1: {
-    name: '佛事日历',
+    name: '项目日历',
     image: 'https://pic.zizaihome.com/1e22b945-a97c-4134-a452-38803d4710b1.png',
   },
   3: {

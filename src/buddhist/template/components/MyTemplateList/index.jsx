@@ -45,7 +45,7 @@ export default class extends Component {
         alt=""
       />
       <div className={styles.text}>
-        您还没有添加过模板，将常用的模板添加进来会方便您发布佛事哦
+        您还没有添加过模板，将常用的模板添加进来会方便您发布项目哦
       </div>
     </div>
   );

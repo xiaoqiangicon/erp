@@ -137,7 +137,7 @@ seeView({
     const $check = $('[data-add-check].active');
 
     if (!$check.length) {
-      dialog('请先选择一个佛事');
+      dialog('请先选择一个项目');
       return;
     }
 

@@ -104,7 +104,7 @@ var tpl = {
                 <p class="component-edit-cell-title">内容源</p>
                 <div class="component-edit-cell-body">
                     <select class="form-control edit-swipe-list-select" data-swipe-list-source-category="\${id}">
-                        <option value="1" selected>佛事</option>
+                        <option value="1" selected>项目</option>
                         <option value="2">文章</option>
                     </select>
                 </div>
@@ -255,7 +255,7 @@ var tpl = {
                         <h4 class="modal-title">添加条目</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="modal-tab-container">{@if type == 1}佛事{@else}文章{@/if}</div>
+                        <div class="modal-tab-container">{@if type == 1}项目{@else}文章{@/if}</div>
                         <div class="mgt10 mgb10 bdb-eeeeee"></div>
                         <div data-swipe-list-popup-content="\${id}" data-type="\${type}">
                             <div class="popup-swipe-list-placeholder"><img src="${images.loadingGif}"></div>

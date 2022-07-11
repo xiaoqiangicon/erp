@@ -74,7 +74,7 @@ seeView({
       title = $title.val(),
       url = $linkTextarea.val();
     if (url.indexOf('zizaihome.com') === -1) {
-      Toast('请输入自在家平台的佛事广告位', 0, 2000, 0);
+      Toast('请输入自在家平台的项目广告位', 0, 2000, 0);
       return false;
     }
     if (title === '') {
@@ -104,7 +104,7 @@ seeView({
       title = $title.val(),
       url = $linkTextarea.val();
     if (url.indexOf('zizaihome.com') === -1) {
-      Toast('请输入自在家平台的佛事广告位', 0, 2000, 0);
+      Toast('请输入自在家平台的项目广告位', 0, 2000, 0);
       return false;
     }
     if (title === '') {
@@ -130,7 +130,7 @@ seeView({
       $linkTextarea = $modal.find('[data-ele="link-textarea"]'),
       url = $linkTextarea.val();
     if (url.indexOf('zizaihome.com') === -1) {
-      Toast('请输入自在家平台的佛事广告位', 0, 2000, 0);
+      Toast('请输入自在家平台的项目广告位', 0, 2000, 0);
       return false;
     }
     self.showPreviewModal(url);

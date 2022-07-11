@@ -159,9 +159,9 @@ var tpl = {
                         </div>
                         <div class="title">
                             <p class="fb fs16">内容源：</p>
-                            <p class="fs13">如有支付等佛事活动，请您先在微佛事新建佛事</p>
+                            <p class="fs13">如有支付等项目活动，请您先在微项目新建项目</p>
                             <p class="clearfix">
-                                <button class="btn btn-green btn-xs mgl10 pdl20 pdr20" data-calendar-popup-add-huddhist="\${id}">关联佛事</button>
+                                <button class="btn btn-green btn-xs mgl10 pdl20 pdr20" data-calendar-popup-add-huddhist="\${id}">关联项目</button>
                                 <button class="btn btn-green btn-xs mgl10 pdl20 pdr20" data-calendar-popup-new-title="\${id}">新建条目</button>
                             </p>
                         </div>
@@ -193,7 +193,7 @@ var tpl = {
                     </div>
                     <div class="modal-body">
                         <div class="modal-tab-container">
-                            <a class="modal-tab active" data-tab="1" data-type="calendar-buddhist-popup-\${id}">佛事</a>
+                            <a class="modal-tab active" data-tab="1" data-type="calendar-buddhist-popup-\${id}">项目</a>
                         </div>
                         <div class="mgt10 mgb10 bdb-eeeeee"></div>
                         <div class="modal-tab-content" data-tab-container="1" data-type="calendar-buddhist-popup-\${id}">
