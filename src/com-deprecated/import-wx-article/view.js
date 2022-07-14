@@ -36,6 +36,13 @@ seeView({
       errorFn('地址输入为空，请输入后再试');
       return;
     }
+
+    if (value.indexOf('mp.weixin.qq.com') < 0) {
+      let errorFn = window.importWxArticleEmptyHandle || alert;
+      errorFn('请输入正确的微信文章链接');
+      return;
+    }
+
     let submitFn = window.importWxArticleGetArticle || getArticle;
     $this
       .attr({
