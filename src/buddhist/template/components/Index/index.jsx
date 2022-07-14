@@ -166,9 +166,9 @@ export default class extends Component {
     return (
       <div className={styles.container}>
         <Breadcrumb>
-          <Breadcrumb.Item>微佛事</Breadcrumb.Item>
-          <Breadcrumb.Item>佛事管理</Breadcrumb.Item>
-          <Breadcrumb.Item>创建佛事</Breadcrumb.Item>
+          <Breadcrumb.Item>微项目</Breadcrumb.Item>
+          <Breadcrumb.Item>项目管理</Breadcrumb.Item>
+          <Breadcrumb.Item>创建项目</Breadcrumb.Item>
         </Breadcrumb>
         <Top
           templateType={templateType}

@@ -251,7 +251,7 @@ var tpl = {
     `,
   scheduleListEmpty: `
         <div style="height: 400px; line-height: 400px;text-align: center;">
-        此佛事还没有发布过进展动态哦，现在就去发布吧
+        此项目还没有发布过进展动态哦，现在就去发布吧
         </div>
     `,
   scheduleItem: `

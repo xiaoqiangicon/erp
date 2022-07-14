@@ -2,12 +2,12 @@
   "items": [
     {
       "id": "temple",
-      "name": "微寺院",
+      "name": "微主页",
       "icon": "glyphicon-fire",
       "subItems": [
         {
           "id": "temple-create",
-          "name": "我的寺院",
+          "name": "主页管理",
           "link": "/zzhadmin/templeIndex/",
           "controlMark": "pw_website"
         },
@@ -40,18 +40,18 @@
     },
     {
       "id": "buddhist",
-      "name": "微佛事",
+      "name": "微活动",
       "icon": "glyphicon-grain",
       "subItems": [
         {
           "id": "event-manage",
-          "name": "佛事管理",
+          "name": "活动管理",
           "link": "/zzhadmin/managerCeremonyIndex/",
           "controlMark": "pw_ceremony"
         },
         {
           "id": "order-manage",
-          "name": "佛事订单&nbsp;&nbsp;<span class=\"badge\" data-buddhist-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
+          "name": "活动订单&nbsp;&nbsp;<span class=\"badge\" data-buddhist-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
           "link": "/zzhadmin/ceremony_index/",
           "isHtml": true,
           "controlMark": "pw_order"
@@ -152,18 +152,18 @@
   "superItems": [
     {
       "id": "wall",
-      "name": "微供奉",
+      "name": "位置管理",
       "icon": "buddha-logo",
       "subItems": [
         {
           "id": "wall-intro",
-          "name": "礼佛系统",
+          "name": "系统介绍",
           "link": "/zzhadmin/openBuddha/",
           "controlType": 2
         },
         {
           "id": "wall-index",
-          "name": "供奉管理",
+          "name": "位置设置",
           "link": "/zzhadmin/buddhaManage/",
           "controlMark": "pw_buddha_wall"
         },

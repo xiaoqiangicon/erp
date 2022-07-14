@@ -12,7 +12,7 @@
             <div class="cell-title">筛选条件</div>
             <div class="cell-body">
               <div>
-                <label class="wd-100">佛事项目：</label>
+                <label class="wd-100">活动项目：</label>
                 <el-select
                   style="width: 300px;"
                   clearable
@@ -31,7 +31,7 @@
                 </el-select>
               </div>
               <div class="mg-t-10" v-show="subList.length !== 0">
-                <label class="wd-100">佛事选择项：</label>
+                <label class="wd-100">活动选择项：</label>
                 <el-select
                   style="width: 300px;"
                   size="medium"
@@ -153,11 +153,12 @@
             </div>
             <div v-show="!isGroup" class="cell">
               <div class="cell-title">物流单号</div>
-              <div class="cell-body">
+              <div class="cell-body logistics-box">
                 <el-input
-                  placeholder="请输入内容"
+                  placeholder="请输入物流单号"
                   v-model="logisticsOrder"
                   class="logistics-container"
+                  @blur="verfiyLogistic"
                 >
                   <el-select
                     filterable
@@ -165,6 +166,7 @@
                     slot="prepend"
                     placeholder="请选择"
                     class="logistics-select"
+                    v-if="false"
                   >
                     <el-option
                       v-for="item in courierCompanyList"
@@ -174,6 +176,7 @@
                     ></el-option>
                   </el-select>
                 </el-input>
+                <span class="logistics-company">{{ courierCompany }}</span>
               </div>
             </div>
             <div class="cell">
@@ -267,7 +270,9 @@
                   </div>
                 </div>
               </template>
-              <template v-else>暂无附言信息</template>
+              <template v-else
+                >暂无附言信息</template
+              >
             </div>
           </div>
           <div v-show="!isGroup" class="cell">
@@ -292,7 +297,7 @@
             </div>
             <div class="cell-body">
               <div class="detail-row">
-                <div class="detail-title">佛事名称：</div>
+                <div class="detail-title">活动名称：</div>
                 <div class="detail-content">{{ buddhistName }}</div>
               </div>
               <div class="detail-row">
@@ -403,7 +408,8 @@ export default {
       images: [], // 反馈图片
       videos: [], // 反馈视频
       remark: '', // 备注
-      courierCompanyCode: 'SF', // 快递公司编号
+      courierCompanyCode: '', // 快递公司编号
+      courierCompany: '', // 快递公司名称
       logisticsOrder: '', // 物流编号
 
       videoPlayerSrc:
@@ -477,7 +483,7 @@ export default {
       },
     });
     // 获取数据
-    this.getCourierCompanyList();
+    // this.getCourierCompanyList();
   },
   mounted() {
     // mounted 执行时 dom 并没有渲染完成
@@ -572,6 +578,9 @@ export default {
       this.remark = remark;
       this.courierCompanyCode = courierCompanyCode || '';
       this.logisticsOrder = logisticsOrder || '';
+      if (this.logisticsOrder) {
+        this.verfiyLogistic();
+      }
 
       // 渲染 ueditor 数据
       if (remarkEditor) {
@@ -715,6 +724,16 @@ export default {
     onClickChooseImage() {
       this.chooseImage.show();
     },
+    verfiyLogistic() {
+      seeAjax('verifyExpress', { num: this.logisticsOrder }, res => {
+        if (res.code === 0) {
+          this.courierCompany = res.data.name;
+          this.courierCompanyCode = res.data.comCode;
+        } else {
+          this.courierCompany = res.msg;
+        }
+      });
+    },
     onClickHandle() {
       const {
         isGroup,
@@ -735,7 +754,7 @@ export default {
       if (logisticsOrder && !courierCompanyCode) {
         Notification({
           title: '提示',
-          message: '请选择快递公司',
+          message: '请输入正确的快递单号',
           type: 'error',
         });
         return;
@@ -764,7 +783,7 @@ export default {
         if (!this.buddhistId) {
           Notification({
             title: '提示',
-            message: '请选择一个佛事项目',
+            message: '请选择一个活动项目',
             type: 'error',
           });
           return;
@@ -996,6 +1015,10 @@ export default {
   margin-top: 20px;
 }
 
+.logistics-box {
+  display: flex;
+  align-items: center;
+}
 .logistics-container {
   /*width: 130px;*/
   border: 1px solid #969696;
@@ -1003,11 +1026,16 @@ export default {
 .logistics-container input,
 .logistics-container input:focus {
   border: none;
-  border-left: 1px solid #969696;
+  //border-left: 1px solid #969696;
 }
 .logistics-select {
   background-color: #fff;
   width: 130px;
+}
+.logistics-company {
+  min-width: 60px;
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 
 .video-play {

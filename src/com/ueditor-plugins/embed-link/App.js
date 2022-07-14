@@ -6,8 +6,8 @@ import upload from '../../../../../pro-com/src/upload';
 import { htmlToText } from '../../../../../pro-com/src/utils';
 
 const types = [
-  { value: 1, name: '自营寺院佛事', action: '参与' },
-  { value: 2, name: '自在好物佛事', action: '结缘' },
+  { value: 1, name: '自营寺院项目', action: '参与' },
+  { value: 2, name: '自在好物项目', action: '结缘' },
   { value: 3, name: '自营寺院文章', action: '阅读' },
   { value: 4, name: '自在家H5', action: '查看' },
   { value: 5, name: '功课', action: '修行' },

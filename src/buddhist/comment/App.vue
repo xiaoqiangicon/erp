@@ -3,7 +3,7 @@
     <div class="header">
       <div class="select-item">
         <div class="buddhist-name">
-          <span>佛事名称</span>
+          <span>活动名称</span>
           <el-select
             style="width: 350px;"
             clearable

@@ -43,7 +43,7 @@ $('#components-display-container').sortable({
 seeAjax('buddhistTypes', {}, function(res) {
   res.success
     ? ((indexData.misc.buddhistTypes = res.data), handleAfterLoadTypes())
-    : !!res.message && console.error('获取佛事列表失败：' + res.message);
+    : !!res.message && console.error('获取项目列表失败：' + res.message);
 });
 seeAjax('articleTypes', {}, function(res) {
   res.success

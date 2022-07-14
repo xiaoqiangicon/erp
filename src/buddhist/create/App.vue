@@ -2,9 +2,9 @@
   <div class="root">
     <div class="nav">
       <i class="nav-icon-home"></i>
-      <span>微佛事</span>
+      <span>微项目</span>
       <i class="el-icon-arrow-right nav-icon-arrow"></i>
-      <a href="/zzhadmin/managerCeremonyIndex/" class="nav-text-2">佛事管理</a>
+      <a href="/zzhadmin/managerCeremonyIndex/" class="nav-text-2">项目管理</a>
       <i class="el-icon-arrow-right nav-icon-arrow nav-icon-arrow-2"></i>
       <span class="nav-text-3">{{ navTitleText }}</span>
     </div>
@@ -108,7 +108,7 @@
         </template>
         <el-input
           type="textarea"
-          placeholder="简介可自定义佛事分享时的描述（选填）"
+          placeholder="简介可自定义项目分享时的描述（选填）"
           v-model="form.custom_introduce"
           maxlength="60"
           show-word-limit

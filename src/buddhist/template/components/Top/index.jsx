@@ -52,12 +52,12 @@ export default class extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.title}>创建新的佛事</div>
+        <div className={styles.title}>创建新的项目</div>
         <div className={styles.btn} onClick={this.onClickCreate}>
-          创建空白佛事
+          创建空白项目
         </div>
         <div className={styles.content}>
-          可选择适合您的系统模板修改内容发布，也可以创建一个空白的佛事填写内容后发布。
+          可选择适合您的系统模板修改内容发布，也可以创建一个空白的项目填写内容后发布。
         </div>
         {this.tabJsx()}
       </div>

@@ -3,7 +3,7 @@
     <div class="head">
       <el-row class="mg-b-10" style="line-height: 40px;">
         <el-col :span="10">
-          <label for="">佛事项目：</label>
+          <label for="">项目：</label>
           <el-select
             style="width: 350px;"
             clearable
@@ -24,7 +24,7 @@
           </el-select>
         </el-col>
         <el-col :span="8" v-show="subList.length !== 0">
-          <label for="">佛事选择项：</label>
+          <label for="">项目选择项：</label>
           <el-select
             @change="onChangeFilter"
             size="medium"
@@ -243,7 +243,7 @@
         @sort-change="handleSortChange"
       >
         <el-table-column type="selection"></el-table-column>
-        <el-table-column label="佛事">
+        <el-table-column label="项目">
           <template slot-scope="scope">
             <img class="td-cover" v-bind:src="scope.row.productImg" />
             <p class="mg-b-0" style="font-size: 16px;">

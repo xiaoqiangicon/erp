@@ -136,7 +136,7 @@ seeView({
       url = $tar.attr('data-url');
     Promotion.show({
       title: title,
-      typeText: '佛事',
+      typeText: '项目',
       link: url,
       showPost: !0,
       postTitle: name,
@@ -213,7 +213,7 @@ seeView({
       id = parseInt($curTr.attr('data-id'));
     $.confirm({
       title: false,
-      content: '你确定复制该佛事吗?',
+      content: '你确定复制该项目吗?',
       buttons: {
         ok: {
           text: '确定',
@@ -243,7 +243,7 @@ seeView({
       id = parseInt($curTr.attr('data-id'));
     $.confirm({
       title: false,
-      content: '你确定要结束正在进行中的佛事吗',
+      content: '你确定要结束正在进行中的项目吗',
       buttons: {
         ok: {
           text: '确定',

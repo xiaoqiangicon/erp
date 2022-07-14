@@ -2,7 +2,7 @@ import $ from 'jquery';
 import commonVars from 'common/variables';
 import data from './data';
 import seeAjax from 'see-ajax';
-var typeTexts = ['自在家', '自定义', '佛事', '文章'];
+var typeTexts = ['自在家', '自定义', '项目', '文章'];
 var requestKeys = {
   switch: {
     id: 'adId',

@@ -63,7 +63,7 @@ seeView({
     if (!$activities.length) {
       $.alert({
         title: false,
-        content: '您还没有添加活动，请添加佛事或新建标题',
+        content: '您还没有添加活动，请添加项目或新建标题',
         buttons: {
           ok: {
             text: '确定',

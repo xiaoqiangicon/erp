@@ -210,7 +210,7 @@ seeView({
     const disabled = $this.hasClass('disabled');
 
     if (share.ended === 1) {
-      dialog('佛事已结束，不可上架推广');
+      dialog('项目已结束，不可上架推广');
       return;
     }
 

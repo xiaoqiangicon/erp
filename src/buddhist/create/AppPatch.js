@@ -301,7 +301,7 @@ export function generateSubmitData(form) {
   }
 
   if (!s.ceremonyTypeId) {
-    MessageBox.alert('请添加佛事分类！');
+    MessageBox.alert('请添加项目分类！');
     return false;
   }
 

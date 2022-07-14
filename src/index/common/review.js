@@ -8,7 +8,7 @@ export default [
     },
     {
       name: '某某寺住持',
-      text: '手机就能创建、发布寺院的佛事，非常人性化。',
+      text: '手机就能创建、发布寺院的项目，非常人性化。',
       avatar:
         'https://pic.zizaihome.com/59b58f3a-fd8b-11e7-a9d8-00163e0c001e.jpg',
     },
@@ -57,19 +57,19 @@ export default [
   [
     {
       name: '某某寺客堂义工',
-      text: '自在家方便客堂佛事登记，简直是寺院管理神器。',
+      text: '自在家方便客堂项目登记，简直是寺院管理神器。',
       avatar:
         'https://pic.zizaihome.com/59b9bcae-fd8b-11e7-a42e-00163e0c001e.jpg',
     },
     {
       name: '某某寺客堂义工',
-      text: '微信就能收到信众下单的佛事提醒。',
+      text: '微信就能收到信众下单的项目提醒。',
       avatar:
         'https://pic.zizaihome.com/59c2e14e-fd8b-11e7-a42e-00163e0c001e.jpg',
     },
     {
       name: '某某寺客堂义工',
-      text: '自在家配置的小票打印机大大提高了客堂处理登记佛事的效率，点个赞。',
+      text: '自在家配置的小票打印机大大提高了客堂处理登记项目的效率，点个赞。',
       avatar:
         'https://pic.zizaihome.com/59d3c040-fd8b-11e7-a9d8-00163e0c001e.jpg',
     },

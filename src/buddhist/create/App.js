@@ -125,7 +125,7 @@ export default {
       disableModifyTime: false,
 
       // 头部标题文本
-      navTitleText: '新建佛事',
+      navTitleText: '新建项目',
       // 发布按钮的文本
       submitText: '发布',
       // 显示存为草稿按钮
@@ -183,16 +183,16 @@ export default {
   created() {
     // 复制佛事
     if (urlData.createByCopy) {
-      document.title = '复制佛事';
-      this.navTitleText = '复制佛事';
+      document.title = '复制项目';
+      this.navTitleText = '复制项目';
     }
     // 编辑佛事
     else if (urlData.updateFoShi) {
-      document.title = '编辑佛事';
-      this.navTitleText = '编辑佛事';
+      document.title = '编辑项目';
+      this.navTitleText = '编辑项目';
       // 非草稿状态
       if (urlData.verifyId !== 2) {
-        this.submitText = '修改佛事';
+        this.submitText = '修改项目';
         this.showSaveAsDraft = false;
       }
 
@@ -521,7 +521,7 @@ export default {
         return;
       }
 
-      MessageBox.confirm('您还没有为此佛事添加小票打印机', {
+      MessageBox.confirm('您还没有为此项目添加小票打印机', {
         confirmButtonText: '去添加',
         cancelButtonText: '跳过',
       })
@@ -575,7 +575,7 @@ export default {
       const submitData = this.getSubmitData();
       if (!submitData) return;
 
-      MessageBox.prompt('将此佛事添加到佛事模板库中', {
+      MessageBox.prompt('将此项目添加到项目模板库中', {
         inputPlaceholder: '请填写备注名称，最多12字',
       }).then(({ value }) => {
         // 无value，则取title
@@ -797,7 +797,7 @@ export default {
       }
 
       MessageBox.confirm(
-        '您有未保存的本地佛事内容，是否读取(会覆盖当前内容)？'
+        '您有未保存的本地项目内容，是否读取(会覆盖当前内容)？'
       ).then(() => {
         shareData.createdData = contentJson;
         renderCreatedData(this.form, false, true);

@@ -161,13 +161,13 @@ export default [
     cover:
       'https://pic.zizaihome.com/8bb30c5a-1516-11e7-aef2-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
   },
-  {
-    id: 5604,
-    name: '尼泊尔中华寺',
-    link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5604',
-    desc:
-      '尼泊尔中华寺由中国佛教协会在尼泊尔蓝毗尼佛祖降生圣地建造，是中国有史以来在国外的第一座正式寺院。',
-    cover:
-      'https://pic.zizaihome.com/4058efc0-1ddd-11e7-8c00-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
-  },
+  // {
+  //   id: 5604,
+  //   name: '尼泊尔中华寺',
+  //   link: 'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=5604',
+  //   desc:
+  //     '尼泊尔中华寺由中国佛教协会在尼泊尔蓝毗尼佛祖降生圣地建造，是中国有史以来在国外的第一座正式寺院。',
+  //   cover:
+  //     'https://pic.zizaihome.com/4058efc0-1ddd-11e7-8c00-00163e0c001e.jpg?imageMogr/v2/thumbnail/!800x500r/gravity/center/crop/!800x500',
+  // },
 ];
