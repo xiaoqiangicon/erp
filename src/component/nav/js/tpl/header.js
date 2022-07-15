@@ -13,7 +13,7 @@ export default `
         </li>
     </ul>
 </div>
-<a href="/zzhadmin/helpIndex/" target="_blank" class="component-nav-help-center">
+<a href="/zzhadmin/helpIndex/" target="_blank" class="component-nav-help-center hide">
     <span class="component-nav-help-center-text">帮助中心</span>
     <i class="component-nav-help-center-icon"></i>
 </a>

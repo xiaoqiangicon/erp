@@ -30,17 +30,19 @@ var tpl = {
                     </div>
                     <div class="table-cell-buddhist-text">
                         <p class="table-cell-buddhist-title"><a href="\${previewUrl}" target="_blank">\${name}</a></p>
-                        <p class="table-cell-buddhist-content">
-                        {@if !price}
-                            随喜
-                        {@else}
-                            {@if price.length > 60}
-                                \${price.split(",").slice(0,20).join(",")+"..."}
+                        {@if isStaff}
+                            <p class="table-cell-buddhist-content">
+                            {@if !price}
+                                随喜
                             {@else}
-                                \${price}
+                                {@if price.length > 60}
+                                    \${price.split(",").slice(0,20).join(",")+"..."}
+                                {@else}
+                                    \${price}
+                                {@/if}
                             {@/if}
+                            </p>
                         {@/if}
-                        </p>
                     </div>
                 </div>
             </td>
@@ -50,11 +52,13 @@ var tpl = {
                 </div>
             </td>
             {@if !isZiYingTemple}
+            {@if isStaff}
             <td>
                 <div class="table-cell-common">
                     <p class="mgt10">\${collectMoney}</p>
                 </div>
             </td>
+            {@/if}
             {@/if}
             <td>
                 <div class="table-cell-common">
@@ -122,7 +126,9 @@ var tpl = {
                             <select class="more-opt" data-ele="more-opt" data-id="\${id}" data-url="\${wxUrl}" data-status="\${status}" title="更多">
                                 <option value="0">删除</option>
                                 <option value="1">复制</option>
+                                {@if isStaff}
                                 <option value="2">设为模板</option>
+                                {@/if}
                             </select>
                         {@else if isEnd === 0}
                             {@if isStart === 0}
@@ -136,7 +142,9 @@ var tpl = {
                                 <select class="more-opt" data-ele="more-opt" data-id="\${id}" data-url="\${wxUrl}" data-status="\${status}" title="更多">
                                     <option value="0">删除</option>
                                     <option value="1">复制</option>
+                                    {@if isStaff}
                                     <option value="2">设为模板</option>
+                                    {@/if}
                                 </select>
                             {@else}
                                 <!-- === 1 -->
@@ -153,7 +161,9 @@ var tpl = {
                                 <select class="more-opt" data-ele="more-opt" data-id="\${id}" data-url="\${wxUrl}" data-status="\${status}" title="更多">
                                     <option value="4">设为结束</option>
                                     <option value="1">复制</option>
+                                    {@if isStaff}
                                     <option value="2">设为模板</option>
+                                    {@/if}
                                 </select>
                             {@/if}
                         {@else}
@@ -165,10 +175,11 @@ var tpl = {
                             <p class="inline-block buddhist-opt">
                                 <a class="table-cell-button" data-id="\${id}" data-opt="copy">复制</a>
                             </p>
+                            {@if isStaff}
                             <p class="inline-block buddhist-opt">
                                 <a class="table-cell-button" data-id="\${id}" data-opt="template">设为模板</a>
                             </p>
-
+                            {@/if}
                         {@/if}
                     {@else if status === 1}
                         <!-- 待审核 编辑、预览、删除 -->

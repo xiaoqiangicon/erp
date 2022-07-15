@@ -2,6 +2,7 @@ import seeAjax from 'see-ajax';
 import JsonRefactor from 'json-refactor';
 import $ from 'jquery';
 import clone from 'clone';
+import cookie from 'js-cookie';
 import indexData from './data';
 import indexFeastBirthFunc from './feast_birth_func';
 import sample from './components_sample';
@@ -17,6 +18,9 @@ import postHandleForCalendar from './render_saved_data/calendar';
 import postHandleForShortcut from './render_saved_data/shortcut';
 import postHandleForHouse from './render_saved_data/house';
 import 'jquery-confirm';
+
+let isStaff = cookie.get('is_staff') === 'False';
+let pwMeritRank = parseInt(cookie.get('pw_merit_rank'), 10);
 function renderSavedData(res) {
   function renderComponent(data) {
     var type = data.type,
@@ -35,6 +39,7 @@ function renderSavedData(res) {
     initializeComponentData.id = currentComponentId;
     initializeComponentData.isUpdate = 1;
     initializeComponentData.sortId = data.sortId;
+    initializeComponentData.isStaff = isStaff;
     if (type === 2) {
       initializeComponentData.id = 1;
       currentComponentId = 1;

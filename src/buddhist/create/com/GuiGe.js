@@ -1,5 +1,6 @@
 import draggable from 'vuedraggable';
 import { Message, MessageBox } from 'element-ui';
+import cookie from 'js-cookie';
 import { generateGuiGe } from '../func';
 import {
   randomPrices,
@@ -12,6 +13,7 @@ import ChooseImage from '../../../com-deprecated/choose-image';
 import FuYan from './FuYan.vue';
 import { removeIdDeep } from '../utils';
 
+let isStaff = cookie.get('is_staff') === 'False';
 export default {
   name: 'GuiGe',
   components: {
@@ -39,6 +41,7 @@ export default {
       addCoverIndex: -1,
       // 封面选择组件实例
       chooseCoverIns: null,
+      isStaff,
     };
   },
   props: {

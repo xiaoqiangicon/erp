@@ -1,5 +1,6 @@
 import { Notification, MessageBox, Message } from 'element-ui';
 import seeAjax from 'see-ajax';
+import cookie from 'js-cookie';
 import Detail from './Detail';
 import Printer from './Printer';
 import Logistics from './Logistics';
@@ -9,6 +10,7 @@ import { urlParams } from '../../../../pro-com/src/utils';
 import request from '../../utils/request';
 import { PARTNER_TYPE_SF, PARTNER_TYPE_YT } from '../../express/setting/data';
 
+let isStaff = cookie.get('is_staff') === 'False';
 export default {
   name: 'App',
   components: {
@@ -122,6 +124,7 @@ export default {
       expressPrintMultiPartner: false,
       // 快递公司类型：yt 圆通、sf 顺丰
       expressPrintPartnerType: PARTNER_TYPE_YT,
+      isStaff,
     };
   },
   computed: {

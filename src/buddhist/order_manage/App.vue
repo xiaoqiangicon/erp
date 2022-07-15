@@ -276,6 +276,7 @@
           label="支付"
           sortable="custom"
           show-overflow-tooltip
+          v-if="isStaff"
         >
         </el-table-column>
         <el-table-column

@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
+import cookie from 'js-cookie';
 import data from './data';
 import tpl from './tpl';
 import './ajax';
@@ -19,6 +20,10 @@ func.init = function() {
       (document.title = '更新文章'),
       $saveDraft.text(data.saveTypeOriginText[0]),
       $saveProd.text(data.saveTypeOriginText[1]));
+  let isStaff = cookie.get('is_staff') === 'False';
+  if (isStaff) {
+    $("[data-suixi='1']").removeClass('hide');
+  }
   func.getCategories();
 };
 func.getCategories = function() {

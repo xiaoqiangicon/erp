@@ -1,7 +1,9 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import handleAjaxError from '../../com/handle-ajax-error';
+import cookie from 'js-cookie';
 
+let isStaff = cookie.get('is_staff') === 'False';
 var statuses = {
   1: '草稿',
   2: '正式发布',
@@ -47,6 +49,7 @@ var postHandle = {
     res.data.map(function(item) {
       item.statusInt = item.status;
       item.status = statuses[item.status];
+      item.isStaff = isStaff;
     });
   },
 };

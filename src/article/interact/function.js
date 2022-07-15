@@ -1,13 +1,19 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import Pagination from '../../com-deprecated/pagination';
+import cookie from 'js-cookie';
 import commonFunc from 'common/function';
 import commonTpl from 'common/tpl';
 import data from './data';
 import tpl from './tpl';
 import './ajax';
 var func = {};
+
+let isStaff = cookie.get('is_staff') === 'False';
 func.init = function() {
+  if (isStaff) {
+    $('#pay-amount').removeClass('hide');
+  }
   $('[data-time-input]').datepicker({
     format: 'yyyy-mm-dd',
     language: 'zh-CN',

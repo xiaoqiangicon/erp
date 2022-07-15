@@ -294,7 +294,7 @@
           <div v-show="!isGroup" class="cell">
             <div class="cell-title">
               订单详情
-              <span class="cell-title-tip"
+              <span class="cell-title-tip" v-if="isStaff"
                 >下单数量：{{ buyNum }}&nbsp;&nbsp;支付金额：{{ price }}</span
               >
             </div>
@@ -364,6 +364,7 @@ import VideoPlayer from './VideoPlayer';
 import { Notification } from 'element-ui';
 import _ from 'underscore';
 import seeAjax from 'see-ajax';
+import cookie from 'js-cookie';
 import QRCode from '../../../../pro-com/src/libs-es5/qrcode';
 import ChooseImage from '../../com-deprecated/choose-image';
 import { setHtmlNoScroll, recoverHtmlScroll } from './util';
@@ -371,6 +372,7 @@ import { setHtmlNoScroll, recoverHtmlScroll } from './util';
 let qrCodeImg;
 let remarkEditor;
 
+let isStaff = cookie.get('is_staff') === 'False';
 export default {
   name: 'Detail',
   components: {
@@ -379,6 +381,7 @@ export default {
   props: ['isGroup', 'detail', 'type', 'expressSetting'],
   data() {
     return {
+      isStaff,
       uploadUrl: `${window.location.origin}/zzhadmin/uploadPic/`, // 上传地址 返回 {msg, result:0, url}
 
       curUploadVideo: {

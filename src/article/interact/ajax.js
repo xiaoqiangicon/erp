@@ -1,6 +1,9 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import handleAjaxError from '../../com/handle-ajax-error';
+import cookie from 'js-cookie';
+
+let isStaff = cookie.get('is_staff') === 'False';
 var requestKeys = {
   list: {
     page: 'pageNumber',
@@ -35,6 +38,9 @@ var postHandle = {
   },
   list: function(res) {
     res.totalPages = Math.ceil((res.total || 1) / 20);
+    res.data.forEach(item => {
+      item.isStaff = isStaff;
+    });
   },
 };
 
