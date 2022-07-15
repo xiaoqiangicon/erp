@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import cookie from 'js-cookie';
 import {
   Dialog,
   Input,
@@ -22,37 +23,40 @@ Vue.use(Loading);
 
 const EmbedMusicPopupConstructor = Vue.extend(EmbedMusicPopup);
 
-// 插入音频
-window.UE.registerUI(
-  'ue-embed-music',
-  (editor, uiName) =>
-    new window.UE.ui.Button({
-      name: uiName,
-      title: '插入音频',
-      cssRules: 'background-position: -18px -40px;',
-      onclick() {
-        if (editor.ueEmbedMusic) {
-          editor.ueEmbedMusicVm.visible = true;
-          return;
-        }
+// 自营寺院才显示此功能
+if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
+  // 插入音频
+  window.UE.registerUI(
+    'ue-embed-music',
+    (editor, uiName) =>
+      new window.UE.ui.Button({
+        name: uiName,
+        title: '插入音频',
+        cssRules: 'background-position: -18px -40px;',
+        onclick() {
+          if (editor.ueEmbedMusic) {
+            editor.ueEmbedMusicVm.visible = true;
+            return;
+          }
 
-        const el = document.createElement('div');
-        el.classList.add('ue-embed-music');
+          const el = document.createElement('div');
+          el.classList.add('ue-embed-music');
 
-        document.body.append(el);
-        editor.ueEmbedMusic = el;
+          document.body.append(el);
+          editor.ueEmbedMusic = el;
 
-        const vm = new EmbedMusicPopupConstructor({
-          el,
-          propsData: {
-            onSelect(selectData) {
-              editor.execCommand('embedmusic', { selectData });
-              vm.visible = false;
+          const vm = new EmbedMusicPopupConstructor({
+            el,
+            propsData: {
+              onSelect(selectData) {
+                editor.execCommand('embedmusic', { selectData });
+                vm.visible = false;
+              },
             },
-          },
-        });
+          });
 
-        editor.ueEmbedMusicVm = vm;
-      },
-    })
-);
+          editor.ueEmbedMusicVm = vm;
+        },
+      })
+  );
+}

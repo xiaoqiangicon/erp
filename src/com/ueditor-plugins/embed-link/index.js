@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import cookie from 'js-cookie';
 import {
   Dialog,
   Input,
@@ -30,37 +31,40 @@ Vue.component(FormItem.name, FormItem);
 
 const EmbedLinkPopupConstructor = Vue.extend(EmbedLinkPopup);
 
-// 插入音频
-window.UE.registerUI(
-  'ue-embed-link',
-  (editor, uiName) =>
-    new window.UE.ui.Button({
-      name: uiName,
-      title: '插入链接',
-      cssRules: 'background-position: -620px -40px;',
-      onclick() {
-        if (editor.ueEmbedLink) {
-          editor.ueEmbedLinkVm.visible = true;
-          return;
-        }
+// 自营寺院才显示此功能
+if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
+  // 插入自定义链接
+  window.UE.registerUI(
+    'ue-embed-link',
+    (editor, uiName) =>
+      new window.UE.ui.Button({
+        name: uiName,
+        title: '插入链接',
+        cssRules: 'background-position: -620px -40px;',
+        onclick() {
+          if (editor.ueEmbedLink) {
+            editor.ueEmbedLinkVm.visible = true;
+            return;
+          }
 
-        const el = document.createElement('div');
-        el.classList.add('ue-embed-link');
+          const el = document.createElement('div');
+          el.classList.add('ue-embed-link');
 
-        document.body.append(el);
-        editor.ueEmbedLink = el;
+          document.body.append(el);
+          editor.ueEmbedLink = el;
 
-        const vm = new EmbedLinkPopupConstructor({
-          el,
-          propsData: {
-            onSelect(selectData) {
-              editor.execCommand('embedlink', { selectData });
-              vm.visible = false;
+          const vm = new EmbedLinkPopupConstructor({
+            el,
+            propsData: {
+              onSelect(selectData) {
+                editor.execCommand('embedlink', { selectData });
+                vm.visible = false;
+              },
             },
-          },
-        });
+          });
 
-        editor.ueEmbedLinkVm = vm;
-      },
-    })
-);
+          editor.ueEmbedLinkVm = vm;
+        },
+      })
+  );
+}
