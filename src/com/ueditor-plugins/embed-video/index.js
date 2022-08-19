@@ -27,16 +27,17 @@ Vue.use(Loading);
 
 const EmbedVideoPopupConstructor = Vue.extend(EmbedVideoPopup);
 
+const isLocal = window.location.href.indexOf('localhost') > -1;
 // 自营寺院才显示此功能
-if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
+if (parseInt(cookie.get('is_zizaihome_temple'), 10) || isLocal) {
   // 插入视频
   window.UE.registerUI(
-    'ue-embed-video',
+    'zzh-embed-video',
     (editor, uiName) =>
       new window.UE.ui.Button({
         name: uiName,
         title: '插入视频',
-        cssRules: 'background-position: -320px -20px;',
+        // cssRules: 'background-position: -320px -20px;',
         onclick() {
           if (editor.ueEmbedMusic) {
             editor.ueEmbedVideoVm.visible = true;
@@ -44,7 +45,6 @@ if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
           }
 
           const el = document.createElement('div');
-          el.classList.add('ue-embed-video');
 
           document.body.append(el);
           editor.ueEmbedVideo = el;

@@ -9,7 +9,7 @@ window.UE.registerUI('zzh-choose-image-multi', (editor, uiName) => {
   const btn = new UE.ui.Button({
     name: uiName,
     title: '添加多张图片',
-    cssRules: 'background-position: -726px -77px;',
+    // cssRules: 'background-position: -726px -77px;',
     onclick() {
       if (!editor.zizaiUploadMultiSelect) {
         editor.zizaiUploadMultiSelect = new ChooseImage({

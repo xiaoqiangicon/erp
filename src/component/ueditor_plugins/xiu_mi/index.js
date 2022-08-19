@@ -1,7 +1,7 @@
 import './index.less';
-window.UE.registerUI('dialog', (editor, uiName) => {
+window.UE.registerUI('zzh-xiumi-connect', (editor, uiName) => {
   const btn = new UE.ui.Button({
-    name: 'xiumi-connect',
+    name: uiName,
     title: '秀米',
     onclick: () => {
       const dialog = new UE.ui.Dialog({

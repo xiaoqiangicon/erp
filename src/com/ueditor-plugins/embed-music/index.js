@@ -23,11 +23,12 @@ Vue.use(Loading);
 
 const EmbedMusicPopupConstructor = Vue.extend(EmbedMusicPopup);
 
+const isLocal = window.location.href.indexOf('localhost') > -1;
 // 自营寺院才显示此功能
-if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
+if (parseInt(cookie.get('is_zizaihome_temple'), 10) || isLocal) {
   // 插入音频
   window.UE.registerUI(
-    'ue-embed-music',
+    'zzh-embed-music',
     (editor, uiName) =>
       new window.UE.ui.Button({
         name: uiName,
@@ -40,7 +41,6 @@ if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
           }
 
           const el = document.createElement('div');
-          el.classList.add('ue-embed-music');
 
           document.body.append(el);
           editor.ueEmbedMusic = el;

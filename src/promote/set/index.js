@@ -8,15 +8,14 @@ import './index.less';
 
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
-import '../../component/ueditor_config';
+import 'component/ueditor_config';
 import '../../../../pro-com/src/ueditor/ueditor.config';
 import '../../../../pro-com/src/ueditor/ueditor.all';
-
-import '../../component/ueditor_plugins/xiu_mi';
-import '../../component/ueditor_plugins/import_wx_article';
-import '../../component/ueditor_plugins/video';
-import '../../component/ueditor_plugins/choose_image';
-import '../../component/ueditor_plugins/choose_image_multi';
+import 'component/ueditor_plugins/choose_image';
+import 'component/ueditor_plugins/choose_image_multi';
+import '../../com/ueditor-plugins/135editor';
+import 'component/ueditor_plugins/xiu_mi';
+import 'component/ueditor_plugins/import_wx_article';
 import './ajax';
 import './view';
 import share from './share';
