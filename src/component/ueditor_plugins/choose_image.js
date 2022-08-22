@@ -9,7 +9,7 @@ window.UE.registerUI('zzh-choose-image', (editor, uiName) => {
   const btn = new UE.ui.Button({
     name: uiName,
     title: '添加图片',
-    cssRules: 'background-position: -380px 0;',
+    // cssRules: 'background-position: -380px 0;',
     onclick: () => {
       if (!editor.zzhChooseImage) {
         editor.zzhChooseImage = new ChooseImage({

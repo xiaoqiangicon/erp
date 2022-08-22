@@ -31,16 +31,17 @@ Vue.component(FormItem.name, FormItem);
 
 const EmbedLinkPopupConstructor = Vue.extend(EmbedLinkPopup);
 
+const isLocal = window.location.href.indexOf('localhost') > -1;
 // 自营寺院才显示此功能
-if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
+if (parseInt(cookie.get('is_zizaihome_temple'), 10) || isLocal) {
   // 插入自定义链接
   window.UE.registerUI(
-    'ue-embed-link',
+    'zzh-embed-link',
     (editor, uiName) =>
       new window.UE.ui.Button({
         name: uiName,
         title: '插入链接',
-        cssRules: 'background-position: -620px -40px;',
+        // cssRules: 'background-position: -620px -40px;',
         onclick() {
           if (editor.ueEmbedLink) {
             editor.ueEmbedLinkVm.visible = true;
@@ -48,7 +49,6 @@ if (parseInt(cookie.get('is_zizaihome_temple'), 10)) {
           }
 
           const el = document.createElement('div');
-          el.classList.add('ue-embed-link');
 
           document.body.append(el);
           editor.ueEmbedLink = el;
