@@ -8,6 +8,7 @@ import commonVars from 'common/variables';
 import api from './api';
 import multipartUpload from '../../../com/multipartUpload';
 import toastr from 'toastr';
+import cookie from 'js-cookie';
 import './upload_config.js';
 import './ajax';
 import 'bootstrap-select';
@@ -22,7 +23,12 @@ var func = {};
 func.init = function() {
   $('#loading-toast').hide();
   $('[data-ele="select-picker"]').selectpicker('refresh');
-  if (isZiYingTemple) $('#table-title-total-collect').hide();
+  let isStaff = cookie.get('is_staff') === 'False';
+  if (isStaff) {
+    $('#create').removeClass('hide');
+    $('#sort-filter').removeClass('hide');
+  }
+  if (isZiYingTemple || !isStaff) $('#table-title-total-collect').hide();
   func.initBuddhistVerifyModal();
   func.getBuddhistType({}, function(res) {
     func.renderBuddhistTypeSelect(res);
@@ -168,6 +174,7 @@ func.getList = function(params, callback) {
     if (res.success) {
       Data.getListRes = res;
       callback && callback(res);
+      console.log(res);
     } else {
       res.message && commonFunc.alert(res.message);
     }

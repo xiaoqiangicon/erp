@@ -1,5 +1,6 @@
 import seeAjax from 'see-ajax';
 import $ from 'jquery';
+import cookie from 'js-cookie';
 import indexData from './data';
 import renderSavedData from './render_saved_data';
 import commonTpl from './tpl/common';
@@ -21,6 +22,19 @@ $.ajaxSetup({
       .text('保存');
   },
 });
+
+let isStaff = cookie.get('is_staff') === 'False';
+let pwMeritRank = parseInt(cookie.get('pw_merit_rank'), 10);
+if (isStaff) {
+  $('#design-add').removeClass('hide');
+}
+if (pwMeritRank) {
+  $('#temple-set').removeClass('hide');
+} else {
+  sample.components = sample.components.filter(item => {
+    return item.type !== 4;
+  });
+}
 commonFunc.addCloseWindowHint();
 $('#components-container').html(commonTpl.addComponent.render(sample));
 $('#components-edit-container').html(commonTpl.addComponent2.render(sample));
@@ -61,7 +75,7 @@ function handleAfterLoadTypes() {
   seeAjax('savedData', {}, function(res) {
     res.success &&
       (renderSavedData(res),
-      !!res.data && !!res.data.length && $('#fixed-bottom').show());
+      isStaff && !!res.data && !!res.data.length && $('#fixed-bottom').show());
     $('#loading-toast')
       .hide()
       .removeClass('unloaded');

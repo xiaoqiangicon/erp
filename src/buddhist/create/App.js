@@ -1,6 +1,7 @@
 import { Message, MessageBox } from 'element-ui';
 import draggable from 'vuedraggable';
 import toastr from 'toastr';
+import cookie from 'js-cookie';
 import ChooseImage from '../../com-deprecated/choose-image';
 import * as zzhHandling from '../../../../pro-com/src/handling';
 import upload from '../../../../pro-com/src/upload';
@@ -35,6 +36,7 @@ import {
 } from './AppPatch';
 import request from '../../utils/request';
 
+let isStaff = cookie.get('is_staff') === 'False';
 export default {
   name: 'App',
   components: {
@@ -45,6 +47,7 @@ export default {
   },
   data() {
     return {
+      isStaff,
       feedbackPrizes,
       form: {
         // 标题

@@ -14,8 +14,10 @@ var tpl = {
             <div class="actions">
                 <div class="actions-wrap">
                     <span class="action" data-action="edit-component" data-id="\${id}" data-type="6">编辑</span>
+                    {@if isStaff}
                     <span class="action" data-action="add-component" data-id="\${id}" data-type="6">加内容</span>
                     <span class="action" data-action="delete-component" data-id="\${id}" data-type="6">删除</span>
+                    {@/if}
                 </div>
             </div>
             <div class="sort">

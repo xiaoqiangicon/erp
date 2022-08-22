@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
 import handleAjaxError from '../../../com/handle-ajax-error';
+import cookie from 'js-cookie';
+let isStaff = cookie.get('is_staff') === 'False';
 
 var requestKeys = {
   getBuddhistType: {},
@@ -80,7 +82,9 @@ var postHandle = {
     handleAjaxError(res);
   },
   getList: function(res) {
-    res.data.map(function(item) {});
+    res.data.map(function(item) {
+      item.isStaff = isStaff;
+    });
   },
   getBuddhistSchedule: function(res) {
     res.data.map(function(item) {

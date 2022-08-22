@@ -137,7 +137,7 @@
         </template>
         <GuiGe :subdivideStr="form.subdivideStr" />
       </el-form-item>
-      <el-form-item label="支付：" v-if="!guiGeListLength">
+      <el-form-item label="支付：" v-if="!guiGeListLength && isStaff">
         <template slot="label"
           >支&nbsp;&nbsp;&nbsp;&nbsp;付：
         </template>

@@ -30,7 +30,13 @@
                   选择项名称<sup style="top: 0; left: 5px; color: red;">*</sup>
                 </div>
               </th>
-              <th colspan="1" rowspan="1" class="is-leaf" style="width: 130px;">
+              <th
+                colspan="1"
+                rowspan="1"
+                class="is-leaf"
+                style="width: 130px;"
+                v-if="isStaff"
+              >
                 <div class="cell">价格</div>
               </th>
               <th colspan="1" rowspan="1" class="is-leaf" style="width: 120px;">
@@ -118,6 +124,7 @@
                 rowspan="1"
                 colspan="1"
                 class="ps-relative"
+                v-if="isStaff"
                 style="width: 130px;"
               >
                 <div class="cell">

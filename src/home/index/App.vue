@@ -2,7 +2,7 @@
   <div class="content-container" id="content-container">
     <div class="content">
       <header class="recommend-box">
-        <div class="r-left">
+        <div class="r-left" v-if="false">
           <div class="r-item">
             <div
               class="r-item-con"
@@ -16,7 +16,7 @@
             </div>
           </div>
         </div>
-        <div class="r-right">
+        <div class="r-right" v-if="false">
           <div class="r-item">
             <div
               class="r-item-con"
@@ -44,7 +44,7 @@
         </div>
       </header>
 
-      <footer class="footer-box">
+      <footer class="footer-box" v-if="false">
         <div class="introduce">
           <span class="i-bule">自在家</span>
           <span>国内首家服务于寺院的正规互联网 + 项目</span>
@@ -59,8 +59,8 @@
               />
             </div>
           </div>
-          <div class="split-line"></div>
-          <div class="d-item">
+          <div class="split-line" v-if="false"></div>
+          <div class="d-item" v-if="false">
             <div class="d-title">授权服务单位：</div>
             <div class="d-img authorize">
               <img
@@ -182,7 +182,8 @@ export default {
       padding: 20px 0;
       .r-left {
         margin-left: 1.875%;
-        width: 64.375%;
+        // width: 64.375%;
+        width: 100%;
         .r-item {
           padding-top: 29.787%;
         }

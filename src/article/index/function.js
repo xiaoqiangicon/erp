@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import seeAjax from 'see-ajax';
+import cookie from 'js-cookie';
 import Pagination from '../../com-deprecated/pagination';
 import commonFunc from 'common/function';
 import commonTpl from 'common/tpl';
@@ -7,7 +8,12 @@ import data from './data';
 import tpl from './tpl';
 import './ajax';
 var func = {};
+
+let isStaff = cookie.get('is_staff') === 'False';
 func.init = function() {
+  if (isStaff) {
+    $('#article-pay-amount').removeClass('hide');
+  }
   seeAjax('categories', {}, function(res) {
     var $container = $('#category-dropdown-menu');
     if (res.success) {

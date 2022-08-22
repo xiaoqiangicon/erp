@@ -8,7 +8,9 @@ var tpl = {
                 <img src="\${avatar}" class="pay-avatar">
                 <span>\${nickname}</span>
             </span>
+            {@if isStaff}
             <span class="pay-amount">\${amount}元</span>
+            {@/if}
             <span class="pay-time">\${time}</span>
         </div>
     `,

@@ -1,7 +1,7 @@
 <div class="content-container" id="content-container">
   <div class="content-container-inner">
     <form class="form-inline">
-      <div class="form-group">
+      <div class="form-group hide" id="sort-filter">
         <label for="buddhist-type-select">活动分类：</label>
         <select
           name="buddhist-type-select"
@@ -27,7 +27,8 @@
         />
       </div>
       <a
-        class="btn btn-green pull-right mgr20"
+        class="btn btn-green pull-right mgr20 hide"
+        id="create"
         href="/zzhadmin/selectCeremonyTemplate/"
         >新建项目</a
       >

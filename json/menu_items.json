@@ -15,13 +15,13 @@
           "id": "temple-donate-box",
           "name": "功德箱",
           "link": "/zzhadmin/meritBoxIndex/",
-          "controlMark": "pw_website"
+          "controlMark": "pw_merit_rank"
         },
         {
           "id": "kind-index",
           "name": "日行一善",
           "link": "/zzhadmin/charityIndex/",
-          "controlMark": "pw_website"
+          "controlMark": "pw_merit_rank"
         }
       ]
     },
@@ -76,6 +76,13 @@
           "link": "/zzhadmin/creditsIndex/",
           "isHtml": true,
           "controlMark": "pw_ceremony_hide"
+        },
+        {
+          "id": "order-coupon",
+          "name": "优惠券列表",
+          "link": "/zzhadmin/ceremony_discount_coupon/",
+          "isHtml": true,
+          "controlMark": "pw_coupon"
         }
       ]
     },
@@ -94,7 +101,7 @@
           "id": "article-interact",
           "name": "互动管理",
           "link": "/zzhadmin/articleInteractIndex/",
-          "controlMark": "pw_article"
+          "controlMark": "pw_merit_rank"
         }
       ]
     },
@@ -197,7 +204,7 @@
           "id": "no-vrshow",
           "name": "应用介绍",
           "link": "/zzhadmin/vr_introduce/",
-          "controlType": 2
+          "controlMark": "pw_vr_devote"
         },
         {
           "id": "base-set",

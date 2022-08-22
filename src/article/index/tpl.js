@@ -16,9 +16,11 @@ var tpl = {
             <div class="article-support">
                 <p>\${support}</p>
             </div>
+            {@if isStaff}
             <div class="article-pay-amount">
                 <p>\${payAmount}</p>
             </div>
+            {@/if}
             <div class="article-status">
                 <p class="{@if statusInt == 2}green{@else if statusInt == 3}red{@/if}">\${status}</p>
             </div>
