@@ -197,6 +197,7 @@
       </el-form-item>
       <el-form-item label="参与者列表：">
         <el-radio v-model="form.showClient" :label="1">显示</el-radio>
+        <el-radio v-model="form.showClient" :label="2">匿名显示</el-radio>
         <el-radio v-model="form.showClient" :label="0">不显示</el-radio>
       </el-form-item>
       <el-form-item label="进展动态：">
@@ -410,7 +411,7 @@
             >
               <el-button type="primary">上传视频</el-button>
             </div>
-            <p>支持视频格式MP4/MOV等，不超过50MB，仅支持上传1个封面视频</p>
+            <p>支持视频格式MP4/MOV等，不超过50MB。</p>
           </div>
           <div id="pay-success-editor" v-if="!1" class="editor-container"></div>
         </div>
