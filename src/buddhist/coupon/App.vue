@@ -1,20 +1,34 @@
 <template>
-  <div class="container">
+  <div class="contain">
     <el-card>
       <div class="header">
         <div class="header-left">
           <span>状态：</span>
           <el-select v-model="status" @change="getList">
-            <el-option :value="0" label="全部"></el-option>
-            <el-option :value="1" label="有效"></el-option>
-            <el-option :value="2" label="已过期"></el-option>
+            <el-option :value="0" label="有效"></el-option>
+            <el-option :value="1" label="过期"></el-option>
           </el-select>
         </div>
         <el-button type="primary" @click="edit">新建福券</el-button>
       </div>
       <el-table v-loading="loading" :data="list">
         <el-table-column prop="name" label="福券名称" :align="'center'" />
-        <el-table-column prop="money" label="福券面额" :align="'center'" />
+        <el-table-column label="福券面额" :align="'center'">
+          <template slot-scope="scope">
+            <div>
+              {{
+                scope.row.type === 1
+                  ? `减${scope.row.price / 100}元`
+                  : scope.row.type === 2
+                  ? `满${scope.row.logic.full / 100}减${scope.row.logic.reduce /
+                      100}`
+                  : scope.row.type === 3
+                  ? `买${scope.row.logic.buy}赠${scope.row.logic.give}`
+                  : ''
+              }}
+            </div>
+          </template>
+        </el-table-column>
         <el-table-column label="有效期" :align="'center'">
           <template slot-scope="scope">
             <div>{{ scope.row.startTime }}</div>
@@ -22,15 +36,16 @@
             <div>{{ scope.row.endTime }}</div>
           </template>
         </el-table-column>
-        <el-table-column label="状态" :align="'center'">
+        <el-table-column label="库存" :align="'center'">
           <template slot-scope="scope">
-            <span class="green" v-if="!scope.row.isFinish">进行中</span>
-            <span class="red" v-else>已结束</span>
+            <span class="green">{{
+              scope.row.stock >= 0 ? scope.row.stock : '无限制'
+            }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" :align="'center'">
           <template slot-scope="scope">
-            <span class="btn edit">编辑</span>
+            <span class="btn edit" @click="edit(scope.row)">编辑</span>
             <span class="btn red" @click="del(scope.row)">删除</span>
           </template>
         </el-table-column>
@@ -59,7 +74,7 @@ export default {
       status: 0,
       loading: true,
       list: [],
-      pageNum: 1,
+      currentPage: 1,
       pageSize: 25,
       total: 0,
     };
@@ -70,11 +85,12 @@ export default {
   methods: {
     getList() {
       this.loading = true;
-      let { pageSize, pageNum, status } = this;
-      seeAjax('list', { pageSize, pageNum, status }, res => {
+      let { pageSize, currentPage, status } = this;
+      seeAjax('list', { pageSize, pageNum: currentPage - 1, status }, res => {
         this.loading = false;
-        if (res.errorCode === 0) {
-          this.list = res.data.list;
+        if (res.result === 0) {
+          this.list = res.data;
+          this.total = res.total;
         } else {
           this.showMsg(res.msg, 'error');
         }
@@ -86,8 +102,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning',
       }).then(() => {
-        seeAjax('del', { id: row.id }).then(res => {
-          if (res.success) {
+        seeAjax('del', { id: row.id }, res => {
+          if (res.result === 0) {
             this.showMsg('删除成功');
             this.getList();
           } else {
@@ -97,11 +113,15 @@ export default {
       });
     },
     edit(row) {
-      window.localStorage.setItem('couponItem', row);
-      console.log(1234);
+      if (row && row.id) {
+        window.localStorage.setItem('couponItem', JSON.stringify(row));
+      } else {
+        window.localStorage.setItem('couponItem', '');
+      }
+      window.location.href = '/zzhadmin/ceremony_discount_coupon_edit/';
     },
     pageChange(page) {
-      this.pageNum = page;
+      this.currentPage = page;
       this.getList();
     },
     showMsg(msg, type) {

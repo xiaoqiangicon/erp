@@ -3,7 +3,6 @@ import seeAjax from 'see-ajax';
 
 seeAjax.config('save', {
   method: ['post', 'post', 'post'],
-  stringify: [!0],
   url: [
     '/zzhadmin/editCoupon/',
     '/buddhist/coupon/mock/del',
