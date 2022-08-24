@@ -31,13 +31,16 @@ if (isStaff) {
 if (pwMeritRank) {
   $('#temple-set').removeClass('hide');
 } else {
-  sample.components = sample.components.filter(item => {
-    return item.type !== 4;
-  });
+  // sample.components = sample.components.filter(item => {
+  //   return item.type !== 4;
+  // });
 }
 commonFunc.addCloseWindowHint();
 $('#components-container').html(commonTpl.addComponent.render(sample));
 $('#components-edit-container').html(commonTpl.addComponent2.render(sample));
+$('[data-type=4]')
+  .parent()
+  .addClass('hide');
 $('#components-display-container').sortable({
   stop: function() {
     var $editContainerParent = $('#design-sidebar'),

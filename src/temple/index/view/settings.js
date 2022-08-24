@@ -26,6 +26,9 @@ seeView({
     const showJoinListPrice = $('#show-join-list-price').prop('checked')
       ? 1
       : 0;
+    const showJoinListCryptonym = $('#show-join-list-cryptonym').prop('checked')
+      ? 1
+      : 0;
 
     seeAjax(
       'updateSettings',
@@ -34,6 +37,7 @@ seeView({
         showMonkSuiXi,
         showSceneSuiXi,
         showJoinListPrice,
+        isCryptonymShow: showJoinListCryptonym,
       },
       res => {
         if (!res.success) toastr.error('更新失败');
