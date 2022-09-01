@@ -271,6 +271,7 @@ var View = Backbone.View.extend({
               area = data.data.area,
               address = data.data.address,
               registrant = data.data.registrant,
+              netServiceNo = data.data.netServiceNo,
               registrantMobile = data.data.registrantMobile,
               placeNo = data.data.placeNo,
               mobile = data.data.mobile,
@@ -284,6 +285,7 @@ var View = Backbone.View.extend({
             $('.uncerticicated').removeClass('hide');
             $('#templeName').val(name);
             $('#templeCode').val(placeNo);
+            $('#netServiceNo').val(netServiceNo);
             $('#address').val(address);
             $('#province').distpicker({
               province: province,
@@ -625,6 +627,7 @@ var View = Backbone.View.extend({
       $tar = $(e.target);
     var name = $('#templeName').val(),
       placeNo = $('#templeCode').val(),
+      netServiceNo = $('#netServiceNo').val(),
       province = $('[data-id="province"]').val(),
       city = $('[data-id="city"]').val(),
       area = $('[data-id="district"]').val(),
@@ -653,6 +656,12 @@ var View = Backbone.View.extend({
       $('body').scrollTop($('#templeCode').offset().top);
       error = 1;
       Toast('请填写场地编号！', 2);
+      return false;
+    }
+    if (netServiceNo == '') {
+      $('body').scrollTop($('#netServiceNo').offset().top);
+      error = 1;
+      Toast('请填写互联网宗教信息服务许可证！', 2);
       return false;
     }
     if (province == '') {
@@ -824,6 +833,7 @@ var View = Backbone.View.extend({
       opt['corporation'] = corporation;
       opt['mobile'] = mobile;
       opt['email'] = email;
+      opt['netServiceNo'] = netServiceNo;
       opt['registrSource'] =
         sourceType === 0
           ? '0搜索到自在家'

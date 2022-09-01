@@ -58,7 +58,7 @@
             >
               <div class="form-group templeForm">
                 <label for="templeName" class="col-sm-2 control-label"
-                  >寺院名称</label
+                  >单位名称</label
                 >
                 <div class="col-sm-10 templeValue">
                   <input
@@ -68,7 +68,7 @@
                     class="form-control required"
                   />
                   <p>
-                    需与当地政府颁发的宗教活动场地登记证上的名称完全一致，信息审核成功后，寺院名称不可修改。
+                    需与当地政府颁发的宗教活动场地登记证上的名称完全一致，信息审核成功后，单位名称不可修改。
                   </p>
                   <span class="nullError_msg hide" style="color:#EA6C77"
                     >只能输入中文</span
@@ -80,7 +80,7 @@
               </div>
               <div class="form-group templeForm">
                 <label for="templeCode" class="col-sm-2 control-label"
-                  >场所编号</label
+                  >机构代码</label
                 >
                 <div class="col-sm-10 templeValue">
                   <input
@@ -89,7 +89,27 @@
                     type="text"
                     class="form-control required"
                   />
-                  <p>请输入宗教活动场地登记编号，如：冀 F010230006</p>
+                  <p>请填写登记证书的场所编号或统一社会信用代码</p>
+                  <span class="nullError_msg hide" style="color:#EA6C77"></span>
+                  <span class="nullError hide" style="color:#EA6C77"
+                    >不能为空</span
+                  >
+                </div>
+              </div>
+              <div class="form-group templeForm">
+                <label for="netServiceNo" class="col-sm-2 control-label"
+                  >互联网宗教信息服务许可证</label
+                >
+                <div class="col-sm-10 templeValue">
+                  <input
+                    id="netServiceNo"
+                    name="netServiceNo"
+                    type="text"
+                    class="form-control required"
+                  />
+                  <p>
+                    请填写互联网宗教信息服务许可证的编号，如：粤(2022)0000049
+                  </p>
                   <span class="nullError_msg hide" style="color:#EA6C77"></span>
                   <span class="nullError hide" style="color:#EA6C77"
                     >不能为空</span
