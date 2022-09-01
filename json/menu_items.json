@@ -12,12 +12,6 @@
           "controlMark": "pw_website"
         },
         {
-          "id": "temple-donate-box",
-          "name": "功德箱",
-          "link": "/zzhadmin/meritBoxIndex/",
-          "controlMark": "pw_merit_rank"
-        },
-        {
           "id": "kind-index",
           "name": "日行一善",
           "link": "/zzhadmin/charityIndex/",
