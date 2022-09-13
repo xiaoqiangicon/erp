@@ -39,4 +39,7 @@ seeAjax('settings', {}, res => {
   $('#show-join-list-price').prop({
     checked: !!res.data.showJoinListPrice,
   });
+  $('#show-join-list-cryptonym').prop({
+    checked: !!res.data.isCryptonymShow,
+  });
 });

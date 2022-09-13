@@ -23,6 +23,7 @@ let isStaff = cookie.get('is_staff') === 'False';
 let pwMeritRank = parseInt(cookie.get('pw_merit_rank'), 10);
 function renderSavedData(res) {
   function renderComponent(data) {
+    if (data.type === 4 && !pwMeritRank) return;
     var type = data.type,
       $displayContainer = $('#components-display-container'),
       $editContainer = $('#components-edit-container'),

@@ -1,7 +1,7 @@
 import juicer from 'juicer';
 var tpl = {
   display: `
-         <div class="component-container component-donate-chart" data-container="component-display" data-type="4" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
+         <div class="component-container component-donate-chart hide" data-container="component-display" data-type="4" data-id="\${id}" data-is-update="\${isUpdate}" data-server-sort-id="\${sortId}">
             <div class="component-donate-chart-top-bar">
                 <div class="component-donate-chart-title">
                     <i class="inline-icon"></i><span data-donate-chart-title-display="\${id}">感恩功德</span>
