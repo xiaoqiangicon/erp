@@ -153,7 +153,8 @@
                     class="mg-t-10"
                     v-if="
                       item.price.indexOf(',') > -1 ||
-                        item.price.indexOf('，') > -1
+                        item.price.indexOf('，') > -1 ||
+                        item.subdivide_type == 1
                     "
                   >
                     自动处理订单

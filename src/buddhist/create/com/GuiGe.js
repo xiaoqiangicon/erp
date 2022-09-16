@@ -168,7 +168,9 @@ export default {
         let item = this.list[index];
         item._priceAutoBox = false;
         item.isAutoFinish =
-          item.price.indexOf(',') > -1 || item.price.indexOf('，') > -1
+          item.price.indexOf(',') > -1 ||
+          item.price.indexOf('，') > -1 ||
+          parseInt(item.isAutoFinish, 10)
             ? confirmInt(item.isAutoFinish, 1)
             : 0;
         this.$forceUpdate();

@@ -21,6 +21,7 @@ import {
   urlData,
   shareData,
   defaultPrinterSetting,
+  plainGuiGeList,
 } from './data';
 import {
   disableTipBeforeClose,
@@ -64,8 +65,8 @@ export default {
         custom_introduce: '',
         // 详情信息
         detail: '',
-        // 规格
-        subdivideStr: [],
+        // 规格，默认有一个普通佛事规格
+        subdivideStr: [JSON.parse(JSON.stringify(plainGuiGeList[0]))],
         // 公共附言
         postScript: [],
         // 是否需要支付（无规格时）

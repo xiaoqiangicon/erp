@@ -60,7 +60,9 @@ function handleGuiGeItem(item) {
   if ([1, 2, 3, 4].indexOf(item.subdivide_type) === -1) item.subdivide_type = 1;
   item.pic = item.pic || '';
   item.isAutoFinish =
-    item.price.indexOf(',') > -1 || item.price.indexOf('，') > -1
+    item.price.indexOf(',') > -1 ||
+    item.price.indexOf('，') > -1 ||
+    parseInt(item.isAutoFinish, 10)
       ? confirmInt(item.isAutoFinish, 1)
       : 0;
 
@@ -262,6 +264,12 @@ function checkGuiGeItem(item, index) {
 
     // 如果是逗号分隔的多个随喜价格，前后需要用方括号包裹
     if (prices.length > 1) item.price = '[' + item.price + ']';
+  }
+
+  // 不可创建无需支付的无附言规格
+  if (item.price === 0 && !item.postScript.length) {
+    MessageBox.alert(`${seqText}附言不能为空`);
+    return false;
   }
 
   if (item.stock || item.stock === 0) {
