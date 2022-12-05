@@ -722,7 +722,7 @@ seeView({
   },
   inputLink: e => {
     if (e.target.value.length < 25) {
-      e.target.value = 'https://wx.zizaihome.com/';
+      e.target.value = 'https://wx.lenconet.com/';
     }
   },
   onClickSaveSchedule: function(e) {

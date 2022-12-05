@@ -3,7 +3,7 @@ var data = {
   totalPagesRecord: {},
   templeId: window.localStorage['templeId'],
   shareLink:
-    'https://wx.zizaihome.com/website/meritBoxAuth?templeId=' +
+    'https://wx.lenconet.com/website/meritBoxAuth?templeId=' +
     window.localStorage['templeId'] +
     (!!envData.envParamMark ? '&' + envData.envParamMark : ''),
   qrcodeSizes: [300, 500, 1000],

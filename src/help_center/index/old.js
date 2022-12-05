@@ -57,7 +57,7 @@ var View = Backbone.View.extend({
     }
     (function() {
       var url = encodeURIComponent(window.location.href);
-      $.getJSON('https://wx.zizaihome.com/getSign/?url=' + url, function(json) {
+      $.getJSON('https://wx.lenconet.com/getSign/?url=' + url, function(json) {
         var signature = json;
         wx.checkJsApi({
           jsApiList: ['chooseImage'],

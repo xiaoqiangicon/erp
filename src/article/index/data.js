@@ -3,7 +3,7 @@ var data = {
   totalPagesRecord: {},
   templeId: window.localStorage['templeId'],
   shareLink:
-    'https://wx.zizaihome.com/article/articleIndex?templeId=' +
+    'https://wx.lenconet.com/article/articleIndex?templeId=' +
     window.localStorage['templeId'] +
     (!!envData.envParamMark ? '&' + envData.envParamMark : '') +
     '&articleId=',

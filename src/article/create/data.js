@@ -26,7 +26,7 @@ var data = {
   indexUrl: '/zzhadmin/articleIndex/',
   createUrl: '/zzhadmin/createArticleIndex/',
   shareLink:
-    'https://wx.zizaihome.com/article/articleIndex?templeId=' +
+    'https://wx.lenconet.com/article/articleIndex?templeId=' +
     window.localStorage['templeId'] +
     (!!envData.envParamMark ? '&' + envData.envParamMark : '') +
     '&articleId=',

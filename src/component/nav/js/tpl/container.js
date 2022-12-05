@@ -4,9 +4,9 @@ export default `
     <aside class="component-nav-aside">
         <div class="component-nav-aside-top" id="component-nav-menu-title"><span>基础应用</span></div>
         <ul class="component-nav-menu" id="component-nav-menu"></ul>
-        <div class="component-nav-aside-top" id="zizaicloud-nav-menu"><span>自在云协同</span></div>
+        <div class="component-nav-aside-top hide" id="zizaicloud-nav-menu"><span>自在云协同</span></div>
         <ul class="component-nav-menu" id="zizaicloud-component-nav-menu"></ul>
-        <div class="component-nav-aside-top" id="super-component-nav-menu-title"><span>增值服务</span></div>
+        <div class="component-nav-aside-top hide" id="super-component-nav-menu-title"><span>增值服务</span></div>
         <ul class="component-nav-menu" id="super-component-nav-menu"></ul>
     </aside>
     <section class="component-nav-notice">

@@ -23,7 +23,7 @@ var func = {};
 func.init = function() {
   $('#loading-toast').hide();
   $('[data-ele="select-picker"]').selectpicker('refresh');
-  let isStaff = cookie.get('is_staff') === 'False';
+  let isStaff = true;
   if (isStaff) {
     $('#create').removeClass('hide');
     $('#sort-filter').removeClass('hide');

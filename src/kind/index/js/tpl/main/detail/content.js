@@ -36,7 +36,7 @@ const tpl = `
             <span class="set-push-tips">链接</span>
             <span class="link-select select-edit-url" data-edit-url="1">修改引导链接</span>
             <span class="link-select link-select-active select-no-edit-url" data-edit-url="0">不修改</span>
-            <div class="set-link-box" id="set-link-box"><input class="edit-link-input" id="edit-link-input" value="https://wx.zizaihome.com/" type="text" /></div>
+            <div class="set-link-box" id="set-link-box"><input class="edit-link-input" id="edit-link-input" value="https://wx.lenconet.com/" type="text" /></div>
             <div class="push-tip set-url-tip">
               用户点击推送内容时的默认页面会变更为当前的页面，发布后不可修改。
             </div>

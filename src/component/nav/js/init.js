@@ -9,8 +9,8 @@ import cookie from 'js-cookie';
 const $body = $('body');
 export default res => {
   fillItemsFields(res.items);
-  fillItemsFields(res.superItems);
-  fillItemsFields(res.zizaicloudItems);
+  // fillItemsFields(res.superItems);
+  // fillItemsFields(res.zizaicloudItems);
   $body.prepend(tplContainer);
   $('#component-nav-header').html(tplHeader);
   $('#component-nav-menu').html(
@@ -18,20 +18,20 @@ export default res => {
       items: res.items,
     })
   );
-  $('#super-component-nav-menu').html(
-    tplItems({
-      items: res.superItems,
-    })
-  );
-  $('#zizaicloud-component-nav-menu').html(
-    tplItems({
-      items: res.zizaicloudItems,
-    })
-  );
+  // $('#super-component-nav-menu').html(
+  //   tplItems({
+  //     items: res.superItems,
+  //   })
+  // );
+  // $('#zizaicloud-component-nav-menu').html(
+  //   tplItems({
+  //     items: res.zizaicloudItems,
+  //   })
+  // );
   initNotice();
   initAccess(res.items);
-  initAccess(res.superItems);
-  initAccess(res.zizaicloudItems);
+  // initAccess(res.superItems);
+  // initAccess(res.zizaicloudItems);
   // 没有自在云协同的权限，把看板和标题隐藏
   if (!parseInt(cookie.get('pw_office'), 10)) {
     $('#zizaicloud-nav-menu').addClass('hide');

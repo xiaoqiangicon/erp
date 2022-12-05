@@ -63,7 +63,7 @@ var data = {
   calendarNewAddedTitleId: 1,
   calendarNewAddedTitle: {},
   websiteUrl:
-    'https://wx.zizaihome.com/website/templateWebsiteInfo?templeId=' +
+    'https://wx.lenconet.com/website/templateWebsiteInfo?templeId=' +
     localStorage['templeId'] +
     (envData.envParamMark ? '&' + envData.envParamMark : ''),
   imagesParams: {

@@ -20,8 +20,8 @@ api
     setTimeout(() => {
       document.querySelector('[data-buddhist-order-count]').innerText =
         res.commodityCount;
-      document.querySelector('[data-wall-order-count]').innerText =
-        res.buddhaWallCount;
+      // document.querySelector('[data-wall-order-count]').innerText =
+      //   res.buddhaWallCount;
       window.localStorage.orderNumber = res.commodityCount;
       window.localStorage.buddhaWall_orderNumber = res.buddhaWallCount;
 

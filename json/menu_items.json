@@ -124,142 +124,28 @@
         }
       ]
     },
+
     {
-      "id": "express",
-      "name": "物流服务",
-      "icon": "glyphicon-random",
+      "id": "insurance",
+      "name": "医保管理",
+      "icon": "glyphicon-gas",
       "subItems": [
         {
-          "id": "express-manual",
-          "name": "新建打印",
-          "link": "/express/manual",
-          "control": false
+          "id": "insurance-index",
+          "name": "待办事项",
+          "link": "/zzhadmin/insuranceTodoHtml/",
+          "controlMark": "pw_insurance"
         },
         {
-          "id": "express-setting",
-          "name": "面单打印",
-          "link": "/express/setting",
-          "control": false
-        },
-        {
-          "id": "express-device",
-          "name": "设备状态",
-          "link": "/express/device",
-          "control": false
+          "id": "insurance-insured",
+          "name": "投保管理",
+          "link": "/zzhadmin/insuranceManageHtml/",
+          "controlMark": "pw_insurance"
         }
       ]
     }
   ],
-  "superItems": [
-    {
-      "id": "wall",
-      "name": "位置管理",
-      "icon": "buddha-logo",
-      "subItems": [
-        {
-          "id": "wall-intro",
-          "name": "系统介绍",
-          "link": "/zzhadmin/openBuddha/",
-          "controlType": 2
-        },
-        {
-          "id": "wall-index",
-          "name": "位置设置",
-          "link": "/zzhadmin/buddhaManage/",
-          "controlMark": "pw_buddha_wall"
-        },
-        {
-          "id": "wall-record",
-          "name": "自录数据",
-          "link": "/zzhadmin/buddhaLoggingData/",
-          "controlMark": "pw_buddha_wall_record"
-        },
-        {
-          "id": "wall-order",
-          "name": "订单管理&nbsp;&nbsp;<span class=\"badge\" data-wall-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
-          "link": "/zzhadmin/buddhaOrderManage/",
-          "isHtml": true,
-          "controlMark": "pw_buddha_wall_order"
-        },
-        {
-          "id": "wall-remind",
-          "name": "到期提醒",
-          "link": "/zzhadmin/buddhaExpirationRemind/",
-          "controlMark": "pw_buddha_wall_order"
-        }
-      ]
-    },
-    {
-      "id": "vrshow",
-      "name": "实景探寺",
-      "icon": "glyphicon-globe",
-      "subItems": [
-        {
-          "id": "no-vrshow",
-          "name": "应用介绍",
-          "link": "/zzhadmin/vr_introduce/",
-          "controlMark": "pw_vr_devote"
-        },
-        {
-          "id": "base-set",
-          "name": "基础设置",
-          "link": "/zzhadmin/vr_index/",
-          "controlMark": "pw_vr_devote"
-        },
-        {
-          "id": "scene-manage",
-          "name": "场景管理",
-          "link": "/zzhadmin/vr_scene/",
-          "controlMark": "pw_vr_devote"
-        },
-        {
-          "id": "watchword-manage",
-          "name": "字幕管理",
-          "link": "/zzhadmin/vr_word/",
-          "controlMark": "pw_vr_devote"
-        },
-        {
-          "id": "tributes-record",
-          "name": "供奉记录",
-          "link": "/zzhadmin/vr_record/",
-          "controlMark": "pw_vr_devote"
-        },
-        {
-          "id": "vrshow-award",
-          "name": "获奖反馈&nbsp;&nbsp;<span class=\"badge\" data-vrshow-order-count=\"1\" style=\"background-color: #d9534f\"></span>",
-          "isHtml": true,
-          "link": "/zzhadmin/vr_getSignGiftHtml/",
-          "controlMark": "pw_vr_devote"
-        }
-      ]
-    },
-    {
-      "id": "hardware",
-      "name": "智能设备",
-      "icon": "glyphicon-film",
-      "subItems": [
-        {
-          "id": "hardware-donate",
-          "name": "满福屏管理",
-          "link": "/zzhadmin/merit_machine_index/",
-          "controlMark": "pw_merit_machine"
-        }
-      ]
-    },
-    {
-      "id": "promote",
-      "name": "推广工具",
-      "icon": "glyphicon-share",
-      "subItems": [
-        {
-          "id": "promote-list",
-          "name": "分享推广",
-          "link": "/zzhadmin/promotionListHtml/",
-          "controlMark": "pw_promotion"
-        }
-      ]
-    }
-  ],
+
   "zizaicloudItems": [
     {
       "id": "structure",
@@ -350,7 +236,7 @@
         },
         {
           "id": "finance-supply",
-          "name": "资产管理",
+          "name": "寺产管理",
           "link": "/zzhadmin/supplyIndex/",
           "controlMark": "pw_office"
         }

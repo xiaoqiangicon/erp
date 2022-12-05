@@ -6,8 +6,8 @@ import handleAjaxError from '../../com/handle-ajax-error';
 var handle = {};
 var urlReplacement = [
   {
-    target: 'http://wx.zizaihome.com',
-    replacement: 'https://wx.zizaihome.com',
+    target: 'http://wx.lenconet.com',
+    replacement: 'https://wx.lenconet.com',
   },
 ];
 handle.outerRequestKeys = {

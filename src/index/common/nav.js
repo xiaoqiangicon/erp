@@ -9,7 +9,7 @@ if (browser.isMobile) {
     'padding-top': 50,
   });
   $('#nav-register').attr({
-    href: 'https://wx.zizaihome.com/temple/templeInfo',
+    href: 'https://wx.lenconet.com/temple/templeInfo',
   });
 }
 if (!browser.isMobile) {

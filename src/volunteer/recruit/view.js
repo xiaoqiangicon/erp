@@ -46,7 +46,7 @@ seeView({
     } else if (href.indexOf('erprelease') != -1) {
       text = `https://wxapp2.zizaihome.com/yg/addVolunteerManager?isTest=2&id=${id}`;
     } else {
-      text = `https://wx.zizaihome.com/yg/addVolunteerManager?id=${id}`;
+      text = `https://wx.lenconet.com/yg/addVolunteerManager?id=${id}`;
     }
     $('#qrcode').qrcode({
       width: 200,

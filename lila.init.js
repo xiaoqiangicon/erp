@@ -165,14 +165,14 @@ export default lila => {
           '@lila/sync-html',
           {
             server: servers[serverEnvMap[argv.env]],
-            remotePath: '/data/www/myerp-py3/templates',
+            remotePath: '/data/miaoyan/myerp/templates',
           },
         ],
         [
           '@lila/sync-html',
           {
             server: servers[serverEnvMap[argv.env]],
-            remotePath: '/data/www/myerp-py3/static/build',
+            remotePath: '/data/miaoyan/myerp/static/build',
           },
         ]
       );
@@ -182,7 +182,7 @@ export default lila => {
           '@lila/sync-dir',
           {
             server: servers[serverEnvMap[argv.env]],
-            remotePath: '/data/www/myerp-py3/static/resources',
+            remotePath: '/data/miaoyan/myerp/static/resources',
             dirs: 'json',
           },
         ]);
